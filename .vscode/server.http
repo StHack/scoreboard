@@ -1,0 +1,20 @@
+@server = https://localhost:4400
+###
+POST {{server}}/register
+Content-Type: application/json
+
+{
+  "username": "nagarian",
+  "password": "azerty123",
+  "team": "h4ck3rs"
+}
+###
+POST {{server}}/login
+Content-Type: application/json
+
+{
+  "username": "nagarian",
+  "password": "azerty123"
+}
+###
+POST {{server}}/logout

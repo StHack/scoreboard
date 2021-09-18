@@ -1,7 +1,7 @@
 import { mongoConnectionString } from '../sthack-config'
 import { connect, ToObjectOptions } from 'mongoose'
 
-export async function init() {
+export async function initMongo() {
   await connect(mongoConnectionString())
 }
 

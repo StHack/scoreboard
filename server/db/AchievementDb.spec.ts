@@ -6,7 +6,7 @@ import {
   registerAchievement,
   removeAllTeamAchievement,
 } from './AchievementDb'
-import { init } from './main'
+import { initMongo } from './main'
 
 const chall1 = 'Chall #1'
 const chall2 = 'Chall #2'
@@ -32,7 +32,7 @@ async function bulkCreate(
 
 describe('Achievement DB integration tests', () => {
   beforeAll(async () => {
-    await init()
+    await initMongo()
   })
 
   beforeEach(async () => {
@@ -40,10 +40,10 @@ describe('Achievement DB integration tests', () => {
     await removeAllTeamAchievement(team2)
   })
 
-  afterAll(async () => {
-    await removeAllTeamAchievement(team1)
-    await removeAllTeamAchievement(team2)
-  })
+  // afterAll(async () => {
+  //   await removeAllTeamAchievement(team1)
+  //   await removeAllTeamAchievement(team2)
+  // })
 
   it('should create an achievement', async () => {
     const achievement = await registerAchievement({

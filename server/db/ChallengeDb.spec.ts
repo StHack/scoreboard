@@ -5,7 +5,7 @@ import {
   listChallenge,
   removeChallenge,
 } from './ChallengeDb'
-import { init } from './main'
+import { initMongo } from './main'
 
 const challenge1: BaseChallenge = {
   name: 'Chall #1',
@@ -30,13 +30,18 @@ const challenge2: BaseChallenge = {
 
 describe('Challenge DB integration tests', () => {
   beforeAll(async () => {
-    await init()
+    await initMongo()
   })
 
   beforeEach(async () => {
     await removeChallenge(challenge1.name)
     await removeChallenge(challenge2.name)
   })
+
+  // afterAll(async () => {
+  //   await removeChallenge(challenge1.name)
+  //   await removeChallenge(challenge2.name)
+  // })
 
   it('should be able to create challenge', async () => {
     await expect(createChallenge(challenge1)).resolves.not.toThrow()
