@@ -1,9 +1,11 @@
+import 'jest-extended'
 import type { InitialOptionsTsJest } from 'ts-jest/dist/types'
 import { config } from 'dotenv'
 
 const conf: InitialOptionsTsJest = {
   preset: 'ts-jest',
   testEnvironment: 'node',
+  setupFilesAfterEnv: ['jest-extended'],
   // moduleNameMapper: {
   //   '^db/(.*)$': '<rootDir>/db/$1',
   //   '^models/(.*)$': '<rootDir>/models/$1',
