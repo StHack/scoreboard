@@ -28,6 +28,7 @@ To have a full dev environment up you need to do the following steps:
     ```txt
     NODE_ENV=development
     APP_MONGO=mongodb://sthack-admin:sthack-password@localhost:27017
+    APP_REDIS=redis://localhost:6379
     ```
 
 3. Generate a certificate for https:

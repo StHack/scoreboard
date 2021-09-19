@@ -1,10 +1,13 @@
-import { registerAuthentification } from 'services/authentication'
+import { createAdapter } from '@socket.io/redis-adapter'
+import { initMongo } from 'db/main'
 import { config } from 'dotenv'
 import express from 'express'
 import { readFileSync } from 'fs'
 import { createServer } from 'https'
+import { createClient } from 'redis'
+import { registerAuthentification } from 'services/authentication'
 import { Server } from 'socket.io'
-import { initMongo } from 'db/main'
+import { redisConnectionString } from 'sthack-config'
 
 if (process.env.NODE_ENV !== 'production') {
   config()
@@ -20,6 +23,9 @@ const httpServer = createServer({ key, cert }, app)
 const io = new Server(httpServer, {
   transports: ['websocket'],
 })
+const pubClient = createClient({ url: redisConnectionString() })
+const subClient = pubClient.duplicate()
+io.adapter(createAdapter(pubClient, subClient))
 
 initMongo()
 registerAuthentification(app, io)

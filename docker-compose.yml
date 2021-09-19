@@ -8,7 +8,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: sthack-admin
       MONGO_INITDB_ROOT_PASSWORD: sthack-password
       MONGO_INITDB_DATABASE: sthack
-    volumes: 
+    volumes:
       - mongo-data:/data/db
 
   mongo-express:
@@ -21,5 +21,11 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: sthack-password
       ME_CONFIG_MONGODB_URL: mongodb://sthack-admin:sthack-password@mongo:27017/
 
-volumes: 
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - 6379:6379
+
+volumes:
   mongo-data:
