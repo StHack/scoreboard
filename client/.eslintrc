@@ -1,0 +1,17 @@
+{
+  "extends": ["react-app", "react-app/jest", "standard"],
+  "rules": {
+    "comma-dangle": ["error", "always-multiline"],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "no-var": ["error"]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts?(x)"],
+      "rules": {
+        "semi": "error"
+      }
+    }
+  ]
+}
