@@ -1,3 +1,4 @@
+import MongoStore from 'connect-mongo'
 import { getUser, login, registerUser } from 'db/UsersDb'
 import { IRouter, json, Request } from 'express'
 import session from 'express-session'
@@ -5,10 +6,14 @@ import { CreateUser, User as OurUser } from 'models/User'
 import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
 import { Server } from 'socket.io'
+import { connection } from 'mongoose'
 
 export function registerAuthentification(app: IRouter, io: Server) {
   const sessionMiddleware = session({
     secret: 'changeit',
+    store: MongoStore.create({
+      client: connection.getClient()
+    }),
     resave: false,
     saveUninitialized: false,
   })
