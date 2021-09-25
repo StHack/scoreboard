@@ -12,7 +12,7 @@ export function registerAuthentification(app: IRouter, io: Server) {
   const sessionMiddleware = session({
     secret: 'changeit',
     store: MongoStore.create({
-      client: connection.getClient()
+      client: connection.getClient(),
     }),
     resave: false,
     saveUninitialized: false,
@@ -58,7 +58,7 @@ export function registerAuthentification(app: IRouter, io: Server) {
     done(null, user ?? false)
   })
 
-  app.post('/register', async (req, res) => {
+  app.post('/api/register', async (req, res) => {
     if (req.isAuthenticated()) {
       res.status(400).send('You are already authenticated')
       return
@@ -77,14 +77,14 @@ export function registerAuthentification(app: IRouter, io: Server) {
   })
 
   app.post(
-    '/login',
+    '/api/login',
     passport.authenticate('local', {
       // session: false,
     }),
-    (req, res) => res.sendStatus(200),
+    (req, res) => res.send(req.user),
   )
 
-  app.post('/logout', (req, res) => {
+  app.post('/api/logout', (req, res) => {
     const socketId = req.session.socketId
 
     if (socketId) {
@@ -94,6 +94,14 @@ export function registerAuthentification(app: IRouter, io: Server) {
     req.logout()
     res.cookie('connect.sid', '', { expires: new Date() })
     res.send('Logged out succesfully')
+  })
+
+  app.get('/api/me', (req, res) => {
+    if (req.isAuthenticated()) {
+      res.send(req.user)
+    } else {
+      res.sendStatus(401)
+    }
   })
 
   io.on('connect', socket => {

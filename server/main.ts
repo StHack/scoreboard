@@ -4,6 +4,7 @@ import { config } from 'dotenv'
 import express from 'express'
 import { readFileSync } from 'fs'
 import { createServer } from 'https'
+import { join } from 'path'
 import { createClient } from 'redis'
 import { registerAuthentification } from 'services/authentication'
 import { Server } from 'socket.io'
@@ -34,7 +35,12 @@ io.on('connection', socket => {
   socket.emit('hello', 'world')
 })
 
-app.get('/', (req, res) => res.send('Express + TypeScript Server'))
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(join(__dirname, 'build')))
+  app.get('/*', function (req, res) {
+    res.sendFile(join(__dirname, 'build', 'index.html'))
+  })
+}
 
 const PORT = 4400
 
