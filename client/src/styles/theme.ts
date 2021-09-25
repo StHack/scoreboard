@@ -54,12 +54,12 @@ const breakpoints: ThemeBreakpoints = ['768px', '970px', '1024px']
 export const lightTheme: Theme = {
   colors: {
     ...baseColors,
-    primary: baseColors.black,
-    secondary: baseColors.white,
+    primary: baseColors.white,
+    secondary: baseColors.black,
     background: baseColors.white,
     popupBackground: baseColors.black,
     text: baseColors.black,
-    primaryText: baseColors.white,
+    primaryText: baseColors.black,
     secondaryText: baseColors.white,
   },
   fontSizes,

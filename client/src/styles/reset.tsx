@@ -154,7 +154,7 @@ const resetCss = (theme: Theme) => css`
   }
 
   a {
-    color: ${theme.colors.secondaryText};
+    color: ${theme.colors.primaryText};
   }
 
   hr {

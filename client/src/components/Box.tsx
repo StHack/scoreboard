@@ -1,4 +1,4 @@
-import styled, { StyledComponent } from '@emotion/styled'
+import styled from '@emotion/styled'
 import {
   background,
   BackgroundColorProps,
@@ -32,9 +32,7 @@ export type BoxProps = SpaceProps &
   BorderProps &
   PlaceProps
 
-export type BoxStyledProps = StyledComponent<'div', BoxProps, any>
-
-const Box: BoxStyledProps = styled('div', cleanStyledSystem)<BoxProps>(
+export const Box = styled('div', cleanStyledSystem)<BoxProps>(
   border,
   layout,
   shadow,
@@ -46,5 +44,3 @@ const Box: BoxStyledProps = styled('div', cleanStyledSystem)<BoxProps>(
   flexbox,
   place,
 )
-
-export default Box
