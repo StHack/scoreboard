@@ -1,15 +1,12 @@
 import styled from '@emotion/styled'
-import { User } from 'models/User'
+import { useAuth } from 'hooks/useAuthentication'
+import { NavLink } from 'react-router-dom'
 import { space, SpaceProps } from 'styled-system'
 import { Box } from './Box'
-import { Button } from './Button'
 
-type HeaderProps = {
-  user?: User
-  logout: () => void
-  admin: () => void
-}
-export function Header ({ user, logout, admin }: HeaderProps) {
+export function Header () {
+  const { user, isAuthenticated, isAuthorized, logOut } = useAuth()
+
   return (
     <HeaderBlock px="large" py="small">
       <span>StHack 2021</span>
@@ -18,10 +15,24 @@ export function Header ({ user, logout, admin }: HeaderProps) {
           {user.username} / {user.team}
         </span>
       )}
-      <Box display="flex" flexDirection="row">
-        {user?.isAdmin && <Button onClick={admin}>Admin</Button>}
-        {user && <Button onClick={logout}>Logout</Button>}
-      </Box>
+
+      <nav>
+        <Box display="flex" flexDirection="row" as="ul">
+          <GameLink to="/scoreboard" label="Scoreboard" />
+          <GameLink to="/rules" label="Rules" />
+          <GameLink to="/admin" label="Admin" showIf={isAuthorized} />
+          <GameLink to="/register" label="Register" showIf={!isAuthenticated} />
+          <GameLink to="/login" label="Login" showIf={!isAuthenticated} />
+
+          {isAuthenticated && (
+            <NavItem>
+              <NavButton onClick={logOut} type="button">
+                Logout
+              </NavButton>
+            </NavItem>
+          )}
+        </Box>
+      </nav>
     </HeaderBlock>
   )
 }
@@ -35,3 +46,40 @@ const HeaderBlock = styled.header<SpaceProps>`
   color: ${p => p.theme.colors.secondaryText};
   ${space}
 `
+
+const NavItem = styled.li<SpaceProps>`
+  display: flex;
+`
+
+const NavLinkStyled = styled(NavLink)<SpaceProps>`
+  color: ${p => p.theme.colors.secondaryText};
+  text-decoration: none;
+  ${space}
+
+  &.active {
+    text-decoration: underline;
+  }
+`
+
+const NavButton = styled.button<SpaceProps>`
+  color: ${p => p.theme.colors.secondaryText};
+  cursor: pointer;
+  ${space}
+`
+
+type GameLinkProps = {
+  to: string
+  label: string
+  showIf?: boolean
+}
+function GameLink ({ to, label, showIf = true }: GameLinkProps) {
+  if (!showIf) return null
+
+  return (
+    <NavItem>
+      <NavLinkStyled to={to} activeClassName="active" p="2">
+        {label}
+      </NavLinkStyled>
+    </NavItem>
+  )
+}

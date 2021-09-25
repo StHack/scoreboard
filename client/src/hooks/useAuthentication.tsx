@@ -6,14 +6,12 @@ import {
   useEffect,
   useState,
 } from 'react'
-import { useHistory } from 'react-router-dom'
 import { login, logout, me } from 'services/authenticate'
 
 export type AuthContext = {
   user?: User
   isAuthenticated: boolean
-  checkAuthentication: () => void
-  checkAuthorization: () => void
+  isAuthorized: boolean
   logOut: () => Promise<void>
   logIn: (
     username: string,
@@ -27,8 +25,7 @@ export type AuthContext = {
 const authContext = createContext<AuthContext>({
   user: undefined,
   isAuthenticated: false,
-  checkAuthentication: () => {},
-  checkAuthorization: () => {},
+  isAuthorized: false,
   logOut: () => Promise.resolve(),
   logIn: () => Promise.resolve({ ok: false, error: 'oups' }),
 })
@@ -44,7 +41,6 @@ export const useAuth = () => {
 
 function useProvideAuth (): AuthContext {
   const [user, setUser] = useState<User>()
-  const history = useHistory()
 
   useEffect(() => {
     const init = async () => {
@@ -60,18 +56,7 @@ function useProvideAuth (): AuthContext {
   return {
     user,
     isAuthenticated: user !== undefined,
-    checkAuthentication: () => {
-      if (!user) {
-        history.push('/login')
-      }
-    },
-    checkAuthorization: () => {
-      if (!user) {
-        history.push('/login')
-      } else if (!user.isAdmin) {
-        history.push('/')
-      }
-    },
+    isAuthorized: !!user?.isAdmin,
     logOut: async () => {
       await logout()
       setUser(undefined)

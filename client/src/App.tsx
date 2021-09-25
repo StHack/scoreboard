@@ -1,10 +1,13 @@
 import styled from '@emotion/styled'
-import { Box } from 'components/Box'
 import { Header } from 'components/Header'
 import { useAuth } from 'hooks/useAuthentication'
+import { Admin } from 'pages/Admin'
+import { Game } from 'pages/Game'
 import { Login } from 'pages/Login'
 import { Register } from 'pages/Register'
-import { Route, Switch, Redirect } from 'react-router'
+import { Rules } from 'pages/Rules'
+import { ScoreBoard } from 'pages/ScoreBoard'
+import { Redirect, Route, Switch } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
 
 const AppBlock = styled.div`
@@ -16,16 +19,16 @@ const AppBlock = styled.div`
 `
 
 export default function App () {
-  const { user, logOut, isAuthenticated } = useAuth()
+  const { isAuthenticated, isAuthorized } = useAuth()
 
   return (
     <BrowserRouter>
       <AppBlock>
-        <Header user={user} admin={() => false} logout={logOut} />
+        <Header />
 
         <Switch>
           <Route exact path="/">
-            {isAuthenticated ? <></> : <Redirect to="/login" />}
+            {isAuthenticated ? <Game></Game> : <Redirect to="/login" />}
           </Route>
 
           <Route path="/login">
@@ -35,13 +38,19 @@ export default function App () {
           <Route path="/register">
             {isAuthenticated ? <Redirect to="/" /> : <Register />}
           </Route>
-        </Switch>
 
-        {user && (
-          <Box display="flex" flexDirection="column">
-            <span>{user.username}</span>
-          </Box>
-        )}
+          <Route path="/admin">
+            {isAuthenticated && isAuthorized ? <Admin /> : <Redirect to="/" />}
+          </Route>
+
+          <Route path="/scoreboard">
+            <ScoreBoard />
+          </Route>
+
+          <Route path="/rules">
+            <Rules />
+          </Route>
+        </Switch>
       </AppBlock>
     </BrowserRouter>
   )
