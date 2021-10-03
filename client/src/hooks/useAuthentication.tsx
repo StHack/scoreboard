@@ -58,6 +58,7 @@ function useProvideAuth (): AuthContext {
     isAuthenticated: user !== undefined,
     isAuthorized: !!user?.isAdmin,
     logOut: async () => {
+      if (!user) return
       await logout()
       setUser(undefined)
     },

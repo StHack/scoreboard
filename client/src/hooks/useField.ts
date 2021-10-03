@@ -4,12 +4,9 @@ export type FieldProps<T> = {
   defaultValue: T
   name: string
   disabled: boolean
+  required?: boolean
 }
-export function useField<T> ({
-  defaultValue,
-  name,
-  disabled,
-}: FieldProps<T>) {
+export function useField<T> ({ defaultValue, ...props }: FieldProps<T>) {
   const [value, setValue] = useState<T>(defaultValue)
 
   const reset = () => {
@@ -19,9 +16,9 @@ export function useField<T> ({
   return {
     inputProp: {
       value,
-      name,
-      disabled,
-      onChange: (e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value as any),
+      ...props,
+      onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+        setValue(e.target.value as any),
     },
     reset,
   }

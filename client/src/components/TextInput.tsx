@@ -22,3 +22,5 @@ export const TextInput = styled.input<SpaceProps & FlexProps>`
     -webkit-appearance: none;
   }
 `
+
+export const TextArea = TextInput.withComponent('textarea')

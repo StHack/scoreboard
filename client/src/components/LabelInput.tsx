@@ -8,17 +8,26 @@ const Label = styled.label`
   ${space}
 `
 
+const Span = styled.span<{ required?: boolean }>`
+  :after {
+    content: ${p => (p.required ? '\'*\'' : '')};
+    color: ${p => p.theme.colors.red};
+  }
+`
+
 type LabelInputProps = SpaceProps & {
   label: string
+  required?: boolean
 }
 export function LabelInput ({
   label,
   children,
+  required,
   ...rest
 }: PropsWithChildren<LabelInputProps>) {
   return (
     <Label {...rest}>
-      <span>{label}</span>
+      <Span required={required}>{label}</Span>
       {children}
     </Label>
   )

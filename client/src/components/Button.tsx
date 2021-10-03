@@ -79,7 +79,7 @@ Button.defaultProps = {
   px: 3,
   py: 2,
   fontWeight: 1,
-  fontSize: 3,
+  fontSize: 1,
   border: 'currentColor solid',
   borderWidth: 'thick',
   borderRadius: 4,
