@@ -64,3 +64,11 @@ export const place = system({
   placeContent: true,
   placeSelf: true,
 })
+
+export const SafariSpecific = (cssRule: any) => css`
+  @media not all and (min-resolution: 0.001dpcm) {
+    @media {
+      ${cssRule}
+    }
+  }
+`
