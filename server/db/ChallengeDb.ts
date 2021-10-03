@@ -23,7 +23,7 @@ const ChallengeModel = model<Challenge>('Challenge', schema)
 const flagHasher = (password: string) =>
   createHash('sha256').update(password).digest('hex')
 
-export async function createChallenge(chall: BaseChallenge): Promise<void> {
+export async function createChallenge(chall: BaseChallenge): Promise<Challenge> {
   const flags = (chall.flags ?? []).map(flagHasher)
 
   const doc = new ChallengeModel({
@@ -33,7 +33,8 @@ export async function createChallenge(chall: BaseChallenge): Promise<void> {
     isBroken: false,
   })
 
-  await doc.save()
+  const document = await doc.save()
+  return document.toObject(removeMongoProperties)
 }
 
 export async function listChallenge(): Promise<Challenge[]> {
@@ -42,7 +43,10 @@ export async function listChallenge(): Promise<Challenge[]> {
   return results.map(r => r.toObject(removeMongoProperties))
 }
 
-export async function checkChallenge(challName: string, flag: string): Promise<boolean> {
+export async function checkChallenge(
+  challName: string,
+  flag: string,
+): Promise<boolean> {
   const chall = await ChallengeModel.findOne({ name: challName })
 
   if (!chall) {
@@ -55,4 +59,13 @@ export async function checkChallenge(challName: string, flag: string): Promise<b
 
 export async function removeChallenge(challName: string): Promise<void> {
   await ChallengeModel.deleteOne({ name: challName })
+}
+
+export async function updateChallenge(challName: string, challenge: Partial<Challenge>): Promise<Challenge> {
+  const document = await ChallengeModel.findOneAndUpdate({ name: challName }, { ...challenge })
+  return document.toObject(removeMongoProperties)
+}
+
+export async function closeAllChallenge(): Promise<void> {
+  await ChallengeModel.updateMany({ }, { isOpen: false })
 }

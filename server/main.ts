@@ -6,7 +6,11 @@ import { readFileSync } from 'fs'
 import { createServer } from 'https'
 import { join } from 'path'
 import { createClient } from 'redis'
-import { registerAuthentification } from 'services/authentication'
+import { registerAdminNamespace } from 'services/admin'
+import {
+  registerAuthentification,
+  registerAuthentificationForSocket,
+} from 'services/authentication'
 import { Server } from 'socket.io'
 import { redisConnectionString } from 'sthack-config'
 
@@ -23,6 +27,7 @@ const httpServer = createServer({ key, cert }, app)
 
 const io = new Server(httpServer, {
   transports: ['websocket'],
+  path: '/api/socket',
 })
 const pubClient = createClient({ url: redisConnectionString() })
 const subClient = pubClient.duplicate()
@@ -31,9 +36,10 @@ io.adapter(createAdapter(pubClient, subClient))
 initMongo()
 registerAuthentification(app, io)
 
-io.on('connection', socket => {
-  socket.emit('hello', 'world')
-})
+registerAuthentificationForSocket(io.of('/api/game'))
+registerAuthentificationForSocket(io.of('/api/admin'))
+
+registerAdminNamespace(io.of('/api/admin'), io.of('/api/game'))
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, 'build')))

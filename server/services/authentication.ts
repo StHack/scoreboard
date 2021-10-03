@@ -3,13 +3,13 @@ import { getUser, login, registerUser } from 'db/UsersDb'
 import { IRouter, json, Request } from 'express'
 import session from 'express-session'
 import { CreateUser, User as OurUser } from 'models/User'
+import { connection } from 'mongoose'
 import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
-import { Server } from 'socket.io'
-import { connection } from 'mongoose'
+import { Namespace, Server } from 'socket.io'
 
-export function registerAuthentification(app: IRouter, io: Server) {
-  const sessionMiddleware = session({
+const sessionMiddleware = () =>
+  session({
     secret: 'changeit',
     store: MongoStore.create({
       client: connection.getClient(),
@@ -18,20 +18,11 @@ export function registerAuthentification(app: IRouter, io: Server) {
     saveUninitialized: false,
   })
 
-  app.use(sessionMiddleware)
+export function registerAuthentification(app: IRouter, io: Server) {
+  app.use(sessionMiddleware())
   app.use(json())
   app.use(passport.initialize())
   app.use(passport.session())
-
-  const wrap = (middleware: any) => (socket: any, next: any) =>
-    middleware(socket.request, {}, next)
-
-  io.use(wrap(sessionMiddleware))
-  io.use(wrap(passport.initialize()))
-  io.use(wrap(passport.session()))
-  io.use((socket, next) =>
-    (socket.request as any).user ? next() : next(new Error('unauthorized')),
-  )
 
   passport.use(
     new LocalStrategy(async (username, password, done) => {
@@ -103,6 +94,18 @@ export function registerAuthentification(app: IRouter, io: Server) {
       res.sendStatus(401)
     }
   })
+}
+
+const wrap = (middleware: any) => (socket: any, next: any) =>
+  middleware(socket.request, {}, next)
+
+export function registerAuthentificationForSocket(io: Namespace) {
+  io.use(wrap(sessionMiddleware()))
+  io.use(wrap(passport.initialize()))
+  io.use(wrap(passport.session()))
+  io.use((socket, next) =>
+    (socket.request as any).user ? next() : next(new Error('unauthorized')),
+  )
 
   io.on('connect', socket => {
     const session = (socket.request as Request).session
