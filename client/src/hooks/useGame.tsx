@@ -1,4 +1,6 @@
+import { Achievement } from 'models/Achievement'
 import { Challenge } from 'models/Challenge'
+import { GameConfig } from 'models/GameConfig'
 import {
   createContext,
   PropsWithChildren,
@@ -6,14 +8,22 @@ import {
   useEffect,
   useState,
 } from 'react'
+import { computeGameScore, GameScore } from 'services/score'
+import { useAuth } from './useAuthentication'
 import { useSocket } from './useSocket'
 
 export type GameContext = {
   challenges: Challenge[]
+  score: GameScore
 }
 
 const gameContext = createContext<GameContext>({
   challenges: [],
+  score: {
+    myScore: 0,
+    teamScore: 0,
+    challScore: {},
+  },
 })
 
 export function ProvideGame ({ children }: PropsWithChildren<{}>) {
@@ -28,12 +38,27 @@ export const useGame = () => {
 function useProvideGame (): GameContext {
   const { socket } = useSocket('/api/game')
   const [challenges, setChallenges] = useState<Challenge[]>([])
+  const [achievements, setAchievements] = useState<Achievement[]>([])
+  const [gameConfig, setGameConfig] = useState<GameConfig>({
+    solveDelay: 10,
+    teamCount: 0,
+    baseChallScore: 0,
+  })
+  const { user } = useAuth()
 
   useEffect(() => {
     if (!socket) return
 
+    socket.emit('game:config', (config: GameConfig) => {
+      setGameConfig(config)
+    })
+
     socket.emit('challenge:list', (response: Challenge[]) => {
       setChallenges([...response])
+    })
+
+    socket.emit('achievement:list', (response: Achievement[]) => {
+      setAchievements([...response])
     })
 
     socket.on('challenge:added', chall =>
@@ -46,13 +71,19 @@ function useProvideGame (): GameContext {
       ),
     )
 
+    socket.on('achievement:added', (achievement: Achievement) => {
+      setAchievements(a => [...a, achievement])
+    })
+
     return () => {
       socket.off('challenge:added')
       socket.off('challenge:updated')
+      socket.off('achievement:added')
     }
   }, [socket])
 
   return {
     challenges,
+    score: computeGameScore(achievements, challenges, gameConfig, user!),
   }
 }
