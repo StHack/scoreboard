@@ -1,12 +1,15 @@
-import { Namespace } from 'socket.io'
-import { checkChallenge, listChallenge } from 'db/ChallengeDb'
 import {
   getChallengeAchievement,
-  getTeamAchievement,
   listAchievement,
   registerAchievement,
 } from 'db/AchievementDb'
+import { checkChallenge, listChallenge } from 'db/ChallengeDb'
+import { countTeam } from 'db/UsersDb'
 import { Request } from 'express'
+import { GameConfig } from 'models/GameConfig'
+import { Namespace } from 'socket.io'
+
+const delayTimeInMinutes = 10
 
 export function registerGameNamespace(gameIo: Namespace) {
   gameIo.on('connection', gameSocket => {
@@ -18,6 +21,17 @@ export function registerGameNamespace(gameIo: Namespace) {
     gameSocket.on('achievement:list', async callback => {
       const achievements = await listAchievement()
       callback(achievements)
+    })
+
+    gameSocket.on('game:config', async callback => {
+      const teamCount = await countTeam()
+
+      const result: GameConfig = {
+        solveDelay: delayTimeInMinutes,
+        teamCount,
+      }
+
+      callback(result)
     })
 
     gameSocket.on(
@@ -44,7 +58,9 @@ export function registerGameNamespace(gameIo: Namespace) {
         }
 
         const lastSolvedDelayer = new Date()
-        lastSolvedDelayer.setMinutes(lastSolvedDelayer.getMinutes() - 10)
+        lastSolvedDelayer.setMinutes(
+          lastSolvedDelayer.getMinutes() - delayTimeInMinutes,
+        )
 
         if (achievements.find(a => a.createdAt > lastSolvedDelayer)) {
           callback({ error: `Can't be solved now` })

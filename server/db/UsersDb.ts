@@ -78,3 +78,14 @@ export async function getUser(username: string): Promise<User | undefined> {
 export async function removeUser(username: string): Promise<void> {
   await UserModel.findOneAndDelete({ name: username })
 }
+
+export async function countTeam(): Promise<number> {
+  const result = await UserModel.aggregate()
+    .match({ team: { $ne: 'admin' } })
+    .group({
+      _id: '$team',
+      count: { $sum: 1 },
+    })
+
+  return result.length
+}
