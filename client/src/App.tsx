@@ -28,42 +28,48 @@ export default function App () {
       <AppBlock>
         <Header />
 
-        <Switch>
-          <Route exact path="/">
-            {isAuthenticated ? <Game></Game> : <Redirect to="/login" />}
-          </Route>
+        <Container>
+          <Switch>
+            <Route exact path="/">
+              {isAuthenticated ? <Game></Game> : <Redirect to="/login" />}
+            </Route>
 
-          <Route path="/login">
-            {isAuthenticated ? <Redirect to="/" /> : <Login />}
-          </Route>
+            <Route path="/login">
+              {isAuthenticated ? <Redirect to="/" /> : <Login />}
+            </Route>
 
-          <Route path="/register">
-            {isAuthenticated ? <Redirect to="/" /> : <Register />}
-          </Route>
+            <Route path="/register">
+              {isAuthenticated ? <Redirect to="/" /> : <Register />}
+            </Route>
 
-          <Route path="/admin">
-            {isAuthenticated && isAuthorized
-              ? (
-              <ProvideGame>
-                <ProvideAdmin>
-                  <Admin />
-                </ProvideAdmin>
-              </ProvideGame>
-                )
-              : (
-              <Redirect to="/" />
-                )}
-          </Route>
+            <Route path="/admin">
+              {isAuthenticated && isAuthorized
+                ? (
+                <ProvideGame>
+                  <ProvideAdmin>
+                    <Admin />
+                  </ProvideAdmin>
+                </ProvideGame>
+                  )
+                : (
+                <Redirect to="/" />
+                  )}
+            </Route>
 
-          <Route path="/scoreboard">
-            <ScoreBoard />
-          </Route>
+            <Route path="/scoreboard">
+              <ScoreBoard />
+            </Route>
 
-          <Route path="/rules">
-            <Rules />
-          </Route>
-        </Switch>
+            <Route path="/rules">
+              <Rules />
+            </Route>
+          </Switch>
+        </Container>
       </AppBlock>
     </BrowserRouter>
   )
 }
+
+const Container = styled.div`
+  overflow: auto;
+`
