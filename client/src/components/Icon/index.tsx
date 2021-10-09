@@ -11,8 +11,8 @@ import {
   SpaceProps,
 } from 'styled-system'
 import { clean, cleanStyledSystem, place, PlaceProps } from 'styles'
-import LogoImg from './images/logo.png'
-import BannerImg from './images/banner.png'
+import { ReactComponent as BannerSvg } from './images/banner.svg'
+import { ReactComponent as LogoSvg } from './images/Logo.svg'
 // import { ReactComponent as Add } from './add.svg'
 
 type StyledIconProps = SpaceProps &
@@ -46,7 +46,7 @@ const BaseImg = styled('img', cleanStyledSystem)<StyledIconProps>(
 const BImg = (s: string, title?: string) => (p: StyledIconProps) =>
   <BaseImg {...(p as any)} alt={title} title={title} src={s} />
 
-export const Logo = BImg(LogoImg, 'logo')
-export const Banner = BImg(BannerImg, 'banner')
+// export const Logo = BImg(LogoImg, 'logo')
 
-// export const AddIcon = BaseSvg(Add)
+export const Logo = BaseSvg(LogoSvg)
+export const Banner = BaseSvg(BannerSvg)
