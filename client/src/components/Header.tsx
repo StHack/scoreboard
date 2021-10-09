@@ -3,13 +3,14 @@ import { useAuth } from 'hooks/useAuthentication'
 import { NavLink } from 'react-router-dom'
 import { space, SpaceProps } from 'styled-system'
 import { Box } from './Box'
+import { Logo } from './Icon'
 
 export function Header () {
   const { user, isAuthenticated, isAuthorized, logOut } = useAuth()
 
   return (
     <HeaderBlock px="large" py="small">
-      <span>StHack 2021</span>
+      <Logo size={2} />
       {user && (
         <span>
           {user.username} / {user.team}

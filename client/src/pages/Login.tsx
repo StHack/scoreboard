@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
+import { Banner } from 'components/Icon'
 import { LabelInput } from 'components/LabelInput'
 import { TextInput } from 'components/TextInput'
 import { useLoginForm } from 'hooks/useLoginForm'
@@ -13,6 +14,8 @@ export function Login () {
   return (
     <Box display="grid" placeItems="center" maxWidth="60rem" margin="0 auto">
       <Box display="flex" flexDirection="column">
+        <Banner mb="4" backgroundColor="black" />
+
         <Form {...formProps}>
           <LabelInput label="Username">
             <TextInput type="text" {...usernameProps} />

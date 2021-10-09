@@ -44,6 +44,12 @@ Text.defaultProps = {
   fontSize: '2',
 }
 
+const Code = styled.code`
+  padding: ${p => p.theme.space[1]};
+  background-color: ${p => p.theme.colors.greys[0]};
+  border: 1px solid ${p => p.theme.colors.greys[2]};
+`
+
 export const ReactMarkdownRenderers: Components = {
   h1: p => <Text as="h1" my="4" fontSize="3" textAlign="center" {...p} />,
   h2: p => <Text as="h2" my="3" {...p} />,
@@ -57,6 +63,7 @@ export const ReactMarkdownRenderers: Components = {
   li: p => {
     return <ListItem {...p} />
   },
+  code: Code,
   blockquote: p => <Text as="blockquote" color="red" {...(p as any)} />,
   // listItem: ListItem,
   img: Img,

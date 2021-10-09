@@ -20,6 +20,11 @@ const AppBlock = styled.div`
   position: relative;
 `
 
+const Container = styled.div`
+  overflow: auto;
+  display: grid;
+`
+
 export default function App () {
   const { isAuthenticated, isAuthorized } = useAuth()
 
@@ -69,7 +74,3 @@ export default function App () {
     </BrowserRouter>
   )
 }
-
-const Container = styled.div`
-  overflow: auto;
-`
