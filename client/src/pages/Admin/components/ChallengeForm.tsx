@@ -5,6 +5,7 @@ import { LabelInput } from 'components/LabelInput'
 import Popup from 'components/Popup'
 import { TextArea, TextInput } from 'components/TextInput'
 import { useChallengeForm } from 'hooks/useChallengeForm'
+import { Categories } from 'models/Category'
 import { Challenge } from 'models/Challenge'
 import { Difficulties } from 'models/Difficulty'
 import { useRef } from 'react'
@@ -14,7 +15,7 @@ export type AdminProps = {
   onClose: () => void
 }
 
-export function CreateChallenge ({ chall, onClose }: AdminProps) {
+export function ChallengeForm ({ chall, onClose }: AdminProps) {
   const {
     formProps,
     nameProps,
@@ -53,8 +54,12 @@ export function CreateChallenge ({ chall, onClose }: AdminProps) {
           <TextArea rows={6} {...descriptionProps} />
         </LabelInput>
 
-        <LabelInput label="Flag" required>
+        <LabelInput label="Flag" required={isNewChallenge}>
           <TextInput type="text" {...flagsProps} />
+          <p>Available flags:</p>
+          {chall?.flags.map(f => (
+            <p>{f}</p>
+          ))}
         </LabelInput>
 
         <LabelInput label="Link">
@@ -62,18 +67,26 @@ export function CreateChallenge ({ chall, onClose }: AdminProps) {
         </LabelInput>
 
         <LabelInput label="Category" required>
-          <TextInput type="text" {...categoryProps} />
+        <select {...categoryProps}>
+            {Categories.map(d => (
+              <option key={d} value={d}>
+                {d}
+              </option>
+            ))}
+          </select>
         </LabelInput>
 
         <LabelInput label="Difficulty" required>
           <select {...difficultyProps}>
             {Difficulties.map(d => (
-              <option value={d}>{d}</option>
+              <option key={d} value={d}>
+                {d}
+              </option>
             ))}
           </select>
         </LabelInput>
 
-        <LabelInput label="Image" required>
+        <LabelInput label="Image" required={isNewChallenge}>
           <ImageInput {...imgProps} />
         </LabelInput>
 

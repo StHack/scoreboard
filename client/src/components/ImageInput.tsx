@@ -67,5 +67,8 @@ const Image = styled.img`
 `
 
 const Hidden = styled.input`
-  display: none;
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  position: absolute;
 `

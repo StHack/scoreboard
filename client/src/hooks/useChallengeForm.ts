@@ -1,14 +1,19 @@
 import { ChangeEvent, useState } from 'react'
 import { useField } from './useField'
-import { Challenge } from 'models/Challenge'
+import { BaseChallenge, Challenge } from 'models/Challenge'
 import { Difficulty } from 'models/Difficulty'
 import { useAdmin } from './useAdmin'
 import { useAuth } from './useAuthentication'
+import { Category } from 'models/Category'
 
-export function useChallengeForm (chall: Challenge | undefined, onSuccess: () => void) {
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+export function useChallengeForm (
+  chall: Challenge | undefined,
+  onSuccess: () => void,
+) {
+  const isNewChallenge = chall === undefined
+  const [isLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>()
-  const { createChallenge } = useAdmin()
+  const { createChallenge, updateChallenge } = useAdmin()
   const { user: { username } = {} } = useAuth()
 
   const {
@@ -37,9 +42,9 @@ export function useChallengeForm (chall: Challenge | undefined, onSuccess: () =>
     disabled: isLoading,
     required: true,
   })
-  const categoryField = useField<string>({
+  const categoryField = useField<Category>({
     name: 'team',
-    defaultValue: category ?? '',
+    defaultValue: category ?? 'web',
     disabled: isLoading,
     required: true,
   })
@@ -67,13 +72,14 @@ export function useChallengeForm (chall: Challenge | undefined, onSuccess: () =>
     name: 'difficulty',
     defaultValue: '',
     disabled: isLoading,
+    required: isNewChallenge,
   })
 
   const imgField = useField<string | undefined>({
     name: 'img',
     defaultValue: img,
     disabled: isLoading,
-    required: true,
+    required: isNewChallenge,
   })
 
   const isBrokenField = useField<boolean | undefined>({
@@ -103,16 +109,23 @@ export function useChallengeForm (chall: Challenge | undefined, onSuccess: () =>
     e.preventDefault()
 
     try {
-      await createChallenge({
+      const payload: BaseChallenge = {
         author: authorField.inputProp.value,
         category: categoryField.inputProp.value,
         description: descriptionField.inputProp.value,
         link: linkField.inputProp.value,
         img: imgField.inputProp.value ?? '',
         difficulty: difficultyField.inputProp.value,
-        flags: [flagsField.inputProp.value],
+        flags: flagsField.inputProp.value ? [flagsField.inputProp.value] : [],
         name: nameField.inputProp.value,
-      })
+      }
+
+      if (chall === undefined) {
+        await createChallenge(payload)
+      } else {
+        await updateChallenge(payload)
+      }
+
       onSuccess()
     } catch (error) {
       setError(error as string)
@@ -132,10 +145,10 @@ export function useChallengeForm (chall: Challenge | undefined, onSuccess: () =>
     imgProps: imgField.inputProp,
     flagsProps: flagsField.inputProp,
 
-    isBrokenProps: chall !== undefined ? isBrokenField.inputProp : undefined,
-    isOpenProps: chall !== undefined ? isOpenField.inputProp : undefined,
+    isBrokenProps: isNewChallenge ? undefined : isBrokenField.inputProp,
+    isOpenProps: isNewChallenge ? undefined : isOpenField.inputProp,
 
-    isNewChallenge: chall === undefined,
+    isNewChallenge,
     isLoading,
     reset,
     error,

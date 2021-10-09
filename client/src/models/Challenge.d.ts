@@ -1,3 +1,4 @@
+import { Category } from './Category'
 import { Difficulty } from './Difficulty'
 
 export type BaseChallenge = {
@@ -7,7 +8,7 @@ export type BaseChallenge = {
   img: string
   author: string
   flags: string[]
-  category: string
+  category: Category
   difficulty: Difficulty
 }
 

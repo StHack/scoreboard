@@ -1,6 +1,8 @@
 import styled from '@emotion/styled'
 import { Header } from 'components/Header'
+import { ProvideAdmin } from 'hooks/useAdmin'
 import { useAuth } from 'hooks/useAuthentication'
+import { ProvideGame } from 'hooks/useGame'
 import { Admin } from 'pages/Admin'
 import { Game } from 'pages/Game'
 import { Login } from 'pages/Login'
@@ -40,7 +42,17 @@ export default function App () {
           </Route>
 
           <Route path="/admin">
-            {isAuthenticated && isAuthorized ? <Admin /> : <Redirect to="/" />}
+            {isAuthenticated && isAuthorized
+              ? (
+              <ProvideGame>
+                <ProvideAdmin>
+                  <Admin />
+                </ProvideAdmin>
+              </ProvideGame>
+                )
+              : (
+              <Redirect to="/" />
+                )}
           </Route>
 
           <Route path="/scoreboard">
