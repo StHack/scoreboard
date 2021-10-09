@@ -104,7 +104,7 @@ export function registerAuthentificationForSocket(io: Namespace) {
   io.use(wrap(passport.initialize()))
   io.use(wrap(passport.session()))
   io.use((socket, next) =>
-    (socket.request as any).user ? next() : next(new Error('unauthorized')),
+    (socket.request as Request).user ? next() : next(new Error('unauthorized')),
   )
 
   io.on('connect', socket => {

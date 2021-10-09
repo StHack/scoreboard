@@ -30,6 +30,12 @@ export async function registerAchievement(
   return doc.toObject(removeMongoProperties)
 }
 
+export async function listAchievement(): Promise<Achievement[]> {
+  const results = await AchievementModel.find()
+
+  return results.map(r => r.toObject(removeMongoProperties))
+}
+
 export async function getTeamAchievement(teamname: string): Promise<Achievement[]> {
   const docs = await AchievementModel.find({ teamname })
   return docs.map(d => d.toObject(removeMongoProperties))
