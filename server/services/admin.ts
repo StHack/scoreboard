@@ -10,12 +10,40 @@ export function registerAdminNamespace(adminIo: Namespace, gameIo: Namespace) {
   )
 
   adminIo.on('connection', adminSocket => {
-    adminSocket.on('challenge:create', async (chall: BaseChallenge) => {
-      const challenge = await createChallenge(chall)
-      gameIo.emit('challenge:added', challenge)
+    adminSocket.on('challenge:create', async (chall: BaseChallenge, callback) => {
+      try {
+        const challenge = await createChallenge(chall)
+        callback(challenge)
+        gameIo.emit('challenge:added', challenge)
+      } catch (error) {
+        if (error instanceof Error) {
+          callback({ error: error.message })
+        } else {
+          callback({ error: 'an error occured' })
+        }
+      }
+    })
+
+    adminSocket.on('challenge:update', async (challName: string, chall: BaseChallenge, callback) => {
+      try {
+        const challenge = await updateChallenge(challName, chall)
+        callback(challenge)
+        gameIo.emit('challenge:updated', challenge)
+      } catch (error) {
+        if (error instanceof Error) {
+          callback({ error: error.message })
+        } else {
+          callback({ error: 'an error occured' })
+        }
+      }
     })
 
     adminSocket.on('challenge:broke', async (challName: string) => {
+      const updated = await updateChallenge(challName, { isBroken: true })
+      gameIo.emit('challenge:updated', updated)
+    })
+
+    adminSocket.on('challenge:repair', async (challName: string) => {
       const updated = await updateChallenge(challName, { isBroken: false })
       gameIo.emit('challenge:updated', updated)
     })

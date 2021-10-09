@@ -23,7 +23,9 @@ const ChallengeModel = model<Challenge>('Challenge', schema)
 const flagHasher = (password: string) =>
   createHash('sha256').update(password).digest('hex')
 
-export async function createChallenge(chall: BaseChallenge): Promise<Challenge> {
+export async function createChallenge(
+  chall: BaseChallenge,
+): Promise<Challenge> {
   const flags = (chall.flags ?? []).map(flagHasher)
 
   const doc = new ChallengeModel({
@@ -61,11 +63,24 @@ export async function removeChallenge(challName: string): Promise<void> {
   await ChallengeModel.deleteOne({ name: challName })
 }
 
-export async function updateChallenge(challName: string, challenge: Partial<Challenge>): Promise<Challenge> {
-  const document = await ChallengeModel.findOneAndUpdate({ name: challName }, { ...challenge })
+export async function updateChallenge(
+  challName: string,
+  { name, flags, ...challenge }: Partial<Challenge>,
+): Promise<Challenge> {
+  let newFlags: string[] | undefined = undefined
+  if (flags?.length) {
+    const document = await ChallengeModel.findOne({ name: challName })
+    newFlags = document!.flags.concat(flags.map(flagHasher))
+  }
+
+  const document = await ChallengeModel.findOneAndUpdate(
+    { name: challName },
+    { ...challenge, flags: newFlags },
+    { new: true },
+  )
   return document.toObject(removeMongoProperties)
 }
 
 export async function closeAllChallenge(): Promise<void> {
-  await ChallengeModel.updateMany({ }, { isOpen: false })
+  await ChallengeModel.updateMany({}, { isOpen: false })
 }

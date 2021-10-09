@@ -11,6 +11,7 @@ import {
   registerAuthentification,
   registerAuthentificationForSocket,
 } from 'services/authentication'
+import { registerGameNamespace } from 'services/game'
 import { Server } from 'socket.io'
 import { redisConnectionString } from 'sthack-config'
 
@@ -39,6 +40,7 @@ registerAuthentification(app, io)
 registerAuthentificationForSocket(io.of('/api/game'))
 registerAuthentificationForSocket(io.of('/api/admin'))
 
+registerGameNamespace(io.of('/api/game'))
 registerAdminNamespace(io.of('/api/admin'), io.of('/api/game'))
 
 if (process.env.NODE_ENV === 'production') {
