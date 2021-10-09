@@ -119,6 +119,21 @@ const resetCss = (theme: Theme) => css`
     line-height: normal;
     min-width: ${theme.sizes.minimalRequired};
     background-color: ${theme.colors.background};
+    background-image: linear-gradient(
+        transparent 0%,
+        transparent 62.5%,
+        #fff 62.5%,
+        #fff 100%
+      ),
+      linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 62.5%,
+        #fff 62.5%,
+        #fff 100%
+      );
+    background-size: 8px 8px;
+    background-position: center top;
   }
 
   ul {

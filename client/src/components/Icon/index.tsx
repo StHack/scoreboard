@@ -4,21 +4,16 @@ import { FunctionComponent, SVGProps } from 'react'
 import {
   color,
   ColorProps,
-  compose,
-  size,
-  SizeProps,
+  layout,
+  LayoutProps,
   space,
   SpaceProps,
 } from 'styled-system'
-import { clean, cleanStyledSystem, place, PlaceProps } from 'styles'
-import { ReactComponent as BannerSvg } from './images/banner.svg'
+import { cleanStyledSystem, place, PlaceProps } from 'styles'
+import { ReactComponent as BannerSvg } from './images/Banner.svg'
 import { ReactComponent as LogoSvg } from './images/Logo.svg'
-// import { ReactComponent as Add } from './add.svg'
 
-type StyledIconProps = SpaceProps &
-  SizeProps &
-  PlaceProps &
-  ColorProps & { title?: string }
+type StyledIconProps = SpaceProps & PlaceProps & ColorProps & LayoutProps
 
 export type Icon = StyledComponent<
   FunctionComponent<SVGProps<SVGSVGElement>>,
@@ -26,18 +21,22 @@ export type Icon = StyledComponent<
   any
 >
 
-const BaseSvg = (
-  svg: FunctionComponent<SVGProps<SVGSVGElement>>,
-): Icon => styled(svg, clean('color', 'fill'))<StyledIconProps>`
-  ${compose(space, size, color, place)}
-  fill: currentColor;
-`
+const BaseSvg = (svg: FunctionComponent<SVGProps<SVGSVGElement>>) =>
+  styled(svg, cleanStyledSystem)<StyledIconProps>(
+    space,
+    place,
+    color,
+    layout,
+    css`
+      fill: currentColor;
+    `,
+  )
 
 const BaseImg = styled('img', cleanStyledSystem)<StyledIconProps>(
   space,
-  size,
-  color,
   place,
+  color,
+  layout,
   css`
     object-fit: contain;
   `,

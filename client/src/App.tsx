@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Header } from 'components/Header'
 import { ProvideAdmin } from 'hooks/useAdmin'
@@ -29,48 +30,63 @@ export default function App () {
   const { isAuthenticated, isAuthorized } = useAuth()
 
   return (
-    <BrowserRouter>
-      <AppBlock>
-        <Header />
+    <ThemeProvider
+      theme={theme =>
+        isAuthorized
+          ? {
+              ...theme,
+              colors: {
+                ...theme.colors,
+                secondary: theme.colors.pink,
+                secondaryText: theme.colors.white,
+              },
+            }
+          : theme
+      }
+    >
+      <BrowserRouter>
+        <AppBlock>
+          <Header />
 
-        <Container>
-          <Switch>
-            <Route exact path="/">
-              {isAuthenticated ? <Game></Game> : <Redirect to="/login" />}
-            </Route>
+          <Container>
+            <Switch>
+              <Route exact path="/">
+                {isAuthenticated ? <Game></Game> : <Redirect to="/login" />}
+              </Route>
 
-            <Route path="/login">
-              {isAuthenticated ? <Redirect to="/" /> : <Login />}
-            </Route>
+              <Route path="/login">
+                {isAuthenticated ? <Redirect to="/" /> : <Login />}
+              </Route>
 
-            <Route path="/register">
-              {isAuthenticated ? <Redirect to="/" /> : <Register />}
-            </Route>
+              <Route path="/register">
+                {isAuthenticated ? <Redirect to="/" /> : <Register />}
+              </Route>
 
-            <Route path="/admin">
-              {isAuthenticated && isAuthorized
-                ? (
-                <ProvideGame>
-                  <ProvideAdmin>
-                    <Admin />
-                  </ProvideAdmin>
-                </ProvideGame>
-                  )
-                : (
-                <Redirect to="/" />
-                  )}
-            </Route>
+              <Route path="/admin">
+                {isAuthenticated && isAuthorized
+                  ? (
+                  <ProvideGame>
+                    <ProvideAdmin>
+                      <Admin />
+                    </ProvideAdmin>
+                  </ProvideGame>
+                    )
+                  : (
+                  <Redirect to="/" />
+                    )}
+              </Route>
 
-            <Route path="/scoreboard">
-              <ScoreBoard />
-            </Route>
+              <Route path="/scoreboard">
+                <ScoreBoard />
+              </Route>
 
-            <Route path="/rules">
-              <Rules />
-            </Route>
-          </Switch>
-        </Container>
-      </AppBlock>
-    </BrowserRouter>
+              <Route path="/rules">
+                <Rules />
+              </Route>
+            </Switch>
+          </Container>
+        </AppBlock>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }

@@ -24,6 +24,7 @@ export type ThemeSpace = any[] & Partial<{
 
 export type ThemeSizes = Size[] & Partial<{
   minimalRequired: Size
+  maximalCentered: Size
 }>
 
 export type ThemeBorderWith = {
@@ -60,6 +61,7 @@ export type ThemeColors = {
   red: Color
   green: Color
   blue: Color
+  pink: Color
 
   primary: Color
   secondary: Color

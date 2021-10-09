@@ -8,18 +8,18 @@ import {
 } from './theme-definition'
 
 const baseColors = {
-  black: '#323232',
+  black: '#222221',
   white: '#FFFFFF',
-  grey: '#BFBFBF',
+  grey: '#EAEAEA',
   greys: ['#CCCCCC', '#808080', '#8C8C8C', '#666666'],
 
+  pink: '#BD408B',
   red: '#E96D63',
   green: '#7FCA9F',
   blue: '#85C1F5',
 }
 
 const fontSizes: ThemeFontSizes = [
-  '1.2rem',
   '1.4rem',
   '1.6rem',
   '2rem',
@@ -48,6 +48,7 @@ const sizes: ThemeSizes = [
   '14rem',
 ]
 sizes.minimalRequired = '320px'
+sizes.maximalCentered = '120rem'
 
 const breakpoints: ThemeBreakpoints = ['768px', '970px', '1024px']
 
@@ -56,7 +57,7 @@ export const lightTheme: Theme = {
     ...baseColors,
     primary: baseColors.white,
     secondary: baseColors.black,
-    background: baseColors.white,
+    background: baseColors.grey,
     popupBackground: baseColors.black,
     text: baseColors.black,
     primaryText: baseColors.black,

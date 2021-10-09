@@ -4,7 +4,7 @@ import { ReactMarkdownRenderers } from 'styles/react-markdown'
 
 export function Rules () {
   return (
-    <Box m="auto" px="2" maxWidth="100rem">
+    <Box m="auto" px="2" maxWidth="maximalCentered">
       <ReactMarkdown components={ReactMarkdownRenderers} children={rulesMarkdown} />
     </Box>
   )

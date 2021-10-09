@@ -19,7 +19,7 @@ export function Register () {
   return (
     <Box display="grid" placeItems="center" maxWidth="60rem" margin="0 auto">
       <Box display="flex" flexDirection="column">
-        <Banner mb="4" backgroundColor="black" />
+        <Banner mb="4" width="100%" />
 
         <Form {...formProps}>
           <LabelInput label="Username">

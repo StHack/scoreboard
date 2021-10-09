@@ -5,7 +5,14 @@ import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
 import { Challenge } from 'models/Challenge'
 import { useState } from 'react'
-import { color, ColorProps, size, SizeProps, space, SpaceProps } from 'styled-system'
+import {
+  color,
+  ColorProps,
+  size,
+  SizeProps,
+  space,
+  SpaceProps,
+} from 'styled-system'
 import { cleanStyledSystem } from 'styles'
 import { ChallengeForm } from './components/ChallengeForm'
 
@@ -16,7 +23,14 @@ export function Admin () {
   const [challToEdit, setChallToEdit] = useState<Challenge>()
 
   return (
-    <Box display="flex" flexDirection="column">
+    <Box
+      display="flex"
+      flexDirection="column"
+      maxWidth="maximalCentered"
+      px="2"
+      margin="0 auto"
+      width="100%"
+    >
       <Box display="flex" flexDirection="row">
         <Button onClick={() => setOpenEdit(true)}>Create</Button>
       </Box>

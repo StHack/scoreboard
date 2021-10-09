@@ -10,7 +10,10 @@ export function Header () {
 
   return (
     <HeaderBlock px="large" py="small">
-      <Logo size={2} />
+      <NavLink to="/">
+        <Logo size={2} color="secondaryText" />
+      </NavLink>
+
       {user && (
         <span>
           {user.username} / {user.team}
