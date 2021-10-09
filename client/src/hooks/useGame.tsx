@@ -1,6 +1,7 @@
 import { Achievement } from 'models/Achievement'
 import { Challenge } from 'models/Challenge'
 import { GameConfig } from 'models/GameConfig'
+import { GameScore } from 'models/GameScore'
 import {
   createContext,
   PropsWithChildren,
@@ -8,13 +9,14 @@ import {
   useEffect,
   useState,
 } from 'react'
-import { computeGameScore, GameScore } from 'services/score'
+import { computeGameScore } from 'services/score'
 import { useAuth } from './useAuthentication'
 import { useSocket } from './useSocket'
 
 export type GameContext = {
   challenges: Challenge[]
   score: GameScore
+  gameConfig: GameConfig
 }
 
 const gameContext = createContext<GameContext>({
@@ -24,6 +26,7 @@ const gameContext = createContext<GameContext>({
     teamScore: 0,
     challScore: {},
   },
+  gameConfig: { baseChallScore: 0, solveDelay: 0, teamCount: 0 },
 })
 
 export function ProvideGame ({ children }: PropsWithChildren<{}>) {
@@ -85,5 +88,6 @@ function useProvideGame (): GameContext {
   return {
     challenges,
     score: computeGameScore(achievements, challenges, gameConfig, user!),
+    gameConfig,
   }
 }

@@ -51,7 +51,15 @@ export default function App () {
           <Container>
             <Switch>
               <Route exact path="/">
-                {isAuthenticated ? <Game></Game> : <Redirect to="/login" />}
+                {isAuthenticated
+                  ? (
+                  <ProvideGame>
+                    <Game></Game>
+                  </ProvideGame>
+                    )
+                  : (
+                  <Redirect to="/login" />
+                    )}
               </Route>
 
               <Route path="/login">

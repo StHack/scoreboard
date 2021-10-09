@@ -2,13 +2,8 @@ import { Achievement } from 'models/Achievement'
 import { Challenge } from 'models/Challenge'
 import { Difficulty } from 'models/Difficulty'
 import { GameConfig } from 'models/GameConfig'
+import { ChallengeScore, GameScore } from 'models/GameScore'
 import { User } from 'models/User'
-
-export type GameScore = {
-  teamScore: number
-  myScore: number
-  challScore: Record<string, number>
-}
 
 export function computeGameScore (
   achievements: Achievement[],
@@ -16,10 +11,13 @@ export function computeGameScore (
   config: GameConfig,
   user: User,
 ): GameScore {
-  const challSolvation = achievements.reduce<Record<string, number>>(
+  const challSolvation = achievements.reduce<Record<string, Achievement[]>>(
     (dic, achievement) => ({
       ...dic,
-      [achievement.challenge]: (dic[achievement.challenge] ?? 0) + 1,
+      [achievement.challenge]: [
+        ...(dic[achievement.challenge] ?? []),
+        achievement,
+      ],
     }),
     {},
   )
@@ -30,7 +28,7 @@ export function computeGameScore (
       computeScore(
         challenges.find(c => c.name === a.challenge)!,
         config,
-        challSolvation[a.challenge],
+        challSolvation[a.challenge]?.length,
       ),
     )
     .reduce((p, c) => p + c, 0)
@@ -41,7 +39,7 @@ export function computeGameScore (
       computeScore(
         challenges.find(c => c.name === a.challenge)!,
         config,
-        challSolvation[a.challenge],
+        challSolvation[a.challenge]?.length,
       ),
     )
     .reduce((p, c) => p + c, 0)
@@ -49,10 +47,18 @@ export function computeGameScore (
   return {
     teamScore,
     myScore,
-    challScore: challenges.reduce<Record<string, number>>(
+    challScore: challenges.reduce<Record<string, ChallengeScore>>(
       (p, c) => ({
         ...p,
-        [c.name]: computeScore(c, config, challSolvation[c.name] ?? 0),
+        [c.name]: {
+          score: computeScore(c, config, challSolvation[c.name]?.length ?? 0),
+          lastSolved: challSolvation[c.name]
+            ?.map(cc => cc.createdAt)
+            .reduce((a, b) => (a > b ? a : b)),
+          isSolved: !!achievements.find(
+            a => a.teamname === user.team && a.challenge === c.name,
+          ),
+        },
       }),
       {},
     ),
