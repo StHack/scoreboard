@@ -27,8 +27,9 @@ export function registerGameNamespace(gameIo: Namespace) {
       const teamCount = await countTeam()
 
       const result: GameConfig = {
-        solveDelay: delayTimeInMinutes,
+        solveDelay: delayTimeInMinutes * 60 * 1000,
         teamCount,
+        baseChallScore: 50,
       }
 
       callback(result)
