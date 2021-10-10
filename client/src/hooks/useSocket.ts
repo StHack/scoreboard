@@ -8,7 +8,7 @@ export function useSocket (namespace: string) {
   const { logOut } = useAuth()
 
   useEffect(() => {
-    const socket = io('ws://localhost:3000' + namespace, {
+    const socket = io(process.env.REACT_APP_SERVER_HOST + namespace, {
       transports: ['websocket'],
       path: '/api/socket',
     })
