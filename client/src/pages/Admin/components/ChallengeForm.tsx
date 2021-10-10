@@ -86,7 +86,7 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
           </select>
         </LabelInput>
 
-        <LabelInput label="Image" required={isNewChallenge}>
+        <LabelInput label="Image">
           <ImageInput {...imgProps} />
         </LabelInput>
 

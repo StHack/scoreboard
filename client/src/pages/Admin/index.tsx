@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
+import { CategoryImg } from 'components/CategoryImg'
 import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
 import { Challenge } from 'models/Challenge'
@@ -49,7 +50,8 @@ export function Admin () {
           {challenges.map(c => (
             <Tr key={c.name} color={c.isBroken ? 'red' : ''}>
               <td>
-                <Image src={c.img} size={[2, 3]} />
+                {c.img && <Image src={c.img} size={[2, 3]} />}
+                {!c.img && <CategoryImg category={c.category} size={[2, 3]} /> }
               </td>
               <td>{c.category}</td>
               <td>{c.name}</td>

@@ -78,7 +78,6 @@ export function useChallengeForm (
     name: 'img',
     defaultValue: img,
     disabled: isLoading,
-    required: isNewChallenge,
   })
 
   const isBrokenField = useField<boolean | undefined>({
