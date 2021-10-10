@@ -60,9 +60,9 @@ export function computeGameScore (
           lastSolved: challSolvation[c.name]
             ?.map(cc => cc.createdAt)
             .reduce((a, b) => (a > b ? a : b)),
-          isSolved: !!achievements.find(
+          solvedBy: achievements.find(
             a => a.teamname === user.team && a.challenge === c.name,
-          ),
+          )?.username,
         },
       }),
       {},

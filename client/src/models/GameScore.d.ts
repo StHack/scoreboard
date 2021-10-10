@@ -1,7 +1,7 @@
 export type ChallengeScore = {
   score: number
   lastSolved?: Date
-  isSolved: boolean
+  solvedBy?: string
 }
 
 export type GameScore = {

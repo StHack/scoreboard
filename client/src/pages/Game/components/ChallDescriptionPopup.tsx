@@ -9,6 +9,7 @@ import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
+import { gridArea, GridAreaProps, space, SpaceProps } from 'styled-system'
 import { ReactMarkdownRenderers } from 'styles/react-markdown'
 
 export type ChallDescriptionPopupProps = {
@@ -19,7 +20,7 @@ export type ChallDescriptionPopupProps = {
 
 export function ChallDescriptionPopup ({
   challenge: { name, author, category, description, difficulty, img },
-  score,
+  score: { solvedBy, score },
   onClose,
 }: ChallDescriptionPopupProps) {
   const [error, setError] = useState<string>()
@@ -49,36 +50,45 @@ export function ChallDescriptionPopup ({
             children={description}
           />
         </Box>
-        <Box
-          as="form"
-          gridArea="flag"
-          display="flex"
-          flexDirection="column"
-          onSubmit={async e => {
-            e.preventDefault()
-            if (!inputProp.value) return
 
-            await attemptChall(name, inputProp.value, (isValid, error) => {
-              if (error) setError(error)
-              if (isValid) onClose()
-              else setError('Nope that\'s not the flag !')
-            })
-          }}
-          py="3"
-          px="4"
-        >
-          <TextInput placeholder="Propose your flag" {...inputProp} />
+        {solvedBy && (
+          <AlreadySolved gridArea="flag" my="2">
+            {solvedBy} has already solved this chall !
+          </AlreadySolved>
+        )}
 
-          {error && (
-            <Box backgroundColor="red" color="white">
-              {error}
-            </Box>
-          )}
+        {!solvedBy && (
+          <Box
+            as="form"
+            gridArea="flag"
+            display="flex"
+            flexDirection="column"
+            onSubmit={async e => {
+              e.preventDefault()
+              if (!inputProp.value) return
 
-          <Button alignSelf="center" type="submit" mt="3">
-            Submit your flag
-          </Button>
-        </Box>
+              await attemptChall(name, inputProp.value, (isValid, error) => {
+                if (error) setError(error)
+                if (isValid) onClose()
+                else setError("Nope that's not the flag !")
+              })
+            }}
+            py="3"
+            px="4"
+          >
+            <TextInput placeholder="Propose your flag" {...inputProp} />
+
+            {error && (
+              <Box backgroundColor="red" color="white">
+                {error}
+              </Box>
+            )}
+
+            <Button alignSelf="center" type="submit" mt="3">
+              Submit your flag
+            </Button>
+          </Box>
+        )}
       </Grid>
     </Popup>
   )
@@ -91,4 +101,10 @@ const Grid = styled.div`
     'category  author  difficulty'
     'desc      desc    desc'
     'flag      flag    flag';
+`
+const AlreadySolved = styled.p<SpaceProps & GridAreaProps>`
+  font-size: ${p => p.theme.fontSizes[3]};
+  text-align: center;
+  ${space}
+  ${gridArea}
 `

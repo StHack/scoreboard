@@ -3,6 +3,7 @@ import { CategoryImg } from 'components/CategoryImg'
 import { useGame } from 'hooks/useGame'
 import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
+import { useEffect, useState } from 'react'
 import { space, SpaceProps } from 'styled-system'
 import { BounceIn } from 'styles/animation'
 import BrokenImg from './broken.png'
@@ -16,7 +17,7 @@ type ChallengeCardProps = {
 }
 export function ChallengeCard ({
   challenge: { name, img, isBroken, isOpen, category },
-  score: { lastSolved, score, isSolved },
+  score: { lastSolved, score, solvedBy },
   onClick,
 }: ChallengeCardProps) {
   const {
@@ -25,11 +26,31 @@ export function ChallengeCard ({
 
   const openState = computeState(isBroken, isOpen, lastSolved, solveDelay)
 
+  const [delayedTimer, setDelayedTimer] = useState<string>()
+
+  useEffect(() => {
+    if (!lastSolved) return
+    if (openState !== 'delayed') return
+
+    const ticcks = setInterval(() => {
+      const remainingSeconds = Math.trunc(
+        (solveDelay - (new Date().getTime() - lastSolved.getTime())) / 1000,
+      )
+      const minutes = Math.trunc(remainingSeconds / 60)
+        .toString()
+        .padStart(2, '0')
+      const seconds = (remainingSeconds % 60).toString().padStart(2, '0')
+      setDelayedTimer(`${minutes}:${seconds}`)
+    }, 1000)
+    return () => clearInterval(ticcks)
+  }, [lastSolved, openState, solveDelay])
+
   return (
     <Card
       openState={openState}
       score={score}
-      isSolved={isSolved}
+      isSolved={!!solvedBy}
+      delayed={delayedTimer}
       onClick={() => openState === 'open' && onClick()}
     >
       {img && <Image src={img} alt={name} title={name} />}
@@ -67,7 +88,12 @@ const Image = styled.img`
 `
 
 const Card = styled.div<
-  SpaceProps & { openState: ChallState; score: number; isSolved: boolean }
+  SpaceProps & {
+    openState: ChallState
+    score: number
+    isSolved: boolean
+    delayed?: string
+  }
 >`
   background-color: ${p => p.theme.colors.background};
   width: 100%;
@@ -87,7 +113,7 @@ const Card = styled.div<
   position: relative;
 
   ::before {
-    content: '${p => (p.isSolved ? '✔' : p.score)}';
+    content: '${p => (p.isSolved ? `✔ ${p.score}` : p.score)}';
     position: absolute;
     position: absolute;
     top: 0;
@@ -103,12 +129,18 @@ const Card = styled.div<
   }
 
   ::after {
-    ${p => (p.openState === 'open' ? '' : "content: ''")};
+    ${p => (p.openState === 'open' ? '' : `content: '${p.delayed || ''}'`)};
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
+    display: flex;
+    flex-direction: column;
+    font-size: ${p => p.theme.fontSizes[4]};
+    color: ${p => p.theme.colors.primary};
+    place-content: center;
+    place-items: center;
     background: url(${p =>
           p.openState === 'broken'
             ? BrokenImg
@@ -118,6 +150,6 @@ const Card = styled.div<
             ? DelayedImg
             : ''})
         center center / contain no-repeat,
-      ${p => p.theme.colors.greys[2]}AA;
+      ${p => p.theme.colors.popupBackground}AA;
   }
 `
