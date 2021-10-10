@@ -15,3 +15,12 @@ export function redisConnectionString(): string {
 
   return str
 }
+
+export function salt(): string {
+  const str = process.env.APP_SALT
+  if (!str) {
+    throw new Error('Salt string is missing')
+  }
+
+  return str
+}

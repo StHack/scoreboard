@@ -7,6 +7,7 @@ import { connection } from 'mongoose'
 import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
 import { Namespace, Server } from 'socket.io'
+import { ServerConfig } from './serverconfig'
 
 const sessionMiddleware = () =>
   session({
@@ -18,7 +19,11 @@ const sessionMiddleware = () =>
     saveUninitialized: false,
   })
 
-export function registerAuthentification(app: IRouter, io: Server) {
+export function registerAuthentification(
+  app: IRouter,
+  io: Server,
+  serverConfig: ServerConfig,
+) {
   app.use(sessionMiddleware())
   app.use(json())
   app.use(passport.initialize())
@@ -53,6 +58,21 @@ export function registerAuthentification(app: IRouter, io: Server) {
     if (req.isAuthenticated()) {
       res.status(400).send('You are already authenticated')
       return
+    }
+
+    try {
+      const isClosed = await serverConfig.getRegistrationClosed()
+
+      if (isClosed) {
+        res.status(400).send('registration closed')
+        return
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        res.status(400).send(error.message)
+      } else {
+        res.status(500).send(error)
+      }
     }
 
     try {

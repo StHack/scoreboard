@@ -1,6 +1,7 @@
 import { createHash } from 'crypto'
 import { CreateUser, AuthUser, User } from 'models/User'
 import { Schema, model, Error } from 'mongoose'
+import { salt } from 'sthack-config'
 import { removeMongoProperties } from './main'
 
 const schema = new Schema<AuthUser>({
@@ -12,8 +13,12 @@ const schema = new Schema<AuthUser>({
 
 const UserModel = model<AuthUser>('User', schema)
 
-const passwordHasher = (password: string) =>
-  password ? createHash('sha256').update(password).digest('hex') : undefined
+const passwordHasher = (password: string | undefined) =>
+  password
+    ? createHash('sha256')
+        .update(password + salt())
+        .digest('hex')
+    : undefined
 
 export async function registerUser({
   username,
@@ -80,6 +85,28 @@ export async function getUser(username: string): Promise<User | undefined> {
 
 export async function removeUser(username: string): Promise<void> {
   await UserModel.findOneAndDelete({ name: username })
+}
+
+export async function listUser(): Promise<User[]> {
+  const users = await UserModel.find()
+
+  return users
+    .map(u => u.toObject(removeMongoProperties))
+    .map(({ password, ...rest }) => rest)
+}
+
+export async function updateUser(
+  username: string,
+  { team, password, isAdmin }: Partial<AuthUser>,
+): Promise<User> {
+  const document = await UserModel.findOneAndUpdate(
+    { username },
+    { team, isAdmin, password: passwordHasher(password) },
+    { new: true },
+  )
+
+  const { password: p, ...rest } = document.toObject(removeMongoProperties)
+  return rest
 }
 
 export async function countTeam(): Promise<number> {

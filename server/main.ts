@@ -12,6 +12,7 @@ import {
   registerAuthentificationForSocket,
 } from 'services/authentication'
 import { registerGameNamespace } from 'services/game'
+import { getServerConfig } from 'services/serverconfig'
 import { Server } from 'socket.io'
 import { redisConnectionString } from 'sthack-config'
 
@@ -34,14 +35,16 @@ const pubClient = createClient({ url: redisConnectionString() })
 const subClient = pubClient.duplicate()
 io.adapter(createAdapter(pubClient, subClient))
 
+const serverConfig = getServerConfig(pubClient.duplicate())
+
 initMongo()
-registerAuthentification(app, io)
+registerAuthentification(app, io, serverConfig)
 
 registerAuthentificationForSocket(io.of('/api/game'))
 registerAuthentificationForSocket(io.of('/api/admin'))
 
 registerGameNamespace(io.of('/api/game'))
-registerAdminNamespace(io.of('/api/admin'), io.of('/api/game'))
+registerAdminNamespace(io.of('/api/admin'), io.of('/api/game'), serverConfig)
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, 'build')))
