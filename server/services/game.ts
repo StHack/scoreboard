@@ -91,7 +91,7 @@ export function registerGameNamespace(gameIo: Namespace) {
           username: user.username,
         })
 
-        gameSocket.emit('achievement:added', achievement)
+        gameIo.emit('achievement:added', achievement)
       },
     )
   })
