@@ -55,6 +55,14 @@ export async function checkChallenge(
     throw new Error('invalid challenge')
   }
 
+  if (chall.isBroken) {
+    throw new Error('Chall is broken')
+  }
+
+  if (!chall.isOpen) {
+    throw new Error('Chall is not open')
+  }
+
   const hash = flagHasher(flag)
   return chall.flags.includes(hash)
 }

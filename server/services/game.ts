@@ -72,7 +72,12 @@ export function registerGameNamespace(gameIo: Namespace) {
           const isValid = await checkChallenge(challName, flag)
           callback({ isValid })
         } catch (error) {
-          callback({ error: 'Nope' })
+          if (typeof error === 'string') {
+            callback({ error })
+          } else {
+            callback({ error: 'Nope' })
+          }
+
           return
         }
 
