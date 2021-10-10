@@ -83,7 +83,10 @@ function useProvideGame (): GameContext {
     )
 
     socket.on('achievement:added', (achievement: Achievement) => {
-      setAchievements(a => [...a, achievement])
+      setAchievements(a => [
+        ...a,
+        { ...achievement, createdAt: new Date(achievement.createdAt) },
+      ])
     })
 
     return () => {
