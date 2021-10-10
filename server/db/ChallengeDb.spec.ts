@@ -12,7 +12,6 @@ const challenge1: BaseChallenge = {
   author: 'nagarian',
   category: 'programmation',
   description: 'This is a challenge description',
-  link: 'https://github.com/nagarian/optc-box-manager',
   difficulty: 'easy',
   flags: ['iam a flag'],
   img: 'this is a base64 encoded img',
