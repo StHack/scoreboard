@@ -46,6 +46,11 @@ const Btn = styled('button', cleanStyledSystem)<StyledButtonProps>(
   }),
   css`
     display: flex;
+    cursor: pointer;
+
+    :disabled {
+      cursor: default;
+    }
   `,
 )
 

@@ -17,6 +17,11 @@ export type GameContext = {
   challenges: Challenge[]
   score: GameScore
   gameConfig: GameConfig
+  attemptChall: (
+    challName: string,
+    flag: string,
+    callback: (isValid: boolean, error: string | undefined) => void,
+  ) => Promise<void>
 }
 
 const gameContext = createContext<GameContext>({
@@ -27,6 +32,7 @@ const gameContext = createContext<GameContext>({
     challScore: {},
   },
   gameConfig: { baseChallScore: 0, solveDelay: 0, teamCount: 0 },
+  attemptChall: () => Promise.resolve(undefined),
 })
 
 export function ProvideGame ({ children }: PropsWithChildren<{}>) {
@@ -61,7 +67,9 @@ function useProvideGame (): GameContext {
     })
 
     socket.emit('achievement:list', (response: Achievement[]) => {
-      setAchievements([...response])
+      setAchievements(
+        response.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
+      )
     })
 
     socket.on('challenge:added', chall =>
@@ -89,5 +97,15 @@ function useProvideGame (): GameContext {
     challenges,
     score: computeGameScore(achievements, challenges, gameConfig, user!),
     gameConfig,
+    attemptChall: async (challName, flag, callback) => {
+      if (!socket) return
+      socket.emit(
+        'challenge:solve',
+        challName,
+        flag,
+        ({ isValid, error }: { isValid?: boolean; error?: string }) =>
+          callback(isValid ?? false, error),
+      )
+    },
   }
 }

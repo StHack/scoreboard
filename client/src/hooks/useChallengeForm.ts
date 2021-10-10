@@ -30,7 +30,7 @@ export function useChallengeForm (
   const nameField = useField<string>({
     name: 'name',
     defaultValue: name ?? '',
-    disabled: isLoading,
+    disabled: isLoading || !isNewChallenge,
     required: true,
   })
 

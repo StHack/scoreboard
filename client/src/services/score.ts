@@ -22,27 +22,32 @@ export function computeGameScore (
     {},
   )
 
-  const teamScore = achievements
-    .filter(a => a.teamname === user.team)
-    .map(a =>
-      computeScore(
-        challenges.find(c => c.name === a.challenge)!,
-        config,
-        challSolvation[a.challenge]?.length,
-      ),
-    )
-    .reduce((p, c) => p + c, 0)
+  let teamScore = 0
+  let myScore = 0
 
-  const myScore = achievements
-    .filter(a => a.username === user.username)
-    .map(a =>
-      computeScore(
-        challenges.find(c => c.name === a.challenge)!,
-        config,
-        challSolvation[a.challenge]?.length,
-      ),
-    )
-    .reduce((p, c) => p + c, 0)
+  if (challenges.length && achievements.length) {
+    teamScore = achievements
+      .filter(a => a.teamname === user.team)
+      .map(a =>
+        computeScore(
+          challenges.find(c => c.name === a.challenge)!,
+          config,
+          challSolvation[a.challenge]?.length,
+        ),
+      )
+      .reduce((p, c) => p + c, 0)
+
+    myScore = achievements
+      .filter(a => a.username === user.username)
+      .map(a =>
+        computeScore(
+          challenges.find(c => c.name === a.challenge)!,
+          config,
+          challSolvation[a.challenge]?.length,
+        ),
+      )
+      .reduce((p, c) => p + c, 0)
+  }
 
   return {
     teamScore,

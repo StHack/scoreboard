@@ -2,7 +2,8 @@ import styled from '@emotion/styled'
 import { Box } from 'components/Box'
 import { useGame } from 'hooks/useGame'
 import { Challenge } from 'models/Challenge'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
+import { ChallDescriptionPopup } from './components/ChallDescriptionPopup'
 import { ChallengeCard } from './components/ChallengeCard'
 import {
   getGroup,
@@ -17,7 +18,6 @@ export function Game () {
   } = useGame()
 
   const [groupBy, setGroupBy] = useState<GroupByType>('Category')
-
   const groups = challenges.reduce<Record<string, Challenge[]>>(
     (acc, chall) => ({
       ...acc,
@@ -28,6 +28,12 @@ export function Game () {
     }),
     {},
   )
+
+  const [selectedChall, setSelectedChall] = useState<Challenge>()
+
+  useEffect(() => {
+    setSelectedChall(undefined)
+  }, [challenges])
 
   return (
     <Box display="flex" flexWrap="wrap" alignContent="flex-start">
@@ -40,11 +46,18 @@ export function Game () {
               key={c.name}
               challenge={c}
               score={challScore[c.name]}
-              onClick={() => alert(c.name)}
+              onClick={() => setSelectedChall(c)}
             />
           ))}
         </Fragment>
       ))}
+      {selectedChall && (
+        <ChallDescriptionPopup
+          challenge={selectedChall}
+          score={challScore[selectedChall.name]}
+          onClose={() => setSelectedChall(undefined)}
+        />
+      )}
     </Box>
   )
 }
