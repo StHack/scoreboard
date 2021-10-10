@@ -15,7 +15,7 @@ import {
 export function Game () {
   const {
     challenges,
-    score: { challScore },
+    score: { challScore, myScore, teamScore },
   } = useGame()
 
   const [groupBy, setGroupBy] = useState<GroupByType>('Category')
@@ -43,6 +43,16 @@ export function Game () {
       alignContent="flex-start"
       justifyContent="space-evenly"
     >
+      <Box
+        width="100%"
+        display="flex"
+        fontSize="3"
+        justifyContent="space-evenly"
+        my="4"
+      >
+        <span>Your Score: {myScore}</span>
+        <span>Team Score: {teamScore}</span>
+      </Box>
       <GroupBySelector value={groupBy} onChange={setGroupBy} />
       {Object.entries(groups).map(([key, challs]) => (
         <Fragment key={key}>
