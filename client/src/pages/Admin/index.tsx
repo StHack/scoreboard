@@ -5,6 +5,7 @@ import { CategoryImg } from 'components/CategoryImg'
 import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
 import { Challenge } from 'models/Challenge'
+import { User } from 'models/User'
 import { useState } from 'react'
 import {
   color,
@@ -16,12 +17,22 @@ import {
 } from 'styled-system'
 import { cleanStyledSystem } from 'styles'
 import { ChallengeForm } from './components/ChallengeForm'
+import { UserEditMode, UserForm } from './components/UserForm'
 
 export function Admin () {
   const [openEdit, setOpenEdit] = useState<boolean>(false)
   const { challenges } = useGame()
-  const { brokeChallenge, repairChallenge } = useAdmin()
+  const {
+    brokeChallenge,
+    repairChallenge,
+    openRegistration,
+    closeRegistration,
+    users,
+    toggleIsAdmin,
+  } = useAdmin()
   const [challToEdit, setChallToEdit] = useState<Challenge>()
+  const [userToEdit, setUserToEdit] = useState<User>()
+  const [userEditMode, setUserEditMode] = useState<UserEditMode>()
 
   return (
     <Box
@@ -33,9 +44,11 @@ export function Admin () {
       width="100%"
     >
       <Box display="flex" flexDirection="row">
-        <Button onClick={() => setOpenEdit(true)}>Create</Button>
+        <Button onClick={() => setOpenEdit(true)}>Create challenge</Button>
+        <Button onClick={openRegistration}>Open Registration</Button>
+        <Button onClick={closeRegistration}>Close Registration</Button>
       </Box>
-      <Table>
+      <Table m="2">
         <thead>
           <tr>
             <th scope="col"></th>
@@ -51,7 +64,7 @@ export function Admin () {
             <Tr key={c.name} color={c.isBroken ? 'red' : ''}>
               <td>
                 {c.img && <Image src={c.img} size={[2, 3]} />}
-                {!c.img && <CategoryImg category={c.category} size={[2, 3]} /> }
+                {!c.img && <CategoryImg category={c.category} size={[2, 3]} />}
               </td>
               <td>{c.category}</td>
               <td>{c.name}</td>
@@ -77,12 +90,63 @@ export function Admin () {
           ))}
         </tbody>
       </Table>
+
+      <Table m="2">
+        <thead>
+          <tr>
+            <th scope="col">User</th>
+            <th scope="col">Team</th>
+            <th scope="col">Is Admin</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map(u => (
+            <Tr key={u.username}>
+              <td>{u.username}</td>
+              <td>{u.team}</td>
+              <td>{u.isAdmin ? '✔' : '❌'}</td>
+              <ActionPanel m="2">
+                <Button
+                  onClick={() => {
+                    setUserToEdit(u)
+                    setUserEditMode('password')
+                  }}
+                >
+                  Change Password
+                </Button>
+                <Button
+                  onClick={() => {
+                    setUserToEdit(u)
+                    setUserEditMode('team')
+                  }}
+                >
+                  Change Team
+                </Button>
+                <Button onClick={() => toggleIsAdmin(u)}>
+                  {u.isAdmin ? 'Revoke admin right' : 'Promote to admin'}
+                </Button>
+              </ActionPanel>
+            </Tr>
+          ))}
+        </tbody>
+      </Table>
       {openEdit && (
         <ChallengeForm
           chall={challToEdit}
           onClose={() => {
             setOpenEdit(false)
             setChallToEdit(undefined)
+          }}
+        />
+      )}
+      {userEditMode && userToEdit && (
+        <UserForm
+          user={userToEdit}
+          editMode={userEditMode}
+          onClose={() => {
+            setUserToEdit(undefined)
+            setUserEditMode(undefined)
           }}
         />
       )}
@@ -103,9 +167,10 @@ const ActionPanel = styled.td<SpaceProps>`
   }
 `
 
-const Table = styled.table`
+const Table = styled.table<SpaceProps>`
   border-collapse: collapse;
   border: 2px solid rgb(200, 200, 200);
+  ${space}
 
   td,
   th {

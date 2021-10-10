@@ -1,20 +1,39 @@
 import { BaseChallenge, Challenge } from 'models/Challenge'
 import { ServerError } from 'models/ServerError'
-import { createContext, PropsWithChildren, useContext } from 'react'
+import { User } from 'models/User'
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import { useSocket } from './useSocket'
 
 export type AdminContext = {
+  users: User[]
   createChallenge: (chall: BaseChallenge) => Promise<Challenge>
   updateChallenge: (chall: BaseChallenge) => Promise<Challenge>
   brokeChallenge: (chall: Challenge) => void
   repairChallenge: (chall: Challenge) => void
+  openRegistration: () => void
+  closeRegistration: () => void
+  changeTeam: (user: User, team: string) => void
+  changePassword: (user: User, password: string) => void
+  toggleIsAdmin: (user: User) => void
 }
 
 const adminContext = createContext<AdminContext>({
+  users: [],
   createChallenge: () => Promise.resolve<Challenge>(undefined as any),
   updateChallenge: () => Promise.resolve<Challenge>(undefined as any),
   brokeChallenge: () => {},
   repairChallenge: () => {},
+  openRegistration: () => {},
+  closeRegistration: () => {},
+  changeTeam: () => {},
+  changePassword: () => {},
+  toggleIsAdmin: () => {},
 })
 
 export function ProvideAdmin ({ children }: PropsWithChildren<{}>) {
@@ -28,8 +47,21 @@ export const useAdmin = () => {
 
 function useProvideAdmin (): AdminContext {
   const { socket } = useSocket('/api/admin')
+  const [users, setUsers] = useState<User[]>([])
+
+  useEffect(() => {
+    if (!socket) return
+
+    socket.emit('users:list', (users: User[]) => {
+      setUsers([...users])
+    })
+  }, [socket])
+
+  const updateUsers = (user: User) =>
+    setUsers(users.map(u => (u.username === user.username ? user : u)))
 
   return {
+    users,
     createChallenge: chall =>
       new Promise<Challenge>((resolve, reject) => {
         if (!socket) throw new Error('connection is not available')
@@ -72,6 +104,36 @@ function useProvideAdmin (): AdminContext {
       if (!socket) throw new Error('connection is not available')
 
       socket.emit('challenge:repair', chall.name)
+    },
+    openRegistration: () => {
+      if (!socket) throw new Error('connection is not available')
+
+      socket.emit('game:openRegistration')
+    },
+    closeRegistration: () => {
+      if (!socket) throw new Error('connection is not available')
+
+      socket.emit('game:closeRegistration')
+    },
+    changeTeam: (user, team) => {
+      if (!socket) throw new Error('connection is not available')
+
+      socket.emit('users:changeTeam', user.username, team, updateUsers)
+    },
+    changePassword: (user, password) => {
+      if (!socket) throw new Error('connection is not available')
+
+      socket.emit('users:changePassword', user.username, password, updateUsers)
+    },
+    toggleIsAdmin: user => {
+      if (!socket) throw new Error('connection is not available')
+
+      socket.emit(
+        'users:changeIsAdmin',
+        user.username,
+        !user.isAdmin,
+        updateUsers,
+      )
     },
   }
 }
