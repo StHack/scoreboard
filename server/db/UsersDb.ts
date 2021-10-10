@@ -22,6 +22,9 @@ export async function registerUser({
 }: CreateUser): Promise<void> {
   const hashed = passwordHasher(password)
 
+  const memberCount = await UserModel.count({ team })
+  if (memberCount >= 8) throw new Error('Team is already full')
+
   try {
     const doc = new UserModel({
       username,
