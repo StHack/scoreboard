@@ -8,7 +8,7 @@ const schema = new Schema<Challenge>({
   name: { type: String, required: true },
   description: { type: String, required: true },
   link: { type: String },
-  img: { type: String, required: true },
+  img: { type: String },
   author: { type: String, required: true },
   flags: { type: [String], required: true },
   category: { type: String, required: true },
