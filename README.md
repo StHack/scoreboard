@@ -43,3 +43,9 @@ To have a full dev environment up you need to do the following steps:
     ```txt
     REACT_APP_SERVER_HOST=ws://localhost:3000
     ```
+
+## Build for prod
+
+1. Add `cert.pem` and `key.pem` into `server/`
+2. Run `docker compose build`
+3. Run `docker compose up`
