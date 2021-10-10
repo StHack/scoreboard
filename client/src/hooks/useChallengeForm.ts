@@ -21,7 +21,6 @@ export function useChallengeForm (
     category,
     description,
     difficulty,
-    flags = [],
     img,
     isBroken,
     isOpen,

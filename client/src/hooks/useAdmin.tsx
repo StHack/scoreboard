@@ -1,6 +1,6 @@
 import { BaseChallenge, Challenge } from 'models/Challenge'
 import { ServerError } from 'models/ServerError'
-import { createContext, PropsWithChildren, useContext, useEffect } from 'react'
+import { createContext, PropsWithChildren, useContext } from 'react'
 import { useSocket } from './useSocket'
 
 export type AdminContext = {
@@ -27,13 +27,7 @@ export const useAdmin = () => {
 }
 
 function useProvideAdmin (): AdminContext {
-  const { isConnected, socket } = useSocket('/api/admin')
-
-  // useEffect(() => {
-  //   if (!socket) return
-
-  //   socket.on('')
-  // }, [socket])
+  const { socket } = useSocket('/api/admin')
 
   return {
     createChallenge: chall =>
