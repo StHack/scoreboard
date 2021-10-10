@@ -4,6 +4,7 @@ import {
   registerAchievement,
 } from 'db/AchievementDb'
 import { checkChallenge, listChallenge } from 'db/ChallengeDb'
+import { listMessage } from 'db/MessageDb'
 import { countTeam } from 'db/UsersDb'
 import { Request } from 'express'
 import { GameConfig } from 'models/GameConfig'
@@ -33,6 +34,12 @@ export function registerGameNamespace(gameIo: Namespace) {
       }
 
       callback(result)
+    })
+
+    gameSocket.on('game:messages', async callback => {
+      const messages = await listMessage()
+
+      callback(messages)
     })
 
     gameSocket.on(

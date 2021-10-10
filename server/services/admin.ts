@@ -1,4 +1,5 @@
 import { createChallenge, updateChallenge } from 'db/ChallengeDb'
+import { addMessage } from 'db/MessageDb'
 import { listUser, removeUser, updateUser } from 'db/UsersDb'
 import { Request } from 'express'
 import { BaseChallenge } from 'models/Challenge'
@@ -73,6 +74,12 @@ export function registerAdminNamespace(
 
     adminSocket.on('game:closeRegistration', () => {
       serverConfig.setRegistrationClosed(true)
+    })
+
+    adminSocket.on('game:sendMessage', async (message: string) => {
+      const result = await addMessage({ content: message })
+
+      gameIo.emit('game:newMessage', result)
     })
 
     adminSocket.on('users:list', async (callback) => {
