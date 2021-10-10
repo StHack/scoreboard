@@ -128,9 +128,12 @@ export function registerAuthentificationForSocket(io: Namespace) {
   )
 
   io.on('connect', socket => {
-    const session = (socket.request as Request).session
+    const  request = (socket.request as Request)
+    const session = request.session
     session.socketId = socket.id
     session.save()
+    socket.join(request.user!.username)
+    socket.join(request.user!.team)
   })
 }
 

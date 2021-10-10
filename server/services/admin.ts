@@ -1,5 +1,5 @@
 import { createChallenge, updateChallenge } from 'db/ChallengeDb'
-import { listUser, updateUser } from 'db/UsersDb'
+import { listUser, removeUser, updateUser } from 'db/UsersDb'
 import { Request } from 'express'
 import { BaseChallenge } from 'models/Challenge'
 import { User } from 'models/User'
@@ -95,5 +95,12 @@ export function registerAdminNamespace(
       callback(user)
     })
 
+    adminSocket.on('users:delete', async (username: string, callback) => {
+      await removeUser(username)
+
+      gameIo.in(username).disconnectSockets()
+      adminSocket.in(username).disconnectSockets()
+      callback()
+    })
   })
 }

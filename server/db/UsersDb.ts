@@ -84,7 +84,7 @@ export async function getUser(username: string): Promise<User | undefined> {
 }
 
 export async function removeUser(username: string): Promise<void> {
-  await UserModel.findOneAndDelete({ name: username })
+  await UserModel.findOneAndDelete({ username })
 }
 
 export async function listUser(): Promise<User[]> {
