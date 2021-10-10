@@ -21,7 +21,7 @@ import {
   typography,
   TypographyProps,
 } from 'styled-system'
-import { cleanStyledSystem, place, PlaceProps } from 'styles'
+import { cleanStyledSystem, gap, GapProps, place, PlaceProps } from 'styles'
 
 export type BoxProps = SpaceProps &
   LayoutProps &
@@ -33,7 +33,8 @@ export type BoxProps = SpaceProps &
   FlexboxProps &
   BorderProps &
   PlaceProps &
-  TypographyProps
+  TypographyProps &
+  GapProps
 
 export const Box = styled('div', cleanStyledSystem)<BoxProps>(
   border,
@@ -47,4 +48,5 @@ export const Box = styled('div', cleanStyledSystem)<BoxProps>(
   flexbox,
   place,
   typography,
+  gap,
 )
