@@ -1,6 +1,7 @@
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import { Challenge } from 'models/Challenge'
+import { GridAreaProps } from 'styled-system'
 
 const GroupBy = ['Category', 'Difficulty', 'Author'] as const
 export type GroupByType = typeof GroupBy[number]
@@ -9,7 +10,11 @@ type GroupBySelectorProps = {
   value: GroupByType
   onChange: (value: GroupByType) => void
 }
-export function GroupBySelector ({ value, onChange }: GroupBySelectorProps) {
+export function GroupBySelector ({
+  value,
+  onChange,
+  gridArea,
+}: GroupBySelectorProps & GridAreaProps) {
   return (
     <Box
       display="flex"
@@ -18,6 +23,7 @@ export function GroupBySelector ({ value, onChange }: GroupBySelectorProps) {
       alignItems="baseline"
       my="2"
       mx="1"
+      gridArea={gridArea}
     >
       <p>Group By</p>
       {GroupBy.map(g => (

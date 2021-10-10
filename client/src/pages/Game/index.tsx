@@ -3,7 +3,8 @@ import { Box } from 'components/Box'
 import { useGame } from 'hooks/useGame'
 import { Challenge } from 'models/Challenge'
 import { Fragment, useEffect, useState } from 'react'
-import { space, SpaceProps } from 'styled-system'
+import { display, DisplayProps, space, SpaceProps } from 'styled-system'
+import { cleanStyledSystem, gap, GapProps } from 'styles'
 import { ChallDescriptionPopup } from './components/ChallDescriptionPopup'
 import { ChallengeCard } from './components/ChallengeCard'
 import {
@@ -16,6 +17,7 @@ export function Game () {
   const {
     challenges,
     score: { challScore, myScore, teamScore },
+    messages,
   } = useGame()
 
   const [groupBy, setGroupBy] = useState<GroupByType>('Category')
@@ -37,38 +39,60 @@ export function Game () {
   }, [challenges])
 
   return (
-    <Box
-      display="flex"
-      flexWrap="wrap"
-      alignContent="flex-start"
-      justifyContent="space-evenly"
-    >
-      <Box
-        width="100%"
-        display="flex"
-        fontSize="3"
-        justifyContent="space-evenly"
-        my="4"
-      >
-        <span>Your Score: {myScore}</span>
-        <span>Team Score: {teamScore}</span>
+    <Grid display={['flex', 'grid']} gap={[1, 4]}>
+      <Box gridArea="u-score" fontSize="3" mt={[2, 4]} placeSelf="center" as="span">
+        Your Score: {myScore}
       </Box>
-      <GroupBySelector value={groupBy} onChange={setGroupBy} />
-      {Object.entries(groups).map(([key, challs]) => (
-        <Fragment key={key}>
-          <GroupTitle m="2" mb="1">
-            {key}
-          </GroupTitle>
-          {challs.map(c => (
-            <ChallengeCard
-              key={c.name}
-              challenge={c}
-              score={challScore[c.name]}
-              onClick={() => setSelectedChall(c)}
-            />
-          ))}
-        </Fragment>
-      ))}
+      <Box gridArea="t-score" fontSize="3" mt={[2, 4]} placeSelf="center" as="span">
+        Team Score: {teamScore}
+      </Box>
+
+      <GroupBySelector
+        gridArea="groupby"
+        value={groupBy}
+        onChange={setGroupBy}
+      />
+
+      <Box
+        gridArea="challs"
+        display="flex"
+        flexWrap="wrap"
+        alignContent="flex-start"
+        justifyContent="space-evenly"
+        gap="2"
+      >
+        {Object.entries(groups).map(([key, challs]) => (
+          <Fragment key={key}>
+            <GroupTitle m="2" mb="1">
+              {key}
+            </GroupTitle>
+            {challs.map(c => (
+              <ChallengeCard
+                key={c.name}
+                challenge={c}
+                score={challScore[c.name]}
+                onClick={() => setSelectedChall(c)}
+              />
+            ))}
+          </Fragment>
+        ))}
+      </Box>
+
+      <Box
+        gridArea="message"
+        display="flex"
+        flexDirection="column"
+        backgroundColor="background"
+        p="2"
+      >
+        <Box as="span" fontSize="2">Message from Staff</Box>
+        {messages.map(m => (
+          <span key={m.createdAt.getTime()}>
+            [{m.createdAt.toLocaleTimeString('fr')}] {m.content}
+          </span>
+        ))}
+      </Box>
+
       {selectedChall && (
         <ChallDescriptionPopup
           challenge={selectedChall}
@@ -76,7 +100,7 @@ export function Game () {
           onClose={() => setSelectedChall(undefined)}
         />
       )}
-    </Box>
+    </Grid>
   )
 }
 
@@ -85,3 +109,19 @@ const GroupTitle = styled.h2<SpaceProps>`
   width: 100%;
   ${space}
 `
+
+const Grid = styled('div', cleanStyledSystem)<DisplayProps & GapProps>`
+  ${display}
+  ${gap}
+  grid-template-areas:
+    't-score  u-score  message'
+    'groupby  groupby  message'
+    'challs   challs   message';
+  grid-template-columns: 2fr 2fr minmax(25rem, 1fr);
+
+  flex-direction: column;
+`
+Grid.defaultProps = {
+  display: 'grid',
+  gap: 4,
+}

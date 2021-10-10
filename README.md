@@ -12,10 +12,10 @@
   - [x] soumettre 1 flag
   - [x] Voir le réglement
 - [ ] coté admin
-  - [ ] pouvoir verrouiller les challenges
+  - [x] pouvoir verrouiller les challenges
   - [ ] avoir les logs de soumission
   - [x] ajout/suppression d'un chall/modification
-  - [ ] pouvoir envoyer des messages à tous les participants
+  - [x] pouvoir envoyer des messages à tous les participants
   - [ ] pouvoir ajouter des indices/commentaires/épreuves
 
 ## Dev environment

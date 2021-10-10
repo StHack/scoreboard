@@ -2,7 +2,9 @@ import styled from '@emotion/styled'
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import { CategoryImg } from 'components/CategoryImg'
+import { TextInput } from 'components/TextInput'
 import { useAdmin } from 'hooks/useAdmin'
+import { useField } from 'hooks/useField'
 import { useGame } from 'hooks/useGame'
 import { Challenge } from 'models/Challenge'
 import { User } from 'models/User'
@@ -30,10 +32,17 @@ export function Admin () {
     users,
     toggleIsAdmin,
     deleteUser,
+    sendMessage,
   } = useAdmin()
   const [challToEdit, setChallToEdit] = useState<Challenge>()
   const [userToEdit, setUserToEdit] = useState<User>()
   const [userEditMode, setUserEditMode] = useState<UserEditMode>()
+  const { inputProp, reset } = useField<string>({
+    defaultValue: '',
+    name: 'message',
+    disabled: false,
+    required: true,
+  })
 
   return (
     <Box
@@ -44,11 +53,28 @@ export function Admin () {
       margin="0 auto"
       width="100%"
     >
-      <Box display="flex" flexDirection="row">
+      <Box
+        display="flex"
+        flexDirection="row"
+        my="3"
+        gap="2"
+        as="form"
+        onSubmit={e => {
+          e.preventDefault()
+          inputProp.value && sendMessage(inputProp.value)
+          reset()
+        }}
+      >
+        <TextInput placeholder="Broadcast a message to everyone" flex="1" {...inputProp} />
+        <Button type="submit">Send</Button>
+      </Box>
+
+      <Box display="flex" flexDirection="row" gap="2">
         <Button onClick={() => setOpenEdit(true)}>Create challenge</Button>
         <Button onClick={openRegistration}>Open Registration</Button>
         <Button onClick={closeRegistration}>Close Registration</Button>
       </Box>
+
       <Table m="2">
         <thead>
           <tr>

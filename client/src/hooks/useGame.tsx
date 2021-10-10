@@ -2,6 +2,7 @@ import { Achievement } from 'models/Achievement'
 import { Challenge } from 'models/Challenge'
 import { GameConfig } from 'models/GameConfig'
 import { GameScore } from 'models/GameScore'
+import { Message } from 'models/Message'
 import {
   createContext,
   PropsWithChildren,
@@ -15,6 +16,7 @@ import { useSocket } from './useSocket'
 
 export type GameContext = {
   challenges: Challenge[]
+  messages: Message[]
   score: GameScore
   gameConfig: GameConfig
   attemptChall: (
@@ -26,6 +28,7 @@ export type GameContext = {
 
 const gameContext = createContext<GameContext>({
   challenges: [],
+  messages: [],
   score: {
     myScore: 0,
     teamScore: 0,
@@ -48,6 +51,7 @@ function useProvideGame (): GameContext {
   const { socket } = useSocket('/api/game')
   const [challenges, setChallenges] = useState<Challenge[]>([])
   const [achievements, setAchievements] = useState<Achievement[]>([])
+  const [messages, setMessages] = useState<Message[]>([])
   const [gameConfig, setGameConfig] = useState<GameConfig>({
     solveDelay: 10,
     teamCount: 0,
@@ -72,6 +76,12 @@ function useProvideGame (): GameContext {
       )
     })
 
+    socket.emit('game:messages', (response: Message[]) => {
+      setMessages(
+        response.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
+      )
+    })
+
     socket.on('challenge:added', chall =>
       setChallenges(challs => [...challs, chall]),
     )
@@ -89,15 +99,24 @@ function useProvideGame (): GameContext {
       ])
     })
 
+    socket.on('game:newMessage', (message: Message) => {
+      setMessages(m => [
+        ...m,
+        { ...message, createdAt: new Date(message.createdAt) },
+      ])
+    })
+
     return () => {
       socket.off('challenge:added')
       socket.off('challenge:updated')
       socket.off('achievement:added')
+      socket.off('game:newMessage')
     }
   }, [socket])
 
   return {
     challenges,
+    messages,
     score: computeGameScore(achievements, challenges, gameConfig, user!),
     gameConfig,
     attemptChall: async (challName, flag, callback) => {
