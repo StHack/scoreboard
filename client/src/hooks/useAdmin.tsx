@@ -21,6 +21,7 @@ export type AdminContext = {
   changeTeam: (user: User, team: string) => void
   changePassword: (user: User, password: string) => void
   toggleIsAdmin: (user: User) => void
+  deleteUser: (user: User) => void
 }
 
 const adminContext = createContext<AdminContext>({
@@ -34,6 +35,7 @@ const adminContext = createContext<AdminContext>({
   changeTeam: () => {},
   changePassword: () => {},
   toggleIsAdmin: () => {},
+  deleteUser: () => {},
 })
 
 export function ProvideAdmin ({ children }: PropsWithChildren<{}>) {
@@ -133,6 +135,13 @@ function useProvideAdmin (): AdminContext {
         user.username,
         !user.isAdmin,
         updateUsers,
+      )
+    },
+    deleteUser: user => {
+      if (!socket) throw new Error('connection is not available')
+
+      socket.emit('users:delete', user.username, () =>
+        setUsers(users.filter(u => u.username !== user.username)),
       )
     },
   }

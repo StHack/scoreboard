@@ -29,6 +29,7 @@ export function Admin () {
     closeRegistration,
     users,
     toggleIsAdmin,
+    deleteUser,
   } = useAdmin()
   const [challToEdit, setChallToEdit] = useState<Challenge>()
   const [userToEdit, setUserToEdit] = useState<User>()
@@ -125,6 +126,9 @@ export function Admin () {
                 </Button>
                 <Button onClick={() => toggleIsAdmin(u)}>
                   {u.isAdmin ? 'Revoke admin right' : 'Promote to admin'}
+                </Button>
+                <Button onClick={() => deleteUser(u)} variant="danger">
+                  Delete User
                 </Button>
               </ActionPanel>
             </Tr>
