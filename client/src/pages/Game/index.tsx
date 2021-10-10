@@ -3,6 +3,7 @@ import { Box } from 'components/Box'
 import { useGame } from 'hooks/useGame'
 import { Challenge } from 'models/Challenge'
 import { Fragment, useEffect, useState } from 'react'
+import { space, SpaceProps } from 'styled-system'
 import { ChallDescriptionPopup } from './components/ChallDescriptionPopup'
 import { ChallengeCard } from './components/ChallengeCard'
 import {
@@ -36,11 +37,18 @@ export function Game () {
   }, [challenges])
 
   return (
-    <Box display="flex" flexWrap="wrap" alignContent="flex-start">
+    <Box
+      display="flex"
+      flexWrap="wrap"
+      alignContent="flex-start"
+      justifyContent="space-evenly"
+    >
       <GroupBySelector value={groupBy} onChange={setGroupBy} />
       {Object.entries(groups).map(([key, challs]) => (
         <Fragment key={key}>
-          <GroupTitle>{key}</GroupTitle>
+          <GroupTitle m="2" mb="1">
+            {key}
+          </GroupTitle>
           {challs.map(c => (
             <ChallengeCard
               key={c.name}
@@ -62,7 +70,8 @@ export function Game () {
   )
 }
 
-const GroupTitle = styled.h2`
+const GroupTitle = styled.h2<SpaceProps>`
   font-size: ${p => p.theme.fontSizes[3]};
   width: 100%;
+  ${space}
 `

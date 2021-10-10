@@ -51,6 +51,7 @@ export function ChallengeCard ({
       score={score}
       isSolved={!!solvedBy}
       delayed={delayedTimer}
+      m="2"
       onClick={() => openState === 'open' && onClick()}
     >
       {img && <Image src={img} alt={name} title={name} />}

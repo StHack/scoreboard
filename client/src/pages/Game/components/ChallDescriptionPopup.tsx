@@ -9,7 +9,14 @@ import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { gridArea, GridAreaProps, space, SpaceProps } from 'styled-system'
+import {
+  gridArea,
+  GridAreaProps,
+  space,
+  SpaceProps,
+  typography,
+  TypographyProps,
+} from 'styled-system'
 import { ReactMarkdownRenderers } from 'styles/react-markdown'
 
 export type ChallDescriptionPopupProps = {
@@ -19,7 +26,7 @@ export type ChallDescriptionPopupProps = {
 }
 
 export function ChallDescriptionPopup ({
-  challenge: { name, author, category, description, difficulty, img },
+  challenge: { name, author, category, description, difficulty },
   score: { solvedBy, score },
   onClose,
 }: ChallDescriptionPopupProps) {
@@ -35,16 +42,11 @@ export function ChallDescriptionPopup ({
   return (
     <Popup title={name} onClose={onClose}>
       <Grid>
-        <Box as="p" gridArea="author">
-          {author}
-        </Box>
-        <Box as="p" gridArea="category">
-          {category}
-        </Box>
-        <Box as="p" gridArea="difficulty">
-          {difficulty}
-        </Box>
-        <Box as="article" gridArea="desc">
+        <Text gridArea="author">{author}</Text>
+        <Text gridArea="category">{category}</Text>
+        <Text gridArea="difficulty">{difficulty}</Text>
+        <Text gridArea="score">Score: {score}</Text>
+        <Box as="article" gridArea="desc" my="3">
           <ReactMarkdown
             components={ReactMarkdownRenderers}
             children={description}
@@ -52,9 +54,9 @@ export function ChallDescriptionPopup ({
         </Box>
 
         {solvedBy && (
-          <AlreadySolved gridArea="flag" my="2">
+          <Text gridArea="flag" my="2">
             {solvedBy} has already solved this chall !
-          </AlreadySolved>
+          </Text>
         )}
 
         {!solvedBy && (
@@ -99,12 +101,17 @@ const Grid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
     'category  author  difficulty'
+    'score     score   score'
     'desc      desc    desc'
     'flag      flag    flag';
 `
-const AlreadySolved = styled.p<SpaceProps & GridAreaProps>`
-  font-size: ${p => p.theme.fontSizes[3]};
+const Text = styled.p<SpaceProps & GridAreaProps & TypographyProps>`
   text-align: center;
   ${space}
   ${gridArea}
+  ${typography}
 `
+Text.defaultProps = {
+  fontSize: '3',
+  m: '2',
+}
