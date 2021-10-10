@@ -4,7 +4,6 @@ import { Difficulty } from './Difficulty'
 export type BaseChallenge = {
   name: string
   description: string
-  link?: string
   img: string
   author: string
   flags: string[]

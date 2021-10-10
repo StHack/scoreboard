@@ -22,7 +22,6 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
     authorProps,
     categoryProps,
     descriptionProps,
-    linkProps,
     difficultyProps,
     imgProps,
     flagsProps,
@@ -50,7 +49,7 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
           <TextInput type="text" {...authorProps} />
         </LabelInput>
 
-        <LabelInput label="Description" required>
+        <LabelInput label="Description (markdown format)" required>
           <TextArea rows={6} {...descriptionProps} />
         </LabelInput>
 
@@ -60,10 +59,6 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
           {chall?.flags.map(f => (
             <p>{f}</p>
           ))}
-        </LabelInput>
-
-        <LabelInput label="Link">
-          <TextInput type="url" {...linkProps} />
         </LabelInput>
 
         <LabelInput label="Category" required>

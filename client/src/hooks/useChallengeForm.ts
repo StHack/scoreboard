@@ -24,7 +24,6 @@ export function useChallengeForm (
     img,
     isBroken,
     isOpen,
-    link,
     name,
   } = chall || {}
 
@@ -52,12 +51,6 @@ export function useChallengeForm (
     defaultValue: description ?? '',
     disabled: isLoading,
     required: true,
-  })
-
-  const linkField = useField<string>({
-    name: 'link',
-    defaultValue: link ?? '',
-    disabled: isLoading,
   })
 
   const difficultyField = useField<Difficulty>({
@@ -97,7 +90,6 @@ export function useChallengeForm (
     authorField.reset()
     categoryField.reset()
     descriptionField.reset()
-    linkField.reset()
     difficultyField.reset()
     isBrokenField.reset()
     isOpenField.reset()
@@ -111,7 +103,6 @@ export function useChallengeForm (
         author: authorField.inputProp.value,
         category: categoryField.inputProp.value,
         description: descriptionField.inputProp.value,
-        link: linkField.inputProp.value,
         img: imgField.inputProp.value ?? '',
         difficulty: difficultyField.inputProp.value,
         flags: flagsField.inputProp.value ? [flagsField.inputProp.value] : [],
@@ -138,7 +129,6 @@ export function useChallengeForm (
     authorProps: authorField.inputProp,
     categoryProps: categoryField.inputProp,
     descriptionProps: descriptionField.inputProp,
-    linkProps: linkField.inputProp,
     difficultyProps: difficultyField.inputProp,
     imgProps: imgField.inputProp,
     flagsProps: flagsField.inputProp,
