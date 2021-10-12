@@ -27,7 +27,7 @@ export type ChallDescriptionPopupProps = {
 
 export function ChallDescriptionPopup ({
   challenge: { name, author, category, description, difficulty },
-  score: { solvedBy, score },
+  score: { score, myTeamSolved },
   onClose,
 }: ChallDescriptionPopupProps) {
   const [error, setError] = useState<string>()
@@ -53,13 +53,13 @@ export function ChallDescriptionPopup ({
           />
         </Box>
 
-        {solvedBy && (
+        {myTeamSolved && (
           <Text gridArea="flag" my="2">
-            {solvedBy} has already solved this chall !
+            {myTeamSolved.username} has already solved this chall !
           </Text>
         )}
 
-        {!solvedBy && (
+        {!myTeamSolved && (
           <Box
             as="form"
             gridArea="flag"

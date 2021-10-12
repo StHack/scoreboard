@@ -1,11 +1,21 @@
+import { Achievement } from './Achievement'
+
 export type ChallengeScore = {
   score: number
-  lastSolved?: Date
-  solvedBy?: string
+  myTeamSolved?: Achievement
+  achievements: Achievement[]
+}
+
+export type TeamsScore = {
+  rank: number
+  team: string
+  score: number
+  breakthroughs: Achievement[]
 }
 
 export type GameScore = {
-  teamScore: number
+  myTeamScore: number
   myScore: number
-  challScore: Record<string, ChallengeScore>
+  challsScore: Record<string, ChallengeScore>
+  teamsScore: TeamsScore[]
 }

@@ -22,7 +22,7 @@ export function Header () {
 
       <nav>
         <Box display="flex" flexDirection="row" as="ul">
-          <GameLink to="/scoreboard" label="Scoreboard" />
+          <GameLink to="/scoreboard" label="Scoreboard" showIf={isAuthorized} />
           <GameLink to="/rules" label="Rules" />
           <GameLink to="/admin" label="Admin" showIf={isAuthorized} />
           <GameLink to="/register" label="Register" showIf={!isAuthenticated} />

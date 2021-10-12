@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { CategoryImg } from 'components/CategoryImg'
 import { useGame } from 'hooks/useGame'
+import { Achievement } from 'models/Achievement'
 import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
 import { useEffect, useState } from 'react'
@@ -17,13 +18,14 @@ type ChallengeCardProps = {
 }
 export function ChallengeCard ({
   challenge: { name, img, isBroken, isOpen, category },
-  score: { lastSolved, score, solvedBy },
+  score: { score, myTeamSolved, achievements },
   onClick,
 }: ChallengeCardProps) {
   const {
     gameConfig: { solveDelay },
   } = useGame()
 
+  const lastSolved = achievements[achievements.length - 1]
   const openState = computeState(isBroken, isOpen, lastSolved, solveDelay)
 
   const [delayedTimer, setDelayedTimer] = useState<string>()
@@ -34,7 +36,8 @@ export function ChallengeCard ({
 
     const ticcks = setInterval(() => {
       const remainingSeconds = Math.trunc(
-        (solveDelay - (new Date().getTime() - lastSolved.getTime())) / 1000,
+        (solveDelay - (new Date().getTime() - lastSolved.createdAt.getTime())) /
+          1000,
       )
       const minutes = Math.trunc(remainingSeconds / 60)
         .toString()
@@ -49,7 +52,7 @@ export function ChallengeCard ({
     <Card
       openState={openState}
       score={score}
-      isSolved={!!solvedBy}
+      isSolved={!!myTeamSolved}
       delayed={delayedTimer}
       m="2"
       onClick={() => openState === 'open' && onClick()}
@@ -66,7 +69,7 @@ type ChallState = 'broken' | 'closed' | 'delayed' | 'open'
 function computeState (
   isBroken: boolean,
   isOpen: boolean,
-  lastSolved: Date | undefined,
+  lastSolved: Achievement | undefined,
   solveDelay: number,
 ): ChallState {
   if (!isOpen) return 'closed'
@@ -75,7 +78,7 @@ function computeState (
 
   if (
     !!lastSolved &&
-    lastSolved.getTime() + solveDelay > new Date().getTime()
+    lastSolved.createdAt.getTime() + solveDelay > new Date().getTime()
   ) {
     return 'delayed'
   }

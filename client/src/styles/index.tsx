@@ -3,6 +3,7 @@ import shouldForwardProp from '@styled-system/should-forward-prop'
 import * as CSS from 'csstype'
 import { ThemeMode, useThemeMode } from 'hooks/useThemeMode'
 import {
+  FlexboxProps,
   RequiredTheme,
   ResponsiveValue,
   system,
@@ -47,13 +48,8 @@ export const clean = (...propsToClean: string[]) => ({
 
 export const cleanStyledSystem = clean()
 
-export interface PlaceProps {
-  alignItems?: CSS.Property.AlignItems
-  alignContent?: CSS.Property.AlignContent
-  alignSelf?: CSS.Property.AlignSelf
-  justifyItems?: CSS.Property.JustifyItems
-  justifyContent?: CSS.Property.JustifyContent
-  justifySelf?: CSS.Property.JustifySelf
+export interface PlaceProps<ThemeType extends Theme = RequiredTheme>
+  extends FlexboxProps<ThemeType> {
   placeItems?: CSS.Property.PlaceItems
   placeContent?: CSS.Property.PlaceContent
   placeSelf?: CSS.Property.PlaceSelf

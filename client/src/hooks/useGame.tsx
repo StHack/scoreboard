@@ -31,8 +31,9 @@ const gameContext = createContext<GameContext>({
   messages: [],
   score: {
     myScore: 0,
-    teamScore: 0,
-    challScore: {},
+    myTeamScore: 0,
+    challsScore: {},
+    teamsScore: [],
   },
   gameConfig: { baseChallScore: 0, solveDelay: 0, teamCount: 0 },
   attemptChall: () => Promise.resolve(undefined),
@@ -52,6 +53,7 @@ function useProvideGame (): GameContext {
   const [challenges, setChallenges] = useState<Challenge[]>([])
   const [achievements, setAchievements] = useState<Achievement[]>([])
   const [messages, setMessages] = useState<Message[]>([])
+  const [teams, setTeams] = useState<string[]>([])
   const [gameConfig, setGameConfig] = useState<GameConfig>({
     solveDelay: 10,
     teamCount: 0,
@@ -80,6 +82,10 @@ function useProvideGame (): GameContext {
       setMessages(
         response.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
       )
+    })
+
+    socket.emit('game:teams', (response: string[]) => {
+      setTeams([...response])
     })
 
     socket.on('challenge:added', chall =>
@@ -117,7 +123,7 @@ function useProvideGame (): GameContext {
   return {
     challenges,
     messages,
-    score: computeGameScore(achievements, challenges, gameConfig, user!),
+    score: computeGameScore(achievements, challenges, teams, gameConfig, user!),
     gameConfig,
     attemptChall: async (challName, flag, callback) => {
       if (!socket) return

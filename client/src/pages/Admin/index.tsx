@@ -215,11 +215,11 @@ const Table = styled.table<SpaceProps>`
     text-align: center;
   }
 
-  tr:nth-child(even) {
+  tr:nth-of-type(even) {
     background-color: rgb(250, 250, 250);
   }
 
-  tr:nth-child(odd) {
+  tr:nth-of-type(odd) {
     background-color: rgb(245, 245, 245);
   }
 `

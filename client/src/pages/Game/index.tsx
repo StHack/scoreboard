@@ -16,7 +16,7 @@ import {
 export function Game () {
   const {
     challenges,
-    score: { challScore, myScore, teamScore },
+    score: { challsScore: challScore, myScore, myTeamScore: teamScore },
     messages,
   } = useGame()
 

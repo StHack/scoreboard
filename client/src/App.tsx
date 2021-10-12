@@ -54,7 +54,7 @@ export default function App () {
                 {isAuthenticated
                   ? (
                   <ProvideGame>
-                    <Game></Game>
+                    <Game/>
                   </ProvideGame>
                     )
                   : (
@@ -85,7 +85,15 @@ export default function App () {
               </Route>
 
               <Route path="/scoreboard">
-                <ScoreBoard />
+                {isAuthenticated
+                  ? (
+                  <ProvideGame>
+                    <ScoreBoard />
+                  </ProvideGame>
+                    )
+                  : (
+                  <Redirect to="/login" />
+                    )}
               </Route>
 
               <Route path="/rules">
