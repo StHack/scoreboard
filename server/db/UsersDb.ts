@@ -95,6 +95,12 @@ export async function listUser(): Promise<User[]> {
     .map(({ password, ...rest }) => rest)
 }
 
+export async function listTeam(): Promise<string[]> {
+  return await UserModel.distinct('team', {
+    team: { $ne: 'admin' },
+  })
+}
+
 export async function updateUser(
   username: string,
   { team, password, isAdmin }: Partial<AuthUser>,
