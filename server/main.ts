@@ -3,7 +3,7 @@ import { initMongo } from 'db/main'
 import { config } from 'dotenv'
 import express from 'express'
 import { readFileSync } from 'fs'
-import { createServer } from 'https'
+import { createServer } from 'http'
 import { join } from 'path'
 import { createClient } from 'redis'
 import { registerAdminNamespace } from 'services/admin'
@@ -22,10 +22,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const app = express()
 
-const key = readFileSync(__dirname + '/key.pem')
-const cert = readFileSync(__dirname + '/cert.pem')
-
-const httpServer = createServer({ key, cert }, app)
+const httpServer = createServer({  }, app)
 
 const io = new Server(httpServer, {
   transports: ['websocket'],
