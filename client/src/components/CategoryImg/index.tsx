@@ -5,18 +5,20 @@ import { size, SizeProps, space, SpaceProps } from 'styled-system'
 import { PlaceProps } from 'styles'
 import backdoor from './images/backdoor.png'
 import crypto from './images/crypto.png'
+import d from './images/default.png'
 import forensic from './images/forensics.png'
 import game from './images/game.png'
 import hardware from './images/hardware.png'
 import misc from './images/misc.png'
 import network from './images/network.png'
+import progra from './images/programmation.png'
 import pwn from './images/pwn.png'
 import recon from './images/recon.png'
 import reverse from './images/reverse.png'
 import shellcode from './images/shellcode.png'
 import web from './images/web.png'
 
-function categoryToImg (category: Category) {
+function categoryToImg (category: Category) : string {
   switch (category) {
     case 'backdoor':
       return backdoor
@@ -42,8 +44,10 @@ function categoryToImg (category: Category) {
       return shellcode
     case 'web':
       return web
+    case 'progra':
+      return progra
     default:
-      return undefined
+      return d
   }
 }
 
