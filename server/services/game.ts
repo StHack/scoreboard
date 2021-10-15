@@ -91,6 +91,17 @@ export function registerGameNamespace(gameIo: Namespace) {
         try {
           const isValid = await checkChallenge(challName, flag)
           callback({ isValid })
+
+          if (isValid) {
+            const achievement = await registerAchievement({
+              challenge: challName,
+              teamname: user.team,
+              username: user.username,
+            })
+
+            gameIo.emit('achievement:added', achievement)
+          }
+
         } catch (error) {
           if (typeof error === 'string') {
             callback({ error })
@@ -100,14 +111,6 @@ export function registerGameNamespace(gameIo: Namespace) {
 
           return
         }
-
-        const achievement = await registerAchievement({
-          challenge: challName,
-          teamname: user.team,
-          username: user.username,
-        })
-
-        gameIo.emit('achievement:added', achievement)
       },
     )
   })
