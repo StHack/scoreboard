@@ -23,16 +23,6 @@ const rulesMarkdown = `
 
 > We reserve the rights to disqualify any cheating team.
 
-## Flags
-
-Unless said otherwise in the task description, the flag format is the following:
-
-\`\`\`text
-Sthack{some random string here}
-\`\`\`
-
-You must submit the whole thing, including the \`Sthack{}\` part.
-
 ## Scoring
 
 This year the scoring is dynamic, the formula is the following:
