@@ -63,7 +63,7 @@ export async function checkChallenge(
   }
 
   const hash = flagHasher(flag)
-  return chall.flags.includes(hash)
+  return chall.flags.indexOf(hash) > -1
 }
 
 export async function removeChallenge(challName: string): Promise<void> {
