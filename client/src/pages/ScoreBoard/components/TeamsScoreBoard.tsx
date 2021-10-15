@@ -25,10 +25,10 @@ export function TeamsScoreBoard ({ score }: TeamsScoreBoardProps) {
           <td>{cs.team}</td>
           <td>{cs.score}</td>
           <Box as="td" display="flex">
-            {cs.breakthroughs.map(({ username, createdAt }, i) => (
+            {cs.breakthroughs.map(({ username, createdAt, challenge }, i) => (
               <Box
                 key={i}
-                title={`${username} - ${createdAt.toLocaleTimeString('fr')}`}
+                title={`${username} - ${challenge} - ${createdAt.toLocaleTimeString('fr')}`}
               >
                 <Logo size="2" />
               </Box>
