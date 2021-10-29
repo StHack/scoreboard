@@ -17,6 +17,12 @@
   - [x] ajout/suppression d'un chall/modification
   - [x] pouvoir envoyer des messages à tous les participants
   - [ ] pouvoir ajouter des indices/commentaires/épreuves
+- [ ] V2
+  - [ ] Pouvoir spécifier ses propres catégories
+  - [ ] Rules: expliquer la règole des 10 minutes
+  - [ ] Pouvoir trier les tableaux
+  - [ ] Salt les flags des challs
+  - [ ] Voir quels challs ont été résolus par quelle équipe
 
 ## Dev environment
 
@@ -49,3 +55,5 @@ To have a full dev environment up you need to do the following steps:
 1. Add `cert.pem` and `key.pem` into `server/`
 2. Run `docker compose build`
 3. Run `docker compose up`
+
+Il a fallu que j'édite le fichier `useSocket` pour spécifier directement le nom dns pour le websocket à la place de `REACT_APP_SERVER_HOST`
