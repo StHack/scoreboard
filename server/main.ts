@@ -2,7 +2,6 @@ import { createAdapter } from '@socket.io/redis-adapter'
 import { initMongo } from 'db/main'
 import { config } from 'dotenv'
 import express from 'express'
-import { readFileSync } from 'fs'
 import { createServer } from 'http'
 import { join } from 'path'
 import { createClient } from 'redis'
@@ -54,6 +53,6 @@ const PORT = 4400
 
 httpServer.listen(PORT, () => {
   console.log(
-    `⚡️[server]: Server is running at https://localhost:${PORT} in ${process.env.NODE_ENV} mode`,
+    `⚡️[server]: Server is running at http://localhost:${PORT} in ${process.env.NODE_ENV} mode`,
   )
 })

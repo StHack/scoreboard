@@ -37,14 +37,7 @@ To have a full dev environment up you need to do the following steps:
     APP_REDIS=redis://localhost:6379
     ```
 
-3. Generate a certificate for https:
-
-    ```bash
-    cd server
-    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./selfsigned.key -out selfsigned.crt
-    ```
-
-4. Create file `client/.env` with the following content
+3. Create file `client/.env` with the following content
 
     ```txt
     REACT_APP_SERVER_HOST=ws://localhost:3000
@@ -52,8 +45,7 @@ To have a full dev environment up you need to do the following steps:
 
 ## Build for prod
 
-1. Add `cert.pem` and `key.pem` into `server/`
-2. Run `docker compose build`
-3. Run `docker compose up`
+1. Run `docker compose build`
+2. Run `docker compose up`
 
 Il a fallu que j'édite le fichier `useSocket` pour spécifier directement le nom dns pour le websocket à la place de `REACT_APP_SERVER_HOST`
