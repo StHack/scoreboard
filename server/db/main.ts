@@ -1,8 +1,8 @@
-import { mongoConnectionString } from '../sthack-config'
+import { mongoConnectionString, mongoDb } from '../sthack-config'
 import { connect, ToObjectOptions } from 'mongoose'
 
 export async function initMongo() {
-  await connect(mongoConnectionString())
+  await connect(mongoConnectionString(), { dbName: mongoDb() })
 }
 
 export const removeMongoProperties: ToObjectOptions = {

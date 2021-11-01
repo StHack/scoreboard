@@ -6,7 +6,7 @@
   - [x] s'enregister/se logger
   - [x] voir les challenges
   - [x] ranger les challs par catégorie mais permettre de tout voir
-  - [ ] scoreboard
+  - [x] scoreboard
   - [x] afficher si une épreuve a été solve au moins 1 fois
   - [x] verrouiller les épreuves pendant 10 min quand elles sont solve (animation ? websocket ?) après chaque validation
   - [x] soumettre 1 flag
@@ -19,10 +19,16 @@
   - [ ] pouvoir ajouter des indices/commentaires/épreuves
 - [ ] V2
   - [ ] Pouvoir spécifier ses propres catégories
-  - [ ] Rules: expliquer la règole des 10 minutes
+  - [ ] Rules: expliquer la règle des 10 minutes
   - [ ] Pouvoir trier les tableaux
   - [ ] Salt les flags des challs
   - [ ] Voir quels challs ont été résolus par quelle équipe
+  - [ ] Bouton "End Game"
+  - [ ] Rendre le scoreboard disponible sans compte utilisateur
+  - [ ] Paramétriser la limite du nombre de joueur
+  - [ ] Pouvoir exporter les données à la fin de la game
+  - [ ] Avoir des graphs de stats
+  - [ ] Pouvoir clean les achievements
 
 ## Dev environment
 
@@ -49,3 +55,22 @@ To have a full dev environment up you need to do the following steps:
 2. Run `docker compose up`
 
 Il a fallu que j'édite le fichier `useSocket` pour spécifier directement le nom dns pour le websocket à la place de `REACT_APP_SERVER_HOST`
+
+## Mongo debugging during event
+
+```bash
+docker exec -it sthack-2021_mongo_1 bash
+
+# connect to mongo
+mongo -u "sthack-admin" -p "sthack-password"
+
+# mongo command
+show dbs
+show collections
+use sthack-scoreboard
+db.achievements.find()
+db.achievements.deleteMany({})
+
+# import data
+mongoimport messages.json -d test -c messages -u "sthack-admin" -p "sthack-password" --authenticationDatabase admin --jsonArray --drop
+```

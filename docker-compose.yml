@@ -10,7 +10,9 @@ services:
       NODE_ENV: production
       NODE_PATH: ./
       APP_MONGO: mongodb://sthack-admin:sthack-password@mongo:27017
+      APP_MONGO_DB: sthack-scoreboard
       APP_REDIS: redis://redis:6379
+      APP_SALT: thisismysalt
     networks:
       - apps
     depends_on:
@@ -23,8 +25,6 @@ services:
     ports:
       - 8081:8081
     environment:
-      # ME_CONFIG_BASICAUTH_USERNAME: sthack-admin
-      # ME_CONFIG_BASICAUTH_PASSWORD: sthack-password
       ME_CONFIG_MONGODB_ADMINUSERNAME: sthack-admin
       ME_CONFIG_MONGODB_ADMINPASSWORD: sthack-password
       ME_CONFIG_MONGODB_URL: mongodb://sthack-admin:sthack-password@mongo:27017/
@@ -41,8 +41,9 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: sthack-admin
       MONGO_INITDB_ROOT_PASSWORD: sthack-password
-      MONGO_INITDB_DATABASE: sthack
+      MONGO_INITDB_DATABASE: sthack-scoreboard
     volumes:
+      # - ./2021:/docker-entrypoint-initdb.d/
       - mongo-data:/data/db
     networks:
       - apps

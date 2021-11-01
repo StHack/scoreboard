@@ -7,10 +7,19 @@ export function mongoConnectionString(): string {
   return str
 }
 
+export function mongoDb(): string {
+  const str = process.env.APP_MONGO_DB
+  if (!str) {
+    throw new Error('Mongo DB name string is missing')
+  }
+
+  return str
+}
+
 export function redisConnectionString(): string {
   const str = process.env.APP_REDIS
   if (!str) {
-    throw new Error('Mongo Connection string is missing')
+    throw new Error('Redis Connection string is missing')
   }
 
   return str

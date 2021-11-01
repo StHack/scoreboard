@@ -7,13 +7,15 @@ import { connection } from 'mongoose'
 import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
 import { Namespace, Server } from 'socket.io'
+import { mongoDb, salt } from 'sthack-config'
 import { ServerConfig } from './serverconfig'
 
 const sessionMiddleware = () =>
   session({
-    secret: 'changeit',
+    secret: salt(),
     store: MongoStore.create({
       client: connection.getClient(),
+      dbName: mongoDb(),
     }),
     resave: false,
     saveUninitialized: false,
