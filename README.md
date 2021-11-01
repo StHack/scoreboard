@@ -49,6 +49,8 @@ To have a full dev environment up you need to do the following steps:
     REACT_APP_SERVER_HOST=ws://localhost:3000
     ```
 
+NB: the sample data (2021 dataset) users has their password set to `azerty123` for all users
+
 ## Build for prod
 
 1. Run `docker compose build`
