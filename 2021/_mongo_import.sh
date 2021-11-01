@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 for FULL_FILENAME in /docker-entrypoint-initdb.d/*.json;
 do
