@@ -2,9 +2,11 @@ FROM node:16.7 as build
 
 WORKDIR /client
 
-COPY client .
+COPY client/package.json client/package-lock.json ./
+RUN npm ci
 
-RUN npm ci && npm run build
+COPY client .
+RUN npm run build
 
 # FROM node:16.7 as certgenerator
 
@@ -17,8 +19,11 @@ RUN npm ci && npm run build
 FROM node:16.7-alpine as run
 
 WORKDIR /app
-COPY server .
+
+COPY server/package.json server/package-lock.json ./
 RUN npm ci
+
+COPY server .
 
 COPY --from=build /client/build ./build
 # COPY --from=certgenerator /app .
