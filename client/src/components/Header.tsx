@@ -55,14 +55,11 @@ const NavItem = styled.li<SpaceProps>`
   display: flex;
 `
 
-const NavLinkStyled = styled(NavLink)<SpaceProps>`
+const NavLinkStyled = styled(NavLink)<SpaceProps & { isActive?: boolean }>`
   color: ${p => p.theme.colors.secondaryText};
   text-decoration: none;
   ${space}
-
-  &.active {
-    text-decoration: underline;
-  }
+  text-decoration: ${p => p.isActive ? 'underline' : ''};
 `
 
 const NavButton = styled.button<SpaceProps>`
@@ -81,7 +78,7 @@ function GameLink ({ to, label, showIf = true }: GameLinkProps) {
 
   return (
     <NavItem>
-      <NavLinkStyled to={to} activeClassName="active" p="2">
+      <NavLinkStyled to={to} p="2">
         {label}
       </NavLinkStyled>
     </NavItem>

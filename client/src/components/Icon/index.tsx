@@ -32,18 +32,18 @@ const BaseSvg = (svg: FunctionComponent<SVGProps<SVGSVGElement>>) =>
     `,
   )
 
-const BaseImg = styled('img', cleanStyledSystem)<StyledIconProps>(
-  space,
-  place,
-  color,
-  layout,
-  css`
-    object-fit: contain;
-  `,
-)
+// const BaseImg = styled('img', cleanStyledSystem)<StyledIconProps>(
+//   space,
+//   place,
+//   color,
+//   layout,
+//   css`
+//     object-fit: contain;
+//   `,
+// )
 
-const BImg = (s: string, title?: string) => (p: StyledIconProps) =>
-  <BaseImg {...(p as any)} alt={title} title={title} src={s} />
+// const BImg = (s: string, title?: string) => (p: StyledIconProps) =>
+//   <BaseImg {...(p as any)} alt={title} title={title} src={s} />
 
 // export const Logo = BImg(LogoImg, 'logo')
 

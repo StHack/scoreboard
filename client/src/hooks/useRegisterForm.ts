@@ -1,12 +1,12 @@
 import { ChangeEvent, useState } from 'react'
 import { register } from 'services/authenticate'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 import { useField } from './useField'
 
 export function useRegisterForm () {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>()
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const usernameField = useField<string>({
     name: 'username',
@@ -44,7 +44,7 @@ export function useRegisterForm () {
     setIsLoading(false)
 
     if (ok) {
-      history.push('/login')
+      navigate('/login')
     } else {
       setError(error)
     }

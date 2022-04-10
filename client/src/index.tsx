@@ -2,17 +2,17 @@ import { ThemeProvider } from '@emotion/react'
 import { ProvideAuth } from 'hooks/useAuthentication'
 import { useThemeMode } from 'hooks/useThemeMode'
 import { StrictMode } from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import DefaultStyles from 'styles'
 import { darkTheme, lightTheme } from 'styles/theme'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root')!)
+root.render(
   <StrictMode>
     <AppWrapper />
   </StrictMode>,
-  document.getElementById('root'),
 )
 
 function AppWrapper () {

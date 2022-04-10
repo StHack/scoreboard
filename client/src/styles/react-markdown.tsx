@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Components } from 'react-markdown/src/ast-to-react'
+import { Components } from 'react-markdown'
 import {
   color,
   ColorProps,
@@ -63,8 +63,8 @@ export const ReactMarkdownRenderers: Components = {
   li: p => {
     return <ListItem {...p} />
   },
-  code: Code,
+  code: Code as any,
   blockquote: p => <Text as="blockquote" color="red" {...(p as any)} />,
   // listItem: ListItem,
-  img: Img,
+  img: Img as any,
 }

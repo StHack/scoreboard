@@ -3,7 +3,6 @@ import { Box } from 'components/Box'
 import { Logo } from 'components/Icon'
 import { TeamsScore } from 'models/GameScore'
 import { space, SpaceProps } from 'styled-system'
-import { gap, GapProps } from 'styles'
 
 export type TeamsScoreBoardProps = {
   score: TeamsScore[]
@@ -28,7 +27,9 @@ export function TeamsScoreBoard ({ score }: TeamsScoreBoardProps) {
             {cs.breakthroughs.map(({ username, createdAt, challenge }, i) => (
               <Box
                 key={i}
-                title={`${username} - ${challenge} - ${createdAt.toLocaleTimeString('fr')}`}
+                title={`${username} - ${challenge} - ${createdAt.toLocaleTimeString(
+                  'fr',
+                )}`}
               >
                 <Logo size="2" />
               </Box>

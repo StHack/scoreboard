@@ -10,8 +10,8 @@ import { Login } from 'pages/Login'
 import { Register } from 'pages/Register'
 import { Rules } from 'pages/Rules'
 import { ScoreBoard } from 'pages/ScoreBoard'
-import { Redirect, Route, Switch } from 'react-router'
-import { BrowserRouter } from 'react-router-dom'
+import { ReactElement, ReactNode } from 'react'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 const AppBlock = styled.div`
   display: grid;
@@ -49,60 +49,92 @@ export default function App () {
           <Header />
 
           <Container>
-            <Switch>
-              <Route exact path="/">
-                {isAuthenticated
-                  ? (
-                  <ProvideGame>
-                    <Game/>
-                  </ProvideGame>
-                    )
-                  : (
-                  <Redirect to="/login" />
-                    )}
-              </Route>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute
+                    condition={isAuthenticated}
+                    fallbackTo="/login"
+                  >
+                    <ProvideGame>
+                      <Game />
+                    </ProvideGame>
+                  </ProtectedRoute>
+                }
+              />
 
-              <Route path="/login">
-                {isAuthenticated ? <Redirect to="/" /> : <Login />}
-              </Route>
+              <Route
+                path="/login"
+                element={
+                  <ProtectedRoute condition={!isAuthenticated} fallbackTo="/">
+                    <Login />
+                  </ProtectedRoute>
+                }
+              />
 
-              <Route path="/register">
-                {isAuthenticated ? <Redirect to="/" /> : <Register />}
-              </Route>
+              <Route
+                path="/register"
+                element={
+                  <ProtectedRoute condition={!isAuthenticated} fallbackTo="/">
+                    <Register />
+                  </ProtectedRoute>
+                }
+              />
 
-              <Route path="/admin">
-                {isAuthenticated && isAuthorized
-                  ? (
-                  <ProvideGame>
-                    <ProvideAdmin>
-                      <Admin />
-                    </ProvideAdmin>
-                  </ProvideGame>
-                    )
-                  : (
-                  <Redirect to="/" />
-                    )}
-              </Route>
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute
+                    condition={isAuthenticated && isAuthorized}
+                    fallbackTo="/"
+                  >
+                    <ProvideGame>
+                      <ProvideAdmin>
+                        <Admin />
+                      </ProvideAdmin>
+                    </ProvideGame>
+                  </ProtectedRoute>
+                }
+              />
 
-              <Route path="/scoreboard">
-                {isAuthenticated
-                  ? (
-                  <ProvideGame>
-                    <ScoreBoard />
-                  </ProvideGame>
-                    )
-                  : (
-                  <Redirect to="/login" />
-                    )}
-              </Route>
+              <Route
+                path="/scoreboard"
+                element={
+                  <ProtectedRoute
+                    condition={isAuthenticated}
+                    fallbackTo="/login"
+                  >
+                    <ProvideGame>
+                      <ScoreBoard />
+                    </ProvideGame>
+                  </ProtectedRoute>
+                }
+              />
 
-              <Route path="/rules">
-                <Rules />
-              </Route>
-            </Switch>
+              <Route path="/rules" element={<Rules />} />
+            </Routes>
           </Container>
         </AppBlock>
       </BrowserRouter>
     </ThemeProvider>
   )
+}
+
+type ProtectedRouteProps = {
+  children: ReactNode
+  condition: boolean
+  fallbackTo: string
+}
+
+function ProtectedRoute ({
+  children,
+  condition,
+  fallbackTo: redirectTo,
+}: ProtectedRouteProps): ReactElement {
+  if (!condition) {
+    return <Navigate to={redirectTo} replace />
+  }
+
+  return <>{children}</>
 }
