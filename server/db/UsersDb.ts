@@ -1,6 +1,6 @@
 import { createHash } from 'crypto'
 import { CreateUser, AuthUser, User } from 'models/User'
-import { Schema, model, Error } from 'mongoose'
+import { Schema, model } from 'mongoose'
 import { salt } from 'sthack-config'
 import { removeMongoProperties } from './main'
 
@@ -110,6 +110,8 @@ export async function updateUser(
     { team, isAdmin, password: passwordHasher(password) },
     { new: true },
   )
+
+  if (!document) throw new Error(`User ${username} hasn't been updated because it was not found`)
 
   const { password: p, ...rest } = document.toObject(removeMongoProperties)
   return rest

@@ -21,7 +21,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const app = express()
 
-const httpServer = createServer({  }, app)
+const httpServer = createServer({}, app)
 
 const io = new Server(httpServer, {
   transports: ['websocket'],
@@ -29,9 +29,9 @@ const io = new Server(httpServer, {
 })
 const pubClient = createClient({ url: redisConnectionString() })
 const subClient = pubClient.duplicate()
-io.adapter(createAdapter(pubClient, subClient))
+const serverConfigClient = pubClient.duplicate()
 
-const serverConfig = getServerConfig(pubClient.duplicate())
+const serverConfig = getServerConfig(serverConfigClient as any)
 
 initMongo()
 registerAuthentification(app, io, serverConfig)
@@ -51,8 +51,16 @@ if (process.env.NODE_ENV === 'production') {
 
 const PORT = 4400
 
-httpServer.listen(PORT, () => {
-  console.log(
-    `⚡️[server]: Server is running at http://localhost:${PORT} in ${process.env.NODE_ENV} mode`,
-  )
+Promise.all([
+  pubClient.connect(),
+  subClient.connect(),
+  serverConfigClient.connect(),
+]).then(() => {
+  io.adapter(createAdapter(pubClient, subClient))
+
+  httpServer.listen(PORT, () => {
+    console.log(
+      `⚡️[server]: Server is running at http://localhost:${PORT} in ${process.env.NODE_ENV} mode`,
+    )
+  })
 })

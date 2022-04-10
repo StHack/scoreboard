@@ -85,6 +85,9 @@ export async function updateChallenge(
     { ...challenge, flags: newFlags },
     { new: true },
   )
+
+  if (!document) throw new Error(`Challenge ${challName} hasn't been updated because it was not found`)
+
   return document.toObject(removeMongoProperties)
 }
 

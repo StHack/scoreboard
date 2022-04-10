@@ -75,6 +75,7 @@ export function registerAuthentification(
       } else {
         res.status(500).send(error)
       }
+      return
     }
 
     try {
@@ -86,6 +87,7 @@ export function registerAuthentification(
       } else {
         res.status(500).send(error)
       }
+      return
     }
   })
 
@@ -130,7 +132,7 @@ export function registerAuthentificationForSocket(io: Namespace) {
   )
 
   io.on('connect', socket => {
-    const  request = (socket.request as Request)
+    const request = socket.request as Request
     const session = request.session
     session.socketId = socket.id
     session.save()

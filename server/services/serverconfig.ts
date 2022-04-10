@@ -1,24 +1,19 @@
-import { RedisClient } from 'redis'
+import { RedisClientType } from 'redis'
 
 export class ServerConfig {
-  redisClient: RedisClient
+  redisClient: RedisClientType
 
-  constructor(redisClient: RedisClient) {
+  constructor(redisClient: RedisClientType) {
     this.redisClient = redisClient
   }
 
   public async getRegistrationClosed(): Promise<boolean> {
-    const isOpened = await new Promise<boolean>((resolve, reject) =>
-      this.redisClient.hget('serverConfig', 'registrationClosed', (err, str) =>
-        err ? reject(err) : resolve(JSON.parse(str ?? 'false')),
-      ),
-    )
-
-    return isOpened
+    const isOpenedStr = await this.redisClient.hGet('serverConfig', 'registrationClosed') ?? 'false'
+    return JSON.parse(isOpenedStr)
   }
 
-  public setRegistrationClosed(status: boolean) {
-    this.redisClient.hset(
+  public async setRegistrationClosed(status: boolean) : Promise<void> {
+    await this.redisClient.hSet(
       'serverConfig',
       'registrationClosed',
       JSON.stringify(status),
@@ -26,6 +21,6 @@ export class ServerConfig {
   }
 }
 
-export function getServerConfig(redisClient: RedisClient) {
+export function getServerConfig(redisClient: RedisClientType) {
   return new ServerConfig(redisClient)
 }

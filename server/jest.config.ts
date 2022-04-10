@@ -5,7 +5,7 @@ import { config } from 'dotenv'
 const conf: InitialOptionsTsJest = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  setupFilesAfterEnv: ['jest-extended'],
+  setupFilesAfterEnv: ['jest-extended/all'],
   // moduleNameMapper: {
   //   '^db/(.*)$': '<rootDir>/db/$1',
   //   '^models/(.*)$': '<rootDir>/models/$1',

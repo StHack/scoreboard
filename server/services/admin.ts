@@ -68,12 +68,12 @@ export function registerAdminNamespace(
     //   gameIo.disconnectSockets()
     // })
 
-    adminSocket.on('game:openRegistration', () => {
-      serverConfig.setRegistrationClosed(false)
+    adminSocket.on('game:openRegistration', async () => {
+      await serverConfig.setRegistrationClosed(false)
     })
 
-    adminSocket.on('game:closeRegistration', () => {
-      serverConfig.setRegistrationClosed(true)
+    adminSocket.on('game:closeRegistration', async () => {
+      await serverConfig.setRegistrationClosed(true)
     })
 
     adminSocket.on('game:sendMessage', async (message: string) => {
