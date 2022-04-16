@@ -1,6 +1,7 @@
 export type AuthUser = {
   username: string
   password: string
+  salt: string
   team: string
   isAdmin: boolean
 }

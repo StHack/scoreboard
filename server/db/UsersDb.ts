@@ -1,31 +1,42 @@
-import { createHash } from 'crypto'
+import { createHash, randomUUID } from 'crypto'
 import { CreateUser, AuthUser, User } from 'models/User'
-import { Schema, model } from 'mongoose'
-import { salt } from 'sthack-config'
+import { Schema, model, ToObjectOptions } from 'mongoose'
 import { removeMongoProperties } from './main'
 
 const schema = new Schema<AuthUser>({
   username: { type: String, required: true, minlength: 5, unique: true },
   password: { type: String, required: true, minlength: 5 },
+  salt: { type: String, required: true },
   team: { type: String, required: true, minlength: 5 },
   isAdmin: { type: Boolean, required: true },
 })
 
 const UserModel = model<AuthUser>('User', schema)
 
-const passwordHasher = (password: string | undefined) =>
+const passwordHasher = (password: string | undefined, salt: string) =>
   password
     ? createHash('sha256')
-        .update(password + salt())
+        .update(password + salt)
         .digest('hex')
     : undefined
+
+const removeProperties: ToObjectOptions = {
+  ...removeMongoProperties,
+  transform: function (doc, ret, opts) {
+    const res = (removeMongoProperties.transform as any)(doc, ret, opts)
+    delete res.password
+    delete res.salt
+    return res
+  },
+}
 
 export async function registerUser({
   username,
   password,
   team,
 }: CreateUser): Promise<void> {
-  const hashed = passwordHasher(password)
+  const salt = randomUUID()
+  const hashed = passwordHasher(password, salt)
 
   const memberCount = await UserModel.count({ team })
   if (memberCount >= 8) throw new Error('Team is already full')
@@ -34,6 +45,7 @@ export async function registerUser({
     const doc = new UserModel({
       username,
       password: hashed,
+      salt,
       team,
       isAdmin: false,
     })
@@ -65,22 +77,20 @@ export async function login(
     return undefined
   }
 
-  const hash = passwordHasher(password)
+  const hash = passwordHasher(password, user.salt)
 
   if (user.password !== hash) {
     return undefined
   }
 
-  const { password: p, ...rest } = user.toObject(removeMongoProperties)
-  return rest
+  return user.toObject(removeProperties)
 }
 
 export async function getUser(username: string): Promise<User | undefined> {
   const user = await UserModel.findOne({ username })
   if (!user) return undefined
 
-  const { password, ...rest } = user.toObject(removeMongoProperties)
-  return rest
+  return user.toObject(removeProperties)
 }
 
 export async function removeUser(username: string): Promise<void> {
@@ -90,9 +100,7 @@ export async function removeUser(username: string): Promise<void> {
 export async function listUser(): Promise<User[]> {
   const users = await UserModel.find()
 
-  return users
-    .map(u => u.toObject(removeMongoProperties))
-    .map(({ password, ...rest }) => rest)
+  return users.map(u => u.toObject(removeProperties))
 }
 
 export async function listTeam(): Promise<string[]> {
@@ -105,13 +113,27 @@ export async function updateUser(
   username: string,
   { team, password, isAdmin }: Partial<AuthUser>,
 ): Promise<User> {
+  if (password) {
+    const user = await UserModel.findOne({ username })
+
+    if (!user)
+      throw new Error(
+        `User ${username} hasn't been updated because it was not found`,
+      )
+
+    password = passwordHasher(password, user.salt)
+  }
+
   const document = await UserModel.findOneAndUpdate(
     { username },
-    { team, isAdmin, password: passwordHasher(password) },
+    { team, isAdmin, password },
     { new: true },
   )
 
-  if (!document) throw new Error(`User ${username} hasn't been updated because it was not found`)
+  if (!document)
+    throw new Error(
+      `User ${username} hasn't been updated because it was not found`,
+    )
 
   const { password: p, ...rest } = document.toObject(removeMongoProperties)
   return rest
