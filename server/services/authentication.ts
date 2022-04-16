@@ -36,11 +36,17 @@ export function registerAuthentification(
       try {
         const user = await login(username, password)
 
-        if (user) {
-          return done(null, user)
+        if (!user) {
+          return done(null, false)
         }
 
-        return done(null, false)
+        const gameIsOpened = await serverConfig.getGameOpened()
+
+        if (!gameIsOpened && !user.isAdmin) {
+          return done(null, false)
+        }
+
+        return done(null, user)
       } catch (error) {
         return done(error)
       }

@@ -118,3 +118,7 @@ export async function updateChallenge(
 export async function closeAllChallenge(): Promise<void> {
   await ChallengeModel.updateMany({}, { isOpen: false })
 }
+
+export async function openAllChallenge(): Promise<void> {
+  await ChallengeModel.updateMany({}, { isOpen: true })
+}

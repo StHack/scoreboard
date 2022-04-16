@@ -19,6 +19,7 @@ export function useSocket (namespace: string) {
 
     socket.on('disconnect', () => {
       setIsConnected(false)
+      logOut()
     })
 
     socket.on('connect_error', () => {

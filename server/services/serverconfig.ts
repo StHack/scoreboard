@@ -19,6 +19,19 @@ export class ServerConfig {
       JSON.stringify(status),
     )
   }
+
+  public async getGameOpened(): Promise<boolean> {
+    const isOpenedStr = await this.redisClient.hGet('serverConfig', 'gameOpened') ?? 'false'
+    return JSON.parse(isOpenedStr)
+  }
+
+  public async setGameOpened(status: boolean) : Promise<void> {
+    await this.redisClient.hSet(
+      'serverConfig',
+      'gameOpened',
+      JSON.stringify(status),
+    )
+  }
 }
 
 export function getServerConfig(redisClient: RedisClientType) {

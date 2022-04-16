@@ -16,6 +16,8 @@ export type AdminContext = {
   updateChallenge: (chall: BaseChallenge) => Promise<Challenge>
   brokeChallenge: (chall: Challenge) => void
   repairChallenge: (chall: Challenge) => void
+  openGame: () => void,
+  closeGame: () => void,
   openRegistration: () => void
   closeRegistration: () => void
   changeTeam: (user: User, team: string) => void
@@ -31,6 +33,8 @@ const adminContext = createContext<AdminContext>({
   updateChallenge: () => Promise.resolve<Challenge>(undefined as any),
   brokeChallenge: () => {},
   repairChallenge: () => {},
+  openGame: () => {},
+  closeGame: () => {},
   openRegistration: () => {},
   closeRegistration: () => {},
   changeTeam: () => {},
@@ -108,6 +112,16 @@ function useProvideAdmin (): AdminContext {
       if (!socket) throw new Error('connection is not available')
 
       socket.emit('challenge:repair', chall.name)
+    },
+    openGame: () => {
+      if (!socket) throw new Error('connection is not available')
+
+      socket.emit('game:open')
+    },
+    closeGame: () => {
+      if (!socket) throw new Error('connection is not available')
+
+      socket.emit('game:end')
     },
     openRegistration: () => {
       if (!socket) throw new Error('connection is not available')

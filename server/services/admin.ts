@@ -1,4 +1,9 @@
-import { createChallenge, updateChallenge } from 'db/ChallengeDb'
+import {
+  closeAllChallenge,
+  createChallenge,
+  openAllChallenge,
+  updateChallenge,
+} from 'db/ChallengeDb'
 import { addMessage } from 'db/MessageDb'
 import { listUser, removeUser, updateUser } from 'db/UsersDb'
 import { Request } from 'express'
@@ -63,10 +68,23 @@ export function registerAdminNamespace(
       gameIo.emit('challenge:updated', updated)
     })
 
-    // adminSocket.on('game:end', async () => {
-    //   await closeAllChallenge()
-    //   gameIo.disconnectSockets()
-    // })
+    adminSocket.on('game:end', async () => {
+      await closeAllChallenge()
+      await serverConfig.setGameOpened(false)
+
+      for (const [id ,soc] of gameIo.sockets) {
+        const req = soc.request as Request
+        req.logOut()
+        soc.disconnect(true)
+      }
+
+      gameIo.disconnectSockets(true)
+    })
+
+    adminSocket.on('game:open', async () => {
+      await openAllChallenge()
+      await serverConfig.setGameOpened(true)
+    })
 
     adminSocket.on('game:openRegistration', async () => {
       await serverConfig.setRegistrationClosed(false)
@@ -82,25 +100,34 @@ export function registerAdminNamespace(
       gameIo.emit('game:newMessage', result)
     })
 
-    adminSocket.on('users:list', async (callback) => {
+    adminSocket.on('users:list', async callback => {
       const users = await listUser()
       callback(users)
     })
 
-    adminSocket.on('users:changeTeam', async (username: string, team: string, callback) => {
-      const user = await updateUser(username, { team })
-      callback(user)
-    })
+    adminSocket.on(
+      'users:changeTeam',
+      async (username: string, team: string, callback) => {
+        const user = await updateUser(username, { team })
+        callback(user)
+      },
+    )
 
-    adminSocket.on('users:changePassword', async (username: string, password: string, callback) => {
-      const user = await updateUser(username, { password })
-      callback(user)
-    })
+    adminSocket.on(
+      'users:changePassword',
+      async (username: string, password: string, callback) => {
+        const user = await updateUser(username, { password })
+        callback(user)
+      },
+    )
 
-    adminSocket.on('users:changeIsAdmin', async (username: string, isAdmin: boolean, callback) => {
-      const user = await updateUser(username, { isAdmin })
-      callback(user)
-    })
+    adminSocket.on(
+      'users:changeIsAdmin',
+      async (username: string, isAdmin: boolean, callback) => {
+        const user = await updateUser(username, { isAdmin })
+        callback(user)
+      },
+    )
 
     adminSocket.on('users:delete', async (username: string, callback) => {
       await removeUser(username)

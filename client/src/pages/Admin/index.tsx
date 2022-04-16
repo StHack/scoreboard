@@ -27,6 +27,8 @@ export function Admin () {
   const {
     brokeChallenge,
     repairChallenge,
+    openGame,
+    closeGame,
     openRegistration,
     closeRegistration,
     users,
@@ -71,6 +73,8 @@ export function Admin () {
 
       <Box display="flex" flexDirection="row" gap="2">
         <Button onClick={() => setOpenEdit(true)}>Create challenge</Button>
+        <Button onClick={openGame}>Open Game</Button>
+        <Button onClick={closeGame}>Close Game</Button>
         <Button onClick={openRegistration}>Open Registration</Button>
         <Button onClick={closeRegistration}>Close Registration</Button>
       </Box>
