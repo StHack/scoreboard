@@ -105,7 +105,7 @@ export function useChallengeForm (
         description: descriptionField.inputProp.value,
         img: imgField.inputProp.value ?? '',
         difficulty: difficultyField.inputProp.value,
-        flags: flagsField.inputProp.value ? [flagsField.inputProp.value] : [],
+        flag: flagsField.inputProp.value,
         name: nameField.inputProp.value,
       }
 

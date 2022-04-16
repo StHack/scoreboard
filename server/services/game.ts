@@ -16,9 +16,6 @@ export function registerGameNamespace(gameIo: Namespace) {
   gameIo.on('connection', gameSocket => {
     gameSocket.on('challenge:list', async callback => {
       const challenges = await listChallenge()
-      for (const chall of challenges) {
-        chall.flags = []
-      }
       callback(challenges)
     })
 

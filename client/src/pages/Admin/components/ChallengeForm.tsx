@@ -55,10 +55,6 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
 
         <LabelInput label="Flag" required={isNewChallenge}>
           <TextInput type="text" {...flagsProps} />
-          <p>Available flags:</p>
-          {chall?.flags.map(f => (
-            <p>{f}</p>
-          ))}
         </LabelInput>
 
         <LabelInput label="Category" required>

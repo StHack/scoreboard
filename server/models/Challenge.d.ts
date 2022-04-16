@@ -5,7 +5,7 @@ export type BaseChallenge = {
   description: string
   img: string
   author: string
-  flags: string[]
+  flag?: string
   category: string
   difficulty: Difficulty
 }
