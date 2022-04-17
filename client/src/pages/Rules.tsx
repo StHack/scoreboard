@@ -1,21 +1,28 @@
 import { Box } from 'components/Box'
+import { useGame } from 'hooks/useGame'
+import { GameConfig } from 'models/GameConfig'
 import ReactMarkdown from 'react-markdown'
 import { ReactMarkdownRenderers } from 'styles/react-markdown'
 
 export function Rules () {
+  const { gameConfig } = useGame()
+
   return (
     <Box m="auto" px="2" maxWidth="maximalCentered">
-      <ReactMarkdown components={ReactMarkdownRenderers} children={rulesMarkdown} />
+      <ReactMarkdown
+        components={ReactMarkdownRenderers}
+        children={rulesMarkdown(gameConfig)}
+      />
     </Box>
   )
 }
 
-const rulesMarkdown = `
+const rulesMarkdown = (gameConfig: GameConfig) => `
 # Rules
 
 ## CTF Rules
 
-- Team size limit is 8
+- Team size limit is ${gameConfig.teamSize}
 - Remote players are not allowed
 - Sharing flags is forbidden
 - Don't attack the scoring system
@@ -28,27 +35,27 @@ const rulesMarkdown = `
 This year the scoring is dynamic, the formula is the following:
 
 \`\`\`text
-task_points = (base_score *base_difficulty)* (total_teams - solvers)
+chall_points = (base_score * base_difficulty) * (total_teams - solvers)
 \`\`\`
 
 Where:
 
-- \`base_score\` is the constant **50**
+- \`base_score\` is the constant **${gameConfig.baseChallScore}**
 - \`base_difficulty\` is
   - easy: **1**
   - medium: **2**
   - hard: **3**
-- \`total_teams\` is the total number of teams playing the CTF
-- \`solvers\` is the number of teams that solved this task
+- \`total_teams\` is the total number of teams playing the CTF (Currently: ${gameConfig.teamCount})
+- \`solvers\` is the number of teams that solved this challenge
 
-This means you should expect the task points and your score to:
+This means you should expect the challenge points and your score to:
 
 - increase at the beginning of the CTF, when teams are registering
-- decrease while people solve tasks
+- decrease while people solve challenges
 
 There is no bonus points for breakthrough.
 
-When a team solves a challenge, it is locked for **10 minutes**. During this time, no one will be able to submit their proposals.
+When a team solves a challenge, it is locked for **${gameConfig.solveDelay / 60 / 1000} minutes**. During this time, no one will be able to submit their proposals.
 
 ## Help/Questions
 

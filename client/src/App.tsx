@@ -110,7 +110,14 @@ export default function App () {
                 }
               />
 
-              <Route path="/rules" element={<Rules />} />
+              <Route
+                path="/rules"
+                element={
+                  <ProvideGame>
+                    <Rules />
+                  </ProvideGame>
+                }
+              />
             </Routes>
           </Container>
         </AppBlock>
