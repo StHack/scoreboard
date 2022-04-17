@@ -14,11 +14,13 @@ import DelayedImg from './delayed.png'
 type ChallengeCardProps = {
   challenge: Challenge
   score: ChallengeScore
+  currentTeam?: string
   onClick: () => void
 }
 export function ChallengeCard ({
   challenge: { name, img, isBroken, isOpen, category },
-  score: { score, myTeamSolved, achievements },
+  currentTeam,
+  score: { score, achievements },
   onClick,
 }: ChallengeCardProps) {
   const {
@@ -52,7 +54,7 @@ export function ChallengeCard ({
     <Card
       openState={openState}
       score={score}
-      isSolved={!!myTeamSolved}
+      isSolved={achievements.some(a => a.teamname === currentTeam)}
       delayed={delayedTimer}
       m="2"
       onClick={() => openState === 'open' && onClick()}

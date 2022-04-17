@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { Box } from 'components/Box'
 import { useGame } from 'hooks/useGame'
+import { usePlayer } from 'hooks/usePlayer'
 import { Challenge } from 'models/Challenge'
 import { Fragment, useEffect, useState } from 'react'
 import { display, DisplayProps, space, SpaceProps } from 'styled-system'
@@ -16,9 +17,15 @@ import {
 export function Game () {
   const {
     challenges,
-    score: { challsScore: challScore, myScore, myTeamScore: teamScore },
+    score: { challsScore: challScore },
     messages,
   } = useGame()
+
+  const {
+    myScore,
+    myTeamScore,
+    myTeamName,
+  } = usePlayer()
 
   const [groupBy, setGroupBy] = useState<GroupByType>('Category')
   const groups = challenges.reduce<Record<string, Challenge[]>>(
@@ -44,7 +51,7 @@ export function Game () {
         Your Score: {myScore}
       </Box>
       <Box gridArea="t-score" fontSize="3" mt={[2, 4]} placeSelf="center" as="span">
-        Team Score: {teamScore}
+        Team Score: {myTeamScore}
       </Box>
 
       <GroupBySelector
@@ -71,6 +78,7 @@ export function Game () {
                 key={c.name}
                 challenge={c}
                 score={challScore[c.name]}
+                currentTeam={myTeamName}
                 onClick={() => setSelectedChall(c)}
               />
             ))}

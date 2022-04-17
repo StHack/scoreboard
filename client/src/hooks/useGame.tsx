@@ -11,7 +11,6 @@ import {
   useState,
 } from 'react'
 import { computeGameScore } from 'services/score'
-import { useAuth } from './useAuthentication'
 import { useSocket } from './useSocket'
 
 export type GameContext = {
@@ -19,24 +18,16 @@ export type GameContext = {
   messages: Message[]
   score: GameScore
   gameConfig: GameConfig
-  attemptChall: (
-    challName: string,
-    flag: string,
-    callback: (isValid: boolean, error: string | undefined) => void,
-  ) => Promise<void>
 }
 
 const gameContext = createContext<GameContext>({
   challenges: [],
   messages: [],
   score: {
-    myScore: 0,
-    myTeamScore: 0,
     challsScore: {},
     teamsScore: [],
   },
   gameConfig: { baseChallScore: 0, solveDelay: 0, teamCount: 0 },
-  attemptChall: () => Promise.resolve(undefined),
 })
 
 export function ProvideGame ({ children }: PropsWithChildren<{}>) {
@@ -59,7 +50,6 @@ function useProvideGame (): GameContext {
     teamCount: 0,
     baseChallScore: 0,
   })
-  const { user } = useAuth()
 
   useEffect(() => {
     if (!socket) return
@@ -112,6 +102,10 @@ function useProvideGame (): GameContext {
       ])
     })
 
+    socket.on('game:ended', () => {
+      setChallenges(challs => challs.map(c => ({ ...c, isOpen: false })))
+    })
+
     return () => {
       socket.off('challenge:added')
       socket.off('challenge:updated')
@@ -123,17 +117,7 @@ function useProvideGame (): GameContext {
   return {
     challenges,
     messages,
-    score: computeGameScore(achievements, challenges, teams, gameConfig, user!),
+    score: computeGameScore(achievements, challenges, teams, gameConfig),
     gameConfig,
-    attemptChall: async (challName, flag, callback) => {
-      if (!socket) return
-      socket.emit(
-        'challenge:solve',
-        challName,
-        flag,
-        ({ isValid, error }: { isValid?: boolean; error?: string }) =>
-          callback(isValid ?? false, error),
-      )
-    },
   }
 }

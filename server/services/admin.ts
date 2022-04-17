@@ -15,6 +15,7 @@ import { ServerConfig } from './serverconfig'
 export function registerAdminNamespace(
   adminIo: Namespace,
   gameIo: Namespace,
+  playerIo: Namespace,
   serverConfig: ServerConfig,
 ) {
   adminIo.use((socket, next) =>
@@ -72,13 +73,13 @@ export function registerAdminNamespace(
       await closeAllChallenge()
       await serverConfig.setGameOpened(false)
 
-      for (const [id ,soc] of gameIo.sockets) {
+      for (const [id ,soc] of playerIo.sockets) {
         const req = soc.request as Request
         req.logOut()
         soc.disconnect(true)
       }
 
-      gameIo.disconnectSockets(true)
+      gameIo.emit("game:ended")
     })
 
     adminSocket.on('game:open', async () => {

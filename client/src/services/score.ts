@@ -2,50 +2,40 @@ import { Achievement } from 'models/Achievement'
 import { Challenge } from 'models/Challenge'
 import { Difficulty } from 'models/Difficulty'
 import { GameConfig } from 'models/GameConfig'
-import { ChallengeScore, GameScore, TeamsScore } from 'models/GameScore'
-import { User } from 'models/User'
+import { ChallengeScore, GameScore, TeamScore } from 'models/GameScore'
 
 export function computeGameScore (
   achievements: Achievement[],
   challenges: Challenge[],
   teams: string[],
   config: GameConfig,
-  user: User,
 ): GameScore {
-  const challsScore = challenges.reduce<Record<string, ChallengeScore>>(
-    (agg, challenge) => ({
-      ...agg,
-      [challenge.name]: computeChallengeScore(
-        achievements,
-        challenge,
-        config,
-        user.team,
-      ),
-    }),
-    {},
-  )
-
-  const teamsScore = teams
-    .map(t => computeTeamScore(challsScore, t))
-    .sort((a, b) => b.score - a.score)
-    .map((ts, i, tss) => ({
-      ...ts,
-      rank: tss.findIndex(x => x.score === ts.score) + 1,
-    }))
+  const challsScore = computeChallsScore(challenges, achievements, config)
+  const teamsScore = computeTeamsScore(teams, challsScore)
 
   return {
-    myTeamScore: computeMyTeamScore(challsScore),
-    myScore: computeMyScore(challsScore, user.username),
     challsScore,
     teamsScore,
   }
+}
+function computeChallsScore (
+  challenges: Challenge[],
+  achievements: Achievement[],
+  config: GameConfig,
+): Record<string, ChallengeScore> {
+  return challenges.reduce<Record<string, ChallengeScore>>(
+    (agg, challenge) => ({
+      ...agg,
+      [challenge.name]: computeChallengeScore(achievements, challenge, config),
+    }),
+    {},
+  )
 }
 
 function computeChallengeScore (
   achievements: Achievement[],
   challenge: Challenge,
   config: GameConfig,
-  team: string,
 ): ChallengeScore {
   const a = achievements
     .filter(a => a.challenge === challenge.name)
@@ -54,14 +44,26 @@ function computeChallengeScore (
   return {
     score: computeScore(challenge, config, a.length),
     achievements: a,
-    myTeamSolved: a.find(aa => aa.teamname === team),
   }
+}
+
+function computeTeamsScore (
+  teams: string[],
+  challsScore: Record<string, ChallengeScore>,
+): TeamScore[] {
+  return teams
+    .map(t => computeTeamScore(challsScore, t))
+    .sort((a, b) => b.score - a.score)
+    .map((ts, i, tss) => ({
+      ...ts,
+      rank: tss.findIndex(x => x.score === ts.score) + 1,
+    }))
 }
 
 function computeTeamScore (
   challsScore: Record<string, ChallengeScore>,
   team: string,
-): TeamsScore {
+): TeamScore {
   return {
     rank: 0,
     team,
@@ -71,27 +73,13 @@ function computeTeamScore (
     breakthroughs: Object.values(challsScore)
       .map(cs => cs.achievements[0])
       .filter(a => a?.teamname === team),
+    solved: Object.values(challsScore)
+      .flatMap(cs => cs.achievements)
+      .filter(a => a?.teamname === team),
   }
 }
 
-function computeMyTeamScore (
-  challSolvation: Record<string, ChallengeScore>,
-): number {
-  return Object.values(challSolvation)
-    .filter(c => !!c.myTeamSolved)
-    .reduce((p, c) => p + c.score, 0)
-}
-
-function computeMyScore (
-  challSolvation: Record<string, ChallengeScore>,
-  user: string,
-): number {
-  return Object.values(challSolvation)
-    .filter(c => c.myTeamSolved?.username === user)
-    .reduce((p, c) => p + c.score, 0)
-}
-
-export function computeScore (
+function computeScore (
   challenge: Challenge,
   config: GameConfig,
   solvedCount: number = 0,

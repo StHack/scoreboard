@@ -4,7 +4,7 @@ import { Button } from 'components/Button'
 import Popup from 'components/Popup'
 import { TextInput } from 'components/TextInput'
 import { useField } from 'hooks/useField'
-import { useGame } from 'hooks/useGame'
+import { usePlayer } from 'hooks/usePlayer'
 import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
 import { useState } from 'react'
@@ -27,17 +27,19 @@ export type ChallDescriptionPopupProps = {
 
 export function ChallDescriptionPopup ({
   challenge: { name, author, category, description, difficulty },
-  score: { score, myTeamSolved },
+  score: { score, achievements },
   onClose,
 }: ChallDescriptionPopupProps) {
   const [error, setError] = useState<string>()
-  const { attemptChall } = useGame()
+  const { attemptChall, myTeamName } = usePlayer()
   const { inputProp } = useField<string>({
     defaultValue: '',
     name: 'flag',
     required: true,
     disabled: false,
   })
+
+  const myTeamSolved = achievements.find(a => a.teamname === myTeamName)
 
   return (
     <Popup title={name} onClose={onClose}>

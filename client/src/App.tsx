@@ -4,6 +4,7 @@ import { Header } from 'components/Header'
 import { ProvideAdmin } from 'hooks/useAdmin'
 import { useAuth } from 'hooks/useAuthentication'
 import { ProvideGame } from 'hooks/useGame'
+import { ProvidePlayer } from 'hooks/usePlayer'
 import { Admin } from 'pages/Admin'
 import { Game } from 'pages/Game'
 import { Login } from 'pages/Login'
@@ -58,7 +59,9 @@ export default function App () {
                     fallbackTo="/login"
                   >
                     <ProvideGame>
-                      <Game />
+                      <ProvidePlayer>
+                        <Game />
+                      </ProvidePlayer>
                     </ProvideGame>
                   </ProtectedRoute>
                 }
@@ -101,14 +104,9 @@ export default function App () {
               <Route
                 path="/scoreboard"
                 element={
-                  <ProtectedRoute
-                    condition={isAuthenticated}
-                    fallbackTo="/login"
-                  >
-                    <ProvideGame>
-                      <ScoreBoard />
-                    </ProvideGame>
-                  </ProtectedRoute>
+                  <ProvideGame>
+                    <ScoreBoard />
+                  </ProvideGame>
                 }
               />
 
