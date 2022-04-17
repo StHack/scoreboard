@@ -32,6 +32,19 @@ export class ServerConfig {
       JSON.stringify(status),
     )
   }
+
+  public async getTeamSize(): Promise<number> {
+    const isOpenedStr = await this.redisClient.hGet('serverConfig', 'teamSize') ?? '5'
+    return JSON.parse(isOpenedStr)
+  }
+
+  public async setTeamSize(teamSize: number) : Promise<void> {
+    await this.redisClient.hSet(
+      'serverConfig',
+      'teamSize',
+      JSON.stringify(teamSize.toString()),
+    )
+  }
 }
 
 export function getServerConfig(redisClient: RedisClientType) {

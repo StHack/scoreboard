@@ -27,7 +27,7 @@ const gameContext = createContext<GameContext>({
     challsScore: {},
     teamsScore: [],
   },
-  gameConfig: { baseChallScore: 0, solveDelay: 0, teamCount: 0 },
+  gameConfig: { baseChallScore: 0, solveDelay: 0, teamCount: 0, teamSize: 0 },
 })
 
 export function ProvideGame ({ children }: PropsWithChildren<{}>) {
@@ -49,6 +49,7 @@ function useProvideGame (): GameContext {
     solveDelay: 10,
     teamCount: 0,
     baseChallScore: 0,
+    teamSize: 0,
   })
 
   useEffect(() => {

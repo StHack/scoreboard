@@ -30,16 +30,15 @@ const removeProperties: ToObjectOptions = {
   },
 }
 
-export async function registerUser({
-  username,
-  password,
-  team,
-}: CreateUser): Promise<void> {
+export async function registerUser(
+  { username, password, team }: CreateUser,
+  maxTeamSize: number,
+): Promise<void> {
   const salt = randomUUID()
   const hashed = passwordHasher(password, salt)
 
   const memberCount = await UserModel.count({ team })
-  if (memberCount >= 8) throw new Error('Team is already full')
+  if (memberCount >= maxTeamSize) throw new Error('Team is already full')
 
   try {
     const doc = new UserModel({

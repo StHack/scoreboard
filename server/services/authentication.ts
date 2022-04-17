@@ -85,7 +85,8 @@ export function registerAuthentification(
     }
 
     try {
-      await registerUser((req.body || {}) as CreateUser)
+      const maxTeamSize = await serverConfig.getTeamSize()
+      await registerUser((req.body || {}) as CreateUser, maxTeamSize)
       res.sendStatus(201)
     } catch (error) {
       if (error instanceof Error) {

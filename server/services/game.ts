@@ -4,10 +4,14 @@ import { listMessage } from 'db/MessageDb'
 import { countTeam, listTeam } from 'db/UsersDb'
 import { GameConfig } from 'models/GameConfig'
 import { Namespace } from 'socket.io'
+import { ServerConfig } from './serverconfig'
 
 const delayTimeInMinutes = 10
 
-export function registerGameNamespace(gameIo: Namespace) {
+export function registerGameNamespace(
+  gameIo: Namespace,
+  serverConfig: ServerConfig,
+) {
   gameIo.on('connection', gameSocket => {
     gameSocket.on('challenge:list', async callback => {
       const challenges = await listChallenge()
@@ -21,11 +25,13 @@ export function registerGameNamespace(gameIo: Namespace) {
 
     gameSocket.on('game:config', async callback => {
       const teamCount = await countTeam()
+      const teamSize = await serverConfig.getTeamSize()
 
       const result: GameConfig = {
         solveDelay: delayTimeInMinutes * 60 * 1000,
         teamCount,
         baseChallScore: 50,
+        teamSize,
       }
 
       callback(result)

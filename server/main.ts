@@ -40,7 +40,7 @@ registerAuthentification(app, io, serverConfig)
 registerAuthentificationForSocket(io.of('/api/player'))
 registerAuthentificationForSocket(io.of('/api/admin'))
 
-registerGameNamespace(io.of('/api/game'))
+registerGameNamespace(io.of('/api/game'), serverConfig)
 registerPlayerNamespace(io.of('/api/player'))
 registerAdminNamespace(
   io.of('/api/admin'),
