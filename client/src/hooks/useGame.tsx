@@ -15,6 +15,7 @@ import { useSocket } from './useSocket'
 
 export type GameContext = {
   challenges: Challenge[]
+  achievements: Achievement[]
   messages: Message[]
   score: GameScore
   gameConfig: GameConfig
@@ -22,6 +23,7 @@ export type GameContext = {
 
 const gameContext = createContext<GameContext>({
   challenges: [],
+  achievements: [],
   messages: [],
   score: {
     challsScore: {},
@@ -96,6 +98,18 @@ function useProvideGame (): GameContext {
       ])
     })
 
+    socket.on('achievement:deleted', (deleted: Achievement) => {
+      setAchievements(ach =>
+        ach.filter(
+          a =>
+            !(
+              a.challenge === deleted.challenge &&
+              a.teamname === deleted.teamname
+            ),
+        ),
+      )
+    })
+
     socket.on('game:newMessage', (message: Message) => {
       setMessages(m => [
         ...m,
@@ -121,6 +135,7 @@ function useProvideGame (): GameContext {
 
   return {
     challenges,
+    achievements,
     messages,
     score: computeGameScore(achievements, challenges, teams, gameConfig),
     gameConfig,

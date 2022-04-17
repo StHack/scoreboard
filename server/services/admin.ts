@@ -1,3 +1,4 @@
+import { removeAchievement } from 'db/AchievementDb'
 import {
   closeAllChallenge,
   createChallenge,
@@ -73,13 +74,13 @@ export function registerAdminNamespace(
       await closeAllChallenge()
       await serverConfig.setGameOpened(false)
 
-      for (const [id ,soc] of playerIo.sockets) {
+      for (const [id, soc] of playerIo.sockets) {
         const req = soc.request as Request
         req.logOut()
         soc.disconnect(true)
       }
 
-      gameIo.emit("game:ended")
+      gameIo.emit('game:ended')
     })
 
     adminSocket.on('game:open', async () => {
@@ -143,5 +144,16 @@ export function registerAdminNamespace(
       adminSocket.in(username).disconnectSockets()
       callback()
     })
+
+    adminSocket.on(
+      'achievement:delete',
+      async (teamname: string, challenge: string) => {
+        const deleted = await removeAchievement(teamname, challenge)
+
+        if (deleted) {
+          gameIo.emit('achievement:deleted', deleted)
+        }
+      },
+    )
   })
 }

@@ -54,3 +54,8 @@ export async function getUserAchievement(username: string): Promise<Achievement[
 export async function removeAllTeamAchievement(teamname: string): Promise<void> {
   await AchievementModel.deleteMany({ teamname })
 }
+
+export async function removeAchievement(teamname: string, challenge: string): Promise<Achievement | undefined> {
+  const deleted = await AchievementModel.findOneAndDelete({ teamname, challenge })
+  return deleted?.toObject(removeMongoProperties)
+}

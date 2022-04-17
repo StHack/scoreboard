@@ -1,3 +1,4 @@
+import { Achievement } from 'models/Achievement'
 import { BaseChallenge, Challenge } from 'models/Challenge'
 import { ServerError } from 'models/ServerError'
 import { User } from 'models/User'
@@ -25,6 +26,7 @@ export type AdminContext = {
   changePassword: (user: User, password: string) => void
   toggleIsAdmin: (user: User) => void
   deleteUser: (user: User) => void
+  deleteAchievement: (achievement: Achievement) => void
   sendMessage: (message: string) => void
 }
 
@@ -43,6 +45,7 @@ const adminContext = createContext<AdminContext>({
   changePassword: () => {},
   toggleIsAdmin: () => {},
   deleteUser: () => {},
+  deleteAchievement: () => {},
   sendMessage: () => {},
 })
 
@@ -166,6 +169,11 @@ function useProvideAdmin (): AdminContext {
       socket.emit('users:delete', user.username, () =>
         setUsers(users.filter(u => u.username !== user.username)),
       )
+    },
+    deleteAchievement: achievement => {
+      if (!socket) throw new Error('connection is not available')
+
+      socket.emit('achievement:delete', achievement.teamname, achievement.challenge)
     },
     sendMessage: message => {
       if (!socket) throw new Error('connection is not available')
