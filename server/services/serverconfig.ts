@@ -1,4 +1,8 @@
+import { countTeam } from 'db/UsersDb'
+import { GameConfig } from 'models/GameConfig'
 import { RedisClientType } from 'redis'
+
+const delayTimeInMinutes = 10
 
 export class ServerConfig {
   redisClient: RedisClientType
@@ -8,11 +12,14 @@ export class ServerConfig {
   }
 
   public async getRegistrationClosed(): Promise<boolean> {
-    const isOpenedStr = await this.redisClient.hGet('serverConfig', 'registrationClosed') ?? 'false'
-    return JSON.parse(isOpenedStr)
+    const isOpenedStr = await this.redisClient.hGet(
+      'serverConfig',
+      'registrationClosed',
+    )
+    return JSON.parse(isOpenedStr ?? 'false')
   }
 
-  public async setRegistrationClosed(status: boolean) : Promise<void> {
+  public async setRegistrationClosed(status: boolean): Promise<void> {
     await this.redisClient.hSet(
       'serverConfig',
       'registrationClosed',
@@ -21,11 +28,14 @@ export class ServerConfig {
   }
 
   public async getGameOpened(): Promise<boolean> {
-    const isOpenedStr = await this.redisClient.hGet('serverConfig', 'gameOpened') ?? 'false'
-    return JSON.parse(isOpenedStr)
+    const isOpenedStr = await this.redisClient.hGet(
+      'serverConfig',
+      'gameOpened',
+    )
+    return JSON.parse(isOpenedStr ?? 'false')
   }
 
-  public async setGameOpened(status: boolean) : Promise<void> {
+  public async setGameOpened(status: boolean): Promise<void> {
     await this.redisClient.hSet(
       'serverConfig',
       'gameOpened',
@@ -34,16 +44,28 @@ export class ServerConfig {
   }
 
   public async getTeamSize(): Promise<number> {
-    const isOpenedStr = await this.redisClient.hGet('serverConfig', 'teamSize') ?? '5'
-    return JSON.parse(isOpenedStr)
+    const teamSizeStr = await this.redisClient.hGet('serverConfig', 'teamSize')
+    return teamSizeStr ? parseInt(teamSizeStr) : 5
   }
 
-  public async setTeamSize(teamSize: number) : Promise<void> {
+  public async setTeamSize(teamSize: number): Promise<void> {
     await this.redisClient.hSet(
       'serverConfig',
       'teamSize',
-      JSON.stringify(teamSize.toString()),
+      teamSize,
     )
+  }
+
+  public async getGameConfig(): Promise<GameConfig> {
+    const teamCount = await countTeam()
+    const teamSize = await this.getTeamSize()
+
+    return {
+      solveDelay: delayTimeInMinutes * 60 * 1000,
+      teamCount,
+      baseChallScore: 50,
+      teamSize,
+    }
   }
 }
 

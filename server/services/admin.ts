@@ -95,6 +95,12 @@ export function registerAdminNamespace(
       await serverConfig.setRegistrationClosed(true)
     })
 
+    adminSocket.on('game:setTeamSize', async (teamSize: number) => {
+      await serverConfig.setTeamSize(teamSize)
+      const updatedConfig = await serverConfig.getGameConfig()
+      gameIo.emit('game:config:updated', updatedConfig)
+    })
+
     adminSocket.on('game:sendMessage', async (message: string) => {
       const result = await addMessage({ content: message })
 

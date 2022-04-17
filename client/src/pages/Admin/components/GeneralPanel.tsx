@@ -3,6 +3,7 @@ import { Button } from 'components/Button'
 import { TextInput } from 'components/TextInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useField } from 'hooks/useField'
+import { useGame } from 'hooks/useGame'
 
 export function GeneralPanel () {
   const {
@@ -11,10 +12,20 @@ export function GeneralPanel () {
     openRegistration,
     closeRegistration,
     sendMessage,
+    setTeamSize,
   } = useAdmin()
-  const { inputProp, reset } = useField<string>({
+
+  const { gameConfig } = useGame()
+  const messageInput = useField<string>({
     defaultValue: '',
     name: 'message',
+    disabled: false,
+    required: true,
+  })
+
+  const teamSizeInput = useField<string>({
+    defaultValue: '',
+    name: 'teamSize',
     disabled: false,
     required: true,
   })
@@ -36,14 +47,37 @@ export function GeneralPanel () {
         as="form"
         onSubmit={e => {
           e.preventDefault()
-          inputProp.value && sendMessage(inputProp.value)
-          reset()
+          messageInput.inputProp.value &&
+            sendMessage(messageInput.inputProp.value)
+          messageInput.reset()
         }}
       >
         <TextInput
           placeholder="Broadcast a message to everyone"
           flex="1"
-          {...inputProp}
+          {...messageInput.inputProp}
+        />
+        <Button type="submit">Send</Button>
+      </Box>
+
+      <Box
+        display="flex"
+        flexDirection="row"
+        my="3"
+        gap="2"
+        as="form"
+        onSubmit={e => {
+          e.preventDefault()
+          teamSizeInput.inputProp.value &&
+            setTeamSize(parseInt(teamSizeInput.inputProp.value))
+          teamSizeInput.reset()
+        }}
+      >
+        <TextInput
+          placeholder={`Set a new team size limit (currently ${gameConfig.teamSize})`}
+          type="number"
+          flex="1"
+          {...teamSizeInput.inputProp}
         />
         <Button type="submit">Send</Button>
       </Box>

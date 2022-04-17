@@ -20,6 +20,7 @@ export type AdminContext = {
   closeGame: () => void,
   openRegistration: () => void
   closeRegistration: () => void
+  setTeamSize: (teamSize: number) => void
   changeTeam: (user: User, team: string) => void
   changePassword: (user: User, password: string) => void
   toggleIsAdmin: (user: User) => void
@@ -37,6 +38,7 @@ const adminContext = createContext<AdminContext>({
   closeGame: () => {},
   openRegistration: () => {},
   closeRegistration: () => {},
+  setTeamSize: () => {},
   changeTeam: () => {},
   changePassword: () => {},
   toggleIsAdmin: () => {},
@@ -132,6 +134,11 @@ function useProvideAdmin (): AdminContext {
       if (!socket) throw new Error('connection is not available')
 
       socket.emit('game:closeRegistration')
+    },
+    setTeamSize: (teamSize) => {
+      if (!socket) throw new Error('connection is not available')
+
+      socket.emit('game:setTeamSize', teamSize)
     },
     changeTeam: (user, team) => {
       if (!socket) throw new Error('connection is not available')

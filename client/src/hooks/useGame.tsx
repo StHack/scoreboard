@@ -107,6 +107,10 @@ function useProvideGame (): GameContext {
       setChallenges(challs => challs.map(c => ({ ...c, isOpen: false })))
     })
 
+    socket.on('game:config:updated', (config: GameConfig) => {
+      setGameConfig(config)
+    })
+
     return () => {
       socket.off('challenge:added')
       socket.off('challenge:updated')
