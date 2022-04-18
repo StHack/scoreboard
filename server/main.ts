@@ -34,14 +34,15 @@ const io = new Server(httpServer, {
 const pubClient = createClient({ url: redisConnectionString() })
 const subClient = pubClient.duplicate()
 const serverConfigClient = pubClient.duplicate()
+const sessionClient = pubClient.duplicate({ legacyMode: true })
 
 const serverConfig = getServerConfig(serverConfigClient as any)
 
 initMongo()
-registerAuthentification(app, io, serverConfig)
+registerAuthentification(app, io, serverConfig, sessionClient as any)
 
-registerAuthentificationForSocket(io.of('/api/player'))
-registerAuthentificationForSocket(io.of('/api/admin'))
+registerAuthentificationForSocket(io.of('/api/player'), sessionClient as any)
+registerAuthentificationForSocket(io.of('/api/admin'), sessionClient as any)
 
 registerGameNamespace(io.of('/api/game'), serverConfig)
 registerPlayerNamespace(io.of('/api/player'))
@@ -65,6 +66,7 @@ Promise.all([
   pubClient.connect(),
   subClient.connect(),
   serverConfigClient.connect(),
+  sessionClient.connect(),
 ]).then(() => {
   io.adapter(createAdapter(pubClient, subClient))
 

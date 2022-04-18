@@ -1,32 +1,32 @@
-import MongoStore from 'connect-mongo'
+import RedisStore from 'connect-redis'
 import { getUser, login, registerUser } from 'db/UsersDb'
 import { IRouter, json, Request } from 'express'
 import session from 'express-session'
 import { CreateUser, User as OurUser } from 'models/User'
-import { connection } from 'mongoose'
 import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
+import { RedisClientType } from 'redis'
 import { Namespace, Server } from 'socket.io'
-import { mongoDb, salt } from 'sthack-config'
+import { salt } from 'sthack-config'
 import { ServerConfig } from './serverconfig'
 
-const sessionMiddleware = () =>
-  session({
+const sessionMiddleware = (sessionRedisClient: RedisClientType) => {
+  const RedisS = RedisStore(session)
+  return session({
     secret: salt(),
-    store: MongoStore.create({
-      client: connection.getClient(),
-      dbName: mongoDb(),
-    }),
+    store: new RedisS({ client: sessionRedisClient }),
     resave: false,
     saveUninitialized: false,
   })
+}
 
 export function registerAuthentification(
   app: IRouter,
   io: Server,
   serverConfig: ServerConfig,
+  sessionRedisClient: RedisClientType,
 ) {
-  app.use(sessionMiddleware())
+  app.use(sessionMiddleware(sessionRedisClient))
   app.use(json())
   app.use(passport.initialize())
   app.use(passport.session())
@@ -130,8 +130,8 @@ export function registerAuthentification(
 const wrap = (middleware: any) => (socket: any, next: any) =>
   middleware(socket.request, {}, next)
 
-export function registerAuthentificationForSocket(io: Namespace) {
-  io.use(wrap(sessionMiddleware()))
+export function registerAuthentificationForSocket(io: Namespace, sessionRedisClient: RedisClientType) {
+  io.use(wrap(sessionMiddleware(sessionRedisClient)))
   io.use(wrap(passport.initialize()))
   io.use(wrap(passport.session()))
   io.use((socket, next) =>
