@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { Box } from 'components/Box'
+import { DropdownInput } from 'components/DropdownInput'
 import { ImageInput } from 'components/ImageInput'
 import { LabelInput } from 'components/LabelInput'
 import Popup from 'components/Popup'
@@ -58,13 +59,10 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
         </LabelInput>
 
         <LabelInput label="Category" required>
-        <select {...categoryProps}>
-            {Categories.map(d => (
-              <option key={d} value={d}>
-                {d}
-              </option>
-            ))}
-          </select>
+          <DropdownInput
+            {...categoryProps}
+            predefinedValues={Categories}
+          />
         </LabelInput>
 
         <LabelInput label="Difficulty" required>

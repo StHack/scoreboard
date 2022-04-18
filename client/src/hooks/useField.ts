@@ -17,8 +17,11 @@ export function useField<T> ({ defaultValue, ...props }: FieldProps<T>) {
     inputProp: {
       value,
       ...props,
-      onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-        setValue(e.target.value as any),
+      onChange: (
+        e: ChangeEvent<
+          HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >,
+      ) => setValue(e.target.value as any),
     },
     reset,
   }
