@@ -13,6 +13,7 @@ import {
   GroupBySelector,
   GroupByType,
 } from './components/GroupBySelector'
+import { Messages } from './components/Messages'
 
 export function Game () {
   const {
@@ -21,11 +22,7 @@ export function Game () {
     messages,
   } = useGame()
 
-  const {
-    myScore,
-    myTeamScore,
-    myTeamName,
-  } = usePlayer()
+  const { myScore, myTeamScore, myTeamName } = usePlayer()
 
   const [groupBy, setGroupBy] = useState<GroupByType>('Category')
   const groups = challenges.reduce<Record<string, Challenge[]>>(
@@ -47,10 +44,22 @@ export function Game () {
 
   return (
     <Grid display={['flex', 'grid']} gap={[1, 4]}>
-      <Box gridArea="u-score" fontSize="3" mt={[2, 4]} placeSelf="center" as="span">
+      <Box
+        gridArea="u-score"
+        fontSize="3"
+        mt={[2, 4]}
+        placeSelf="center"
+        as="span"
+      >
         Your Score: {myScore}
       </Box>
-      <Box gridArea="t-score" fontSize="3" mt={[2, 4]} placeSelf="center" as="span">
+      <Box
+        gridArea="t-score"
+        fontSize="3"
+        mt={[2, 4]}
+        placeSelf="center"
+        as="span"
+      >
         Team Score: {myTeamScore}
       </Box>
 
@@ -92,19 +101,20 @@ export function Game () {
         flexDirection="column"
         backgroundColor="background"
         p="2"
+        as="aside"
       >
-        <Box as="span" fontSize="2">Message from Staff</Box>
-        {messages.map(m => (
-          <span key={m.createdAt.getTime()}>
-            [{m.createdAt.toLocaleTimeString('fr')}] {m.content}
-          </span>
-        ))}
+        <Box as="h2" fontSize="2">
+          Message from Staff
+        </Box>
+
+        <Messages messages={messages} />
       </Box>
 
       {selectedChall && (
         <ChallDescriptionPopup
           challenge={selectedChall}
           score={challScore[selectedChall.name]}
+          messages={messages.filter(m => m.challenge === selectedChall.name)}
           onClose={() => setSelectedChall(undefined)}
         />
       )}

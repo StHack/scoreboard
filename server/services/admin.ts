@@ -126,8 +126,8 @@ export function registerAdminNamespace(
       gameIo.emit('game:config:updated', updatedConfig)
     })
 
-    adminSocket.on('game:sendMessage', async (message: string) => {
-      const result = await addMessage({ content: message })
+    adminSocket.on('game:sendMessage', async (message: string, challenge?: string) => {
+      const result = await addMessage({ content: message, challenge })
 
       gameIo.emit('game:newMessage', result)
     })

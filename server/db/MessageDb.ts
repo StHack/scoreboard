@@ -5,6 +5,7 @@ import { removeMongoProperties } from './main'
 const schema = new Schema<Message>(
   {
     content: { type: String, required: true },
+    challenge: { type: String }
   },
   { timestamps: true },
 )

@@ -27,7 +27,7 @@ export type AdminContext = {
   toggleIsAdmin: (user: User) => void
   deleteUser: (user: User) => void
   deleteAchievement: (achievement: Achievement) => void
-  sendMessage: (message: string) => void
+  sendMessage: (message: string, challenge?: string) => void
 }
 
 const adminContext = createContext<AdminContext>({
@@ -175,10 +175,10 @@ function useProvideAdmin (): AdminContext {
 
       socket.emit('achievement:delete', achievement.teamname, achievement.challenge)
     },
-    sendMessage: message => {
+    sendMessage: (message, challenge) => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('game:sendMessage', message)
+      socket.emit('game:sendMessage', message, challenge)
     },
   }
 }

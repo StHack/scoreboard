@@ -4,6 +4,7 @@ import { DropdownInput } from 'components/DropdownInput'
 import { ImageInput } from 'components/ImageInput'
 import { LabelInput } from 'components/LabelInput'
 import Popup from 'components/Popup'
+import { SelectInput } from 'components/SelectInput'
 import { TextArea, TextInput } from 'components/TextInput'
 import { useChallengeForm } from 'hooks/useChallengeForm'
 import { Categories } from 'models/Category'
@@ -66,13 +67,10 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
         </LabelInput>
 
         <LabelInput label="Difficulty" required>
-          <select {...difficultyProps}>
-            {Difficulties.map(d => (
-              <option key={d} value={d}>
-                {d}
-              </option>
-            ))}
-          </select>
+          <SelectInput
+            predefinedValues={Difficulties}
+            {...difficultyProps}
+          />
         </LabelInput>
 
         <LabelInput label="Image">

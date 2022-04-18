@@ -1,11 +1,13 @@
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
+import { SelectInput } from 'components/SelectInput'
 import { TextInput } from 'components/TextInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useField } from 'hooks/useField'
 import { useGame } from 'hooks/useGame'
 
 export function GeneralPanel () {
+  const { challenges } = useGame()
   const {
     openGame,
     closeGame,
@@ -21,6 +23,12 @@ export function GeneralPanel () {
     name: 'message',
     disabled: false,
     required: true,
+  })
+
+  const messageChallengeInput = useField<string>({
+    defaultValue: '',
+    name: 'message-challenge',
+    disabled: false,
   })
 
   const teamSizeInput = useField<string>({
@@ -48,7 +56,10 @@ export function GeneralPanel () {
         onSubmit={e => {
           e.preventDefault()
           messageInput.inputProp.value &&
-            sendMessage(messageInput.inputProp.value)
+            sendMessage(
+              messageInput.inputProp.value,
+              messageChallengeInput.inputProp.value,
+            )
           messageInput.reset()
         }}
       >
@@ -56,6 +67,11 @@ export function GeneralPanel () {
           placeholder="Broadcast a message to everyone"
           flex="1"
           {...messageInput.inputProp}
+        />
+        <SelectInput
+          predefinedValues={challenges.map(c => c.name)}
+          placeholder="or to a specific challenge"
+          {...messageChallengeInput.inputProp}
         />
         <Button type="submit">Send</Button>
       </Box>

@@ -7,6 +7,7 @@ import { useField } from 'hooks/useField'
 import { usePlayer } from 'hooks/usePlayer'
 import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
+import { Message } from 'models/Message'
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import {
@@ -18,9 +19,11 @@ import {
   TypographyProps,
 } from 'styled-system'
 import { ReactMarkdownRenderers } from 'styles/react-markdown'
+import { Messages } from './Messages'
 
 export type ChallDescriptionPopupProps = {
   challenge: Challenge
+  messages: Message[]
   score: ChallengeScore
   onClose: () => void
 }
@@ -28,6 +31,7 @@ export type ChallDescriptionPopupProps = {
 export function ChallDescriptionPopup ({
   challenge: { name, author, category, description, difficulty },
   score: { score, achievements },
+  messages,
   onClose,
 }: ChallDescriptionPopupProps) {
   const [error, setError] = useState<string>()
@@ -93,6 +97,13 @@ export function ChallDescriptionPopup ({
             </Button>
           </Box>
         )}
+
+        {!!messages.length && (
+          <Box gridArea="msg" my="3">
+            <Text as="h2">Clues</Text>
+            <Messages messages={messages} />
+          </Box>
+        )}
       </Grid>
     </Popup>
   )
@@ -105,7 +116,8 @@ const Grid = styled.div`
     'category  author  difficulty'
     'score     score   score'
     'desc      desc    desc'
-    'flag      flag    flag';
+    'flag      flag    flag'
+    'msg       msg     msg';
 `
 const Text = styled.p<SpaceProps & GridAreaProps & TypographyProps>`
   text-align: center;
