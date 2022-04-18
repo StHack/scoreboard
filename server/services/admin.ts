@@ -32,7 +32,7 @@ export function registerAdminNamespace(
         '%s\t%s\tattempt admin path',
         socket.conn.transport.sid,
         user?.username,
-  )
+      )
 
       next(new Error('unauthorized'))
     }
@@ -157,6 +157,9 @@ export function registerAdminNamespace(
       'users:changeIsAdmin',
       async (username: string, isAdmin: boolean, callback) => {
         const user = await updateUser(username, { isAdmin })
+
+        adminIo.in(user.username).disconnectSockets(true)
+
         callback(user)
       },
     )
