@@ -1,5 +1,7 @@
+process.env.DEBUG = 'express:application,socket.io:server,sthack*'
 import { createAdapter } from '@socket.io/redis-adapter'
 import { initMongo } from 'db/main'
+import debug from 'debug'
 import { config } from 'dotenv'
 import express from 'express'
 import { createServer } from 'http'
@@ -21,6 +23,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const app = express()
+const logger = debug('sthack')
 
 const httpServer = createServer({}, app)
 

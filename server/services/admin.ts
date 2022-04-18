@@ -7,6 +7,7 @@ import {
 } from 'db/ChallengeDb'
 import { addMessage } from 'db/MessageDb'
 import { listUser, removeUser, updateUser } from 'db/UsersDb'
+import debug from 'debug'
 import { Request } from 'express'
 import { BaseChallenge } from 'models/Challenge'
 import { User } from 'models/User'
@@ -19,13 +20,36 @@ export function registerAdminNamespace(
   playerIo: Namespace,
   serverConfig: ServerConfig,
 ) {
-  adminIo.use((socket, next) =>
-    (socket.request as Request<User>).user?.isAdmin
-      ? next()
-      : next(new Error('unauthorized')),
+  const logger = debug('sthack:admin')
+
+  adminIo.use((socket, next) => {
+    const user = (socket.request as Request<User>).user
+
+    if (user?.isAdmin) {
+      next()
+    } else {
+      logger(
+        '%s\t%s\tattempt admin path',
+        socket.conn.transport.sid,
+        user?.username,
   )
 
+      next(new Error('unauthorized'))
+    }
+  })
+
   adminIo.on('connection', adminSocket => {
+    adminSocket.use(([event, ...args], next) => {
+      logger(
+        '%s\t%s\t%s\t%o',
+        adminSocket.conn.transport.sid,
+        (adminSocket.request as Request<User>).user?.username,
+        event,
+        args,
+      )
+      next()
+    })
+
     adminSocket.on(
       'challenge:create',
       async (chall: BaseChallenge, callback) => {

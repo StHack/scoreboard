@@ -1,12 +1,27 @@
 import { getChallengeAchievement, registerAchievement } from 'db/AchievementDb'
 import { checkChallenge } from 'db/ChallengeDb'
+import debug from 'debug'
 import { Request } from 'express'
+import { User } from 'models/User'
 import { Namespace } from 'socket.io'
 
 const delayTimeInMinutes = 10
 
 export function registerPlayerNamespace(playerIo: Namespace) {
+  const logger = debug('sthack:player')
+
   playerIo.on('connection', playerSocket => {
+    playerSocket.use(([event, ...args], next) => {
+      logger(
+        '%s\t%s\t%s\t%o',
+        playerSocket.conn.transport.sid,
+        (playerSocket.request as Request<User>).user?.username,
+        event,
+        args,
+      )
+      next()
+    })
+
     playerSocket.on(
       'challenge:solve',
       async (challName: string, flag: string, callback) => {
