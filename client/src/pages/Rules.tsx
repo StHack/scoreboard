@@ -8,7 +8,12 @@ export function Rules () {
   const { gameConfig } = useGame()
 
   return (
-    <Box m="auto" px="2" maxWidth="maximalCentered">
+    <Box m='auto' px='2'
+         maxWidth='maximalCentered'
+         backgroundColor='white'
+         borderRadius='14px'
+         padding='4'
+         boxShadow='small'>
       <ReactMarkdown
         components={ReactMarkdownRenderers}
         children={rulesMarkdown(gameConfig)}
