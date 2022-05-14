@@ -13,7 +13,14 @@ export function registerGameNamespace(
   gameIo.on('connection', gameSocket => {
     gameSocket.on('challenge:list', async callback => {
       const challenges = await listChallenge()
-      callback(challenges)
+
+      const gameOpened = await serverConfig.getGameOpened()
+
+      callback(
+        gameOpened
+          ? challenges
+          : challenges.map(c => ({ ...c, description: '' })),
+      )
     })
 
     gameSocket.on('achievement:list', async callback => {

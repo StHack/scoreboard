@@ -2,6 +2,7 @@ import { removeAchievement } from 'db/AchievementDb'
 import {
   closeAllChallenge,
   createChallenge,
+  listChallenge,
   openAllChallenge,
   updateChallenge,
 } from 'db/ChallengeDb'
@@ -50,6 +51,11 @@ export function registerAdminNamespace(
       next()
     })
 
+    adminSocket.on('challenge:list', async callback => {
+      const challenges = await listChallenge()
+      callback(challenges)
+    })
+
     adminSocket.on(
       'challenge:create',
       async (chall: BaseChallenge, callback) => {
@@ -57,6 +63,7 @@ export function registerAdminNamespace(
           const challenge = await createChallenge(chall)
           callback(challenge)
           gameIo.emit('challenge:added', challenge)
+          adminSocket.emit('challenge:added', challenge)
         } catch (error) {
           if (error instanceof Error) {
             callback({ error: error.message })
@@ -74,6 +81,7 @@ export function registerAdminNamespace(
           const challenge = await updateChallenge(challName, chall)
           callback(challenge)
           gameIo.emit('challenge:updated', challenge)
+          adminSocket.emit('challenge:updated', challenge)
         } catch (error) {
           if (error instanceof Error) {
             callback({ error: error.message })
@@ -87,11 +95,13 @@ export function registerAdminNamespace(
     adminSocket.on('challenge:broke', async (challName: string) => {
       const updated = await updateChallenge(challName, { isBroken: true })
       gameIo.emit('challenge:updated', updated)
+      adminSocket.emit('challenge:updated', updated)
     })
 
     adminSocket.on('challenge:repair', async (challName: string) => {
       const updated = await updateChallenge(challName, { isBroken: false })
       gameIo.emit('challenge:updated', updated)
+      adminSocket.emit('challenge:updated', updated)
     })
 
     adminSocket.on('game:end', async () => {

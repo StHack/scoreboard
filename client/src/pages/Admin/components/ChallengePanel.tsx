@@ -2,7 +2,6 @@ import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import { CategoryImg } from 'components/CategoryImg'
 import { useAdmin } from 'hooks/useAdmin'
-import { useGame } from 'hooks/useGame'
 import { Challenge } from 'models/Challenge'
 import { useState } from 'react'
 import { exportAsJson } from 'services/share'
@@ -11,8 +10,7 @@ import { Table, Tr, Image, ActionPanel } from './styled'
 
 export function ChallengePanel () {
   const [openEdit, setOpenEdit] = useState<boolean>(false)
-  const { challenges } = useGame()
-  const { brokeChallenge, repairChallenge } = useAdmin()
+  const { challenges, brokeChallenge, repairChallenge } = useAdmin()
   const [challToEdit, setChallToEdit] = useState<Challenge>()
 
   return (

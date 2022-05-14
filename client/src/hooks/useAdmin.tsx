@@ -12,13 +12,14 @@ import {
 import { useSocket } from './useSocket'
 
 export type AdminContext = {
+  challenges: Challenge[]
   users: User[]
   createChallenge: (chall: BaseChallenge) => Promise<Challenge>
   updateChallenge: (chall: BaseChallenge) => Promise<Challenge>
   brokeChallenge: (chall: Challenge) => void
   repairChallenge: (chall: Challenge) => void
-  openGame: () => void,
-  closeGame: () => void,
+  openGame: () => void
+  closeGame: () => void
   openRegistration: () => void
   closeRegistration: () => void
   setTeamSize: (teamSize: number) => void
@@ -31,6 +32,7 @@ export type AdminContext = {
 }
 
 const adminContext = createContext<AdminContext>({
+  challenges: [],
   users: [],
   createChallenge: () => Promise.resolve<Challenge>(undefined as any),
   updateChallenge: () => Promise.resolve<Challenge>(undefined as any),
@@ -60,14 +62,29 @@ export const useAdmin = () => {
 
 function useProvideAdmin (): AdminContext {
   const { socket } = useSocket('/api/admin')
+  const [challenges, setChallenges] = useState<Challenge[]>([])
   const [users, setUsers] = useState<User[]>([])
 
   useEffect(() => {
     if (!socket) return
 
+    socket.emit('challenge:list', (response: Challenge[]) => {
+      setChallenges([...response])
+    })
+
     socket.emit('users:list', (users: User[]) => {
       setUsers([...users])
     })
+
+    socket.on('challenge:added', chall =>
+      setChallenges(challs => [...challs, chall]),
+    )
+
+    socket.on('challenge:updated', challUpdated =>
+      setChallenges(challs =>
+        challs.map(c => (c.name === challUpdated.name ? challUpdated : c)),
+      ),
+    )
   }, [socket])
 
   const updateUsers = (user: User) =>
@@ -75,6 +92,7 @@ function useProvideAdmin (): AdminContext {
 
   return {
     users,
+    challenges,
     createChallenge: chall =>
       new Promise<Challenge>((resolve, reject) => {
         if (!socket) throw new Error('connection is not available')
@@ -138,7 +156,7 @@ function useProvideAdmin (): AdminContext {
 
       socket.emit('game:closeRegistration')
     },
-    setTeamSize: (teamSize) => {
+    setTeamSize: teamSize => {
       if (!socket) throw new Error('connection is not available')
 
       socket.emit('game:setTeamSize', teamSize)
@@ -173,7 +191,11 @@ function useProvideAdmin (): AdminContext {
     deleteAchievement: achievement => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('achievement:delete', achievement.teamname, achievement.challenge)
+      socket.emit(
+        'achievement:delete',
+        achievement.teamname,
+        achievement.challenge,
+      )
     },
     sendMessage: (message, challenge) => {
       if (!socket) throw new Error('connection is not available')
