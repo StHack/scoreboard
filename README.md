@@ -30,6 +30,16 @@ NB: the sample data (2021 dataset) users has their password set to `azerty123` f
 1. Run `docker compose build`
 2. Run `docker compose up`
 
+## Prepare VM
+
+```bash
+curl -fsSL https://test.docker.com -o install-docker.sh
+chmod +x install-docker.sh
+./install-docker.sh
+sudo usermod -aG docker ubuntu
+sudo apt-get install docker-compose-plugin
+```
+
 ## Mongo debugging during event
 
 ```bash
@@ -44,6 +54,7 @@ show collections
 use sthack-scoreboard
 db.achievements.find()
 db.achievements.deleteMany({})
+db.users.updateOne({ username: "Nagarian" }, { $set: { isAdmin: true } })
 
 # import data
 mongoimport messages.json -d test -c messages -u "sthack-admin" -p "sthack-password" --authenticationDatabase admin --jsonArray --drop
