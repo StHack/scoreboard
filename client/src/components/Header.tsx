@@ -59,7 +59,7 @@ const NavLinkStyled = styled(NavLink)<SpaceProps & { isActive?: boolean }>`
   color: ${p => p.theme.colors.secondaryText};
   text-decoration: none;
   ${space}
-  text-decoration: ${p => p.isActive ? 'underline' : ''};
+  text-decoration: ${p => (p.isActive ? 'underline' : '')};
 `
 
 const NavButton = styled.button<SpaceProps>`

@@ -34,10 +34,12 @@ export function Admin () {
   )
 }
 
-const NavLink = styled(Link)<SpaceProps & FontSizeProps & { isActive?: boolean }>`
+const NavLink = styled(Link)<
+  SpaceProps & FontSizeProps & { isActive?: boolean }
+>`
   ${space}
   ${fontSize}
-  text-decoration: ${p => p.isActive ? 'underline' : 'none'};
+  text-decoration: ${p => (p.isActive ? 'underline' : 'none')};
 `
 NavLink.defaultProps = {
   fontSize: 3,

@@ -18,7 +18,7 @@ import reverse from './images/reverse.png'
 import shellcode from './images/shellcode.png'
 import web from './images/web.png'
 
-function categoryToImg (category: Category) : string {
+function categoryToImg (category: Category): string {
   switch (category) {
     case 'backdoor':
       return backdoor

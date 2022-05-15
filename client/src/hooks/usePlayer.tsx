@@ -35,7 +35,9 @@ export const usePlayer = () => {
 function useProvidePlayer (): PlayerContext {
   const { socket } = useSocket('/api/player')
   const { user } = useAuth()
-  const { score: { teamsScore, challsScore } } = useGame()
+  const {
+    score: { teamsScore, challsScore },
+  } = useGame()
 
   const ts = teamsScore.find(x => x.team === user?.team)
   const myScore = Object.values(challsScore)

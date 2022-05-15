@@ -46,6 +46,6 @@ export const Table = styled.table<SpaceProps>`
     background-color: rgb(245, 245, 245);
   }
 `
-export const Tr = styled('tr', cleanStyledSystem) <ColorProps>`
+export const Tr = styled('tr', cleanStyledSystem)<ColorProps>`
   ${color}
 `

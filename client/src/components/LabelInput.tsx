@@ -10,7 +10,7 @@ const Label = styled.label`
 
 const Span = styled.span<{ required?: boolean }>`
   :after {
-    content: ${p => (p.required ? '\'*\'' : '')};
+    content: ${p => (p.required ? "'*'" : '')};
     color: ${p => p.theme.colors.red};
   }
 `

@@ -60,17 +60,11 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
         </LabelInput>
 
         <LabelInput label="Category" required>
-          <DropdownInput
-            {...categoryProps}
-            predefinedValues={Categories}
-          />
+          <DropdownInput {...categoryProps} predefinedValues={Categories} />
         </LabelInput>
 
         <LabelInput label="Difficulty" required>
-          <SelectInput
-            predefinedValues={Difficulties}
-            {...difficultyProps}
-          />
+          <SelectInput predefinedValues={Difficulties} {...difficultyProps} />
         </LabelInput>
 
         <LabelInput label="Image">
