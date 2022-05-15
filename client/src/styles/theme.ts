@@ -3,6 +3,7 @@ import {
   ThemeBreakpoints,
   ThemeFontSizes,
   ThemeFontWeight,
+  ThemeRadii,
   ThemeSizes,
   ThemeSpace,
 } from './theme-definition'
@@ -50,6 +51,11 @@ const sizes: ThemeSizes = [
 sizes.minimalRequired = '320px'
 sizes.maximalCentered = '120rem'
 
+const radii: ThemeRadii = [0, '.4rem', '.8rem', '1.6rem']
+radii.small = radii[1]
+radii.medium = radii[2]
+radii.large = radii[3]
+
 const breakpoints: ThemeBreakpoints = ['768px', '970px', '1024px']
 
 export const lightTheme: Theme = {
@@ -72,6 +78,7 @@ export const lightTheme: Theme = {
   },
   space,
   sizes,
+  radii,
 
   breakpoints,
   mediaQueries: {
