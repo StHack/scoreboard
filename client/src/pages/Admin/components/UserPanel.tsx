@@ -55,7 +55,18 @@ export function UserPanel () {
                 >
                   Change Team
                 </Button>
-                <Button onClick={() => toggleIsAdmin(u)}>
+                <Button
+                  onClick={() => {
+                    if (u.isAdmin) {
+                      toggleIsAdmin(u)
+                    } else if (
+                      // eslint-disable-next-line no-restricted-globals
+                      confirm(`Are you sure to grant user "${u.username}" admin privilege ?`)
+                    ) {
+                      toggleIsAdmin(u)
+                    }
+                  }}
+                >
                   {u.isAdmin ? 'Revoke admin right' : 'Promote to admin'}
                 </Button>
                 <Button
@@ -63,7 +74,7 @@ export function UserPanel () {
                     if (
                       // eslint-disable-next-line no-restricted-globals
                       confirm(
-                        `Are you sure to delete User:\n\n${u.username}\n${u.team}}]`,
+                        `Are you sure to delete User:\n\n${u.username}\n${u.team}`,
                       )
                     ) {
                       deleteUser(u)
