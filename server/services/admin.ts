@@ -166,7 +166,9 @@ export function registerAdminNamespace(
     adminSocket.on(
       'users:changeIsAdmin',
       async (username: string, isAdmin: boolean, callback) => {
-        const user = await updateUser(username, { isAdmin })
+        const user = isAdmin
+          ? await updateUser(username, { isAdmin: true, team: 'admin' })
+          : await updateUser(username, { isAdmin: false })
 
         adminIo.in(user.username).disconnectSockets(true)
 
