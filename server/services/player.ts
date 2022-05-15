@@ -1,4 +1,5 @@
 import { getChallengeAchievement, registerAchievement } from 'db/AchievementDb'
+import { registerAttempt } from 'db/AttemptDb'
 import { checkChallenge } from 'db/ChallengeDb'
 import debug from 'debug'
 import { Request } from 'express'
@@ -41,6 +42,13 @@ export function registerPlayerNamespace(playerIo: Namespace) {
 
           return
         }
+
+        await registerAttempt({
+          challenge: challName,
+          username: user.username,
+          teamname: user.team,
+          proposal: flag,
+        })
 
         const achievements = await getChallengeAchievement(challName)
 
