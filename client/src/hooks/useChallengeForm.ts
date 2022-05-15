@@ -121,6 +121,18 @@ export function useChallengeForm (
     }
   }
 
+  const preview: Challenge = {
+    author: authorField.inputProp.value,
+    category: categoryField.inputProp.value,
+    description: descriptionField.inputProp.value,
+    difficulty: difficultyField.inputProp.value,
+    img: imgField.inputProp.value ?? '',
+    isBroken: false,
+    isOpen: true,
+    name: nameField.inputProp.value,
+    flag: flagsField.inputProp.value,
+  }
+
   return {
     formProps: {
       onSubmitCapture: onFormSubmit,
@@ -140,5 +152,6 @@ export function useChallengeForm (
     isLoading,
     reset,
     error,
+    preview,
   }
 }

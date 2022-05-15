@@ -24,6 +24,7 @@ import { Messages } from './Messages'
 export type ChallDescriptionPopupProps = {
   challenge: Challenge
   messages: Message[]
+  readonly?: boolean
   score: ChallengeScore
   onClose: () => void
 }
@@ -32,6 +33,7 @@ export function ChallDescriptionPopup ({
   challenge: { name, author, category, description, difficulty },
   score: { score, achievements },
   messages,
+  readonly = false,
   onClose,
 }: ChallDescriptionPopupProps) {
   const [error, setError] = useState<string>()
@@ -73,6 +75,7 @@ export function ChallDescriptionPopup ({
             flexDirection="column"
             onSubmit={async e => {
               e.preventDefault()
+              if (readonly) return
               if (!inputProp.value) return
 
               await attemptChall(name, inputProp.value, (isValid, error) => {
@@ -84,7 +87,11 @@ export function ChallDescriptionPopup ({
             py="3"
             px="4"
           >
-            <TextInput placeholder="Propose your flag" {...inputProp} />
+            <TextInput
+              placeholder="Propose your flag"
+              {...inputProp}
+              disabled={readonly ? true : inputProp.disabled}
+            />
 
             {error && (
               <Box backgroundColor="red" color="white">
@@ -92,7 +99,7 @@ export function ChallDescriptionPopup ({
               </Box>
             )}
 
-            <Button alignSelf="center" type="submit" mt="3">
+            <Button alignSelf="center" type="submit" mt="3" disabled={readonly}>
               Submit your flag
             </Button>
           </Box>

@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 import { Box } from 'components/Box'
+import { Button } from 'components/Button'
+import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
 import { DropdownInput } from 'components/DropdownInput'
 import { ImageInput } from 'components/ImageInput'
 import { LabelInput } from 'components/LabelInput'
@@ -10,7 +12,7 @@ import { useChallengeForm } from 'hooks/useChallengeForm'
 import { Categories } from 'models/Category'
 import { Challenge } from 'models/Challenge'
 import { Difficulties } from 'models/Difficulty'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 export type AdminProps = {
   chall?: Challenge
@@ -29,11 +31,18 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
     flagsProps,
     error,
     isNewChallenge,
+    preview,
   } = useChallengeForm(chall, onClose)
   const ref = useRef<HTMLFormElement>(null)
+  const [showPreview, setShowPreview] = useState<boolean>(false)
 
   return (
     <Popup
+      customAction={
+        <Button onClick={() => setShowPreview(v => !v)}>
+          {showPreview ? 'Hide' : 'Show'} Preview
+        </Button>
+      }
       title={
         isNewChallenge
           ? 'Create a new challenge'
@@ -75,6 +84,16 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
           <Box backgroundColor="red" color="white">
             {error}
           </Box>
+        )}
+
+        {showPreview && (
+          <ChallDescriptionPopup
+            challenge={preview}
+            messages={[]}
+            onClose={() => setShowPreview(false)}
+            score={{ achievements: [], score: 100 }}
+            readonly
+          />
         )}
       </Form>
     </Popup>

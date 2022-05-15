@@ -1,19 +1,19 @@
 import styled from '@emotion/styled'
 import { Box } from 'components/Box'
+import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
+import { Messages } from 'components/Messages'
 import { useGame } from 'hooks/useGame'
 import { usePlayer } from 'hooks/usePlayer'
 import { Challenge } from 'models/Challenge'
 import { Fragment, useEffect, useState } from 'react'
 import { display, DisplayProps, space, SpaceProps } from 'styled-system'
 import { cleanStyledSystem, gap, GapProps } from 'styles'
-import { ChallDescriptionPopup } from './components/ChallDescriptionPopup'
 import { ChallengeCard } from './components/ChallengeCard'
 import {
   getGroup,
   GroupBySelector,
   GroupByType,
 } from './components/GroupBySelector'
-import { Messages } from './components/Messages'
 
 export function Game () {
   const {
