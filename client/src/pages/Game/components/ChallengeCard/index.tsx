@@ -1,10 +1,11 @@
 import styled from '@emotion/styled'
 import { CategoryImg } from 'components/CategoryImg'
-import { useGame } from 'hooks/useGame'
-import { Achievement } from 'models/Achievement'
+import {
+  ChallState,
+  useChallengeSolveDelay,
+} from 'hooks/useChallengeSolveDelay'
 import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
-import { useEffect, useState } from 'react'
 import { space, SpaceProps } from 'styled-system'
 import { BounceIn } from 'styles/animation'
 import BrokenImg from './broken.png'
@@ -18,37 +19,16 @@ type ChallengeCardProps = {
   onClick: () => void
 }
 export function ChallengeCard ({
-  challenge: { name, img, isBroken, isOpen, category },
+  challenge,
   currentTeam,
   score: { score, achievements },
   onClick,
 }: ChallengeCardProps) {
-  const {
-    gameConfig: { solveDelay },
-  } = useGame()
-
-  const lastSolved = achievements[achievements.length - 1]
-  const openState = computeState(isBroken, isOpen, lastSolved, solveDelay)
-
-  const [delayedTimer, setDelayedTimer] = useState<string>()
-
-  useEffect(() => {
-    if (!lastSolved) return
-    if (openState !== 'delayed') return
-
-    const ticcks = setInterval(() => {
-      const remainingSeconds = Math.trunc(
-        (solveDelay - (new Date().getTime() - lastSolved.createdAt.getTime())) /
-          1000,
-      )
-      const minutes = Math.trunc(remainingSeconds / 60)
-        .toString()
-        .padStart(2, '0')
-      const seconds = (remainingSeconds % 60).toString().padStart(2, '0')
-      setDelayedTimer(`${minutes}:${seconds}`)
-    }, 1000)
-    return () => clearInterval(ticcks)
-  }, [lastSolved, openState, solveDelay])
+  const { name, img, category } = challenge
+  const { openState, delayedTimer } = useChallengeSolveDelay(
+    challenge,
+    achievements,
+  )
 
   return (
     <Card
@@ -57,35 +37,13 @@ export function ChallengeCard ({
       isSolved={achievements.some(a => a.teamname === currentTeam)}
       delayed={delayedTimer}
       m="2"
-      onClick={() => openState === 'open' && onClick()}
+      onClick={() => onClick()}
     >
       {img && <Image src={img} alt={name} title={name} />}
       {!img && <CategoryImg category={category} />}
       <h3>{name}</h3>
     </Card>
   )
-}
-
-type ChallState = 'broken' | 'closed' | 'delayed' | 'open'
-
-function computeState (
-  isBroken: boolean,
-  isOpen: boolean,
-  lastSolved: Achievement | undefined,
-  solveDelay: number,
-): ChallState {
-  if (!isOpen) return 'closed'
-
-  if (isBroken) return 'broken'
-
-  if (
-    !!lastSolved &&
-    lastSolved.createdAt.getTime() + solveDelay > new Date().getTime()
-  ) {
-    return 'delayed'
-  }
-
-  return 'open'
 }
 
 const Image = styled.img`
@@ -115,7 +73,7 @@ const Card = styled.div<
   border-radius: 0.5rem;
   box-shadow: ${p => p.theme.shadows.normal};
   animation: 250ms ${BounceIn};
-  cursor: ${p => (p.openState === 'open' ? 'pointer' : 'initial')};
+  cursor: pointer;
   position: relative;
 
   ::before {

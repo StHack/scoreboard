@@ -3,6 +3,7 @@ import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import Popup from 'components/Popup'
 import { TextInput } from 'components/TextInput'
+import { useChallengeSolveDelay } from 'hooks/useChallengeSolveDelay'
 import { useField } from 'hooks/useField'
 import { usePlayer } from 'hooks/usePlayer'
 import { Challenge } from 'models/Challenge'
@@ -30,12 +31,13 @@ export type ChallDescriptionPopupProps = {
 }
 
 export function ChallDescriptionPopup ({
-  challenge: { name, author, category, description, difficulty },
+  challenge,
   score: { score, achievements },
   messages,
   readonly = false,
   onClose,
 }: ChallDescriptionPopupProps) {
+  const { name, author, category, description, difficulty } = challenge
   const [error, setError] = useState<string>()
   const { attemptChall, myTeamName } = usePlayer()
   const { inputProp } = useField<string>({
@@ -45,7 +47,14 @@ export function ChallDescriptionPopup ({
     disabled: false,
   })
 
+  const { delayedTimer, openState } = useChallengeSolveDelay(
+    challenge,
+    achievements,
+  )
+
   const myTeamSolved = achievements.find(a => a.teamname === myTeamName)
+
+  const latestAchievement = achievements[achievements.length - 1]
 
   return (
     <Popup title={name} onClose={onClose}>
@@ -54,12 +63,21 @@ export function ChallDescriptionPopup ({
         <Text gridArea="category">{category}</Text>
         <Text gridArea="difficulty">{difficulty}</Text>
         <Text gridArea="score">Score: {score}</Text>
-        <Box as="article" gridArea="desc" my="3">
-          <ReactMarkdown
-            components={ReactMarkdownRenderers}
-            children={description}
-          />
-        </Box>
+
+        {openState !== 'broken' && (
+          <Box as="article" gridArea="desc" my="3">
+            <ReactMarkdown
+              components={ReactMarkdownRenderers}
+              children={description}
+            />
+          </Box>
+        )}
+
+        {openState === 'broken' && (
+          <Text gridArea="desc" my="2">
+            This challenge is currently considered as broken and cannot be completed right now.
+          </Text>
+        )}
 
         {myTeamSolved && (
           <Text gridArea="flag" my="2">
@@ -67,7 +85,7 @@ export function ChallDescriptionPopup ({
           </Text>
         )}
 
-        {!myTeamSolved && (
+        {!myTeamSolved && openState === 'open' && (
           <Box
             as="form"
             gridArea="flag"
@@ -105,6 +123,13 @@ export function ChallDescriptionPopup ({
           </Box>
         )}
 
+        {openState === 'delayed' && latestAchievement && (
+          <Text gridArea="state" my="2">
+            Team "{latestAchievement.teamname}" just solved this challenge, you
+            need to wait {delayedTimer} before being able to submit your flag
+          </Text>
+        )}
+
         {!!messages.length && (
           <Box gridArea="msg" my="3">
             <Text as="h2">Clues</Text>
@@ -123,6 +148,7 @@ const Grid = styled.div`
     'category  author  difficulty'
     'score     score   score'
     'desc      desc    desc'
+    'state     state   state'
     'flag      flag    flag'
     'msg       msg     msg';
 `
