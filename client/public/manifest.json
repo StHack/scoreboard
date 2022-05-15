@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-manifest",
-  "short_name": "Sthack 2021",
-  "name": "Sthack Edition 2021",
+  "short_name": "Sthack 2022",
+  "name": "Sthack Edition 2022",
   "icons":[],
   "start_url": "./",
   "scope": ".",

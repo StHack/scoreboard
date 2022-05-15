@@ -9,14 +9,19 @@
   <meta name="color-scheme" content="dark light" />
   <meta name="author" content="Sthack staff" />
   <meta name="keywords" content="" />
-  <meta name="description" content="Sthack interface 2021" />
+  <meta name="description" content="Sthack interface 2022" />
 
   <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <title>Sthack Edition 2021</title>
+  <title>Sthack Edition 2022</title>
+  <script>
+    if ('%NODE_ENV%' === 'production' && location.protocol !== 'https:') {
+      location.replace(`https:${location.href.substring(location.protocol.length)}`);
+    }
+  </script>
 </head>
 
 <body>
