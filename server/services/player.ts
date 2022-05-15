@@ -8,7 +8,10 @@ import { Namespace } from 'socket.io'
 
 const delayTimeInMinutes = 10
 
-export function registerPlayerNamespace(playerIo: Namespace) {
+export function registerPlayerNamespace(
+  playerIo: Namespace,
+  gameIo: Namespace,
+) {
   const logger = debug('sthack:player')
 
   playerIo.on('connection', playerSocket => {
@@ -78,7 +81,7 @@ export function registerPlayerNamespace(playerIo: Namespace) {
               username: user.username,
             })
 
-            playerIo.emit('achievement:added', achievement)
+            gameIo.emit('achievement:added', achievement)
           }
         } catch (error) {
           if (typeof error === 'string') {

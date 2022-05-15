@@ -45,7 +45,7 @@ registerAuthentificationForSocket(io.of('/api/player'), sessionClient as any)
 registerAuthentificationForSocket(io.of('/api/admin'), sessionClient as any)
 
 registerGameNamespace(io.of('/api/game'), serverConfig)
-registerPlayerNamespace(io.of('/api/player'))
+registerPlayerNamespace(io.of('/api/player'), io.of('/api/game'))
 registerAdminNamespace(
   io.of('/api/admin'),
   io.of('/api/game'),
