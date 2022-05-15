@@ -85,6 +85,11 @@ function useProvideAdmin (): AdminContext {
         challs.map(c => (c.name === challUpdated.name ? challUpdated : c)),
       ),
     )
+
+    return () => {
+      socket.off('challenge:added')
+      socket.off('challenge:updated')
+    }
   }, [socket])
 
   const updateUsers = (user: User) =>
