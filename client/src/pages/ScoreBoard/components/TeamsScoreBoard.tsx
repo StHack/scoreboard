@@ -12,19 +12,19 @@ export function TeamsScoreBoard ({ score }: TeamsScoreBoardProps) {
   return (
     <Table>
       <thead>
-      <tr>
-        <th>Rank</th>
-        <th>Team</th>
-        <th>Score</th>
-        <th>Breakthrough</th>
-      </tr>
+        <tr>
+          <th>Rank</th>
+          <th>Team</th>
+          <th>Score</th>
+          <th>Breakthrough</th>
+        </tr>
       </thead>
       {score.map(cs => (
         <tr key={cs.team}>
           <td>{cs.rank}</td>
           <td>{cs.team}</td>
           <td>{cs.score}</td>
-          <Box as='td' display='flex'>
+          <Box as="td" display="flex">
             {cs.breakthroughs.map(({ username, createdAt, challenge }, i) => (
               <Box
                 key={i}
@@ -32,7 +32,7 @@ export function TeamsScoreBoard ({ score }: TeamsScoreBoardProps) {
                   'fr',
                 )}`}
               >
-                <Logo size='2' />
+                <Logo size="2" />
               </Box>
             ))}
           </Box>
