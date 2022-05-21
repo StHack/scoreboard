@@ -23,6 +23,10 @@ To have a full dev environment up you need to do the following steps:
     REACT_APP_SERVER_HOST=ws://localhost:3000
     ```
 
+## Sample data
+
+There is many sample data folders that you can use to facilitate the development. They come from from the running of the sthack events however we have removed sensitive data (users passsword & their proposal).
+
 NB: the sample data (2021 dataset) users has their password set to `azerty123` for all users
 
 ## Build for prod
