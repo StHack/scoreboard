@@ -1,18 +1,7 @@
 import styled from '@emotion/styled'
-import {
-  color,
-  ColorProps,
-  size,
-  SizeProps,
-  space,
-  SpaceProps,
-} from 'styled-system'
+import { color, ColorProps, space, SpaceProps } from 'styled-system'
 import { cleanStyledSystem } from 'styles'
 
-export const Image = styled.img<SizeProps>`
-  object-fit: contain;
-  ${size}
-`
 export const ActionPanel = styled.td<SpaceProps>`
   display: flex;
 
