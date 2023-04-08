@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.10.8",
     "@styled-system/css": "^5.1.5",
     "@styled-system/should-forward-prop": "^5.1.5",
+    "@uiw/react-md-editor": "^3.20.10",
     "http-proxy-middleware": "^2.0.6",
     "prettier": "^2.8.8",
     "react": "^18.2.0",
@@ -23,6 +24,7 @@
     "react-markdown": "^8.0.7",
     "react-router-dom": "^6.11.1",
     "react-scripts": "^5.0.1",
+    "remark-gfm": "^3.0.1",
     "socket.io-client": "^4.6.1",
     "typescript": "^4.9.5",
     "web-vitals": "^3.3.1"

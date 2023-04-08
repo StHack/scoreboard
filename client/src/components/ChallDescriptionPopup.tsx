@@ -11,6 +11,7 @@ import { ChallengeScore } from 'models/GameScore'
 import { Message } from 'models/Message'
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import {
   gridArea,
   GridAreaProps,
@@ -69,6 +70,7 @@ export function ChallDescriptionPopup ({
             <ReactMarkdown
               components={ReactMarkdownRenderers}
               children={description}
+              remarkPlugins={[remarkGfm]}
             />
           </Box>
         )}

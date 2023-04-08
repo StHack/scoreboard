@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import MDEditor from '@uiw/react-md-editor'
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
@@ -7,8 +8,9 @@ import { ImageInput } from 'components/ImageInput'
 import { LabelInput } from 'components/LabelInput'
 import Popup from 'components/Popup'
 import { SelectInput } from 'components/SelectInput'
-import { TextArea, TextInput } from 'components/TextInput'
+import { TextInput } from 'components/TextInput'
 import { useChallengeForm } from 'hooks/useChallengeForm'
+import { useThemeMode } from 'hooks/useThemeMode'
 import { Categories } from 'models/Category'
 import { Challenge } from 'models/Challenge'
 import { Difficulties } from 'models/Difficulty'
@@ -36,7 +38,7 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
   const ref = useRef<HTMLFormElement>(null)
   const [showPreview, setShowPreview] = useState<boolean>(false)
   const [editFlag, setEditFlag] = useState<boolean>(false)
-
+  const { currentTheme } = useThemeMode()
   return (
     <Popup
       customAction={
@@ -62,7 +64,12 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
         </LabelInput>
 
         <LabelInput label="Description (markdown format)" required>
-          <TextArea rows={6} {...descriptionProps} />
+          <MDEditor
+            value={descriptionProps.value}
+            onChange={(str, e) => e && descriptionProps.onChange(e)}
+            preview="edit"
+            data-color-mode={currentTheme}
+          />
         </LabelInput>
 
         <LabelInput label="Flag" required={isNewChallenge}>
