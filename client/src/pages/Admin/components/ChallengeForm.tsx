@@ -35,6 +35,7 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
   } = useChallengeForm(chall, onClose)
   const ref = useRef<HTMLFormElement>(null)
   const [showPreview, setShowPreview] = useState<boolean>(false)
+  const [editFlag, setEditFlag] = useState<boolean>(false)
 
   return (
     <Popup
@@ -65,7 +66,12 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
         </LabelInput>
 
         <LabelInput label="Flag" required={isNewChallenge}>
-          <TextInput type="text" {...flagsProps} />
+          {(isNewChallenge || editFlag) && (
+            <TextInput type="text" {...flagsProps} />
+          )}
+          {!isNewChallenge && !editFlag && (
+            <Button onClick={() => setEditFlag(true)}>Edit flag</Button>
+          )}
         </LabelInput>
 
         <LabelInput label="Category" required>
