@@ -6,6 +6,8 @@ import {
   BorderProps,
   color,
   ColorProps,
+  flex,
+  FlexProps,
   FontSizeProps,
   FontWeightProps,
   gridArea,
@@ -26,6 +28,7 @@ type StyledButtonProps = SpaceProps &
   BorderProps &
   FontSizeProps &
   SizeProps &
+  FlexProps &
   FontWeightProps & {
     variant?: 'primary' | 'secondary' | 'link' | 'danger'
     href?: string
@@ -38,6 +41,7 @@ const Btn = styled('button', cleanStyledSystem)<StyledButtonProps>(
   typography,
   gridArea,
   place,
+  flex,
   variant({
     scale: 'buttons',
     variants: {

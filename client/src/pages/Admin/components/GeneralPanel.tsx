@@ -1,13 +1,14 @@
-import { Box } from 'components/Box'
+import { Box, BoxProps } from 'components/Box'
 import { Button } from 'components/Button'
 import { SelectInput } from 'components/SelectInput'
 import { TextInput } from 'components/TextInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useField } from 'hooks/useField'
 import { useGame } from 'hooks/useGame'
+import { FormEventHandler, PropsWithChildren, ReactNode } from 'react'
 
 export function GeneralPanel () {
-  const { challenges } = useGame()
+  const { gameConfig, challenges } = useGame()
   const {
     openGame,
     closeGame,
@@ -17,7 +18,6 @@ export function GeneralPanel () {
     setTeamSize,
   } = useAdmin()
 
-  const { gameConfig } = useGame()
   const messageInput = useField<string>({
     defaultValue: '',
     name: 'message',
@@ -47,12 +47,8 @@ export function GeneralPanel () {
       margin="0 auto"
       width="100%"
     >
-      <Box
-        display="flex"
-        flexDirection="row"
-        my="3"
-        gap="2"
-        as="form"
+      <BoxPanel
+        title="Announcement"
         onSubmit={e => {
           e.preventDefault()
           messageInput.inputProp.value &&
@@ -73,15 +69,13 @@ export function GeneralPanel () {
           placeholder="or to a specific challenge"
           {...messageChallengeInput.inputProp}
         />
-        <Button type="submit">Send</Button>
-      </Box>
+        <Button type="submit" flex={['100%', '0']}>
+          Send
+        </Button>
+      </BoxPanel>
 
-      <Box
-        display="flex"
-        flexDirection="row"
-        my="3"
-        gap="2"
-        as="form"
+      <BoxPanel
+        title="Team sizing"
         onSubmit={e => {
           e.preventDefault()
           teamSizeInput.inputProp.value &&
@@ -95,15 +89,48 @@ export function GeneralPanel () {
           flex="1"
           {...teamSizeInput.inputProp}
         />
-        <Button type="submit">Send</Button>
-      </Box>
+        <Button type="submit" flex={['100%', '0']}>
+          Send
+        </Button>
+      </BoxPanel>
 
-      <Box display="flex" flexDirection="row" gap="2">
+      <BoxPanel title="Game state">
         <Button onClick={openGame}>Open Game</Button>
         <Button onClick={closeGame}>Close Game</Button>
+      </BoxPanel>
+      <BoxPanel title="Registration state">
         <Button onClick={openRegistration}>Open Registration</Button>
         <Button onClick={closeRegistration}>Close Registration</Button>
+      </BoxPanel>
+    </Box>
+  )
+}
+
+type BoxPanelProps = BoxProps & {
+  title: ReactNode
+  onSubmit?: FormEventHandler<HTMLDivElement>
+}
+function BoxPanel ({
+  title,
+  children,
+  onSubmit,
+  ...props
+}: PropsWithChildren<BoxPanelProps>) {
+  return (
+    <Box
+      display="flex"
+      flexDirection="row"
+      flexWrap="wrap"
+      gap="2"
+      mb="3"
+      as={onSubmit ? 'form' : 'div'}
+      onSubmit={onSubmit}
+      {...props}
+    >
+      <Box as="h2" fontSize="2" flex="1 1 100%" mb="2">
+        {title}
       </Box>
+      {children}
     </Box>
   )
 }
