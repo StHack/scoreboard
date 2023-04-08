@@ -34,7 +34,7 @@ const io = new Server(httpServer, {
 const pubClient = createClient({ url: redisConnectionString() })
 const subClient = pubClient.duplicate()
 const serverConfigClient = pubClient.duplicate()
-const sessionClient = pubClient.duplicate({ legacyMode: true })
+const sessionClient = pubClient.duplicate()
 
 const serverConfig = getServerConfig(serverConfigClient as any)
 

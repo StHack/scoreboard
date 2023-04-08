@@ -110,8 +110,9 @@ export function registerAdminNamespace(
 
       for (const [id, soc] of playerIo.sockets) {
         const req = soc.request as Request
-        req.logOut()
-        soc.disconnect(true)
+        req.logOut(err => {
+          soc.disconnect(true)
+        })
       }
 
       gameIo.emit('game:ended')
@@ -136,11 +137,14 @@ export function registerAdminNamespace(
       gameIo.emit('game:config:updated', updatedConfig)
     })
 
-    adminSocket.on('game:sendMessage', async (message: string, challenge?: string) => {
-      const result = await addMessage({ content: message, challenge })
+    adminSocket.on(
+      'game:sendMessage',
+      async (message: string, challenge?: string) => {
+        const result = await addMessage({ content: message, challenge })
 
-      gameIo.emit('game:newMessage', result)
-    })
+        gameIo.emit('game:newMessage', result)
+      },
+    )
 
     adminSocket.on('users:list', async callback => {
       const users = await listUser()

@@ -1,4 +1,4 @@
-FROM node:16 as build
+FROM node:18 as build
 
 WORKDIR /client
 
@@ -8,7 +8,7 @@ RUN npm ci
 COPY client .
 RUN npm run build
 
-# FROM node:16 as certgenerator
+# FROM node:18 as certgenerator
 
 # WORKDIR /app
 # RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
@@ -16,7 +16,7 @@ RUN npm run build
 #   -keyout ./key.pem \
 #   -out cert.pem
 
-FROM node:16-alpine as run
+FROM node:18-alpine as run
 
 WORKDIR /app
 

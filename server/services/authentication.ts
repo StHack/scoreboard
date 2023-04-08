@@ -11,10 +11,9 @@ import { salt } from 'sthack-config'
 import { ServerConfig } from './serverconfig'
 
 const sessionMiddleware = (sessionRedisClient: RedisClientType) => {
-  const RedisS = RedisStore(session)
   return session({
     secret: salt(),
-    store: new RedisS({ client: sessionRedisClient }),
+    store: new RedisStore({ client: sessionRedisClient }),
     resave: false,
     saveUninitialized: false,
   })
@@ -113,9 +112,10 @@ export function registerAuthentification(
       io.in(socketId)?.disconnectSockets(true)
     }
 
-    req.logout()
-    res.cookie('connect.sid', '', { expires: new Date() })
-    res.send('Logged out succesfully')
+    req.logout(err => {
+      res.cookie('connect.sid', '', { expires: new Date() })
+      res.send('Logged out succesfully')
+    })
   })
 
   app.get('/api/me', (req, res) => {
