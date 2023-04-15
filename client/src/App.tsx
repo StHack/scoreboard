@@ -13,6 +13,7 @@ import { Rules } from 'pages/Rules'
 import { ScoreBoard } from 'pages/ScoreBoard'
 import { ReactElement, ReactNode } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { AppShell } from '@mantine/core'
 
 const AppBlock = styled.div`
   display: grid;
@@ -31,98 +32,11 @@ export default function App () {
   const { isAuthenticated, isAuthorized } = useAuth()
 
   return (
-    <ThemeProvider
-      theme={theme =>
-        isAuthorized
-          ? {
-              ...theme,
-              colors: {
-                ...theme.colors,
-                secondary: theme.colors.pink,
-                secondaryText: theme.colors.white,
-              },
-            }
-          : theme
-      }
-    >
-      <BrowserRouter>
-        <AppBlock>
-          <Header />
-
-          <Container>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <ProtectedRoute
-                    condition={isAuthenticated}
-                    fallbackTo="/login"
-                  >
-                    <ProvideGame>
-                      <ProvidePlayer>
-                        <Game />
-                      </ProvidePlayer>
-                    </ProvideGame>
-                  </ProtectedRoute>
-                }
-              />
-
-              <Route
-                path="/login"
-                element={
-                  <ProtectedRoute condition={!isAuthenticated} fallbackTo="/">
-                    <Login />
-                  </ProtectedRoute>
-                }
-              />
-
-              <Route
-                path="/register"
-                element={
-                  <ProtectedRoute condition={!isAuthenticated} fallbackTo="/">
-                    <Register />
-                  </ProtectedRoute>
-                }
-              />
-
-              <Route
-                path="/admin/*"
-                element={
-                  <ProtectedRoute
-                    condition={isAuthenticated && isAuthorized}
-                    fallbackTo="/"
-                  >
-                    <ProvideGame>
-                      <ProvideAdmin>
-                        <Admin />
-                      </ProvideAdmin>
-                    </ProvideGame>
-                  </ProtectedRoute>
-                }
-              />
-
-              <Route
-                path="/scoreboard"
-                element={
-                  <ProvideGame>
-                    <ScoreBoard />
-                  </ProvideGame>
-                }
-              />
-
-              <Route
-                path="/rules"
-                element={
-                  <ProvideGame>
-                    <Rules />
-                  </ProvideGame>
-                }
-              />
-            </Routes>
-          </Container>
-        </AppBlock>
-      </BrowserRouter>
-    </ThemeProvider>
+    <BrowserRouter>
+      <AppShell header={<Header />}>
+        <div></div>
+      </AppShell>
+    </BrowserRouter>
   )
 }
 
