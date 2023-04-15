@@ -1,71 +1,62 @@
 import styled from '@emotion/styled'
 import { useAuth } from 'hooks/useAuthentication'
 import { NavLink } from 'react-router-dom'
-import { space, SpaceProps } from 'styled-system'
-import { Box } from './Box'
-import { Logo } from './Icon'
+import { Flex, Group, Header as MantineHeader, Text } from '@mantine/core'
+import { ReactComponent as LogoSvg } from './Icon/images/Logo.svg'
 
 export function Header () {
   const { user, isAuthenticated, isAuthorized, logOut } = useAuth()
 
   return (
-    <HeaderBlock px="large" py="small">
-      <NavLink to="/">
-        <Logo size={2} color="secondaryText" />
-      </NavLink>
+    <MantineHeader
+      height={{ base: 50, md: 70 }}
+      bg={isAuthorized ? 'customPink.0' : 'customBlack.0'}
+      px={'md'}
+      py={'xs'}
+    >
+      <Flex align={'center'} h={'100%'} justify={'space-between'}>
+        <NavLink to="/">
+          <Logo />
+        </NavLink>
 
-      {user && (
-        <span>
-          {user.username} / {user.team}
-        </span>
-      )}
+        {user && (
+          <Text color={'white'}>
+            {user.username} / {user.team}
+          </Text>
+        )}
 
-      <nav>
-        <Box display="flex" flexDirection="row" as="ul">
+        <Group color={'white'}>
           <GameLink to="/scoreboard" label="Scoreboard" />
           <GameLink to="/rules" label="Rules" />
           <GameLink to="/admin" label="Admin" showIf={isAuthorized} />
           <GameLink to="/register" label="Register" showIf={!isAuthenticated} />
           <GameLink to="/login" label="Login" showIf={!isAuthenticated} />
-
           {isAuthenticated && (
-            <NavItem>
-              <NavButton onClick={logOut} type="button">
+            <NavButton onClick={logOut} style={{ cursor: 'pointer' }}>
+              <Text variant={'link'} color={'white'}>
                 Logout
-              </NavButton>
-            </NavItem>
+              </Text>
+            </NavButton>
           )}
-        </Box>
-      </nav>
-    </HeaderBlock>
+        </Group>
+      </Flex>
+    </MantineHeader>
   )
 }
 
-const HeaderBlock = styled.header<SpaceProps>`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  place-items: center;
-  background-color: ${p => p.theme.colors.secondary};
-  color: ${p => p.theme.colors.secondaryText};
-  ${space}
+const Logo = styled(LogoSvg)`
+  width: 40px;
+  fill: #ffffff;
 `
 
-const NavItem = styled.li<SpaceProps>`
-  display: flex;
+const NavLinkStyled = styled(NavLink)<{ isActive?: boolean }>`
+  color: white;
+  text-decoration: ${p => (p.isActive ? 'underline' : 'none')};
 `
 
-const NavLinkStyled = styled(NavLink)<SpaceProps & { isActive?: boolean }>`
-  color: ${p => p.theme.colors.secondaryText};
-  text-decoration: none;
-  ${space}
-  text-decoration: ${p => (p.isActive ? 'underline' : '')};
-`
-
-const NavButton = styled.button<SpaceProps>`
-  color: ${p => p.theme.colors.secondaryText};
+const NavButton = styled.div`
+  color: white;
   cursor: pointer;
-  ${space}
 `
 
 type GameLinkProps = {
@@ -73,14 +64,9 @@ type GameLinkProps = {
   label: string
   showIf?: boolean
 }
+
 function GameLink ({ to, label, showIf = true }: GameLinkProps) {
   if (!showIf) return null
 
-  return (
-    <NavItem>
-      <NavLinkStyled to={to} p="2">
-        {label}
-      </NavLinkStyled>
-    </NavItem>
-  )
+  return <NavLinkStyled to={to}>{label}</NavLinkStyled>
 }

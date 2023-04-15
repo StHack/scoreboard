@@ -5,6 +5,7 @@ export const themeMantine: MantineThemeOverride = {
   black: '#222221',
   white: '#FFFFFF',
   colors: {
-    pink: ['#BD408B'],
+    customPink: ['#BD408B'],
+    customBlack: ['#222221'],
   },
 }
