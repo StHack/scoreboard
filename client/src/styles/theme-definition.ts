@@ -83,21 +83,21 @@ export type ThemeColors = {
   secondaryText: Color
 }
 
-declare module '@emotion/react' {
-  export interface Theme {
-    colors: ThemeColors
-    fontSizes: ThemeFontSizes
-    fontWeights: ThemeFontWeight
-    borderWidths: ThemeBorderWith
-    space: ThemeSpace
-    sizes: ThemeSizes
-    radii: ThemeRadii
-
-    breakpoints: ThemeBreakpoints
-    mediaQueries: ThemeMediaQueries
-    zIndices: ThemeZIndex
-    shadows: ThemeShadow
-
-    buttons: any
-  }
-}
+// declare module '@emotion/react' {
+//   export interface Theme {
+//     colors: ThemeColors
+//     fontSizes: ThemeFontSizes
+//     fontWeights: ThemeFontWeight
+//     borderWidths: ThemeBorderWith
+//     space: ThemeSpace
+//     sizes: ThemeSizes
+//     radii: ThemeRadii
+//
+//     breakpoints: ThemeBreakpoints
+//     mediaQueries: ThemeMediaQueries
+//     zIndices: ThemeZIndex
+//     shadows: ThemeShadow
+//
+//     buttons: any
+//   }
+// }

@@ -58,91 +58,91 @@ radii.large = radii[3]
 
 const breakpoints: ThemeBreakpoints = ['768px', '970px', '1024px']
 
-export const lightTheme: Theme = {
-  colors: {
-    ...baseColors,
-    primary: baseColors.white,
-    secondary: baseColors.black,
-    background: baseColors.grey,
-    popupBackground: baseColors.black,
-    text: baseColors.black,
-    primaryText: baseColors.black,
-    secondaryText: baseColors.white,
-  },
-  fontSizes,
-  fontWeights,
-  borderWidths: {
-    thin: '0.1rem',
-    medium: '0.2rem',
-    thick: '0.3rem',
-  },
-  space,
-  sizes,
-  radii,
+// export const lightTheme: Theme = {
+//   colors: {
+//     ...baseColors,
+//     primary: baseColors.white,
+//     secondary: baseColors.black,
+//     background: baseColors.grey,
+//     popupBackground: baseColors.black,
+//     text: baseColors.black,
+//     primaryText: baseColors.black,
+//     secondaryText: baseColors.white,
+//   },
+//   fontSizes,
+//   fontWeights,
+//   borderWidths: {
+//     thin: '0.1rem',
+//     medium: '0.2rem',
+//     thick: '0.3rem',
+//   },
+//   space,
+//   sizes,
+//   radii,
+//
+//   breakpoints,
+//   mediaQueries: {
+//     tablet: `@media screen and (min-width: ${breakpoints[0]})`,
+//     desktop: `@media screen and (min-width: ${breakpoints[1]})`,
+//     largeDesktop: `@media screen and (min-width: ${breakpoints[2]})`,
+//   },
+//   zIndices: {
+//     highlight: 1,
+//     menu: 10,
+//     popin: 20,
+//   },
+//   shadows: {
+//     small: '0 1px 4px rgba(0, 0, 0, .125)',
+//     normal: '0px 4px 8px 0px rgba(0, 0, 0, 0.1)',
+//   },
+//
+//   buttons: {
+//     primary: {
+//       backgroundColor: 'primary',
+//       color: 'primaryText',
+//       '&:hover:enabled': {
+//         filter: 'opacity(0.5)',
+//       },
+//       '&[href]:hover': {
+//         filter: 'opacity(0.5)',
+//       },
+//       ':disabled': {
+//         backgroundColor: 'grey',
+//         color: 'greys.1',
+//       },
+//       textDecoration: 'none',
+//     },
+//     secondary: {
+//       backgroundColor: 'secondary',
+//       color: 'secondaryText',
+//       ':disabled': {
+//         color: 'greys.1',
+//       },
+//     },
+//     link: {
+//       background: 'none',
+//       color: 'primaryText',
+//       border: 'none',
+//     },
+//     danger: {
+//       backgroundColor: 'red',
+//       color: 'white',
+//       borderColor: 'red',
+//       '&:hover:enabled': {
+//         filter: 'opacity(0.5)',
+//       },
+//     },
+//   },
+// }
 
-  breakpoints,
-  mediaQueries: {
-    tablet: `@media screen and (min-width: ${breakpoints[0]})`,
-    desktop: `@media screen and (min-width: ${breakpoints[1]})`,
-    largeDesktop: `@media screen and (min-width: ${breakpoints[2]})`,
-  },
-  zIndices: {
-    highlight: 1,
-    menu: 10,
-    popin: 20,
-  },
-  shadows: {
-    small: '0 1px 4px rgba(0, 0, 0, .125)',
-    normal: '0px 4px 8px 0px rgba(0, 0, 0, 0.1)',
-  },
-
-  buttons: {
-    primary: {
-      backgroundColor: 'primary',
-      color: 'primaryText',
-      '&:hover:enabled': {
-        filter: 'opacity(0.5)',
-      },
-      '&[href]:hover': {
-        filter: 'opacity(0.5)',
-      },
-      ':disabled': {
-        backgroundColor: 'grey',
-        color: 'greys.1',
-      },
-      textDecoration: 'none',
-    },
-    secondary: {
-      backgroundColor: 'secondary',
-      color: 'secondaryText',
-      ':disabled': {
-        color: 'greys.1',
-      },
-    },
-    link: {
-      background: 'none',
-      color: 'primaryText',
-      border: 'none',
-    },
-    danger: {
-      backgroundColor: 'red',
-      color: 'white',
-      borderColor: 'red',
-      '&:hover:enabled': {
-        filter: 'opacity(0.5)',
-      },
-    },
-  },
-}
-
-export const darkTheme: Theme = {
-  ...lightTheme,
-  colors: {
-    ...lightTheme.colors,
-    white: '#FAFAFA',
-    secondary: baseColors.black,
-    background: baseColors.black,
-    popupBackground: '#CDCDCD',
-    text: '#FAFAFA',
-  },
-}
+// export const darkTheme: Theme = {
+//   ...lightTheme,
+//   colors: {
+//     ...lightTheme.colors,
+//     white: '#FAFAFA',
+//     secondary: baseColors.black,
+//     background: baseColors.black,
+//     popupBackground: '#CDCDCD',
+//     text: '#FAFAFA',
+//   },
+// }
