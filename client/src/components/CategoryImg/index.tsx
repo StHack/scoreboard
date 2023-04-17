@@ -1,8 +1,4 @@
-import { css } from '@emotion/react'
-import styled from '@emotion/styled'
 import { Category } from 'models/Category'
-import { size, SizeProps, space, SpaceProps } from 'styled-system'
-import { PlaceProps } from 'styles'
 import backdoor from './images/backdoor.png'
 import crypto from './images/crypto.png'
 import d from './images/default.png'
