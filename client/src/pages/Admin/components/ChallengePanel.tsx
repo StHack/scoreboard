@@ -41,7 +41,7 @@ export function ChallengePanel () {
             <Tr key={c.name} color={c.isBroken ? 'red' : ''}>
               <td>
                 {c.img && <Image src={c.img} size={[2, 3]} />}
-                {!c.img && <CategoryImg category={c.category} size={[2, 3]} />}
+                {!c.img && <CategoryImg category={c.category} />}
               </td>
               <td>{c.category}</td>
               <td>{c.name}</td>

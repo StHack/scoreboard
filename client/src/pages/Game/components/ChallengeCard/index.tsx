@@ -11,6 +11,15 @@ import { BounceIn } from 'styles/animation'
 import BrokenImg from './broken.png'
 import ClosedImg from './closed.png'
 import DelayedImg from './delayed.png'
+import {
+  Box,
+  Card, CardProps,
+  createPolymorphicComponent,
+  Flex,
+  Image,
+  Text,
+  Title,
+} from '@mantine/core'
 
 type ChallengeCardProps = {
   challenge: Challenge
@@ -18,6 +27,7 @@ type ChallengeCardProps = {
   currentTeam?: string
   onClick: () => void
 }
+
 export function ChallengeCard ({
   challenge,
   currentTeam,
@@ -31,65 +41,53 @@ export function ChallengeCard ({
   )
 
   return (
-    <Card
+    <StyledCard
       openState={openState}
+      delayed={delayedTimer}
       score={score}
       isSolved={achievements.some(a => a.teamname === currentTeam)}
-      delayed={delayedTimer}
-      m="2"
-      onClick={() => onClick()}
+      shadow="sm"
+      padding="xs"
+      radius="md"
+      maw="12rem"
+      mah="14rem"
+      withBorder
     >
-      {img && <Image src={img} alt={name} title={name} />}
-      {!img && <CategoryImg category={category} />}
-      <h3>{name}</h3>
-    </Card>
+      <Card.Section>
+        {img && <Image src={img} alt={name} title={name} fit="contain" />}
+        {!img && <CategoryImg category={category} />}
+      </Card.Section>
+      <Title order={4} ta="center" mb="xs" color="customPink.0">
+        {name}
+      </Title>
+    </StyledCard>
   )
 }
 
-const Image = styled.img`
-  object-fit: contain;
-  width: 100%;
-`
+interface StyledCardProps {
+  openState: ChallState
+  score: number
+  isSolved: boolean
+  delayed?: string
+}
 
-const Card = styled.div<
-  SpaceProps & {
-    openState: ChallState
-    score: number
-    isSolved: boolean
-    delayed?: string
-  }
->`
-  background-color: ${p => p.theme.colors.background};
-  width: 100%;
-  height: 100%;
-  max-width: ${p => p.theme.sizes[6]};
-  max-height: ${p => p.theme.sizes[7]};
-  margin: auto;
-  ${space}
-  display: flex;
-  flex-direction: column;
-  place-items: stretch;
-  overflow: hidden;
-  border-radius: 0.5rem;
-  box-shadow: ${p => p.theme.shadows.normal};
-  animation: 250ms ${BounceIn};
-  cursor: pointer;
+const StyledCard = createPolymorphicComponent<'div', CardProps & StyledCardProps>(styled(Card as any)`
   position: relative;
+  cursor: pointer;
 
   ::before {
     content: '${p => (p.isSolved ? `✔ ${p.score}` : p.score)}';
     position: absolute;
-    position: absolute;
     top: 0;
     right: 0;
-    padding: 0.6rem;
+    padding: 0.2rem 0.6rem;
     border-bottom-left-radius: 1rem;
     background: ${p =>
-      p.isSolved ? p.theme.colors.black : p.theme.colors.pink};
-    color: ${p =>
-      p.isSolved ? p.theme.colors.white : p.theme.colors.secondaryText};
+      p.isSolved ? p.theme.colors.customBlack[0] : p.theme.colors.customPink};
+    color: ${p => p.theme.white};
     text-align: center;
     box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
+    z-index: 100;
   }
 
   ::after {
@@ -105,6 +103,7 @@ const Card = styled.div<
     color: ${p => p.theme.colors.primary};
     place-content: center;
     place-items: center;
+    z-index: 200;
     background: url(${p =>
           p.openState === 'broken'
             ? BrokenImg
@@ -114,6 +113,6 @@ const Card = styled.div<
             ? DelayedImg
             : ''})
         center center / contain no-repeat,
-      ${p => p.theme.colors.popupBackground}AA;
+      ${p => p.theme.colors.customBlack[0]}AA;
   }
-`
+`)

@@ -15,26 +15,44 @@ import { ReactElement, ReactNode } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AppShell } from '@mantine/core'
 
-const AppBlock = styled.div`
-  display: grid;
-  grid-template-rows: auto 1fr;
-  height: 100vh;
-  min-width: ${p => p.theme.sizes.minimalRequired};
-  position: relative;
-`
-
-const Container = styled.div`
-  overflow: auto;
-  display: grid;
-`
-
 export default function App () {
   const { isAuthenticated, isAuthorized } = useAuth()
 
   return (
     <BrowserRouter>
-      <AppShell header={<Header />}>
-        <div></div>
+      <AppShell header={<Header />} padding={0}>
+        <AppWrapper>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute condition={isAuthenticated} fallbackTo="/login">
+                  <ProvideGame>
+                    <ProvidePlayer>
+                      <Game />
+                    </ProvidePlayer>
+                  </ProvideGame>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <ProtectedRoute condition={!isAuthenticated} fallbackTo="/">
+                  <Login />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <ProtectedRoute condition={!isAuthenticated} fallbackTo="/">
+                  <Register />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </AppWrapper>
       </AppShell>
     </BrowserRouter>
   )
@@ -57,3 +75,22 @@ function ProtectedRoute ({
 
   return <>{children}</>
 }
+
+const AppWrapper = styled.div`
+  height: 100%;
+  background-color: #eaeaea;
+  background-size: 8px 8px;
+  background-image: linear-gradient(
+    transparent 0%,
+    transparent 62.5%,
+    #fff 62.5%,
+    #fff 100%
+  ),
+  linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 62.5%,
+    #fff 62.5%,
+    #fff 100%
+  );
+`
