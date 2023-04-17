@@ -81,16 +81,16 @@ const AppWrapper = styled.div`
   background-color: #eaeaea;
   background-size: 8px 8px;
   background-image: linear-gradient(
-    transparent 0%,
-    transparent 62.5%,
-    #fff 62.5%,
-    #fff 100%
-  ),
-  linear-gradient(
-    to right,
-    transparent 0%,
-    transparent 62.5%,
-    #fff 62.5%,
-    #fff 100%
-  );
+      transparent 0%,
+      transparent 62.5%,
+      #fff 62.5%,
+      #fff 100%
+    ),
+    linear-gradient(
+      to right,
+      transparent 0%,
+      transparent 62.5%,
+      #fff 62.5%,
+      #fff 100%
+    );
 `

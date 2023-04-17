@@ -6,18 +6,14 @@ import {
 } from 'hooks/useChallengeSolveDelay'
 import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
-import { space, SpaceProps } from 'styled-system'
-import { BounceIn } from 'styles/animation'
 import BrokenImg from './broken.png'
 import ClosedImg from './closed.png'
 import DelayedImg from './delayed.png'
 import {
-  Box,
-  Card, CardProps,
+  Card,
+  CardProps,
   createPolymorphicComponent,
-  Flex,
   Image,
-  Text,
   Title,
 } from '@mantine/core'
 
@@ -71,7 +67,10 @@ interface StyledCardProps {
   delayed?: string
 }
 
-const StyledCard = createPolymorphicComponent<'div', CardProps & StyledCardProps>(styled(Card as any)`
+const StyledCard = createPolymorphicComponent<
+  'div',
+  CardProps & StyledCardProps
+>(styled(Card as any)`
   position: relative;
   cursor: pointer;
 

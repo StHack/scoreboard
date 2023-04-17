@@ -17,6 +17,7 @@ import recon from './images/recon.png'
 import reverse from './images/reverse.png'
 import shellcode from './images/shellcode.png'
 import web from './images/web.png'
+import { Image } from '@mantine/core'
 
 function categoryToImg (category: Category): string {
   switch (category) {
@@ -51,19 +52,9 @@ function categoryToImg (category: Category): string {
   }
 }
 
-type StyledIconProps = SpaceProps & SizeProps & PlaceProps
-
-const Img = styled.img<StyledIconProps>(
-  space,
-  size,
-  css`
-    object-fit: contain;
-  `,
-)
-
-export type CategoryImgProps = StyledIconProps & {
+export interface CategoryImgProps {
   category: Category
 }
-export function CategoryImg ({ category, ...p }: CategoryImgProps) {
-  return <Img {...p} src={categoryToImg(category)} title={category} />
+export function CategoryImg ({ category }: CategoryImgProps) {
+  return <Image src={categoryToImg(category)} title={category} />
 }

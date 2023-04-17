@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Box, Divider, Flex, Title } from '@mantine/core'
 import { Challenge } from '../../../../models/Challenge'
 import { ChallengeCard } from '../ChallengeCard'
@@ -18,12 +18,7 @@ const ChallengeList = ({ groups, handleClickChall }: ChallengeListProps) => {
   return (
     <Box>
       {Object.entries(groups).map(([key, challs]) => (
-        <Box
-          key={key}
-          mt="2.5rem"
-          pb="xl"
-          px="xl"
-        >
+        <Box key={key} mt="2.5rem" pb="xl" px="xl">
           <Title
             order={2}
             align="center"

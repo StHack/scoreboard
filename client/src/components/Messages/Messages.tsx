@@ -1,6 +1,5 @@
 import { Message } from 'models/Message'
 import { Divider, Flex, Text, Title } from '@mantine/core'
-import styled from '@emotion/styled'
 
 type MessagesProps = {
   messages: Message[]

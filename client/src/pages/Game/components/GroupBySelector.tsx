@@ -1,6 +1,5 @@
 import { Challenge } from 'models/Challenge'
-import { GridAreaProps } from 'styled-system'
-import { Box, Button, Flex, Group, Text } from '@mantine/core'
+import { Button, Flex, Group, Text } from '@mantine/core'
 
 const GroupBy = ['Category', 'Difficulty', 'Author'] as const
 export type GroupByType = typeof GroupBy[number]
@@ -10,11 +9,7 @@ type GroupBySelectorProps = {
   onChange: (value: GroupByType) => void
 }
 
-export function GroupBySelector ({
-  value,
-  onChange,
-  gridArea,
-}: GroupBySelectorProps & GridAreaProps) {
+export function GroupBySelector ({ value, onChange }: GroupBySelectorProps) {
   return (
     <Flex align="center">
       <Text>Group By : </Text>
