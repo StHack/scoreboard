@@ -9,19 +9,20 @@ import { ChallengeScore } from 'models/GameScore'
 import BrokenImg from './broken.png'
 import ClosedImg from './closed.png'
 import DelayedImg from './delayed.png'
-import {
-  Card,
-  CardProps,
-  createPolymorphicComponent,
-  Image,
-  Title,
-} from '@mantine/core'
+import { Card, CardProps, createStyles, CSSObject, Image, MantineTheme, Title } from '@mantine/core'
 
 type ChallengeCardProps = {
   challenge: Challenge
   score: ChallengeScore
   currentTeam?: string
   onClick: () => void
+}
+
+interface StyledCardProps {
+  state: ChallState
+  score: number
+  checked: boolean
+  delayed?: string
 }
 
 export function ChallengeCard ({
@@ -38,10 +39,10 @@ export function ChallengeCard ({
 
   return (
     <StyledCard
-      openState={openState}
+      state={openState}
       delayed={delayedTimer}
       score={score}
-      isSolved={achievements.some(a => a.teamname === currentTeam)}
+      checked={achievements.some(a => a.teamname === currentTeam)}
       shadow="sm"
       padding="xs"
       radius="md"
@@ -60,29 +61,19 @@ export function ChallengeCard ({
   )
 }
 
-interface StyledCardProps {
-  openState: ChallState
-  score: number
-  isSolved: boolean
-  delayed?: string
-}
-
-const StyledCard = createPolymorphicComponent<
-  'div',
-  CardProps & StyledCardProps
->(styled(Card as any)`
+const StyledCard = styled(Card as any)<StyledCardProps>`
   position: relative;
   cursor: pointer;
 
   ::before {
-    content: '${p => (p.isSolved ? `✔ ${p.score}` : p.score)}';
+    content: '${p => (p.checked ? `✔ ${p.score}` : p.score)}';
     position: absolute;
     top: 0;
     right: 0;
     padding: 0.2rem 0.6rem;
     border-bottom-left-radius: 1rem;
     background: ${p =>
-      p.isSolved ? p.theme.colors.customBlack[0] : p.theme.colors.customPink};
+      p.checked ? p.theme.colors.customBlack[0] : p.theme.colors.customPink};
     color: ${p => p.theme.white};
     text-align: center;
     box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
@@ -90,7 +81,7 @@ const StyledCard = createPolymorphicComponent<
   }
 
   ::after {
-    ${p => (p.openState === 'open' ? '' : `content: '${p.delayed || ''}'`)};
+    ${p => (p.state === 'open' ? '' : `content: '${p.delayed || ''}'`)};
     position: absolute;
     top: 0;
     left: 0;
@@ -104,14 +95,14 @@ const StyledCard = createPolymorphicComponent<
     place-items: center;
     z-index: 200;
     background: url(${p =>
-          p.openState === 'broken'
+          p.state === 'broken'
             ? BrokenImg
-            : p.openState === 'closed'
+            : p.state === 'closed'
             ? ClosedImg
-            : p.openState === 'delayed'
+            : p.state === 'delayed'
             ? DelayedImg
             : ''})
         center center / contain no-repeat,
-      ${p => p.theme.colors.customBlack[0]}AA;
+      ${p => p.theme.black}AA;
   }
-`)
+`
