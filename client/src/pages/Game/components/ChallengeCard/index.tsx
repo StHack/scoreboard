@@ -9,7 +9,7 @@ import { ChallengeScore } from 'models/GameScore'
 import BrokenImg from './broken.png'
 import ClosedImg from './closed.png'
 import DelayedImg from './delayed.png'
-import { Card, CardProps, createStyles, CSSObject, Image, MantineTheme, Title } from '@mantine/core'
+import { Card, Image, Title } from '@mantine/core'
 
 type ChallengeCardProps = {
   challenge: Challenge
@@ -89,8 +89,8 @@ const StyledCard = styled(Card as any)<StyledCardProps>`
     right: 0;
     display: flex;
     flex-direction: column;
-    font-size: ${p => p.theme.fontSizes[4]};
-    color: ${p => p.theme.colors.primary};
+    font-size: 3rem;
+    color: ${p => p.theme.white};
     place-content: center;
     place-items: center;
     z-index: 200;
