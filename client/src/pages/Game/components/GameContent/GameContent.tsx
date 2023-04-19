@@ -5,9 +5,14 @@ import { Challenge } from '../../../../models/Challenge'
 import { useGame } from '../../../../hooks/useGame'
 import { usePlayer } from '../../../../hooks/usePlayer'
 import ChallengeList from '../ChallengeList'
+import { ChallDescriptionPopup } from '../../../../components/ChallDescriptionPopup/ChallDescriptionPopup'
 
 const GameContent = () => {
-  const { challenges } = useGame()
+  const {
+    challenges,
+    score: { challsScore: challScore },
+    messages,
+  } = useGame()
 
   const { myScore, myTeamScore } = usePlayer()
 
@@ -22,12 +27,15 @@ const GameContent = () => {
     }),
     {},
   )
-
   const [selectedChall, setSelectedChall] = useState<Challenge>()
 
   useEffect(() => {
     setSelectedChall(undefined)
   }, [challenges])
+  const handleOpenModal = (challenge: Challenge) => {
+    setSelectedChall(challenge)
+  }
+
   return (
     <Box sx={() => ({ flexGrow: 1 })} p="md">
       <Box
@@ -49,9 +57,17 @@ const GameContent = () => {
         <GroupBySelector value={groupBy} onChange={setGroupBy} />
         <ChallengeList
           groups={groups}
-          handleClickChall={c => setSelectedChall(c)}
+          handleClickChall={c => handleOpenModal(c)}
         />
       </Box>
+      {selectedChall && (
+        <ChallDescriptionPopup
+          challenge={selectedChall}
+          score={challScore[selectedChall.name]}
+          messages={messages.filter(m => m.challenge === selectedChall.name)}
+          onClose={() => setSelectedChall(undefined)}
+        />
+      )}
     </Box>
   )
 }
