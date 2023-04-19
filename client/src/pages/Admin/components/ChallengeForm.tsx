@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
-import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
+import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup/ChallDescriptionPopup'
 import { DropdownInput } from 'components/DropdownInput'
 import { ImageInput } from 'components/ImageInput'
 import { LabelInput } from 'components/LabelInput'

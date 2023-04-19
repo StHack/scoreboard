@@ -49,6 +49,7 @@ export function ChallengeCard ({
       maw="12rem"
       mah="14rem"
       withBorder
+      onClick={onClick}
     >
       <Card.Section>
         {img && <Image src={img} alt={name} title={name} fit="contain" />}
