@@ -52,6 +52,21 @@ export default function App () {
               }
             />
             <Route
+              path="/admin/*"
+              element={
+                <ProtectedRoute
+                  condition={isAuthenticated && isAuthorized}
+                  fallbackTo="/"
+                >
+                  <ProvideGame>
+                    <ProvideAdmin>
+                      <Admin />
+                    </ProvideAdmin>
+                  </ProvideGame>
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="/scoreboard"
               element={
                 <ProvideGame>
