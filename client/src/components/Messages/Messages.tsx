@@ -23,7 +23,7 @@ const Messages = ({ messages }: MessagesProps) => {
 
 export default Messages
 
-const MessagesList = ({ messages }: MessagesProps) => {
+export const MessagesList = ({ messages }: MessagesProps) => {
   return (
     <>
       {messages
