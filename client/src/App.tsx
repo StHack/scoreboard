@@ -20,7 +20,7 @@ export default function App () {
 
   return (
     <BrowserRouter>
-      <AppShell header={<Header />} padding={0}>
+      <AppShell header={<Header />} navbarOffsetBreakpoint="sm" padding={0}>
         <AppWrapper>
           <Routes>
             <Route
@@ -49,6 +49,14 @@ export default function App () {
                 <ProtectedRoute condition={!isAuthenticated} fallbackTo="/">
                   <Register />
                 </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/scoreboard"
+              element={
+                <ProvideGame>
+                  <ScoreBoard />
+                </ProvideGame>
               }
             />
           </Routes>

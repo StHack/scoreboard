@@ -1,13 +1,11 @@
-import styled from '@emotion/styled'
 import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
-import { space, SpaceProps } from 'styled-system'
+import { Flex, Paper, Title } from '@mantine/core'
 import {
   HeadData,
   RowData,
   TableSort,
 } from '../../../components/TableSortFilter/TableSortFilter'
-import { Flex, Paper, Title } from '@mantine/core'
 
 export type ChallsScoreBoardProps = {
   score: Record<string, ChallengeScore>
