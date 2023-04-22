@@ -56,7 +56,7 @@ export const ChallengeForm = ({
 
   useEffect(() => {
     isOpen ? open() : close()
-  }, [isOpen])
+  }, [isOpen, open, close])
 
   useEffect(() => {
     setTitle(

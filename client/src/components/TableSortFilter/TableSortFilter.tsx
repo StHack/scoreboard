@@ -238,6 +238,7 @@ export const TableSort = ({
     if (sortOptions) {
       setSorting(sortOptions.sortBy, sortOptions.reversed)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortOptions])
 
   const setSorting = (field: keyof RowData, forcedReversed?: boolean) => {

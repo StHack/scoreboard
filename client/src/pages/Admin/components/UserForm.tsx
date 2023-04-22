@@ -26,7 +26,7 @@ export const UserForm = ({ user, editMode, onClose }: UserFormProps) => {
 
   useEffect(() => {
     open()
-  }, [])
+  }, [open])
 
   const handleCloseModal = () => {
     close()

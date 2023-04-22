@@ -49,7 +49,7 @@ export function ChallDescriptionPopup ({
     return () => {
       open()
     }
-  }, [challenge])
+  }, [challenge, open])
 
   return (
     <Modal

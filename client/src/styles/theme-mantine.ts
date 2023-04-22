@@ -11,8 +11,6 @@ export const themeMantine: MantineThemeOverride = {
   globalStyles: theme => ({
     html: {
       fontFamily: 'consolas, monospace, sans-serif',
-      '-webkit-text-size-adjust': '100%',
-      '-ms-text-size-adjust': '100%',
     },
   }),
 }
