@@ -8,7 +8,7 @@ export const themeMantine: MantineThemeOverride = {
     customPink: ['#BD408B'],
     customBlack: ['#222221'],
   },
-  globalStyles: theme => ({
+  globalStyles: () => ({
     html: {
       fontFamily: 'consolas, monospace, sans-serif',
     },
