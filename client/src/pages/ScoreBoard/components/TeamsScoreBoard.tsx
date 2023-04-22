@@ -1,7 +1,6 @@
-import { Box } from 'components/Box'
 import { Logo } from 'components/Icon'
 import { TeamScore } from 'models/GameScore'
-import { Flex, Paper, Title } from '@mantine/core'
+import { Box, Flex, Paper, Title } from '@mantine/core'
 import { Achievement } from '../../../models/Achievement'
 import {
   HeadData,
