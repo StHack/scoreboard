@@ -1,22 +1,44 @@
 import styled from '@emotion/styled'
 import { useAuth } from 'hooks/useAuthentication'
 import { NavLink } from 'react-router-dom'
-import { Flex, Group, Header as MantineHeader, Text } from '@mantine/core'
-import { ReactComponent as LogoSvg } from './Icon/images/Logo.svg'
+import {
+  createStyles,
+  em,
+  Flex,
+  getBreakpointValue,
+  Group,
+  Header as MantineHeader,
+  Text,
+} from '@mantine/core'
+import { Logo } from './Icon'
+import { useMediaQuery } from '@mantine/hooks'
 
-export function Header () {
+const useStyles = createStyles(theme => ({
+  groupLink: {
+    [`@media (max-width: ${em(getBreakpointValue(theme.breakpoints.md) - 1)})`]:
+      {
+        gap: '0.62rem',
+      },
+  },
+}))
+
+export const Header = () => {
   const { user, isAuthenticated, isAuthorized, logOut } = useAuth()
 
+  const largeScreen = useMediaQuery('(min-width: 64em)')
+
+  const { classes } = useStyles()
   return (
     <MantineHeader
       height={{ base: 50, md: 70 }}
-      bg={isAuthorized ? 'customPink.0' : 'customBlack.0'}
+      bg={isAuthorized ? 'customBlack.0' : 'customBlack.0'}
       px={'md'}
       py={'xs'}
+      zIndex={999}
     >
       <Flex align={'center'} h={'100%'} justify={'space-between'}>
         <NavLink to="/">
-          <Logo />
+          <Logo size={largeScreen ? '3rem' : '2.5rem'} color="white" />
         </NavLink>
 
         {user && (
@@ -25,7 +47,11 @@ export function Header () {
           </Text>
         )}
 
-        <Group color={'white'}>
+        <Group
+          color={'white'}
+          fz={{ base: '0.8rem', md: '1rem' }}
+          className={classes.groupLink}
+        >
           <GameLink to="/scoreboard" label="Scoreboard" />
           <GameLink to="/rules" label="Rules" />
           <GameLink to="/admin" label="Admin" showIf={isAuthorized} />
@@ -44,11 +70,6 @@ export function Header () {
   )
 }
 
-const Logo = styled(LogoSvg)`
-  width: 40px;
-  fill: #ffffff;
-`
-
 const NavLinkStyled = styled(NavLink)<{ isActive?: boolean }>`
   color: white;
   text-decoration: ${p => (p.isActive ? 'underline' : 'none')};
@@ -65,7 +86,7 @@ type GameLinkProps = {
   showIf?: boolean
 }
 
-function GameLink ({ to, label, showIf = true }: GameLinkProps) {
+const GameLink = ({ to, label, showIf = true }: GameLinkProps) => {
   if (!showIf) return null
 
   return <NavLinkStyled to={to}>{label}</NavLinkStyled>
