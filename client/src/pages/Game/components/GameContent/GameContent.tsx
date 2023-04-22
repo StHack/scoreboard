@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Flex, Space, Title } from '@mantine/core'
+import { Box, Flex, Paper, Space, Title } from '@mantine/core'
 import { getGroup, GroupBySelector, GroupByType } from '../GroupBySelector'
 import { Challenge } from '../../../../models/Challenge'
 import { useGame } from '../../../../hooks/useGame'
@@ -38,14 +38,7 @@ const GameContent = () => {
 
   return (
     <Box sx={() => ({ flexGrow: 1 })} p="md">
-      <Box
-        p="xl"
-        sx={theme => ({
-          borderRadius: theme.radius.lg,
-          backgroundColor: theme.white,
-          boxShadow: theme.shadows.xl,
-        })}
-      >
+      <Paper p="xl" radius="lg" bg="gray.0">
         <Flex px="xs" justify="space-around">
           <Title order={2}>Your Score: {myScore}</Title>
           <Title order={2}>Team Score: {myTeamScore}</Title>
@@ -59,7 +52,7 @@ const GameContent = () => {
           groups={groups}
           handleClickChall={c => handleOpenModal(c)}
         />
-      </Box>
+      </Paper>
       {selectedChall && (
         <ChallDescriptionPopup
           challenge={selectedChall}
