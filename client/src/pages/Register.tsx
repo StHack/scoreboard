@@ -1,9 +1,8 @@
 import styled from '@emotion/styled'
-import { Box } from 'components/Box'
 import { Banner } from 'components/Icon'
 import { useRegisterForm } from 'hooks/useRegisterForm'
 import RegisterLoginContainer from '../components/RegisterLoginContainer'
-import { Button, TextInput } from '@mantine/core'
+import { Box, Button, TextInput } from '@mantine/core'
 
 export function Register () {
   const {
@@ -28,7 +27,7 @@ export function Register () {
         />
         <TextInput label="Team" type="text" {...teamProps} mt={'md'} />
         {error && (
-          <Box backgroundColor="red" color="white">
+          <Box bg="red" color="white">
             {error}
           </Box>
         )}
