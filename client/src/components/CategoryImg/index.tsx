@@ -50,7 +50,8 @@ function categoryToImg (category: Category): string {
 
 export interface CategoryImgProps {
   category: Category
+  maw?: string
 }
-export function CategoryImg ({ category }: CategoryImgProps) {
-  return <Image src={categoryToImg(category)} title={category} />
+export function CategoryImg ({ category, maw }: CategoryImgProps) {
+  return <Image src={categoryToImg(category)} title={category} maw={maw} />
 }
