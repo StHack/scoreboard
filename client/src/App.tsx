@@ -15,7 +15,7 @@ import { ReactElement, ReactNode } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AppShell } from '@mantine/core'
 
-export default function App () {
+const App = () => {
   const { isAuthenticated, isAuthorized } = useAuth()
 
   return (
@@ -35,6 +35,7 @@ export default function App () {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/login"
               element={
@@ -43,6 +44,7 @@ export default function App () {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/register"
               element={
@@ -51,6 +53,7 @@ export default function App () {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/admin/*"
               element={
@@ -66,11 +69,21 @@ export default function App () {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/scoreboard"
               element={
                 <ProvideGame>
                   <ScoreBoard />
+                </ProvideGame>
+              }
+            />
+
+            <Route
+              path="/rules"
+              element={
+                <ProvideGame>
+                  <Rules />
                 </ProvideGame>
               }
             />
@@ -80,6 +93,7 @@ export default function App () {
     </BrowserRouter>
   )
 }
+export default App
 
 type ProtectedRouteProps = {
   children: ReactNode
@@ -87,11 +101,11 @@ type ProtectedRouteProps = {
   fallbackTo: string
 }
 
-function ProtectedRoute ({
+const ProtectedRoute = ({
   children,
   condition,
   fallbackTo: redirectTo,
-}: ProtectedRouteProps): ReactElement {
+}: ProtectedRouteProps): ReactElement => {
   if (!condition) {
     return <Navigate to={redirectTo} replace />
   }
