@@ -1,9 +1,8 @@
 import React, { FormEvent } from 'react'
-import { Box, Button, Group, Select, TextInput, Title } from '@mantine/core'
+import { Box, Button, Group, TextInput, Title } from '@mantine/core'
 import { useField } from '../../hooks/useField'
 import { useGame } from '../../hooks/useGame'
 import { useAdmin } from '../../hooks/useAdmin'
-import { flexShrink } from 'styled-system'
 
 const TeamSizeForm = () => {
   const { gameConfig } = useGame()

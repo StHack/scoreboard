@@ -1,4 +1,3 @@
-import { ThemeProvider } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Header } from 'components/Header'
 import { ProvideAdmin } from 'hooks/useAdmin'

@@ -20,7 +20,7 @@ const ChallDescriptionPopupSubmit = ({
   onClose,
   readonly,
 }: ChallengeDescriptionPopupSubmitProps) => {
-  const { attemptChall, myTeamName } = usePlayer()
+  const { attemptChall } = usePlayer()
   const { inputProp } = useField<string>({
     defaultValue: '',
     name: 'flag',

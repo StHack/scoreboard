@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import { InputHTMLAttributes } from 'react'
 import { Box, FileInput, Image as MantineImage, rem } from '@mantine/core'
 import { IconUpload } from '@tabler/icons-react'

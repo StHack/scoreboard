@@ -2,7 +2,7 @@ import { useGame } from 'hooks/useGame'
 import { GameConfig } from 'models/GameConfig'
 import ReactMarkdown from 'react-markdown'
 import { ReactMarkdownRenderers } from 'styles/react-markdown'
-import { Center, Paper, ScrollArea } from '@mantine/core'
+import { Center, Paper } from '@mantine/core'
 
 export const Rules = () => {
   const { gameConfig } = useGame()

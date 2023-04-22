@@ -7,7 +7,6 @@ import {
   RowData,
   TableSort,
 } from '../../../components/TableSortFilter/TableSortFilter'
-import { User } from '../../../models/User'
 import { Achievement } from '../../../models/Achievement'
 
 export const AchievementPanel = () => {
