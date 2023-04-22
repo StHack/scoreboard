@@ -17,6 +17,7 @@ import {
   IconChevronUp,
   IconSearch,
 } from '@tabler/icons-react'
+import { dateToString } from '../../services/date'
 
 const useStyles = createStyles(theme => ({
   th: {
@@ -48,13 +49,19 @@ export interface HeadData {
   sortable: boolean
 }
 
-type CellData = string | number | React.ReactNode
+type CellData = string | number | Date | React.ReactNode
 export type RowData = Record<string, CellData>
+
+type SortOptions = {
+  sortBy: string
+  reversed: boolean
+}
 
 interface TableSortProps {
   headers: HeadData[]
   data: RowData[]
   filterable?: boolean
+  sortOptions?: SortOptions
 }
 
 interface ThProps {
@@ -118,7 +125,9 @@ interface TrProps {
 }
 
 const Tr = ({ headers, data }: TrProps) => {
-  const cells = headers.map(head => <td key={head.key}>{data[head.key]}</td>)
+  const cells = headers.map(head => (
+    <td key={head.key}>{transFormDataToDisplay(data[head.key])}</td>
+  ))
   return <tr>{cells}</tr>
 }
 
@@ -149,6 +158,23 @@ const transFormDataToString = (value: CellData): string => {
   }
   return ''
 }
+const transFormDataToDisplay = (value: CellData): string | React.ReactNode => {
+  if (value instanceof Date) {
+    return dateToString(value)
+  }
+  switch (typeof value) {
+    case 'string':
+      return value
+    case 'number':
+      return (value as number).toString()
+    case 'object':
+      if (React.isValidElement(value)) {
+        return value
+      }
+      break
+  }
+  return ''
+}
 
 const sortData = (
   data: RowData[],
@@ -164,9 +190,15 @@ const sortData = (
     [...data].sort((a, b) => {
       const isNumberValues =
         typeof a[sortBy] === 'number' && typeof b[sortBy] === 'number'
+      const isDateValues =
+        a[sortBy] instanceof Date && b[sortBy] instanceof Date
+
       if (payload.reversed) {
         if (isNumberValues) {
           return (b[sortBy] as number) - (a[sortBy] as number)
+        }
+        if (isDateValues) {
+          return (b[sortBy] as Date)?.getTime() - (a[sortBy] as Date)?.getTime()
         }
         return transFormDataToString(b[sortBy]).localeCompare(
           transFormDataToString(a[sortBy]),
@@ -175,6 +207,9 @@ const sortData = (
 
       if (isNumberValues) {
         return (a[sortBy] as number) - (b[sortBy] as number)
+      }
+      if (isDateValues) {
+        return (a[sortBy] as Date)?.getTime() - (b[sortBy] as Date)?.getTime()
       }
       return transFormDataToString(a[sortBy]).localeCompare(
         transFormDataToString(b[sortBy]),
@@ -188,6 +223,7 @@ export const TableSort = ({
   headers,
   data,
   filterable = true,
+  sortOptions,
 }: TableSortProps) => {
   const [search, setSearch] = useState('')
   const [sortedData, setSortedData] = useState(data)
@@ -198,8 +234,15 @@ export const TableSort = ({
     setSortedData(data)
   }, [data])
 
-  const setSorting = (field: keyof RowData) => {
-    const reversed = field === sortBy ? !reverseSortDirection : false
+  useEffect(() => {
+    if (sortOptions) {
+      setSorting(sortOptions.sortBy, sortOptions.reversed)
+    }
+  }, [sortOptions])
+
+  const setSorting = (field: keyof RowData, forcedReversed?: boolean) => {
+    const reversed =
+      forcedReversed ?? field === sortBy ? !reverseSortDirection : false
     setReverseSortDirection(reversed)
     setSortBy(field)
     setSortedData(sortData(data, { sortBy: field, reversed, search }))
