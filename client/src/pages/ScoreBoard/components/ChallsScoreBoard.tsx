@@ -32,6 +32,7 @@ export function ChallsScoreBoard ({ score, challenges }: ChallsScoreBoardProps) 
       p={{ base: 'sm', md: 'xl' }}
       mah={{ base: '30rem', md: '100%' }}
       sx={{ flexShrink: 0 }}
+      bg="gray.0"
     >
       <Flex h="100%" direction="column" maw="20rem">
         <Title order={2} color="customPink.0" align="center">

@@ -10,7 +10,7 @@ import { PropsWithChildren } from 'react'
 export const Admin = () => {
   return (
     <Box p="xl">
-      <Paper p="md" shadow="xl" radius="lg">
+      <Paper p="md" shadow="xl" radius="lg" bg="gray.0">
         <Flex
           justify="center"
           align="center"
