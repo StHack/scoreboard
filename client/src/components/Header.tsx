@@ -31,7 +31,7 @@ export const Header = () => {
   return (
     <MantineHeader
       height={{ base: 50, md: 70 }}
-      bg={isAuthorized ? 'customBlack.0' : 'customBlack.0'}
+      bg={isAuthorized ? 'customPink.0' : 'black'}
       px={'md'}
       py={'xs'}
       zIndex={999}
