@@ -2,16 +2,24 @@ import { css } from '@emotion/react'
 import styled, { StyledComponent } from '@emotion/styled'
 import { FunctionComponent, SVGProps } from 'react'
 import {
-  color,
   ColorProps,
-  layout,
   LayoutProps,
-  space,
   SpaceProps,
+  color,
+  layout,
+  space,
 } from 'styled-system'
-import { cleanStyledSystem, place, PlaceProps } from 'styles'
+import { PlaceProps, cleanStyledSystem, place } from 'styles'
 import { ReactComponent as BannerSvg } from './images/Banner.svg'
 import { ReactComponent as LogoSvg } from './images/Logo.svg'
+import { ReactComponent as AchievementSvg } from './images/achievement.svg'
+import { ReactComponent as AttemptSvg } from './images/attempt.svg'
+import { ReactComponent as BreakSvg } from './images/break.svg'
+import { ReactComponent as ChallengeSvg } from './images/challenge.svg'
+import { ReactComponent as EditSvg } from './images/edit.svg'
+import { ReactComponent as GameSvg } from './images/game.svg'
+import { ReactComponent as RepairSvg } from './images/repair.svg'
+import { ReactComponent as UsersSvg } from './images/users.svg'
 
 type StyledIconProps = SpaceProps & PlaceProps & ColorProps & LayoutProps
 
@@ -49,3 +57,11 @@ const BaseSvg = (svg: FunctionComponent<SVGProps<SVGSVGElement>>) =>
 
 export const Logo = BaseSvg(LogoSvg)
 export const Banner = BaseSvg(BannerSvg)
+export const IconAchievement = BaseSvg(AchievementSvg)
+export const IconAttempt = BaseSvg(AttemptSvg)
+export const IconBreak = BaseSvg(BreakSvg)
+export const IconChallenge = BaseSvg(ChallengeSvg)
+export const IconEdit = BaseSvg(EditSvg)
+export const IconGame = BaseSvg(GameSvg)
+export const IconRepair = BaseSvg(RepairSvg)
+export const IconUsers = BaseSvg(UsersSvg)

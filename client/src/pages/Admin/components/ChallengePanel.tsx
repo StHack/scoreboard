@@ -11,6 +11,7 @@ import { Message } from 'models/Message'
 import { useState } from 'react'
 import { exportAsJson } from 'services/share'
 import { ChallengeForm } from './ChallengeForm'
+import { IconBreak, IconEdit, IconRepair } from 'components/Icon'
 
 export function ChallengePanel () {
   const [openEdit, setOpenEdit] = useState<boolean>(false)
@@ -154,12 +155,18 @@ function ChallengeBlock ({
         alignItems="start"
       >
         {!isBroken && (
-          <Button onClick={() => onBrokeClick(chall)}>Broke</Button>
+          <Button onClick={() => onBrokeClick(chall)} icon={IconBreak}>
+            Broke
+          </Button>
         )}
         {isBroken && (
-          <Button onClick={() => onRepairClick(chall)}>Repair</Button>
+          <Button onClick={() => onRepairClick(chall)} icon={IconRepair}>
+            Repair
+          </Button>
         )}
-        <Button onClick={() => onEditClick(chall)}>Edit</Button>
+        <Button onClick={() => onEditClick(chall)} icon={IconEdit}>
+          Edit
+        </Button>
         {/* <Button onClick={() => setShowPreview(true)}>Preview</Button> */}
       </Box>
       {showPreview && (
