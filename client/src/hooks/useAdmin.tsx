@@ -10,10 +10,12 @@ import {
   useState,
 } from 'react'
 import { useSocket } from './useSocket'
+import { Attempt } from 'models/Attempt'
 
 export type AdminContext = {
   challenges: Challenge[]
   users: User[]
+  attempts: Attempt[]
   createChallenge: (chall: BaseChallenge) => Promise<Challenge>
   updateChallenge: (chall: BaseChallenge) => Promise<Challenge>
   brokeChallenge: (chall: Challenge) => void
@@ -34,6 +36,7 @@ export type AdminContext = {
 const adminContext = createContext<AdminContext>({
   challenges: [],
   users: [],
+  attempts: [],
   createChallenge: () => Promise.resolve<Challenge>(undefined as any),
   updateChallenge: () => Promise.resolve<Challenge>(undefined as any),
   brokeChallenge: () => {},
@@ -64,6 +67,7 @@ function useProvideAdmin (): AdminContext {
   const { socket } = useSocket('/api/admin')
   const [challenges, setChallenges] = useState<Challenge[]>([])
   const [users, setUsers] = useState<User[]>([])
+  const [attempts, setAttempts] = useState<Attempt[]>([])
 
   useEffect(() => {
     if (!socket) return
@@ -76,13 +80,25 @@ function useProvideAdmin (): AdminContext {
       setUsers([...users])
     })
 
-    socket.on('challenge:added', chall =>
+    socket.emit('attempt:list', (attempts: Attempt[]) => {
+      setAttempts(
+        attempts.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
+      )
+    })
+
+    socket.on('challenge:added', (chall: Challenge) =>
       setChallenges(challs => [...challs, chall]),
     )
 
-    socket.on('challenge:updated', challUpdated =>
+    socket.on('challenge:updated', (challUpdated: Challenge) =>
       setChallenges(challs =>
         challs.map(c => (c.name === challUpdated.name ? challUpdated : c)),
+      ),
+    )
+
+    socket.on('attempt:added', (attempt: Attempt) =>
+      setAttempts(attempts =>
+        attempts.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
       ),
     )
 
@@ -98,6 +114,7 @@ function useProvideAdmin (): AdminContext {
   return {
     users,
     challenges,
+    attempts,
     createChallenge: chall =>
       new Promise<Challenge>((resolve, reject) => {
         if (!socket) throw new Error('connection is not available')

@@ -36,7 +36,7 @@ export function AchievementPanel () {
               <td>{a.challenge}</td>
               <td>{a.teamname}</td>
               <td>{a.username}</td>
-              <td>{a.createdAt.toISOString()}</td>
+              <td>{a.createdAt.toLocaleTimeString()}</td>
               <ActionPanel m="2">
                 <Button
                   variant="danger"

@@ -14,6 +14,7 @@ import { BaseChallenge } from 'models/Challenge'
 import { User } from 'models/User'
 import { Namespace } from 'socket.io'
 import { ServerConfig } from './serverconfig'
+import { listAttempt } from 'db/AttemptDb'
 
 export function registerAdminNamespace(
   adminIo: Namespace,
@@ -198,5 +199,10 @@ export function registerAdminNamespace(
         }
       },
     )
+
+    adminSocket.on('attempt:list', async callback => {
+      const attempt = await listAttempt()
+      callback(attempt)
+    })
   })
 }

@@ -11,6 +11,7 @@ const delayTimeInMinutes = 10
 export function registerPlayerNamespace(
   playerIo: Namespace,
   gameIo: Namespace,
+  adminIo: Namespace,
 ) {
   const logger = debug('sthack:player')
 
@@ -46,12 +47,13 @@ export function registerPlayerNamespace(
           return
         }
 
-        await registerAttempt({
+        const attempt = await registerAttempt({
           challenge: challName,
           username: user.username,
           teamname: user.team,
           proposal: flag,
         })
+        adminIo.emit('attempt:added', attempt)
 
         const achievements = await getChallengeAchievement(challName)
 

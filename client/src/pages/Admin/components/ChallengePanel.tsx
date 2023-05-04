@@ -1,19 +1,20 @@
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
+import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
 import { ChallengeCard } from 'components/ChallengeCard'
 import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
+import { Attempt } from 'models/Attempt'
 import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
+import { Message } from 'models/Message'
 import { useState } from 'react'
 import { exportAsJson } from 'services/share'
 import { ChallengeForm } from './ChallengeForm'
-import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
-import { Message } from 'models/Message'
 
 export function ChallengePanel () {
   const [openEdit, setOpenEdit] = useState<boolean>(false)
-  const { challenges, brokeChallenge, repairChallenge } = useAdmin()
+  const { challenges, attempts, brokeChallenge, repairChallenge } = useAdmin()
   const [challToEdit, setChallToEdit] = useState<Challenge>()
   const {
     messages,
@@ -44,6 +45,7 @@ export function ChallengePanel () {
             chall={c}
             score={challsScore[c.name]}
             messages={messages.filter(m => m.challenge === c.name)}
+            attempts={attempts.filter(a => a.challenge === c.name)}
             onBrokeClick={brokeChallenge}
             onEditClick={() => {
               setChallToEdit(c)
@@ -71,6 +73,7 @@ type ChallengeBlockProps = {
   chall: Challenge
   score: ChallengeScore
   messages: Message[]
+  attempts: Attempt[]
   onBrokeClick: (chall: Challenge) => void
   onEditClick: (chall: Challenge) => void
   onRepairClick: (chall: Challenge) => void
@@ -80,6 +83,7 @@ function ChallengeBlock ({
   chall,
   score,
   messages,
+  attempts,
   onBrokeClick,
   onEditClick,
   onRepairClick,
@@ -129,9 +133,9 @@ function ChallengeBlock ({
         <Box as="h1" fontSize="2">
           {name}
         </Box>
-        {/* <p>
-          Attempted <b>{score.achievements.length}</b> times
-        </p> */}
+        <p>
+          Attempted <b>{attempts.length}</b> times
+        </p>
         <p>
           Solved <b>{score.achievements.length}</b> times
           {lastSolve && (

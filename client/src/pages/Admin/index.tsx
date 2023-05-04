@@ -6,6 +6,7 @@ import { AchievementPanel } from './components/AchievementPanel'
 import { ChallengePanel } from './components/ChallengePanel'
 import { GeneralPanel } from './components/GeneralPanel'
 import { UserPanel } from './components/UserPanel'
+import { AttemptPanel } from './components/AttemptPanel'
 
 export function Admin () {
   return (
@@ -33,6 +34,7 @@ export function Admin () {
         <Link to="challenges">Challenges</Link>
         <Link to="users">Users</Link>
         <Link to="achievements">Achievements</Link>
+        <Link to="attempts">Attempts</Link>
       </Box>
 
       <Box display="grid" flex="1" py="3" overflowY="auto">
@@ -41,6 +43,7 @@ export function Admin () {
           <Route path="challenges" element={<ChallengePanel />} />
           <Route path="users" element={<UserPanel />} />
           <Route path="achievements" element={<AchievementPanel />} />
+          <Route path="attempts" element={<AttemptPanel />} />
         </Routes>
       </Box>
     </Box>
