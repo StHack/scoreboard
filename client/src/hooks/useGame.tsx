@@ -130,6 +130,7 @@ function useProvideGame (): GameContext {
       socket.off('challenge:updated')
       socket.off('achievement:added')
       socket.off('achievement:deleted')
+      socket.off('game:newMessage')
       socket.off('game:ended')
       socket.off('game:config:updated')
     }

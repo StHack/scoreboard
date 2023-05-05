@@ -31,6 +31,7 @@ export function useSocket (namespace: string) {
     return () => {
       socket.off('connect')
       socket.off('disconnect')
+      socket.disconnect()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
