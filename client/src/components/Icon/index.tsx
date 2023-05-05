@@ -18,6 +18,9 @@ import { ReactComponent as BreakSvg } from './images/break.svg'
 import { ReactComponent as ChallengeSvg } from './images/challenge.svg'
 import { ReactComponent as EditSvg } from './images/edit.svg'
 import { ReactComponent as GameSvg } from './images/game.svg'
+import { ReactComponent as Logo2023Svg } from './images/logo-2023.svg'
+import { ReactComponent as Logo2023IconSvg } from './images/logo-2023-icon.svg'
+import { ReactComponent as LogoPigeonSvg } from './images/logo-pigeon.svg'
 import { ReactComponent as RepairSvg } from './images/repair.svg'
 import { ReactComponent as UsersSvg } from './images/users.svg'
 
@@ -63,5 +66,8 @@ export const IconBreak = BaseSvg(BreakSvg)
 export const IconChallenge = BaseSvg(ChallengeSvg)
 export const IconEdit = BaseSvg(EditSvg)
 export const IconGame = BaseSvg(GameSvg)
+export const IconLogo2023 = BaseSvg(Logo2023Svg)
+export const IconLogo2023Icon = BaseSvg(Logo2023IconSvg)
+export const IconLogoPigeon = BaseSvg(LogoPigeonSvg)
 export const IconRepair = BaseSvg(RepairSvg)
 export const IconUsers = BaseSvg(UsersSvg)

@@ -47,6 +47,9 @@ const sizes: ThemeSizes = [
   '10rem',
   '12rem',
   '14rem',
+  '16rem',
+  '18rem',
+  '20rem',
 ]
 sizes.minimalRequired = '320px'
 sizes.maximalCentered = '120rem'

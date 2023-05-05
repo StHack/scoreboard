@@ -9,18 +9,38 @@ export function Rules () {
 
   return (
     <Box
-      m="auto"
-      p="4"
-      pt="1"
+      mx="auto"
+      my="5"
       maxWidth="maximalCentered"
-      backgroundColor="primary"
-      borderRadius="2"
-      boxShadow="small"
+      gap="5"
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
     >
-      <ReactMarkdown
-        components={ReactMarkdownRenderers}
-        children={rulesMarkdown(gameConfig)}
-      />
+      <Box
+        p="4"
+        pt="1"
+        borderRadius="2"
+        boxShadow="small"
+        backgroundColor="background"
+      >
+        <ReactMarkdown
+          components={ReactMarkdownRenderers}
+          children={rulesMarkdown(gameConfig)}
+        />
+      </Box>
+      <Box
+        p="4"
+        pt="1"
+        borderRadius="2"
+        boxShadow="small"
+        backgroundColor="background"
+      >
+        <ReactMarkdown
+          components={ReactMarkdownRenderers}
+          children={creditsMarkdown}
+        />
+      </Box>
     </Box>
   )
 }
@@ -73,4 +93,10 @@ When a team solves a challenge, it is locked for **${
 
 You can come and ask us your questions directly at the staff desk.
 Follow us on twitter at <https://twitter.com/sth4ck>
+`
+
+const creditsMarkdown = `
+# Credits
+
+- Background Image (Hand drawn flat design mountain landscape) by [Freepik](https://www.freepik.com/free-vector/hand-drawn-flat-design-mountain-landscape_20008383.htm#query=svg%20background%20nature&position=17&from_view=search&track=ais)
 `

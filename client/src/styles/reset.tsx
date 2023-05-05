@@ -1,4 +1,5 @@
 import { Global, css, Theme } from '@emotion/react'
+import Bg from './background.svg'
 
 const resetCss = (theme: Theme) => css`
   html,
@@ -118,22 +119,11 @@ const resetCss = (theme: Theme) => css`
     overscroll-behavior: none;
     line-height: normal;
     min-width: ${theme.sizes.minimalRequired};
-    background-color: ${theme.colors.background};
-    background-image: linear-gradient(
-        transparent 0%,
-        transparent 62.5%,
-        #fff 62.5%,
-        #fff 100%
-      ),
-      linear-gradient(
-        to right,
-        transparent 0%,
-        transparent 62.5%,
-        #fff 62.5%,
-        #fff 100%
-      );
-    background-size: 8px 8px;
-    background-position: center top;
+    background-image: url(${Bg});
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   ul {

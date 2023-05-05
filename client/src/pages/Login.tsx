@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
-import { Banner } from 'components/Icon'
+import { Banner, IconLogo2023 } from 'components/Icon'
 import { LabelInput } from 'components/LabelInput'
 import { TextInput } from 'components/TextInput'
 import { useLoginForm } from 'hooks/useLoginForm'
@@ -13,8 +13,9 @@ export function Login () {
 
   return (
     <Box display="grid" placeItems="center" maxWidth="60rem" margin="0 auto">
-      <Box display="flex" flexDirection="column">
-        <Banner mb="4" width="100%" />
+      <Box display="flex" flexDirection="column" gap="2">
+        <BBanner width="100%" />
+        <Logo mb="2" />
 
         <Form {...formProps}>
           <LabelInput label="Username">
@@ -51,4 +52,12 @@ export function Login () {
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+`
+
+const Logo = styled(IconLogo2023)`
+  filter: drop-shadow(-1px 6px 3px hsl(0deg 0% 0% / 80%));
+`
+
+const BBanner = styled(Banner)`
+  filter: drop-shadow(-1px 6px 3px hsl(0deg 0% 0% / 80%));
 `

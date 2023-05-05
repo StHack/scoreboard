@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 import { Box } from 'components/Box'
-import { Logo } from 'components/Icon'
+import { IconLogo2023Icon } from 'components/Icon'
 import { TeamScore } from 'models/GameScore'
-import { space, SpaceProps } from 'styled-system'
+import { SpaceProps, space } from 'styled-system'
 
 export type TeamsScoreBoardProps = {
   score: TeamScore[]
@@ -31,7 +31,7 @@ export function TeamsScoreBoard ({ score }: TeamsScoreBoardProps) {
                   'fr',
                 )}`}
               >
-                <Logo size="2" />
+                <IconLogo2023Icon size="2" />
               </Box>
             ))}
           </Box>
