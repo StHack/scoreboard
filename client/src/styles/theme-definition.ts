@@ -77,6 +77,7 @@ export type ThemeColors = {
   primary: Color
   secondary: Color
   background: Color
+  popupOuterBackground: Color
   popupBackground: Color
   text: Color
   primaryText: Color

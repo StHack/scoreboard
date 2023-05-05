@@ -12,7 +12,7 @@ export const PopupBackground = styled.div<SpaceProps>`
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: ${p => p.theme.colors.popupBackground}B3;
+  background-color: ${p => p.theme.colors.popupOuterBackground};
   z-index: 1;
   ${space}
   display: grid;
@@ -26,7 +26,7 @@ export const PopupBackground = styled.div<SpaceProps>`
 `
 
 export const PopupContainer = styled(Box)<SpaceProps>`
-  background-color: ${p => p.theme.colors.background};
+  background-color: ${p => p.theme.colors.popupBackground};
   width: 100%;
   max-width: 80rem;
   max-height: 100%;

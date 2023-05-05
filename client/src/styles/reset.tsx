@@ -185,10 +185,10 @@ const resetCss = (theme: Theme) => css`
     background-clip: padding-box;
 
     border-radius: 1.5rem;
-    background-color: ${theme.colors.popupBackground}26;
+    background-color: ${theme.colors.black}26;
 
     &:hover {
-      background-color: ${theme.colors.popupBackground}4D;
+      background-color: ${theme.colors.black}4D;
     }
   }
 
