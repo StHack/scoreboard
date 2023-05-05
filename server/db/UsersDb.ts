@@ -97,7 +97,7 @@ export async function removeUser(username: string): Promise<void> {
 }
 
 export async function listUser(): Promise<User[]> {
-  const users = await UserModel.find()
+  const users = await UserModel.find().sort({ _id: -1 })
 
   return users.map(u => u.toObject(removeProperties))
 }

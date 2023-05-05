@@ -20,7 +20,7 @@ export async function addMessage(message: BaseMessage): Promise<Message> {
 }
 
 export async function listMessage(): Promise<Message[]> {
-  const results = await MessageModel.find()
+  const results = await MessageModel.find().sort({ updatedAt: -1 })
 
   return results.map(r => r.toObject(removeMongoProperties))
 }

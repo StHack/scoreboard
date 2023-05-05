@@ -21,24 +21,32 @@ export async function registerAttempt(attempt: BaseAttempt): Promise<Attempt> {
 }
 
 export async function listAttempt(): Promise<Attempt[]> {
-  const results = await AttemptModel.find()
+  const results = await AttemptModel.find().sort({ updatedAt: -1 }).limit(200)
 
-  return results.map(r => r.toObject(removeMongoPropertiesWithOptions({ removeId: false })))
+  return results.map(r =>
+    r.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
+  )
 }
 
 export async function getTeamAttempt(teamname: string): Promise<Attempt[]> {
   const docs = await AttemptModel.find({ teamname })
-  return docs.map(d => d.toObject(removeMongoPropertiesWithOptions({ removeId: false })))
+  return docs.map(d =>
+    d.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
+  )
 }
 
 export async function getChallengeAttempt(
   challenge: string,
 ): Promise<Attempt[]> {
   const docs = await AttemptModel.find({ challenge })
-  return docs.map(d => d.toObject(removeMongoPropertiesWithOptions({ removeId: false })))
+  return docs.map(d =>
+    d.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
+  )
 }
 
 export async function getUserAttempt(username: string): Promise<Attempt[]> {
   const docs = await AttemptModel.find({ username })
-  return docs.map(d => d.toObject(removeMongoPropertiesWithOptions({ removeId: false })))
+  return docs.map(d =>
+    d.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
+  )
 }

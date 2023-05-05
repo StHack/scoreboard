@@ -97,9 +97,10 @@ function useProvideAdmin (): AdminContext {
     )
 
     socket.on('attempt:added', (attempt: Attempt) =>
-      setAttempts(attempts =>
-        attempts.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
-      ),
+      setAttempts(attempts => [
+        { ...attempt, createdAt: new Date(attempt.createdAt) },
+        ...attempts,
+      ]),
     )
 
     return () => {

@@ -31,23 +31,23 @@ export async function registerAchievement(
 }
 
 export async function listAchievement(): Promise<Achievement[]> {
-  const results = await AchievementModel.find()
+  const results = await AchievementModel.find().sort({ updatedAt: -1 })
 
   return results.map(r => r.toObject(removeMongoProperties))
 }
 
 export async function getTeamAchievement(teamname: string): Promise<Achievement[]> {
-  const docs = await AchievementModel.find({ teamname })
+  const docs = await AchievementModel.find({ teamname }).sort({ updatedAt: -1 })
   return docs.map(d => d.toObject(removeMongoProperties))
 }
 
 export async function getChallengeAchievement(challenge: string): Promise<Achievement[]> {
-  const docs = await AchievementModel.find({ challenge })
+  const docs = await AchievementModel.find({ challenge }).sort({ updatedAt: -1 })
   return docs.map(d => d.toObject(removeMongoProperties))
 }
 
 export async function getUserAchievement(username: string): Promise<Achievement[]> {
-  const docs = await AchievementModel.find({ username })
+  const docs = await AchievementModel.find({ username }).sort({ updatedAt: -1 })
   return docs.map(d => d.toObject(removeMongoProperties))
 }
 

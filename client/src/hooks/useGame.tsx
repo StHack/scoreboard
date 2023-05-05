@@ -93,8 +93,8 @@ function useProvideGame (): GameContext {
 
     socket.on('achievement:added', (achievement: Achievement) => {
       setAchievements(a => [
-        ...a,
         { ...achievement, createdAt: new Date(achievement.createdAt) },
+        ...a,
       ])
     })
 
@@ -112,8 +112,8 @@ function useProvideGame (): GameContext {
 
     socket.on('game:newMessage', (message: Message) => {
       setMessages(m => [
-        ...m,
         { ...message, createdAt: new Date(message.createdAt) },
+        ...m,
       ])
     })
 
