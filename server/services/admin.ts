@@ -1,4 +1,5 @@
 import { removeAchievement } from 'db/AchievementDb'
+import { listAttempt } from 'db/AttemptDb'
 import {
   closeAllChallenge,
   createChallenge,
@@ -13,8 +14,11 @@ import { Request } from 'express'
 import { BaseChallenge } from 'models/Challenge'
 import { User } from 'models/User'
 import { Namespace } from 'socket.io'
+import {
+  getServerActivityStatistics,
+  registerSocketConnectivityChange,
+} from './serveractivity'
 import { ServerConfig } from './serverconfig'
-import { listAttempt } from 'db/AttemptDb'
 
 export function registerAdminNamespace(
   adminIo: Namespace,
@@ -51,6 +55,8 @@ export function registerAdminNamespace(
       )
       next()
     })
+
+    registerSocketConnectivityChange(adminSocket, adminIo, gameIo, playerIo)
 
     adminSocket.on('challenge:list', async callback => {
       const challenges = await listChallenge()
@@ -119,6 +125,11 @@ export function registerAdminNamespace(
       gameIo.emit('game:ended')
     })
 
+    adminSocket.on('game:activity', async callback => {
+      const statistics = getServerActivityStatistics(adminIo, gameIo, playerIo)
+      callback(statistics)
+    })
+
     adminSocket.on('game:open', async () => {
       await openAllChallenge()
       await serverConfig.setGameOpened(true)
@@ -184,9 +195,16 @@ export function registerAdminNamespace(
     adminSocket.on('users:delete', async (username: string, callback) => {
       await removeUser(username)
 
+      playerIo.in(username).disconnectSockets()
       gameIo.in(username).disconnectSockets()
       adminSocket.in(username).disconnectSockets()
       callback()
+    })
+
+    adminSocket.on('users:logout', async (username: string) => {
+      playerIo.in(username).disconnectSockets()
+      gameIo.in(username).disconnectSockets()
+      adminSocket.in(username).disconnectSockets()
     })
 
     adminSocket.on(

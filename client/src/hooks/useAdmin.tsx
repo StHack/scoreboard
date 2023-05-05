@@ -11,11 +11,13 @@ import {
 } from 'react'
 import { useSocket } from './useSocket'
 import { Attempt } from 'models/Attempt'
+import { ServerActivityStatistics } from 'models/ServerActivityStatistics'
 
 export type AdminContext = {
   challenges: Challenge[]
   users: User[]
   attempts: Attempt[]
+  activityStatistics: ServerActivityStatistics
   createChallenge: (chall: BaseChallenge) => Promise<Challenge>
   updateChallenge: (chall: BaseChallenge) => Promise<Challenge>
   brokeChallenge: (chall: Challenge) => void
@@ -29,14 +31,28 @@ export type AdminContext = {
   changePassword: (user: User, password: string) => void
   toggleIsAdmin: (user: User) => void
   deleteUser: (user: User) => void
+  logoutUser: (user: User) => void
   deleteAchievement: (achievement: Achievement) => void
   sendMessage: (message: string, challenge?: string) => void
+}
+
+const defaultStatistics: ServerActivityStatistics = {
+  admins: [],
+  teamCount: 0,
+  teams: {},
+  userCount: 0,
+  sockets: {
+    admin: 0,
+    game: 0,
+    player: 0,
+  },
 }
 
 const adminContext = createContext<AdminContext>({
   challenges: [],
   users: [],
   attempts: [],
+  activityStatistics: defaultStatistics,
   createChallenge: () => Promise.resolve<Challenge>(undefined as any),
   updateChallenge: () => Promise.resolve<Challenge>(undefined as any),
   brokeChallenge: () => {},
@@ -50,6 +66,7 @@ const adminContext = createContext<AdminContext>({
   changePassword: () => {},
   toggleIsAdmin: () => {},
   deleteUser: () => {},
+  logoutUser: () => {},
   deleteAchievement: () => {},
   sendMessage: () => {},
 })
@@ -68,6 +85,7 @@ function useProvideAdmin (): AdminContext {
   const [challenges, setChallenges] = useState<Challenge[]>([])
   const [users, setUsers] = useState<User[]>([])
   const [attempts, setAttempts] = useState<Attempt[]>([])
+  const [statistics, setActivityStatistics] = useState<ServerActivityStatistics>(defaultStatistics)
 
   useEffect(() => {
     if (!socket) return
@@ -85,6 +103,10 @@ function useProvideAdmin (): AdminContext {
         attempts.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
       )
     })
+
+    socket.emit('game:activity', setActivityStatistics)
+
+    socket.on('game:activity:updated', setActivityStatistics)
 
     socket.on('challenge:added', (chall: Challenge) =>
       setChallenges(challs => [...challs, chall]),
@@ -104,8 +126,10 @@ function useProvideAdmin (): AdminContext {
     )
 
     return () => {
+      socket.off('game:activity:updated')
       socket.off('challenge:added')
       socket.off('challenge:updated')
+      socket.off('attempt:added')
     }
   }, [socket])
 
@@ -116,6 +140,7 @@ function useProvideAdmin (): AdminContext {
     users,
     challenges,
     attempts,
+    activityStatistics: statistics,
     createChallenge: chall =>
       new Promise<Challenge>((resolve, reject) => {
         if (!socket) throw new Error('connection is not available')
@@ -210,6 +235,11 @@ function useProvideAdmin (): AdminContext {
       socket.emit('users:delete', user.username, () =>
         setUsers(users.filter(u => u.username !== user.username)),
       )
+    },
+    logoutUser: user => {
+      if (!socket) throw new Error('connection is not available')
+
+      socket.emit('users:logout', user.username)
     },
     deleteAchievement: achievement => {
       if (!socket) throw new Error('connection is not available')

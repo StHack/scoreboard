@@ -8,7 +8,7 @@ import { Box } from 'components/Box'
 import { exportAsJson } from 'services/share'
 
 export function UserPanel () {
-  const { users, toggleIsAdmin, deleteUser } = useAdmin()
+  const { users, toggleIsAdmin, deleteUser, logoutUser } = useAdmin()
   const [userToEdit, setUserToEdit] = useState<User>()
   const [userEditMode, setUserEditMode] = useState<UserEditMode>()
 
@@ -68,6 +68,18 @@ export function UserPanel () {
                   }}
                 >
                   {u.isAdmin ? 'Revoke admin right' : 'Promote to admin'}
+                </Button>
+                <Button
+                  onClick={() => {
+                    if (
+                      // eslint-disable-next-line no-restricted-globals
+                      confirm(`Are you sure to disconnect user "${u.username}" ?`)
+                    ) {
+                      logoutUser(u)
+                    }
+                  }}
+                >
+                  Disconnect
                 </Button>
                 <Button
                   onClick={() => {

@@ -5,13 +5,14 @@ import debug from 'debug'
 import { Request } from 'express'
 import { User } from 'models/User'
 import { Namespace } from 'socket.io'
+import { registerSocketConnectivityChange } from './serveractivity'
 
 const delayTimeInMinutes = 10
 
 export function registerPlayerNamespace(
-  playerIo: Namespace,
-  gameIo: Namespace,
   adminIo: Namespace,
+  gameIo: Namespace,
+  playerIo: Namespace,
 ) {
   const logger = debug('sthack:player')
 
@@ -26,6 +27,8 @@ export function registerPlayerNamespace(
       )
       next()
     })
+
+    registerSocketConnectivityChange(playerSocket, adminIo, gameIo, playerIo)
 
     playerSocket.on(
       'challenge:solve',

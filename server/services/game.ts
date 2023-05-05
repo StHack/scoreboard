@@ -5,12 +5,17 @@ import { listTeam } from 'db/UsersDb'
 import { GameConfig } from 'models/GameConfig'
 import { Namespace } from 'socket.io'
 import { ServerConfig } from './serverconfig'
+import { registerSocketConnectivityChange } from './serveractivity'
 
 export function registerGameNamespace(
+  adminIo: Namespace,
   gameIo: Namespace,
+  playerIo: Namespace,
   serverConfig: ServerConfig,
 ) {
   gameIo.on('connection', gameSocket => {
+    registerSocketConnectivityChange(gameSocket, adminIo, gameIo, playerIo)
+
     gameSocket.on('challenge:list', async callback => {
       const challenges = await listChallenge()
 

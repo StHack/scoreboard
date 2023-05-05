@@ -41,21 +41,16 @@ const serverConfig = getServerConfig(serverConfigClient as any)
 initMongo()
 registerAuthentification(app, io, serverConfig, sessionClient as any)
 
-registerAuthentificationForSocket(io.of('/api/player'), sessionClient as any)
-registerAuthentificationForSocket(io.of('/api/admin'), sessionClient as any)
+const adminIo = io.of('/api/admin')
+const gameIo = io.of('/api/game')
+const playerIo = io.of('/api/player')
 
-registerGameNamespace(io.of('/api/game'), serverConfig)
-registerPlayerNamespace(
-  io.of('/api/player'),
-  io.of('/api/game'),
-  io.of('/api/admin'),
-)
-registerAdminNamespace(
-  io.of('/api/admin'),
-  io.of('/api/game'),
-  io.of('/api/player'),
-  serverConfig,
-)
+registerAuthentificationForSocket(playerIo, sessionClient as any)
+registerAuthentificationForSocket(adminIo, sessionClient as any)
+
+registerGameNamespace(adminIo, gameIo, playerIo, serverConfig)
+registerPlayerNamespace(adminIo, gameIo, playerIo)
+registerAdminNamespace(adminIo, gameIo, playerIo, serverConfig)
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, 'build')))
