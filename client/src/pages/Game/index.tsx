@@ -39,8 +39,10 @@ export function Game () {
   const [selectedChall, setSelectedChall] = useState<Challenge>()
 
   useEffect(() => {
-    setSelectedChall(undefined)
-  }, [challenges])
+    if (!challenges.find(c => c === selectedChall)) {
+      setSelectedChall(undefined)
+    }
+  }, [challenges, selectedChall])
 
   return (
     <Grid display={['flex', 'grid']} gap={[1, 4]}>
