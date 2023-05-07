@@ -6,6 +6,7 @@ import {
   FlexboxProps,
   RequiredTheme,
   ResponsiveValue,
+  styleFn,
   system,
   Theme,
   TLengthStyledSystem,
@@ -47,6 +48,13 @@ export const clean = (...propsToClean: string[]) => ({
 })
 
 export const cleanStyledSystem = clean()
+
+export const cleanStyledSystemOnly = (styledSystemFn: styleFn) => ({
+  shouldForwardProp: (p: any) => {
+    const regex = new RegExp(`^(${styledSystemFn.propNames!.join('|')})$`)
+    return !regex.test(p)
+  },
+})
 
 export interface PlaceProps<ThemeType extends Theme = RequiredTheme>
   extends FlexboxProps<ThemeType> {

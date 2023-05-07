@@ -6,6 +6,7 @@ import {
   border,
   BorderProps,
   color,
+  compose,
   flexbox,
   FlexboxProps,
   grid,
@@ -36,7 +37,7 @@ export type BoxProps = SpaceProps &
   TypographyProps &
   GapProps
 
-export const Box = styled('div', cleanStyledSystem)<BoxProps>(
+export const StyledBoxComposed = compose(
   border,
   layout,
   shadow,
@@ -50,3 +51,5 @@ export const Box = styled('div', cleanStyledSystem)<BoxProps>(
   typography,
   gap,
 )
+
+export const Box = styled('div', cleanStyledSystem)<BoxProps>(StyledBoxComposed)
