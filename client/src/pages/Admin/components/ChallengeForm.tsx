@@ -49,7 +49,7 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
       title={
         isNewChallenge
           ? 'Create a new challenge'
-          : `Edition of challenge "${chall?.name}""`
+          : `Edition of challenge "${chall?.name}"`
       }
       onCancel={onClose}
       onValidate={() => ref.current?.requestSubmit() && onClose()}
