@@ -1,3 +1,4 @@
+import styled from '@emotion/styled'
 import { Box, BoxProps } from 'components/Box'
 import { Button } from 'components/Button'
 import { SelectInput } from 'components/SelectInput'
@@ -10,6 +11,7 @@ import { FormEventHandler, PropsWithChildren, ReactNode } from 'react'
 export function GeneralPanel () {
   const { gameConfig, challenges } = useGame()
   const {
+    activityStatistics,
     openGame,
     closeGame,
     openRegistration,
@@ -44,6 +46,7 @@ export function GeneralPanel () {
       flexDirection="column"
       maxWidth="maximalCentered"
       px="2"
+      gap="3"
       margin="0 auto"
       width="100%"
     >
@@ -98,9 +101,86 @@ export function GeneralPanel () {
         <Button onClick={openGame}>Open Game</Button>
         <Button onClick={closeGame}>Close Game</Button>
       </BoxPanel>
+
       <BoxPanel title="Registration state">
         <Button onClick={openRegistration}>Open Registration</Button>
         <Button onClick={closeRegistration}>Close Registration</Button>
+      </BoxPanel>
+
+      <BoxPanel
+        title="Server Statistics"
+        display="grid"
+        gridTemplateColumns="repeat(6, 1fr)"
+        placeItems="center"
+      >
+        <Box as="h3" fontSize="2" textAlign="center" gridColumn="span 6">
+          Socket Statistics
+        </Box>
+
+        <Box as="span" gridColumn="span 2">
+          Game socket: {activityStatistics.sockets.game}
+        </Box>
+        <Box as="span" gridColumn="span 2">
+          Player socket: {activityStatistics.sockets.player}
+        </Box>
+        <Box as="span" gridColumn="span 2">
+          Admin socket: {activityStatistics.sockets.admin}
+        </Box>
+
+        <Box as="h3" fontSize="2" mt="2" gridColumn="span 6">
+          Game Statistics
+        </Box>
+
+        <Box as="span" gridColumn="span 3">
+          Teams connected: {activityStatistics.teamCount}
+        </Box>
+        <Box as="span" gridColumn="span 3">
+          Users connected: {activityStatistics.userCount}
+        </Box>
+
+        <Ul
+          as="ul"
+          gridColumn="span 6"
+          placeSelf="stretch"
+          display="grid"
+          gridTemplateColumns={['1fr', '1fr 1fr', '1fr 1fr 1fr']}
+          alignItems="start"
+          gap="2"
+        >
+          {Object.entries(activityStatistics.teams).map(([team, stats]) => (
+            <li key={team}>
+              {team} ({stats.count} players)
+              <Ul as="ul">
+                {Object.entries(stats.users).map(([user, s]) => (
+                  <li key={user}>
+                    {user} ({s.sockets} sockets)
+                  </li>
+                ))}
+              </Ul>
+            </li>
+          ))}
+        </Ul>
+
+        {activityStatistics.admins.length === 0 && (
+          <>
+            <Box as="h3" fontSize="2" mt="2" gridColumn="span 6">
+              Admins connected
+            </Box>
+            <Ul
+              as="ul"
+              gridColumn="span 6"
+              placeSelf="stretch"
+              display="grid"
+              gridTemplateColumns={['1fr', '1fr 1fr', '1fr 1fr 1fr']}
+              alignItems="start"
+              gap="2"
+            >
+              {activityStatistics.admins.map(admin => (
+                <li key={admin}>{admin}</li>
+              ))}
+            </Ul>
+          </>
+        )}
       </BoxPanel>
     </Box>
   )
@@ -122,7 +202,12 @@ function BoxPanel ({
       flexDirection="row"
       flexWrap="wrap"
       gap="2"
-      mb="3"
+      backgroundColor="background"
+      p="3"
+      borderColor="secondary"
+      borderWidth="medium"
+      borderStyle="solid"
+      borderRadius="medium"
       as={onSubmit ? 'form' : 'div'}
       onSubmit={onSubmit}
       {...props}
@@ -134,3 +219,7 @@ function BoxPanel ({
     </Box>
   )
 }
+
+const Ul = styled(Box)`
+  padding-inline-start: ${p => p.theme.space[3]};
+`
