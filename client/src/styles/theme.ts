@@ -33,7 +33,17 @@ fontSizes.subtitle = fontSizes[4]
 
 const fontWeights: ThemeFontWeight = [400, 600]
 
-const space: ThemeSpace = [0, '.4rem', '.8rem', '1.6rem', '3.2rem', '6.4rem']
+const space: ThemeSpace = [
+  0,
+  '.4rem',
+  '.8rem',
+  '1.6rem',
+  '3.2rem',
+  '6.4rem',
+  '12.8rem',
+  '25.6rem',
+  '51.2rem',
+]
 space.small = space[1]
 space.medium = space[2]
 space.large = space[3]

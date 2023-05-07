@@ -13,13 +13,6 @@ export type TeamScore = {
   solved: Achievement[]
 }
 
-export type UserScore = {
-  rank: number
-  team: string
-  score: number
-  breakthroughs: Achievement[]
-}
-
 export type GameScore = {
   challsScore: Record<string, ChallengeScore>
   teamsScore: TeamScore[]

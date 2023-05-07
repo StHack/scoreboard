@@ -18,7 +18,7 @@ export function ScoreBoard () {
       gap="2"
       p="2"
     >
-      <TeamsScoreBoard score={teamsScore} />
+      <TeamsScoreBoard teamsScore={teamsScore} challsScore={challsScore} />
       <ChallsScoreBoard score={challsScore} challenges={challenges} />
     </Box>
   )
