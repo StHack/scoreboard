@@ -1,15 +1,20 @@
+/* eslint-disable no-restricted-globals */
 import styled from '@emotion/styled'
 import { Box, BoxProps } from 'components/Box'
 import { Button } from 'components/Button'
 import { SelectInput } from 'components/SelectInput'
 import { TextInput } from 'components/TextInput'
+import { ToggleInput } from 'components/ToggleInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useField } from 'hooks/useField'
 import { useGame } from 'hooks/useGame'
-import { FormEventHandler, PropsWithChildren, ReactNode } from 'react'
+import { FormEventHandler, PropsWithChildren, ReactNode, useState } from 'react'
 
 export function GeneralPanel () {
-  const { gameConfig, challenges } = useGame()
+  const {
+    gameConfig: { teamSize, registrationOpened, gameOpened },
+    challenges,
+  } = useGame()
   const {
     activityStatistics,
     openGame,
@@ -20,6 +25,7 @@ export function GeneralPanel () {
     setTeamSize,
   } = useAdmin()
 
+  const [lala, setLala] = useState<boolean>(false)
   const messageInput = useField<string>({
     defaultValue: '',
     name: 'message',
@@ -52,6 +58,8 @@ export function GeneralPanel () {
     >
       <BoxPanel
         title="Announcement"
+        flexDirection="row"
+        flexWrap="wrap"
         onSubmit={e => {
           e.preventDefault()
           messageInput.inputProp.value &&
@@ -79,6 +87,8 @@ export function GeneralPanel () {
 
       <BoxPanel
         title="Team sizing"
+        flexDirection="row"
+        flexWrap="wrap"
         onSubmit={e => {
           e.preventDefault()
           teamSizeInput.inputProp.value &&
@@ -87,7 +97,7 @@ export function GeneralPanel () {
         }}
       >
         <TextInput
-          placeholder={`Set a new team size limit (currently ${gameConfig.teamSize})`}
+          placeholder={`Set a new team size limit (currently ${teamSize})`}
           type="number"
           flex="1"
           {...teamSizeInput.inputProp}
@@ -98,13 +108,27 @@ export function GeneralPanel () {
       </BoxPanel>
 
       <BoxPanel title="Game state">
-        <Button onClick={openGame}>Open Game</Button>
-        <Button onClick={closeGame}>Close Game</Button>
-      </BoxPanel>
-
-      <BoxPanel title="Registration state">
-        <Button onClick={openRegistration}>Open Registration</Button>
-        <Button onClick={closeRegistration}>Close Registration</Button>
+        <ToggleInput
+          checked={gameOpened}
+          onChange={value =>
+            value
+              ? openGame()
+              : confirm('Are you sure to stop the game?') && closeGame()
+          }
+        >
+          Game Status
+        </ToggleInput>
+        <ToggleInput
+          checked={registrationOpened}
+          onChange={value =>
+            value
+              ? openRegistration()
+              : confirm('Are you sure to stop the registration?') &&
+                closeRegistration()
+          }
+        >
+          Registration Status
+        </ToggleInput>
       </BoxPanel>
 
       <BoxPanel
@@ -199,8 +223,7 @@ function BoxPanel ({
   return (
     <Box
       display="flex"
-      flexDirection="row"
-      flexWrap="wrap"
+      flexDirection="column"
       gap="2"
       backgroundColor="background"
       p="3"

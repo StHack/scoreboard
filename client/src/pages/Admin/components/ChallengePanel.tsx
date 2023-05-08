@@ -95,7 +95,7 @@ function ChallengeBlock ({
 
   return (
     <Box
-      bg="primary"
+      bg="background"
       borderColor="secondary"
       borderWidth="medium"
       borderStyle="solid"
