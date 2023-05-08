@@ -41,7 +41,7 @@ export function useChallengeForm (
     required: true,
   })
   const categoryField = useField<Category>({
-    name: 'team',
+    name: 'category',
     defaultValue: category ?? 'web',
     disabled: isLoading,
     required: true,
@@ -61,7 +61,7 @@ export function useChallengeForm (
   })
 
   const flagsField = useField<string>({
-    name: 'difficulty',
+    name: 'flag',
     defaultValue: '',
     disabled: isLoading,
     required: isNewChallenge,
@@ -80,7 +80,7 @@ export function useChallengeForm (
   })
 
   const isOpenField = useField<boolean | undefined>({
-    name: 'isBroken',
+    name: 'isOpen',
     defaultValue: isOpen,
     disabled: isLoading,
   })

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { LabelInput } from 'components/LabelInput'
 import Popup from 'components/Popup'
+import { SelectInput } from 'components/SelectInput'
 import { TextInput } from 'components/TextInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useField } from 'hooks/useField'
@@ -16,18 +17,20 @@ export type UserFormProps = {
 }
 
 export function UserForm ({ user, editMode, onClose }: UserFormProps) {
-  const { changePassword, changeTeam } = useAdmin()
+  const { changePassword, changeTeam, users } = useAdmin()
   const ref = useRef<HTMLFormElement>(null)
   const { inputProp } = useField<string>({
-    defaultValue: '',
+    defaultValue: editMode === 'team' ? user.team : '',
     disabled: false,
     name: editMode,
     required: true,
   })
 
+  const existingTeams = [...new Set(users.map(u => u.team))].sort()
+
   return (
     <Popup
-      title={`Update user ${user.username} ${editMode}`}
+      title={`Update user "${user.username}" ${editMode}`}
       onCancel={onClose}
       onValidate={() => ref.current?.requestSubmit()}
     >
@@ -47,11 +50,12 @@ export function UserForm ({ user, editMode, onClose }: UserFormProps) {
         }}
       >
         <LabelInput label={editMode} required>
-          <TextInput
-            type={editMode === 'password' ? 'password' : 'text'}
-            minLength={5}
-            {...inputProp}
-          />
+          {editMode === 'password' && (
+            <TextInput type="password" minLength={5} {...inputProp} />
+          )}
+          {editMode === 'team' && (
+            <SelectInput predefinedValues={existingTeams} {...inputProp} />
+          )}
         </LabelInput>
       </Form>
     </Popup>
