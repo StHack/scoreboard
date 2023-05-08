@@ -114,9 +114,11 @@ export function registerAdminNamespace(
     adminSocket.on('game:end', async () => {
       await closeAllChallenge()
       await serverConfig.setGameOpened(false)
+      await emitGameConfigUpdate()
 
       for (const [id, soc] of playerIo.sockets) {
         const req = soc.request as Request
+        req.user && logout(req.user.username)
         req.logOut(err => {
           soc.disconnect(true)
         })
@@ -133,20 +135,22 @@ export function registerAdminNamespace(
     adminSocket.on('game:open', async () => {
       await openAllChallenge()
       await serverConfig.setGameOpened(true)
+      await emitGameConfigUpdate()
     })
 
     adminSocket.on('game:openRegistration', async () => {
       await serverConfig.setRegistrationClosed(false)
+      await emitGameConfigUpdate()
     })
 
     adminSocket.on('game:closeRegistration', async () => {
       await serverConfig.setRegistrationClosed(true)
+      await emitGameConfigUpdate()
     })
 
     adminSocket.on('game:setTeamSize', async (teamSize: number) => {
       await serverConfig.setTeamSize(teamSize)
-      const updatedConfig = await serverConfig.getGameConfig()
-      gameIo.emit('game:config:updated', updatedConfig)
+      await emitGameConfigUpdate()
     })
 
     adminSocket.on(
@@ -194,18 +198,11 @@ export function registerAdminNamespace(
 
     adminSocket.on('users:delete', async (username: string, callback) => {
       await removeUser(username)
-
-      playerIo.in(username).disconnectSockets()
-      gameIo.in(username).disconnectSockets()
-      adminSocket.in(username).disconnectSockets()
+      logout(username)
       callback()
     })
 
-    adminSocket.on('users:logout', async (username: string) => {
-      playerIo.in(username).disconnectSockets()
-      gameIo.in(username).disconnectSockets()
-      adminSocket.in(username).disconnectSockets()
-    })
+    adminSocket.on('users:logout', logout)
 
     adminSocket.on(
       'achievement:delete',
@@ -222,5 +219,16 @@ export function registerAdminNamespace(
       const attempt = await listAttempt()
       callback(attempt)
     })
+
+    async function emitGameConfigUpdate() {
+      const updatedConfig = await serverConfig.getGameConfig()
+      gameIo.emit('game:config:updated', updatedConfig)
+    }
+
+    function logout(username: string) {
+      playerIo.in(username).disconnectSockets(true)
+      gameIo.in(username).disconnectSockets(true)
+      adminSocket.in(username).disconnectSockets(true)
+    }
   })
 }

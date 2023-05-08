@@ -49,18 +49,21 @@ export class ServerConfig {
   }
 
   public async setTeamSize(teamSize: number): Promise<void> {
-    await this.redisClient.hSet(
-      'serverConfig',
-      'teamSize',
-      teamSize,
-    )
+    await this.redisClient.hSet('serverConfig', 'teamSize', teamSize)
   }
 
   public async getGameConfig(): Promise<GameConfig> {
-    const teamCount = await countTeam()
-    const teamSize = await this.getTeamSize()
+    const [teamCount, teamSize, registrationClosed, gameOpened] =
+      await Promise.all([
+        countTeam(),
+        this.getTeamSize(),
+        this.getRegistrationClosed(),
+        this.getGameOpened(),
+      ])
 
     return {
+      registrationOpened: !registrationClosed,
+      gameOpened: gameOpened,
       solveDelay: delayTimeInMinutes * 60 * 1000,
       teamCount,
       baseChallScore: 50,

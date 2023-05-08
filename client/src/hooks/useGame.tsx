@@ -21,6 +21,15 @@ export type GameContext = {
   gameConfig: GameConfig
 }
 
+const defaultGameConfig = {
+  registrationOpened: false,
+  gameOpened: false,
+  baseChallScore: 0,
+  solveDelay: 0,
+  teamCount: 0,
+  teamSize: 0,
+}
+
 const gameContext = createContext<GameContext>({
   challenges: [],
   achievements: [],
@@ -29,7 +38,7 @@ const gameContext = createContext<GameContext>({
     challsScore: {},
     teamsScore: [],
   },
-  gameConfig: { baseChallScore: 0, solveDelay: 0, teamCount: 0, teamSize: 0 },
+  gameConfig: defaultGameConfig,
 })
 
 export function ProvideGame ({ children }: PropsWithChildren<{}>) {
@@ -47,12 +56,7 @@ function useProvideGame (): GameContext {
   const [achievements, setAchievements] = useState<Achievement[]>([])
   const [messages, setMessages] = useState<Message[]>([])
   const [teams, setTeams] = useState<string[]>([])
-  const [gameConfig, setGameConfig] = useState<GameConfig>({
-    solveDelay: 10,
-    teamCount: 0,
-    baseChallScore: 0,
-    teamSize: 0,
-  })
+  const [gameConfig, setGameConfig] = useState<GameConfig>(defaultGameConfig)
 
   useEffect(() => {
     if (!socket) return
