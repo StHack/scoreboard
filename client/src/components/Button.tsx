@@ -18,7 +18,8 @@ import {
   typography,
   variant,
 } from 'styled-system'
-import { cleanStyledSystem, place, PlaceProps } from 'styles'
+import { cleanStyledSystem, gap, GapProps, place, PlaceProps } from 'styles'
+import { Box } from './Box'
 import { Icon } from './Icon'
 
 type StyledButtonProps = SpaceProps &
@@ -29,6 +30,7 @@ type StyledButtonProps = SpaceProps &
   FontSizeProps &
   SizeProps &
   FlexProps &
+  GapProps &
   FontWeightProps & {
     variant?: 'primary' | 'secondary' | 'link' | 'danger'
     href?: string
@@ -42,6 +44,7 @@ const Btn = styled('button', cleanStyledSystem)<StyledButtonProps>(
   gridArea,
   place,
   flex,
+  gap,
   variant({
     scale: 'buttons',
     variants: {
@@ -60,6 +63,7 @@ const Btn = styled('button', cleanStyledSystem)<StyledButtonProps>(
 
 export type ButtonProps = StyledButtonProps & {
   icon?: Icon
+  responsiveLabel?: boolean
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 export function Button ({
@@ -67,6 +71,7 @@ export function Button ({
   children,
   variant,
   href,
+  responsiveLabel,
   size = 1,
   ...rest
 }: ButtonProps) {
@@ -74,11 +79,11 @@ export function Button ({
   const asLink = href ? { as: 'a', href, target: '_blank' } : ({} as any)
 
   return (
-    <Btn variant={variant} {...asLink} {...rest} {...defaultPaddingFix}>
-      {Icon && (
-        <Icon size={size} marginRight={children ? 2 : 0} color="currentColor" />
-      )}
-      {children}
+    <Btn variant={variant} gap="2" {...asLink} {...rest} {...defaultPaddingFix}>
+      {Icon && <Icon size={size} color="currentColor" />}
+      <Box as="span" display={responsiveLabel ? ['none', 'inline'] : undefined}>
+        {children}
+      </Box>
     </Btn>
   )
 }

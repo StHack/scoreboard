@@ -1,7 +1,6 @@
 import { Box } from 'components/Box'
-import { Button } from 'components/Button'
+import { ExportJsonButton } from 'components/ExportJsonButton'
 import { useAdmin } from 'hooks/useAdmin'
-import { exportAsJson } from 'services/share'
 import { Table, Tr } from './styled'
 
 export function AttemptPanel () {
@@ -10,13 +9,7 @@ export function AttemptPanel () {
   return (
     <Box display="flex" flexDirection="column">
       <Box display="flex" flexDirection="row" gap="2">
-        <Button
-          onClick={() => {
-            exportAsJson(attempts, 'attempts')
-          }}
-        >
-          Export as JSON
-        </Button>
+        <ExportJsonButton data={attempts} filename="attempts" />
       </Box>
       <Table m="2">
         <thead>

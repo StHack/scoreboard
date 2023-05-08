@@ -9,9 +9,9 @@ import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
 import { Message } from 'models/Message'
 import { useState } from 'react'
-import { exportAsJson } from 'services/share'
 import { ChallengeForm } from './ChallengeForm'
 import { IconBreak, IconEdit, IconRepair } from 'components/Icon'
+import { ExportJsonButton } from 'components/ExportJsonButton'
 
 export function ChallengePanel () {
   const [openEdit, setOpenEdit] = useState<boolean>(false)
@@ -23,22 +23,17 @@ export function ChallengePanel () {
   } = useGame()
 
   return (
-    <Box display="flex" flexDirection="column">
+    <Box display="flex" flexDirection="column" overflow="hidden" gap="2">
       <Box display="flex" flexDirection="row" gap="2">
         <Button onClick={() => setOpenEdit(true)}>Create challenge</Button>
-        <Button
-          onClick={() => {
-            exportAsJson(challenges, 'challenges')
-          }}
-        >
-          Export as JSON
-        </Button>
+        <ExportJsonButton data={challenges} filename="challenges" />
       </Box>
 
       <Box
         display={['flex', 'grid']}
         flexDirection="column"
         gridTemplateColumns="repeat(auto-fit, minmax(40rem, 1fr))"
+        overflowY="auto"
       >
         {challenges.map(c => (
           <ChallengeBlock
@@ -89,7 +84,7 @@ function ChallengeBlock ({
   onEditClick,
   onRepairClick,
 }: ChallengeBlockProps) {
-  const { author, category, difficulty, isBroken, isOpen, name } = chall
+  const { author, category, difficulty, isBroken, name } = chall
   const lastSolve = score.achievements[score.achievements.length - 1]
   const [showPreview, setShowPreview] = useState<boolean>(false)
 
@@ -167,7 +162,6 @@ function ChallengeBlock ({
         <Button onClick={() => onEditClick(chall)} icon={IconEdit}>
           Edit
         </Button>
-        {/* <Button onClick={() => setShowPreview(true)}>Preview</Button> */}
       </Box>
       {showPreview && (
         <ChallDescriptionPopup

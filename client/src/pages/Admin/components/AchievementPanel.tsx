@@ -1,9 +1,9 @@
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
+import { ExportJsonButton } from 'components/ExportJsonButton'
 import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
-import { exportAsJson } from 'services/share'
-import { Table, Tr, ActionPanel } from './styled'
+import { ActionPanel, Table, Tr } from './styled'
 
 export function AchievementPanel () {
   const { achievements } = useGame()
@@ -12,13 +12,7 @@ export function AchievementPanel () {
   return (
     <Box display="flex" flexDirection="column">
       <Box display="flex" flexDirection="row" gap="2">
-        <Button
-          onClick={() => {
-            exportAsJson(achievements, 'achievements')
-          }}
-        >
-          Export as JSON
-        </Button>
+        <ExportJsonButton data={achievements} filename="achievements" />
       </Box>
       <Table m="2">
         <thead>
