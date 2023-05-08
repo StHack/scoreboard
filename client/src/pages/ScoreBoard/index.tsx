@@ -15,11 +15,18 @@ export function ScoreBoard () {
       alignItems={['stretch', 'start']}
       flexDirection="column"
       gridTemplateColumns="3fr 1fr"
-      gap="2"
+      gap="4"
       p="2"
     >
+      <Box as="h2" fontSize="4" gridArea="1/1" placeSelf="center" pt="3">
+        Team scoreboard
+      </Box>
       <TeamsScoreBoard teamsScore={teamsScore} challsScore={challsScore} />
-      <ChallsScoreBoard score={challsScore} challenges={challenges} />
+
+      <Box as="h2" fontSize="4" gridArea="1/2" placeSelf="center" pt="3">
+        Challenges
+      </Box>
+      <ChallsScoreBoard challsScore={challsScore} challenges={challenges} />
     </Box>
   )
 }

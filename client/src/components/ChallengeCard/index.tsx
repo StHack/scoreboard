@@ -7,7 +7,7 @@ import {
 } from 'hooks/useChallengeSolveDelay'
 import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
-import { SpaceProps, space } from 'styled-system'
+import { SizeProps, SpaceProps, size, space } from 'styled-system'
 
 type ChallengeCardProps = {
   challenge: Challenge
@@ -20,7 +20,8 @@ export function ChallengeCard ({
   currentTeam,
   score: { score, achievements },
   onClick,
-}: ChallengeCardProps) {
+  ...props
+}: ChallengeCardProps & SizeProps) {
   const { name, img, category } = challenge
   const { openState, delayedTimer } = useChallengeSolveDelay(
     challenge,
@@ -33,6 +34,7 @@ export function ChallengeCard ({
   return (
     <CardWrapper
       m="2"
+      {...props}
       onClick={() => onClick()}
       type="button"
       title={
@@ -266,8 +268,9 @@ const WiggleHighlight = keyframes`
   }
 `
 
-const CardWrapper = styled.button<SpaceProps>`
+const CardWrapper = styled.button<SpaceProps & SizeProps>`
   ${space}
+  ${size}
   cursor: pointer;
   filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
   display: flex;
