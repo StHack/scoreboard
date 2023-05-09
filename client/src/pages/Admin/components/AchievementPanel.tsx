@@ -1,61 +1,75 @@
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import { ExportJsonButton } from 'components/ExportJsonButton'
+import { IconDelete } from 'components/Icon'
+import { SearchInput } from 'components/SearchInput'
+import { ColumnDefinition, Table } from 'components/Table'
 import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
-import { ActionPanel, Table, Tr } from './styled'
+import { Achievement } from 'models/Achievement'
+import { useState } from 'react'
+
+const columns: ColumnDefinition<Achievement>[] = [
+  { header: 'Challenge', rowValue: row => row.challenge },
+  { header: 'Team', rowValue: row => row.teamname },
+  { header: 'User', rowValue: row => row.username },
+  { header: 'Date', rowValue: row => row.createdAt.toLocaleTimeString() },
+]
 
 export function AchievementPanel () {
+  const [search, setSearch] = useState<string>('')
   const { achievements } = useGame()
-  const { deleteAchievement } = useAdmin()
 
   return (
-    <Box display="flex" flexDirection="column">
+    <Box display="flex" flexDirection="column" overflowY="hidden" gap="2">
       <Box display="flex" flexDirection="row" gap="2">
         <ExportJsonButton data={achievements} filename="achievements" />
+        <SearchInput
+          search={search}
+          onChange={setSearch}
+          placeholder="Search by team, player or chall name"
+        />
       </Box>
-      <Table m="2">
-        <thead>
-          <tr>
-            <th scope="col">Challenge</th>
-            <th scope="col">Team</th>
-            <th scope="col">User</th>
-            <th scope="col">Date</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {achievements.map(a => (
-            <Tr key={a.challenge + a.teamname}>
-              <td>{a.challenge}</td>
-              <td>{a.teamname}</td>
-              <td>{a.username}</td>
-              <td>{a.createdAt.toLocaleTimeString()}</td>
-              <ActionPanel m="2">
-                <Button
-                  variant="danger"
-                  onClick={() => {
-                    if (
-                      // eslint-disable-next-line no-restricted-globals
-                      confirm(
-                        `Are you sure to delete Achievement:\n\n${
-                          a.challenge
-                        }\n${a.teamname}\n${
-                          a.username
-                        }\n${a.createdAt.toISOString()}`,
-                      )
-                    ) {
-                      deleteAchievement(a)
-                    }
-                  }}
-                >
-                  Delete
-                </Button>
-              </ActionPanel>
-            </Tr>
-          ))}
-        </tbody>
-      </Table>
+      <Table
+        data={achievements.filter(
+          a =>
+            a.challenge.toLowerCase().includes(search) ||
+            a.teamname.toLowerCase().includes(search) ||
+            a.username.toLowerCase().includes(search),
+        )}
+        rowKey={row => row.challenge + row.teamname}
+        columns={columns}
+        actions={AchievementActions}
+      />
     </Box>
+  )
+}
+
+type AchievementActionsProps = {
+  row: Achievement
+}
+function AchievementActions ({ row }: AchievementActionsProps) {
+  const { deleteAchievement } = useAdmin()
+  return (
+    <Button
+      variant="danger"
+      icon={IconDelete}
+      responsiveLabel
+      title="Delete"
+      onClick={() => {
+        if (
+          // eslint-disable-next-line no-restricted-globals
+          confirm(
+            `Are you sure to delete Achievement:\n\n${row.challenge}\n${
+              row.teamname
+            }\n${row.username}\n${row.createdAt.toISOString()}`,
+          )
+        ) {
+          deleteAchievement(row)
+        }
+      }}
+    >
+      Delete
+    </Button>
   )
 }
