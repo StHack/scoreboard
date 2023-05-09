@@ -4,9 +4,10 @@ import { flex, FlexProps, space, SpaceProps } from 'styled-system'
 export const TextInput = styled.input<SpaceProps & FlexProps>`
   padding: ${p => p.theme.space[1]};
   font-size: ${p => p.theme.fontSizes[1]};
-  border-bottom: solid ${p => p.theme.colors.greys[0]}
-    ${p => p.theme.borderWidths.medium};
-  border-radius: 0;
+  border-bottom: solid;
+  border-color: ${p => p.theme.colors.greys[0]};
+  border-width: ${p => p.theme.borderWidths.medium};
+  border-radius: ${p => p.theme.radii.small};
   transition: border-color 250ms;
   color: ${p => p.theme.colors.text};
   ${flex}

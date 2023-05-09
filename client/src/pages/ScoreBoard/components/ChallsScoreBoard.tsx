@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import { Box } from 'components/Box'
 import { ChallengeCard } from 'components/ChallengeCard'
 import Popup from 'components/Popup'
+import { ColumnDefinition, Table } from 'components/Table'
 import { Achievement } from 'models/Achievement'
 import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
@@ -66,64 +67,20 @@ function DetailChallPopup ({
       <Box as="h3" fontSize="3" textAlign="center" m="3">
         {`Breakthrough ${label(breakthrough)}`}
       </Box>
-      <Table my="2">
-        <thead>
-          <tr>
-            <th>Time</th>
-            <th>Player</th>
-            <th>Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          {challScore.achievements.map((a, i) => (
-            <tr>
-              <td>{a.createdAt.toLocaleTimeString()}</td>
-              <td>{a.username}</td>
-              <td>{a.teamname}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+      <Table
+        data={challScore.achievements}
+        columns={columns}
+        rowKey={row => row.teamname + row.username}
+      />
     </Popup>
   )
 }
 
+const columns : ColumnDefinition<Achievement>[] = [
+  { header: 'Time', rowValue: row => row.createdAt.toLocaleTimeString() },
+  { header: 'Player', rowValue: row => row.username },
+  { header: 'Team', rowValue: row => row.teamname },
+]
+
 const label = ({ username, teamname, createdAt }: Achievement) =>
   ` at ${createdAt.toLocaleTimeString()} by "${username}" of team "${teamname}"`
-
-const Table = styled.table<SpaceProps>`
-  ${space}
-  table-layout: fixed;
-  width: 100%;
-  text-align: center;
-  vertical-align: top;
-
-  border-spacing: 1;
-  border-collapse: collapse;
-
-  thead {
-    font-size: ${p => p.theme.fontSizes[3]};
-  }
-
-  tbody > tr:first-of-type {
-    font-weight: ${p => p.theme.fontWeights[1]};
-  }
-
-  td,
-  th {
-    border-bottom: 1px solid rgb(190, 190, 190);
-    padding: ${p => p.theme.space[2]} ${p => p.theme.space[1]};
-  }
-
-  th {
-    background-color: rgb(235, 235, 235);
-  }
-
-  tr:nth-of-type(even) {
-    background-color: rgb(250, 250, 250);
-  }
-
-  tr:nth-of-type(odd) {
-    background-color: rgb(245, 245, 245);
-  }
-`

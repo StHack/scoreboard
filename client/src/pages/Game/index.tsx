@@ -13,6 +13,7 @@ import {
   GroupBySelector,
   GroupByType,
   getGroup,
+  getGroupSort,
 } from './components/GroupBySelector'
 
 export function Game () {
@@ -79,22 +80,24 @@ export function Game () {
         justifyContent="space-evenly"
         gap="2"
       >
-        {Object.entries(groups).map(([key, challs]) => (
-          <Fragment key={key}>
-            <GroupTitle m="2" mb="1">
-              {key}
-            </GroupTitle>
-            {challs.map(c => (
-              <ChallengeCard
-                key={c.name}
-                challenge={c}
-                score={challScore[c.name]}
-                currentTeam={myTeamName}
-                onClick={() => setSelectedChall(c)}
-              />
-            ))}
-          </Fragment>
-        ))}
+        {Object.entries(groups)
+          .sort(([g1], [g2]) => getGroupSort(groupBy)(g1, g2))
+          .map(([key, challs]) => (
+            <Fragment key={key}>
+              <GroupTitle m="2" mb="1">
+                {key}
+              </GroupTitle>
+              {challs.map(c => (
+                <ChallengeCard
+                  key={c.name}
+                  challenge={c}
+                  score={challScore[c.name]}
+                  currentTeam={myTeamName}
+                  onClick={() => setSelectedChall(c)}
+                />
+              ))}
+            </Fragment>
+          ))}
       </Box>
 
       <Box

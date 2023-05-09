@@ -1,10 +1,12 @@
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import { Challenge } from 'models/Challenge'
+import { Difficulty } from 'models/Difficulty'
+import { DifficultyValue } from 'services/score'
 import { GridAreaProps } from 'styled-system'
 
 const GroupBy = ['Category', 'Difficulty', 'Author'] as const
-export type GroupByType = typeof GroupBy[number]
+export type GroupByType = (typeof GroupBy)[number]
 
 type GroupBySelectorProps = {
   value: GroupByType
@@ -50,5 +52,19 @@ export function getGroup (chall: Challenge, groupBy: GroupByType) {
       return chall.difficulty
     default:
       return 'unknown'
+  }
+}
+
+export function getGroupSort (
+  groupBy: GroupByType,
+): (g1: string, g2: string) => number {
+  switch (groupBy) {
+    case 'Difficulty':
+      return (g1, g2) =>
+        DifficultyValue[g2 as Difficulty] - DifficultyValue[g1 as Difficulty]
+    case 'Author':
+    case 'Category':
+    default:
+      return (g1, g2) => g1.localeCompare(g2)
   }
 }
