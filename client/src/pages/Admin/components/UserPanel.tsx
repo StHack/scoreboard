@@ -84,21 +84,23 @@ export function UserPanel () {
         overflowY="auto"
         gap="2"
       >
-        <TeamCard
-          team="admin"
-          teams={teams.admin}
-          updatePassword={updatePassword}
-          changeTeam={changeTeam}
-          updateAdminStatus={updateAdminStatus}
-          logout={logout}
-          remove={remove}
-          gridArea={[
-            null,
-            'auto/1/auto/3',
-            `1/auto/${Object.keys(teams).length}/auto`,
-          ]}
-          alignSelf={[null, 'start']}
-        />
+        {teams.admin && (
+          <TeamCard
+            team="admin"
+            teams={teams.admin}
+            updatePassword={updatePassword}
+            changeTeam={changeTeam}
+            updateAdminStatus={updateAdminStatus}
+            logout={logout}
+            remove={remove}
+            gridArea={[
+              null,
+              'auto/1/auto/3',
+              `1/auto/${Object.keys(teams).length}/auto`,
+            ]}
+            alignSelf={[null, 'start']}
+          />
+        )}
 
         {Object.entries(teams)
           .filter(([t]) => t !== 'admin')
