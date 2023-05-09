@@ -10,13 +10,13 @@ import {
   IconPromote,
   IconTeams,
 } from 'components/Icon'
-import { TextInput } from 'components/TextInput'
+import { SearchInput } from 'components/SearchInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
 import { User } from 'models/User'
 import { useState } from 'react'
-import { UserEditMode, UserForm } from './UserForm'
 import { AlignSelfProps, GridAreaProps, JustifySelfProps } from 'styled-system'
+import { UserEditMode, UserForm } from './UserForm'
 
 export function UserPanel () {
   const { users, toggleIsAdmin, deleteUser, logoutUser } = useAdmin()
@@ -25,11 +25,10 @@ export function UserPanel () {
   const [search, setSearch] = useState<string>('')
 
   const teams = users
-    .filter(u =>
-      !search
-        ? true
-        : u.username.toLowerCase().includes(search) ||
-          u.team.toLowerCase().includes(search),
+    .filter(
+      u =>
+        u.username.toLowerCase().includes(search) ||
+        u.team.toLowerCase().includes(search),
     )
     .reduce<Record<string, User[]>>(
       (acc, cur) => ({
@@ -71,33 +70,11 @@ export function UserPanel () {
     <Box display="flex" flexDirection="column" overflowY="hidden" gap="2">
       <Box display="flex" flexDirection="row" gap="2">
         <ExportJsonButton data={users} filename="users" />
-
-        <Box
-          as="form"
-          display="grid"
-          gridTemplateColumns="1fr auto"
-          flex="1"
-          minWidth="0"
-        >
-          <TextInput
-            type="search"
-            name="search-box"
-            value={search ?? ''}
-            onChange={e => setSearch(e.target.value?.toLowerCase())}
-            onFocus={e => e.target.select()}
-            placeholder="Search by team or user name"
-          />
-          {search && (
-            <Button
-              type="button"
-              icon={IconDelete}
-              title="Clear Search"
-              onClick={() => setSearch('')}
-              size={0}
-              marginLeft={1}
-            />
-          )}
-        </Box>
+        <SearchInput
+          search={search}
+          onChange={setSearch}
+          placeholder="Search by team or user name"
+        />
       </Box>
 
       <Box
@@ -105,6 +82,7 @@ export function UserPanel () {
         flexDirection="column"
         gridTemplateColumns="repeat(auto-fit, minmax(40rem, 1fr))"
         overflowY="auto"
+        gap="2"
       >
         <TeamCard
           team="admin"
@@ -114,7 +92,11 @@ export function UserPanel () {
           updateAdminStatus={updateAdminStatus}
           logout={logout}
           remove={remove}
-          gridArea={[null, 'auto/1/auto/3', '1/auto/1000/auto']}
+          gridArea={[
+            null,
+            'auto/1/auto/3',
+            `1/auto/${Object.keys(teams).length}/auto`,
+          ]}
           alignSelf={[null, 'start']}
         />
 
@@ -177,7 +159,6 @@ function TeamCard ({
       borderStyle="solid"
       borderRadius="small"
       boxShadow="normal"
-      m="2"
       p="1"
       gap="2"
       display="flex"

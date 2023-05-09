@@ -8,7 +8,7 @@ import { ToggleInput } from 'components/ToggleInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useField } from 'hooks/useField'
 import { useGame } from 'hooks/useGame'
-import { FormEventHandler, PropsWithChildren, ReactNode, useState } from 'react'
+import { FormEventHandler, PropsWithChildren, ReactNode } from 'react'
 
 export function GeneralPanel () {
   const {
@@ -25,7 +25,6 @@ export function GeneralPanel () {
     setTeamSize,
   } = useAdmin()
 
-  const [lala, setLala] = useState<boolean>(false)
   const messageInput = useField<string>({
     defaultValue: '',
     name: 'message',
