@@ -96,3 +96,14 @@ const DifficultyValue: Record<Difficulty, number> = {
   medium: 2,
   hard: 3,
 }
+
+export function sortByDifficulty (order: 'desc' | 'asc') {
+  switch (order) {
+    case 'asc':
+      return (chall1: Challenge, chall2: Challenge) =>
+        DifficultyValue[chall1.difficulty] - DifficultyValue[chall2.difficulty]
+    default:
+      return (chall1: Challenge, chall2: Challenge) =>
+        DifficultyValue[chall2.difficulty] - DifficultyValue[chall1.difficulty]
+  }
+}

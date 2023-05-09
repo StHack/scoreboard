@@ -16,6 +16,7 @@ import { ReactComponent as AchievementSvg } from './images/achievement.svg'
 import { ReactComponent as AttemptSvg } from './images/attempt.svg'
 import { ReactComponent as BreakSvg } from './images/break.svg'
 import { ReactComponent as ChallengeSvg } from './images/challenge.svg'
+import { ReactComponent as CreateSvg } from './images/create.svg'
 import { ReactComponent as DeleteSvg } from './images/delete.svg'
 import { ReactComponent as DemoteSvg } from './images/demote.svg'
 import { ReactComponent as EditSvg } from './images/edit.svg'
@@ -71,6 +72,7 @@ export const IconAchievement = BaseSvg(AchievementSvg)
 export const IconAttempt = BaseSvg(AttemptSvg)
 export const IconBreak = BaseSvg(BreakSvg)
 export const IconChallenge = BaseSvg(ChallengeSvg)
+export const IconCreate = BaseSvg(CreateSvg)
 export const IconDelete = BaseSvg(DeleteSvg)
 export const IconDemote = BaseSvg(DemoteSvg)
 export const IconEdit = BaseSvg(EditSvg)

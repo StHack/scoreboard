@@ -10,13 +10,15 @@ import { ChallengeScore } from 'models/GameScore'
 import { Message } from 'models/Message'
 import { useState } from 'react'
 import { ChallengeForm } from './ChallengeForm'
-import { IconBreak, IconEdit, IconRepair } from 'components/Icon'
+import { IconBreak, IconCreate, IconEdit, IconRepair } from 'components/Icon'
 import { ExportJsonButton } from 'components/ExportJsonButton'
+import { SearchInput } from 'components/SearchInput'
 
 export function ChallengePanel () {
   const [openEdit, setOpenEdit] = useState<boolean>(false)
   const { challenges, attempts, brokeChallenge, repairChallenge } = useAdmin()
   const [challToEdit, setChallToEdit] = useState<Challenge>()
+  const [search, setSearch] = useState<string>('')
   const {
     messages,
     score: { challsScore },
@@ -25,8 +27,20 @@ export function ChallengePanel () {
   return (
     <Box display="flex" flexDirection="column" overflow="hidden" gap="2">
       <Box display="flex" flexDirection="row" gap="2">
-        <Button onClick={() => setOpenEdit(true)}>Create challenge</Button>
+        <Button
+          onClick={() => setOpenEdit(true)}
+          title="Create challenge"
+          icon={IconCreate}
+          responsiveLabel
+        >
+          Create challenge
+        </Button>
         <ExportJsonButton data={challenges} filename="challenges" />
+        <SearchInput
+          search={search}
+          onChange={setSearch}
+          placeholder="Search by chall or author name"
+        />
       </Box>
 
       <Box
@@ -34,22 +48,29 @@ export function ChallengePanel () {
         flexDirection="column"
         gridTemplateColumns="repeat(auto-fit, minmax(40rem, 1fr))"
         overflowY="auto"
+        gap="2"
       >
-        {challenges.map(c => (
-          <ChallengeBlock
-            key={c.name}
-            chall={c}
-            score={challsScore[c.name]}
-            messages={messages.filter(m => m.challenge === c.name)}
-            attempts={attempts.filter(a => a.challenge === c.name)}
-            onBrokeClick={brokeChallenge}
-            onEditClick={() => {
-              setChallToEdit(c)
-              setOpenEdit(true)
-            }}
-            onRepairClick={repairChallenge}
-          />
-        ))}
+        {challenges
+          .filter(
+            c =>
+              c.author.toLowerCase().includes(search) ||
+              c.name.toLowerCase().includes(search),
+          )
+          .map(c => (
+            <ChallengeBlock
+              key={c.name}
+              chall={c}
+              score={challsScore[c.name]}
+              messages={messages.filter(m => m.challenge === c.name)}
+              attempts={attempts.filter(a => a.challenge === c.name)}
+              onBrokeClick={brokeChallenge}
+              onEditClick={() => {
+                setChallToEdit(c)
+                setOpenEdit(true)
+              }}
+              onRepairClick={repairChallenge}
+            />
+          ))}
       </Box>
 
       {openEdit && (
@@ -96,7 +117,6 @@ function ChallengeBlock ({
       borderStyle="solid"
       borderRadius="small"
       boxShadow="normal"
-      m="2"
       p="1"
       gap="2"
       color={isBroken ? 'red' : ''}
