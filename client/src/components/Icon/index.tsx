@@ -31,6 +31,7 @@ import { ReactComponent as PromoteSvg } from './images/promote.svg'
 import { ReactComponent as RepairSvg } from './images/repair.svg'
 import { ReactComponent as TeamsSvg } from './images/teams.svg'
 import { ReactComponent as UsersSvg } from './images/users.svg'
+import { ReactComponent as ValidateSvg } from './images/validate.svg'
 
 type StyledIconProps = SpaceProps & PlaceProps & ColorProps & LayoutProps
 
@@ -87,3 +88,4 @@ export const IconPromote = BaseSvg(PromoteSvg)
 export const IconRepair = BaseSvg(RepairSvg)
 export const IconTeams = BaseSvg(TeamsSvg)
 export const IconUsers = BaseSvg(UsersSvg)
+export const IconValidate = BaseSvg(ValidateSvg)

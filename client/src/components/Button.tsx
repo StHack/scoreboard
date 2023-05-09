@@ -75,7 +75,7 @@ export function Button ({
   size = 1,
   ...rest
 }: ButtonProps) {
-  const defaultPaddingFix = !!Icon && !children ? { px: 2, py: 2 } : {}
+  const defaultPaddingFix = !!Icon && !children && variant !== 'link' ? { px: 2, py: 2 } : {}
   const asLink = href ? { as: 'a', href, target: '_blank' } : ({} as any)
 
   return (

@@ -100,20 +100,11 @@ export function Game () {
           ))}
       </Box>
 
-      <Box
+      <Messages
+        title="Message from Staff"
+        messages={messages}
         gridArea="message"
-        display="flex"
-        flexDirection="column"
-        backgroundColor="background"
-        p="2"
-        as="aside"
-      >
-        <Box as="h2" fontSize="2">
-          Message from Staff
-        </Box>
-
-        <Messages messages={messages} />
-      </Box>
+      />
 
       {selectedChall && (
         <ChallDescriptionPopup
