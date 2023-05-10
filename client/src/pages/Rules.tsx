@@ -9,20 +9,22 @@ export function Rules () {
 
   return (
     <Box
-      mx="auto"
-      my="5"
+      justifySelf="center"
+      px="2"
+      py="5"
       maxWidth="maximalCentered"
       gap="5"
       display="flex"
       flexDirection="column"
       alignItems="center"
-    >
+     >
       <Box
         p="4"
         pt="1"
         borderRadius="2"
         boxShadow="small"
         backgroundColor="background"
+        overflow="hidden"
       >
         <ReactMarkdown
           components={ReactMarkdownRenderers}

@@ -139,6 +139,7 @@ function ChallengeBlock ({
           challenge={chall}
           score={score}
           onClick={() => setShowPreview(true)}
+          size={['6', 'initial']}
         />
         <p>
           {category} - {difficulty}

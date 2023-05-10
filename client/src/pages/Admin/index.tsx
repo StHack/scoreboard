@@ -67,7 +67,7 @@ export function Admin () {
         </Link>
       </Box>
 
-      <Box display="grid" flex="1" py="3" overflowY="auto">
+      <Box display="grid" flex="1" pt="2" overflowY="auto">
         <Routes>
           <Route path="" element={<GeneralPanel />} />
           <Route path="challenges" element={<ChallengePanel />} />

@@ -47,7 +47,8 @@ Text.defaultProps = {
 const Code = styled.code`
   padding: ${p => p.theme.space[1]};
   background-color: ${p => p.theme.colors.greys[0]};
-  border: 1px solid ${p => p.theme.colors.greys[2]};
+  white-space: pre-wrap;
+  line-height: 2em;
 `
 
 export const ReactMarkdownRenderers: Components = {
@@ -67,4 +68,5 @@ export const ReactMarkdownRenderers: Components = {
   blockquote: p => <Text as="blockquote" color="red" {...(p as any)} />,
   // listItem: ListItem,
   img: Img as any,
+  pre: p => <Code as="pre" {...p} />,
 }

@@ -37,6 +37,12 @@ type StyledButtonProps = SpaceProps &
   }
 
 const Btn = styled('button', cleanStyledSystem)<StyledButtonProps>(
+  variant({
+    scale: 'buttons',
+    variants: {
+      primary: {},
+    },
+  }),
   space,
   color,
   border,
@@ -45,12 +51,6 @@ const Btn = styled('button', cleanStyledSystem)<StyledButtonProps>(
   place,
   flex,
   gap,
-  variant({
-    scale: 'buttons',
-    variants: {
-      primary: {},
-    },
-  }),
   css`
     display: flex;
     cursor: pointer;
@@ -75,13 +75,17 @@ export function Button ({
   size = 1,
   ...rest
 }: ButtonProps) {
-  const defaultPaddingFix = !!Icon && !children && variant !== 'link' ? { px: 2, py: 2 } : {}
+  const defaultPaddingFix =
+    !!Icon && !children && variant !== 'link' ? { px: 2, py: 2 } : {}
   const asLink = href ? { as: 'a', href, target: '_blank' } : ({} as any)
 
   return (
     <Btn variant={variant} gap="2" {...asLink} {...rest} {...defaultPaddingFix}>
       {Icon && <Icon size={size} color="currentColor" />}
-      <Box as="span" display={responsiveLabel ? ['none', 'inline'] : undefined}>
+      <Box
+        as="span"
+        display={responsiveLabel || !children ? ['none', 'inline'] : undefined}
+      >
         {children}
       </Box>
     </Btn>
@@ -94,7 +98,6 @@ Button.defaultProps = {
   py: 2,
   fontWeight: 1,
   fontSize: 1,
-  border: 'currentColor solid',
   borderWidth: 'thick',
   borderRadius: 4,
   placeItems: 'center',

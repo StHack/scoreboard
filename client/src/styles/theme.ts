@@ -113,6 +113,8 @@ export const lightTheme: Theme = {
   buttons: {
     primary: {
       backgroundColor: 'primary',
+      borderColor: 'currentColor',
+      borderStyle: 'solid',
       color: 'primaryText',
       '&:hover:enabled': {
         filter: 'opacity(0.5)',
@@ -128,6 +130,8 @@ export const lightTheme: Theme = {
     },
     secondary: {
       backgroundColor: 'secondary',
+      borderColor: 'currentColor',
+      borderStyle: 'solid',
       color: 'secondaryText',
       ':disabled': {
         color: 'greys.1',
@@ -136,11 +140,12 @@ export const lightTheme: Theme = {
     link: {
       background: 'none',
       color: 'primaryText',
-      border: 'none',
+      borderStyle: 'none',
     },
     danger: {
       backgroundColor: 'red',
       color: 'white',
+      borderStyle: 'solid',
       borderColor: 'red',
       '&:hover:enabled': {
         filter: 'opacity(0.5)',

@@ -4,12 +4,16 @@ import { Button } from 'components/Button'
 import { Banner, IconLogo2023 } from 'components/Icon'
 import { LabelInput } from 'components/LabelInput'
 import { TextInput } from 'components/TextInput'
+import { useGame } from 'hooks/useGame'
 import { useLoginForm } from 'hooks/useLoginForm'
 import { Link } from 'react-router-dom'
 
 export function Login () {
   const { formProps, passwordProps, usernameProps, error, isLoading } =
     useLoginForm()
+  const {
+    gameConfig: { registrationOpened },
+  } = useGame()
 
   return (
     <Box display="grid" placeItems="center" maxWidth="60rem" margin="0 auto">
@@ -43,7 +47,9 @@ export function Login () {
           </Button>
         </Form>
 
-        <Link to="/register">Not registered yet ? Click here</Link>
+        {registrationOpened && (
+          <Link to="/register">Not registered yet ? Click here</Link>
+        )}
       </Box>
     </Box>
   )
