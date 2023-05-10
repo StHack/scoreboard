@@ -75,7 +75,7 @@ export function GeneralPanel () {
           {...messageInput.inputProp}
         />
         <SelectInput
-          width="100%"
+          width={['100%', 'auto']}
           predefinedValues={challenges.map(c => c.name)}
           placeholder="or to a specific challenge"
           {...messageChallengeInput.inputProp}

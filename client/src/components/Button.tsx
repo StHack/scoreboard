@@ -84,7 +84,9 @@ export function Button ({
       {Icon && <Icon size={size} color="currentColor" />}
       <Box
         as="span"
-        display={responsiveLabel || !children ? ['none', 'inline'] : undefined}
+        display={
+          !children ? 'none' : responsiveLabel ? ['none', 'inline'] : undefined
+        }
       >
         {children}
       </Box>

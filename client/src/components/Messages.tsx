@@ -25,6 +25,7 @@ export function Messages ({
       as="aside"
       gap="2"
       {...props}
+      overflowY="auto"
     >
       <Box as="h2" fontSize="2" textAlign="center">
         {title}

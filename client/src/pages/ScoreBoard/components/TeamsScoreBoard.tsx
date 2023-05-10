@@ -27,7 +27,7 @@ export function TeamsScoreBoard ({
   const y = useMotionValue(0)
   const dragControls = useDragControls()
   // @ts-ignore
-  const lastScorer = teamsScore.findLast(s => s.score > 0)
+  const lastScorer = teamsScore.findLast(s => s.score > 0 && s.rank > 3)
 
   return (
     <StyledReorderGroup

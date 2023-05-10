@@ -8,6 +8,7 @@ export type PlayerContext = {
   myScore: number
   myTeamScore: number
   myTeamName: string
+  myTeamRank: number
   readMessages: string[]
   attemptChall: (
     challName: string,
@@ -21,6 +22,7 @@ const playerContext = createContext<PlayerContext>({
   myScore: 0,
   myTeamScore: 0,
   myTeamName: '',
+  myTeamRank: 0,
   readMessages: [],
   attemptChall: () => Promise.resolve(undefined),
   markMessageAsRead: () => {},
@@ -40,21 +42,25 @@ export const usePlayer = () => {
 function useProvidePlayer (): PlayerContext {
   const { socket } = useSocket('/api/player')
   const { user } = useAuth()
+  if (!user) {
+    throw new Error()
+  }
   const {
     score: { teamsScore, challsScore },
   } = useGame()
   const [readMessages, setReadMessages] = useState<string[]>(() =>
     JSON.parse(localStorage.getItem('readMessages') ?? '[]'),
   )
-  const ts = teamsScore.find(x => x.team === user?.team)
+  const ts = teamsScore.find(x => x.team === user.team)
   const myScore = Object.values(challsScore)
-    .filter(cs => !!cs.achievements.find(a => a.username === user?.username))
+    .filter(cs => !!cs.achievements.find(a => a.username === user.username))
     .reduce((agg, a) => agg + a.score, 0)
 
   return {
     myScore,
     myTeamScore: ts?.score ?? 0,
-    myTeamName: user?.team ?? '',
+    myTeamName: user.team,
+    myTeamRank: teamsScore.find(ts => ts.team === user.team)?.rank ?? 0,
     readMessages,
     attemptChall: async (challName, flag, callback) => {
       if (!socket) return

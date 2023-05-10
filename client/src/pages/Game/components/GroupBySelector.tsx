@@ -3,9 +3,9 @@ import { Button } from 'components/Button'
 import { Challenge } from 'models/Challenge'
 import { Difficulty } from 'models/Difficulty'
 import { DifficultyValue } from 'services/score'
-import { GridAreaProps } from 'styled-system'
+import { AlignSelfProps, GridAreaProps, JustifySelfProps } from 'styled-system'
 
-const GroupBy = ['Category', 'Difficulty', 'Author'] as const
+const GroupBy = ['Default', 'Category', 'Difficulty', 'Author'] as const
 export type GroupByType = (typeof GroupBy)[number]
 
 type GroupBySelectorProps = {
@@ -15,26 +15,22 @@ type GroupBySelectorProps = {
 export function GroupBySelector ({
   value,
   onChange,
-  gridArea,
-}: GroupBySelectorProps & GridAreaProps) {
+  ...props
+}: GroupBySelectorProps & GridAreaProps & AlignSelfProps & JustifySelfProps) {
   return (
     <Box
       display="flex"
-      overflowX="auto"
+      flexWrap="wrap"
       width="100%"
       alignItems="baseline"
-      my="2"
-      mx="1"
-      gridArea={gridArea}
+      gap="2"
+      {...props}
     >
-      <p>Group By</p>
+      <Box as="p" width="100%" fontSize="1">
+        Group By
+      </Box>
       {GroupBy.map(g => (
-        <Button
-          key={g}
-          onClick={() => onChange(g)}
-          disabled={value === g}
-          m="2"
-        >
+        <Button key={g} onClick={() => onChange(g)} disabled={value === g}>
           {g}
         </Button>
       ))}
@@ -50,6 +46,8 @@ export function getGroup (chall: Challenge, groupBy: GroupByType) {
       return chall.category
     case 'Difficulty':
       return chall.difficulty
+    case 'Default':
+      return ''
     default:
       return 'unknown'
   }
@@ -62,6 +60,7 @@ export function getGroupSort (
     case 'Difficulty':
       return (g1, g2) =>
         DifficultyValue[g2 as Difficulty] - DifficultyValue[g1 as Difficulty]
+    case 'Default':
     case 'Author':
     case 'Category':
     default:

@@ -86,11 +86,33 @@ export interface GapProps<
    * [MDN reference](https://developer.mozilla.org/en-US/docs/Web/CSS/gap)
    */
   gap?: ResponsiveValue<TVal, ThemeType> | undefined
+  /**
+   * The row-gap CSS property sets the size of the gap (gutter) between an element's rows.
+   *
+   * [MDN reference](https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap)
+   */
+  rowGap?: ResponsiveValue<TVal, ThemeType> | undefined
+  /**
+   * The column-gap CSS property sets the size of the gap (gutter) between an element's columns.
+   *
+   * [MDN reference](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap)
+   */
+  columnGap?: ResponsiveValue<TVal, ThemeType> | undefined
 }
 
 export const gap = system({
   gap: {
     property: 'gap',
+    scale: 'space',
+    defaultScale: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  },
+  rowGap: {
+    property: 'rowGap',
+    scale: 'space',
+    defaultScale: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  },
+  columnGap: {
+    property: 'columnGap',
     scale: 'space',
     defaultScale: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   },

@@ -9,7 +9,7 @@ import {
   space,
 } from 'styled-system'
 
-export type SelectInputProps = InputHTMLAttributes<HTMLSelectElement> & {
+export type SelectInputProps = Omit<InputHTMLAttributes<HTMLSelectElement>, 'width'> & {
   predefinedValues: string[] | readonly string[]
 }
 
