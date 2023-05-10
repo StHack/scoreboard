@@ -75,6 +75,7 @@ export function GeneralPanel () {
           {...messageInput.inputProp}
         />
         <SelectInput
+          width="100%"
           predefinedValues={challenges.map(c => c.name)}
           placeholder="or to a specific challenge"
           {...messageChallengeInput.inputProp}
@@ -85,7 +86,7 @@ export function GeneralPanel () {
       </BoxPanel>
 
       <BoxPanel
-        title="Team sizing"
+        title={`Team sizing (currently ${teamSize})`}
         flexDirection="row"
         flexWrap="wrap"
         onSubmit={e => {
@@ -96,7 +97,7 @@ export function GeneralPanel () {
         }}
       >
         <TextInput
-          placeholder={`Set a new team size limit (currently ${teamSize})`}
+          placeholder="Set a new team size limit"
           type="number"
           flex="1"
           {...teamSizeInput.inputProp}
