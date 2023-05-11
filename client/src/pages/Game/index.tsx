@@ -12,6 +12,7 @@ import {
   getGroup,
   getGroupSort,
 } from './components/GroupBySelector'
+import { useTheme } from '@emotion/react'
 
 export function Game () {
   const {
@@ -20,7 +21,10 @@ export function Game () {
     messages,
   } = useGame()
 
-  const { myScore, myTeamScore, myTeamName, myTeamRank } = usePlayer()
+  const { myScore, myTeamScore, myTeamName, myTeamRank, isBeforeLastScorer } =
+    usePlayer()
+
+  const theme = useTheme()
 
   const [groupBy, setGroupBy] = useState<GroupByType>('Default')
   const groups = challenges.reduce<Record<string, Challenge[]>>(
@@ -73,7 +77,18 @@ export function Game () {
         rowGap="2"
         columnGap={[0, 3]}
         placeSelf="center"
-        backgroundColor="background"
+        backgroundColor={
+          myTeamRank === 1 && myTeamScore > 0
+            ? 'gold'
+            : myTeamRank === 2 && myTeamScore > 0
+              ? 'silver'
+              : myTeamRank === 3 && myTeamScore > 0
+                ? 'copper'
+                : isBeforeLastScorer
+                  ? undefined
+                  : 'background'
+        }
+        background={isBeforeLastScorer ? theme.colors.beforeLastOne : undefined}
         color="primaryText"
         borderRadius="medium"
         display="grid"

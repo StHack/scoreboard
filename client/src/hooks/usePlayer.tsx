@@ -9,6 +9,7 @@ export type PlayerContext = {
   myTeamScore: number
   myTeamName: string
   myTeamRank: number
+  isBeforeLastScorer: boolean
   readMessages: string[]
   attemptChall: (
     challName: string,
@@ -23,6 +24,7 @@ const playerContext = createContext<PlayerContext>({
   myTeamScore: 0,
   myTeamName: '',
   myTeamRank: 0,
+  isBeforeLastScorer: false,
   readMessages: [],
   attemptChall: () => Promise.resolve(undefined),
   markMessageAsRead: () => {},
@@ -56,11 +58,20 @@ function useProvidePlayer (): PlayerContext {
     .filter(cs => !!cs.achievements.find(a => a.username === user.username))
     .reduce((agg, a) => agg + a.score, 0)
 
+  // @ts-ignore
+  const lastScorerIndex = teamsScore.findLastIndex(
+    // @ts-ignore
+    s => s.score > 0 && s.rank > 3,
+  )
+  const beforeLastScorer =
+    lastScorerIndex > 0 ? teamsScore[lastScorerIndex - 1] : undefined
+
   return {
     myScore,
     myTeamScore: ts?.score ?? 0,
     myTeamName: user.team,
     myTeamRank: teamsScore.find(ts => ts.team === user.team)?.rank ?? 0,
+    isBeforeLastScorer: beforeLastScorer?.team === user.team,
     readMessages,
     attemptChall: async (challName, flag, callback) => {
       if (!socket) return
@@ -72,7 +83,7 @@ function useProvidePlayer (): PlayerContext {
           callback(isValid ?? false, error),
       )
     },
-    markMessageAsRead: (message) => {
+    markMessageAsRead: message => {
       const updated = [...readMessages, message._id]
       localStorage.setItem('readMessages', JSON.stringify(updated))
       setReadMessages(updated)

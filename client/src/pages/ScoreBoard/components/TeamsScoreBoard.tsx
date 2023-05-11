@@ -27,7 +27,12 @@ export function TeamsScoreBoard ({
   const y = useMotionValue(0)
   const dragControls = useDragControls()
   // @ts-ignore
-  const lastScorer = teamsScore.findLast(s => s.score > 0 && s.rank > 3)
+  const lastScorerIndex = teamsScore.findLastIndex(
+    // @ts-ignore
+    s => s.score > 0 && s.rank > 3,
+  )
+  const beforeLastScorer =
+    lastScorerIndex > 0 ? teamsScore[lastScorerIndex - 1] : undefined
 
   return (
     <StyledReorderGroup
@@ -45,7 +50,7 @@ export function TeamsScoreBoard ({
           key={cs.team}
           teamScore={cs}
           challsScore={challsScore}
-          isLastScorer={cs === lastScorer}
+          isLastScorer={cs === beforeLastScorer}
           dragControls={dragControls}
           y={y}
         />
@@ -77,17 +82,17 @@ export function ScoreCard ({
         fontSize: '1em',
       },
       copper: {
-        background: '#A77044DD',
+        background: theme.colors.copper,
         width: '80%',
         fontSize: '1.1em',
       },
       silver: {
-        background: '#A7A7ADDD',
+        background: theme.colors.silver,
         width: '90%',
         fontSize: '1.2em',
       },
       gold: {
-        background: '#FEE101DD',
+        background: theme.colors.gold,
         width: '100%',
         fontSize: '1.3em',
       },
@@ -123,9 +128,7 @@ export function ScoreCard ({
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
       background={
-        isLastScorer
-          ? 'linear-gradient(124deg,#ff240099,#e81d1d99,#e8b71d,#e3e81d99,#1de84099,#1ddde899,#2b1de899,#dd00f399,#dd00f399) !important;'
-          : undefined
+        isLastScorer ? `${theme.colors.beforeLastOne} !important;` : undefined
       }
       color="primaryText"
       borderRadius="large"

@@ -18,6 +18,12 @@ const baseColors = {
   red: '#E96D63',
   green: '#7FCA9F',
   blue: '#85C1F5',
+
+  gold: '#FEE101DD',
+  silver: '#A7A7ADDD',
+  copper: '#A77044DD',
+  beforeLastOne:
+    'linear-gradient(124deg,#ff240099,#e81d1d99,#e8b71d,#e3e81d99,#1de84099,#1ddde899,#2b1de899,#dd00f399,#dd00f399)',
 }
 
 const fontSizes: ThemeFontSizes = [

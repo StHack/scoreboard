@@ -74,6 +74,11 @@ export type ThemeColors = {
   blue: Color
   pink: Color
 
+  gold: Color
+  silver: Color
+  copper: Color
+  beforeLastOne: Color
+
   primary: Color
   secondary: Color
   background: Color
