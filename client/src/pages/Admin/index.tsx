@@ -18,12 +18,12 @@ import {
   fontSize,
   space,
 } from 'styled-system'
+import { GapProps, gap } from 'styles'
 import { AchievementPanel } from './components/AchievementPanel'
 import { AttemptPanel } from './components/AttemptPanel'
 import { ChallengePanel } from './components/ChallengePanel'
 import { GeneralPanel } from './components/GeneralPanel'
 import { UserPanel } from './components/UserPanel'
-import { GapProps, gap } from 'styles'
 
 export function Admin () {
   return (

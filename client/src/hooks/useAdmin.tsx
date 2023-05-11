@@ -1,17 +1,18 @@
 import { Achievement } from 'models/Achievement'
+import { Attempt } from 'models/Attempt'
 import { BaseChallenge, Challenge } from 'models/Challenge'
+import { BaseReward, Reward } from 'models/Reward'
+import { ServerActivityStatistics } from 'models/ServerActivityStatistics'
 import { ServerError } from 'models/ServerError'
 import { User } from 'models/User'
 import {
-  createContext,
   PropsWithChildren,
+  createContext,
   useContext,
   useEffect,
   useState,
 } from 'react'
 import { useSocket } from './useSocket'
-import { Attempt } from 'models/Attempt'
-import { ServerActivityStatistics } from 'models/ServerActivityStatistics'
 
 export type AdminContext = {
   challenges: Challenge[]
@@ -19,6 +20,7 @@ export type AdminContext = {
   attempts: Attempt[]
   activityStatistics: ServerActivityStatistics
   createChallenge: (chall: BaseChallenge) => Promise<Challenge>
+  createReward: (chall: BaseReward) => Promise<Reward>
   updateChallenge: (chall: BaseChallenge) => Promise<Challenge>
   brokeChallenge: (chall: Challenge) => void
   repairChallenge: (chall: Challenge) => void
@@ -33,6 +35,7 @@ export type AdminContext = {
   deleteUser: (user: User) => void
   logoutUser: (user: User) => void
   deleteAchievement: (achievement: Achievement) => void
+  deleteReward: (reward: Reward) => void
   sendMessage: (message: string, challenge?: string) => void
 }
 
@@ -54,6 +57,7 @@ const adminContext = createContext<AdminContext>({
   attempts: [],
   activityStatistics: defaultStatistics,
   createChallenge: () => Promise.resolve<Challenge>(undefined as any),
+  createReward: () => Promise.resolve<Reward>(undefined as any),
   updateChallenge: () => Promise.resolve<Challenge>(undefined as any),
   brokeChallenge: () => {},
   repairChallenge: () => {},
@@ -68,6 +72,7 @@ const adminContext = createContext<AdminContext>({
   deleteUser: () => {},
   logoutUser: () => {},
   deleteAchievement: () => {},
+  deleteReward: () => {},
   sendMessage: () => {},
 })
 
@@ -85,7 +90,8 @@ function useProvideAdmin (): AdminContext {
   const [challenges, setChallenges] = useState<Challenge[]>([])
   const [users, setUsers] = useState<User[]>([])
   const [attempts, setAttempts] = useState<Attempt[]>([])
-  const [statistics, setActivityStatistics] = useState<ServerActivityStatistics>(defaultStatistics)
+  const [statistics, setActivityStatistics] =
+    useState<ServerActivityStatistics>(defaultStatistics)
 
   useEffect(() => {
     if (!socket) return
@@ -149,6 +155,22 @@ function useProvideAdmin (): AdminContext {
           'challenge:create',
           chall,
           (response: Challenge | ServerError) => {
+            if ('error' in response) {
+              reject(response.error)
+            } else {
+              resolve(response)
+            }
+          },
+        )
+      }),
+    createReward: reward =>
+      new Promise<Reward>((resolve, reject) => {
+        if (!socket) throw new Error('connection is not available')
+
+        socket.emit(
+          'reward:create',
+          reward,
+          (response: Reward | ServerError) => {
             if ('error' in response) {
               reject(response.error)
             } else {
@@ -249,6 +271,11 @@ function useProvideAdmin (): AdminContext {
         achievement.teamname,
         achievement.challenge,
       )
+    },
+    deleteReward: reward => {
+      if (!socket) throw new Error('connection is not available')
+
+      socket.emit('reward:delete', reward._id)
     },
     sendMessage: (message, challenge) => {
       if (!socket) throw new Error('connection is not available')

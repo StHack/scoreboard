@@ -3,6 +3,7 @@ import { Challenge } from 'models/Challenge'
 import { GameConfig } from 'models/GameConfig'
 import { GameScore } from 'models/GameScore'
 import { Message } from 'models/Message'
+import { Reward } from 'models/Reward'
 import {
   createContext,
   PropsWithChildren,
@@ -17,6 +18,7 @@ export type GameContext = {
   challenges: Challenge[]
   achievements: Achievement[]
   messages: Message[]
+  rewards: Reward[]
   score: GameScore
   gameConfig: GameConfig
 }
@@ -34,6 +36,7 @@ const gameContext = createContext<GameContext>({
   challenges: [],
   achievements: [],
   messages: [],
+  rewards: [],
   score: {
     challsScore: {},
     teamsScore: [],
@@ -56,6 +59,7 @@ function useProvideGame (): GameContext {
   const [achievements, setAchievements] = useState<Achievement[]>([])
   const [messages, setMessages] = useState<Message[]>([])
   const [teams, setTeams] = useState<string[]>([])
+  const [rewards, setRewards] = useState<Reward[]>([])
   const [gameConfig, setGameConfig] = useState<GameConfig>(defaultGameConfig)
 
   useEffect(() => {
@@ -72,6 +76,12 @@ function useProvideGame (): GameContext {
     socket.emit('achievement:list', (response: Achievement[]) => {
       setAchievements(
         response.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
+      )
+    })
+
+    socket.emit('reward:list', (response: Reward[]) => {
+      setRewards(
+        response.map(r => ({ ...r, createdAt: new Date(r.createdAt) })),
       )
     })
 
@@ -102,6 +112,13 @@ function useProvideGame (): GameContext {
       ])
     })
 
+    socket.on('reward:added', (reward: Reward) => {
+      setRewards(r => [
+        { ...reward, createdAt: new Date(reward.createdAt) },
+        ...r,
+      ])
+    })
+
     socket.on('achievement:deleted', (deleted: Achievement) => {
       setAchievements(ach =>
         ach.filter(
@@ -112,6 +129,10 @@ function useProvideGame (): GameContext {
             ),
         ),
       )
+    })
+
+    socket.on('reward:deleted', (deleted: Reward) => {
+      setRewards(rewards => rewards.filter(r => !(r._id === deleted._id)))
     })
 
     socket.on('game:newMessage', (message: Message) => {
@@ -133,7 +154,9 @@ function useProvideGame (): GameContext {
       socket.off('challenge:added')
       socket.off('challenge:updated')
       socket.off('achievement:added')
+      socket.off('reward:added')
       socket.off('achievement:deleted')
+      socket.off('reward:deleted')
       socket.off('game:newMessage')
       socket.off('game:ended')
       socket.off('game:config:updated')
@@ -144,7 +167,8 @@ function useProvideGame (): GameContext {
     challenges,
     achievements,
     messages,
-    score: computeGameScore(achievements, challenges, teams, gameConfig),
+    rewards,
+    score: computeGameScore(achievements, rewards, challenges, teams, gameConfig),
     gameConfig,
   }
 }

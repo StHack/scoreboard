@@ -1,34 +1,69 @@
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import { ExportJsonButton } from 'components/ExportJsonButton'
-import { IconDelete } from 'components/Icon'
+import { IconCreate, IconDelete } from 'components/Icon'
 import { SearchInput } from 'components/SearchInput'
 import { ColumnDefinition, Table } from 'components/Table'
 import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
 import { Achievement } from 'models/Achievement'
+import { Reward } from 'models/Reward'
 import { useState } from 'react'
+import { RewardForm } from './RewardForm'
 
-const columns: ColumnDefinition<Achievement>[] = [
+const achievementsColumns: ColumnDefinition<Achievement>[] = [
   { header: 'Challenge', rowValue: row => row.challenge },
   { header: 'Team', rowValue: row => row.teamname },
   { header: 'User', rowValue: row => row.username },
   { header: 'Date', rowValue: row => row.createdAt.toLocaleTimeString() },
 ]
 
+const rewardsColumns: ColumnDefinition<Reward>[] = [
+  { header: 'Team', rowValue: row => row.teamname },
+  { header: 'Label', rowValue: row => row.label },
+  { header: 'Value', rowValue: row => row.value.toString() },
+  { header: 'Date', rowValue: row => row.createdAt.toLocaleTimeString() },
+]
+
 export function AchievementPanel () {
+  const [openCreateReward, setOpenCreateReward] = useState<boolean>(false)
   const [search, setSearch] = useState<string>('')
-  const { achievements } = useGame()
+  const { achievements, rewards } = useGame()
 
   return (
     <Box display="flex" flexDirection="column" overflowY="hidden" gap="2">
       <Box display="flex" flexDirection="row" gap="2">
+        <Button
+          onClick={() => setOpenCreateReward(true)}
+          title="Create reward"
+          icon={IconCreate}
+          responsiveLabel
+        >
+          Create reward
+        </Button>
         <ExportJsonButton data={achievements} filename="achievements" />
         <SearchInput
           search={search}
           onChange={setSearch}
-          placeholder="Search by team, player or chall name"
+          placeholder="Search by label, team, player or chall name"
         />
+      </Box>
+      <Box as="h3" fontSize="2">
+        Rewards
+      </Box>
+      <Table
+        data={rewards.filter(
+          r =>
+            r.teamname.toLowerCase().includes(search) ||
+            r.label.toLowerCase().includes(search),
+        )}
+        rowKey={row => row._id}
+        columns={rewardsColumns}
+        actions={RewardActions}
+        minHeight="9"
+      />
+      <Box as="h3" fontSize="2">
+        Achievements
       </Box>
       <Table
         data={achievements.filter(
@@ -38,9 +73,13 @@ export function AchievementPanel () {
             a.username.toLowerCase().includes(search),
         )}
         rowKey={row => row.challenge + row.teamname}
-        columns={columns}
+        columns={achievementsColumns}
         actions={AchievementActions}
+        mb="2"
       />
+      {openCreateReward && (
+        <RewardForm onClose={() => setOpenCreateReward(false)} />
+      )}
     </Box>
   )
 }
@@ -66,6 +105,35 @@ function AchievementActions ({ row }: AchievementActionsProps) {
           )
         ) {
           deleteAchievement(row)
+        }
+      }}
+    >
+      Delete
+    </Button>
+  )
+}
+
+type RewardActionsProps = {
+  row: Reward
+}
+function RewardActions ({ row }: RewardActionsProps) {
+  const { deleteReward } = useAdmin()
+  return (
+    <Button
+      variant="danger"
+      icon={IconDelete}
+      responsiveLabel
+      title="Delete"
+      onClick={() => {
+        if (
+          // eslint-disable-next-line no-restricted-globals
+          confirm(
+            `Are you sure to delete Reward:\n\n${row.label}\n${
+              row.teamname
+            }\n${row.createdAt.toISOString()}`,
+          )
+        ) {
+          deleteReward(row)
         }
       }}
     >

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import React, { useState } from 'react'
-import { SpaceProps } from 'styled-system'
+import { LayoutProps, SpaceProps } from 'styled-system'
 import { Box } from './Box'
 
 type SortDirection = 'desc' | 'asc'
@@ -24,7 +24,7 @@ export function Table<T extends {}> ({
   rowKey,
   actions: Actions,
   ...props
-}: TableProps<T> & SpaceProps) {
+}: TableProps<T> & SpaceProps & LayoutProps) {
   const [sortedColumn, setSortedColumn] = useState<
     ColumnDefinition<T> | undefined
   >(columns.find(c => c.defaultSort))

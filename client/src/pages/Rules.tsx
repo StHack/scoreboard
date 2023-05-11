@@ -66,12 +66,14 @@ This year the scoring is dynamic, the formula is the following:
 
 \`\`\`text
 chall_points = (base_score * base_difficulty) * (total_teams - solvers)
+team_points = chall_point + reward_points
 \`\`\`
 
 Where:
 
 - \`base_score\` is the constant **${gameConfig.baseChallScore}**
 - \`base_difficulty\` is
+  - special: **0**
   - easy: **1**
   - medium: **2**
   - hard: **3**
@@ -79,6 +81,7 @@ Where:
   gameConfig.teamCount
 })
 - \`solvers\` is the number of teams that solved this challenge
+- \`reward_points\` is the sum of bonus points given by the staff when special challenge is solved
 
 This means you should expect the challenge points and your score to:
 

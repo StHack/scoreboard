@@ -1,4 +1,5 @@
 import { Achievement } from './Achievement'
+import { Reward } from './Reward'
 
 export type ChallengeScore = {
   score: number
@@ -11,6 +12,7 @@ export type TeamScore = {
   score: number
   breakthroughs: Achievement[]
   solved: Achievement[]
+  rewards: Reward[]
 }
 
 export type GameScore = {

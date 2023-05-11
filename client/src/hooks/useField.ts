@@ -5,8 +5,15 @@ export type FieldProps<T> = {
   name: string
   disabled: boolean
   required?: boolean
+  valueRetriever?: (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => T
 }
-export function useField<T> ({ defaultValue, ...props }: FieldProps<T>) {
+export function useField<T> ({
+  defaultValue,
+  valueRetriever,
+  ...props
+}: FieldProps<T>) {
   const [value, setValue] = useState<T>(defaultValue)
 
   const reset = () => {
@@ -21,7 +28,8 @@ export function useField<T> ({ defaultValue, ...props }: FieldProps<T>) {
         e: ChangeEvent<
           HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
         >,
-      ) => setValue(e.target.value as any),
+      ) =>
+        setValue(valueRetriever ? valueRetriever(e) : (e.target.value as any)),
     },
     reset,
   }

@@ -3,15 +3,17 @@ import { Challenge } from 'models/Challenge'
 import { Difficulty } from 'models/Difficulty'
 import { GameConfig } from 'models/GameConfig'
 import { ChallengeScore, GameScore, TeamScore } from 'models/GameScore'
+import { Reward } from 'models/Reward'
 
 export function computeGameScore (
   achievements: Achievement[],
+  rewards: Reward[],
   challenges: Challenge[],
   teams: string[],
   config: GameConfig,
 ): GameScore {
   const challsScore = computeChallsScore(challenges, achievements, config)
-  const teamsScore = computeTeamsScore(teams, challsScore)
+  const teamsScore = computeTeamsScore(teams, challsScore, rewards)
 
   return {
     challsScore,
@@ -50,9 +52,10 @@ function computeChallengeScore (
 function computeTeamsScore (
   teams: string[],
   challsScore: Record<string, ChallengeScore>,
+  rewards: Reward[],
 ): TeamScore[] {
   return teams
-    .map(t => computeTeamScore(challsScore, t))
+    .map(t => computeTeamScore(challsScore, t, rewards))
     .sort((a, b) => b.score - a.score)
     .map((ts, i, tss) => ({
       ...ts,
@@ -63,19 +66,24 @@ function computeTeamsScore (
 function computeTeamScore (
   challsScore: Record<string, ChallengeScore>,
   team: string,
+  rewards: Reward[],
 ): TeamScore {
+  const rewardAcquired = rewards.filter(r => r.teamname === team)
   return {
     rank: 0,
     team,
-    score: Object.values(challsScore)
-      .filter(cs => cs.achievements.find(a => a.teamname === team))
-      .reduce((agg, cs) => agg + cs.score, 0),
+    score:
+      Object.values(challsScore)
+        .filter(cs => cs.achievements.find(a => a.teamname === team))
+        .reduce((agg, cs) => agg + cs.score, 0) +
+      rewardAcquired.map(r => r.value).reduce((acc, cur) => acc + cur, 0),
     breakthroughs: Object.values(challsScore)
       .map(cs => cs.achievements[0])
       .filter(a => a?.teamname === team),
     solved: Object.values(challsScore)
       .flatMap(cs => cs.achievements)
       .filter(a => a?.teamname === team),
+    rewards: rewardAcquired,
   }
 }
 
@@ -92,6 +100,7 @@ function computeScore (
 }
 
 export const DifficultyValue: Record<Difficulty, number> = {
+  special: 0,
   easy: 1,
   medium: 2,
   hard: 3,

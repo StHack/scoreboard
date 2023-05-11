@@ -1,11 +1,12 @@
 import { listAchievement } from 'db/AchievementDb'
 import { listChallenge } from 'db/ChallengeDb'
 import { listMessage } from 'db/MessageDb'
+import { listReward } from 'db/RewardDb'
 import { listTeam } from 'db/UsersDb'
 import { GameConfig } from 'models/GameConfig'
 import { Namespace } from 'socket.io'
-import { ServerConfig } from './serverconfig'
 import { registerSocketConnectivityChange } from './serveractivity'
+import { ServerConfig } from './serverconfig'
 
 export function registerGameNamespace(
   adminIo: Namespace,
@@ -31,6 +32,11 @@ export function registerGameNamespace(
     gameSocket.on('achievement:list', async callback => {
       const achievements = await listAchievement()
       callback(achievements)
+    })
+
+    gameSocket.on('reward:list', async callback => {
+      const rewards = await listReward()
+      callback(rewards)
     })
 
     gameSocket.on('game:config', async callback => {

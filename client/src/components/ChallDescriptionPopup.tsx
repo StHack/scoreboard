@@ -88,7 +88,7 @@ export function ChallDescriptionPopup ({
           </Text>
         )}
 
-        {!myTeamSolved && openState === 'open' && (
+        {!myTeamSolved && openState === 'open' && difficulty !== 'special' && (
           <Box
             as="form"
             gridArea="flag"

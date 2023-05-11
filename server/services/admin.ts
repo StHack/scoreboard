@@ -8,10 +8,12 @@ import {
   updateChallenge,
 } from 'db/ChallengeDb'
 import { addMessage } from 'db/MessageDb'
+import { createReward, removeReward } from 'db/RewardDb'
 import { listUser, removeUser, updateUser } from 'db/UsersDb'
 import debug from 'debug'
 import { Request } from 'express'
 import { BaseChallenge } from 'models/Challenge'
+import { BaseReward } from 'models/Reward'
 import { User } from 'models/User'
 import { Namespace } from 'socket.io'
 import {
@@ -80,6 +82,20 @@ export function registerAdminNamespace(
         }
       },
     )
+
+    adminSocket.on('reward:create', async (reward: BaseReward, callback) => {
+      try {
+        const rewardCreated = await createReward(reward)
+        callback(rewardCreated)
+        gameIo.emit('reward:added', rewardCreated)
+      } catch (error) {
+        if (error instanceof Error) {
+          callback({ error: error.message })
+        } else {
+          callback({ error: 'an error occured' })
+        }
+      }
+    })
 
     adminSocket.on(
       'challenge:update',
@@ -214,6 +230,14 @@ export function registerAdminNamespace(
         }
       },
     )
+
+    adminSocket.on('reward:delete', async (id: string) => {
+      const deleted = await removeReward(id)
+
+      if (deleted) {
+        gameIo.emit('reward:deleted', deleted)
+      }
+    })
 
     adminSocket.on('attempt:list', async callback => {
       const attempt = await listAttempt()

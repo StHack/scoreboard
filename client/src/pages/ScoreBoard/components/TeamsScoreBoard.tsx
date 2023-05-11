@@ -97,7 +97,7 @@ export function ScoreCard ({
   )
   const [focused, setFocused] = useState<boolean>(false)
 
-  const { rank, team, score, breakthroughs, solved } = teamScore
+  const { rank, team, score, breakthroughs, solved, rewards } = teamScore
   const solvedNotBreakthrough = solved.filter(s => !breakthroughs.includes(s))
 
   return (
@@ -184,6 +184,36 @@ export function ScoreCard ({
             alignItems="center"
             gap="3"
           >
+            {!!rewards.length && (
+              <Box as="h3" fontSize="1.3em">
+                {`${rewards.length} Rewards received`}
+              </Box>
+            )}
+
+            {!!rewards.length && (
+              <Box
+                as="ul"
+                display="flex"
+                flexDirection="column"
+                placeItems="center"
+                gap="1"
+              >
+                {rewards.map(({ _id, label, value, createdAt }) => (
+                  <Box
+                    key={_id}
+                    as="li"
+                    display="flex"
+                    alignItems="center"
+                    gap="2"
+                  >
+                    <IconLogo2023Icon size="2em" />
+                    {`${label} (${value} pts) at ${createdAt.toLocaleTimeString()}`}
+                    <IconLogo2023Icon size="2em" />
+                  </Box>
+                ))}
+              </Box>
+            )}
+
             {!!solved.length && (
               <Box as="h3" fontSize="1.3em">
                 {`${solved.length} Challenges solved (${breakthroughs.length} breakthroughs)`}
@@ -196,7 +226,6 @@ export function ScoreCard ({
                 display="flex"
                 flexDirection="column"
                 placeItems="center"
-                gridArea="btd"
                 gap="1"
               >
                 {breakthroughs.map(({ challenge, username, createdAt }) => (
@@ -222,7 +251,6 @@ export function ScoreCard ({
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
-                gridArea="btd"
                 gap="1"
                 textAlign="center"
               >
