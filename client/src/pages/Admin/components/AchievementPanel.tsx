@@ -42,6 +42,7 @@ export function AchievementPanel () {
           Create reward
         </Button>
         <ExportJsonButton data={achievements} filename="achievements" />
+        <ExportJsonButton data={rewards} filename="rewards" />
         <SearchInput
           search={search}
           onChange={setSearch}
