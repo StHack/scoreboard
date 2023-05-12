@@ -3,6 +3,7 @@ import { useAuth } from './useAuthentication'
 import { useGame } from './useGame'
 import { useSocket } from './useSocket'
 import { Message } from 'models/Message'
+import { findByLastIndex } from 'services/polyfill'
 
 export type PlayerContext = {
   myScore: number
@@ -58,9 +59,8 @@ function useProvidePlayer (): PlayerContext {
     .filter(cs => !!cs.achievements.find(a => a.username === user.username))
     .reduce((agg, a) => agg + a.score, 0)
 
-  // @ts-ignore
-  const lastScorerIndex = teamsScore.findLastIndex(
-    // @ts-ignore
+  const lastScorerIndex = findByLastIndex(
+    teamsScore,
     s => s.score > 0 && s.rank > 3,
   )
   const beforeLastScorer =

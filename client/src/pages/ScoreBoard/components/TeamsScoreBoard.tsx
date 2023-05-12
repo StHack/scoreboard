@@ -14,6 +14,7 @@ import {
 } from 'framer-motion'
 import { ChallengeScore, TeamScore } from 'models/GameScore'
 import { useMemo, useState } from 'react'
+import { findByLastIndex } from 'services/polyfill'
 import { cleanStyledSystemOnly } from 'styles'
 
 export type TeamsScoreBoardProps = {
@@ -26,9 +27,9 @@ export function TeamsScoreBoard ({
 }: TeamsScoreBoardProps) {
   const y = useMotionValue(0)
   const dragControls = useDragControls()
-  // @ts-ignore
-  const lastScorerIndex = teamsScore.findLastIndex(
-    // @ts-ignore
+
+  const lastScorerIndex = findByLastIndex(
+    teamsScore,
     s => s.score > 0 && s.rank > 3,
   )
   const beforeLastScorer =
