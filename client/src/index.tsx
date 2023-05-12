@@ -7,7 +7,6 @@ import DefaultStyles from 'styles'
 import { darkTheme, lightTheme } from 'styles/theme'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { ProvideGame } from 'hooks/useGame'
 
 const root = createRoot(document.getElementById('root')!)
 root.render(
@@ -23,9 +22,7 @@ function AppWrapper () {
     <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
       <DefaultStyles />
       <ProvideAuth>
-        <ProvideGame>
-          <App />
-        </ProvideGame>
+        <App />
       </ProvideAuth>
     </ThemeProvider>
   )

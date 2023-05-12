@@ -4,7 +4,7 @@ import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'
 import { ProvideAdmin } from 'hooks/useAdmin'
 import { useAuth } from 'hooks/useAuthentication'
-import { useGame } from 'hooks/useGame'
+import { ProvideGame, useGame } from 'hooks/useGame'
 import { ProvidePlayer } from 'hooks/usePlayer'
 import { Admin } from 'pages/Admin'
 import { Game } from 'pages/Game'
@@ -62,9 +62,11 @@ export default function App () {
                     condition={isAuthenticated}
                     fallbackTo="/login"
                   >
-                    <ProvidePlayer>
-                      <Game />
-                    </ProvidePlayer>
+                    <ProvideGame>
+                      <ProvidePlayer>
+                        <Game />
+                      </ProvidePlayer>
+                    </ProvideGame>
                   </ProtectedRoute>
                 }
               />
@@ -73,7 +75,9 @@ export default function App () {
                 path="/login"
                 element={
                   <ProtectedRoute condition={!isAuthenticated} fallbackTo="/">
-                    <Login />
+                    <ProvideGame>
+                      <Login />
+                    </ProvideGame>
                   </ProtectedRoute>
                 }
               />
@@ -85,7 +89,9 @@ export default function App () {
                     condition={!isAuthenticated && registrationOpened}
                     fallbackTo="/"
                   >
-                    <Register />
+                    <ProvideGame>
+                      <Register />
+                    </ProvideGame>
                   </ProtectedRoute>
                 }
               />
@@ -97,16 +103,32 @@ export default function App () {
                     condition={isAuthenticated && isAuthorized}
                     fallbackTo="/"
                   >
-                    <ProvideAdmin>
-                      <Admin />
-                    </ProvideAdmin>
+                    <ProvideGame>
+                      <ProvideAdmin>
+                        <Admin />
+                      </ProvideAdmin>
+                    </ProvideGame>
                   </ProtectedRoute>
                 }
               />
 
-              <Route path="/scoreboard" element={<ScoreBoard />} />
+              <Route
+                path="/scoreboard"
+                element={
+                  <ProvideGame>
+                    <ScoreBoard />
+                  </ProvideGame>
+                }
+              />
 
-              <Route path="/rules" element={<Rules />} />
+              <Route
+                path="/rules"
+                element={
+                  <ProvideGame>
+                    <Rules />
+                  </ProvideGame>
+                }
+              />
             </Routes>
           </Container>
 
