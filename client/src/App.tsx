@@ -30,9 +30,6 @@ const Container = styled.div`
 
 export default function App () {
   const { isAuthenticated, isAuthorized } = useAuth()
-  const {
-    gameConfig: { registrationOpened },
-  } = useGame()
 
   return (
     <ThemeProvider
@@ -86,7 +83,7 @@ export default function App () {
                 path="/register"
                 element={
                   <ProtectedRoute
-                    condition={!isAuthenticated && registrationOpened}
+                    condition={!isAuthenticated}
                     fallbackTo="/"
                   >
                     <ProvideGame>
