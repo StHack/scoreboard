@@ -1,0 +1,17 @@
+[
+  {
+    "_id": {
+      "$oid": "645ee84fdc079f079aecf292"
+    },
+    "teamname": "Team Rache Quit",
+    "label": "Unintended Zor Vs KongLeaks",
+    "value": 1000,
+    "createdAt": {
+      "$date": "2023-05-13T01:30:55.523Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:30:55.523Z"
+    },
+    "__v": 0
+  }
+]

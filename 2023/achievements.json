@@ -1,0 +1,1922 @@
+[
+  {
+    "_id": {
+      "$oid": "645e8fa6d122198627087b0c"
+    },
+    "challenge": "Flowers Bot 1/2",
+    "username": "yolo1",
+    "teamname": "penis",
+    "createdAt": {
+      "$date": "2023-05-12T19:12:38.782Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T19:12:38.782Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645e91dcdc079f079aec75ea"
+    },
+    "challenge": "BlockFlower",
+    "username": "yombb",
+    "teamname": "idéfix",
+    "createdAt": {
+      "$date": "2023-05-12T19:22:04.614Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T19:22:04.614Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645e92a6dc079f079aec77d9"
+    },
+    "challenge": "Turn Around",
+    "username": "Louzogh",
+    "teamname": "PessHack",
+    "createdAt": {
+      "$date": "2023-05-12T19:25:26.697Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T19:25:26.697Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645e9439dc079f079aec7b12"
+    },
+    "challenge": "BlockFlower",
+    "username": "Akumarachi",
+    "teamname": "Capgemini Aces of Spades",
+    "createdAt": {
+      "$date": "2023-05-12T19:32:09.237Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T19:32:09.237Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645e9692dc079f079aec81bd"
+    },
+    "challenge": "BlockFlower",
+    "username": " expressito de los chicos de la bandera",
+    "teamname": "Los expressitos",
+    "createdAt": {
+      "$date": "2023-05-12T19:42:10.877Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T19:42:10.877Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645e98f1dc079f079aec8588"
+    },
+    "challenge": "BlockFlower",
+    "username": "gc4lm3tt3s",
+    "teamname": "Fi3ldf0lks",
+    "createdAt": {
+      "$date": "2023-05-12T19:52:17.619Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T19:52:17.619Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645e99b5dc079f079aec8749"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "Prinegheuls",
+    "teamname": "Root du rhum",
+    "createdAt": {
+      "$date": "2023-05-12T19:55:33.907Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T19:55:33.907Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645e9b52dc079f079aec8abc"
+    },
+    "challenge": "BlockFlower",
+    "username": "0x466C6F",
+    "teamname": "Team Rache Quit",
+    "createdAt": {
+      "$date": "2023-05-12T20:02:26.370Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T20:02:26.370Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645e9ccddc079f079aec8d75"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "Lukho",
+    "teamname": "P'HackMan",
+    "createdAt": {
+      "$date": "2023-05-12T20:08:45.914Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T20:08:45.914Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645e9e37dc079f079aec9074"
+    },
+    "challenge": "CLI RPG",
+    "username": "Express",
+    "teamname": "Stramonium",
+    "createdAt": {
+      "$date": "2023-05-12T20:14:47.701Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T20:14:47.701Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645e9f2cdc079f079aec919e"
+    },
+    "challenge": "A path to power (part 2)",
+    "username": "kobh4x",
+    "teamname": "PessHack",
+    "createdAt": {
+      "$date": "2023-05-12T20:18:52.736Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T20:18:52.736Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645e9fc8dc079f079aec92af"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "kobh4x",
+    "teamname": "PessHack",
+    "createdAt": {
+      "$date": "2023-05-12T20:21:28.591Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T20:21:28.591Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ea226dc079f079aec9626"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "T0t0r0",
+    "teamname": "CatOverflow",
+    "createdAt": {
+      "$date": "2023-05-12T20:31:34.685Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T20:31:34.685Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ea491dc079f079aec9a32"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "maxime",
+    "teamname": "M'hacksec",
+    "createdAt": {
+      "$date": "2023-05-12T20:41:53.042Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T20:41:53.042Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ea53cdc079f079aec9b4b"
+    },
+    "challenge": "A path to power (part 2)",
+    "username": "Akoura",
+    "teamname": "Root du rhum",
+    "createdAt": {
+      "$date": "2023-05-12T20:44:44.109Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T20:44:44.109Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ea55bdc079f079aec9b8c"
+    },
+    "challenge": "0 prot",
+    "username": "red0xff",
+    "teamname": "Stramonium",
+    "createdAt": {
+      "$date": "2023-05-12T20:45:15.902Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T20:45:15.902Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ea764dc079f079aec9dac"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "fr3sh",
+    "teamname": "(C3-NA) Ctrl+Alt+Defeat",
+    "createdAt": {
+      "$date": "2023-05-12T20:53:56.461Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T20:53:56.461Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ea990dc079f079aec9f6b"
+    },
+    "challenge": "Do you speak SQL ?",
+    "username": "ixod3",
+    "teamname": "Les Pires Hat",
+    "createdAt": {
+      "$date": "2023-05-12T21:03:12.790Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:03:12.790Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eaa1ddc079f079aeca08c"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "Headorteil",
+    "teamname": "Khacktus",
+    "createdAt": {
+      "$date": "2023-05-12T21:05:33.029Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:05:33.029Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eaad5dc079f079aeca1a3"
+    },
+    "challenge": "A path to power (part 2)",
+    "username": "Headorteil",
+    "teamname": "Khacktus",
+    "createdAt": {
+      "$date": "2023-05-12T21:08:37.040Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:08:37.040Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eab3bdc079f079aeca245"
+    },
+    "challenge": "BlockFlower",
+    "username": "T0t0r0",
+    "teamname": "CatOverflow",
+    "createdAt": {
+      "$date": "2023-05-12T21:10:19.197Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:10:19.197Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eac78dc079f079aeca464"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "ademon",
+    "teamname": "Les Pires Hat",
+    "createdAt": {
+      "$date": "2023-05-12T21:15:36.059Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:15:36.059Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eadfedc079f079aeca700"
+    },
+    "challenge": "A path to power (part 2)",
+    "username": "anthony",
+    "teamname": "M'hacksec",
+    "createdAt": {
+      "$date": "2023-05-12T21:22:06.200Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:22:06.200Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eaf35dc079f079aeca8bc"
+    },
+    "challenge": "BlockFlower",
+    "username": "red0xff",
+    "teamname": "Stramonium",
+    "createdAt": {
+      "$date": "2023-05-12T21:27:17.587Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:27:17.587Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eaff1dc079f079aeca9b8"
+    },
+    "challenge": "KongLua 01 - Creds Digger",
+    "username": " expressito de los chicos de la bandera",
+    "teamname": "Los expressitos",
+    "createdAt": {
+      "$date": "2023-05-12T21:30:25.547Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:30:25.547Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eb03edc079f079aecaa17"
+    },
+    "challenge": "Nous sommes des fleurs",
+    "username": "mrsheepsheep",
+    "teamname": "(C3-NA) Ctrl+Alt+Defeat",
+    "createdAt": {
+      "$date": "2023-05-12T21:31:42.186Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:31:42.186Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eb146dc079f079aecab27"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "soflebg_UwU",
+    "teamname": "onepoint",
+    "createdAt": {
+      "$date": "2023-05-12T21:36:06.256Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:36:06.256Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eb225dc079f079aecac0e"
+    },
+    "challenge": "BlockFlower",
+    "username": "Mathisca",
+    "teamname": "Les Squelettes Pompettes",
+    "createdAt": {
+      "$date": "2023-05-12T21:39:49.888Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:39:49.888Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eb4aedc079f079aecaf5c"
+    },
+    "challenge": "CLI RPG",
+    "username": "GamrayW",
+    "teamname": "Les Pires Hat",
+    "createdAt": {
+      "$date": "2023-05-12T21:50:38.168Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:50:38.168Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eb517dc079f079aecb029"
+    },
+    "challenge": "Harduino",
+    "username": "red0xff",
+    "teamname": "Stramonium",
+    "createdAt": {
+      "$date": "2023-05-12T21:52:23.450Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:52:23.450Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eb550dc079f079aecb090"
+    },
+    "challenge": "KongLua 01 - Creds Digger",
+    "username": "mrzor",
+    "teamname": "Team Rache Quit",
+    "createdAt": {
+      "$date": "2023-05-12T21:53:20.982Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:53:20.982Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eb58adc079f079aecb0c5"
+    },
+    "challenge": "Turn Around",
+    "username": "Aether",
+    "teamname": "Les Pires Hat",
+    "createdAt": {
+      "$date": "2023-05-12T21:54:18.153Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:54:18.153Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eb65adc079f079aecb179"
+    },
+    "challenge": "BlockFlower",
+    "username": "Koruke",
+    "teamname": "P'HackMan",
+    "createdAt": {
+      "$date": "2023-05-12T21:57:46.376Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:57:46.376Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eb8e2dc079f079aecb385"
+    },
+    "challenge": "Harduino",
+    "username": "kaetir",
+    "teamname": "BrotherHacks",
+    "createdAt": {
+      "$date": "2023-05-12T22:08:34.297Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:08:34.297Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ebaefdc079f079aecb651"
+    },
+    "challenge": "Flowers Bot 1/2",
+    "username": "Louzogh",
+    "teamname": "PessHack",
+    "createdAt": {
+      "$date": "2023-05-12T22:17:19.933Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:17:19.933Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ebc27dc079f079aecb86f"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "souad",
+    "teamname": "Touristes",
+    "createdAt": {
+      "$date": "2023-05-12T22:22:31.105Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:22:31.105Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ebcf8dc079f079aecb955"
+    },
+    "challenge": "Turn Around",
+    "username": "D1ablo",
+    "teamname": "Stramonium",
+    "createdAt": {
+      "$date": "2023-05-12T22:26:00.383Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:26:00.383Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ebd4adc079f079aecb9ad"
+    },
+    "challenge": "Flowers Bot 1/2",
+    "username": "ademon",
+    "teamname": "Les Pires Hat",
+    "createdAt": {
+      "$date": "2023-05-12T22:27:22.829Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:27:22.829Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ebe82dc079f079aecbb31"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "ey3ball",
+    "teamname": "Fi3ldf0lks",
+    "createdAt": {
+      "$date": "2023-05-12T22:32:34.751Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:32:34.751Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ebfa8dc079f079aecbcc1"
+    },
+    "challenge": "Flowers Bot 1/2",
+    "username": "Barbaribouch",
+    "teamname": "Khacktus",
+    "createdAt": {
+      "$date": "2023-05-12T22:37:28.751Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:37:28.751Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ec1cedc079f079aecbf02"
+    },
+    "challenge": "Harduino",
+    "username": "yolo1",
+    "teamname": "penis",
+    "createdAt": {
+      "$date": "2023-05-12T22:46:38.978Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:46:38.978Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ec203dc079f079aecbf65"
+    },
+    "challenge": "Flowers Bot 1/2",
+    "username": "TomFox",
+    "teamname": "@ucun3 1d33@",
+    "createdAt": {
+      "$date": "2023-05-12T22:47:32Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:47:32Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ec252dc079f079aecbfe7"
+    },
+    "challenge": "La coloc",
+    "username": "V3locidad",
+    "teamname": "onepoint",
+    "createdAt": {
+      "$date": "2023-05-12T22:48:50.206Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:48:50.206Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ec35cdc079f079aecc14c"
+    },
+    "challenge": "0 prot",
+    "username": "brendel",
+    "teamname": "penis",
+    "createdAt": {
+      "$date": "2023-05-12T22:53:16.462Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:53:16.462Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ec47fdc079f079aecc251"
+    },
+    "challenge": "Can't seem to make you mine",
+    "username": "yombb",
+    "teamname": "idéfix",
+    "createdAt": {
+      "$date": "2023-05-12T22:58:07.774Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:58:07.774Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ec4c2dc079f079aecc2bf"
+    },
+    "challenge": "La coloc",
+    "username": "boring",
+    "teamname": "Les Pires Hat",
+    "createdAt": {
+      "$date": "2023-05-12T22:59:14.874Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:59:14.874Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ec5b6dc079f079aecc377"
+    },
+    "challenge": "BlockFlower",
+    "username": "codeoverflow",
+    "teamname": "-----",
+    "createdAt": {
+      "$date": "2023-05-12T23:03:18.466Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:03:18.466Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ec726dc079f079aecc53a"
+    },
+    "challenge": "La coloc",
+    "username": "Ducksteel_levrai",
+    "teamname": "helloworld",
+    "createdAt": {
+      "$date": "2023-05-12T23:09:26.918Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:09:26.918Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ec97ddc079f079aecc882"
+    },
+    "challenge": "KongLua 01 - Creds Digger",
+    "username": "Headorteil",
+    "teamname": "Khacktus",
+    "createdAt": {
+      "$date": "2023-05-12T23:19:25.722Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:19:25.722Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ecb41dc079f079aeccd16"
+    },
+    "challenge": "Harduino",
+    "username": "ValekoZ",
+    "teamname": "Los expressitos",
+    "createdAt": {
+      "$date": "2023-05-12T23:26:57.507Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:26:57.507Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ecc55dc079f079aeccec8"
+    },
+    "challenge": "La coloc",
+    "username": "Kuzco",
+    "teamname": "BrotherHacks",
+    "createdAt": {
+      "$date": "2023-05-12T23:31:33.460Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:31:33.460Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ecc8fdc079f079aeccf27"
+    },
+    "challenge": "A path to power (part 2)",
+    "username": "gc4lm3tt3s",
+    "teamname": "Fi3ldf0lks",
+    "createdAt": {
+      "$date": "2023-05-12T23:32:31.280Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:32:31.280Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ecd4ddc079f079aecd023"
+    },
+    "challenge": "Nous sommes des fleurs",
+    "username": "anthony",
+    "teamname": "M'hacksec",
+    "createdAt": {
+      "$date": "2023-05-12T23:35:41.990Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:35:41.990Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ecd8adc079f079aecd063"
+    },
+    "challenge": "Snyk - Nice vuln checker",
+    "username": "Louzogh",
+    "teamname": "PessHack",
+    "createdAt": {
+      "$date": "2023-05-12T23:36:42.570Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:36:42.570Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ecdebdc079f079aecd0db"
+    },
+    "challenge": "Harduino",
+    "username": "Akumarachi",
+    "teamname": "Capgemini Aces of Spades",
+    "createdAt": {
+      "$date": "2023-05-12T23:38:19.339Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:38:19.339Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ecee9dc079f079aecd1fb"
+    },
+    "challenge": "BlockFlower",
+    "username": "Pixailz",
+    "teamname": "420verfl0w",
+    "createdAt": {
+      "$date": "2023-05-12T23:42:33.751Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:42:33.751Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ed01ddc079f079aecd375"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "Grominet",
+    "teamname": "Stramonium",
+    "createdAt": {
+      "$date": "2023-05-12T23:47:41.312Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:47:41.312Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ed0b5dc079f079aecd491"
+    },
+    "challenge": "Flowers Bot 1/2",
+    "username": "soflebg_UwU",
+    "teamname": "onepoint",
+    "createdAt": {
+      "$date": "2023-05-12T23:50:13.862Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:50:13.862Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ed116dc079f079aecd586"
+    },
+    "challenge": "Configuration Parfaite de Cloudflare Zero Trust - Invincible !",
+    "username": "Aligatobasque",
+    "teamname": "Fi3ldf0lks",
+    "createdAt": {
+      "$date": "2023-05-12T23:51:50.961Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:51:50.961Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ed196dc079f079aecd638"
+    },
+    "challenge": "ChadCPT",
+    "username": "mrsheepsheep",
+    "teamname": "(C3-NA) Ctrl+Alt+Defeat",
+    "createdAt": {
+      "$date": "2023-05-12T23:53:58.399Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:53:58.399Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ed279dc079f079aecd731"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "TomFox",
+    "teamname": "@ucun3 1d33@",
+    "createdAt": {
+      "$date": "2023-05-12T23:57:45.290Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:57:45.290Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ed39adc079f079aecd90f"
+    },
+    "challenge": "La coloc",
+    "username": "codeoverflow",
+    "teamname": "-----",
+    "createdAt": {
+      "$date": "2023-05-13T00:02:34.031Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:02:34.031Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ed3d7dc079f079aecd932"
+    },
+    "challenge": "A path to power (part 2)",
+    "username": "Grominet",
+    "teamname": "Stramonium",
+    "createdAt": {
+      "$date": "2023-05-13T00:03:35.162Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:03:35.162Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ed69adc079f079aecdbbd"
+    },
+    "challenge": "KongLua 02 - Far Fetched Debugger",
+    "username": " expressito de los chicos de la bandera",
+    "teamname": "Los expressitos",
+    "createdAt": {
+      "$date": "2023-05-13T00:15:22.449Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:15:22.449Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ed6a3dc079f079aecdbc4"
+    },
+    "challenge": "A path to power (part 2)",
+    "username": "soflebg_UwU",
+    "teamname": "onepoint",
+    "createdAt": {
+      "$date": "2023-05-13T00:15:31.025Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:15:31.025Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ed6d4dc079f079aecdc2d"
+    },
+    "challenge": "ChadCPT",
+    "username": "maxime",
+    "teamname": "M'hacksec",
+    "createdAt": {
+      "$date": "2023-05-13T00:16:20.208Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:16:20.208Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ed905dc079f079aecde03"
+    },
+    "challenge": "A path to power (part 2)",
+    "username": "TomFox",
+    "teamname": "@ucun3 1d33@",
+    "createdAt": {
+      "$date": "2023-05-13T00:25:41.509Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:25:41.509Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ed939dc079f079aecde4a"
+    },
+    "challenge": "Can't seem to make you mine",
+    "username": "ponpon",
+    "teamname": "-----",
+    "createdAt": {
+      "$date": "2023-05-13T00:26:33.042Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:26:33.042Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eda25dc079f079aecdf8a"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "clinche",
+    "teamname": "420verfl0w",
+    "createdAt": {
+      "$date": "2023-05-13T00:30:29.620Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:30:29.620Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645edaafdc079f079aece010"
+    },
+    "challenge": "CLI RPG",
+    "username": "Bdenneu",
+    "teamname": "Khacktus",
+    "createdAt": {
+      "$date": "2023-05-13T00:32:47.226Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:32:47.226Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645edbaedc079f079aece23b"
+    },
+    "challenge": "Flowers Bot 1/2",
+    "username": "ninjawill543",
+    "teamname": "Bottom's Up",
+    "createdAt": {
+      "$date": "2023-05-13T00:37:02.709Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:37:02.709Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645edc45dc079f079aece3a3"
+    },
+    "challenge": "un cable et un cutter",
+    "username": "Tonyo",
+    "teamname": "ADACTF",
+    "createdAt": {
+      "$date": "2023-05-13T00:39:33.732Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:39:33.732Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645edc82dc079f079aece409"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "tristiny",
+    "teamname": "Team Rache Quit",
+    "createdAt": {
+      "$date": "2023-05-13T00:40:34.768Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:40:34.768Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645edd48dc079f079aece505"
+    },
+    "challenge": "Flowers Bot 2/2",
+    "username": "ademon",
+    "teamname": "Les Pires Hat",
+    "createdAt": {
+      "$date": "2023-05-13T00:43:52.067Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:43:52.067Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ede74dc079f079aece635"
+    },
+    "challenge": "La coloc",
+    "username": "Prinegheuls",
+    "teamname": "Root du rhum",
+    "createdAt": {
+      "$date": "2023-05-13T00:48:52.617Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:48:52.617Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645edee4dc079f079aece685"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "0b11stan",
+    "teamname": "Capgemini Aces of Spades",
+    "createdAt": {
+      "$date": "2023-05-13T00:50:44.273Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:50:44.273Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645edff4dc079f079aece7d6"
+    },
+    "challenge": "Flowers Bot 1/2",
+    "username": "LeSam",
+    "teamname": "B1 try",
+    "createdAt": {
+      "$date": "2023-05-13T00:55:16.105Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:55:16.105Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ee08adc079f079aece885"
+    },
+    "challenge": "Can't seem to make you mine",
+    "username": "Maki_mitz",
+    "teamname": "Khacktus",
+    "createdAt": {
+      "$date": "2023-05-13T00:57:46.248Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:57:46.248Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ee0ecdc079f079aece925"
+    },
+    "challenge": "CLI RPG",
+    "username": "expressito de los kurwos de la mañana",
+    "teamname": "Los expressitos",
+    "createdAt": {
+      "$date": "2023-05-13T00:59:24.410Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:59:24.410Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ee2d1dc079f079aececd7"
+    },
+    "challenge": "Flowers Bot 1/2",
+    "username": "Lukho",
+    "teamname": "P'HackMan",
+    "createdAt": {
+      "$date": "2023-05-13T01:07:29.069Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:07:29.069Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ee2f9dc079f079aeced15"
+    },
+    "challenge": "A path to power (part 2)",
+    "username": "0b11stan",
+    "teamname": "Capgemini Aces of Spades",
+    "createdAt": {
+      "$date": "2023-05-13T01:08:09.216Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:08:09.216Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ee31ddc079f079aeced4c"
+    },
+    "challenge": "Snyk - Nice vuln checker",
+    "username": "maxime",
+    "teamname": "M'hacksec",
+    "createdAt": {
+      "$date": "2023-05-13T01:08:45.099Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:08:45.099Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ee555dc079f079aecef4d"
+    },
+    "challenge": "A path to power (part 2)",
+    "username": "ademon",
+    "teamname": "Les Pires Hat",
+    "createdAt": {
+      "$date": "2023-05-13T01:18:13.932Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:18:13.932Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ee6b9dc079f079aecf0ae"
+    },
+    "challenge": "KongLua 02 - Far Fetched Debugger",
+    "username": "Headorteil",
+    "teamname": "Khacktus",
+    "createdAt": {
+      "$date": "2023-05-13T01:24:09.173Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:24:09.173Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ee7b2dc079f079aecf1dd"
+    },
+    "challenge": "A path to power (part 2)",
+    "username": "tristiny",
+    "teamname": "Team Rache Quit",
+    "createdAt": {
+      "$date": "2023-05-13T01:28:18.541Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:28:18.541Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ee89fdc079f079aecf2f6"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "StevenD33",
+    "teamname": "Rockwood",
+    "createdAt": {
+      "$date": "2023-05-13T01:32:15.806Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:32:15.806Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eea19dc079f079aecf4f0"
+    },
+    "challenge": "A path to power (part 2)",
+    "username": "T0t0r0",
+    "teamname": "CatOverflow",
+    "createdAt": {
+      "$date": "2023-05-13T01:38:33.147Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:38:33.147Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eea2bdc079f079aecf519"
+    },
+    "challenge": "Turn Around",
+    "username": " expressito de los chicos de la bandera",
+    "teamname": "Los expressitos",
+    "createdAt": {
+      "$date": "2023-05-13T01:38:51.581Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:38:51.581Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eea31dc079f079aecf534"
+    },
+    "challenge": "Configuration Parfaite de Cloudflare Zero Trust - Invincible !",
+    "username": "mrzor",
+    "teamname": "Team Rache Quit",
+    "createdAt": {
+      "$date": "2023-05-13T01:38:57.195Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:38:57.195Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eea91dc079f079aecf5b8"
+    },
+    "challenge": "un cable et un cutter",
+    "username": "ValekoZ",
+    "teamname": "Los expressitos",
+    "createdAt": {
+      "$date": "2023-05-13T01:40:33.438Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:40:33.438Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eea98dc079f079aecf5c9"
+    },
+    "challenge": "Nous sommes des fleurs",
+    "username": "Akumarachi",
+    "teamname": "Capgemini Aces of Spades",
+    "createdAt": {
+      "$date": "2023-05-13T01:40:40.347Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:40:40.347Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eeca1dc079f079aecf880"
+    },
+    "challenge": "A path to power (part 2)",
+    "username": "clinche",
+    "teamname": "420verfl0w",
+    "createdAt": {
+      "$date": "2023-05-13T01:49:21.019Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:49:21.019Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eeca2dc079f079aecf887"
+    },
+    "challenge": "La coloc",
+    "username": "Ganko",
+    "teamname": "Los expressitos",
+    "createdAt": {
+      "$date": "2023-05-13T01:49:22.879Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:49:22.879Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eecebdc079f079aecf8e6"
+    },
+    "challenge": "Configuration Parfaite de Cloudflare Zero Trust - Invincible !",
+    "username": "barney",
+    "teamname": "Stramonium",
+    "createdAt": {
+      "$date": "2023-05-13T01:50:35.700Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:50:35.700Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eed8adc079f079aecf972"
+    },
+    "challenge": "A finger print (part 1)",
+    "username": "V3locidad",
+    "teamname": "onepoint",
+    "createdAt": {
+      "$date": "2023-05-13T01:53:14.485Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:53:14.485Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eedaadc079f079aecf9ae"
+    },
+    "challenge": "Dwidder 1/2",
+    "username": "tyjola",
+    "teamname": "Root du rhum",
+    "createdAt": {
+      "$date": "2023-05-13T01:53:46.408Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:53:46.408Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eee0cdc079f079aecfa58"
+    },
+    "challenge": "Camellia - Part 0",
+    "username": "Akumarachi",
+    "teamname": "Capgemini Aces of Spades",
+    "createdAt": {
+      "$date": "2023-05-13T01:55:24.316Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:55:24.316Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eee6cdc079f079aecfabc"
+    },
+    "challenge": "Miley",
+    "username": "n1nj4sec",
+    "teamname": "onepoint",
+    "createdAt": {
+      "$date": "2023-05-13T01:57:00.864Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:57:00.864Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eee72dc079f079aecfac9"
+    },
+    "challenge": "ChadCPT",
+    "username": "yolo1",
+    "teamname": "penis",
+    "createdAt": {
+      "$date": "2023-05-13T01:57:06.636Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:57:06.636Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eeef5dc079f079aecfb8f"
+    },
+    "challenge": "Turn Around",
+    "username": "mrsheepsheep",
+    "teamname": "(C3-NA) Ctrl+Alt+Defeat",
+    "createdAt": {
+      "$date": "2023-05-13T01:59:17.555Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:59:17.555Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eeefddc079f079aecfbae"
+    },
+    "challenge": "La coloc",
+    "username": "luminouw",
+    "teamname": "ADACTF",
+    "createdAt": {
+      "$date": "2023-05-13T01:59:25.594Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:59:25.594Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eef4adc079f079aecfc0b"
+    },
+    "challenge": "Flowers Bot 2/2",
+    "username": "soflebg_UwU",
+    "teamname": "onepoint",
+    "createdAt": {
+      "$date": "2023-05-13T02:00:42.187Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:00:42.187Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eef54dc079f079aecfc31"
+    },
+    "challenge": "Camellia - Part 2",
+    "username": "Akumarachi",
+    "teamname": "Capgemini Aces of Spades",
+    "createdAt": {
+      "$date": "2023-05-13T02:00:52.865Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:00:52.865Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ef06ddc079f079aecfd1e"
+    },
+    "challenge": "Camellia - Part 1",
+    "username": "Akumarachi",
+    "teamname": "Capgemini Aces of Spades",
+    "createdAt": {
+      "$date": "2023-05-13T02:05:33.321Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:05:33.321Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ef0efdc079f079aecfdfa"
+    },
+    "challenge": "ChadCPT",
+    "username": "Prinegheuls",
+    "teamname": "Root du rhum",
+    "createdAt": {
+      "$date": "2023-05-13T02:07:43.370Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:07:43.370Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ef0f2dc079f079aecfe07"
+    },
+    "challenge": "Dwidder 2/2",
+    "username": "tyjola",
+    "teamname": "Root du rhum",
+    "createdAt": {
+      "$date": "2023-05-13T02:07:46.335Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:07:46.335Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ef214dc079f079aecffad"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "n2cou",
+    "teamname": "ADACTF",
+    "createdAt": {
+      "$date": "2023-05-13T02:12:36.143Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:12:36.143Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ef238dc079f079aecffbf"
+    },
+    "challenge": "Dwidder 1/2",
+    "username": "DaXou",
+    "teamname": "PessHack",
+    "createdAt": {
+      "$date": "2023-05-13T02:13:12.805Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:13:12.805Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ef292dc079f079aecffdd"
+    },
+    "challenge": "La coloc",
+    "username": "Tyroks",
+    "teamname": "Tchootchoo",
+    "createdAt": {
+      "$date": "2023-05-13T02:14:42.851Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:14:42.851Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ef34cdc079f079aed00c5"
+    },
+    "challenge": "ChadCPT",
+    "username": "reverseth",
+    "teamname": "BrotherHacks",
+    "createdAt": {
+      "$date": "2023-05-13T02:17:48.694Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:17:48.694Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ef3dcdc079f079aed014b"
+    },
+    "challenge": "Can't seem to make you mine",
+    "username": "pierre",
+    "teamname": "onepoint",
+    "createdAt": {
+      "$date": "2023-05-13T02:20:12.905Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:20:12.905Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ef576dc079f079aed02ce"
+    },
+    "challenge": "Camellia - Part 0",
+    "username": "kaetir",
+    "teamname": "BrotherHacks",
+    "createdAt": {
+      "$date": "2023-05-13T02:27:02.615Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:27:02.615Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ef659dc079f079aed043d"
+    },
+    "challenge": "Flowers Bot 1/2",
+    "username": "Akumarachi",
+    "teamname": "Capgemini Aces of Spades",
+    "createdAt": {
+      "$date": "2023-05-13T02:30:49.261Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:30:49.261Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ef6a3dc079f079aed047d"
+    },
+    "challenge": "A path to power (part 2)",
+    "username": "n2cou",
+    "teamname": "ADACTF",
+    "createdAt": {
+      "$date": "2023-05-13T02:32:03.497Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:32:03.497Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ef993dc079f079aed07cb"
+    },
+    "challenge": "un cable et un cutter",
+    "username": "Bdenneu",
+    "teamname": "Khacktus",
+    "createdAt": {
+      "$date": "2023-05-13T02:44:35.240Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:44:35.240Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645efa3cdc079f079aed0947"
+    },
+    "challenge": "A path to power (part 1)",
+    "username": "tlecerf2",
+    "teamname": "idéfix",
+    "createdAt": {
+      "$date": "2023-05-13T02:47:24.550Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:47:24.550Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645efb35dc079f079aed0b08"
+    },
+    "challenge": "Do you speak SQL ?",
+    "username": "Koruke",
+    "teamname": "P'HackMan",
+    "createdAt": {
+      "$date": "2023-05-13T02:51:33.871Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:51:33.871Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645efdfbdc079f079aed0cd9"
+    },
+    "challenge": "ChadCPT",
+    "username": "luminouw",
+    "teamname": "ADACTF",
+    "createdAt": {
+      "$date": "2023-05-13T03:03:23.317Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T03:03:23.317Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645efe96dc079f079aed0d4b"
+    },
+    "challenge": "Dwidder 2/2",
+    "username": "DaXou",
+    "teamname": "PessHack",
+    "createdAt": {
+      "$date": "2023-05-13T03:05:58.863Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T03:05:58.863Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645f02dbdc079f079aed1004"
+    },
+    "challenge": "Configuration Parfaite de Cloudflare Zero Trust - Invincible !",
+    "username": "clinche",
+    "teamname": "420verfl0w",
+    "createdAt": {
+      "$date": "2023-05-13T03:24:11.406Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T03:24:11.406Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645f03badc079f079aed109e"
+    },
+    "challenge": "A path to power (part 2)",
+    "username": "souad",
+    "teamname": "Touristes",
+    "createdAt": {
+      "$date": "2023-05-13T03:27:54.860Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T03:27:54.860Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645f03eddc079f079aed10cc"
+    },
+    "challenge": "La coloc",
+    "username": "Microju",
+    "teamname": "BxMetro",
+    "createdAt": {
+      "$date": "2023-05-13T03:28:45.580Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T03:28:45.580Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645f0558dc079f079aed11ee"
+    },
+    "challenge": "Camellia - Part 0",
+    "username": "ValekoZ",
+    "teamname": "Los expressitos",
+    "createdAt": {
+      "$date": "2023-05-13T03:34:48.617Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T03:34:48.617Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645f0868dc079f079aed13c3"
+    },
+    "challenge": "Flowers Bot 2/2",
+    "username": "DaXou",
+    "teamname": "PessHack",
+    "createdAt": {
+      "$date": "2023-05-13T03:47:52.680Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T03:47:52.680Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645f08d7dc079f079aed147f"
+    },
+    "challenge": "A finger print (part 1)",
+    "username": "Erak_",
+    "teamname": "ADACTF",
+    "createdAt": {
+      "$date": "2023-05-13T03:49:43.086Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T03:49:43.086Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645f0ac4dc079f079aed16c3"
+    },
+    "challenge": "Flowers Bot 2/2",
+    "username": "TomFox",
+    "teamname": "@ucun3 1d33@",
+    "createdAt": {
+      "$date": "2023-05-13T03:57:56.677Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T03:57:56.677Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645f0b30dc079f079aed1758"
+    },
+    "challenge": "ChadCPT",
+    "username": "Aether",
+    "teamname": "Les Pires Hat",
+    "createdAt": {
+      "$date": "2023-05-13T03:59:44.906Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T03:59:44.906Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645f0b31dc079f079aed175f"
+    },
+    "challenge": "A finger print (part 1)",
+    "username": "expressito de los kurwos de la mañana",
+    "teamname": "Los expressitos",
+    "createdAt": {
+      "$date": "2023-05-13T03:59:45.839Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T03:59:45.839Z"
+    },
+    "__v": 0
+  }
+]

@@ -1,0 +1,184 @@
+[
+  {
+    "_id": {
+      "$oid": "645eae82dc079f079aeca7ca"
+    },
+    "content": "Pour obtenir la référence de la clé, pensez à qui se pourrait se servir de la référence d'une clé ;) PS : Votre coloc s'appel Gustave Cloutier :)",
+    "challenge": "La coloc",
+    "createdAt": {
+      "$date": "2023-05-12T21:24:18.973Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:24:18.973Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eb036dc079f079aecaa0f"
+    },
+    "content": "Le coffre semble avoir été modifié. Il faudrait essayer de trouver les sources du firmware.",
+    "challenge": "Safe",
+    "createdAt": {
+      "$date": "2023-05-12T21:31:34.738Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T21:31:34.738Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eb710dc079f079aecb221"
+    },
+    "content": "We were able to trigger some errors! Can you look that up? It seems like we can give a mathematical expression to this script.",
+    "challenge": "Camellia - Part 1",
+    "createdAt": {
+      "$date": "2023-05-12T22:00:48.420Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:00:48.420Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eb9cedc079f079aecb4c5"
+    },
+    "content": "If the MySQL server is responding with \"caching_sha2_password\" error, you should try to use another tool :-)",
+    "challenge": "Turn Around",
+    "createdAt": {
+      "$date": "2023-05-12T22:12:30.772Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:12:30.772Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ebf7edc079f079aecbc9b"
+    },
+    "content": "https://www.silca.biz/resource/blob/828190/ec681949be76efd3e84a64dffc72eef3/dwn-00-catalogo-109-en-data.pdf :eyes:",
+    "challenge": "La coloc",
+    "createdAt": {
+      "$date": "2023-05-12T22:36:46.758Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:36:46.758Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ec2f6dc079f079aecc0eb"
+    },
+    "content": "Arrêtez de bruteforcer Miley ! Elle n'aime pas ca :) ",
+    "challenge": "Miley",
+    "createdAt": {
+      "$date": "2023-05-12T22:51:34.875Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T22:51:34.875Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eca56dc079f079aecca9a"
+    },
+    "content": "https://www.youtube.com/watch?v=EM2ZNMA3ggg",
+    "challenge": "Bob Ross: The Empire Strikes back",
+    "createdAt": {
+      "$date": "2023-05-12T23:23:02.746Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:23:02.746Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eca73dc079f079aeccb05"
+    },
+    "content": "Un hint a été ajouté dans la description de l'épreuve.",
+    "challenge": "A finger print (part 1)",
+    "createdAt": {
+      "$date": "2023-05-12T23:23:31.516Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-12T23:23:31.516Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ed694dc079f079aecdbaf"
+    },
+    "content": "Les points pour le chall Safe viennent d'augmenter :)",
+    "challenge": "Safe",
+    "createdAt": {
+      "$date": "2023-05-13T00:15:16.025Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T00:15:16.025Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ee2f6dc079f079aececfa"
+    },
+    "content": "Focus on triggering a Python error. The error itself is not important, think about how it is handled by CPython.",
+    "challenge": "Camellia - Part 1",
+    "createdAt": {
+      "$date": "2023-05-13T01:08:06.570Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:08:06.570Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645eeeecdc079f079aecfb6c"
+    },
+    "content": "Blooming",
+    "challenge": "A finger print (part 1)",
+    "createdAt": {
+      "$date": "2023-05-13T01:59:08.443Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T01:59:08.443Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645ef9d3dc079f079aed083d"
+    },
+    "content": "Ce billet semble très interessant, pourrait-il servir à retrouver l'inconnu ?",
+    "challenge": "Safe",
+    "createdAt": {
+      "$date": "2023-05-13T02:45:39.842Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T02:45:39.842Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "645f0077dc079f079aed0f02"
+    },
+    "content": "Comme vous êtes trop nuls, nous avons recuperé les sources du coffre par nous même, voici le repo pour passer directement à la 2eme etape : https://github.com/sthack-holder/safe",
+    "challenge": "Safe",
+    "createdAt": {
+      "$date": "2023-05-13T03:13:59.952Z"
+    },
+    "updatedAt": {
+      "$date": "2023-05-13T03:13:59.952Z"
+    },
+    "__v": 0
+  }
+]

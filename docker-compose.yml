@@ -45,6 +45,8 @@ services:
     volumes:
       # - ./2021:/docker-entrypoint-initdb.d/
       # - ./2022:/docker-entrypoint-initdb.d/
+      # - ./2023:/docker-entrypoint-initdb.d/
+      - ./_mongo_import.sh:/docker-entrypoint-initdb.d/_mongo_import.sh
       - mongo-data:/data/db
     networks:
       - apps
