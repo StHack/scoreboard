@@ -1,5 +1,5 @@
 import { keyframes, useTheme } from '@emotion/react'
-import styled from '@emotion/styled/macro'
+import styled from '@emotion/styled'
 import { categoryToImg } from 'components/CategoryImg'
 import {
   ChallState,
