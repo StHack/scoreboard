@@ -142,10 +142,6 @@ function useProvideGame (): GameContext {
       ])
     })
 
-    socket.on('game:ended', () => {
-      setChallenges(challs => challs.map(c => ({ ...c, isOpen: false })))
-    })
-
     socket.on('game:config:updated', (config: GameConfig) => {
       setGameConfig(config)
     })
@@ -158,7 +154,6 @@ function useProvideGame (): GameContext {
       socket.off('achievement:deleted')
       socket.off('reward:deleted')
       socket.off('game:newMessage')
-      socket.off('game:ended')
       socket.off('game:config:updated')
     }
   }, [socket])

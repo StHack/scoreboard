@@ -1,10 +1,8 @@
 import { removeAchievement } from 'db/AchievementDb'
 import { listAttempt } from 'db/AttemptDb'
 import {
-  closeAllChallenge,
   createChallenge,
   listChallenge,
-  openAllChallenge,
   updateChallenge,
 } from 'db/ChallengeDb'
 import { addMessage } from 'db/MessageDb'
@@ -128,7 +126,6 @@ export function registerAdminNamespace(
     })
 
     adminSocket.on('game:end', async () => {
-      await closeAllChallenge()
       await serverConfig.setGameOpened(false)
       await emitGameConfigUpdate()
 
@@ -139,8 +136,6 @@ export function registerAdminNamespace(
           soc.disconnect(true)
         })
       }
-
-      gameIo.emit('game:ended')
     })
 
     adminSocket.on('game:activity', async callback => {
@@ -149,7 +144,6 @@ export function registerAdminNamespace(
     })
 
     adminSocket.on('game:open', async () => {
-      await openAllChallenge()
       await serverConfig.setGameOpened(true)
       await emitGameConfigUpdate()
     })

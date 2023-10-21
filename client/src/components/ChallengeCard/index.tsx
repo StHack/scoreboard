@@ -35,7 +35,7 @@ export function ChallengeCard ({
     <CardWrapper
       m="2"
       {...props}
-      onClick={() => onClick()}
+      onClick={onClick}
       type="button"
       title={
         openState === 'broken'
@@ -122,7 +122,7 @@ export function ChallengeCard ({
           </g>
         )}
 
-        {((openState === 'delayed' && !isSolved) || openState === 'closed') && (
+        {openState === 'delayed' && !isSolved && (
           <g>
             <Image
               // id="chall-image"
@@ -139,9 +139,7 @@ export function ChallengeCard ({
             />
             <text fill="#ffffffff" fontSize="80">
               <textPath xlinkHref="#sign-main-line">
-                {openState === 'delayed'
-                  ? 'Someone solved please wait'
-                  : 'Game is closed'}
+                Someone solved please wait
               </textPath>
             </text>
             <text fill="#ffffff" fontSize="110">
@@ -150,7 +148,7 @@ export function ChallengeCard ({
           </g>
         )}
 
-        {isSolved && openState !== 'closed' && (
+        {isSolved && (
           <Flower>
             <path
               fill="none"

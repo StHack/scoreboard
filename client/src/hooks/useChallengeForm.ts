@@ -23,7 +23,6 @@ export function useChallengeForm (
     difficulty,
     img,
     isBroken,
-    isOpen,
     name,
   } = chall || {}
 
@@ -79,12 +78,6 @@ export function useChallengeForm (
     disabled: isLoading,
   })
 
-  const isOpenField = useField<boolean | undefined>({
-    name: 'isOpen',
-    defaultValue: isOpen,
-    disabled: isLoading,
-  })
-
   const reset = () => {
     nameField.reset()
     authorField.reset()
@@ -92,7 +85,6 @@ export function useChallengeForm (
     descriptionField.reset()
     difficultyField.reset()
     isBrokenField.reset()
-    isOpenField.reset()
   }
 
   const onFormSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
@@ -128,7 +120,6 @@ export function useChallengeForm (
     difficulty: difficultyField.inputProp.value,
     img: imgField.inputProp.value ?? '',
     isBroken: false,
-    isOpen: true,
     name: nameField.inputProp.value,
     flag: flagsField.inputProp.value,
   }
@@ -146,7 +137,6 @@ export function useChallengeForm (
     flagsProps: flagsField.inputProp,
 
     isBrokenProps: isNewChallenge ? undefined : isBrokenField.inputProp,
-    isOpenProps: isNewChallenge ? undefined : isOpenField.inputProp,
 
     isNewChallenge,
     isLoading,
