@@ -34,12 +34,12 @@ export function registerPlayerNamespace(
 
     playerSocket.on(
       'challenge:solve',
-      async (challName: string, flag: string, callback) => {
+      async (challengeId: string, flag: string, callback) => {
         const user = (playerSocket.request as Request).user!
 
         if (user.isAdmin) {
           try {
-            const isValid = await checkChallenge(challName, flag)
+            const isValid = await checkChallenge(challengeId, flag)
             callback({ isValid })
           } catch (error) {
             if (typeof error === 'string') {
@@ -53,7 +53,7 @@ export function registerPlayerNamespace(
         }
 
         const attempt = await registerAttempt({
-          challenge: challName,
+          challengeId,
           username: user.username,
           teamname: user.team,
           proposal: flag,
@@ -67,7 +67,7 @@ export function registerPlayerNamespace(
           return
         }
 
-        const achievements = await getChallengeAchievement(challName)
+        const achievements = await getChallengeAchievement(challengeId)
 
         if (achievements.find(a => a.teamname === user.team)) {
           callback({ error: 'Already solved by your team!' })
@@ -85,12 +85,12 @@ export function registerPlayerNamespace(
         }
 
         try {
-          const isValid = await checkChallenge(challName, flag)
+          const isValid = await checkChallenge(challengeId, flag)
           callback({ isValid })
 
           if (isValid) {
             const achievement = await registerAchievement({
-              challenge: challName,
+              challengeId,
               teamname: user.team,
               username: user.username,
             })

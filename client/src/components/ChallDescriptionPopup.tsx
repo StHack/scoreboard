@@ -38,7 +38,7 @@ export function ChallDescriptionPopup ({
   readonly = false,
   onClose,
 }: ChallDescriptionPopupProps) {
-  const { name, author, category, description, difficulty } = challenge
+  const { _id: challengeId, name, author, category, description, difficulty } = challenge
   const [error, setError] = useState<string>()
   const { attemptChall, myTeamName } = usePlayer()
   const { inputProp } = useField<string>({
@@ -99,7 +99,7 @@ export function ChallDescriptionPopup ({
               if (readonly) return
               if (!inputProp.value) return
 
-              await attemptChall(name, inputProp.value, (isValid, error) => {
+              await attemptChall(challengeId, inputProp.value, (isValid, error) => {
                 if (error) setError(error)
                 if (isValid) onClose()
                 else setError("Nope that's not the flag !")

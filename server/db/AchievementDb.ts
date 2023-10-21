@@ -3,7 +3,7 @@ import { Schema, model } from 'mongoose'
 import { removeMongoProperties } from './main'
 
 const schema = new Schema<Achievement>({
-  challenge: { type: String, required: true },
+  challengeId: { type: String, required: true },
   username: { type: String, required: true },
   teamname: { type: String, required: true },
 }, { timestamps: true })
@@ -13,10 +13,10 @@ const AchievementModel = model<Achievement>('Achievement', schema)
 export async function registerAchievement(
   achievement: BaseAchievement,
 ): Promise<Achievement> {
-  const { challenge, teamname } = achievement
+  const { challengeId, teamname } = achievement
 
   const alreadyAchieved = await AchievementModel.findOne({
-    challenge,
+    challengeId,
     teamname,
   })
 
@@ -41,8 +41,8 @@ export async function getTeamAchievement(teamname: string): Promise<Achievement[
   return docs.map(d => d.toObject(removeMongoProperties))
 }
 
-export async function getChallengeAchievement(challenge: string): Promise<Achievement[]> {
-  const docs = await AchievementModel.find({ challenge }).sort({ updatedAt: -1 })
+export async function getChallengeAchievement(challengeId: string): Promise<Achievement[]> {
+  const docs = await AchievementModel.find({ challengeId }).sort({ updatedAt: -1 })
   return docs.map(d => d.toObject(removeMongoProperties))
 }
 
@@ -55,7 +55,7 @@ export async function removeAllTeamAchievement(teamname: string): Promise<void> 
   await AchievementModel.deleteMany({ teamname })
 }
 
-export async function removeAchievement(teamname: string, challenge: string): Promise<Achievement | undefined> {
-  const deleted = await AchievementModel.findOneAndDelete({ teamname, challenge })
+export async function removeAchievement(teamname: string, challengeId: string): Promise<Achievement | undefined> {
+  const deleted = await AchievementModel.findOneAndDelete({ teamname, challengeId })
   return deleted?.toObject(removeMongoProperties)
 }

@@ -24,7 +24,7 @@ export function registerGameNamespace(
 
       callback(
         gameOpened
-          ? challenges
+          ? challenges.map(c => (c.isBroken ? { ...c, description: '' } : c))
           : challenges.map(c => ({ ...c, description: '' })),
       )
     })

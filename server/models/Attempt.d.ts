@@ -1,5 +1,5 @@
 export type BaseAttempt = {
-  challenge: string
+  challengeId: string
   username: string
   teamname: string
   proposal: string

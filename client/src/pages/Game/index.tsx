@@ -142,9 +142,9 @@ export function Game () {
               </Box>
               {challs.map(c => (
                 <ChallengeCard
-                  key={c.name}
+                  key={c._id}
                   challenge={c}
-                  score={challScore[c.name]}
+                  score={challScore[c._id]}
                   currentTeam={myTeamName}
                   onClick={() => setSelectedChall(c)}
                 />
@@ -163,8 +163,8 @@ export function Game () {
       {selectedChall && (
         <ChallDescriptionPopup
           challenge={selectedChall}
-          score={challScore[selectedChall.name]}
-          messages={messages.filter(m => m.challenge === selectedChall.name)}
+          score={challScore[selectedChall._id]}
+          messages={messages.filter(m => m.challengeId === selectedChall._id)}
           onClose={() => setSelectedChall(undefined)}
         />
       )}

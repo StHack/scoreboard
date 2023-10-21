@@ -1,8 +1,9 @@
 export type BaseAchievement = {
-  challenge: string
+  challengeId: string
   username: string
   teamname: string
 }
 export type Achievement = BaseAchievement & {
   createdAt: Date
+  challenge: string
 }

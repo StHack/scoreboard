@@ -73,7 +73,7 @@ export function AchievementPanel () {
             a.teamname.toLowerCase().includes(search) ||
             a.username.toLowerCase().includes(search),
         )}
-        rowKey={row => row.challenge + row.teamname}
+        rowKey={row => row.challengeId + row.teamname}
         columns={achievementsColumns}
         actions={AchievementActions}
         mb="2"

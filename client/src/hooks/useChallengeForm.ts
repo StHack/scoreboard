@@ -29,7 +29,7 @@ export function useChallengeForm (
   const nameField = useField<string>({
     name: 'name',
     defaultValue: name ?? '',
-    disabled: isLoading || !isNewChallenge,
+    disabled: isLoading,
     required: true,
   })
 
@@ -104,7 +104,7 @@ export function useChallengeForm (
       if (chall === undefined) {
         await createChallenge(payload)
       } else {
-        await updateChallenge(payload)
+        await updateChallenge(chall._id, payload)
       }
 
       onSuccess()
@@ -114,6 +114,7 @@ export function useChallengeForm (
   }
 
   const preview: Challenge = {
+    _id: '',
     author: authorField.inputProp.value,
     category: categoryField.inputProp.value,
     description: descriptionField.inputProp.value,

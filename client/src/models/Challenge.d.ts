@@ -13,4 +13,5 @@ export type BaseChallenge = {
 
 export type Challenge = BaseChallenge & {
   isBroken: boolean
+  _id: string
 }

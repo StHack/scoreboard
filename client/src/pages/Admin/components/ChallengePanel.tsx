@@ -58,11 +58,11 @@ export function ChallengePanel () {
           )
           .map(c => (
             <ChallengeBlock
-              key={c.name}
+              key={c._id}
               chall={c}
-              score={challsScore[c.name]}
-              messages={messages.filter(m => m.challenge === c.name)}
-              attempts={attempts.filter(a => a.challenge === c.name)}
+              score={challsScore[c._id]}
+              messages={messages.filter(m => m.challengeId === c._id)}
+              attempts={attempts.filter(a => a.challengeId === c._id)}
               onBrokeClick={brokeChallenge}
               onEditClick={() => {
                 setChallToEdit(c)

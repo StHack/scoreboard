@@ -4,83 +4,83 @@
       "$oid": "6287ef0590f469c2232ebbe4"
     },
     "content": "icecr4ck de la team TeamWithoutName est demandé à la table des orga :) ",
-    "challenge": "",
     "createdAt": {
       "$date": "2022-05-20T19:41:57.334Z"
     },
     "updatedAt": {
       "$date": "2022-05-20T19:41:57.334Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": ""
   },
   {
     "_id": {
       "$oid": "6287f32c90f469c2232ebef1"
     },
     "content": "Hint : Once you know what to do from the postcard, make sure you use the right technology (A.K.A NOT INTERNET), you will probably need a phone with some WIRED headphones.",
-    "challenge": "Catch the bird, a trip from web to IRL.",
     "createdAt": {
       "$date": "2022-05-20T19:59:40.104Z"
     },
     "updatedAt": {
       "$date": "2022-05-20T19:59:40.104Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6283c2c390f469c2232ea978"
   },
   {
     "_id": {
       "$oid": "628802e390f469c2232ec74d"
     },
     "content": "Nouveau challenge 'dog' released!",
-    "challenge": "",
     "createdAt": {
       "$date": "2022-05-20T21:06:43.293Z"
     },
     "updatedAt": {
       "$date": "2022-05-20T21:06:43.293Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": ""
   },
   {
     "_id": {
       "$oid": "62882eb890f469c2232edf9e"
     },
     "content": "Il y a eu une erreur de déploiement sur l'épreuve dog, si vous la flaggez présentez-vous à la table orga !",
-    "challenge": "",
     "createdAt": {
       "$date": "2022-05-21T00:13:44.024Z"
     },
     "updatedAt": {
       "$date": "2022-05-21T00:13:44.024Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": ""
   },
   {
     "_id": {
       "$oid": "6288401a90f469c2232ee7d6"
     },
     "content": "Pas besoin de bruteforce sur le challenge ! Normalement une requête bien placé peut vous trigger la full chain :D",
-    "challenge": "The Little Tree's Murder",
     "createdAt": {
       "$date": "2022-05-21T01:27:54.759Z"
     },
     "updatedAt": {
       "$date": "2022-05-21T01:27:54.759Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d62e90f469c2232eacfd"
   },
   {
     "_id": {
       "$oid": "6288421790f469c2232ee873"
     },
     "content": "Je viens de faire aussi un petit changement pour rendre le chall plus fun ! Normalement vous allez avoir plein d'idées qui vont fuser :D",
-    "challenge": "The Little Tree's Murder",
     "createdAt": {
       "$date": "2022-05-21T01:36:23.724Z"
     },
     "updatedAt": {
       "$date": "2022-05-21T01:36:23.724Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d62e90f469c2232eacfd"
   }
 ]

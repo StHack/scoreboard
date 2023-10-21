@@ -1,5 +1,7 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { useAuth } from 'hooks/useAuthentication'
+import { useGame } from 'hooks/useGame'
 import { NavLink } from 'react-router-dom'
 import {
   display,
@@ -13,9 +15,7 @@ import {
 } from 'styled-system'
 import { cleanStyledSystem, gap, GapProps } from 'styles'
 import { Box } from './Box'
-import { IconAchievement, IconAttempt, IconChallenge, IconCreate, IconGame, IconLogoPigeon, IconPromote, IconUsers } from './Icon'
-import { css } from '@emotion/react'
-import { useGame } from 'hooks/useGame'
+import { IconAchievement, IconAttempt, IconChallenge, IconCreate, IconGame, IconPromote } from './Icon'
 
 export function Footer () {
   const { isAuthenticated, isAuthorized } = useAuth()

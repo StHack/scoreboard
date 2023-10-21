@@ -13,7 +13,7 @@ export type PlayerContext = {
   isBeforeLastScorer: boolean
   readMessages: string[]
   attemptChall: (
-    challName: string,
+    challengeId: string,
     flag: string,
     callback: (isValid: boolean, error: string | undefined) => void,
   ) => Promise<void>
@@ -73,11 +73,11 @@ function useProvidePlayer (): PlayerContext {
     myTeamRank: teamsScore.find(ts => ts.team === user.team)?.rank ?? 0,
     isBeforeLastScorer: beforeLastScorer?.team === user.team,
     readMessages,
-    attemptChall: async (challName, flag, callback) => {
+    attemptChall: async (challengeId, flag, callback) => {
       if (!socket) return
       socket.emit(
         'challenge:solve',
-        challName,
+        challengeId,
         flag,
         ({ isValid, error }: { isValid?: boolean; error?: string }) =>
           callback(isValid ?? false, error),

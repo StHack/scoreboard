@@ -4,7 +4,7 @@ import { removeMongoPropertiesWithOptions } from './main'
 
 const schema = new Schema<Attempt>(
   {
-    challenge: { type: String, required: true },
+    challengeId: { type: String, required: true },
     username: { type: String, required: true },
     teamname: { type: String, required: true },
     proposal: { type: String, required: true },
@@ -35,10 +35,8 @@ export async function getTeamAttempt(teamname: string): Promise<Attempt[]> {
   )
 }
 
-export async function getChallengeAttempt(
-  challenge: string,
-): Promise<Attempt[]> {
-  const docs = await AttemptModel.find({ challenge })
+export async function getChallengeAttempt(challengeId: string): Promise<Attempt[]> {
+  const docs = await AttemptModel.find({ challengeId })
   return docs.map(d =>
     d.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
   )
