@@ -88,7 +88,11 @@ export function Game () {
                   ? undefined
                   : 'background'
         }
-        background={isBeforeLastScorer ? theme.colors.beforeLastOne : undefined}
+        background={
+          myTeamRank > 3 && myTeamScore > 0 && isBeforeLastScorer
+            ? theme.colors.beforeLastOne
+            : undefined
+        }
         color="primaryText"
         borderRadius="medium"
         display="grid"
