@@ -28,7 +28,7 @@ function computeChallsScore (
   return challenges.reduce<Record<string, ChallengeScore>>(
     (agg, challenge) => ({
       ...agg,
-      [challenge.name]: computeChallengeScore(achievements, challenge, config),
+      [challenge._id]: computeChallengeScore(achievements, challenge, config),
     }),
     {},
   )
@@ -40,7 +40,7 @@ function computeChallengeScore (
   config: GameConfig,
 ): ChallengeScore {
   const a = achievements
-    .filter(a => a.challenge === challenge.name)
+    .filter(a => a.challengeId === challenge._id)
     .sort((x, y) => x.createdAt.getTime() - y.createdAt.getTime())
 
   return {

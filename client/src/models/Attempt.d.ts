@@ -1,5 +1,5 @@
 export type BaseAttempt = {
-  challenge: string
+  challengeId: string
   username: string
   teamname: string
   proposal: string
@@ -7,4 +7,5 @@ export type BaseAttempt = {
 export type Attempt = BaseAttempt & {
   createdAt: Date
   _id: string
+  challenge: string
 }

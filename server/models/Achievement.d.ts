@@ -1,5 +1,5 @@
 export type BaseAchievement = {
-  challenge: string
+  challengeId: string
   username: string
   teamname: string
 }

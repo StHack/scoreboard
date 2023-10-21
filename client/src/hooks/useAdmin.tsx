@@ -20,8 +20,11 @@ export type AdminContext = {
   attempts: Attempt[]
   activityStatistics: ServerActivityStatistics
   createChallenge: (chall: BaseChallenge) => Promise<Challenge>
-  createReward: (chall: BaseReward) => Promise<Reward>
-  updateChallenge: (chall: BaseChallenge) => Promise<Challenge>
+  createReward: (reward: BaseReward) => Promise<Reward>
+  updateChallenge: (
+    challengeId: string,
+    chall: BaseChallenge,
+  ) => Promise<Challenge>
   brokeChallenge: (chall: Challenge) => void
   repairChallenge: (chall: Challenge) => void
   openGame: () => void
@@ -36,7 +39,7 @@ export type AdminContext = {
   logoutUser: (user: User) => void
   deleteAchievement: (achievement: Achievement) => void
   deleteReward: (reward: Reward) => void
-  sendMessage: (message: string, challenge?: string) => void
+  sendMessage: (message: string, challengeId?: string) => void
 }
 
 const defaultStatistics: ServerActivityStatistics = {
@@ -89,9 +92,14 @@ function useProvideAdmin (): AdminContext {
   const { socket } = useSocket('/api/admin')
   const [challenges, setChallenges] = useState<Challenge[]>([])
   const [users, setUsers] = useState<User[]>([])
-  const [attempts, setAttempts] = useState<Attempt[]>([])
+  const [rawAttempts, setRawAttempts] = useState<Attempt[]>([])
   const [statistics, setActivityStatistics] =
     useState<ServerActivityStatistics>(defaultStatistics)
+
+  const attempts = rawAttempts.map(a => ({
+    ...a,
+    challenge: challenges.find(c => c._id === a.challengeId)?.name ?? '',
+  }))
 
   useEffect(() => {
     if (!socket) return
@@ -105,7 +113,7 @@ function useProvideAdmin (): AdminContext {
     })
 
     socket.emit('attempt:list', (attempts: Attempt[]) => {
-      setAttempts(
+      setRawAttempts(
         attempts.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
       )
     })
@@ -120,12 +128,12 @@ function useProvideAdmin (): AdminContext {
 
     socket.on('challenge:updated', (challUpdated: Challenge) =>
       setChallenges(challs =>
-        challs.map(c => (c.name === challUpdated.name ? challUpdated : c)),
+        challs.map(c => (c._id === challUpdated._id ? challUpdated : c)),
       ),
     )
 
     socket.on('attempt:added', (attempt: Attempt) =>
-      setAttempts(attempts => [
+      setRawAttempts(attempts => [
         { ...attempt, createdAt: new Date(attempt.createdAt) },
         ...attempts,
       ]),
@@ -179,13 +187,13 @@ function useProvideAdmin (): AdminContext {
           },
         )
       }),
-    updateChallenge: chall =>
+    updateChallenge: (challengeId, chall) =>
       new Promise<Challenge>((resolve, reject) => {
         if (!socket) throw new Error('connection is not available')
 
         socket.emit(
           'challenge:update',
-          chall.name,
+          challengeId,
           chall,
           (response: Challenge | ServerError) => {
             if ('error' in response) {
@@ -199,12 +207,12 @@ function useProvideAdmin (): AdminContext {
     brokeChallenge: chall => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('challenge:broke', chall.name)
+      socket.emit('challenge:broke', chall._id)
     },
     repairChallenge: chall => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('challenge:repair', chall.name)
+      socket.emit('challenge:repair', chall._id)
     },
     openGame: () => {
       if (!socket) throw new Error('connection is not available')
@@ -269,7 +277,7 @@ function useProvideAdmin (): AdminContext {
       socket.emit(
         'achievement:delete',
         achievement.teamname,
-        achievement.challenge,
+        achievement.challengeId,
       )
     },
     deleteReward: reward => {
@@ -277,10 +285,10 @@ function useProvideAdmin (): AdminContext {
 
       socket.emit('reward:delete', reward._id)
     },
-    sendMessage: (message, challenge) => {
+    sendMessage: (message, challengeId) => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('game:sendMessage', message, challenge)
+      socket.emit('game:sendMessage', message, challengeId)
     },
   }
 }

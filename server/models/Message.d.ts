@@ -1,6 +1,6 @@
 export type BaseMessage = {
   content: string
-  challenge?: string
+  challengeId?: string
 }
 export type Message = BaseMessage & {
   createdAt: Date

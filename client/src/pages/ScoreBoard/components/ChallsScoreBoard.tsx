@@ -21,17 +21,15 @@ export function ChallsScoreBoard ({
   return (
     <Box display="flex" flexWrap="wrap" justifyContent="space-evenly" gap="2">
       {[...challenges]
-        .sort(
-          (c1, c2) => challsScore[c2.name].score - challsScore[c1.name].score,
-        )
+        .sort((c1, c2) => challsScore[c2._id].score - challsScore[c1._id].score)
         .map(c => (
           <ChallengeCard
-            key={c.name}
+            key={c._id}
             challenge={c}
-            score={challsScore[c.name]}
-            currentTeam={challsScore[c.name].achievements[0]?.teamname}
+            score={challsScore[c._id]}
+            currentTeam={challsScore[c._id].achievements[0]?.teamname}
             onClick={() =>
-              setSelectedBreakthrough(challsScore[c.name].achievements[0])
+              setSelectedBreakthrough(challsScore[c._id].achievements[0])
             }
             size="6"
           />
@@ -39,7 +37,7 @@ export function ChallsScoreBoard ({
       {selectedBreakthrough && (
         <DetailChallPopup
           breakthrough={selectedBreakthrough}
-          challScore={challsScore[selectedBreakthrough.challenge]}
+          challScore={challsScore[selectedBreakthrough.challengeId]}
           onClose={() => setSelectedBreakthrough(undefined)}
         />
       )}
@@ -74,7 +72,7 @@ function DetailChallPopup ({
   )
 }
 
-const columns : ColumnDefinition<Achievement>[] = [
+const columns: ColumnDefinition<Achievement>[] = [
   { header: 'Time', rowValue: row => row.createdAt.toLocaleTimeString() },
   { header: 'Player', rowValue: row => row.username },
   { header: 'Team', rowValue: row => row.teamname },

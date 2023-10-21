@@ -9,8 +9,20 @@ import {
   space,
 } from 'styled-system'
 
-export type SelectInputProps = Omit<InputHTMLAttributes<HTMLSelectElement>, 'width'> & {
-  predefinedValues: string[] | readonly string[]
+export type SelectInputValue = {
+  value: string
+  label: string
+}
+
+export type SelectInputProps = Omit<
+  InputHTMLAttributes<HTMLSelectElement>,
+  'width'
+> & {
+  predefinedValues:
+    | string[]
+    | readonly string[]
+    | SelectInputValue[]
+    | readonly SelectInputValue[]
 }
 
 export function SelectInput ({
@@ -25,11 +37,19 @@ export function SelectInput ({
           {placeholder}
         </option>
       )}
-      {predefinedValues.map(value => (
-        <option key={value} value={value}>
-          {value}
-        </option>
-      ))}
+      {predefinedValues.map(entry =>
+        typeof entry === 'string'
+          ? (
+          <option key={entry} value={entry}>
+            {entry}
+          </option>
+            )
+          : (
+          <option key={entry.value} value={entry.value}>
+            {entry.label}
+          </option>
+            ),
+      )}
     </Select>
   )
 }

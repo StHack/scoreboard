@@ -56,11 +56,21 @@ export const useGame = () => {
 function useProvideGame (): GameContext {
   const { socket } = useSocket('/api/game')
   const [challenges, setChallenges] = useState<Challenge[]>([])
-  const [achievements, setAchievements] = useState<Achievement[]>([])
-  const [messages, setMessages] = useState<Message[]>([])
+  const [rawAchievements, setRawAchievements] = useState<Achievement[]>([])
+  const [rawMessages, setRawMessages] = useState<Message[]>([])
   const [teams, setTeams] = useState<string[]>([])
   const [rewards, setRewards] = useState<Reward[]>([])
   const [gameConfig, setGameConfig] = useState<GameConfig>(defaultGameConfig)
+
+  const achievements = rawAchievements.map(a => ({
+    ...a,
+    challenge: challenges.find(c => c._id === a.challengeId)?.name ?? '',
+  }))
+
+  const messages = rawMessages.map(a => ({
+    ...a,
+    challenge: challenges.find(c => c._id === a.challengeId)?.name ?? '',
+  }))
 
   useEffect(() => {
     if (!socket) return
@@ -74,7 +84,7 @@ function useProvideGame (): GameContext {
     })
 
     socket.emit('achievement:list', (response: Achievement[]) => {
-      setAchievements(
+      setRawAchievements(
         response.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
       )
     })
@@ -86,7 +96,7 @@ function useProvideGame (): GameContext {
     })
 
     socket.emit('game:messages', (response: Message[]) => {
-      setMessages(
+      setRawMessages(
         response.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
       )
     })
@@ -101,12 +111,12 @@ function useProvideGame (): GameContext {
 
     socket.on('challenge:updated', challUpdated =>
       setChallenges(challs =>
-        challs.map(c => (c.name === challUpdated.name ? challUpdated : c)),
+        challs.map(c => (c._id === challUpdated._id ? challUpdated : c)),
       ),
     )
 
     socket.on('achievement:added', (achievement: Achievement) => {
-      setAchievements(a => [
+      setRawAchievements(a => [
         { ...achievement, createdAt: new Date(achievement.createdAt) },
         ...a,
       ])
@@ -120,11 +130,11 @@ function useProvideGame (): GameContext {
     })
 
     socket.on('achievement:deleted', (deleted: Achievement) => {
-      setAchievements(ach =>
+      setRawAchievements(ach =>
         ach.filter(
           a =>
             !(
-              a.challenge === deleted.challenge &&
+              a.challengeId === deleted.challengeId &&
               a.teamname === deleted.teamname
             ),
         ),
@@ -136,7 +146,7 @@ function useProvideGame (): GameContext {
     })
 
     socket.on('game:newMessage', (message: Message) => {
-      setMessages(m => [
+      setRawMessages(m => [
         { ...message, createdAt: new Date(message.createdAt) },
         ...m,
       ])
@@ -163,7 +173,13 @@ function useProvideGame (): GameContext {
     achievements,
     messages,
     rewards,
-    score: computeGameScore(achievements, rewards, challenges, teams, gameConfig),
+    score: computeGameScore(
+      achievements,
+      rewards,
+      challenges,
+      teams,
+      gameConfig,
+    ),
     gameConfig,
   }
 }

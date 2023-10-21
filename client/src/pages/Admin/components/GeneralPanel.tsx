@@ -76,7 +76,10 @@ export function GeneralPanel () {
         />
         <SelectInput
           width={['100%', 'auto']}
-          predefinedValues={challenges.map(c => c.name)}
+          predefinedValues={challenges.map(c => ({
+            label: c.name,
+            value: c._id,
+          }))}
           placeholder="or to a specific challenge"
           {...messageChallengeInput.inputProp}
         />

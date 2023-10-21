@@ -97,9 +97,9 @@ export function registerAdminNamespace(
 
     adminSocket.on(
       'challenge:update',
-      async (challName: string, chall: BaseChallenge, callback) => {
+      async (challengeId: string, chall: BaseChallenge, callback) => {
         try {
-          const challenge = await updateChallenge(challName, chall)
+          const challenge = await updateChallenge(challengeId, chall)
           callback(challenge)
           gameIo.emit('challenge:updated', challenge)
           adminSocket.emit('challenge:updated', challenge)
@@ -113,14 +113,14 @@ export function registerAdminNamespace(
       },
     )
 
-    adminSocket.on('challenge:broke', async (challName: string) => {
-      const updated = await updateChallenge(challName, { isBroken: true })
+    adminSocket.on('challenge:broke', async (challengeId: string) => {
+      const updated = await updateChallenge(challengeId, { isBroken: true })
       gameIo.emit('challenge:updated', updated)
       adminSocket.emit('challenge:updated', updated)
     })
 
-    adminSocket.on('challenge:repair', async (challName: string) => {
-      const updated = await updateChallenge(challName, { isBroken: false })
+    adminSocket.on('challenge:repair', async (challengeId: string) => {
+      const updated = await updateChallenge(challengeId, { isBroken: false })
       gameIo.emit('challenge:updated', updated)
       adminSocket.emit('challenge:updated', updated)
     })
@@ -165,8 +165,8 @@ export function registerAdminNamespace(
 
     adminSocket.on(
       'game:sendMessage',
-      async (message: string, challenge?: string) => {
-        const result = await addMessage({ content: message, challenge })
+      async (message: string, challengeId?: string) => {
+        const result = await addMessage({ content: message, challengeId })
 
         gameIo.emit('game:newMessage', result)
       },
@@ -216,8 +216,8 @@ export function registerAdminNamespace(
 
     adminSocket.on(
       'achievement:delete',
-      async (teamname: string, challenge: string) => {
-        const deleted = await removeAchievement(teamname, challenge)
+      async (teamname: string, challengeId: string) => {
+        const deleted = await removeAchievement(teamname, challengeId)
 
         if (deleted) {
           gameIo.emit('achievement:deleted', deleted)

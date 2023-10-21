@@ -3,7 +3,6 @@
     "_id": {
       "$oid": "6287e5bb90f469c2232eafdf"
     },
-    "challenge": "web-01",
     "username": "killerpapy",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -13,13 +12,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:02:19.702Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6287e62390f469c2232eb188"
     },
-    "challenge": "The Little Tree's Murder",
     "username": "Rumpumpump",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -29,13 +28,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:04:03.553Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d62e90f469c2232eacfd"
   },
   {
     "_id": {
       "$oid": "6287e74490f469c2232eb35d"
     },
-    "challenge": "web-01",
     "username": "Blaklis",
     "teamname": "AlwaySober",
     "proposal": "",
@@ -45,13 +44,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:08:52.714Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6287e91090f469c2232eb5d6"
     },
-    "challenge": "Armfull",
     "username": "ggbroot",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -61,13 +60,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:16:32.666Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "6287e92090f469c2232eb5e3"
     },
-    "challenge": "Armfull",
     "username": "ggbroot",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -77,13 +76,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:16:48.788Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "6287e92290f469c2232eb5e7"
     },
-    "challenge": "Armfull",
     "username": "ggbroot",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -93,13 +92,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:16:50.653Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "6287e92490f469c2232eb5eb"
     },
-    "challenge": "Armfull",
     "username": "ggbroot",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -109,13 +108,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:16:52.339Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "6287e9e790f469c2232eb698"
     },
-    "challenge": "Jean-Louis",
     "username": "icecr4ck",
     "teamname": "TeamWithoutName",
     "proposal": "",
@@ -125,13 +124,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:20:07.678Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287e54990f469c2232eaeb8"
   },
   {
     "_id": {
       "$oid": "6287ea1d90f469c2232eb6c5"
     },
-    "challenge": "Jean-Louis",
     "username": "icecr4ck",
     "teamname": "TeamWithoutName",
     "proposal": "",
@@ -141,13 +140,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:21:01.166Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287e54990f469c2232eaeb8"
   },
   {
     "_id": {
       "$oid": "6287ea2d90f469c2232eb6df"
     },
-    "challenge": "videosurveillance",
     "username": "Headorteil",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -157,13 +156,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:21:17.690Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "6287ea6d90f469c2232eb700"
     },
-    "challenge": "web-01",
     "username": "RedFish",
     "teamname": "Opencyber",
     "proposal": "",
@@ -173,13 +172,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:22:21.421Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6287ec1290f469c2232eb8cf"
     },
-    "challenge": "videosurveillance",
     "username": "odelbosc",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -189,13 +188,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:29:22.687Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "6287ec1590f469c2232eb8dc"
     },
-    "challenge": "videosurveillance",
     "username": "odelbosc",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -205,13 +204,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:29:25.188Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "6287ed5990f469c2232eba63"
     },
-    "challenge": "Jean-Louis",
     "username": "Tomtombinary",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -221,13 +220,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:34:49.376Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287e54990f469c2232eaeb8"
   },
   {
     "_id": {
       "$oid": "6287efb090f469c2232ebc6e"
     },
-    "challenge": "web-01",
     "username": "sheriff64",
     "teamname": "ADACTF",
     "proposal": "",
@@ -237,13 +236,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:44:48.032Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6287eff790f469c2232ebcd7"
     },
-    "challenge": "videosurveillance",
     "username": "melsius",
     "teamname": "Root du rhum - 1",
     "proposal": "",
@@ -253,13 +252,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:45:59.821Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "6287f01590f469c2232ebcf5"
     },
-    "challenge": "Jean-Louis",
     "username": "GhidraMobile",
     "teamname": "Les Pires Hat",
     "proposal": "",
@@ -269,13 +268,13 @@
     "updatedAt": {
       "$date": "2022-05-20T19:46:29.502Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287e54990f469c2232eaeb8"
   },
   {
     "_id": {
       "$oid": "6287f3a290f469c2232ebf16"
     },
-    "challenge": "Armfull",
     "username": "boyya",
     "teamname": "TeamWithoutName",
     "proposal": "",
@@ -285,13 +284,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:01:38.043Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "6287f3ff90f469c2232ebf8b"
     },
-    "challenge": "web-01",
     "username": "Pixailz",
     "teamname": "42Overfl0w",
     "proposal": "",
@@ -301,13 +300,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:03:11.685Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6287f4cf90f469c2232ebffc"
     },
-    "challenge": "videosurveillance",
     "username": "sheriff64",
     "teamname": "ADACTF",
     "proposal": "",
@@ -317,13 +316,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:06:39.498Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "6287f61c90f469c2232ec11d"
     },
-    "challenge": "Armfull",
     "username": "Tomtombinary",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -333,13 +332,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:12:12.526Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "6287f65990f469c2232ec14d"
     },
-    "challenge": "web-01",
     "username": "rootdurhum2",
     "teamname": "Root du rhum - 2",
     "proposal": "",
@@ -349,13 +348,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:13:13.944Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6287f67d90f469c2232ec174"
     },
-    "challenge": "Work It",
     "username": "sam0verfl0w",
     "teamname": "420verfl0w",
     "proposal": "",
@@ -365,13 +364,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:13:49.392Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62854f0f90f469c2232eaa94"
   },
   {
     "_id": {
       "$oid": "6287f68190f469c2232ec17d"
     },
-    "challenge": "Work It",
     "username": "sam0verfl0w",
     "teamname": "420verfl0w",
     "proposal": "",
@@ -381,13 +380,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:13:53.448Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62854f0f90f469c2232eaa94"
   },
   {
     "_id": {
       "$oid": "6287f8b390f469c2232ec251"
     },
-    "challenge": "Jean-Louis",
     "username": "Bogorat",
     "teamname": "Yolosw4g",
     "proposal": "",
@@ -397,13 +396,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:23:15.867Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287e54990f469c2232eaeb8"
   },
   {
     "_id": {
       "$oid": "6287f8b490f469c2232ec259"
     },
-    "challenge": "web-01",
     "username": "Pipodel",
     "teamname": "Root du rhum - 1",
     "proposal": "",
@@ -413,13 +412,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:23:16.812Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6287fb0e90f469c2232ec3a3"
     },
-    "challenge": "Jean-Louis",
     "username": "Bdenneu",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -429,13 +428,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:33:18.131Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287e54990f469c2232eaeb8"
   },
   {
     "_id": {
       "$oid": "6287fb1290f469c2232ec3aa"
     },
-    "challenge": "web-01",
     "username": "Bdenneu",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -445,13 +444,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:33:22.592Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6287fb1590f469c2232ec3af"
     },
-    "challenge": "Secure Platform Shop",
     "username": "Benjx",
     "teamname": "Euskaldunh4ck",
     "proposal": "",
@@ -461,13 +460,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:33:25.308Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280ccbfb5f970a33e537c74"
   },
   {
     "_id": {
       "$oid": "6287fb1a90f469c2232ec3b9"
     },
-    "challenge": "Secure Platform Shop",
     "username": "Benjx",
     "teamname": "Euskaldunh4ck",
     "proposal": "",
@@ -477,13 +476,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:33:30.707Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280ccbfb5f970a33e537c74"
   },
   {
     "_id": {
       "$oid": "6287fb1e90f469c2232ec3bd"
     },
-    "challenge": "web-01",
     "username": "Bdenneu",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -493,13 +492,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:33:34.649Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6287fb1f90f469c2232ec3c1"
     },
-    "challenge": "web-01",
     "username": "Bdenneu",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -509,13 +508,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:33:35.777Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6287fb2190f469c2232ec3c5"
     },
-    "challenge": "web-01",
     "username": "Benjx",
     "teamname": "Euskaldunh4ck",
     "proposal": "",
@@ -525,13 +524,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:33:37.903Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6287fd5890f469c2232ec4af"
     },
-    "challenge": "Work It",
     "username": "sam0verfl0w",
     "teamname": "420verfl0w",
     "proposal": "",
@@ -541,13 +540,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:43:04.325Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62854f0f90f469c2232eaa94"
   },
   {
     "_id": {
       "$oid": "6287fd6090f469c2232ec4bb"
     },
-    "challenge": "Work It",
     "username": "sam0verfl0w",
     "teamname": "420verfl0w",
     "proposal": "",
@@ -557,13 +556,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:43:12.168Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62854f0f90f469c2232eaa94"
   },
   {
     "_id": {
       "$oid": "6287fd6190f469c2232ec4bf"
     },
-    "challenge": "Work It",
     "username": "sam0verfl0w",
     "teamname": "420verfl0w",
     "proposal": "",
@@ -573,13 +572,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:43:13.012Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62854f0f90f469c2232eaa94"
   },
   {
     "_id": {
       "$oid": "6287fd6290f469c2232ec4c3"
     },
-    "challenge": "Work It",
     "username": "sam0verfl0w",
     "teamname": "420verfl0w",
     "proposal": "",
@@ -589,13 +588,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:43:14.354Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62854f0f90f469c2232eaa94"
   },
   {
     "_id": {
       "$oid": "6287fd6790f469c2232ec4c7"
     },
-    "challenge": "Work It",
     "username": "sam0verfl0w",
     "teamname": "420verfl0w",
     "proposal": "",
@@ -605,13 +604,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:43:19.381Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62854f0f90f469c2232eaa94"
   },
   {
     "_id": {
       "$oid": "6287fd6990f469c2232ec4cb"
     },
-    "challenge": "Work It",
     "username": "sam0verfl0w",
     "teamname": "420verfl0w",
     "proposal": "",
@@ -621,13 +620,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:43:21.534Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62854f0f90f469c2232eaa94"
   },
   {
     "_id": {
       "$oid": "6287fd6a90f469c2232ec4cf"
     },
-    "challenge": "Work It",
     "username": "sam0verfl0w",
     "teamname": "420verfl0w",
     "proposal": "",
@@ -637,13 +636,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:43:22.755Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62854f0f90f469c2232eaa94"
   },
   {
     "_id": {
       "$oid": "6287fd7490f469c2232ec4d4"
     },
-    "challenge": "web-01",
     "username": "killerpapy",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -653,13 +652,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:43:32.665Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6287fd7790f469c2232ec4d9"
     },
-    "challenge": "web-01",
     "username": "killerpapy",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -669,13 +668,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:43:35.249Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6287fd7890f469c2232ec4e1"
     },
-    "challenge": "web-01",
     "username": "killerpapy",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -685,13 +684,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:43:36.414Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6287fd7c90f469c2232ec4e4"
     },
-    "challenge": "web-01",
     "username": "Bdenneu",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -701,13 +700,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:43:40.591Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6287fe4190f469c2232ec578"
     },
-    "challenge": "All it takes is a Mbean",
     "username": "Blaklis",
     "teamname": "AlwaySober",
     "proposal": "",
@@ -717,13 +716,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:46:57.001Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62820fca90f469c2232ea8b1"
   },
   {
     "_id": {
       "$oid": "6287fe4a90f469c2232ec57c"
     },
-    "challenge": "All it takes is a Mbean",
     "username": "Blaklis",
     "teamname": "AlwaySober",
     "proposal": "",
@@ -733,13 +732,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:47:06.740Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62820fca90f469c2232ea8b1"
   },
   {
     "_id": {
       "$oid": "6287fe6090f469c2232ec589"
     },
-    "challenge": "Secure Platform Shop",
     "username": "Blaklis",
     "teamname": "AlwaySober",
     "proposal": "",
@@ -749,13 +748,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:47:28.730Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280ccbfb5f970a33e537c74"
   },
   {
     "_id": {
       "$oid": "6287ff0990f469c2232ec5d3"
     },
-    "challenge": "Work It",
     "username": "Geluchat",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -765,13 +764,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:50:17.687Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62854f0f90f469c2232eaa94"
   },
   {
     "_id": {
       "$oid": "6287ff7190f469c2232ec604"
     },
-    "challenge": "Armfull",
     "username": "Bdenneu",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -781,13 +780,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:52:01.059Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "6288007990f469c2232ec635"
     },
-    "challenge": "web-01",
     "username": "gc4lmettes",
     "teamname": "fi3ldfoks.Ay",
     "proposal": "",
@@ -797,13 +796,13 @@
     "updatedAt": {
       "$date": "2022-05-20T20:56:25.237Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "628801b990f469c2232ec6b7"
     },
-    "challenge": "web-01",
     "username": "killerpapy",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -813,13 +812,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:01:45.297Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6288022190f469c2232ec707"
     },
-    "challenge": "Sniff 😢",
     "username": "gzk_x64",
     "teamname": "Euskaldunh4ck",
     "proposal": "",
@@ -829,13 +828,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:03:29.369Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6286746890f469c2232eab50"
   },
   {
     "_id": {
       "$oid": "628802c290f469c2232ec73c"
     },
-    "challenge": "Sniff 😢",
     "username": "Pixailz",
     "teamname": "42Overfl0w",
     "proposal": "",
@@ -845,13 +844,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:06:10.277Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6286746890f469c2232eab50"
   },
   {
     "_id": {
       "$oid": "6288032090f469c2232ec763"
     },
-    "challenge": "videosurveillance",
     "username": "sheriff64",
     "teamname": "ADACTF",
     "proposal": "",
@@ -861,13 +860,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:07:44.251Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "6288033990f469c2232ec777"
     },
-    "challenge": "Sniff 😢",
     "username": "Pixailz",
     "teamname": "42Overfl0w",
     "proposal": "",
@@ -877,13 +876,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:08:09.560Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6286746890f469c2232eab50"
   },
   {
     "_id": {
       "$oid": "6288043290f469c2232ec7e8"
     },
-    "challenge": "web-01",
     "username": "gc4lmettes",
     "teamname": "fi3ldfoks.Ay",
     "proposal": "",
@@ -893,13 +892,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:12:18.904Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6288044f90f469c2232ec80f"
     },
-    "challenge": "dog",
     "username": "spritseason",
     "teamname": "Cybiere",
     "proposal": "",
@@ -909,13 +908,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:12:47.381Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628802a390f469c2232ec72e"
   },
   {
     "_id": {
       "$oid": "628804f090f469c2232ec85e"
     },
-    "challenge": "Sniff 😢",
     "username": "Pixailz",
     "teamname": "42Overfl0w",
     "proposal": "",
@@ -925,13 +924,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:15:28.574Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6286746890f469c2232eab50"
   },
   {
     "_id": {
       "$oid": "6288061290f469c2232ec944"
     },
-    "challenge": "Catch the bird, a trip from web to IRL.",
     "username": "ObiwanKenobi",
     "teamname": "b4By&b33r",
     "proposal": "",
@@ -941,13 +940,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:20:18.171Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6283c2c390f469c2232ea978"
   },
   {
     "_id": {
       "$oid": "6288069190f469c2232ec982"
     },
-    "challenge": "web-01",
     "username": "neronight",
     "teamname": "Yolosw4g",
     "proposal": "",
@@ -957,13 +956,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:22:25.234Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "628807af90f469c2232eca49"
     },
-    "challenge": "Secure Platform Shop",
     "username": "Layno",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -973,13 +972,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:27:11.863Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280ccbfb5f970a33e537c74"
   },
   {
     "_id": {
       "$oid": "628807c190f469c2232eca65"
     },
-    "challenge": "dog",
     "username": "Geluchat",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -989,13 +988,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:27:29.951Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628802a390f469c2232ec72e"
   },
   {
     "_id": {
       "$oid": "6288094d90f469c2232ecae8"
     },
-    "challenge": "All it takes is a Mbean",
     "username": "Blaklis",
     "teamname": "AlwaySober",
     "proposal": "",
@@ -1005,13 +1004,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:34:05.784Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62820fca90f469c2232ea8b1"
   },
   {
     "_id": {
       "$oid": "628809aa90f469c2232ecb11"
     },
-    "challenge": "videosurveillance",
     "username": "killerpapy",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -1021,13 +1020,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:35:38.441Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "62880b8990f469c2232ecc3e"
     },
-    "challenge": "All it takes is a Mbean",
     "username": "g0h4n",
     "teamname": "Opencyber",
     "proposal": "",
@@ -1037,13 +1036,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:43:37.695Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62820fca90f469c2232ea8b1"
   },
   {
     "_id": {
       "$oid": "62880bcc90f469c2232ecc67"
     },
-    "challenge": "Armfull",
     "username": "serpx",
     "teamname": "Opencyber",
     "proposal": "",
@@ -1053,13 +1052,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:44:44.558Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "62880c0690f469c2232ecc96"
     },
-    "challenge": "videosurveillance",
     "username": "Headorteil",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -1069,13 +1068,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:45:42.425Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "62880c8590f469c2232ecd05"
     },
-    "challenge": "web-01",
     "username": "daggy",
     "teamname": "ippsec",
     "proposal": "",
@@ -1085,13 +1084,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:47:49.191Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "62880d4a90f469c2232ecd44"
     },
-    "challenge": "dog",
     "username": "ggbroot",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -1101,13 +1100,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:51:06.244Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628802a390f469c2232ec72e"
   },
   {
     "_id": {
       "$oid": "62880d8290f469c2232ecd5d"
     },
-    "challenge": "Sniff 😢",
     "username": "Pixailz",
     "teamname": "42Overfl0w",
     "proposal": "",
@@ -1117,13 +1116,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:52:02.673Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6286746890f469c2232eab50"
   },
   {
     "_id": {
       "$oid": "62880d8490f469c2232ecd61"
     },
-    "challenge": "Sniff 😢",
     "username": "Pixailz",
     "teamname": "42Overfl0w",
     "proposal": "",
@@ -1133,13 +1132,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:52:04.195Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6286746890f469c2232eab50"
   },
   {
     "_id": {
       "$oid": "62880d8490f469c2232ecd65"
     },
-    "challenge": "Sniff 😢",
     "username": "Pixailz",
     "teamname": "42Overfl0w",
     "proposal": "",
@@ -1149,13 +1148,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:52:04.783Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6286746890f469c2232eab50"
   },
   {
     "_id": {
       "$oid": "62880d8490f469c2232ecd69"
     },
-    "challenge": "Sniff 😢",
     "username": "Pixailz",
     "teamname": "42Overfl0w",
     "proposal": "",
@@ -1165,13 +1164,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:52:04.944Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6286746890f469c2232eab50"
   },
   {
     "_id": {
       "$oid": "62880d8590f469c2232ecd6d"
     },
-    "challenge": "Sniff 😢",
     "username": "Pixailz",
     "teamname": "42Overfl0w",
     "proposal": "",
@@ -1181,13 +1180,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:52:05.113Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6286746890f469c2232eab50"
   },
   {
     "_id": {
       "$oid": "62880e8390f469c2232ece0a"
     },
-    "challenge": "All it takes is a Mbean",
     "username": "n1nj4sec",
     "teamname": "TeamWithoutName",
     "proposal": "",
@@ -1197,13 +1196,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:56:19.098Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62820fca90f469c2232ea8b1"
   },
   {
     "_id": {
       "$oid": "62880f1990f469c2232ece95"
     },
-    "challenge": "dog",
     "username": "killerpapy",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -1213,13 +1212,13 @@
     "updatedAt": {
       "$date": "2022-05-20T21:58:49.485Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628802a390f469c2232ec72e"
   },
   {
     "_id": {
       "$oid": "62880fa390f469c2232ecf35"
     },
-    "challenge": "dog",
     "username": "killerpapy",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -1229,13 +1228,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:01:07.999Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628802a390f469c2232ec72e"
   },
   {
     "_id": {
       "$oid": "62880fe390f469c2232ecf5b"
     },
-    "challenge": "Jean-Louis",
     "username": "Pixailz",
     "teamname": "42Overfl0w",
     "proposal": "",
@@ -1245,13 +1244,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:02:11.712Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287e54990f469c2232eaeb8"
   },
   {
     "_id": {
       "$oid": "6288106f90f469c2232ecfd0"
     },
-    "challenge": "videosurveillance",
     "username": "Geluchat",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -1261,13 +1260,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:04:31.398Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "6288107690f469c2232ecfd9"
     },
-    "challenge": "videosurveillance",
     "username": "Geluchat",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -1277,13 +1276,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:04:38.672Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "628810db90f469c2232ed00f"
     },
-    "challenge": "Sharko",
     "username": "boyya",
     "teamname": "TeamWithoutName",
     "proposal": "",
@@ -1293,13 +1292,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:06:19.330Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280d046b5f970a33e537cae"
   },
   {
     "_id": {
       "$oid": "6288125f90f469c2232ed100"
     },
-    "challenge": "dog",
     "username": "Bdenneu",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -1309,13 +1308,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:12:47.028Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628802a390f469c2232ec72e"
   },
   {
     "_id": {
       "$oid": "6288128290f469c2232ed12d"
     },
-    "challenge": "Jean-Louis",
     "username": "raz4ina",
     "teamname": "Ugly Duck",
     "proposal": "",
@@ -1325,13 +1324,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:13:22.031Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287e54990f469c2232eaeb8"
   },
   {
     "_id": {
       "$oid": "628814aa90f469c2232ed24e"
     },
-    "challenge": "videosurveillance",
     "username": "Prinegheuls",
     "teamname": "Root du rhum - 1",
     "proposal": "",
@@ -1341,13 +1340,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:22:34.688Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "628815af90f469c2232ed2f5"
     },
-    "challenge": "dog",
     "username": "sug4r",
     "teamname": "fi3ldfoks.Ay",
     "proposal": "",
@@ -1357,13 +1356,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:26:55.656Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628802a390f469c2232ec72e"
   },
   {
     "_id": {
       "$oid": "6288160190f469c2232ed31c"
     },
-    "challenge": "Armfull",
     "username": "GhidraMobile",
     "teamname": "Les Pires Hat",
     "proposal": "",
@@ -1373,13 +1372,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:28:17.506Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "6288161090f469c2232ed32c"
     },
-    "challenge": "Headless Updateless Brainless",
     "username": "Geluchat",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -1389,13 +1388,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:28:32.179Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6282104890f469c2232ea8b3"
   },
   {
     "_id": {
       "$oid": "6288165f90f469c2232ed3ba"
     },
-    "challenge": "videosurveillance",
     "username": "Prinegheuls",
     "teamname": "Root du rhum - 1",
     "proposal": "",
@@ -1405,13 +1404,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:29:51.644Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "6288181390f469c2232ed472"
     },
-    "challenge": "web-01",
     "username": "Geluchat",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -1421,13 +1420,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:37:07.752Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6288186d90f469c2232ed4ce"
     },
-    "challenge": "Headless Updateless Brainless",
     "username": "mpayet",
     "teamname": "IPPLOG4J",
     "proposal": "",
@@ -1437,13 +1436,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:38:37.388Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6282104890f469c2232ea8b3"
   },
   {
     "_id": {
       "$oid": "6288187990f469c2232ed4d2"
     },
-    "challenge": "Headless Updateless Brainless",
     "username": "mpayet",
     "teamname": "IPPLOG4J",
     "proposal": "",
@@ -1453,13 +1452,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:38:49.410Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6282104890f469c2232ea8b3"
   },
   {
     "_id": {
       "$oid": "6288188490f469c2232ed4df"
     },
-    "challenge": "Headless Updateless Brainless",
     "username": "mpayet",
     "teamname": "IPPLOG4J",
     "proposal": "",
@@ -1469,13 +1468,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:39:00.838Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6282104890f469c2232ea8b3"
   },
   {
     "_id": {
       "$oid": "628818cd90f469c2232ed4fb"
     },
-    "challenge": "videosurveillance",
     "username": "rootdurhum2",
     "teamname": "Root du rhum - 2",
     "proposal": "",
@@ -1485,13 +1484,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:40:13.366Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "628819fb90f469c2232ed579"
     },
-    "challenge": "Fast And Secure",
     "username": "Geluchat",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -1501,13 +1500,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:45:15.187Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628210e890f469c2232ea8b5"
   },
   {
     "_id": {
       "$oid": "62881a1c90f469c2232ed59e"
     },
-    "challenge": "Jean-Louis",
     "username": "serpx",
     "teamname": "Opencyber",
     "proposal": "",
@@ -1517,13 +1516,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:45:48.209Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287e54990f469c2232eaeb8"
   },
   {
     "_id": {
       "$oid": "62881bb990f469c2232ed63b"
     },
-    "challenge": "web-01",
     "username": "Ixod3",
     "teamname": "b4By&b33r",
     "proposal": "",
@@ -1533,13 +1532,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:52:41.767Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "62881cc690f469c2232ed6e5"
     },
-    "challenge": "videosurveillance",
     "username": "mrzor",
     "teamname": "TeamWithoutName",
     "proposal": "",
@@ -1549,13 +1548,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:57:10.936Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "62881d2390f469c2232ed73c"
     },
-    "challenge": "dog",
     "username": "GhidraMobile",
     "teamname": "Les Pires Hat",
     "proposal": "",
@@ -1565,13 +1564,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:58:43.601Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628802a390f469c2232ec72e"
   },
   {
     "_id": {
       "$oid": "62881d4390f469c2232ed750"
     },
-    "challenge": "Fast And Secure",
     "username": "jambon",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -1581,13 +1580,13 @@
     "updatedAt": {
       "$date": "2022-05-20T22:59:15.550Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628210e890f469c2232ea8b5"
   },
   {
     "_id": {
       "$oid": "62881ee090f469c2232ed8b2"
     },
-    "challenge": "Secure Platform Shop",
     "username": "rootdurhum2",
     "teamname": "Root du rhum - 2",
     "proposal": "",
@@ -1597,13 +1596,13 @@
     "updatedAt": {
       "$date": "2022-05-20T23:06:08.225Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280ccbfb5f970a33e537c74"
   },
   {
     "_id": {
       "$oid": "6288200d90f469c2232ed941"
     },
-    "challenge": "Voyage ",
     "username": "blackknigth",
     "teamname": "TeamWithoutName",
     "proposal": "",
@@ -1613,13 +1612,13 @@
     "updatedAt": {
       "$date": "2022-05-20T23:11:09.943Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628730d490f469c2232eab8d"
   },
   {
     "_id": {
       "$oid": "6288205190f469c2232ed983"
     },
-    "challenge": "web-01",
     "username": "Ixod3",
     "teamname": "b4By&b33r",
     "proposal": "",
@@ -1629,13 +1628,13 @@
     "updatedAt": {
       "$date": "2022-05-20T23:12:17.827Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6288210390f469c2232ed9e1"
     },
-    "challenge": "0p@k",
     "username": "serpx",
     "teamname": "Opencyber",
     "proposal": "",
@@ -1645,13 +1644,13 @@
     "updatedAt": {
       "$date": "2022-05-20T23:15:15.595Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6288045b90f469c2232ec815"
   },
   {
     "_id": {
       "$oid": "6288213d90f469c2232eda0f"
     },
-    "challenge": "Secure Platform Shop",
     "username": "jirem85",
     "teamname": "Root du rhum - 1",
     "proposal": "",
@@ -1661,13 +1660,13 @@
     "updatedAt": {
       "$date": "2022-05-20T23:16:13.453Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280ccbfb5f970a33e537c74"
   },
   {
     "_id": {
       "$oid": "6288237390f469c2232edade"
     },
-    "challenge": "Sharko",
     "username": "boyya",
     "teamname": "TeamWithoutName",
     "proposal": "",
@@ -1677,13 +1676,13 @@
     "updatedAt": {
       "$date": "2022-05-20T23:25:39.904Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280d046b5f970a33e537cae"
   },
   {
     "_id": {
       "$oid": "628824a790f469c2232edb94"
     },
-    "challenge": "Jean-Louis",
     "username": "FoxCie",
     "teamname": "ADACTF",
     "proposal": "",
@@ -1693,13 +1692,13 @@
     "updatedAt": {
       "$date": "2022-05-20T23:30:47.375Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287e54990f469c2232eaeb8"
   },
   {
     "_id": {
       "$oid": "628825b490f469c2232edc32"
     },
-    "challenge": "web-01",
     "username": "Gomonriou",
     "teamname": "Les Pires Hat",
     "proposal": "",
@@ -1709,13 +1708,13 @@
     "updatedAt": {
       "$date": "2022-05-20T23:35:16.572Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "62882eeb90f469c2232edfbb"
     },
-    "challenge": "0p@k",
     "username": "icecr4ck",
     "teamname": "TeamWithoutName",
     "proposal": "",
@@ -1725,13 +1724,13 @@
     "updatedAt": {
       "$date": "2022-05-21T00:14:35.343Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6288045b90f469c2232ec815"
   },
   {
     "_id": {
       "$oid": "62882eed90f469c2232edfc9"
     },
-    "challenge": "Work It",
     "username": "Bdenneu",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -1741,13 +1740,13 @@
     "updatedAt": {
       "$date": "2022-05-21T00:14:37.482Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62854f0f90f469c2232eaa94"
   },
   {
     "_id": {
       "$oid": "6288300e90f469c2232ee09a"
     },
-    "challenge": "Catch the bird, a trip from web to IRL.",
     "username": "Rumpumpump",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -1757,13 +1756,13 @@
     "updatedAt": {
       "$date": "2022-05-21T00:19:26.870Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6283c2c390f469c2232ea978"
   },
   {
     "_id": {
       "$oid": "6288314b90f469c2232ee110"
     },
-    "challenge": "0p@k",
     "username": "jambon",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -1773,13 +1772,13 @@
     "updatedAt": {
       "$date": "2022-05-21T00:24:43.839Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6288045b90f469c2232ec815"
   },
   {
     "_id": {
       "$oid": "6288331390f469c2232ee1e7"
     },
-    "challenge": "Voyage ",
     "username": "Tomtombinary",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -1789,13 +1788,13 @@
     "updatedAt": {
       "$date": "2022-05-21T00:32:19.921Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628730d490f469c2232eab8d"
   },
   {
     "_id": {
       "$oid": "6288355890f469c2232ee368"
     },
-    "challenge": "Armfull",
     "username": "jirem85",
     "teamname": "Root du rhum - 1",
     "proposal": "",
@@ -1805,13 +1804,13 @@
     "updatedAt": {
       "$date": "2022-05-21T00:42:00.747Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "6288356c90f469c2232ee382"
     },
-    "challenge": "Armfull",
     "username": "jirem85",
     "teamname": "Root du rhum - 1",
     "proposal": "",
@@ -1821,13 +1820,13 @@
     "updatedAt": {
       "$date": "2022-05-21T00:42:20.015Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "6288357790f469c2232ee386"
     },
-    "challenge": "Armfull",
     "username": "jirem85",
     "teamname": "Root du rhum - 1",
     "proposal": "",
@@ -1837,13 +1836,13 @@
     "updatedAt": {
       "$date": "2022-05-21T00:42:31.805Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "6288357990f469c2232ee38a"
     },
-    "challenge": "Armfull",
     "username": "jirem85",
     "teamname": "Root du rhum - 1",
     "proposal": "",
@@ -1853,13 +1852,13 @@
     "updatedAt": {
       "$date": "2022-05-21T00:42:33.528Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "6288358890f469c2232ee38e"
     },
-    "challenge": "Armfull",
     "username": "jirem85",
     "teamname": "Root du rhum - 1",
     "proposal": "",
@@ -1869,13 +1868,13 @@
     "updatedAt": {
       "$date": "2022-05-21T00:42:48.105Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "6288358f90f469c2232ee392"
     },
-    "challenge": "Armfull",
     "username": "jirem85",
     "teamname": "Root du rhum - 1",
     "proposal": "",
@@ -1885,13 +1884,13 @@
     "updatedAt": {
       "$date": "2022-05-21T00:42:55.569Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "628835a990f469c2232ee396"
     },
-    "challenge": "Armfull",
     "username": "jirem85",
     "teamname": "Root du rhum - 1",
     "proposal": "",
@@ -1901,13 +1900,13 @@
     "updatedAt": {
       "$date": "2022-05-21T00:43:21.279Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "6288383d90f469c2232ee43d"
     },
-    "challenge": "0p@k",
     "username": "Tomtombinary",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -1917,13 +1916,13 @@
     "updatedAt": {
       "$date": "2022-05-21T00:54:21.140Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6288045b90f469c2232ec815"
   },
   {
     "_id": {
       "$oid": "628838a590f469c2232ee479"
     },
-    "challenge": "Headless Updateless Brainless",
     "username": "Layno",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -1933,13 +1932,13 @@
     "updatedAt": {
       "$date": "2022-05-21T00:56:05.138Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6282104890f469c2232ea8b3"
   },
   {
     "_id": {
       "$oid": "628839a790f469c2232ee510"
     },
-    "challenge": "Armfull",
     "username": "rootdurhum2",
     "teamname": "Root du rhum - 2",
     "proposal": "",
@@ -1949,13 +1948,13 @@
     "updatedAt": {
       "$date": "2022-05-21T01:00:23.855Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d40a90f469c2232eacc6"
   },
   {
     "_id": {
       "$oid": "62883a5e90f469c2232ee576"
     },
-    "challenge": "Sniff 😢",
     "username": "Rumpumpump",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -1965,13 +1964,13 @@
     "updatedAt": {
       "$date": "2022-05-21T01:03:26.995Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6286746890f469c2232eab50"
   },
   {
     "_id": {
       "$oid": "62883a6490f469c2232ee57a"
     },
-    "challenge": "Sniff 😢",
     "username": "Rumpumpump",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -1981,13 +1980,13 @@
     "updatedAt": {
       "$date": "2022-05-21T01:03:32.869Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6286746890f469c2232eab50"
   },
   {
     "_id": {
       "$oid": "62883aa590f469c2232ee57e"
     },
-    "challenge": "Sniff 😢",
     "username": "ggbroot",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -1997,13 +1996,13 @@
     "updatedAt": {
       "$date": "2022-05-21T01:04:37.888Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6286746890f469c2232eab50"
   },
   {
     "_id": {
       "$oid": "62883aba90f469c2232ee582"
     },
-    "challenge": "Sniff 😢",
     "username": "ggbroot",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -2013,13 +2012,13 @@
     "updatedAt": {
       "$date": "2022-05-21T01:04:58.250Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6286746890f469c2232eab50"
   },
   {
     "_id": {
       "$oid": "62883b0c90f469c2232ee59c"
     },
-    "challenge": "videosurveillance",
     "username": "_d0rf",
     "teamname": "Euskaldunh4ck",
     "proposal": "",
@@ -2029,13 +2028,13 @@
     "updatedAt": {
       "$date": "2022-05-21T01:06:20.071Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "62883c3f90f469c2232ee610"
     },
-    "challenge": "All it takes is a Mbean",
     "username": "Geluchat",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -2045,13 +2044,13 @@
     "updatedAt": {
       "$date": "2022-05-21T01:11:27.656Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "62820fca90f469c2232ea8b1"
   },
   {
     "_id": {
       "$oid": "62883c8090f469c2232ee63f"
     },
-    "challenge": "Headless Updateless Brainless",
     "username": "n1nj4sec",
     "teamname": "TeamWithoutName",
     "proposal": "",
@@ -2061,13 +2060,13 @@
     "updatedAt": {
       "$date": "2022-05-21T01:12:32.375Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6282104890f469c2232ea8b3"
   },
   {
     "_id": {
       "$oid": "62883d7490f469c2232ee6dc"
     },
-    "challenge": "videosurveillance",
     "username": "RedFish",
     "teamname": "Opencyber",
     "proposal": "",
@@ -2077,13 +2076,13 @@
     "updatedAt": {
       "$date": "2022-05-21T01:16:36.447Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "62883ec690f469c2232ee76c"
     },
-    "challenge": "dog",
     "username": "Geluchat",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -2093,13 +2092,13 @@
     "updatedAt": {
       "$date": "2022-05-21T01:22:14.206Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628802a390f469c2232ec72e"
   },
   {
     "_id": {
       "$oid": "62883f9890f469c2232ee7c0"
     },
-    "challenge": "Secure Platform Shop",
     "username": "sheriff64",
     "teamname": "ADACTF",
     "proposal": "",
@@ -2109,13 +2108,13 @@
     "updatedAt": {
       "$date": "2022-05-21T01:25:44.100Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280ccbfb5f970a33e537c74"
   },
   {
     "_id": {
       "$oid": "6288417590f469c2232ee844"
     },
-    "challenge": "The Little Tree's Murder",
     "username": "sug4r",
     "teamname": "fi3ldfoks.Ay",
     "proposal": "",
@@ -2125,13 +2124,13 @@
     "updatedAt": {
       "$date": "2022-05-21T01:33:41.511Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d62e90f469c2232eacfd"
   },
   {
     "_id": {
       "$oid": "6288419b90f469c2232ee84d"
     },
-    "challenge": "videosurveillance",
     "username": "Gomonriou",
     "teamname": "Les Pires Hat",
     "proposal": "",
@@ -2141,13 +2140,13 @@
     "updatedAt": {
       "$date": "2022-05-21T01:34:19.111Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "6288465090f469c2232ee9a4"
     },
-    "challenge": "Sharko",
     "username": "Tomtombinary",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -2157,13 +2156,13 @@
     "updatedAt": {
       "$date": "2022-05-21T01:54:24.778Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280d046b5f970a33e537cae"
   },
   {
     "_id": {
       "$oid": "62884afb90f469c2232eeafe"
     },
-    "challenge": "videosurveillance",
     "username": "neronight",
     "teamname": "Yolosw4g",
     "proposal": "",
@@ -2173,13 +2172,13 @@
     "updatedAt": {
       "$date": "2022-05-21T02:14:19.311Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "62884b6f90f469c2232eeb0e"
     },
-    "challenge": "The Little Tree's Murder",
     "username": "Kokote",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -2189,13 +2188,13 @@
     "updatedAt": {
       "$date": "2022-05-21T02:16:15.757Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d62e90f469c2232eacfd"
   },
   {
     "_id": {
       "$oid": "62884b7a90f469c2232eeb1a"
     },
-    "challenge": "The Little Tree's Murder",
     "username": "Kokote",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -2205,13 +2204,13 @@
     "updatedAt": {
       "$date": "2022-05-21T02:16:26.507Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d62e90f469c2232eacfd"
   },
   {
     "_id": {
       "$oid": "62884c6b90f469c2232eeb3d"
     },
-    "challenge": "The Little Tree's Murder",
     "username": "ggbroot",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -2221,13 +2220,13 @@
     "updatedAt": {
       "$date": "2022-05-21T02:20:27.108Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d62e90f469c2232eacfd"
   },
   {
     "_id": {
       "$oid": "62884c6f90f469c2232eeb41"
     },
-    "challenge": "The Little Tree's Murder",
     "username": "ggbroot",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -2237,13 +2236,13 @@
     "updatedAt": {
       "$date": "2022-05-21T02:20:31.784Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6287d62e90f469c2232eacfd"
   },
   {
     "_id": {
       "$oid": "62884fae90f469c2232eec26"
     },
-    "challenge": "web-01",
     "username": "blackknigth",
     "teamname": "TeamWithoutName",
     "proposal": "",
@@ -2253,13 +2252,13 @@
     "updatedAt": {
       "$date": "2022-05-21T02:34:22.639Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "62884fb790f469c2232eec31"
     },
-    "challenge": "web-01",
     "username": "blackknigth",
     "teamname": "TeamWithoutName",
     "proposal": "",
@@ -2269,13 +2268,13 @@
     "updatedAt": {
       "$date": "2022-05-21T02:34:31.811Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "6288525490f469c2232eecc0"
     },
-    "challenge": "Catch the bird, a trip from web to IRL.",
     "username": "Barbaribouch",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -2285,13 +2284,13 @@
     "updatedAt": {
       "$date": "2022-05-21T02:45:40.334Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6283c2c390f469c2232ea978"
   },
   {
     "_id": {
       "$oid": "6288525790f469c2232eecc4"
     },
-    "challenge": "Catch the bird, a trip from web to IRL.",
     "username": "Barbaribouch",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -2301,13 +2300,13 @@
     "updatedAt": {
       "$date": "2022-05-21T02:45:43.584Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6283c2c390f469c2232ea978"
   },
   {
     "_id": {
       "$oid": "6288536690f469c2232eed30"
     },
-    "challenge": "Secure Platform Shop",
     "username": "odelbosc",
     "teamname": "JohnBRoot",
     "proposal": "",
@@ -2317,13 +2316,13 @@
     "updatedAt": {
       "$date": "2022-05-21T02:50:14.629Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280ccbfb5f970a33e537c74"
   },
   {
     "_id": {
       "$oid": "628854fb90f469c2232eeddb"
     },
-    "challenge": "videosurveillance",
     "username": "RedFish",
     "teamname": "Opencyber",
     "proposal": "",
@@ -2333,13 +2332,13 @@
     "updatedAt": {
       "$date": "2022-05-21T02:56:59.098Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "6288551490f469c2232eedec"
     },
-    "challenge": "videosurveillance",
     "username": "RedFish",
     "teamname": "Opencyber",
     "proposal": "",
@@ -2349,13 +2348,13 @@
     "updatedAt": {
       "$date": "2022-05-21T02:57:24.438Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "628856a190f469c2232eee99"
     },
-    "challenge": "Catch the bird, a trip from web to IRL.",
     "username": "louisl",
     "teamname": "Cybiere",
     "proposal": "",
@@ -2365,13 +2364,13 @@
     "updatedAt": {
       "$date": "2022-05-21T03:04:01.918Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6283c2c390f469c2232ea978"
   },
   {
     "_id": {
       "$oid": "6288577190f469c2232eeefa"
     },
-    "challenge": "videosurveillance",
     "username": "Gomonriou",
     "teamname": "Les Pires Hat",
     "proposal": "",
@@ -2381,13 +2380,13 @@
     "updatedAt": {
       "$date": "2022-05-21T03:07:29.601Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "628859e990f469c2232eefc6"
     },
-    "challenge": "videosurveillance",
     "username": "Ixod3",
     "teamname": "b4By&b33r",
     "proposal": "",
@@ -2397,13 +2396,13 @@
     "updatedAt": {
       "$date": "2022-05-21T03:18:01.075Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "628859f990f469c2232eefe0"
     },
-    "challenge": "videosurveillance",
     "username": "Ixod3",
     "teamname": "b4By&b33r",
     "proposal": "",
@@ -2413,13 +2412,13 @@
     "updatedAt": {
       "$date": "2022-05-21T03:18:17.234Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c65eb5f970a33e537bfd"
   },
   {
     "_id": {
       "$oid": "62885bd290f469c2232ef09d"
     },
-    "challenge": "Catch the bird, a trip from web to IRL.",
     "username": "Geluchat",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -2429,13 +2428,13 @@
     "updatedAt": {
       "$date": "2022-05-21T03:26:10.327Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6283c2c390f469c2232ea978"
   },
   {
     "_id": {
       "$oid": "62885c5a90f469c2232ef0be"
     },
-    "challenge": "web-01",
     "username": "louisl",
     "teamname": "Cybiere",
     "proposal": "",
@@ -2445,13 +2444,13 @@
     "updatedAt": {
       "$date": "2022-05-21T03:28:26.017Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280c46fb5f970a33e537bfb"
   },
   {
     "_id": {
       "$oid": "62885f8490f469c2232ef192"
     },
-    "challenge": "Headless Updateless Brainless",
     "username": "sheriff64",
     "teamname": "ADACTF",
     "proposal": "",
@@ -2461,13 +2460,13 @@
     "updatedAt": {
       "$date": "2022-05-21T03:41:56.184Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6282104890f469c2232ea8b3"
   },
   {
     "_id": {
       "$oid": "62885f9b90f469c2232ef1ae"
     },
-    "challenge": "Voyage ",
     "username": "Bdenneu",
     "teamname": "Login Sécurité",
     "proposal": "",
@@ -2477,13 +2476,13 @@
     "updatedAt": {
       "$date": "2022-05-21T03:42:19.488Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628730d490f469c2232eab8d"
   },
   {
     "_id": {
       "$oid": "6288622590f469c2232ef244"
     },
-    "challenge": "Catch the bird, a trip from web to IRL.",
     "username": "Geluchat",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -2493,13 +2492,13 @@
     "updatedAt": {
       "$date": "2022-05-21T03:53:09.947Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6283c2c390f469c2232ea978"
   },
   {
     "_id": {
       "$oid": "6288622890f469c2232ef248"
     },
-    "challenge": "Catch the bird, a trip from web to IRL.",
     "username": "Geluchat",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -2509,13 +2508,13 @@
     "updatedAt": {
       "$date": "2022-05-21T03:53:12.774Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6283c2c390f469c2232ea978"
   },
   {
     "_id": {
       "$oid": "628869a590f469c2232ef4d5"
     },
-    "challenge": "Headless Updateless Brainless",
     "username": "rootdurhum2",
     "teamname": "Root du rhum - 2",
     "proposal": "",
@@ -2525,13 +2524,13 @@
     "updatedAt": {
       "$date": "2022-05-21T04:25:09.380Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6282104890f469c2232ea8b3"
   },
   {
     "_id": {
       "$oid": "62886c0390f469c2232ef59b"
     },
-    "challenge": "Headless Updateless Brainless",
     "username": "Prinegheuls",
     "teamname": "Root du rhum - 1",
     "proposal": "",
@@ -2541,13 +2540,13 @@
     "updatedAt": {
       "$date": "2022-05-21T04:35:15.553Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6282104890f469c2232ea8b3"
   },
   {
     "_id": {
       "$oid": "62886dea90f469c2232ef627"
     },
-    "challenge": "Catch the bird, a trip from web to IRL.",
     "username": "jirem85",
     "teamname": "Root du rhum - 1",
     "proposal": "",
@@ -2557,13 +2556,13 @@
     "updatedAt": {
       "$date": "2022-05-21T04:43:22.044Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6283c2c390f469c2232ea978"
   },
   {
     "_id": {
       "$oid": "62886dee90f469c2232ef62b"
     },
-    "challenge": "Catch the bird, a trip from web to IRL.",
     "username": "jirem85",
     "teamname": "Root du rhum - 1",
     "proposal": "",
@@ -2573,13 +2572,13 @@
     "updatedAt": {
       "$date": "2022-05-21T04:43:26.150Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6283c2c390f469c2232ea978"
   },
   {
     "_id": {
       "$oid": "62886e9d90f469c2232ef69b"
     },
-    "challenge": "0p@k",
     "username": "Bogorat",
     "teamname": "Yolosw4g",
     "proposal": "",
@@ -2589,13 +2588,13 @@
     "updatedAt": {
       "$date": "2022-05-21T04:46:21.672Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6288045b90f469c2232ec815"
   },
   {
     "_id": {
       "$oid": "62886ec790f469c2232ef6b5"
     },
-    "challenge": "Voyage ",
     "username": "rootdurhum2",
     "teamname": "Root du rhum - 2",
     "proposal": "",
@@ -2605,13 +2604,13 @@
     "updatedAt": {
       "$date": "2022-05-21T04:47:03.465Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628730d490f469c2232eab8d"
   },
   {
     "_id": {
       "$oid": "62886eca90f469c2232ef6b9"
     },
-    "challenge": "Voyage ",
     "username": "rootdurhum2",
     "teamname": "Root du rhum - 2",
     "proposal": "",
@@ -2621,13 +2620,13 @@
     "updatedAt": {
       "$date": "2022-05-21T04:47:06.562Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "628730d490f469c2232eab8d"
   },
   {
     "_id": {
       "$oid": "62886f7b90f469c2232ef6f1"
     },
-    "challenge": "Secure Platform Shop",
     "username": "Geluchat",
     "teamname": "Le bistrot des légendes",
     "proposal": "",
@@ -2637,13 +2636,13 @@
     "updatedAt": {
       "$date": "2022-05-21T04:50:03.500Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6280ccbfb5f970a33e537c74"
   },
   {
     "_id": {
       "$oid": "6288704a90f469c2232ef727"
     },
-    "challenge": "Catch the bird, a trip from web to IRL.",
     "username": "rootdurhum2",
     "teamname": "Root du rhum - 2",
     "proposal": "",
@@ -2653,6 +2652,7 @@
     "updatedAt": {
       "$date": "2022-05-21T04:53:30.589Z"
     },
-    "__v": 0
+    "__v": 0,
+    "challengeId": "6283c2c390f469c2232ea978"
   }
 ]

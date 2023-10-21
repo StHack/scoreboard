@@ -2,7 +2,7 @@ import { createHash, randomUUID } from 'crypto'
 import { BaseChallenge, Challenge } from 'models/Challenge'
 import { Difficulties } from 'models/Difficulty'
 import { Schema, model, ToObjectOptions } from 'mongoose'
-import { removeMongoProperties } from './main'
+import { removeMongoProperties, removeMongoPropertiesWithOptions } from './main'
 
 const schema = new Schema<Challenge>({
   name: { type: String, required: true },
@@ -28,7 +28,7 @@ const flagHasher = (password: string | undefined, salt: string) =>
 const removeProperties: ToObjectOptions = {
   ...removeMongoProperties,
   transform: function (doc, ret, opts) {
-    const res = (removeMongoProperties.transform as any)(doc, ret, opts)
+    const res = (removeMongoPropertiesWithOptions({ removeId: false }).transform as any)(doc, ret, opts)
     delete res.flag
     delete res.salt
     return res
@@ -59,10 +59,10 @@ export async function listChallenge(): Promise<Challenge[]> {
 }
 
 export async function checkChallenge(
-  challName: string,
+  challengeId: string,
   flag: string,
 ): Promise<boolean> {
-  const chall = await ChallengeModel.findOne({ name: challName })
+  const chall = await ChallengeModel.findById(challengeId)
 
   if (!chall) {
     throw new Error('invalid challenge')
@@ -75,35 +75,35 @@ export async function checkChallenge(
   return flagHasher(flag, chall.salt) === chall.flag
 }
 
-export async function removeChallenge(challName: string): Promise<void> {
-  await ChallengeModel.deleteOne({ name: challName })
+export async function removeChallenge(challengeId: string): Promise<void> {
+  await ChallengeModel.findByIdAndDelete(challengeId)
 }
 
 export async function updateChallenge(
-  challName: string,
-  { name, flag, ...challenge }: Partial<Challenge>,
+  challengeId: string,
+  { flag, ...challenge }: Partial<Challenge>,
 ): Promise<Challenge> {
   if (flag) {
-    const chall = await ChallengeModel.findOne({ name: challName })
+    const chall = await ChallengeModel.findById(challengeId)
 
     if (!chall)
       throw new Error(
-        `Challenge ${challName} can't be updated because it was not found`,
+        `Challenge ${challengeId} can't be updated because it was not found`,
       )
 
     // @ts-ignore
     challenge.flag = flagHasher(flag, chall.salt)
   }
 
-  const document = await ChallengeModel.findOneAndUpdate(
-    { name: challName },
+  const document = await ChallengeModel.findByIdAndUpdate(
+    challengeId,
     { ...challenge },
     { new: true },
   )
 
   if (!document)
     throw new Error(
-      `Challenge ${challName} hasn't been updated because it was not found`,
+      `Challenge ${challengeId} hasn't been updated because it was not found`,
     )
 
   return document.toObject(removeProperties)
