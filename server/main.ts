@@ -12,6 +12,7 @@ import {
   registerAuthentification,
   registerAuthentificationForSocket,
 } from 'services/authentication'
+import { registerCtfTime } from 'services/ctftime'
 import { registerGameNamespace } from 'services/game'
 import { registerPlayerNamespace } from 'services/player'
 import { getServerConfig } from 'services/serverconfig'
@@ -39,6 +40,7 @@ const sessionClient = pubClient.duplicate()
 const serverConfig = getServerConfig(serverConfigClient as any)
 
 initMongo()
+registerCtfTime(app, serverConfig)
 registerAuthentification(app, io, serverConfig, sessionClient as any)
 
 const adminIo = io.of('/api/admin')

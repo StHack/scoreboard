@@ -28,6 +28,18 @@ export async function listAttempt(): Promise<Attempt[]> {
   )
 }
 
+export async function listAttemptAfter(date: Date): Promise<Attempt[]> {
+  const results = await AttemptModel.find({
+    createdAt: { $gte: date },
+  })
+    .sort({ updatedAt: 1 })
+    .limit(200)
+
+  return results.map(r =>
+    r.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
+  )
+}
+
 export async function getTeamAttempt(teamname: string): Promise<Attempt[]> {
   const docs = await AttemptModel.find({ teamname })
   return docs.map(d =>
