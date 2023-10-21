@@ -13,5 +13,4 @@ export type BaseChallenge = {
 
 export type Challenge = BaseChallenge & {
   isBroken: boolean
-  isOpen: boolean
 }

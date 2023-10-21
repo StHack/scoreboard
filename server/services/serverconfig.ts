@@ -12,11 +12,11 @@ export class ServerConfig {
   }
 
   public async getRegistrationClosed(): Promise<boolean> {
-    const isOpenedStr = await this.redisClient.hGet(
+    const str = await this.redisClient.hGet(
       'serverConfig',
       'registrationClosed',
     )
-    return JSON.parse(isOpenedStr ?? 'false')
+    return JSON.parse(str ?? 'false')
   }
 
   public async setRegistrationClosed(status: boolean): Promise<void> {
@@ -28,11 +28,11 @@ export class ServerConfig {
   }
 
   public async getGameOpened(): Promise<boolean> {
-    const isOpenedStr = await this.redisClient.hGet(
+    const str = await this.redisClient.hGet(
       'serverConfig',
       'gameOpened',
     )
-    return JSON.parse(isOpenedStr ?? 'false')
+    return JSON.parse(str ?? 'false')
   }
 
   public async setGameOpened(status: boolean): Promise<void> {

@@ -15,7 +15,6 @@ const schema = new Schema<Challenge>({
   difficulty: { type: String, enum: Difficulties, required: true },
 
   isBroken: { type: Boolean, required: true },
-  isOpen: { type: Boolean, required: true },
 })
 
 const ChallengeModel = model<Challenge>('Challenge', schema)
@@ -46,7 +45,6 @@ export async function createChallenge(
     ...chall,
     flag,
     salt,
-    isOpen: true,
     isBroken: false,
   })
 
@@ -72,10 +70,6 @@ export async function checkChallenge(
 
   if (chall.isBroken) {
     throw new Error('Chall is broken')
-  }
-
-  if (!chall.isOpen) {
-    throw new Error('Chall is not open')
   }
 
   return flagHasher(flag, chall.salt) === chall.flag
@@ -113,12 +107,4 @@ export async function updateChallenge(
     )
 
   return document.toObject(removeProperties)
-}
-
-export async function closeAllChallenge(): Promise<void> {
-  await ChallengeModel.updateMany({}, { isOpen: false })
-}
-
-export async function openAllChallenge(): Promise<void> {
-  await ChallengeModel.updateMany({}, { isOpen: true })
 }

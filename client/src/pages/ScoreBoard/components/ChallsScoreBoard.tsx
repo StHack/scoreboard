@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import { Box } from 'components/Box'
 import { ChallengeCard } from 'components/ChallengeCard'
 import Popup from 'components/Popup'
@@ -7,7 +6,6 @@ import { Achievement } from 'models/Achievement'
 import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
 import { useState } from 'react'
-import { SpaceProps, space } from 'styled-system'
 
 export type ChallsScoreBoardProps = {
   challsScore: Record<string, ChallengeScore>

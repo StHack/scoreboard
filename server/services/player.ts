@@ -6,6 +6,7 @@ import { Request } from 'express'
 import { User } from 'models/User'
 import { Namespace } from 'socket.io'
 import { registerSocketConnectivityChange } from './serveractivity'
+import { ServerConfig } from './serverconfig'
 
 const delayTimeInMinutes = 10
 
@@ -13,6 +14,7 @@ export function registerPlayerNamespace(
   adminIo: Namespace,
   gameIo: Namespace,
   playerIo: Namespace,
+  serverConfig: ServerConfig,
 ) {
   const logger = debug('sthack:player')
 
@@ -58,10 +60,17 @@ export function registerPlayerNamespace(
         })
         adminIo.emit('attempt:added', attempt)
 
+        const gameOpened = await serverConfig.getGameOpened()
+
+        if (!gameOpened) {
+          callback({ error: "Game is currently closed, you can't try it now!" })
+          return
+        }
+
         const achievements = await getChallengeAchievement(challName)
 
         if (achievements.find(a => a.teamname === user.team)) {
-          callback({ error: 'Already solved by your team !' })
+          callback({ error: 'Already solved by your team!' })
           return
         }
 

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useGame } from './useGame'
 
 export function useChallengeSolveDelay (
-  { isOpen, isBroken }: Challenge,
+  { isBroken }: Challenge,
   achievements: Achievement[],
 ) {
   const {
@@ -12,7 +12,7 @@ export function useChallengeSolveDelay (
   } = useGame()
 
   const lastSolved = achievements[achievements.length - 1]
-  const openState = computeState(isBroken, isOpen, lastSolved, solveDelay)
+  const openState = computeState(isBroken, lastSolved, solveDelay)
 
   const [delayedTimer, setDelayedTimer] = useState<string>()
 
@@ -40,16 +40,13 @@ export function useChallengeSolveDelay (
   }
 }
 
-export type ChallState = 'broken' | 'closed' | 'delayed' | 'open'
+export type ChallState = 'broken' | 'delayed' | 'open'
 
 function computeState (
   isBroken: boolean,
-  isOpen: boolean,
   lastSolved: Achievement | undefined,
   solveDelay: number,
 ): ChallState {
-  if (!isOpen) return 'closed'
-
   if (isBroken) return 'broken'
 
   if (

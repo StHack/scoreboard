@@ -12,7 +12,6 @@
     "category": "web",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -28,7 +27,6 @@
     "category": "web",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -44,7 +42,6 @@
     "category": "reverse",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -60,7 +57,6 @@
     "category": "reverse",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -76,7 +72,6 @@
     "category": "crypto",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -92,7 +87,6 @@
     "category": "misc",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -108,7 +102,6 @@
     "category": "reverse",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -124,7 +117,6 @@
     "category": "misc",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -140,7 +132,6 @@
     "category": "reverse",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -156,7 +147,6 @@
     "category": "progra",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -172,7 +162,6 @@
     "category": "pwn",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -188,7 +177,6 @@
     "category": "game",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -204,7 +192,6 @@
     "category": "misc",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -220,7 +207,6 @@
     "category": "forensic",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -236,7 +222,6 @@
     "category": "reverse",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -252,7 +237,6 @@
     "category": "reverse",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -268,7 +252,6 @@
     "category": "hardware",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -284,7 +267,6 @@
     "category": "hardware",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -300,7 +282,6 @@
     "category": "hardware",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -316,7 +297,6 @@
     "category": "hardware",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -332,7 +312,6 @@
     "category": "network",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -348,7 +327,6 @@
     "category": "web",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -364,7 +342,6 @@
     "category": "web",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -380,7 +357,6 @@
     "category": "web",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -396,7 +372,6 @@
     "category": "pwn",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -412,7 +387,6 @@
     "category": "web",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -428,7 +402,6 @@
     "category": "web",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -444,7 +417,6 @@
     "category": "reverse",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   },
   {
@@ -460,7 +432,6 @@
     "category": "pwn",
     "difficulty": "medium",
     "isBroken": true,
-    "isOpen": true,
     "__v": 0
   }
 ]

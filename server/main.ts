@@ -49,7 +49,7 @@ registerAuthentificationForSocket(playerIo, sessionClient as any)
 registerAuthentificationForSocket(adminIo, sessionClient as any)
 
 registerGameNamespace(adminIo, gameIo, playerIo, serverConfig)
-registerPlayerNamespace(adminIo, gameIo, playerIo)
+registerPlayerNamespace(adminIo, gameIo, playerIo, serverConfig)
 registerAdminNamespace(adminIo, gameIo, playerIo, serverConfig)
 
 if (process.env.NODE_ENV === 'production') {
