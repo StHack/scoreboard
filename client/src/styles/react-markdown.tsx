@@ -12,16 +12,17 @@ import {
 } from 'styled-system'
 import { cleanStyledSystem } from 'styles'
 
-const ListItem = styled.li<{
-  checked: boolean | null
-  index: number
-  ordered: boolean
-}>`
+const ListItem = styled.li`
   margin-left: ${p => p.theme.space[2]};
 
   ::before {
-    content: ${p => !p.ordered && "'▪ '"};
     font-size: ${p => p.theme.fontSizes[2]};
+  }
+`
+
+const UnorderedList = styled.ol`
+  & > li::before {
+    content: '▪ ';
   }
 `
 
@@ -61,9 +62,8 @@ export const ReactMarkdownRenderers: Components = {
   p: p => <Text fontSize="0" textAlign="initial" {...p} />,
   // eslint-disable-next-line jsx-a11y/anchor-has-content
   a: p => <a {...p} target="_blank" rel="noopener noreferrer" />,
-  li: p => {
-    return <ListItem {...p} />
-  },
+  li: p => <ListItem {...p} />,
+  ol: p => <UnorderedList {...p} />,
   code: Code as any,
   blockquote: p => <Text as="blockquote" color="red" {...(p as any)} />,
   // listItem: ListItem,
