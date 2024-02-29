@@ -29,20 +29,23 @@ There is many sample data folders that you can use to facilitate the development
 
 NB: the sample data (2021 dataset) users has their password set to `azerty123` for all users
 
-## Build for prod
-
-1. Run `docker compose build`
-2. Run `docker compose up`
-
-## Prepare VM
+## Build for prod and prepare VM
 
 ```bash
 curl -fsSL https://test.docker.com -o install-docker.sh
 chmod +x install-docker.sh
 ./install-docker.sh
 sudo usermod -aG docker ubuntu
-sudo apt-get install docker-compose-plugin
+git clone https://github.com/StHack/2021-scoreboard.git
+cd ./2021-scoreboard
+vi docker-compose.yml
+# update `docker-compose.yml` and replace `sthack-password` and `thisismysalt` with random string
+docker compose build
+docker compose up -d
 ```
+
+Then you will need to create a first account and promote it to admin (see process below for inline method or use mongo-express)
+NB: by default mongo-express is still exposed, so don't forget to comment the port opening to close it
 
 ## Mongo debugging during event
 
