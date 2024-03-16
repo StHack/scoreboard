@@ -1,5 +1,5 @@
 import { createHash, randomUUID } from 'crypto'
-import { CreateUser, AuthUser, User } from 'models/User'
+import { AuthUser, CreateUser, User } from 'models/User'
 import { Schema, model, ToObjectOptions } from 'mongoose'
 import { removeMongoProperties } from './main'
 
@@ -37,7 +37,7 @@ export async function registerUser(
   const salt = randomUUID()
   const hashed = passwordHasher(password, salt)
 
-  const memberCount = await UserModel.count({ team })
+  const memberCount = await UserModel.countDocuments({ team })
   if (memberCount >= maxTeamSize) throw new Error('Team is already full')
 
   try {
@@ -115,10 +115,11 @@ export async function updateUser(
   if (password) {
     const user = await UserModel.findOne({ username })
 
-    if (!user)
+    if (!user) {
       throw new Error(
         `User ${username} hasn't been updated because it was not found`,
       )
+    }
 
     password = passwordHasher(password, user.salt)
   }
@@ -129,10 +130,11 @@ export async function updateUser(
     { new: true },
   )
 
-  if (!document)
+  if (!document) {
     throw new Error(
       `User ${username} hasn't been updated because it was not found`,
     )
+  }
 
   const { password: p, ...rest } = document.toObject(removeMongoProperties)
   return rest
