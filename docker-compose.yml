@@ -13,6 +13,8 @@ services:
       APP_MONGO_DB: sthack-scoreboard
       APP_REDIS: redis://redis:6379
       APP_SALT: thisismysalt
+      APP_DISCORD_TOKEN: "XXXXXXXXXXXXX"
+      APP_DISCORD_CHANNEL: "XXXXXXXX"
     networks:
       - apps
     depends_on:

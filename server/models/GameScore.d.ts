@@ -2,6 +2,7 @@ import { Achievement } from './Achievement'
 import { Reward } from './Reward'
 
 export type ChallengeScore = {
+  name: string
   score: number
   achievements: Achievement[]
 }

@@ -88,6 +88,7 @@ export function registerAdminNamespace(
         gameIo.emit('reward:added', rewardCreated)
         emitEventLog(gameIo, 'reward:create', {
           message: `A reward has been given to team "${rewardCreated.teamname}" for ${rewardCreated.value} points`,
+          reward: rewardCreated,
         })
       } catch (error) {
         if (error instanceof Error) {
@@ -108,6 +109,7 @@ export function registerAdminNamespace(
           adminSocket.emit('challenge:updated', challenge)
           emitEventLog(gameIo, 'challenge:update', {
             message: `Challenge "${challenge.name}" has been updated`,
+            challenge,
           })
         } catch (error) {
           if (error instanceof Error) {
@@ -125,6 +127,7 @@ export function registerAdminNamespace(
       adminSocket.emit('challenge:updated', updated)
       emitEventLog(gameIo, 'challenge:broke', {
         message: `Challenge "${updated.name}" is marked has broken, we are working to repair it, please try another challenge`,
+        challenge: updated,
       })
     })
 
@@ -134,6 +137,7 @@ export function registerAdminNamespace(
       adminSocket.emit('challenge:updated', updated)
       emitEventLog(gameIo, 'challenge:repair', {
         message: `Challenge "${updated.name}" is fixed, you can try to solve it again`,
+        challenge: updated,
       })
     })
 
@@ -151,6 +155,7 @@ export function registerAdminNamespace(
 
       emitEventLog(gameIo, 'game:end', {
         message: `Game is now closed. Thanks for your participation`,
+        serverConfig,
       })
     })
 
@@ -164,7 +169,7 @@ export function registerAdminNamespace(
       await emitGameConfigUpdate()
 
       emitEventLog(gameIo, 'game:open', {
-        message: `Game is now opened. Good luck for everyone`,
+        message: `Game is now opened. Good luck to everyone`,
       })
     })
 
@@ -194,6 +199,8 @@ export function registerAdminNamespace(
           message: challengeId
             ? `A new hint from the staff has been shared`
             : `A new message from the staff has been shared`,
+          messageSend: message,
+          challengeId,
         })
       },
     )
