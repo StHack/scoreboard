@@ -58,6 +58,11 @@ export async function listChallenge(): Promise<Challenge[]> {
   return results.map(r => r.toObject(removeProperties))
 }
 
+export async function getChallenge(challengeId: string): Promise<Challenge | undefined> {
+  const challenge = await ChallengeModel.findById(challengeId)
+  return challenge?.toObject(removeProperties)
+}
+
 export async function checkChallenge(
   challengeId: string,
   flag: string,

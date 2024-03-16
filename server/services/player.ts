@@ -1,10 +1,11 @@
 import { getChallengeAchievement, registerAchievement } from 'db/AchievementDb'
 import { registerAttempt } from 'db/AttemptDb'
-import { checkChallenge } from 'db/ChallengeDb'
+import { checkChallenge, getChallenge } from 'db/ChallengeDb'
 import debug from 'debug'
 import { Request } from 'express'
 import { User } from 'models/User'
 import { Namespace } from 'socket.io'
+import { emitEventLog } from './events'
 import { registerSocketConnectivityChange } from './serveractivity'
 import { ServerConfig } from './serverconfig'
 
@@ -96,6 +97,15 @@ export function registerPlayerNamespace(
             })
 
             gameIo.emit('achievement:added', achievement)
+
+            const chall = await getChallenge(challengeId)
+            emitEventLog(gameIo, 'challenge:solve', {
+              message:
+                achievements.length === 0
+                  ? `💥 Breakthrough! "${achievement.username}" Team "${achievement.teamname}" just solved challenge "${chall?.name}"`
+                  : `Team "${achievement.teamname}" just solved challenge "${chall?.name}"`,
+              isBreakthrough: achievements.length === 0,
+            })
           }
         } catch (error) {
           if (typeof error === 'string') {
