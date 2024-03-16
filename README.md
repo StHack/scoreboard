@@ -15,6 +15,10 @@ To have a full dev environment up you need to do the following steps:
     APP_MONGO_DB=sthack-scoreboard
     APP_REDIS=redis://localhost:6379
     APP_SALT=thisismysalt
+
+    # Optional, specify them only if you have valid values
+    APP_DISCORD_TOKEN=XXXXXXXXXXXXX
+    APP_DISCORD_CHANNEL=XXXXXXXX
     ```
 
 ## Sample data

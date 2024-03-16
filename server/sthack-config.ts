@@ -33,3 +33,14 @@ export function salt(): string {
 
   return str
 }
+
+export type DiscordConfig = {
+  token: string
+  channel: string
+}
+export function discordConfig(): DiscordConfig | undefined {
+  const token = process.env.APP_DISCORD_TOKEN
+  const channel = process.env.APP_DISCORD_CHANNEL
+
+  return token && channel ? { token, channel } : undefined
+}

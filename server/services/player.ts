@@ -105,6 +105,8 @@ export function registerPlayerNamespace(
                   ? `💥 Breakthrough! "${achievement.username}" Team "${achievement.teamname}" just solved challenge "${chall?.name}"`
                   : `Team "${achievement.teamname}" just solved challenge "${chall?.name}"`,
               isBreakthrough: achievements.length === 0,
+              achievement,
+              challenge: chall,
             })
           }
         } catch (error) {

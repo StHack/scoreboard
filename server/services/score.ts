@@ -44,6 +44,7 @@ function computeChallengeScore (
     .sort((x, y) => x.createdAt.getTime() - y.createdAt.getTime())
 
   return {
+    name: challenge.name,
     score: computeScore(challenge, config, a.length),
     achievements: a,
   }
