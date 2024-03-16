@@ -1,10 +1,6 @@
 import { removeAchievement } from 'db/AchievementDb'
 import { listAttempt } from 'db/AttemptDb'
-import {
-  createChallenge,
-  listChallenge,
-  updateChallenge,
-} from 'db/ChallengeDb'
+import { createChallenge, listChallenge, updateChallenge } from 'db/ChallengeDb'
 import { addMessage } from 'db/MessageDb'
 import { createReward, removeReward } from 'db/RewardDb'
 import { listUser, removeUser, updateUser } from 'db/UsersDb'
@@ -14,6 +10,7 @@ import { BaseChallenge } from 'models/Challenge'
 import { BaseReward } from 'models/Reward'
 import { User } from 'models/User'
 import { Namespace } from 'socket.io'
+import { emitEventLog } from './events'
 import {
   getServerActivityStatistics,
   registerSocketConnectivityChange,
@@ -71,6 +68,9 @@ export function registerAdminNamespace(
           callback(challenge)
           gameIo.emit('challenge:added', challenge)
           adminSocket.emit('challenge:added', challenge)
+          emitEventLog(gameIo, 'challenge:create', {
+            message: `A new challenge has been added, try your chance on "${challenge.name}"`,
+          })
         } catch (error) {
           if (error instanceof Error) {
             callback({ error: error.message })
@@ -86,6 +86,9 @@ export function registerAdminNamespace(
         const rewardCreated = await createReward(reward)
         callback(rewardCreated)
         gameIo.emit('reward:added', rewardCreated)
+        emitEventLog(gameIo, 'reward:create', {
+          message: `A reward has been given to team "${rewardCreated.teamname}" for ${rewardCreated.value} points`,
+        })
       } catch (error) {
         if (error instanceof Error) {
           callback({ error: error.message })
@@ -103,6 +106,9 @@ export function registerAdminNamespace(
           callback(challenge)
           gameIo.emit('challenge:updated', challenge)
           adminSocket.emit('challenge:updated', challenge)
+          emitEventLog(gameIo, 'challenge:update', {
+            message: `Challenge "${challenge.name}" has been updated`,
+          })
         } catch (error) {
           if (error instanceof Error) {
             callback({ error: error.message })
@@ -117,12 +123,18 @@ export function registerAdminNamespace(
       const updated = await updateChallenge(challengeId, { isBroken: true })
       gameIo.emit('challenge:updated', updated)
       adminSocket.emit('challenge:updated', updated)
+      emitEventLog(gameIo, 'challenge:broke', {
+        message: `Challenge "${updated.name}" is marked has broken, we are working to repair it, please try another challenge`,
+      })
     })
 
     adminSocket.on('challenge:repair', async (challengeId: string) => {
       const updated = await updateChallenge(challengeId, { isBroken: false })
       gameIo.emit('challenge:updated', updated)
       adminSocket.emit('challenge:updated', updated)
+      emitEventLog(gameIo, 'challenge:repair', {
+        message: `Challenge "${updated.name}" is fixed, you can try to solve it again`,
+      })
     })
 
     adminSocket.on('game:end', async () => {
@@ -136,6 +148,10 @@ export function registerAdminNamespace(
           soc.disconnect(true)
         })
       }
+
+      emitEventLog(gameIo, 'game:end', {
+        message: `Game is now closed. Thanks for your participation`,
+      })
     })
 
     adminSocket.on('game:activity', async callback => {
@@ -146,6 +162,10 @@ export function registerAdminNamespace(
     adminSocket.on('game:open', async () => {
       await serverConfig.setGameOpened(true)
       await emitGameConfigUpdate()
+
+      emitEventLog(gameIo, 'game:open', {
+        message: `Game is now opened. Good luck for everyone`,
+      })
     })
 
     adminSocket.on('game:openRegistration', async () => {
@@ -169,6 +189,12 @@ export function registerAdminNamespace(
         const result = await addMessage({ content: message, challengeId })
 
         gameIo.emit('game:newMessage', result)
+
+        emitEventLog(gameIo, 'game:sendMessage', {
+          message: challengeId
+            ? `A new hint from the staff has been shared`
+            : `A new message from the staff has been shared`,
+        })
       },
     )
 
