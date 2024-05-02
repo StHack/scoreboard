@@ -1,5 +1,5 @@
 import { createHash, randomUUID } from 'crypto'
-import { AuthUser, CreateUser, User } from 'models/User'
+import { AuthUser, CreateUser, User, UserLike } from 'models/User'
 import { Schema, model, ToObjectOptions } from 'mongoose'
 import { removeMongoProperties } from './main'
 
@@ -38,6 +38,8 @@ export async function registerUser(
   const hashed = passwordHasher(password, salt)
 
   const memberCount = await UserModel.countDocuments({ team })
+  validateUser({ username, team })
+
   if (memberCount >= maxTeamSize) throw new Error('Team is already full')
 
   try {
@@ -112,6 +114,7 @@ export async function updateUser(
   username: string,
   { team, password, isAdmin }: Partial<AuthUser>,
 ): Promise<User> {
+  validateUser({ username, team: team ?? '' })
   if (password) {
     const user = await UserModel.findOne({ username })
 
@@ -149,4 +152,14 @@ export async function countTeam(): Promise<number> {
     })
 
   return result.length
+}
+
+export function validateUser({ username, team }: UserLike) {
+  if (username === '__proto__') {
+    throw new Error('Invalid username')
+  }
+
+  if (team === '__proto__') {
+    throw new Error('Invalid team')
+  }
 }
