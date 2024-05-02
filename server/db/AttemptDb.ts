@@ -1,6 +1,6 @@
-import { Attempt, BaseAttempt } from 'models/Attempt'
-import { Schema, model } from 'mongoose'
-import { removeMongoPropertiesWithOptions } from './main'
+import { Attempt, BaseAttempt } from 'models/Attempt.js'
+import { model, Schema } from 'mongoose'
+import { removeMongoPropertiesWithOptions } from './main.js'
 
 const schema = new Schema<Attempt>(
   {
@@ -47,7 +47,9 @@ export async function getTeamAttempt(teamname: string): Promise<Attempt[]> {
   )
 }
 
-export async function getChallengeAttempt(challengeId: string): Promise<Attempt[]> {
+export async function getChallengeAttempt(
+  challengeId: string,
+): Promise<Attempt[]> {
   const docs = await AttemptModel.find({ challengeId })
   return docs.map(d =>
     d.toObject(removeMongoPropertiesWithOptions({ removeId: false })),

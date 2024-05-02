@@ -3,19 +3,16 @@
   "compilerOptions": {
     "lib": [],
     "baseUrl": ".",
-    "module": "commonjs",
-    "target": "es2020",
     "strict": true,
+    "module": "NodeNext",
     "strictNullChecks": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
+    // "resolveJsonModule": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true
   },
-  "include": [
-    "."
-  ]
+  "include": ["."]
 }

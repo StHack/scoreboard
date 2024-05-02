@@ -1,12 +1,17 @@
-import { listAchievement } from 'db/AchievementDb'
-import { listChallenge } from 'db/ChallengeDb'
-import { listMessage } from 'db/MessageDb'
-import { listReward } from 'db/RewardDb'
-import { listTeam } from 'db/UsersDb'
-import { GameConfig } from 'models/GameConfig'
+import { listAchievement } from 'db/AchievementDb.js'
+import { listChallenge } from 'db/ChallengeDb.js'
+import { listMessage } from 'db/MessageDb.js'
+import { listReward } from 'db/RewardDb.js'
+import { listTeam } from 'db/UsersDb.js'
+import { Achievement } from 'models/Achievement.js'
+import { Challenge } from 'models/Challenge.js'
+import { Callback } from 'models/Common.js'
+import { GameConfig } from 'models/GameConfig.js'
+import { Message } from 'models/Message.js'
+import { Reward } from 'models/Reward.js'
 import { Namespace } from 'socket.io'
-import { registerSocketConnectivityChange } from './serveractivity'
-import { ServerConfig } from './serverconfig'
+import { registerSocketConnectivityChange } from './serveractivity.js'
+import { ServerConfig } from './serverconfig.js'
 
 export function registerGameNamespace(
   adminIo: Namespace,
@@ -17,7 +22,7 @@ export function registerGameNamespace(
   gameIo.on('connection', gameSocket => {
     registerSocketConnectivityChange(gameSocket, adminIo, gameIo, playerIo)
 
-    gameSocket.on('challenge:list', async callback => {
+    gameSocket.on('challenge:list', async (callback: Callback<Challenge[]>) => {
       const challenges = await listChallenge()
 
       const gameOpened = await serverConfig.getGameOpened()
@@ -29,27 +34,30 @@ export function registerGameNamespace(
       )
     })
 
-    gameSocket.on('achievement:list', async callback => {
-      const achievements = await listAchievement()
-      callback(achievements)
-    })
+    gameSocket.on(
+      'achievement:list',
+      async (callback: Callback<Achievement[]>) => {
+        const achievements = await listAchievement()
+        callback(achievements)
+      },
+    )
 
-    gameSocket.on('reward:list', async callback => {
+    gameSocket.on('reward:list', async (callback: Callback<Reward[]>) => {
       const rewards = await listReward()
       callback(rewards)
     })
 
-    gameSocket.on('game:config', async callback => {
-      const result: GameConfig = await serverConfig.getGameConfig()
+    gameSocket.on('game:config', async (callback: Callback<GameConfig>) => {
+      const result = await serverConfig.getGameConfig()
       callback(result)
     })
 
-    gameSocket.on('game:messages', async callback => {
+    gameSocket.on('game:messages', async (callback: Callback<Message[]>) => {
       const messages = await listMessage()
       callback(messages)
     })
 
-    gameSocket.on('game:teams', async callback => {
+    gameSocket.on('game:teams', async (callback: Callback<string[]>) => {
       const teams = await listTeam()
       callback(teams)
     })

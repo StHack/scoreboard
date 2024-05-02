@@ -1,11 +1,11 @@
-import { BaseMessage, Message } from 'models/Message'
-import { Schema, model } from 'mongoose'
-import { removeMongoPropertiesWithOptions } from './main'
+import { BaseMessage, Message } from 'models/Message.js'
+import { model, Schema } from 'mongoose'
+import { removeMongoPropertiesWithOptions } from './main.js'
 
 const schema = new Schema<Message>(
   {
     content: { type: String, required: true },
-    challengeId: { type: String }
+    challengeId: { type: String },
   },
   { timestamps: true },
 )
@@ -22,5 +22,7 @@ export async function addMessage(message: BaseMessage): Promise<Message> {
 export async function listMessage(): Promise<Message[]> {
   const results = await MessageModel.find().sort({ updatedAt: -1 })
 
-  return results.map(r => r.toObject(removeMongoPropertiesWithOptions({ removeId: false })))
+  return results.map(r =>
+    r.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
+  )
 }

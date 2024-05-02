@@ -1,11 +1,11 @@
-import { listAchievement } from 'db/AchievementDb'
-import { listAttemptAfter } from 'db/AttemptDb'
-import { listChallenge } from 'db/ChallengeDb'
-import { listReward } from 'db/RewardDb'
-import { listTeam } from 'db/UsersDb'
+import { listAchievement } from 'db/AchievementDb.js'
+import { listAttemptAfter } from 'db/AttemptDb.js'
+import { listChallenge } from 'db/ChallengeDb.js'
+import { listReward } from 'db/RewardDb.js'
+import { listTeam } from 'db/UsersDb.js'
 import { IRouter } from 'express'
-import { computeGameScore } from './score'
-import { ServerConfig } from './serverconfig'
+import { computeGameScore } from './score.js'
+import { ServerConfig } from './serverconfig.js'
 
 export function registerCtfTime(app: IRouter, serverConfig: ServerConfig) {
   app.get('/api/ctftime/team', async (req, res) => {
@@ -48,34 +48,38 @@ export function registerCtfTime(app: IRouter, serverConfig: ServerConfig) {
     })
   })
 
-  app.get<{ lastId?: number }>('/api/ctftime/capture', async (req, res) => {
-    const since = req.query.lastId
-      ? new Date(parseInt(req.query.lastId.toString()))
-      : new Date(0)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  app.get<any, any, any, any, { lastId?: string }>(
+    '/api/ctftime/capture',
+    async (req, res) => {
+      const since = req.query.lastId
+        ? new Date(parseInt(req.query.lastId.toString()))
+        : new Date(0)
 
-    const [achievements, attempts, challenges] = await Promise.all([
-      listAchievement(),
-      listAttemptAfter(since),
-      listChallenge(),
-    ])
+      const [achievements, attempts, challenges] = await Promise.all([
+        listAchievement(),
+        listAttemptAfter(since),
+        listChallenge(),
+      ])
 
-    res.send(
-      attempts.map(att => ({
-        id: att.createdAt.getTime(),
-        time: att.createdAt.getTime(),
-        type: achievements.find(
-          ach =>
-            att.challengeId === ach.challengeId &&
-            att.teamname === ach.teamname &&
-            att.username === ach.username &&
-            att.createdAt.getTime() >= ach.createdAt.getTime() - 100 &&
-            att.createdAt.getTime() <= ach.createdAt.getTime(),
-        )
-          ? 'taskCorrect'
-          : 'taskWrong',
-        team: att.teamname,
-        task: challenges.find(c => c._id === att.challengeId)?.name,
-      })),
-    )
-  })
+      res.send(
+        attempts.map(att => ({
+          id: att.createdAt.getTime(),
+          time: att.createdAt.getTime(),
+          type: achievements.find(
+            ach =>
+              att.challengeId === ach.challengeId &&
+              att.teamname === ach.teamname &&
+              att.username === ach.username &&
+              att.createdAt.getTime() >= ach.createdAt.getTime() - 100 &&
+              att.createdAt.getTime() <= ach.createdAt.getTime(),
+          )
+            ? 'taskCorrect'
+            : 'taskWrong',
+          team: att.teamname,
+          task: challenges.find(c => c._id === att.challengeId)?.name,
+        })),
+      )
+    },
+  )
 }

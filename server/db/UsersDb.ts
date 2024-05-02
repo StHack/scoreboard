@@ -1,7 +1,7 @@
 import { createHash, randomUUID } from 'crypto'
-import { AuthUser, CreateUser, User, UserLike } from 'models/User'
-import { Schema, model, ToObjectOptions } from 'mongoose'
-import { removeMongoProperties } from './main'
+import { AuthUser, CreateUser, User, UserLike } from 'models/User.js'
+import { model, Schema, ToObjectOptions } from 'mongoose'
+import { removeMongoPropertiesWithOptions } from './main.js'
 
 const schema = new Schema<AuthUser>({
   username: { type: String, required: true, minlength: 5, unique: true },
@@ -20,15 +20,10 @@ const passwordHasher = (password: string | undefined, salt: string) =>
         .digest('hex')
     : undefined
 
-const removeProperties: ToObjectOptions = {
-  ...removeMongoProperties,
-  transform: function (doc, ret, opts) {
-    const res = (removeMongoProperties.transform as any)(doc, ret, opts)
-    delete res.password
-    delete res.salt
-    return res
-  },
-}
+const removeProperties: ToObjectOptions = removeMongoPropertiesWithOptions({
+  removeId: true,
+  propsToRemove: ['password', 'salt'],
+})
 
 export async function registerUser(
   { username, password, team }: CreateUser,
@@ -59,11 +54,13 @@ export async function registerUser(
         throw error
       }
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
       if (error.name === 'MongoServerError' && (error as any).code === 11000) {
         throw new Error('Username already used')
       }
     }
 
+    // eslint-disable-next-line @typescript-eslint/only-throw-error
     throw 'an unexpected error occured'
   }
 }
@@ -139,8 +136,7 @@ export async function updateUser(
     )
   }
 
-  const { password: p, ...rest } = document.toObject(removeMongoProperties)
-  return rest
+  return document.toObject(removeProperties)
 }
 
 export async function countTeam(): Promise<number> {

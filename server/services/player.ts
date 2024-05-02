@@ -1,13 +1,17 @@
-import { getChallengeAchievement, registerAchievement } from 'db/AchievementDb'
-import { registerAttempt } from 'db/AttemptDb'
-import { checkChallenge, getChallenge } from 'db/ChallengeDb'
+import {
+  getChallengeAchievement,
+  registerAchievement,
+} from 'db/AchievementDb.js'
+import { registerAttempt } from 'db/AttemptDb.js'
+import { checkChallenge, getChallenge } from 'db/ChallengeDb.js'
 import debug from 'debug'
 import { Request } from 'express'
-import { User } from 'models/User'
+import { CallbackOrError } from 'models/Common.js'
+import { User } from 'models/User.js'
 import { Namespace } from 'socket.io'
-import { emitEventLog } from './events'
-import { registerSocketConnectivityChange } from './serveractivity'
-import { ServerConfig } from './serverconfig'
+import { emitEventLog } from './events.js'
+import { registerSocketConnectivityChange } from './serveractivity.js'
+import { ServerConfig } from './serverconfig.js'
 
 const delayTimeInMinutes = 10
 
@@ -35,7 +39,12 @@ export function registerPlayerNamespace(
 
     playerSocket.on(
       'challenge:solve',
-      async (challengeId: string, flag: string, callback) => {
+      async (
+        challengeId: string,
+        flag: string,
+        callback: CallbackOrError<{ isValid: boolean }>,
+      ) => {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const user = (playerSocket.request as Request).user!
 
         if (user.isAdmin) {
@@ -62,14 +71,12 @@ export function registerPlayerNamespace(
         adminIo.emit('attempt:added', attempt)
 
         const gameOpened = await serverConfig.getGameOpened()
-
         if (!gameOpened) {
           callback({ error: "Game is currently closed, you can't try it now!" })
           return
         }
 
         const achievements = await getChallengeAchievement(challengeId)
-
         if (achievements.find(a => a.teamname === user.team)) {
           callback({ error: 'Already solved by your team!' })
           return
@@ -79,7 +86,6 @@ export function registerPlayerNamespace(
         lastSolvedDelayer.setMinutes(
           lastSolvedDelayer.getMinutes() - delayTimeInMinutes,
         )
-
         if (achievements.find(a => a.createdAt > lastSolvedDelayer)) {
           callback({ error: `Can't be solved now` })
           return
@@ -89,34 +95,33 @@ export function registerPlayerNamespace(
           const isValid = await checkChallenge(challengeId, flag)
           callback({ isValid })
 
-          if (isValid) {
-            const achievement = await registerAchievement({
-              challengeId,
-              teamname: user.team,
-              username: user.username,
-            })
-
-            gameIo.emit('achievement:added', achievement)
-
-            const chall = await getChallenge(challengeId)
-            emitEventLog(gameIo, 'challenge:solve', {
-              message:
-                achievements.length === 0
-                  ? `💥 Breakthrough! "${achievement.username}" Team "${achievement.teamname}" just solved challenge "${chall?.name}"`
-                  : `Team "${achievement.teamname}" just solved challenge "${chall?.name}"`,
-              isBreakthrough: achievements.length === 0,
-              achievement,
-              challenge: chall,
-            })
+          if (!isValid) {
+            return
           }
+
+          const achievement = await registerAchievement({
+            challengeId,
+            teamname: user.team,
+            username: user.username,
+          })
+          gameIo.emit('achievement:added', achievement)
+
+          const chall = await getChallenge(challengeId)
+          await emitEventLog(gameIo, 'challenge:solve', {
+            message:
+              achievements.length === 0
+                ? `💥 Breakthrough! "${achievement.username}" Team "${achievement.teamname}" just solved challenge "${chall?.name ?? ''}"`
+                : `Team "${achievement.teamname}" just solved challenge "${chall?.name ?? ''}"`,
+            isBreakthrough: achievements.length === 0,
+            achievement,
+            challenge: chall,
+          })
         } catch (error) {
           if (typeof error === 'string') {
             callback({ error })
           } else {
             callback({ error: 'Nope' })
           }
-
-          return
         }
       },
     )

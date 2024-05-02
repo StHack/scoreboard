@@ -1,5 +1,5 @@
 import debug from 'debug'
-import { discordConfig } from 'sthack-config'
+import { discordConfig } from 'sthack-config.js'
 
 const logger = debug('sthack:discord')
 
