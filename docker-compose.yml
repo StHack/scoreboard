@@ -1,6 +1,7 @@
 services:
   website:
     image: sthack-interface-2021
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile
@@ -24,8 +25,8 @@ services:
   mongo-express:
     image: mongo-express
     restart: always
-    ports:
-      - 8081:8081
+    # ports:
+    #   - 8081:8081
     environment:
       ME_CONFIG_BASICAUTH_USERNAME: sthack-me-admin
       ME_CONFIG_BASICAUTH_PASSWORD: sthack-me-password
@@ -38,7 +39,7 @@ services:
       - mongo
 
   mongo:
-    image: mongo
+    image: mongo:7
     restart: always
     # ports:
     #   - 27017:27017
@@ -56,7 +57,7 @@ services:
       - apps
 
   redis:
-    image: redis
+    image: redis:7
     restart: always
     # ports:
     #   - 6379:6379

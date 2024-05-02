@@ -33,7 +33,6 @@ NB: the sample data (2021 dataset) users has their password set to `azerty123` f
 curl -fsSL https://test.docker.com -o install-docker.sh
 chmod +x install-docker.sh
 ./install-docker.sh
-sudo usermod -aG docker ubuntu
 git clone https://github.com/StHack/2021-scoreboard.git
 cd ./2021-scoreboard
 vi docker-compose.yml
