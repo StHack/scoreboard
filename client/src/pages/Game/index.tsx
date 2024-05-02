@@ -1,3 +1,4 @@
+import { useTheme } from '@emotion/react'
 import { Box } from 'components/Box'
 import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
 import { ChallengeCard } from 'components/ChallengeCard'
@@ -7,14 +8,13 @@ import { usePlayer } from 'hooks/usePlayer'
 import { Challenge } from 'models/Challenge'
 import { Fragment, useEffect, useState } from 'react'
 import {
-  GroupBySelector,
-  GroupByType,
   getGroup,
   getGroupSort,
+  GroupBySelector,
+  GroupByType,
 } from './components/GroupBySelector'
-import { useTheme } from '@emotion/react'
 
-export function Game () {
+export function Game() {
   const {
     challenges,
     score: { challsScore: challScore },

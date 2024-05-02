@@ -6,8 +6,8 @@ import { ServerActivityStatistics } from 'models/ServerActivityStatistics'
 import { ServerError } from 'models/ServerError'
 import { User } from 'models/User'
 import {
-  PropsWithChildren,
   createContext,
+  PropsWithChildren,
   useContext,
   useEffect,
   useState,
@@ -59,8 +59,11 @@ const adminContext = createContext<AdminContext>({
   users: [],
   attempts: [],
   activityStatistics: defaultStatistics,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
   createChallenge: () => Promise.resolve<Challenge>(undefined as any),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
   createReward: () => Promise.resolve<Reward>(undefined as any),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
   updateChallenge: () => Promise.resolve<Challenge>(undefined as any),
   brokeChallenge: () => {},
   repairChallenge: () => {},
@@ -79,7 +82,7 @@ const adminContext = createContext<AdminContext>({
   sendMessage: () => {},
 })
 
-export function ProvideAdmin ({ children }: PropsWithChildren<{}>) {
+export function ProvideAdmin({ children }: PropsWithChildren<object>) {
   const admin = useProvideAdmin()
   return <adminContext.Provider value={admin}>{children}</adminContext.Provider>
 }
@@ -88,7 +91,7 @@ export const useAdmin = () => {
   return useContext(adminContext)
 }
 
-function useProvideAdmin (): AdminContext {
+function useProvideAdmin(): AdminContext {
   const { socket } = useSocket('/api/admin')
   const [challenges, setChallenges] = useState<Challenge[]>([])
   const [users, setUsers] = useState<User[]>([])
@@ -164,7 +167,7 @@ function useProvideAdmin (): AdminContext {
           chall,
           (response: Challenge | ServerError) => {
             if ('error' in response) {
-              reject(response.error)
+              reject(new Error(response.error))
             } else {
               resolve(response)
             }
@@ -180,7 +183,7 @@ function useProvideAdmin (): AdminContext {
           reward,
           (response: Reward | ServerError) => {
             if ('error' in response) {
-              reject(response.error)
+              reject(new Error(response.error))
             } else {
               resolve(response)
             }
@@ -197,7 +200,7 @@ function useProvideAdmin (): AdminContext {
           chall,
           (response: Challenge | ServerError) => {
             if ('error' in response) {
-              reject(response.error)
+              reject(new Error(response.error))
             } else {
               resolve(response)
             }

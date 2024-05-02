@@ -28,7 +28,7 @@ const Container = styled.div`
   display: grid;
 `
 
-export default function App () {
+export default function App() {
   const { isAuthenticated, isAuthorized, hasReadRules } = useAuth()
 
   return (
@@ -139,7 +139,7 @@ type ProtectedRouteProps = {
   fallbackTo: string
 }
 
-function ProtectedRoute ({
+function ProtectedRoute({
   children,
   condition,
   fallbackTo: redirectTo,

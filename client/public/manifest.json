@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-manifest",
   "short_name": "Sthack CTF 2023",
   "name": "Sthack CTF Edition 2023",
-  "icons":[],
+  "icons": [],
   "start_url": "./",
   "scope": ".",
   "display": "standalone"

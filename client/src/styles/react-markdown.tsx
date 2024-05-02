@@ -64,9 +64,12 @@ export const ReactMarkdownRenderers: Components = {
   a: p => <a {...p} target="_blank" rel="noopener noreferrer" />,
   li: p => <ListItem {...p} />,
   ol: p => <UnorderedList {...p} />,
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
   code: Code as any,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   blockquote: p => <Text as="blockquote" color="red" {...(p as any)} />,
   // listItem: ListItem,
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
   img: Img as any,
   pre: p => <Code as="pre" {...p} />,
 }

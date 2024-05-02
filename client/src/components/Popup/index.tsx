@@ -19,7 +19,7 @@ type PopupProps = {
   customAction?: ReactNode
 }
 
-export default function Popup ({
+export default function Popup({
   title,
   onClose,
   onCancel,

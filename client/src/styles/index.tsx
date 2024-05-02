@@ -1,4 +1,5 @@
 import { css, Global } from '@emotion/react'
+import { StyledOptions } from '@emotion/styled'
 import shouldForwardProp from '@styled-system/should-forward-prop'
 import * as CSS from 'csstype'
 import { ThemeMode, useThemeMode } from 'hooks/useThemeMode'
@@ -15,7 +16,7 @@ import { FontCss } from './font'
 import { FormsCss } from './forms'
 import { ResetCss } from './reset'
 
-export default function DefaultStyles () {
+export default function DefaultStyles() {
   const { currentTheme } = useThemeMode()
   return (
     <>
@@ -30,7 +31,7 @@ export default function DefaultStyles () {
 type ColorSchemeProps = {
   currentTheme: ThemeMode
 }
-function ColorScheme ({ currentTheme }: ColorSchemeProps) {
+function ColorScheme({ currentTheme }: ColorSchemeProps) {
   return (
     <Global
       styles={css`
@@ -42,16 +43,17 @@ function ColorScheme ({ currentTheme }: ColorSchemeProps) {
   )
 }
 
-export const clean = (...propsToClean: string[]) => ({
-  shouldForwardProp: (p: any) =>
-    shouldForwardProp(p) || propsToClean.includes(p),
+export const clean = (...propsToClean: string[]): StyledOptions => ({
+  shouldForwardProp: p => shouldForwardProp(p) || propsToClean.includes(p),
 })
 
 export const cleanStyledSystem = clean()
 
-export const cleanStyledSystemOnly = (styledSystemFn: styleFn) => ({
-  shouldForwardProp: (p: any) => {
-    const regex = new RegExp(`^(${styledSystemFn.propNames!.join('|')})$`)
+export const cleanStyledSystemOnly = (
+  styledSystemFn: styleFn,
+): StyledOptions => ({
+  shouldForwardProp: p => {
+    const regex = new RegExp(`^(${styledSystemFn.propNames?.join('|')})$`)
     return !regex.test(p)
   },
 })
@@ -118,6 +120,8 @@ export const gap = system({
   },
 })
 
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const SafariSpecific = (cssRule: any) => css`
   @media not all and (min-resolution: 0.001dpcm) {
     @media {

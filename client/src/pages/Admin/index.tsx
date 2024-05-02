@@ -9,23 +9,23 @@ import {
 } from 'components/Icon'
 import { NavLink, Route, Routes } from 'react-router-dom'
 import {
-  DisplayProps,
-  FlexboxProps,
-  FontSizeProps,
-  SpaceProps,
   display,
+  DisplayProps,
   flexbox,
+  FlexboxProps,
   fontSize,
+  FontSizeProps,
   space,
+  SpaceProps,
 } from 'styled-system'
-import { GapProps, gap } from 'styles'
+import { gap, GapProps } from 'styles'
 import { AchievementPanel } from './components/AchievementPanel'
 import { AttemptPanel } from './components/AttemptPanel'
 import { ChallengePanel } from './components/ChallengePanel'
 import { GeneralPanel } from './components/GeneralPanel'
 import { UserPanel } from './components/UserPanel'
 
-export function Admin () {
+export function Admin() {
   return (
     <Box
       display="flex"

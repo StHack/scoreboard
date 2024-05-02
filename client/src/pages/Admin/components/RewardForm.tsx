@@ -5,7 +5,7 @@ import { SelectInput } from 'components/SelectInput'
 import { TextInput } from 'components/TextInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useField } from 'hooks/useField'
-import { ChangeEvent, useRef } from 'react'
+import { ChangeEvent, RefObject, useRef } from 'react'
 
 export type RewardEditMode = 'password' | 'team'
 
@@ -13,7 +13,7 @@ export type RewardFormProps = {
   onClose: () => void
 }
 
-export function RewardForm ({ onClose }: RewardFormProps) {
+export function RewardForm({ onClose }: RewardFormProps) {
   const { createReward, users } = useAdmin()
   const existingTeams = [...new Set(users.map(u => u.team))].sort()
   const ref = useRef<HTMLFormElement>(null)
@@ -49,7 +49,7 @@ export function RewardForm ({ onClose }: RewardFormProps) {
       <Box
         as="form"
         display="flex"
-        ref={ref as any}
+        ref={ref as unknown as RefObject<HTMLDivElement>}
         flexDirection="column"
         onSubmit={async e => {
           e.preventDefault()

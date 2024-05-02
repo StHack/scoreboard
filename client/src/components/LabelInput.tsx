@@ -19,7 +19,7 @@ type LabelInputProps = SpaceProps & {
   label: string
   required?: boolean
 }
-export function LabelInput ({
+export function LabelInput({
   label,
   children,
   required,

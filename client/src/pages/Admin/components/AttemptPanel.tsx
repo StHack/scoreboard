@@ -1,10 +1,10 @@
 import { Box } from 'components/Box'
 import { ExportJsonButton } from 'components/ExportJsonButton'
-import { useAdmin } from 'hooks/useAdmin'
+import { SearchInput } from 'components/SearchInput'
 import { ColumnDefinition, Table } from 'components/Table'
+import { useAdmin } from 'hooks/useAdmin'
 import { Attempt } from 'models/Attempt'
 import { useState } from 'react'
-import { SearchInput } from 'components/SearchInput'
 
 const columns: ColumnDefinition<Attempt>[] = [
   { header: 'Challenge', rowValue: row => row.challenge },
@@ -14,7 +14,7 @@ const columns: ColumnDefinition<Attempt>[] = [
   { header: 'Date', rowValue: row => row.createdAt.toLocaleTimeString() },
 ]
 
-export function AttemptPanel () {
+export function AttemptPanel() {
   const [search, setSearch] = useState<string>('')
   const { attempts } = useAdmin()
 

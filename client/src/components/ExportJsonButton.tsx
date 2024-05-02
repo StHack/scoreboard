@@ -3,16 +3,16 @@ import { Button } from './Button'
 import { IconJson } from './Icon'
 
 type ExportJsonButtonProps = {
-  data: any
+  data: unknown
   filename: string
 }
 
-export function ExportJsonButton ({ data, filename }: ExportJsonButtonProps) {
+export function ExportJsonButton({ data, filename }: ExportJsonButtonProps) {
   return (
     <Button
       type="button"
-      onClick={() => {
-        exportAsJson(data, filename)
+      onClick={async () => {
+        await exportAsJson(data, filename)
       }}
       icon={IconJson}
       responsiveLabel

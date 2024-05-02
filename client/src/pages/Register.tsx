@@ -6,7 +6,7 @@ import { LabelInput } from 'components/LabelInput'
 import { TextInput } from 'components/TextInput'
 import { useRegisterForm } from 'hooks/useRegisterForm'
 
-export function Register () {
+export function Register() {
   const {
     formProps,
     passwordProps,

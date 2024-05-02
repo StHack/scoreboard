@@ -1,4 +1,4 @@
-import { Global, css, Theme } from '@emotion/react'
+import { css, Global, Theme } from '@emotion/react'
 import Bg from './background.svg'
 
 const resetCss = (theme: Theme) => css`
@@ -197,6 +197,6 @@ const resetCss = (theme: Theme) => css`
   }
 `
 
-export function ResetCss () {
+export function ResetCss() {
   return <Global styles={resetCss} />
 }

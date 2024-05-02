@@ -5,7 +5,7 @@ export type DropdownInputProps = InputHTMLAttributes<HTMLInputElement> & {
   predefinedValues: string[] | readonly string[]
 }
 
-export function DropdownInput ({
+export function DropdownInput({
   predefinedValues,
   ...props
 }: DropdownInputProps) {

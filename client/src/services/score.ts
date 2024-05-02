@@ -5,7 +5,7 @@ import { GameConfig } from 'models/GameConfig'
 import { ChallengeScore, GameScore, TeamScore } from 'models/GameScore'
 import { Reward } from 'models/Reward'
 
-export function computeGameScore (
+export function computeGameScore(
   achievements: Achievement[],
   rewards: Reward[],
   challenges: Challenge[],
@@ -20,7 +20,7 @@ export function computeGameScore (
     teamsScore,
   }
 }
-function computeChallsScore (
+function computeChallsScore(
   challenges: Challenge[],
   achievements: Achievement[],
   config: GameConfig,
@@ -34,7 +34,7 @@ function computeChallsScore (
   )
 }
 
-function computeChallengeScore (
+function computeChallengeScore(
   achievements: Achievement[],
   challenge: Challenge,
   config: GameConfig,
@@ -49,7 +49,7 @@ function computeChallengeScore (
   }
 }
 
-function computeTeamsScore (
+function computeTeamsScore(
   teams: string[],
   challsScore: Record<string, ChallengeScore>,
   rewards: Reward[],
@@ -63,7 +63,7 @@ function computeTeamsScore (
     }))
 }
 
-function computeTeamScore (
+function computeTeamScore(
   challsScore: Record<string, ChallengeScore>,
   team: string,
   rewards: Reward[],
@@ -78,16 +78,16 @@ function computeTeamScore (
         .reduce((agg, cs) => agg + cs.score, 0) +
       rewardAcquired.map(r => r.value).reduce((acc, cur) => acc + cur, 0),
     breakthroughs: Object.values(challsScore)
-      .map(cs => cs.achievements[0])
-      .filter(a => a?.teamname === team),
+      .map(cs => cs.achievements[0] ?? {})
+      .filter(a => a.teamname === team),
     solved: Object.values(challsScore)
       .flatMap(cs => cs.achievements)
-      .filter(a => a?.teamname === team),
+      .filter(a => a.teamname === team),
     rewards: rewardAcquired,
   }
 }
 
-function computeScore (
+function computeScore(
   challenge: Challenge,
   config: GameConfig,
   solvedCount: number = 0,

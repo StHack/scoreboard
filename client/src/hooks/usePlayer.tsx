@@ -1,9 +1,8 @@
+import { Message } from 'models/Message'
 import { createContext, PropsWithChildren, useContext, useState } from 'react'
 import { useAuth } from './useAuthentication'
 import { useGame } from './useGame'
 import { useSocket } from './useSocket'
-import { Message } from 'models/Message'
-import { findByLastIndex } from 'services/polyfill'
 
 export type PlayerContext = {
   myScore: number
@@ -12,11 +11,7 @@ export type PlayerContext = {
   myTeamRank: number
   isBeforeLastScorer: boolean
   readMessages: string[]
-  attemptChall: (
-    challengeId: string,
-    flag: string,
-    callback: (isValid: boolean, error: string | undefined) => void,
-  ) => Promise<void>
+  attemptChall: (challengeId: string, flag: string) => Promise<true | string>
   markMessageAsRead: (message: Message) => void
 }
 
@@ -27,11 +22,11 @@ const playerContext = createContext<PlayerContext>({
   myTeamRank: 0,
   isBeforeLastScorer: false,
   readMessages: [],
-  attemptChall: () => Promise.resolve(undefined),
+  attemptChall: () => Promise.resolve('Uninitialized'),
   markMessageAsRead: () => {},
 })
 
-export function ProvidePlayer ({ children }: PropsWithChildren<{}>) {
+export function ProvidePlayer({ children }: PropsWithChildren<object>) {
   const player = useProvidePlayer()
   return (
     <playerContext.Provider value={player}>{children}</playerContext.Provider>
@@ -42,7 +37,7 @@ export const usePlayer = () => {
   return useContext(playerContext)
 }
 
-function useProvidePlayer (): PlayerContext {
+function useProvidePlayer(): PlayerContext {
   const { socket } = useSocket('/api/player')
   const { user } = useAuth()
   if (!user) {
@@ -51,16 +46,15 @@ function useProvidePlayer (): PlayerContext {
   const {
     score: { teamsScore, challsScore },
   } = useGame()
-  const [readMessages, setReadMessages] = useState<string[]>(() =>
-    JSON.parse(localStorage.getItem('readMessages') ?? '[]'),
+  const [readMessages, setReadMessages] = useState<string[]>(
+    () => JSON.parse(localStorage.getItem('readMessages') ?? '[]') as string[],
   )
   const ts = teamsScore.find(x => x.team === user.team)
   const myScore = Object.values(challsScore)
     .filter(cs => !!cs.achievements.find(a => a.username === user.username))
     .reduce((agg, a) => agg + a.score, 0)
 
-  const lastScorerIndex = findByLastIndex(
-    teamsScore,
+  const lastScorerIndex = teamsScore.findLastIndex(
     s => s.score > 0 && s.rank > 3,
   )
   const beforeLastScorer =
@@ -73,15 +67,22 @@ function useProvidePlayer (): PlayerContext {
     myTeamRank: teamsScore.find(ts => ts.team === user.team)?.rank ?? 0,
     isBeforeLastScorer: beforeLastScorer?.team === user.team,
     readMessages,
-    attemptChall: async (challengeId, flag, callback) => {
-      if (!socket) return
-      socket.emit(
-        'challenge:solve',
-        challengeId,
-        flag,
-        ({ isValid, error }: { isValid?: boolean; error?: string }) =>
-          callback(isValid ?? false, error),
-      )
+    attemptChall: (challengeId, flag) => {
+      if (!socket) return Promise.resolve('You are not connected at the moment')
+
+      return new Promise(resolve => {
+        socket.emit(
+          'challenge:solve',
+          challengeId,
+          flag,
+          ({ isValid, error }: { isValid?: boolean; error?: string }) =>
+            error
+              ? resolve(error)
+              : isValid
+                ? resolve(true)
+                : resolve("Nope that's not the flag !"),
+        )
+      })
     },
     markMessageAsRead: message => {
       const updated = [...readMessages, message._id]

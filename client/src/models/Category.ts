@@ -14,4 +14,5 @@ export const Categories = [
   'web',
 ] as const
 
-export type Category = typeof Categories[number] | string
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+export type Category = (typeof Categories)[number] | string

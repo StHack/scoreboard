@@ -4,7 +4,7 @@ type RegisterResponse = {
   ok: boolean
   error?: string
 }
-export async function register (user: CreateUser): Promise<RegisterResponse> {
+export async function register(user: CreateUser): Promise<RegisterResponse> {
   const response = await fetch('/api/register', {
     method: 'POST',
     headers: {
@@ -26,7 +26,7 @@ type MeResponse = {
   user?: User
   error?: string
 }
-export async function login (
+export async function login(
   credentials: LoginCredentials,
 ): Promise<MeResponse> {
   const response = await fetch('/api/login', {
@@ -38,7 +38,7 @@ export async function login (
   })
 
   if (response.ok) {
-    const user: User = await response.json()
+    const user = (await response.json()) as User
     return { ok: true, user }
   } else {
     const error = await response.text()
@@ -46,15 +46,15 @@ export async function login (
   }
 }
 
-export async function logout (): Promise<void> {
+export async function logout(): Promise<void> {
   await fetch('/api/logout', { method: 'POST' })
 }
 
-export async function me (): Promise<MeResponse> {
+export async function me(): Promise<MeResponse> {
   const response = await fetch('/api/me')
 
   if (response.ok) {
-    const user: User = await response.json()
+    const user = (await response.json()) as User
     return { ok: true, user }
   } else {
     const error = await response.text()

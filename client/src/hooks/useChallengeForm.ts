@@ -1,12 +1,12 @@
-import { ChangeEvent, useState } from 'react'
-import { useField } from './useField'
+import { Category } from 'models/Category'
 import { BaseChallenge, Challenge } from 'models/Challenge'
 import { Difficulty } from 'models/Difficulty'
+import { ChangeEvent, useState } from 'react'
 import { useAdmin } from './useAdmin'
 import { useAuth } from './useAuthentication'
-import { Category } from 'models/Category'
+import { useField } from './useField'
 
-export function useChallengeForm (
+export function useChallengeForm(
   chall: Challenge | undefined,
   onSuccess: () => void,
 ) {
@@ -16,15 +16,8 @@ export function useChallengeForm (
   const { createChallenge, updateChallenge } = useAdmin()
   const { user: { username } = {} } = useAuth()
 
-  const {
-    author,
-    category,
-    description,
-    difficulty,
-    img,
-    isBroken,
-    name,
-  } = chall || {}
+  const { author, category, description, difficulty, img, isBroken, name } =
+    chall || {}
 
   const nameField = useField<string>({
     name: 'name',

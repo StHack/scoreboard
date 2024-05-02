@@ -1,11 +1,6 @@
 import styled from '@emotion/styled'
 import { PropsWithChildren } from 'react'
-import {
-  FontSizeProps,
-  SpaceProps,
-  fontSize,
-  space,
-} from 'styled-system'
+import { fontSize, FontSizeProps, space, SpaceProps } from 'styled-system'
 
 export type ToggleInputProps = {
   checked: boolean
@@ -13,7 +8,7 @@ export type ToggleInputProps = {
   onChange: (value: boolean) => void
 }
 
-export function ToggleInput ({
+export function ToggleInput({
   checked,
   disabled,
   onChange,
@@ -77,7 +72,6 @@ const Span = styled.span`
     transition: inherit;
   }
 `
-
 const Label = styled.label`
   ${fontSize}
   ${space}
@@ -96,9 +90,9 @@ const Label = styled.label`
     outline-offset: 2px;
   }
 
-  &:focus,
+  ${Input}:focus:not(:focus-visible) + ${Span}
   &:focus:not(:focus-visible) ${Span},
-  ${Input}:focus:not(:focus-visible) + ${Span} {
+  &:focus {
     outline: 0;
   }
 

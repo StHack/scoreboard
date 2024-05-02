@@ -12,7 +12,7 @@ type GroupBySelectorProps = {
   value: GroupByType
   onChange: (value: GroupByType) => void
 }
-export function GroupBySelector ({
+export function GroupBySelector({
   value,
   onChange,
   ...props
@@ -38,7 +38,7 @@ export function GroupBySelector ({
   )
 }
 
-export function getGroup (chall: Challenge, groupBy: GroupByType) {
+export function getGroup(chall: Challenge, groupBy: GroupByType) {
   switch (groupBy) {
     case 'Author':
       return chall.author
@@ -53,7 +53,7 @@ export function getGroup (chall: Challenge, groupBy: GroupByType) {
   }
 }
 
-export function getGroupSort (
+export function getGroupSort(
   groupBy: GroupByType,
 ): (g1: string, g2: string) => number {
   switch (groupBy) {

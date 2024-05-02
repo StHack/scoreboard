@@ -16,7 +16,7 @@ export type UserFormProps = {
   onClose: () => void
 }
 
-export function UserForm ({ user, editMode, onClose }: UserFormProps) {
+export function UserForm({ user, editMode, onClose }: UserFormProps) {
   const { changePassword, changeTeam, users } = useAdmin()
   const ref = useRef<HTMLFormElement>(null)
   const { inputProp } = useField<string>({

@@ -8,7 +8,7 @@ import { useGame } from 'hooks/useGame'
 import { useLoginForm } from 'hooks/useLoginForm'
 import { Link } from 'react-router-dom'
 
-export function Login () {
+export function Login() {
   const { formProps, passwordProps, usernameProps, error, isLoading } =
     useLoginForm()
   const {

@@ -25,7 +25,7 @@ const rewardsColumns: ColumnDefinition<Reward>[] = [
   { header: 'Date', rowValue: row => row.createdAt.toLocaleTimeString() },
 ]
 
-export function AchievementPanel () {
+export function AchievementPanel() {
   const [openCreateReward, setOpenCreateReward] = useState<boolean>(false)
   const [search, setSearch] = useState<string>('')
   const { achievements, rewards } = useGame()
@@ -88,7 +88,7 @@ export function AchievementPanel () {
 type AchievementActionsProps = {
   row: Achievement
 }
-function AchievementActions ({ row }: AchievementActionsProps) {
+function AchievementActions({ row }: AchievementActionsProps) {
   const { deleteAchievement } = useAdmin()
   return (
     <Button
@@ -98,7 +98,6 @@ function AchievementActions ({ row }: AchievementActionsProps) {
       title="Delete"
       onClick={() => {
         if (
-          // eslint-disable-next-line no-restricted-globals
           confirm(
             `Are you sure to delete Achievement:\n\n${row.challenge}\n${
               row.teamname
@@ -117,7 +116,7 @@ function AchievementActions ({ row }: AchievementActionsProps) {
 type RewardActionsProps = {
   row: Reward
 }
-function RewardActions ({ row }: RewardActionsProps) {
+function RewardActions({ row }: RewardActionsProps) {
   const { deleteReward } = useAdmin()
   return (
     <Button
@@ -127,7 +126,6 @@ function RewardActions ({ row }: RewardActionsProps) {
       title="Delete"
       onClick={() => {
         if (
-          // eslint-disable-next-line no-restricted-globals
           confirm(
             `Are you sure to delete Reward:\n\n${row.label}\n${
               row.teamname

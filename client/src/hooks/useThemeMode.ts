@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 export type ThemeMode = 'dark' | 'light'
 
-export function useThemeMode () {
+export function useThemeMode() {
   const [currentTheme, setCurrentTheme] = useState<ThemeMode>('light')
 
   useEffect(() => {
@@ -14,21 +14,13 @@ export function useThemeMode () {
     const lightHandle = ({ matches }: MediaQueryListEvent) =>
       matches && setCurrentTheme('dark')
 
-    try {
-      darkMatcher.addEventListener('change', darkHandle)
-      lightMatcher.addEventListener('change', lightHandle)
-    } catch (error) {
-      try {
-        darkMatcher.addListener(darkHandle)
-        darkMatcher.addListener(lightHandle)
-      } catch (error) {}
-    }
+    darkMatcher.addEventListener('change', darkHandle)
+    lightMatcher.addEventListener('change', lightHandle)
 
     return () => {
-      darkMatcher.removeEventListener?.('change', darkHandle)
-      lightMatcher.removeEventListener?.('change', lightHandle)
+      darkMatcher.removeEventListener('change', darkHandle)
+      lightMatcher.removeEventListener('change', lightHandle)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return {

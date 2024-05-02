@@ -31,14 +31,21 @@ export type ChallDescriptionPopupProps = {
   onClose: () => void
 }
 
-export function ChallDescriptionPopup ({
+export function ChallDescriptionPopup({
   challenge,
   score: { score, achievements },
   messages,
   readonly = false,
   onClose,
 }: ChallDescriptionPopupProps) {
-  const { _id: challengeId, name, author, category, description, difficulty } = challenge
+  const {
+    _id: challengeId,
+    name,
+    author,
+    category,
+    description,
+    difficulty,
+  } = challenge
   const [error, setError] = useState<string>()
   const { attemptChall, myTeamName } = usePlayer()
   const { inputProp } = useField<string>({
@@ -69,9 +76,10 @@ export function ChallDescriptionPopup ({
           <Box as="article" gridArea="desc" my="3">
             <ReactMarkdown
               components={ReactMarkdownRenderers}
-              children={description}
               remarkPlugins={[remarkGfm]}
-            />
+            >
+              {description}
+            </ReactMarkdown>
           </Box>
         )}
 
@@ -99,11 +107,12 @@ export function ChallDescriptionPopup ({
               if (readonly) return
               if (!inputProp.value) return
 
-              await attemptChall(challengeId, inputProp.value, (isValid, error) => {
-                if (error) setError(error)
-                if (isValid) onClose()
-                else setError("Nope that's not the flag !")
-              })
+              const err = await attemptChall(challengeId, inputProp.value)
+              if (err === true) {
+                onClose()
+              } else {
+                setError(err)
+              }
             }}
             py="3"
             px="4"
@@ -128,8 +137,7 @@ export function ChallDescriptionPopup ({
 
         {openState === 'delayed' && latestAchievement && (
           <Text gridArea="state" my="2">
-            Team "{latestAchievement.teamname}" just solved this challenge, you
-            need to wait {delayedTimer} before being able to submit your flag
+            {`Team "${latestAchievement.teamname}" just solved this challenge, you need to wait ${delayedTimer} before being able to submit your flag`}
           </Text>
         )}
 

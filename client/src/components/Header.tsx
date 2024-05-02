@@ -3,10 +3,10 @@ import { useAuth } from 'hooks/useAuthentication'
 import { NavLink } from 'react-router-dom'
 import { space, SpaceProps } from 'styled-system'
 import { Box } from './Box'
-import { IconLogout, Logo } from './Icon'
 import { Button } from './Button'
+import { IconLogout, Logo } from './Icon'
 
-export function Header () {
+export function Header() {
   const { user, isAuthenticated, isAuthorized, logOut } = useAuth()
 
   return (
@@ -76,7 +76,7 @@ type GameLinkProps = {
   label: string
   hideOnMobile?: boolean
 }
-function GameLink ({ to, label }: GameLinkProps) {
+function GameLink({ to, label }: GameLinkProps) {
   return (
     <Box as="li" display={['none', 'flex']}>
       <NavLinkStyled to={to} p="2">
