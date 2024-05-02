@@ -1,5 +1,5 @@
-import { countTeam } from 'db/UsersDb'
-import { GameConfig } from 'models/GameConfig'
+import { countTeam } from 'db/UsersDb.js'
+import { GameConfig } from 'models/GameConfig.js'
 import { RedisClientType } from 'redis'
 
 const delayTimeInMinutes = 10
@@ -16,7 +16,7 @@ export class ServerConfig {
       'serverConfig',
       'registrationClosed',
     )
-    return JSON.parse(str ?? 'false')
+    return JSON.parse(str ?? 'false') as boolean
   }
 
   public async setRegistrationClosed(status: boolean): Promise<void> {
@@ -28,11 +28,8 @@ export class ServerConfig {
   }
 
   public async getGameOpened(): Promise<boolean> {
-    const str = await this.redisClient.hGet(
-      'serverConfig',
-      'gameOpened',
-    )
-    return JSON.parse(str ?? 'false')
+    const str = await this.redisClient.hGet('serverConfig', 'gameOpened')
+    return JSON.parse(str ?? 'false') as boolean
   }
 
   public async setGameOpened(status: boolean): Promise<void> {

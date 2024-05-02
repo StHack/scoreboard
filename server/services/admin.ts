@@ -1,21 +1,28 @@
-import { removeAchievement } from 'db/AchievementDb'
-import { listAttempt } from 'db/AttemptDb'
-import { createChallenge, listChallenge, updateChallenge } from 'db/ChallengeDb'
-import { addMessage } from 'db/MessageDb'
-import { createReward, removeReward } from 'db/RewardDb'
-import { listUser, removeUser, updateUser } from 'db/UsersDb'
+import { removeAchievement } from 'db/AchievementDb.js'
+import { listAttempt } from 'db/AttemptDb.js'
+import {
+  createChallenge,
+  listChallenge,
+  updateChallenge,
+} from 'db/ChallengeDb.js'
+import { addMessage } from 'db/MessageDb.js'
+import { createReward, removeReward } from 'db/RewardDb.js'
+import { listUser, removeUser, updateUser } from 'db/UsersDb.js'
 import debug from 'debug'
 import { Request } from 'express'
-import { BaseChallenge } from 'models/Challenge'
-import { BaseReward } from 'models/Reward'
-import { User } from 'models/User'
+import { Attempt } from 'models/Attempt.js'
+import { BaseChallenge, Challenge } from 'models/Challenge.js'
+import { Callback, CallbackOrError } from 'models/Common.js'
+import { BaseReward, Reward } from 'models/Reward.js'
+import { ServerActivityStatistics } from 'models/ServerActivityStatistics.js'
+import { User } from 'models/User.js'
 import { Namespace } from 'socket.io'
-import { emitEventLog } from './events'
+import { emitEventLog } from './events.js'
 import {
   getServerActivityStatistics,
   registerSocketConnectivityChange,
-} from './serveractivity'
-import { ServerConfig } from './serverconfig'
+} from './serveractivity.js'
+import { ServerConfig } from './serverconfig.js'
 
 export function registerAdminNamespace(
   adminIo: Namespace,
@@ -55,20 +62,23 @@ export function registerAdminNamespace(
 
     registerSocketConnectivityChange(adminSocket, adminIo, gameIo, playerIo)
 
-    adminSocket.on('challenge:list', async callback => {
-      const challenges = await listChallenge()
-      callback(challenges)
-    })
+    adminSocket.on(
+      'challenge:list',
+      async (callback: Callback<Challenge[]>) => {
+        const challenges = await listChallenge()
+        callback(challenges)
+      },
+    )
 
     adminSocket.on(
       'challenge:create',
-      async (chall: BaseChallenge, callback) => {
+      async (chall: BaseChallenge, callback: CallbackOrError<Challenge>) => {
         try {
           const challenge = await createChallenge(chall)
           callback(challenge)
           gameIo.emit('challenge:added', challenge)
           adminSocket.emit('challenge:added', challenge)
-          emitEventLog(gameIo, 'challenge:create', {
+          await emitEventLog(gameIo, 'challenge:create', {
             message: `A new challenge has been added, try your chance on "${challenge.name}"`,
           })
         } catch (error) {
@@ -81,33 +91,40 @@ export function registerAdminNamespace(
       },
     )
 
-    adminSocket.on('reward:create', async (reward: BaseReward, callback) => {
-      try {
-        const rewardCreated = await createReward(reward)
-        callback(rewardCreated)
-        gameIo.emit('reward:added', rewardCreated)
-        emitEventLog(gameIo, 'reward:create', {
-          message: `A reward has been given to team "${rewardCreated.teamname}" for ${rewardCreated.value} points`,
-          reward: rewardCreated,
-        })
-      } catch (error) {
-        if (error instanceof Error) {
-          callback({ error: error.message })
-        } else {
-          callback({ error: 'an error occured' })
+    adminSocket.on(
+      'reward:create',
+      async (reward: BaseReward, callback: CallbackOrError<Reward>) => {
+        try {
+          const rewardCreated = await createReward(reward)
+          callback(rewardCreated)
+          gameIo.emit('reward:added', rewardCreated)
+          await emitEventLog(gameIo, 'reward:create', {
+            message: `A reward has been given to team "${rewardCreated.teamname}" for ${rewardCreated.value.toString()} points`,
+            reward: rewardCreated,
+          })
+        } catch (error) {
+          if (error instanceof Error) {
+            callback({ error: error.message })
+          } else {
+            callback({ error: 'an error occured' })
+          }
         }
-      }
-    })
+      },
+    )
 
     adminSocket.on(
       'challenge:update',
-      async (challengeId: string, chall: BaseChallenge, callback) => {
+      async (
+        challengeId: string,
+        chall: BaseChallenge,
+        callback: CallbackOrError<Challenge>,
+      ) => {
         try {
           const challenge = await updateChallenge(challengeId, chall)
           callback(challenge)
           gameIo.emit('challenge:updated', challenge)
           adminSocket.emit('challenge:updated', challenge)
-          emitEventLog(gameIo, 'challenge:update', {
+          await emitEventLog(gameIo, 'challenge:update', {
             message: `Challenge "${challenge.name}" has been updated`,
             challenge,
           })
@@ -125,7 +142,7 @@ export function registerAdminNamespace(
       const updated = await updateChallenge(challengeId, { isBroken: true })
       gameIo.emit('challenge:updated', updated)
       adminSocket.emit('challenge:updated', updated)
-      emitEventLog(gameIo, 'challenge:broke', {
+      await emitEventLog(gameIo, 'challenge:broke', {
         message: `Challenge "${updated.name}" is marked has broken, we are working to repair it, please try another challenge`,
         challenge: updated,
       })
@@ -135,7 +152,7 @@ export function registerAdminNamespace(
       const updated = await updateChallenge(challengeId, { isBroken: false })
       gameIo.emit('challenge:updated', updated)
       adminSocket.emit('challenge:updated', updated)
-      emitEventLog(gameIo, 'challenge:repair', {
+      await emitEventLog(gameIo, 'challenge:repair', {
         message: `Challenge "${updated.name}" is fixed, you can try to solve it again`,
         challenge: updated,
       })
@@ -153,22 +170,29 @@ export function registerAdminNamespace(
         })
       }
 
-      emitEventLog(gameIo, 'game:end', {
+      await emitEventLog(gameIo, 'game:end', {
         message: `Game is now closed. Thanks for your participation`,
         serverConfig,
       })
     })
 
-    adminSocket.on('game:activity', async callback => {
-      const statistics = getServerActivityStatistics(adminIo, gameIo, playerIo)
-      callback(statistics)
-    })
+    adminSocket.on(
+      'game:activity',
+      (callback: Callback<ServerActivityStatistics>) => {
+        const statistics = getServerActivityStatistics(
+          adminIo,
+          gameIo,
+          playerIo,
+        )
+        callback(statistics)
+      },
+    )
 
     adminSocket.on('game:open', async () => {
       await serverConfig.setGameOpened(true)
       await emitGameConfigUpdate()
 
-      emitEventLog(gameIo, 'game:open', {
+      await emitEventLog(gameIo, 'game:open', {
         message: `Game is now opened. Good luck to everyone`,
       })
     })
@@ -195,7 +219,7 @@ export function registerAdminNamespace(
 
         gameIo.emit('game:newMessage', result)
 
-        emitEventLog(gameIo, 'game:sendMessage', {
+        await emitEventLog(gameIo, 'game:sendMessage', {
           message: challengeId
             ? `A new hint from the staff has been shared`
             : `A new message from the staff has been shared`,
@@ -205,14 +229,14 @@ export function registerAdminNamespace(
       },
     )
 
-    adminSocket.on('users:list', async callback => {
+    adminSocket.on('users:list', async (callback: Callback<User[]>) => {
       const users = await listUser()
       callback(users)
     })
 
     adminSocket.on(
       'users:changeTeam',
-      async (username: string, team: string, callback) => {
+      async (username: string, team: string, callback: Callback<User>) => {
         const user = await updateUser(username, { team })
         callback(user)
       },
@@ -220,7 +244,7 @@ export function registerAdminNamespace(
 
     adminSocket.on(
       'users:changePassword',
-      async (username: string, password: string, callback) => {
+      async (username: string, password: string, callback: Callback<User>) => {
         const user = await updateUser(username, { password })
         callback(user)
       },
@@ -228,7 +252,7 @@ export function registerAdminNamespace(
 
     adminSocket.on(
       'users:changeIsAdmin',
-      async (username: string, isAdmin: boolean, callback) => {
+      async (username: string, isAdmin: boolean, callback: Callback<User>) => {
         const user = isAdmin
           ? await updateUser(username, { isAdmin: true, team: 'admin' })
           : await updateUser(username, { isAdmin: false })
@@ -239,11 +263,14 @@ export function registerAdminNamespace(
       },
     )
 
-    adminSocket.on('users:delete', async (username: string, callback) => {
-      await removeUser(username)
-      logout(username)
-      callback()
-    })
+    adminSocket.on(
+      'users:delete',
+      async (username: string, callback: Callback<void>) => {
+        await removeUser(username)
+        logout(username)
+        callback()
+      },
+    )
 
     adminSocket.on('users:logout', logout)
 
@@ -266,7 +293,7 @@ export function registerAdminNamespace(
       }
     })
 
-    adminSocket.on('attempt:list', async callback => {
+    adminSocket.on('attempt:list', async (callback: Callback<Attempt[]>) => {
       const attempt = await listAttempt()
       callback(attempt)
     })

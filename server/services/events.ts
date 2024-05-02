@@ -1,18 +1,18 @@
-import { listAchievement } from 'db/AchievementDb'
-import { listChallenge } from 'db/ChallengeDb'
-import { listReward } from 'db/RewardDb'
-import { listTeam } from 'db/UsersDb'
+import { listAchievement } from 'db/AchievementDb.js'
+import { listChallenge } from 'db/ChallengeDb.js'
+import { listReward } from 'db/RewardDb.js'
+import { listTeam } from 'db/UsersDb.js'
 import debug from 'debug'
-import { Achievement } from 'models/Achievement'
-import { Challenge } from 'models/Challenge'
-import { TeamScore } from 'models/GameScore'
-import { Reward } from 'models/Reward'
+import { Achievement } from 'models/Achievement.js'
+import { Challenge } from 'models/Challenge.js'
+import { TeamScore } from 'models/GameScore.js'
+import { Reward } from 'models/Reward.js'
 import { Namespace } from 'socket.io'
-import { discordConfig } from 'sthack-config'
+import { discordConfig } from 'sthack-config.js'
 import { setTimeout } from 'timers/promises'
-import { sendMessageToDiscord } from './discord'
-import { computeGameScore } from './score'
-import { ServerConfig } from './serverconfig'
+import { sendMessageToDiscord } from './discord.js'
+import { computeGameScore } from './score.js'
+import { ServerConfig } from './serverconfig.js'
 
 const logger = debug('sthack:events')
 
@@ -61,6 +61,7 @@ export async function emitEventLog(
 
 const discordFormatHandler: [
   string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (string | ((options: any) => Promise<string | string[]>))?,
 ][] = [
   ['game:open', '# 🏴‍☠️ CTF is now open'],
@@ -156,7 +157,7 @@ function reward({
   reward: Reward
 }): Promise<string> {
   return Promise.resolve(
-    `## 🏆 Reward given to team **${teamname}**: ${label} - ${value}pts`,
+    `## 🏆 Reward given to team **${teamname}**: ${label} - ${value.toString()}pts`,
   )
 }
 

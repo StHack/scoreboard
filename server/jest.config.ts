@@ -1,8 +1,8 @@
 import 'jest-extended'
-import type { InitialOptionsTsJest } from 'ts-jest/dist/types'
 import { config } from 'dotenv'
+import { JestConfigWithTsJest } from 'ts-jest/dist/types.js'
 
-const conf: InitialOptionsTsJest = {
+const conf: JestConfigWithTsJest = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   setupFilesAfterEnv: ['jest-extended/all'],

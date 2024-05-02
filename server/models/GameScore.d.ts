@@ -1,5 +1,5 @@
-import { Achievement } from './Achievement'
-import { Reward } from './Reward'
+import { Achievement } from './Achievement.d.ts'
+import { Reward } from './Reward.d.ts'
 
 export type ChallengeScore = {
   name: string

@@ -1,5 +1,5 @@
 import { Request } from 'express'
-import { ServerActivityStatistics } from 'models/ServerActivityStatistics'
+import { ServerActivityStatistics } from 'models/ServerActivityStatistics.js'
 import { Namespace, Socket } from 'socket.io'
 
 export function registerSocketConnectivityChange(
@@ -11,7 +11,7 @@ export function registerSocketConnectivityChange(
   const statistics = getServerActivityStatistics(adminIo, gameIo, playerIo)
   adminIo.emit('game:activity:updated', statistics)
 
-  socket.on('disconnect', async () => {
+  socket.on('disconnect', () => {
     const statistics = getServerActivityStatistics(adminIo, gameIo, playerIo)
     adminIo.emit('game:activity:updated', statistics)
   })
@@ -42,6 +42,7 @@ export function getServerActivityStatistics(
 
     const { username, team } = req.user
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!statistics.teams[team]) {
       statistics.teams[team] = {
         count: 0,
@@ -51,6 +52,7 @@ export function getServerActivityStatistics(
       statistics.teamCount++
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!statistics.teams[team].users[username]) {
       statistics.teams[team].users[username] = {
         sockets: 0,

@@ -1,14 +1,17 @@
 import RedisStore from 'connect-redis'
-import { getUser, login, registerUser } from 'db/UsersDb'
-import { IRouter, json, Request } from 'express'
+import { getUser, login, registerUser } from 'db/UsersDb.js'
+import debug from 'debug'
+import { Handler, IRouter, json, Request } from 'express'
 import session from 'express-session'
-import { CreateUser, User as OurUser } from 'models/User'
+import { CreateUser, User as OurUser } from 'models/User.js'
 import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
 import { RedisClientType } from 'redis'
 import { Namespace, Server } from 'socket.io'
-import { salt } from 'sthack-config'
-import { ServerConfig } from './serverconfig'
+import { salt } from 'sthack-config.js'
+import { ServerConfig } from './serverconfig.js'
+
+const logger = debug('sthack:authentication')
 
 const sessionMiddleware = (sessionRedisClient: RedisClientType) => {
   return session({
@@ -36,18 +39,22 @@ export function registerAuthentification(
         const user = await login(username, password)
 
         if (!user) {
-          return done(null, false)
+          done(null, false)
+          return
         }
 
         const gameIsOpened = await serverConfig.getGameOpened()
 
         if (!gameIsOpened && !user.isAdmin) {
-          return done(null, false)
+          done(null, false)
+          return
         }
 
-        return done(null, user)
+        done(null, user)
+        return
       } catch (error) {
-        return done(error)
+        done(error)
+        return
       }
     }),
   )
@@ -91,25 +98,22 @@ export function registerAuthentification(
       if (error instanceof Error) {
         res.status(400).send(error.message)
       } else {
+        logger('an unexpected error occured %o', error)
         res.status(500).send(error)
       }
-      return
     }
   })
 
-  app.post(
-    '/api/login',
-    passport.authenticate('local', {
-      // session: false,
-    }),
-    (req, res) => res.send(req.user),
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  app.post('/api/login', passport.authenticate('local'), (req, res) =>
+    res.send(req.user),
   )
 
   app.post('/api/logout', (req, res) => {
     const socketId = req.session.socketId
 
     if (socketId) {
-      io.in(socketId)?.disconnectSockets(true)
+      io.in(socketId).disconnectSockets(true)
     }
 
     req.logout(err => {
@@ -127,24 +131,32 @@ export function registerAuthentification(
   })
 }
 
-const wrap = (middleware: any) => (socket: any, next: any) =>
-  middleware(socket.request, {}, next)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const wrap = (middleware: Handler) => (socket: any, next: any) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+  middleware(socket.request, {} as any, next)
+}
 
-export function registerAuthentificationForSocket(io: Namespace, sessionRedisClient: RedisClientType) {
+export function registerAuthentificationForSocket(
+  io: Namespace,
+  sessionRedisClient: RedisClientType,
+) {
   io.use(wrap(sessionMiddleware(sessionRedisClient)))
   io.use(wrap(passport.initialize()))
-  io.use(wrap(passport.session()))
-  io.use((socket, next) =>
-    (socket.request as Request).user ? next() : next(new Error('unauthorized')),
-  )
+  io.use(wrap(passport.session() as Handler))
+  io.use((socket, next) => {
+    ;(socket.request as Request).user ? next() : next(new Error('unauthorized'))
+  })
 
-  io.on('connect', socket => {
+  io.on('connect', async socket => {
     const request = socket.request as Request
     const session = request.session
     session.socketId = socket.id
     session.save()
-    socket.join(request.user!.username)
-    socket.join(request.user!.team)
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    await socket.join(request.user!.username)
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    await socket.join(request.user!.team)
   })
 }
 
@@ -155,6 +167,7 @@ declare module 'express-session' {
 }
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Express {
     interface User extends OurUser {}
   }

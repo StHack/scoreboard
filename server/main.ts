@@ -1,23 +1,23 @@
 process.env.DEBUG = 'express:application,socket.io:server,sthack*'
 import { createAdapter } from '@socket.io/redis-adapter'
-import { initMongo } from 'db/main'
+import { initMongo } from 'db/main.js'
 import debug from 'debug'
 import { config } from 'dotenv'
 import express from 'express'
 import { createServer } from 'http'
 import { join } from 'path'
-import { createClient } from 'redis'
-import { registerAdminNamespace } from 'services/admin'
+import { createClient, RedisClientType } from 'redis'
+import { registerAdminNamespace } from 'services/admin.js'
 import {
   registerAuthentification,
   registerAuthentificationForSocket,
-} from 'services/authentication'
-import { registerCtfTime } from 'services/ctftime'
-import { registerGameNamespace } from 'services/game'
-import { registerPlayerNamespace } from 'services/player'
-import { getServerConfig } from 'services/serverconfig'
+} from 'services/authentication.js'
+import { registerCtfTime } from 'services/ctftime.js'
+import { registerGameNamespace } from 'services/game.js'
+import { registerPlayerNamespace } from 'services/player.js'
+import { getServerConfig } from 'services/serverconfig.js'
 import { Server } from 'socket.io'
-import { redisConnectionString } from 'sthack-config'
+import { redisConnectionString } from 'sthack-config.js'
 
 if (process.env.NODE_ENV !== 'production') {
   config()
@@ -34,36 +34,36 @@ const io = new Server(httpServer, {
 })
 const pubClient = createClient({ url: redisConnectionString() })
 const subClient = pubClient.duplicate()
-const serverConfigClient = pubClient.duplicate()
-const sessionClient = pubClient.duplicate()
+const serverConfigClient = pubClient.duplicate() as RedisClientType
+const sessionClient = pubClient.duplicate() as RedisClientType
 
-const serverConfig = getServerConfig(serverConfigClient as any)
+const serverConfig = getServerConfig(serverConfigClient)
 
-initMongo()
+await initMongo()
 registerCtfTime(app, serverConfig)
-registerAuthentification(app, io, serverConfig, sessionClient as any)
+registerAuthentification(app, io, serverConfig, sessionClient)
 
 const adminIo = io.of('/api/admin')
 const gameIo = io.of('/api/game')
 const playerIo = io.of('/api/player')
 
-registerAuthentificationForSocket(playerIo, sessionClient as any)
-registerAuthentificationForSocket(adminIo, sessionClient as any)
+registerAuthentificationForSocket(playerIo, sessionClient)
+registerAuthentificationForSocket(adminIo, sessionClient)
 
 registerGameNamespace(adminIo, gameIo, playerIo, serverConfig)
 registerPlayerNamespace(adminIo, gameIo, playerIo, serverConfig)
 registerAdminNamespace(adminIo, gameIo, playerIo, serverConfig)
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(join(__dirname, 'build')))
+  app.use(express.static(join(import.meta.dirname, 'build')))
   app.get('/*', function (req, res) {
-    res.sendFile(join(__dirname, 'build', 'index.html'))
+    res.sendFile(join(import.meta.dirname, 'build', 'index.html'))
   })
 }
 
 const PORT = 4400
 
-Promise.all([
+await Promise.all([
   pubClient.connect(),
   subClient.connect(),
   serverConfigClient.connect(),
@@ -73,7 +73,7 @@ Promise.all([
 
   httpServer.listen(PORT, () => {
     console.log(
-      `⚡️[server]: Server is running at http://localhost:${PORT} in ${process.env.NODE_ENV} mode`,
+      `⚡️[server]: Server is running at http://localhost:${PORT.toString()} in ${process.env.NODE_ENV ?? ''} mode`,
     )
   })
 })

@@ -1,6 +1,6 @@
-import { BaseReward, Reward } from 'models/Reward'
-import { Schema, model } from 'mongoose'
-import { removeMongoPropertiesWithOptions } from './main'
+import { BaseReward, Reward } from 'models/Reward.js'
+import { model, Schema } from 'mongoose'
+import { removeMongoPropertiesWithOptions } from './main.js'
 
 const schema = new Schema<Reward>(
   {

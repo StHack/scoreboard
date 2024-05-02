@@ -17,3 +17,8 @@ export type User = {
   team: string
   isAdmin: boolean
 }
+
+export type UserLike = {
+  username: string
+  team: string
+}

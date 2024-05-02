@@ -1,4 +1,4 @@
-import { Difficulty } from './Difficulty'
+import { Difficulty } from './Difficulty.ts'
 
 export type BaseChallenge = {
   name: string
