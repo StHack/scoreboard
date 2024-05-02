@@ -35,7 +35,7 @@ const authContext = createContext<AuthContext>({
   logIn: () => Promise.resolve({ ok: false, error: 'oups' }),
 })
 
-export function ProvideAuth ({ children }: PropsWithChildren<{}>) {
+export function ProvideAuth({ children }: PropsWithChildren<object>) {
   const auth = useProvideAuth()
   return <authContext.Provider value={auth}>{children}</authContext.Provider>
 }
@@ -44,7 +44,7 @@ export const useAuth = () => {
   return useContext(authContext)
 }
 
-function useProvideAuth (): AuthContext {
+function useProvideAuth(): AuthContext {
   const [user, setUser] = useState<User>()
   const [hasReadRules, setHasReadRules] = useStorage<boolean>(
     `hasReadRules-${new Date().getFullYear()}`,
@@ -59,7 +59,7 @@ function useProvideAuth (): AuthContext {
       }
     }
 
-    init()
+    void init()
   }, [])
 
   return {
@@ -80,7 +80,7 @@ function useProvideAuth (): AuthContext {
       })
 
       if (ok) {
-        setUser(user!)
+        setUser(user)
       }
 
       return { ok, error }

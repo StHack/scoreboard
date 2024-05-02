@@ -3,7 +3,7 @@ import { Challenge } from 'models/Challenge'
 import { useEffect, useState } from 'react'
 import { useGame } from './useGame'
 
-export function useChallengeSolveDelay (
+export function useChallengeSolveDelay(
   { isBroken }: Challenge,
   achievements: Achievement[],
 ) {
@@ -42,7 +42,7 @@ export function useChallengeSolveDelay (
 
 export type ChallState = 'broken' | 'delayed' | 'open'
 
-function computeState (
+function computeState(
   isBroken: boolean,
   lastSolved: Achievement | undefined,
   solveDelay: number,

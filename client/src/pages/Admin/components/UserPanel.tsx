@@ -18,7 +18,7 @@ import { useState } from 'react'
 import { AlignSelfProps, GridAreaProps, JustifySelfProps } from 'styled-system'
 import { UserEditMode, UserForm } from './UserForm'
 
-export function UserPanel () {
+export function UserPanel() {
   const { users, toggleIsAdmin, deleteUser, logoutUser } = useAdmin()
   const [userToEdit, setUserToEdit] = useState<User>()
   const [userEditMode, setUserEditMode] = useState<UserEditMode>()
@@ -142,7 +142,7 @@ type TeamCardProps = {
   logout: (user: User) => void
   remove: (user: User) => void
 }
-function TeamCard ({
+function TeamCard({
   team,
   teams,
   updatePassword,

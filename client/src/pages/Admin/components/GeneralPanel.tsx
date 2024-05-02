@@ -10,7 +10,7 @@ import { useField } from 'hooks/useField'
 import { useGame } from 'hooks/useGame'
 import { FormEventHandler, PropsWithChildren, ReactNode } from 'react'
 
-export function GeneralPanel () {
+export function GeneralPanel() {
   const {
     gameConfig: { teamSize, registrationOpened, gameOpened },
     challenges,
@@ -217,7 +217,7 @@ type BoxPanelProps = BoxProps & {
   title: ReactNode
   onSubmit?: FormEventHandler<HTMLDivElement>
 }
-function BoxPanel ({
+function BoxPanel({
   title,
   children,
   onSubmit,

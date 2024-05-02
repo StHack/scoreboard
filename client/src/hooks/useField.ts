@@ -9,7 +9,7 @@ export type FieldProps<T> = {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => T
 }
-export function useField<T> ({
+export function useField<T>({
   defaultValue,
   valueRetriever,
   ...props
@@ -28,8 +28,7 @@ export function useField<T> ({
         e: ChangeEvent<
           HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
         >,
-      ) =>
-        setValue(valueRetriever ? valueRetriever(e) : (e.target.value as any)),
+      ) => setValue(valueRetriever ? valueRetriever(e) : (e.target.value as T)),
     },
     reset,
   }

@@ -2,18 +2,17 @@ import { css } from '@emotion/react'
 import styled, { StyledComponent } from '@emotion/styled'
 import { FunctionComponent, SVGProps } from 'react'
 import {
-  ColorProps,
-  LayoutProps,
-  SpaceProps,
   color,
+  ColorProps,
   layout,
+  LayoutProps,
   space,
+  SpaceProps,
 } from 'styled-system'
-import { PlaceProps, cleanStyledSystem, place } from 'styles'
-import BannerSvg from './images/Banner.svg?react'
-import LogoSvg from './images/Logo.svg?react'
+import { cleanStyledSystem, place, PlaceProps } from 'styles'
 import AchievementSvg from './images/achievement.svg?react'
 import AttemptSvg from './images/attempt.svg?react'
+import BannerSvg from './images/Banner.svg?react'
 import BreakSvg from './images/break.svg?react'
 import ChallengeSvg from './images/challenge.svg?react'
 import CreateSvg from './images/create.svg?react'
@@ -22,8 +21,9 @@ import DemoteSvg from './images/demote.svg?react'
 import EditSvg from './images/edit.svg?react'
 import GameSvg from './images/game.svg?react'
 import JsonSvg from './images/json.svg?react'
-import Logo2023IconSvg from './images/logo-2023-icon.svg?react'
+import LogoSvg from './images/Logo.svg?react'
 import Logo2023Svg from './images/logo-2023.svg?react'
+import Logo2023IconSvg from './images/logo-2023-icon.svg?react'
 import LogoPigeonSvg from './images/logo-pigeon.svg?react'
 import LogoutSvg from './images/logout.svg?react'
 import PasswordSvg from './images/password.svg?react'
@@ -38,6 +38,7 @@ type StyledIconProps = SpaceProps & PlaceProps & ColorProps & LayoutProps
 export type Icon = StyledComponent<
   FunctionComponent<SVGProps<SVGSVGElement>>,
   StyledIconProps,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   any
 >
 

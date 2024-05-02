@@ -5,20 +5,20 @@ import { Box } from './Box'
 
 type SortDirection = 'desc' | 'asc'
 
-export type ColumnDefinition<T extends {}> = {
+export type ColumnDefinition<T> = {
   header: string
   rowValue: (row: T) => string
   defaultSort?: SortDirection
 }
 
-export type TableProps<T extends {}> = {
+export type TableProps<T> = {
   data: T[]
   columns: ColumnDefinition<T>[]
   rowKey: (row: T) => string
   actions?: React.FunctionComponent<{ row: T }>
 }
 
-export function Table<T extends {}> ({
+export function Table<T>({
   data,
   columns,
   rowKey,
@@ -63,7 +63,9 @@ export function Table<T extends {}> ({
               >
                 {column.header}
                 {sortedColumn === column && (
-                  <Box as="span" ml="2">{sort === 'desc' ? '⬇' : '⬆'}</Box>
+                  <Box as="span" ml="2">
+                    {sort === 'desc' ? '⬇' : '⬆'}
+                  </Box>
                 )}
               </th>
             ))}

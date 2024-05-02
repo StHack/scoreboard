@@ -1,9 +1,9 @@
 import { ChangeEvent, useState } from 'react'
-import { register } from 'services/authenticate'
 import { useNavigate } from 'react-router'
+import { register } from 'services/authenticate'
 import { useField } from './useField'
 
-export function useRegisterForm () {
+export function useRegisterForm() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>()
   const navigate = useNavigate()

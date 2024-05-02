@@ -5,31 +5,29 @@ import { IconLogo2023Icon } from 'components/Icon'
 import {
   AnimatePresence,
   DragControls,
+  motion,
   MotionValue,
   Reorder,
-  Variants,
-  motion,
   useDragControls,
   useMotionValue,
+  Variants,
 } from 'framer-motion'
 import { ChallengeScore, TeamScore } from 'models/GameScore'
 import { useMemo, useState } from 'react'
-import { findByLastIndex } from 'services/polyfill'
 import { cleanStyledSystemOnly } from 'styles'
 
 export type TeamsScoreBoardProps = {
   teamsScore: TeamScore[]
   challsScore: Record<string, ChallengeScore>
 }
-export function TeamsScoreBoard ({
+export function TeamsScoreBoard({
   teamsScore,
   challsScore,
 }: TeamsScoreBoardProps) {
   const y = useMotionValue(0)
   const dragControls = useDragControls()
 
-  const lastScorerIndex = findByLastIndex(
-    teamsScore,
+  const lastScorerIndex = teamsScore.findLastIndex(
     s => s.score > 0 && s.rank > 3,
   )
   const beforeLastScorer =
@@ -67,7 +65,7 @@ type ScoreCardProps = {
   dragControls: DragControls
   y: MotionValue<number>
 }
-export function ScoreCard ({
+export function ScoreCard({
   teamScore,
   isLastScorer,
   challsScore,
@@ -232,20 +230,22 @@ export function ScoreCard ({
                 placeItems="center"
                 gap="1"
               >
-                {breakthroughs.map(({ challengeId, challenge, username, createdAt }) => (
-                  <Box
-                    key={challengeId}
-                    as="li"
-                    display="flex"
-                    alignItems="center"
-                    gap="2"
-                  >
-                    <IconLogo2023Icon size="2em" />
-                    {`${username} solved "${challenge}" (${
-                      challsScore[challengeId].score
-                    } pts) at ${createdAt.toLocaleTimeString()}`}
-                  </Box>
-                ))}
+                {breakthroughs.map(
+                  ({ challengeId, challenge, username, createdAt }) => (
+                    <Box
+                      key={challengeId}
+                      as="li"
+                      display="flex"
+                      alignItems="center"
+                      gap="2"
+                    >
+                      <IconLogo2023Icon size="2em" />
+                      {`${username} solved "${challenge}" (${
+                        challsScore[challengeId].score
+                      } pts) at ${createdAt.toLocaleTimeString()}`}
+                    </Box>
+                  ),
+                )}
               </Box>
             )}
 

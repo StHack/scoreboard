@@ -44,7 +44,7 @@ const gameContext = createContext<GameContext>({
   gameConfig: defaultGameConfig,
 })
 
-export function ProvideGame ({ children }: PropsWithChildren<{}>) {
+export function ProvideGame({ children }: PropsWithChildren<object>) {
   const game = useProvideGame()
   return <gameContext.Provider value={game}>{children}</gameContext.Provider>
 }
@@ -53,7 +53,7 @@ export const useGame = () => {
   return useContext(gameContext)
 }
 
-function useProvideGame (): GameContext {
+function useProvideGame(): GameContext {
   const { socket } = useSocket('/api/game')
   const [challenges, setChallenges] = useState<Challenge[]>([])
   const [rawAchievements, setRawAchievements] = useState<Achievement[]>([])
@@ -105,11 +105,11 @@ function useProvideGame (): GameContext {
       setTeams([...response])
     })
 
-    socket.on('challenge:added', chall =>
+    socket.on('challenge:added', (chall: Challenge) =>
       setChallenges(challs => [...challs, chall]),
     )
 
-    socket.on('challenge:updated', challUpdated =>
+    socket.on('challenge:updated', (challUpdated: Challenge) =>
       setChallenges(challs =>
         challs.map(c => (c._id === challUpdated._id ? challUpdated : c)),
       ),

@@ -4,11 +4,15 @@ import { IconDelete } from './Icon'
 import { TextInput } from './TextInput'
 
 type SearchInputProps = {
-  search: string
+  search: string | null
   onChange: (value: string) => void
   placeholder: string
 }
-export function SearchInput ({ search, onChange, placeholder }: SearchInputProps) {
+export function SearchInput({
+  search,
+  onChange,
+  placeholder,
+}: SearchInputProps) {
   return (
     <Box
       as="form"
@@ -22,7 +26,7 @@ export function SearchInput ({ search, onChange, placeholder }: SearchInputProps
         type="search"
         name="search-box"
         value={search ?? ''}
-        onChange={e => onChange(e.target.value?.toLowerCase())}
+        onChange={e => onChange(e.target.value.toLowerCase())}
         onFocus={e => e.target.select()}
         placeholder={placeholder}
       />

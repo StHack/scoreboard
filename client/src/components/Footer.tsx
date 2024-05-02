@@ -15,9 +15,16 @@ import {
 } from 'styled-system'
 import { cleanStyledSystem, gap, GapProps } from 'styles'
 import { Box } from './Box'
-import { IconAchievement, IconAttempt, IconChallenge, IconCreate, IconGame, IconPromote } from './Icon'
+import {
+  IconAchievement,
+  IconAttempt,
+  IconChallenge,
+  IconCreate,
+  IconGame,
+  IconPromote,
+} from './Icon'
 
-export function Footer () {
+export function Footer() {
   const { isAuthenticated, isAuthorized } = useAuth()
   const {
     gameConfig: { registrationOpened },

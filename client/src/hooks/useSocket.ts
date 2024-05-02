@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import io, { Socket } from 'socket.io-client'
 import { useAuth } from './useAuthentication'
 
-export function useSocket (namespace: string) {
+export function useSocket(namespace: string) {
   const [socket, setSocket] = useState<Socket>()
   const [isConnected, setIsConnected] = useState<boolean>(false)
   const { logOut } = useAuth()
@@ -17,13 +17,13 @@ export function useSocket (namespace: string) {
       setIsConnected(true)
     })
 
-    socket.on('disconnect', () => {
+    socket.on('disconnect', async () => {
       setIsConnected(false)
-      logOut()
+      await logOut()
     })
 
-    socket.on('connect_error', () => {
-      logOut()
+    socket.on('connect_error', async () => {
+      await logOut()
     })
 
     setSocket(socket)
@@ -34,7 +34,7 @@ export function useSocket (namespace: string) {
       socket.disconnect()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [namespace])
 
   return {
     isConnected,

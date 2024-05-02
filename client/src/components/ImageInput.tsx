@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
-import { InputHTMLAttributes, useRef } from 'react'
+import { ChangeEvent, InputHTMLAttributes, useRef } from 'react'
 import { Box } from './Box'
 
-export function ImageInput ({
+export function ImageInput({
   value,
   onChange,
   ...props
@@ -19,7 +19,9 @@ export function ImageInput ({
           const file = e.target.files?.[0]
           const webp = await convertToWebp(file)
           const image = await toBase64(webp)
-          onChange?.({ target: { value: image } } as any)
+          onChange?.({
+            target: { value: image },
+          } as ChangeEvent<HTMLInputElement>)
         }}
       />
 
@@ -29,7 +31,9 @@ export function ImageInput ({
           alt=""
           onClickCapture={e => {
             e.preventDefault()
-            onChange?.({ target: { value: undefined } } as any)
+            onChange?.({
+              target: { value: undefined },
+            } as unknown as ChangeEvent<HTMLInputElement>)
           }}
         />
       )}
@@ -48,7 +52,7 @@ export function ImageInput ({
   )
 }
 
-function toBase64 (file?: File): Promise<string | undefined> {
+function toBase64(file?: File): Promise<string | undefined> {
   if (!file) {
     return Promise.resolve(undefined)
   }
@@ -56,12 +60,13 @@ function toBase64 (file?: File): Promise<string | undefined> {
   return new Promise<string>((resolve, reject) => {
     const reader = new FileReader()
     reader.readAsDataURL(file)
-    reader.onload = () => resolve(reader.result!.toString())
-    reader.onerror = error => reject(error)
+    reader.onload = () => resolve(reader.result?.toString() ?? '')
+    reader.onerror = () =>
+      reject(new Error(reader.error?.message ?? 'Error while reading file'))
   })
 }
 
-function convertToWebp (file?: File): Promise<File | undefined> {
+function convertToWebp(file?: File): Promise<File | undefined> {
   if (!file) {
     return Promise.resolve(undefined)
   }
@@ -72,15 +77,16 @@ function convertToWebp (file?: File): Promise<File | undefined> {
       const canvas = document.createElement('canvas')
       canvas.width = image.naturalWidth
       canvas.height = image.naturalHeight
-      canvas.getContext('2d')!.drawImage(image, 0, 0)
+      canvas.getContext('2d')?.drawImage(image, 0, 0)
       canvas.toBlob(blob => {
         if (!blob) {
           reject(new Error())
+          return
         }
 
         resolve(
-          new File([blob!], 'my-new-name.webp', {
-            type: blob!.type,
+          new File([blob], 'my-new-name.webp', {
+            type: blob.type,
           }),
         )
       }, 'image/webp')

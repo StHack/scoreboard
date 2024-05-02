@@ -66,7 +66,7 @@ export type ButtonProps = StyledButtonProps & {
   responsiveLabel?: boolean
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
-export function Button ({
+export function Button({
   icon: Icon,
   children,
   variant,
@@ -77,6 +77,7 @@ export function Button ({
 }: ButtonProps) {
   const defaultPaddingFix =
     !!Icon && !children && variant !== 'link' ? { px: 2, py: 2 } : {}
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
   const asLink = href ? { as: 'a', href, target: '_blank' } : ({} as any)
 
   return (

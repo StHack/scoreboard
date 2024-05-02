@@ -11,7 +11,7 @@ export type ChallsScoreBoardProps = {
   challsScore: Record<string, ChallengeScore>
   challenges: Challenge[]
 }
-export function ChallsScoreBoard ({
+export function ChallsScoreBoard({
   challsScore,
   challenges,
 }: ChallsScoreBoardProps) {
@@ -50,7 +50,7 @@ type DetailChallPopupProps = {
   challScore: ChallengeScore
   onClose: () => void
 }
-function DetailChallPopup ({
+function DetailChallPopup({
   breakthrough,
   challScore,
   onClose,

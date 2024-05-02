@@ -2,6 +2,9 @@ import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
 import { ChallengeCard } from 'components/ChallengeCard'
+import { ExportJsonButton } from 'components/ExportJsonButton'
+import { IconBreak, IconCreate, IconEdit, IconRepair } from 'components/Icon'
+import { SearchInput } from 'components/SearchInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
 import { Attempt } from 'models/Attempt'
@@ -10,11 +13,8 @@ import { ChallengeScore } from 'models/GameScore'
 import { Message } from 'models/Message'
 import { useState } from 'react'
 import { ChallengeForm } from './ChallengeForm'
-import { IconBreak, IconCreate, IconEdit, IconRepair } from 'components/Icon'
-import { ExportJsonButton } from 'components/ExportJsonButton'
-import { SearchInput } from 'components/SearchInput'
 
-export function ChallengePanel () {
+export function ChallengePanel() {
   const [openEdit, setOpenEdit] = useState<boolean>(false)
   const { challenges, attempts, brokeChallenge, repairChallenge } = useAdmin()
   const [challToEdit, setChallToEdit] = useState<Challenge>()
@@ -96,7 +96,7 @@ type ChallengeBlockProps = {
   onRepairClick: (chall: Challenge) => void
 }
 
-function ChallengeBlock ({
+function ChallengeBlock({
   chall,
   score,
   messages,

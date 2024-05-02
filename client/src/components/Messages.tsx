@@ -10,7 +10,7 @@ type MessagesProps = {
   messages: Message[]
 }
 
-export function Messages ({
+export function Messages({
   title,
   messages,
   ...props
@@ -48,7 +48,7 @@ type MessageBlockProps = {
   hasBeenRead: boolean
   onReadClick: (message: Message) => void
 }
-function MessageBlock ({
+function MessageBlock({
   message,
   hasBeenRead,
   onReadClick,

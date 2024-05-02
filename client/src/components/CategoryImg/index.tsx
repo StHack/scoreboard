@@ -25,7 +25,7 @@ import reverse from './images/reverse.png'
 import shellcode from './images/shellcode.png'
 import web from './images/web.png'
 
-export function categoryToImg (category: Category): string {
+export function categoryToImg(category: Category): string {
   switch (category) {
     case 'backdoor':
       return backdoor
@@ -73,6 +73,6 @@ const Img = styled.img<StyledIconProps>(
 export type CategoryImgProps = StyledIconProps & {
   category: Category
 }
-export function CategoryImg ({ category, ...p }: CategoryImgProps) {
+export function CategoryImg({ category, ...p }: CategoryImgProps) {
   return <Img {...p} src={categoryToImg(category)} title={category} />
 }

@@ -3,7 +3,7 @@ import { useGame } from 'hooks/useGame'
 import { ChallsScoreBoard } from './components/ChallsScoreBoard'
 import { TeamsScoreBoard } from './components/TeamsScoreBoard'
 
-export function ScoreBoard () {
+export function ScoreBoard() {
   const {
     score: { challsScore, teamsScore },
     challenges,

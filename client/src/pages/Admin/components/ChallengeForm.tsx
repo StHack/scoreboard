@@ -21,7 +21,7 @@ export type AdminProps = {
   onClose: () => void
 }
 
-export function ChallengeForm ({ chall, onClose }: AdminProps) {
+export function ChallengeForm({ chall, onClose }: AdminProps) {
   const {
     formProps,
     nameProps,
@@ -49,10 +49,10 @@ export function ChallengeForm ({ chall, onClose }: AdminProps) {
       title={
         isNewChallenge
           ? 'Create a new challenge'
-          : `Edition of challenge "${chall?.name}"`
+          : `Edition of challenge "${chall?.name ?? 'new challenge'}"`
       }
       onCancel={onClose}
-      onValidate={() => ref.current?.requestSubmit() && onClose()}
+      onValidate={() => ref.current?.requestSubmit()}
     >
       <Form ref={ref} {...formProps}>
         <LabelInput label="Name" required>

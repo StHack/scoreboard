@@ -7,7 +7,7 @@ import {
 } from 'hooks/useChallengeSolveDelay'
 import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
-import { SizeProps, SpaceProps, size, space } from 'styled-system'
+import { size, SizeProps, space, SpaceProps } from 'styled-system'
 
 type ChallengeCardProps = {
   challenge: Challenge
@@ -15,7 +15,7 @@ type ChallengeCardProps = {
   currentTeam?: string
   onClick: () => void
 }
-export function ChallengeCard ({
+export function ChallengeCard({
   challenge,
   currentTeam,
   score: { score, achievements },
@@ -217,7 +217,7 @@ export function ChallengeCard ({
   )
 }
 
-function stateToPathShape (openState: ChallState) {
+function stateToPathShape(openState: ChallState) {
   switch (openState) {
     case 'broken':
       return 'broken-egg'
@@ -232,9 +232,8 @@ function stateToPathShape (openState: ChallState) {
 const Image = styled.image<{
   openState: ChallState
 }>`
-  animation-iteration-count: ${p =>
-    p.openState === 'open' ? 1 : 0} !important;
-  clip-path: url(${p => `#${stateToPathShape(p.openState)}-shape`});
+  animation-iteration-count: ${p => p.openState === 'open' ? 1 : 0} !important;
+  clip-path: ${p => `url(#${stateToPathShape(p.openState)}-shape)`};
 `
 Image.defaultProps = {
   x: 0,

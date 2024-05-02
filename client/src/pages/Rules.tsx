@@ -7,7 +7,7 @@ import ReactMarkdown from 'react-markdown'
 import { useNavigate } from 'react-router-dom'
 import { ReactMarkdownRenderers } from 'styles/react-markdown'
 
-export function Rules () {
+export function Rules() {
   const { gameConfig } = useGame()
   const { isAuthenticated, hasReadRules, readRules } = useAuth()
   const navigate = useNavigate()
@@ -31,10 +31,9 @@ export function Rules () {
         backgroundColor="background"
         overflow="hidden"
       >
-        <ReactMarkdown
-          components={ReactMarkdownRenderers}
-          children={rulesMarkdown(gameConfig)}
-        />
+        <ReactMarkdown components={ReactMarkdownRenderers}>
+          {rulesMarkdown(gameConfig)}
+        </ReactMarkdown>
         {isAuthenticated && (
           <Box display="grid" placeContent="center" py="4">
             <ToggleInput
@@ -58,10 +57,9 @@ export function Rules () {
         boxShadow="small"
         backgroundColor="background"
       >
-        <ReactMarkdown
-          components={ReactMarkdownRenderers}
-          children={creditsMarkdown}
-        />
+        <ReactMarkdown components={ReactMarkdownRenderers}>
+          {creditsMarkdown}
+        </ReactMarkdown>
       </Box>
     </Box>
   )
@@ -97,9 +95,7 @@ Where:
   - easy: **1**
   - medium: **2**
   - hard: **3**
-- \`total_teams\` is the total number of teams playing the CTF (Currently: ${
-  gameConfig.teamCount
-})
+- \`total_teams\` is the total number of teams playing the CTF (Currently: ${gameConfig.teamCount})
 - \`solvers\` is the number of teams that solved this challenge
 - \`reward_points\` is the sum of bonus points given by the staff when special challenge is solved
 

@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
 import { InputHTMLAttributes } from 'react'
 import {
-  FlexProps,
-  LayoutProps,
-  SpaceProps,
   flex,
+  FlexProps,
   layout,
+  LayoutProps,
   space,
+  SpaceProps,
 } from 'styled-system'
 
 export type SelectInputValue = {
@@ -25,7 +25,7 @@ export type SelectInputProps = Omit<
     | readonly SelectInputValue[]
 }
 
-export function SelectInput ({
+export function SelectInput({
   predefinedValues,
   placeholder,
   ...props
@@ -38,17 +38,15 @@ export function SelectInput ({
         </option>
       )}
       {predefinedValues.map(entry =>
-        typeof entry === 'string'
-          ? (
+        typeof entry === 'string' ? (
           <option key={entry} value={entry}>
             {entry}
           </option>
-            )
-          : (
+        ) : (
           <option key={entry.value} value={entry.value}>
             {entry.label}
           </option>
-            ),
+        ),
       )}
     </Select>
   )
