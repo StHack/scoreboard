@@ -3,7 +3,6 @@ import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import Popup from 'components/Popup'
 import { TextInput } from 'components/TextInput'
-import { useChallengeSolveDelay } from 'hooks/useChallengeSolveDelay'
 import { useField } from 'hooks/useField'
 import { usePlayer } from 'hooks/usePlayer'
 import { Challenge } from 'models/Challenge'
@@ -55,11 +54,6 @@ export function ChallDescriptionPopup({
     disabled: false,
   })
 
-  const { delayedTimer, openState } = useChallengeSolveDelay(
-    challenge,
-    achievements,
-  )
-
   const myTeamSolved = achievements.find(a => a.teamname === myTeamName)
 
   const latestAchievement = achievements[achievements.length - 1]
@@ -72,7 +66,7 @@ export function ChallDescriptionPopup({
         <Text gridArea="difficulty">{difficulty}</Text>
         <Text gridArea="score">Score: {score}</Text>
 
-        {openState !== 'broken' && (
+        {!challenge.isBroken && (
           <Box as="article" gridArea="desc" my="3">
             <ReactMarkdown
               components={ReactMarkdownRenderers}
@@ -83,7 +77,7 @@ export function ChallDescriptionPopup({
           </Box>
         )}
 
-        {openState === 'broken' && (
+        {challenge.isBroken && (
           <Text gridArea="desc" my="2">
             This challenge is currently considered as broken and cannot be
             completed right now.
@@ -96,7 +90,7 @@ export function ChallDescriptionPopup({
           </Text>
         )}
 
-        {!myTeamSolved && openState === 'open' && difficulty !== 'special' && (
+        {!myTeamSolved && !challenge.isBroken && difficulty !== 'special' && (
           <Box
             as="form"
             gridArea="flag"
@@ -133,12 +127,6 @@ export function ChallDescriptionPopup({
               Submit your flag
             </Button>
           </Box>
-        )}
-
-        {openState === 'delayed' && latestAchievement && (
-          <Text gridArea="state" my="2">
-            {`Team "${latestAchievement.teamname}" just solved this challenge, you need to wait ${delayedTimer} before being able to submit your flag`}
-          </Text>
         )}
 
         {!!messages.length && (

@@ -1,10 +1,6 @@
 import { keyframes, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { categoryToImg } from 'components/CategoryImg'
-import {
-  ChallState,
-  useChallengeSolveDelay,
-} from 'hooks/useChallengeSolveDelay'
 import { Challenge } from 'models/Challenge'
 import { ChallengeScore } from 'models/GameScore'
 import { size, SizeProps, space, SpaceProps } from 'styled-system'
@@ -22,12 +18,9 @@ export function ChallengeCard({
   onClick,
   ...props
 }: ChallengeCardProps & SizeProps) {
-  const { name, img, category } = challenge
-  const { openState, delayedTimer } = useChallengeSolveDelay(
-    challenge,
-    achievements,
-  )
+  const { name, img, category, isBroken } = challenge
   const isSolved = achievements.some(a => a.teamname === currentTeam)
+  const openState: ChallState = isBroken ? 'broken' : 'open'
 
   const theme = useTheme()
 
@@ -38,19 +31,14 @@ export function ChallengeCard({
       onClick={onClick}
       type="button"
       title={
-        openState === 'broken'
+        isBroken
           ? 'This challenge is currently broken'
           : isSolved
             ? `✔ Open challenge "${name}"`
             : `Open challenge "${name}"`
       }
     >
-      <Bird
-        viewBox="0 0 1000 1000"
-        xmlns="http://www.w3.org/2000/svg"
-        openState={openState}
-        delayed={delayedTimer}
-      >
+      <Bird viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <clipPath id="bird-shape" clipPathUnits="objectBoundingBox">
             <path
@@ -62,15 +50,6 @@ export function ChallengeCard({
             <path
               fill="#ffb882ff"
               d="m 0.50000107,0.06544224 c -0.0370223,0 -0.0713081,0.0120014 -0.10256185,0.0321021 L 0.5231851,0.29126132 c 0.00532,0.009578 0.004203,0.0214408 -0.00281,0.0298581 L 0.4450772,0.41147692 0.521581,0.51858268 c 0.008514,0.0119195 0.005753,0.0284845 -0.006166,0.0369983 -0.0119191,0.008513 -0.0284826,0.005752 -0.0369963,-0.006166 L 0.3900109,0.42564549 c -0.00701,-0.009817 -0.006514,-0.023127 0.001208,-0.0323943 L 0.4679859,0.30112829 0.35588647,0.13053732 c -0.0299117,0.028307 -0.0563216,0.0635802 -0.0787561,0.10151127 -0.0535898,0.0906064 -0.0865553,0.19898124 -0.0865553,0.28426924 0,0.17057665 0.13884995,0.3094238 0.30942607,0.3094238 0.17057654,0 0.30942394,-0.13884724 0.30942394,-0.3094238 0,-0.085288 -0.0329636,-0.1936628 -0.0865533,-0.28426924 C 0.66928217,0.14144224 0.59329314,0.06544224 0.50000107,0.06544224 Z"
-            />
-          </clipPath>
-          <clipPath id="sign-shape" clipPathUnits="objectBoundingBox">
-            <path
-              fill="#a7480086"
-              stroke="#210e00"
-              strokeWidth="5"
-              d="m 0.42095898,0.01206538 c -0.005798,1.2215e-4 -0.0120217,8.6597e-4 -0.0186983,0.0022345 -0.0675752,0.02683529 -0.0411495,0.06719896 -0.0340881,0.1040968 L 0.49458721,0.10318084 C 0.48573329,0.05020998 0.45935229,0.01125653 0.42095898,0.01206538 Z m 0.3392962,0.06356728 c -0.00467,3.872e-5 -0.009396,3.3619e-4 -0.0141469,9.0952e-4 C 0.53066681,0.09597353 0.31767776,0.1254091 0.10381294,0.1541223 0.05338439,0.1615673 0.01883081,0.1953513 0.0271553,0.2325789 l 0.0098941,0.044242 0.08711735,-0.006788 -0.08529194,0.0149534 0.03171171,0.14181921 0.04604312,0.002869 -0.04340454,0.00893 0.01420521,0.063526 c 0.0083253,0.0372313 0.05612196,0.0624336 0.10679637,0.056318 0.21418944,-0.0253128 0.4282331,-0.0514953 0.64229291,-0.0775863 0.0506744,-0.006116 0.084983,-0.0412254 0.0766576,-0.0784566 l -0.009989,-0.0446678 -0.0950914,-0.007483 0.0921737,-0.005573 -0.0354839,-0.1586805 -0.15654615,0.0198544 0.15166705,-0.0416788 -0.007003,-0.0313206 C 0.84536048,0.09911856 0.80539849,0.07525829 0.76025518,0.07563266 Z m -0.18588523,0.43776771 -0.1123517,0.0133194 0.0416111,0.22932384 c 0.006796,0.0374539 0.0287747,0.0730132 0.0794516,0.0668974 0.0506795,-0.006116 0.0318398,-0.042974 0.0261224,-0.0805582 z"
-              // d="m 0.43057111,0.0344344 c -0.004665,1.1542e-4 -0.009673,8.1823e-4 -0.0150449,0.0021113 -0.0543719,0.02535573 -0.0331094,0.06349394 -0.0274277,0.09835742 L 0.4898133,0.1205262 C 0.48268932,0.0704759 0.46146284,0.03367015 0.43057111,0.0344344 Z m 0.27300194,0.0600625 c -0.003758,3.659e-5 -0.00756,3.1766e-4 -0.0113828,8.5938e-4 -0.17334688,0.01835999 -0.34472052,0.04617263 -0.51679881,0.07330273 -0.0405754,0.007034 -0.0683777,0.0389558 -0.0616797,0.0741309 l 0.007961,0.0418027 0.0700957,-0.006414 -0.0686269,0.0141289 0.0255156,0.134 0.0370469,0.002711 -0.0349238,0.008438 0.0114297,0.0600234 c 0.006699,0.0351785 0.0451564,0.0589913 0.0859297,0.0532129 0.17233948,-0.0239172 0.34456167,-0.0486561 0.51679685,-0.0733086 0.0407732,-0.005778 0.0683783,-0.0389524 0.0616797,-0.0741309 l -0.008037,-0.0422051 -0.0765117,-0.00707 0.0741641,-0.005266 -0.0285508,-0.14993163 -0.12595898,0.0187598 0.1220332,-0.0393809 -0.005635,-0.0295938 C 0.77204983,0.1166879 0.73989592,0.09414317 0.70357305,0.0944969 Z m -0.14956557,0.41363136 -0.0903996,0.012585 0.0334808,0.21668006 c 0.005468,0.0353889 0.0231525,0.0689876 0.0639277,0.063209 0.0407773,-0.005779 0.0256187,-0.0406046 0.0210184,-0.0761167 z"
             />
           </clipPath>
           <path
@@ -85,18 +64,6 @@ export function ChallengeCard({
             fill="none"
             stroke="none"
           />
-          <path
-            id="sign-main-line"
-            d="M 132.64796,250.89415 756.47239,172.06336 M 104.60239,363.07643 816.35347,275.90777"
-            fill="none"
-            stroke="none"
-          />
-          <path
-            id="sign-clock"
-            d="m 355.49654,482.83859 275.14978,-39.4154"
-            fill="none"
-            stroke="none"
-          />
         </defs>
 
         <path
@@ -105,7 +72,7 @@ export function ChallengeCard({
           fill="#520"
         />
 
-        {(openState === 'open' || openState === 'broken') && !isSolved && (
+        {!isSolved && (
           <g>
             <Image
               // id="chall-image-bg"
@@ -119,32 +86,6 @@ export function ChallengeCard({
               preserveAspectRatio="xMidYMid slice"
               openState={openState}
             />
-          </g>
-        )}
-
-        {openState === 'delayed' && !isSolved && (
-          <g>
-            <Image
-              // id="chall-image"
-              href={img || categoryToImg(category)}
-              preserveAspectRatio="xMidYMid slice"
-              openState={openState}
-            />
-            <path
-              // id="sign"
-              fill="#a7480086"
-              stroke="#210e00"
-              strokeWidth="5"
-              d="m 420.95899,12.06538 c -5.79832,0.122156 -12.02171,0.865972 -18.69834,2.234529 -67.5752,26.835294 -41.1495,67.19896 -34.08814,104.096801 L 494.58722,103.18084 C 485.7333,50.209987 459.3523,11.256529 420.95899,12.06538 Z M 760.2552,75.632666 c -4.66998,0.03872 -9.39621,0.336192 -14.14694,0.909521 C 530.66678,95.973531 317.67773,125.4091 103.8129,154.12231 53.384351,161.56715 18.830771,195.3513 27.155263,232.57887 l 9.89413,44.24202 87.117347,-6.78834 -85.291934,14.95337 31.711703,141.81921 46.043121,2.86912 -43.404534,8.92984 14.205211,63.52595 c 8.3253,37.23127 56.121963,62.43356 106.796373,56.31799 214.18944,-25.31284 428.23311,-51.49529 642.29292,-77.58632 50.67439,-6.11558 84.98296,-41.22536 76.65764,-78.45657 l -9.9888,-44.66784 -95.0914,-7.48288 92.17366,-5.57289 -35.4839,-158.6805 -156.54615,19.85445 151.66705,-41.67883 -7.00307,-31.32061 C 845.3605,99.118562 805.39851,75.258296 760.2552,75.632666 Z m -185.88524,437.767714 -112.3517,13.31941 41.61107,229.32385 c 6.79605,37.45389 28.77467,73.01317 79.45158,66.89738 50.67947,-6.11619 31.8398,-42.974 26.12239,-80.55825 z"
-            />
-            <text fill="#ffffffff" fontSize="80">
-              <textPath xlinkHref="#sign-main-line">
-                Someone solved please wait
-              </textPath>
-            </text>
-            <text fill="#ffffff" fontSize="110">
-              <textPath xlinkHref="#sign-clock">{delayedTimer}</textPath>
-            </text>
           </g>
         )}
 
@@ -217,12 +158,12 @@ export function ChallengeCard({
   )
 }
 
+export type ChallState = 'broken' | 'open'
+
 function stateToPathShape(openState: ChallState) {
   switch (openState) {
     case 'broken':
       return 'broken-egg'
-    case 'delayed':
-      return 'sign'
     case 'open':
     default:
       return 'bird'
@@ -232,7 +173,8 @@ function stateToPathShape(openState: ChallState) {
 const Image = styled.image<{
   openState: ChallState
 }>`
-  animation-iteration-count: ${p => p.openState === 'open' ? 1 : 0} !important;
+  animation-iteration-count: ${p =>
+    p.openState === 'open' ? 1 : 0} !important;
   clip-path: ${p => `url(#${stateToPathShape(p.openState)}-shape)`};
 `
 Image.defaultProps = {
@@ -272,6 +214,7 @@ const CardWrapper = styled.button<SpaceProps & SizeProps>`
   filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
   display: flex;
   flex-direction: column;
+
   :hover ${Image}, :focus ${Image}, :hover ${Flower}, :focus ${Flower} {
     transform-origin: center;
     animation: ${WiggleHighlight} 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97)
@@ -279,10 +222,7 @@ const CardWrapper = styled.button<SpaceProps & SizeProps>`
   }
 `
 
-const Bird = styled.svg<{
-  openState: ChallState
-  delayed?: string
-}>`
+const Bird = styled.svg`
   width: 100%;
   height: 100%;
   max-width: ${p => p.theme.sizes[9]};
