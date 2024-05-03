@@ -92,11 +92,7 @@ function computeScore(
   config: GameConfig,
   solvedCount: number = 0,
 ): number {
-  return (
-    config.baseChallScore *
-    DifficultyValue[challenge.difficulty] *
-    (config.teamCount - solvedCount)
-  )
+  return config.baseChallScore * (config.teamCount - solvedCount)
 }
 
 export const DifficultyValue: Record<Difficulty, number> = {

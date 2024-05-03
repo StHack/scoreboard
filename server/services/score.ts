@@ -1,6 +1,5 @@
 import { Achievement } from 'models/Achievement.js'
 import { Challenge } from 'models/Challenge.js'
-import { Difficulty } from 'models/Difficulty.js'
 import { GameConfig } from 'models/GameConfig.js'
 import { ChallengeScore, GameScore, TeamScore } from 'models/GameScore.js'
 import { Reward } from 'models/Reward.js'
@@ -93,16 +92,5 @@ function computeScore(
   config: GameConfig,
   solvedCount: number = 0,
 ): number {
-  return (
-    config.baseChallScore *
-    DifficultyValue[challenge.difficulty] *
-    (config.teamCount - solvedCount)
-  )
-}
-
-const DifficultyValue: Record<Difficulty, number> = {
-  special: 0,
-  easy: 1,
-  medium: 2,
-  hard: 3,
+  return config.baseChallScore * (config.teamCount - solvedCount)
 }
