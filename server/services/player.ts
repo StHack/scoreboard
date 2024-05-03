@@ -13,8 +13,6 @@ import { emitEventLog } from './events.js'
 import { registerSocketConnectivityChange } from './serveractivity.js'
 import { ServerConfig } from './serverconfig.js'
 
-const delayTimeInMinutes = 10
-
 export function registerPlayerNamespace(
   adminIo: Namespace,
   gameIo: Namespace,
@@ -79,15 +77,6 @@ export function registerPlayerNamespace(
         const achievements = await getChallengeAchievement(challengeId)
         if (achievements.find(a => a.teamname === user.team)) {
           callback({ error: 'Already solved by your team!' })
-          return
-        }
-
-        const lastSolvedDelayer = new Date()
-        lastSolvedDelayer.setMinutes(
-          lastSolvedDelayer.getMinutes() - delayTimeInMinutes,
-        )
-        if (achievements.find(a => a.createdAt > lastSolvedDelayer)) {
-          callback({ error: `Can't be solved now` })
           return
         }
 

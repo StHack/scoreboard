@@ -2,8 +2,6 @@ import { countTeam } from 'db/UsersDb.js'
 import { GameConfig } from 'models/GameConfig.js'
 import { RedisClientType } from 'redis'
 
-const delayTimeInMinutes = 10
-
 export class ServerConfig {
   redisClient: RedisClientType
 
@@ -61,7 +59,6 @@ export class ServerConfig {
     return {
       registrationOpened: !registrationClosed,
       gameOpened: gameOpened,
-      solveDelay: delayTimeInMinutes * 60 * 1000,
       teamCount,
       baseChallScore: 50,
       teamSize,

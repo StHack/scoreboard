@@ -101,10 +101,6 @@ This means you should expect the challenge points and your score to:
 
 There is no bonus points for breakthrough.
 
-When a team solves a challenge, it is locked for **${
-  gameConfig.solveDelay / 60 / 1000
-} minutes**. During this time, no one will be able to submit their proposals.
-
 ## Help/Questions
 
 You can come and ask us your questions directly at the staff desk.

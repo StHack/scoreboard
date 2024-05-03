@@ -27,7 +27,6 @@ const defaultGameConfig = {
   registrationOpened: false,
   gameOpened: false,
   baseChallScore: 0,
-  solveDelay: 0,
   teamCount: 0,
   teamSize: 0,
 }
