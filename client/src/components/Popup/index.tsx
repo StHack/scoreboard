@@ -27,10 +27,14 @@ export default function Popup({
   children,
   customAction,
   minHeightRequired,
+  px = [2, 3, 5],
+  py = [3, 3, 5],
   ...rest
 }: PopupProps & SpaceProps) {
   return (
     <PopupBackground
+      px={px}
+      py={py}
       {...rest}
       onClick={event =>
         event.currentTarget === event.target &&
@@ -69,9 +73,4 @@ export default function Popup({
       </PopupContainer>
     </PopupBackground>
   )
-}
-
-Popup.defaultProps = {
-  px: [2, 3, 5],
-  py: [3, 3, 5],
 }

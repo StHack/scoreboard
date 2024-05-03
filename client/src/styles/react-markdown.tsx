@@ -34,16 +34,7 @@ const Img = styled.img`
 
 const Text = styled('p', cleanStyledSystem)<
   SpaceProps & FontSizeProps & TextAlignProps & ColorProps
->`
-  ${textAlign}
-  ${fontSize}
-  ${space}
-  ${color}
-`
-Text.defaultProps = {
-  my: '2',
-  fontSize: '2',
-}
+>(textAlign, fontSize, space, color)
 
 const Code = styled.code`
   padding: ${p => p.theme.space[1]};
@@ -54,11 +45,11 @@ const Code = styled.code`
 
 export const ReactMarkdownRenderers: Components = {
   h1: p => <Text as="h1" my="4" fontSize="3" textAlign="center" {...p} />,
-  h2: p => <Text as="h2" my="3" {...p} />,
-  h3: p => <Text as="h3" {...p} />,
-  h4: p => <Text as="h4" {...p} />,
-  h5: p => <Text as="h5" {...p} />,
-  h6: p => <Text as="h6" {...p} />,
+  h2: p => <Text as="h2" my="3" fontSize="2" {...p} />,
+  h3: p => <Text as="h3" my="2" fontSize="2" {...p} />,
+  h4: p => <Text as="h4" my="2" fontSize="2" {...p} />,
+  h5: p => <Text as="h5" my="2" fontSize="2" {...p} />,
+  h6: p => <Text as="h6" my="2" fontSize="2" {...p} />,
   p: p => <Text fontSize="0" textAlign="initial" {...p} />,
   // eslint-disable-next-line jsx-a11y/anchor-has-content
   a: p => <a {...p} target="_blank" rel="noopener noreferrer" />,
@@ -67,7 +58,9 @@ export const ReactMarkdownRenderers: Components = {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
   code: Code as any,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  blockquote: p => <Text as="blockquote" color="red" {...(p as any)} />,
+  blockquote: p => (
+    <Text as="blockquote" my="2" fontSize="2" color="red" {...(p as any)} />
+  ),
   // listItem: ListItem,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
   img: Img as any,

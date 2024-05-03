@@ -69,10 +69,18 @@ export type ButtonProps = StyledButtonProps & {
 export function Button({
   icon: Icon,
   children,
-  variant,
   href,
   responsiveLabel,
   size = 1,
+  variant = 'primary',
+  px = 3,
+  py = 2,
+  fontWeight = 1,
+  fontSize = 1,
+  borderWidth = 'thick',
+  borderRadius = 4,
+  placeItems = 'center',
+  placeContent = 'center',
   ...rest
 }: ButtonProps) {
   const defaultPaddingFix =
@@ -81,7 +89,21 @@ export function Button({
   const asLink = href ? { as: 'a', href, target: '_blank' } : ({} as any)
 
   return (
-    <Btn variant={variant} gap="2" {...asLink} {...rest} {...defaultPaddingFix}>
+    <Btn
+      variant={variant}
+      px={px}
+      py={py}
+      fontWeight={fontWeight}
+      fontSize={fontSize}
+      borderWidth={borderWidth}
+      borderRadius={borderRadius}
+      placeItems={placeItems}
+      placeContent={placeContent}
+      gap="2"
+      {...asLink}
+      {...rest}
+      {...defaultPaddingFix}
+    >
       {Icon && <Icon size={size} color="currentColor" />}
       <Box
         as="span"
@@ -93,16 +115,4 @@ export function Button({
       </Box>
     </Btn>
   )
-}
-
-Button.defaultProps = {
-  variant: 'primary',
-  px: 3,
-  py: 2,
-  fontWeight: 1,
-  fontSize: 1,
-  borderWidth: 'thick',
-  borderRadius: 4,
-  placeItems: 'center',
-  placeContent: 'center',
 }

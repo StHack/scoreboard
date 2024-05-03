@@ -1,3 +1,4 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Box } from 'components/Box'
 import {
@@ -82,18 +83,20 @@ export function Admin() {
 
 const Link = styled(NavLink)<
   SpaceProps & FontSizeProps & DisplayProps & FlexboxProps & GapProps
->`
-  ${space}
-  ${fontSize}
-  ${display}
-  ${flexbox}
-  ${gap}
-  text-decoration: none;
+>(
+  space,
+  fontSize,
+  display,
+  flexbox,
+  gap,
+  css`
+    text-decoration: none;
 
-  &.active {
-    text-decoration: underline;
-  }
-`
+    &.active {
+      text-decoration: underline;
+    }
+  `,
+)
 Link.defaultProps = {
   display: 'flex',
   flexDirection: ['column', 'row'],
