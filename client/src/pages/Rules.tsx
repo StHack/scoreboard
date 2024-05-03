@@ -83,18 +83,13 @@ const rulesMarkdown = (gameConfig: GameConfig) => `
 This year the scoring is dynamic, the formula is the following:
 
 \`\`\`text
-chall_points = (base_score * base_difficulty) * (total_teams - solvers)
+chall_points = base_score * (total_teams - solvers)
 team_points = chall_point + reward_points
 \`\`\`
 
 Where:
 
 - \`base_score\` is the constant **${gameConfig.baseChallScore}**
-- \`base_difficulty\` is
-  - special: **0**
-  - easy: **1**
-  - medium: **2**
-  - hard: **3**
 - \`total_teams\` is the total number of teams playing the CTF (Currently: ${gameConfig.teamCount})
 - \`solvers\` is the number of teams that solved this challenge
 - \`reward_points\` is the sum of bonus points given by the staff when special challenge is solved
