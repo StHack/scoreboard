@@ -24,6 +24,8 @@ import JsonSvg from './images/json.svg?react'
 import LogoSvg from './images/Logo.svg?react'
 import Logo2023Svg from './images/logo-2023.svg?react'
 import Logo2023IconSvg from './images/logo-2023-icon.svg?react'
+import Logo2024Svg from './images/logo-2024.svg?react'
+import LogoDogSvg from './images/logo-dog.svg?react'
 import LogoPigeonSvg from './images/logo-pigeon.svg?react'
 import LogoutSvg from './images/logout.svg?react'
 import PasswordSvg from './images/password.svg?react'
@@ -82,6 +84,8 @@ export const IconGame = BaseSvg(GameSvg)
 export const IconJson = BaseSvg(JsonSvg)
 export const IconLogo2023 = BaseSvg(Logo2023Svg)
 export const IconLogo2023Icon = BaseSvg(Logo2023IconSvg)
+export const IconLogo2024 = BaseSvg(Logo2024Svg)
+export const IconLogoDog = BaseSvg(LogoDogSvg)
 export const IconLogoPigeon = BaseSvg(LogoPigeonSvg)
 export const IconLogout = BaseSvg(LogoutSvg)
 export const IconPassword = BaseSvg(PasswordSvg)

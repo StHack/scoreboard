@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
-import { Banner, IconLogo2023 } from 'components/Icon'
+import { Banner, IconLogo2024 } from 'components/Icon'
 import { LabelInput } from 'components/LabelInput'
 import { TextInput } from 'components/TextInput'
 import { useGame } from 'hooks/useGame'
@@ -60,7 +60,7 @@ const Form = styled.form`
   flex-direction: column;
 `
 
-const Logo = styled(IconLogo2023)`
+const Logo = styled(IconLogo2024)`
   filter: drop-shadow(-1px 6px 3px hsl(0deg 0% 0% / 80%));
 `
 
