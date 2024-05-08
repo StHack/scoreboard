@@ -26,6 +26,7 @@ const AppBlock = styled.div`
 const Container = styled.div`
   overflow: auto;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
 `
 
 export default function App() {

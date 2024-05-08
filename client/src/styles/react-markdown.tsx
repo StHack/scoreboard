@@ -41,6 +41,7 @@ const Code = styled.code`
   background-color: ${p => p.theme.colors.greys[0]};
   white-space: pre-wrap;
   line-height: 2em;
+  overflow-x: auto;
 `
 
 export const ReactMarkdownRenderers: Components = {
@@ -57,8 +58,8 @@ export const ReactMarkdownRenderers: Components = {
   ol: p => <UnorderedList {...p} />,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
   code: Code as any,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   blockquote: p => (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <Text as="blockquote" my="2" fontSize="2" color="red" {...(p as any)} />
   ),
   // listItem: ListItem,
