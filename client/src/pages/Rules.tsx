@@ -110,5 +110,5 @@ Follow us on twitter at <https://twitter.com/sth4ck>
 const creditsMarkdown = `
 # Credits
 
-- Background Image (Hand drawn flat design mountain landscape) by [Freepik](https://www.freepik.com/free-vector/hand-drawn-flat-design-mountain-landscape_20008383.htm#query=svg%20background%20nature&position=17&from_view=search&track=ais)
+- Background Image (Desert landscape for video conferencing) by [Freepik](https://www.freepik.com/free-vector/desert-landscape-video-conferencing_9702292.htm#fromView=search&page=1&position=25&uuid=db343912-2fc4-4ebe-b524-9de31cb44cce)
 `

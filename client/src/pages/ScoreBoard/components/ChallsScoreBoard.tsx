@@ -31,7 +31,7 @@ export function ChallsScoreBoard({
             onClick={() =>
               setSelectedBreakthrough(challsScore[c._id].achievements[0])
             }
-            size="6"
+            size="12"
           />
         ))}
       {selectedBreakthrough && (

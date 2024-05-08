@@ -16,6 +16,7 @@
     "@emotion/babel-plugin": "^11.11.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@rive-app/react-canvas": "^4.9.2",
     "@styled-system/css": "^5.1.5",
     "@styled-system/should-forward-prop": "^5.1.5",
     "@uiw/react-md-editor": "^4.0.4",

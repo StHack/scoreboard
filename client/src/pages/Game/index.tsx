@@ -147,6 +147,7 @@ export function Game() {
                   score={challScore[c._id]}
                   currentTeam={myTeamName}
                   onClick={() => setSelectedChall(c)}
+                  size="13"
                 />
               ))}
             </Fragment>
