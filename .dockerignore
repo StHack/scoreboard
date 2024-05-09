@@ -1,5 +1,8 @@
-# See https://docs.docker.com/engine/reference/builder/#dockerignore-file for more about ignoring files.
+# See <https://docs.docker.com/engine/reference/builder/#dockerignore-file> for more about ignoring files
+
+node_modules
 
 */node_modules
 */build
 */.env
+*/dist

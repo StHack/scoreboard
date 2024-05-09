@@ -1,6 +1,6 @@
 {
-  "name": "sthack-server",
-  "version": "1.0.0",
+  "name": "@sthack/scoreboard-server",
+  "version": "4.0.0",
   "description": "",
   "type": "module",
   "main": "main.ts",

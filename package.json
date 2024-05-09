@@ -1,0 +1,24 @@
+{
+  "name": "scoreboard",
+  "version": "4.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "concurrently -c auto \"npm:start-*\"",
+    "start-server": "npm run start -w server",
+    "start-client": "npm run start -w client",
+    "prod": "npm run prod -w server",
+    "build": "npm run build --workspaces --if-present",
+    "ts-check": "npm run ts-check --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "lint:fix": "npm run lint:fix --workspaces --if-present",
+    "format": "npm run format --workspaces --if-present"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
