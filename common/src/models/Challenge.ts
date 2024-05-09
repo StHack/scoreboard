@@ -1,4 +1,5 @@
-import { Difficulty } from './Difficulty.ts'
+import { Category } from './Category.js'
+import { Difficulty } from './Difficulty.js'
 
 export type BaseChallenge = {
   name: string
@@ -6,8 +7,7 @@ export type BaseChallenge = {
   img: string
   author: string
   flag?: string
-  salt: string
-  category: string
+  category: Category
   difficulty: Difficulty
 }
 

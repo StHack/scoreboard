@@ -1,4 +1,5 @@
 /* eslint-disable no-restricted-globals */
+import { User } from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import { ExportJsonButton } from 'components/ExportJsonButton'
@@ -13,7 +14,6 @@ import {
 import { SearchInput } from 'components/SearchInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
-import { User } from 'models/User'
 import { useState } from 'react'
 import { AlignSelfProps, GridAreaProps, JustifySelfProps } from 'styled-system'
 import { UserEditMode, UserForm } from './UserForm'

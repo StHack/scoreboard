@@ -1,10 +1,10 @@
+import { computeGameScore } from '@sthack/scoreboard-common'
 import { listAchievement } from 'db/AchievementDb.js'
 import { listAttemptAfter } from 'db/AttemptDb.js'
 import { listChallenge } from 'db/ChallengeDb.js'
 import { listReward } from 'db/RewardDb.js'
 import { listTeam } from 'db/UsersDb.js'
 import { IRouter } from 'express'
-import { computeGameScore } from './score.js'
 import { ServerConfig } from './serverconfig.js'
 
 export function registerCtfTime(app: IRouter, serverConfig: ServerConfig) {

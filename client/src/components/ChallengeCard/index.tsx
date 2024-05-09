@@ -9,9 +9,8 @@ import {
   Rive,
   useRive,
 } from '@rive-app/react-canvas'
+import { Challenge, ChallengeScore } from '@sthack/scoreboard-common'
 import { categoryToImg } from 'components/CategoryImg'
-import { Challenge } from 'models/Challenge'
-import { ChallengeScore } from 'models/GameScore'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { layout, LayoutProps, space, SpaceProps } from 'styled-system'
 

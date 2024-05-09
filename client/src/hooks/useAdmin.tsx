@@ -1,10 +1,14 @@
-import { Achievement } from 'models/Achievement'
-import { Attempt } from 'models/Attempt'
-import { BaseChallenge, Challenge } from 'models/Challenge'
-import { BaseReward, Reward } from 'models/Reward'
-import { ServerActivityStatistics } from 'models/ServerActivityStatistics'
-import { ServerError } from 'models/ServerError'
-import { User } from 'models/User'
+import {
+  Achievement,
+  Attempt,
+  BaseChallenge,
+  BaseReward,
+  Challenge,
+  Reward,
+  ServerActivityStatistics,
+  ServerError,
+  User,
+} from '@sthack/scoreboard-common'
 import {
   createContext,
   PropsWithChildren,

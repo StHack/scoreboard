@@ -1,7 +1,8 @@
-import { Achievement } from './Achievement'
-import { Reward } from './Reward'
+import { Achievement } from './Achievement.js'
+import { Reward } from './Reward.js'
 
 export type ChallengeScore = {
+  name: string
   score: number
   achievements: Achievement[]
 }

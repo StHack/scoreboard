@@ -1,3 +1,4 @@
+import { CallbackOrError, User } from '@sthack/scoreboard-common'
 import {
   getChallengeAchievement,
   registerAchievement,
@@ -6,8 +7,6 @@ import { registerAttempt } from 'db/AttemptDb.js'
 import { checkChallenge, getChallenge } from 'db/ChallengeDb.js'
 import debug from 'debug'
 import { Request } from 'express'
-import { CallbackOrError } from 'models/Common.js'
-import { User } from 'models/User.js'
 import { Namespace } from 'socket.io'
 import { emitEventLog } from './events.js'
 import { registerSocketConnectivityChange } from './serveractivity.js'

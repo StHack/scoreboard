@@ -1,6 +1,6 @@
+import { Message } from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
 import { usePlayer } from 'hooks/usePlayer'
-import { Message } from 'models/Message'
 import { BorderRadiusProps, GridAreaProps, SpaceProps } from 'styled-system'
 import { Button } from './Button'
 import { IconValidate } from './Icon'

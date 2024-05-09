@@ -1,4 +1,4 @@
-import { User } from 'models/User'
+import { User } from '@sthack/scoreboard-common'
 import {
   createContext,
   PropsWithChildren,

@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { Category } from 'models/Category'
+import { Category } from '@sthack/scoreboard-common'
 import {
   gridArea,
   GridAreaProps,

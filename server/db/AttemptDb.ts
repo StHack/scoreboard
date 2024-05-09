@@ -1,4 +1,4 @@
-import { Attempt, BaseAttempt } from 'models/Attempt.js'
+import { Attempt, BaseAttempt } from '@sthack/scoreboard-common'
 import { model, Schema } from 'mongoose'
 import { removeMongoPropertiesWithOptions } from './main.js'
 

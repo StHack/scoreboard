@@ -1,3 +1,14 @@
+import {
+  Attempt,
+  BaseChallenge,
+  BaseReward,
+  Callback,
+  CallbackOrError,
+  Challenge,
+  Reward,
+  ServerActivityStatistics,
+  User,
+} from '@sthack/scoreboard-common'
 import { removeAchievement } from 'db/AchievementDb.js'
 import { listAttempt } from 'db/AttemptDb.js'
 import {
@@ -10,12 +21,6 @@ import { createReward, removeReward } from 'db/RewardDb.js'
 import { listUser, removeUser, updateUser } from 'db/UsersDb.js'
 import debug from 'debug'
 import { Request } from 'express'
-import { Attempt } from 'models/Attempt.js'
-import { BaseChallenge, Challenge } from 'models/Challenge.js'
-import { Callback, CallbackOrError } from 'models/Common.js'
-import { BaseReward, Reward } from 'models/Reward.js'
-import { ServerActivityStatistics } from 'models/ServerActivityStatistics.js'
-import { User } from 'models/User.js'
 import { Namespace } from 'socket.io'
 import { emitEventLog } from './events.js'
 import {

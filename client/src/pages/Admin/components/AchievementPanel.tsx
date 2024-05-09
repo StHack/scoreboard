@@ -1,3 +1,4 @@
+import { Achievement, Reward } from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import { ExportJsonButton } from 'components/ExportJsonButton'
@@ -6,8 +7,6 @@ import { SearchInput } from 'components/SearchInput'
 import { ColumnDefinition, Table } from 'components/Table'
 import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
-import { Achievement } from 'models/Achievement'
-import { Reward } from 'models/Reward'
 import { useState } from 'react'
 import { RewardForm } from './RewardForm'
 

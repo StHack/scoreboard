@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
+import { User } from '@sthack/scoreboard-common'
 import { LabelInput } from 'components/LabelInput'
 import Popup from 'components/Popup'
 import { SelectInput } from 'components/SelectInput'
 import { TextInput } from 'components/TextInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useField } from 'hooks/useField'
-import { User } from 'models/User'
 import { useRef } from 'react'
 
 export type UserEditMode = 'password' | 'team'

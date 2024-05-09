@@ -1,5 +1,6 @@
 import { css, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
+import { ChallengeScore, TeamScore } from '@sthack/scoreboard-common'
 import { Box, BoxProps, StyledBoxComposed } from 'components/Box'
 import { IconLogo2023Icon } from 'components/Icon'
 import {
@@ -12,7 +13,6 @@ import {
   useMotionValue,
   Variants,
 } from 'framer-motion'
-import { ChallengeScore, TeamScore } from 'models/GameScore'
 import { useMemo, useState } from 'react'
 import { cleanStyledSystemOnly } from 'styles'
 

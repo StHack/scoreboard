@@ -1,11 +1,11 @@
-import { BaseMessage, Message } from 'models/Message.js'
+import { BaseMessage, Message } from '@sthack/scoreboard-common'
 import { model, Schema } from 'mongoose'
 import { removeMongoPropertiesWithOptions } from './main.js'
 
 const schema = new Schema<Message>(
   {
     content: { type: String, required: true },
-    challengeId: { type: String },
+    challengeId: { type: Schema.ObjectId, ref: 'Challenge' },
   },
   { timestamps: true },
 )

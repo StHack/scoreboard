@@ -1,10 +1,17 @@
+import {
+  BaseChallenge,
+  Challenge,
+  Difficulties,
+} from '@sthack/scoreboard-common'
 import { createHash, randomUUID } from 'crypto'
-import { BaseChallenge, Challenge } from 'models/Challenge.js'
-import { Difficulties } from 'models/Difficulty.js'
 import { model, Schema, ToObjectOptions } from 'mongoose'
 import { removeMongoPropertiesWithOptions } from './main.js'
 
-const schema = new Schema<Challenge>({
+type DbChallenge = Challenge & {
+  salt: string
+}
+
+const schema = new Schema<DbChallenge>({
   name: { type: String, required: true },
   description: { type: String, required: true },
   img: { type: String },
@@ -17,7 +24,7 @@ const schema = new Schema<Challenge>({
   isBroken: { type: Boolean, required: true },
 })
 
-const ChallengeModel = model<Challenge>('Challenge', schema)
+const ChallengeModel = model<DbChallenge>('Challenge', schema)
 
 const flagHasher = (password: string | undefined, salt: string) =>
   password &&

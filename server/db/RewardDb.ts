@@ -1,4 +1,4 @@
-import { BaseReward, Reward } from 'models/Reward.js'
+import { BaseReward, Reward } from '@sthack/scoreboard-common'
 import { model, Schema } from 'mongoose'
 import { removeMongoPropertiesWithOptions } from './main.js'
 

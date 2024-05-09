@@ -1,8 +1,8 @@
-import { Achievement } from 'models/Achievement.js'
-import { Challenge } from 'models/Challenge.js'
-import { GameConfig } from 'models/GameConfig.js'
-import { ChallengeScore, GameScore, TeamScore } from 'models/GameScore.js'
-import { Reward } from 'models/Reward.js'
+import { Achievement } from '../models/Achievement.js'
+import { Challenge } from '../models/Challenge.js'
+import { GameConfig } from '../models/GameConfig.js'
+import { ChallengeScore, GameScore, TeamScore } from '../models/GameScore.js'
+import { Reward } from '../models/Reward.js'
 
 export function computeGameScore(
   achievements: Achievement[],
@@ -39,7 +39,7 @@ function computeChallengeScore(
   config: GameConfig,
 ): ChallengeScore {
   const a = achievements
-    .filter(a => a.challengeId == challenge._id)
+    .filter(a => a.challengeId === challenge._id)
     .sort((x, y) => x.createdAt.getTime() - y.createdAt.getTime())
 
   return {
@@ -78,7 +78,7 @@ function computeTeamScore(
         .reduce((agg, cs) => agg + cs.score, 0) +
       rewardAcquired.map(r => r.value).reduce((acc, cur) => acc + cur, 0),
     breakthroughs: Object.values(challsScore)
-      .map(cs => cs.achievements[0])
+      .map(cs => cs.achievements[0] ?? {})
       .filter(a => a.teamname === team),
     solved: Object.values(challsScore)
       .flatMap(cs => cs.achievements)
