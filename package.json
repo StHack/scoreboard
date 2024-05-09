@@ -13,14 +13,15 @@
     "ts-check": "npm run ts-check --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "lint:fix": "npm run lint:fix --workspaces --if-present",
-    "format": "npm run format --workspaces --if-present"
+    "format": "prettier -w ."
   },
   "workspaces": [
     "common",
     "client",
     "server"
   ],
-  "dependencies": {
-    "concurrently": "^8.2.2"
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "prettier": "^3.2.5"
   }
 }
