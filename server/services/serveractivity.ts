@@ -42,27 +42,29 @@ export function getServerActivityStatistics(
 
     const { username, team } = req.user
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!statistics.teams[team]) {
-      statistics.teams[team] = {
+    let teamStat = statistics.teams[team]
+    if (!teamStat) {
+      teamStat = {
         count: 0,
         users: {},
       }
 
+      statistics.teams[team] = teamStat
       statistics.teamCount++
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!statistics.teams[team].users[username]) {
-      statistics.teams[team].users[username] = {
+    let userStat = teamStat.users[username]
+    if (!userStat) {
+      userStat = {
         sockets: 0,
       }
 
-      statistics.teams[team].count++
+      teamStat.users[username] = userStat
+      teamStat.count++
       statistics.userCount++
     }
 
-    statistics.teams[team].users[username].sockets++
+    userStat.sockets++
   }
 
   statistics.admins = [

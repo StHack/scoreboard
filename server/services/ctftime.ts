@@ -37,7 +37,7 @@ export function registerCtfTime(app: IRouter, serverConfig: ServerConfig) {
             ...acc,
             [challenges.find(c => c._id == cur.challengeId)?.name ??
             cur.challengeId]: {
-              points: gameScore.challsScore[cur.challengeId].score,
+              points: gameScore.challsScore[cur.challengeId]?.score ?? 0,
               time: cur.createdAt.getTime(),
             },
           }),
