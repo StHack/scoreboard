@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { Categories, Challenge, Difficulties } from '@sthack/scoreboard-common'
 import MDEditor from '@uiw/react-md-editor'
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
@@ -11,9 +12,6 @@ import { SelectInput } from 'components/SelectInput'
 import { TextInput } from 'components/TextInput'
 import { useChallengeForm } from 'hooks/useChallengeForm'
 import { useThemeMode } from 'hooks/useThemeMode'
-import { Categories } from 'models/Category'
-import { Challenge } from 'models/Challenge'
-import { Difficulties } from 'models/Difficulty'
 import { useRef, useState } from 'react'
 
 export type AdminProps = {
@@ -104,7 +102,7 @@ export function ChallengeForm({ chall, onClose }: AdminProps) {
             challenge={preview}
             messages={[]}
             onClose={() => setShowPreview(false)}
-            score={{ achievements: [], score: 100 }}
+            score={{ name: '', achievements: [], score: 100 }}
             readonly
           />
         )}

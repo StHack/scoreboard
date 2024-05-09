@@ -1,4 +1,4 @@
-import { CreateUser, LoginCredentials, User } from 'models/User'
+import { CreateUser, LoginCredentials, User } from '@sthack/scoreboard-common'
 
 type RegisterResponse = {
   ok: boolean

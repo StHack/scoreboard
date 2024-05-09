@@ -1,10 +1,12 @@
+import {
+  Achievement,
+  Challenge,
+  ChallengeScore,
+} from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
 import { ChallengeCard } from 'components/ChallengeCard'
 import Popup from 'components/Popup'
 import { ColumnDefinition, Table } from 'components/Table'
-import { Achievement } from 'models/Achievement'
-import { Challenge } from 'models/Challenge'
-import { ChallengeScore } from 'models/GameScore'
 import { useState } from 'react'
 
 export type ChallsScoreBoardProps = {

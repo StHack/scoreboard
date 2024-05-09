@@ -1,11 +1,11 @@
 import { useTheme } from '@emotion/react'
+import { Challenge } from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
 import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
 import { ChallengeCard } from 'components/ChallengeCard'
 import { Messages } from 'components/Messages'
 import { useGame } from 'hooks/useGame'
 import { usePlayer } from 'hooks/usePlayer'
-import { Challenge } from 'models/Challenge'
 import { Fragment, useEffect, useState } from 'react'
 import {
   getGroup,

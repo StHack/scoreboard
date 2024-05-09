@@ -1,4 +1,4 @@
-import { Message } from 'models/Message'
+import { Message } from '@sthack/scoreboard-common'
 import { createContext, PropsWithChildren, useContext, useState } from 'react'
 import { useAuth } from './useAuthentication'
 import { useGame } from './useGame'

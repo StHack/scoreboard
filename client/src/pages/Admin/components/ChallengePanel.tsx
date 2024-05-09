@@ -1,3 +1,9 @@
+import {
+  Attempt,
+  Challenge,
+  ChallengeScore,
+  Message,
+} from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
@@ -7,10 +13,6 @@ import { IconBreak, IconCreate, IconEdit, IconRepair } from 'components/Icon'
 import { SearchInput } from 'components/SearchInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
-import { Attempt } from 'models/Attempt'
-import { Challenge } from 'models/Challenge'
-import { ChallengeScore } from 'models/GameScore'
-import { Message } from 'models/Message'
 import { useState } from 'react'
 import { ChallengeForm } from './ChallengeForm'
 

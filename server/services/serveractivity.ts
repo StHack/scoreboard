@@ -1,5 +1,5 @@
+import { ServerActivityStatistics } from '@sthack/scoreboard-common'
 import { Request } from 'express'
-import { ServerActivityStatistics } from 'models/ServerActivityStatistics.js'
 import { Namespace, Socket } from 'socket.io'
 
 export function registerSocketConnectivityChange(

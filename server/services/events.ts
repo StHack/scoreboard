@@ -1,17 +1,19 @@
+import {
+  Achievement,
+  Challenge,
+  computeGameScore,
+  Reward,
+  TeamScore,
+} from '@sthack/scoreboard-common'
 import { listAchievement } from 'db/AchievementDb.js'
 import { listChallenge } from 'db/ChallengeDb.js'
 import { listReward } from 'db/RewardDb.js'
 import { listTeam } from 'db/UsersDb.js'
 import debug from 'debug'
-import { Achievement } from 'models/Achievement.js'
-import { Challenge } from 'models/Challenge.js'
-import { TeamScore } from 'models/GameScore.js'
-import { Reward } from 'models/Reward.js'
 import { Namespace } from 'socket.io'
 import { discordConfig } from 'sthack-config.js'
 import { setTimeout } from 'timers/promises'
 import { sendMessageToDiscord } from './discord.js'
-import { computeGameScore } from './score.js'
 import { ServerConfig } from './serverconfig.js'
 
 const logger = debug('sthack:events')

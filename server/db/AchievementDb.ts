@@ -1,4 +1,4 @@
-import { Achievement, BaseAchievement } from 'models/Achievement.js'
+import { Achievement, BaseAchievement } from '@sthack/scoreboard-common'
 import { model, Schema } from 'mongoose'
 import { removeMongoPropertiesWithOptions } from './main.js'
 

@@ -1,9 +1,12 @@
-import { Achievement } from 'models/Achievement'
-import { Challenge } from 'models/Challenge'
-import { GameConfig } from 'models/GameConfig'
-import { GameScore } from 'models/GameScore'
-import { Message } from 'models/Message'
-import { Reward } from 'models/Reward'
+import {
+  Achievement,
+  Challenge,
+  computeGameScore,
+  GameConfig,
+  GameScore,
+  Message,
+  Reward,
+} from '@sthack/scoreboard-common'
 import {
   createContext,
   PropsWithChildren,
@@ -11,7 +14,6 @@ import {
   useEffect,
   useState,
 } from 'react'
-import { computeGameScore } from 'services/score'
 import { useSocket } from './useSocket'
 
 export type GameContext = {

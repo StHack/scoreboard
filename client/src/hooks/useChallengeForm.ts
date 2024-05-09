@@ -1,6 +1,9 @@
-import { Category } from 'models/Category'
-import { BaseChallenge, Challenge } from 'models/Challenge'
-import { Difficulty } from 'models/Difficulty'
+import {
+  BaseChallenge,
+  Category,
+  Challenge,
+  Difficulty,
+} from '@sthack/scoreboard-common'
 import { ChangeEvent, useState } from 'react'
 import { useAdmin } from './useAdmin'
 import { useAuth } from './useAuthentication'

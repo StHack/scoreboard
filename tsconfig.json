@@ -1,0 +1,22 @@
+{
+  "files": [],
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "references": [
+    {
+      "path": "./client"
+    },
+    {
+      "path": "./common"
+    },
+    {
+      "path": "./server"
+    }
+  ]
+}

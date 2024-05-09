@@ -1,9 +1,9 @@
+import { Attempt } from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
 import { ExportJsonButton } from 'components/ExportJsonButton'
 import { SearchInput } from 'components/SearchInput'
 import { ColumnDefinition, Table } from 'components/Table'
 import { useAdmin } from 'hooks/useAdmin'
-import { Attempt } from 'models/Attempt'
 import { useState } from 'react'
 
 const columns: ColumnDefinition<Attempt>[] = [

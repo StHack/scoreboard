@@ -1,14 +1,16 @@
+import {
+  Achievement,
+  Callback,
+  Challenge,
+  GameConfig,
+  Message,
+  Reward,
+} from '@sthack/scoreboard-common'
 import { listAchievement } from 'db/AchievementDb.js'
 import { listChallenge } from 'db/ChallengeDb.js'
 import { listMessage } from 'db/MessageDb.js'
 import { listReward } from 'db/RewardDb.js'
 import { listTeam } from 'db/UsersDb.js'
-import { Achievement } from 'models/Achievement.js'
-import { Challenge } from 'models/Challenge.js'
-import { Callback } from 'models/Common.js'
-import { GameConfig } from 'models/GameConfig.js'
-import { Message } from 'models/Message.js'
-import { Reward } from 'models/Reward.js'
 import { Namespace } from 'socket.io'
 import { registerSocketConnectivityChange } from './serveractivity.js'
 import { ServerConfig } from './serverconfig.js'

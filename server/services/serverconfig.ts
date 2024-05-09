@@ -1,5 +1,5 @@
+import { GameConfig } from '@sthack/scoreboard-common'
 import { countTeam } from 'db/UsersDb.js'
-import { GameConfig } from 'models/GameConfig.js'
 import { RedisClientType } from 'redis'
 
 export class ServerConfig {

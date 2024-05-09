@@ -1,9 +1,17 @@
+import { CreateUser, User } from '@sthack/scoreboard-common'
 import { createHash, randomUUID } from 'crypto'
-import { AuthUser, CreateUser, User, UserLike } from 'models/User.js'
 import { model, Schema, ToObjectOptions } from 'mongoose'
 import { removeMongoPropertiesWithOptions } from './main.js'
 
-const schema = new Schema<AuthUser>({
+type DbUser = {
+  username: string
+  password: string
+  salt: string
+  team: string
+  isAdmin: boolean
+}
+
+const schema = new Schema<DbUser>({
   username: { type: String, required: true, minlength: 5, unique: true },
   password: { type: String, required: true, minlength: 5 },
   salt: { type: String, required: true },
@@ -11,7 +19,7 @@ const schema = new Schema<AuthUser>({
   isAdmin: { type: Boolean, required: true },
 })
 
-const UserModel = model<AuthUser>('User', schema)
+const UserModel = model<DbUser>('User', schema)
 
 const passwordHasher = (password: string | undefined, salt: string) =>
   password
@@ -109,7 +117,7 @@ export async function listTeam(): Promise<string[]> {
 
 export async function updateUser(
   username: string,
-  { team, password, isAdmin }: Partial<AuthUser>,
+  { team, password, isAdmin }: Partial<DbUser>,
 ): Promise<User> {
   validateUser({ username, team: team ?? '' })
   if (password) {
@@ -150,7 +158,7 @@ export async function countTeam(): Promise<number> {
   return result.length
 }
 
-export function validateUser({ username, team }: UserLike) {
+export function validateUser({ username, team }: Partial<DbUser>) {
   if (username === '__proto__') {
     throw new Error('Invalid username')
   }
