@@ -78,7 +78,7 @@ function computeTeamScore(
         .reduce((agg, cs) => agg + cs.score, 0) +
       rewardAcquired.map(r => r.value).reduce((acc, cur) => acc + cur, 0),
     breakthroughs: Object.values(challsScore)
-      .map(cs => cs.achievements[0] ?? {})
+      .map(cs => cs.achievements[0] ?? ({ teamname: '' } as Achievement))
       .filter(a => a.teamname === team),
     solved: Object.values(challsScore)
       .flatMap(cs => cs.achievements)
