@@ -61,11 +61,14 @@ services:
     restart: always
     # ports:
     #   - 6379:6379
+    volumes:
+      - redis-data:/data
     networks:
       - apps
 
 volumes:
   mongo-data:
+  redis-data:
 
 networks:
   apps:

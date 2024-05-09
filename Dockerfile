@@ -1,32 +1,22 @@
-FROM node:20 as build
+# syntax=docker/dockerfile:1.7-labs
+FROM node:20-alpine as build
 
-WORKDIR /client
+WORKDIR /src
 
-COPY client/package.json client/package-lock.json ./
+COPY --parents /*/package.json ./package.json package-lock.json ./
 RUN npm ci
 
-COPY client .
+COPY . .
+
 RUN npm run build
-
-# FROM node:20 as certgenerator
-
-# WORKDIR /app
-# RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-#   -subj "/C=FR/ST=Aquitaine/L=Bordeaux/O=Sthack/CN=ctf.sthack.fr" \
-#   -keyout ./key.pem \
-#   -out cert.pem
+RUN cp -r ./client/dist ./server/build && rm -rf client
 
 FROM node:20-alpine as run
 
 WORKDIR /app
 
-COPY server/package.json server/package-lock.json ./
-RUN npm ci
+COPY --from=build /src .
 
-COPY server .
-
-COPY --from=build /client/build ./build
-# COPY --from=certgenerator /app .
+USER node
 
 CMD npm run prod
-
