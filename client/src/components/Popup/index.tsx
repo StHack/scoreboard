@@ -17,6 +17,7 @@ type PopupProps = {
   minHeightRequired?: boolean
   children?: ReactNode
   customAction?: ReactNode
+  useBg?: boolean
 }
 
 export default function Popup({
@@ -28,7 +29,8 @@ export default function Popup({
   customAction,
   minHeightRequired,
   px = [2, 3, 5],
-  py = [3, 3, 5],
+  py = [3, 3, 3],
+  useBg = true,
   ...rest
 }: PopupProps & SpaceProps) {
   return (
@@ -41,7 +43,7 @@ export default function Popup({
         (onCancel ? onCancel() : onClose?.())
       }
     >
-      <PopupContainer padding="2">
+      <PopupContainer useBg={useBg}>
         {title && <PopupTitle>{title}</PopupTitle>}
         {title && <hr />}
 
