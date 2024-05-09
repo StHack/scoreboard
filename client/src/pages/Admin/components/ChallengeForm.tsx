@@ -51,6 +51,7 @@ export function ChallengeForm({ chall, onClose }: AdminProps) {
       }
       onCancel={onClose}
       onValidate={() => ref.current?.requestSubmit()}
+      useBg={false}
     >
       <Form ref={ref} {...formProps}>
         <LabelInput label="Name" required>

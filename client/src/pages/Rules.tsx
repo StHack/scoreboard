@@ -111,4 +111,5 @@ const creditsMarkdown = `
 # Credits
 
 - Background Image (Desert landscape for video conferencing) by [Freepik](https://www.freepik.com/free-vector/desert-landscape-video-conferencing_9702292.htm#fromView=search&page=1&position=25&uuid=db343912-2fc4-4ebe-b524-9de31cb44cce)
+- Popup Layout (Ancienne télévision vintage isolée) by [brgfx sur Freepik](https://fr.freepik.com/vecteurs-libre/ancienne-television-vintage-isolee_30700323.htm#fromView=search&page=1&position=2&uuid=bbb3428b-9004-4fa9-ab1e-4718b11c75f3)
 `
