@@ -8,18 +8,18 @@ To have a full dev environment up you need to do the following steps:
 2. On the root of the project, run `docker compose up` to start a valid mongodb instance
 3. Create file `server/.env` with the following content
 
-    ```txt
-    NODE_ENV=development
-    NODE_PATH=./
-    APP_MONGO=mongodb://sthack-admin:sthack-password@localhost:27017
-    APP_MONGO_DB=sthack-scoreboard
-    APP_REDIS=redis://localhost:6379
-    APP_SALT=thisismysalt
+   ```txt
+   NODE_ENV=development
+   NODE_PATH=./
+   APP_MONGO=mongodb://sthack-admin:sthack-password@localhost:27017
+   APP_MONGO_DB=sthack-scoreboard
+   APP_REDIS=redis://localhost:6379
+   APP_SALT=thisismysalt
 
-    # Optional, specify them only if you have valid values
-    APP_DISCORD_TOKEN=XXXXXXXXXXXXX
-    APP_DISCORD_CHANNEL=XXXXXXXX
-    ```
+   # Optional, specify them only if you have valid values
+   APP_DISCORD_TOKEN=XXXXXXXXXXXXX
+   APP_DISCORD_CHANNEL=XXXXXXXX
+   ```
 
 ## Sample data
 
