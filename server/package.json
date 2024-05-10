@@ -6,7 +6,8 @@
   "main": "main.ts",
   "scripts": {
     "prod": "cross-env NODE_ENV=production DEBUG='express:application,socket.io:server,sthack*' tsx main.ts",
-    "start": "cross-env NODE_PATH=./ DEBUG='express:application,socket.io:server,sthack*' nodemon main.ts",
+    "create-admin": "cross-env DEBUG='express:application,socket.io:server,sthack*' tsx create-admin.ts",
+    "start": "cross-env NODE_PATH=./ DEBUG='express:application,socket.io:server,sthack*' DEBUG_COLORS=1 nodemon main.ts",
     "test": "jest --detectOpenHandles --watch",
     "test:ci": "jest --detectOpenHandles --ci",
     "ts-check": "tsc --noEmit",
