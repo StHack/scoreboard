@@ -1,7 +1,27 @@
+x-redis-config: &redis-conf
+  image: redis:7
+  restart: always
+  volumes:
+    - redis-data:/data
+  networks:
+    - apps
+
+x-mongo-config: &mongo-conf
+  image: mongo:7
+  restart: always
+  environment:
+    MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+    MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
+  networks:
+    - apps
+
 services:
   website:
-    image: sthack-interface-2021
+    image: sthack-scoreboard
     restart: always
+    profiles:
+      - prod
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,61 +30,67 @@ services:
     environment:
       NODE_ENV: production
       NODE_PATH: ./
-      APP_MONGO: mongodb://sthack-admin:sthack-password@mongo:27017
-      APP_MONGO_DB: sthack-scoreboard
+      APP_MONGO: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongo:27017
+      APP_MONGO_DB: ${MONGO_DATABASE}
       APP_REDIS: redis://redis:6379
-      APP_SALT: thisismysalt
-      APP_DISCORD_TOKEN: "XXXXXXXXXXXXX"
-      APP_DISCORD_CHANNEL: "XXXXXXXX"
+      APP_SALT: ${APP_SALT}
+      APP_DISCORD_TOKEN: ${APP_DISCORD_TOKEN}
+      APP_DISCORD_CHANNEL: ${APP_DISCORD_CHANNEL}
     networks:
       - apps
     depends_on:
       - mongo
       - redis
 
+  mongo:
+    <<: *mongo-conf
+    profiles:
+      - prod
+    volumes:
+      - mongo-data:/data/db
+
+  redis:
+    <<: *redis-conf
+    profiles:
+      - prod
+
+  mongo-dev:
+    <<: *mongo-conf
+    profiles:
+      - dev
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+      # - ./2021:/docker-entrypoint-initdb.d/
+      # - ./2022:/docker-entrypoint-initdb.d/
+      - ./2023:/docker-entrypoint-initdb.d/
+      - ./_mongo_import.sh:/docker-entrypoint-initdb.d/_mongo_import.sh
+
+  redis-dev:
+    <<: *redis-conf
+    profiles:
+      - dev
+    ports:
+      - 6379:6379
+
   mongo-express:
     image: mongo-express
     restart: always
-    # ports:
-    #   - 8081:8081
+    profiles:
+      - dev
+    ports:
+      - 8081:8081
     environment:
-      ME_CONFIG_BASICAUTH_USERNAME: sthack-me-admin
-      ME_CONFIG_BASICAUTH_PASSWORD: sthack-me-password
-      ME_CONFIG_MONGODB_ADMINUSERNAME: sthack-admin
-      ME_CONFIG_MONGODB_ADMINPASSWORD: sthack-password
-      ME_CONFIG_MONGODB_URL: mongodb://sthack-admin:sthack-password@mongo:27017/
+      ME_CONFIG_BASICAUTH_USERNAME: ${ME_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${ME_PASSWORD}
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_PASSWORD}
+      ME_CONFIG_MONGODB_URL: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongo-dev:27017/
     networks:
       - apps
     depends_on:
-      - mongo
-
-  mongo:
-    image: mongo:7
-    restart: always
-    # ports:
-    #   - 27017:27017
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: sthack-admin
-      MONGO_INITDB_ROOT_PASSWORD: sthack-password
-      MONGO_INITDB_DATABASE: sthack-scoreboard
-    volumes:
-      # - ./2021:/docker-entrypoint-initdb.d/
-      # - ./2022:/docker-entrypoint-initdb.d/
-      # - ./2023:/docker-entrypoint-initdb.d/
-      - ./_mongo_import.sh:/docker-entrypoint-initdb.d/_mongo_import.sh
-      - mongo-data:/data/db
-    networks:
-      - apps
-
-  redis:
-    image: redis:7
-    restart: always
-    # ports:
-    #   - 6379:6379
-    volumes:
-      - redis-data:/data
-    networks:
-      - apps
+      - mongo-dev
 
 volumes:
   mongo-data:
