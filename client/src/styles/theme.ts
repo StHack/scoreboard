@@ -24,6 +24,33 @@ const baseColors = {
   copper: '#A77044DD',
   beforeLastOne:
     'linear-gradient(124deg,#ff240099,#e81d1d99,#e8b71d,#e3e81d99,#1de84099,#1ddde899,#2b1de899,#dd00f399,#dd00f399)',
+
+  charts: [
+    '#fd7f6f',
+    '#7eb0d5',
+    '#b2e061',
+    '#bd7ebe',
+    '#ffb55a',
+    '#ffee65',
+    '#beb9db',
+    '#fdcce5',
+    '#8bd3c7',
+    '#90ADC6',
+    '#FAD02C',
+    '#333652',
+    '#B7AC44',
+    '#DF362D',
+    '#FF8300',
+    '#FF4500',
+    '#116530',
+    '#21B6A8',
+    '#A3EBB1',
+    '#18A558',
+    '#FFF4BD',
+    '#F4B9B8',
+    '#85D2D0',
+    '#887BB0',
+  ],
 }
 
 const fontSizes: ThemeFontSizes = [

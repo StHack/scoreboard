@@ -79,6 +79,8 @@ export type ThemeColors = {
   copper: Color
   beforeLastOne: Color
 
+  charts: Color[]
+
   primary: Color
   secondary: Color
   background: Color
