@@ -12,10 +12,16 @@ type DbUser = {
 }
 
 const schema = new Schema<DbUser>({
-  username: { type: String, required: true, minlength: 5, unique: true },
+  username: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 42,
+    unique: true,
+  },
   password: { type: String, required: true, minlength: 5 },
   salt: { type: String, required: true },
-  team: { type: String, required: true, minlength: 5 },
+  team: { type: String, required: true, minlength: 5, maxlength: 42 },
   isAdmin: { type: Boolean, required: true },
 })
 

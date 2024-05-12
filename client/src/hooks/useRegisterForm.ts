@@ -11,16 +11,19 @@ export function useRegisterForm() {
   const usernameField = useField<string>({
     name: 'username',
     defaultValue: '',
+    required: true,
     disabled: isLoading,
   })
   const teamField = useField<string>({
     name: 'team',
     defaultValue: '',
+    required: true,
     disabled: isLoading,
   })
   const passwordField = useField<string>({
     name: 'password',
     defaultValue: '',
+    required: true,
     disabled: isLoading,
   })
 

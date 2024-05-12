@@ -23,15 +23,32 @@ export function Register() {
 
         <Form {...formProps}>
           <LabelInput label="Username">
-            <TextInput type="text" {...usernameProps} />
+            <TextInput
+              type="text"
+              autoComplete="username"
+              minLength={5}
+              maxLength={42}
+              {...usernameProps}
+            />
           </LabelInput>
 
           <LabelInput label="Password">
-            <TextInput type="password" {...passwordProps} />
+            <TextInput
+              type="password"
+              autoComplete="new-password"
+              id="new-password"
+              minLength={5}
+              {...passwordProps}
+            />
           </LabelInput>
 
           <LabelInput label="Team">
-            <TextInput type="text" {...teamProps} />
+            <TextInput
+              type="text"
+              minLength={5}
+              maxLength={42}
+              {...teamProps}
+            />
           </LabelInput>
 
           {error && (

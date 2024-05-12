@@ -23,11 +23,23 @@ export function Login() {
 
         <Form {...formProps}>
           <LabelInput label="Username">
-            <TextInput type="text" {...usernameProps} />
+            <TextInput
+              type="text"
+              autoComplete="username"
+              minLength={5}
+              maxLength={42}
+              {...usernameProps}
+            />
           </LabelInput>
 
           <LabelInput label="Password">
-            <TextInput type="password" {...passwordProps} />
+            <TextInput
+              type="password"
+              autoComplete="current-password"
+              id="current-password"
+              minLength={5}
+              {...passwordProps}
+            />
           </LabelInput>
 
           {error && (
