@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { Box, BoxProps } from 'components/Box'
 import { Button } from 'components/Button'
+import { ChartActivityStats } from 'components/Charts/ChartActivityStats'
 import { ChartAttemptsPanel } from 'components/Charts/ChartAttempts'
 import { SelectInput } from 'components/SelectInput'
 import { TextInput } from 'components/TextInput'
@@ -258,6 +259,10 @@ function ActivityStatistics() {
           </Ul>
         </>
       )}
+
+      <Box gridColumn="span 6" width="100%">
+        <ChartActivityStats />
+      </Box>
     </BoxPanel>
   )
 }

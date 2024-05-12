@@ -7,6 +7,7 @@ import {
   Challenge,
   Reward,
   ServerActivityStatistics,
+  TimestampedServerActivityStatistics,
   User,
 } from '@sthack/scoreboard-common'
 import { removeAchievement } from 'db/AchievementDb.js'
@@ -18,6 +19,7 @@ import {
 } from 'db/ChallengeDb.js'
 import { addMessage } from 'db/MessageDb.js'
 import { createReward, removeReward } from 'db/RewardDb.js'
+import { listServerActivityStatistics } from 'db/ServerActivityStatisticsDb.js'
 import { listUser, removeUser, updateUser } from 'db/UsersDb.js'
 import debug from 'debug'
 import { Request } from 'express'
@@ -28,14 +30,20 @@ import {
   registerSocketConnectivityChange,
 } from './serveractivity.js'
 import { ServerConfig } from './serverconfig.js'
+import { ServerStatisticsFetcher } from './serverStatistics.js'
 
 export function registerAdminNamespace(
   adminIo: Namespace,
   gameIo: Namespace,
   playerIo: Namespace,
   serverConfig: ServerConfig,
+  serverStatFetcher: ServerStatisticsFetcher,
 ) {
   const logger = debug('sthack:admin')
+
+  serverStatFetcher.registerCallback(stats => {
+    adminIo.emit('game:activity:list:updated', stats)
+  })
 
   adminIo.use((socket, next) => {
     const user = (socket.request as Request<User>).user
@@ -175,6 +183,8 @@ export function registerAdminNamespace(
         })
       }
 
+      serverStatFetcher.stop()
+
       await emitEventLog(gameIo, 'game:end', {
         message: `Game is now closed. Thanks for your participation`,
         serverConfig,
@@ -193,9 +203,19 @@ export function registerAdminNamespace(
       },
     )
 
+    adminSocket.on(
+      'game:activity:list',
+      async (callback: Callback<TimestampedServerActivityStatistics[]>) => {
+        const statistics = await listServerActivityStatistics()
+        callback(statistics)
+      },
+    )
+
     adminSocket.on('game:open', async () => {
       await serverConfig.setGameOpened(true)
       await emitGameConfigUpdate()
+
+      serverStatFetcher.start()
 
       await emitEventLog(gameIo, 'game:open', {
         message: `Game is now opened. Good luck to everyone`,
