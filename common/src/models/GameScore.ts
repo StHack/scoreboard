@@ -1,8 +1,9 @@
 import { Achievement } from './Achievement.js'
+import { Challenge } from './Challenge.js'
 import { Reward } from './Reward.js'
 
 export type ChallengeScore = {
-  name: string
+  challenge: Challenge
   score: number
   achievements: Achievement[]
 }

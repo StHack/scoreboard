@@ -159,7 +159,7 @@ export function ScoreCard({
             {breakthroughs.map(({ username, createdAt, challenge }, i) => (
               <Box
                 key={i}
-                title={`${username} - ${challenge} - ${createdAt.toLocaleTimeString(
+                title={`${username} - ${challenge.name} - ${createdAt.toLocaleTimeString(
                   'fr',
                 )}`}
               >
@@ -240,7 +240,7 @@ export function ScoreCard({
                       gap="2"
                     >
                       <IconLogo2023Icon size="2em" />
-                      {`${username} solved "${challenge}" (${
+                      {`${username} solved "${challenge.name}" (${
                         challsScore[challengeId].score
                       } pts) at ${createdAt.toLocaleTimeString()}`}
                     </Box>
@@ -261,7 +261,7 @@ export function ScoreCard({
                 {solvedNotBreakthrough.map(
                   ({ challengeId, challenge, username, createdAt }) => (
                     <li key={challengeId}>
-                      {`${username} solved "${challenge}" (${
+                      {`${username} solved "${challenge.name}" (${
                         challsScore[challengeId].score
                       } pts) at ${createdAt.toLocaleTimeString()}`}
                     </li>

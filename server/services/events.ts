@@ -129,7 +129,7 @@ async function gameEnd(options: {
         [
           cs.achievements.length.toString().padStart(3),
           cs.score.toString().padStart(6),
-          cs.name,
+          cs.challenge.name,
         ]
           .filter(str => str)
           .join(' | '),
@@ -138,7 +138,7 @@ async function gameEnd(options: {
 
   const unresolvedChalls = Object.values(gameScore.challsScore)
     .filter(cs => cs.achievements.length === 0)
-    .map(cs => `- ${cs.name}`)
+    .map(cs => `- ${cs.challenge.name}`)
     .join('\n')
 
   return [

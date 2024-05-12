@@ -103,7 +103,7 @@ export function ChallengeForm({ chall, onClose }: AdminProps) {
             challenge={preview}
             messages={[]}
             onClose={() => setShowPreview(false)}
-            score={{ name: '', achievements: [], score: 100 }}
+            score={{ challenge: {} as Challenge, achievements: [], score: 100 }}
             readonly
           />
         )}

@@ -11,7 +11,7 @@ import { useState } from 'react'
 import { RewardForm } from './RewardForm'
 
 const achievementsColumns: ColumnDefinition<Achievement>[] = [
-  { header: 'Challenge', rowValue: row => row.challenge },
+  { header: 'Challenge', rowValue: row => row.challenge.name },
   { header: 'Team', rowValue: row => row.teamname },
   { header: 'User', rowValue: row => row.username },
   { header: 'Date', rowValue: row => row.createdAt.toLocaleTimeString() },
@@ -68,7 +68,7 @@ export function AchievementPanel() {
       <Table
         data={achievements.filter(
           a =>
-            a.challenge.toLowerCase().includes(search) ||
+            a.challenge.name.toLowerCase().includes(search) ||
             a.teamname.toLowerCase().includes(search) ||
             a.username.toLowerCase().includes(search),
         )}
@@ -98,7 +98,7 @@ function AchievementActions({ row }: AchievementActionsProps) {
       onClick={() => {
         if (
           confirm(
-            `Are you sure to delete Achievement:\n\n${row.challenge}\n${
+            `Are you sure to delete Achievement:\n\n${row.challenge.name}\n${
               row.teamname
             }\n${row.username}\n${row.createdAt.toISOString()}`,
           )

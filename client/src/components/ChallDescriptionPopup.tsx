@@ -54,8 +54,6 @@ export function ChallDescriptionPopup({
 
   const myTeamSolved = achievements.find(a => a.teamname === myTeamName)
 
-  const latestAchievement = achievements[achievements.length - 1]
-
   return (
     <Popup title={name} onClose={onClose}>
       <Grid>
