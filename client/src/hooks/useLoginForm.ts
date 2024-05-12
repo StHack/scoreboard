@@ -10,11 +10,13 @@ export function useLoginForm() {
   const usernameField = useField<string>({
     name: 'username',
     defaultValue: '',
+    required: true,
     disabled: isLoading,
   })
   const passwordField = useField<string>({
     name: 'password',
     defaultValue: '',
+    required: true,
     disabled: isLoading,
   })
 
