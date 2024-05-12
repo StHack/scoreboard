@@ -2,6 +2,8 @@ import { css, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ChallengeScore, TeamScore } from '@sthack/scoreboard-common'
 import { Box, BoxProps, StyledBoxComposed } from 'components/Box'
+import { ChartCategory } from 'components/Charts/ChartCategory'
+import { ChartPlayerScorer } from 'components/Charts/ChartPlayerScorer'
 import { IconLogo2023Icon } from 'components/Icon'
 import {
   AnimatePresence,
@@ -269,6 +271,18 @@ export function ScoreCard({
                 )}
               </Box>
             )}
+
+            <Box
+              display="grid"
+              gridAutoFlow={['row', 'row', 'column']}
+              gridTemplateColumns={['1fr', '1fr', '2fr 3fr']}
+              px={['auto', 'auto', '2']}
+              alignItems="center"
+              width="100%"
+            >
+              <ChartCategory teamScore={teamScore} />
+              <ChartPlayerScorer teamScore={teamScore} />
+            </Box>
           </Section>
         )}
       </AnimatePresence>
