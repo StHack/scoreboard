@@ -59,7 +59,7 @@ function DetailChallPopup({
 }: DetailChallPopupProps) {
   return (
     <Popup
-      title={`${breakthrough.challenge} - ${challScore.score} pts`}
+      title={`${breakthrough.challenge.name} - ${challScore.score} pts`}
       onClose={onClose}
     >
       <Box as="h3" fontSize="3" textAlign="center" m="3">

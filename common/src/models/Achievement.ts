@@ -1,3 +1,5 @@
+import { Challenge } from './Challenge.js'
+
 export type BaseAchievement = {
   challengeId: string
   username: string
@@ -5,5 +7,5 @@ export type BaseAchievement = {
 }
 export type Achievement = BaseAchievement & {
   createdAt: Date
-  challenge: string
+  challenge: Challenge
 }
