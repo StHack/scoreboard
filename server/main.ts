@@ -16,6 +16,7 @@ import { registerCtfTime } from 'services/ctftime.js'
 import { registerGameNamespace } from 'services/game.js'
 import { registerPlayerNamespace } from 'services/player.js'
 import { getServerConfig } from 'services/serverconfig.js'
+import { registerServerStatisticsHandler } from 'services/serverStatistics.js'
 import { Server } from 'socket.io'
 import { redisConnectionString } from 'sthack-config.js'
 
@@ -47,12 +48,24 @@ const adminIo = io.of('/api/admin')
 const gameIo = io.of('/api/game')
 const playerIo = io.of('/api/player')
 
+const serverStatFetcher = registerServerStatisticsHandler(
+  adminIo,
+  gameIo,
+  playerIo,
+)
+
 registerAuthentificationForSocket(playerIo, sessionClient)
 registerAuthentificationForSocket(adminIo, sessionClient)
 
 registerGameNamespace(adminIo, gameIo, playerIo, serverConfig)
 registerPlayerNamespace(adminIo, gameIo, playerIo, serverConfig)
-registerAdminNamespace(adminIo, gameIo, playerIo, serverConfig)
+registerAdminNamespace(
+  adminIo,
+  gameIo,
+  playerIo,
+  serverConfig,
+  serverStatFetcher,
+)
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(join(import.meta.dirname, 'build')))
@@ -68,12 +81,19 @@ await Promise.all([
   subClient.connect(),
   serverConfigClient.connect(),
   sessionClient.connect(),
-]).then(() => {
+]).then(async () => {
   io.adapter(createAdapter(pubClient, subClient))
 
+  const opened = await serverConfig.getGameOpened()
+  if (opened) {
+    serverStatFetcher.start()
+  }
+
   httpServer.listen(PORT, () => {
-    console.log(
-      `⚡️[server]: Server is running at http://localhost:${PORT.toString()} in ${process.env.NODE_ENV ?? ''} mode`,
+    logger(
+      `⚡️[server]: Server is running at %s in %s mode`,
+      `http://localhost:${PORT.toString()}`,
+      process.env.NODE_ENV ?? ''
     )
   })
 })

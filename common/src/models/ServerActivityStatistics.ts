@@ -20,3 +20,7 @@ export type ServerActivityStatistics = {
   userCount: number
   sockets: SocketStatistic
 }
+
+export type TimestampedServerActivityStatistics = ServerActivityStatistics & {
+  timestamp: Date
+}

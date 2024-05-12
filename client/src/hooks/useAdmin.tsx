@@ -7,6 +7,7 @@ import {
   Reward,
   ServerActivityStatistics,
   ServerError,
+  TimestampedServerActivityStatistics,
   User,
 } from '@sthack/scoreboard-common'
 import {
@@ -23,6 +24,7 @@ export type AdminContext = {
   users: User[]
   attempts: Attempt[]
   activityStatistics: ServerActivityStatistics
+  activityStats: TimestampedServerActivityStatistics[]
   createChallenge: (chall: BaseChallenge) => Promise<Challenge>
   createReward: (reward: BaseReward) => Promise<Reward>
   updateChallenge: (
@@ -63,6 +65,7 @@ const adminContext = createContext<AdminContext>({
   users: [],
   attempts: [],
   activityStatistics: defaultStatistics,
+  activityStats: [],
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
   createChallenge: () => Promise.resolve<Challenge>(undefined as any),
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
@@ -102,6 +105,9 @@ function useProvideAdmin(): AdminContext {
   const [rawAttempts, setRawAttempts] = useState<Attempt[]>([])
   const [statistics, setActivityStatistics] =
     useState<ServerActivityStatistics>(defaultStatistics)
+  const [activityStats, setActivityStats] = useState<
+    TimestampedServerActivityStatistics[]
+  >([])
 
   const attempts = rawAttempts.map(a => ({
     ...a,
@@ -127,7 +133,24 @@ function useProvideAdmin(): AdminContext {
 
     socket.emit('game:activity', setActivityStatistics)
 
+    socket.emit(
+      'game:activity:list',
+      (activityStats: TimestampedServerActivityStatistics[]) =>
+        setActivityStats(
+          activityStats.map(s => ({
+            ...s,
+            timestamp: new Date(s.timestamp),
+          })),
+        ),
+    )
+
     socket.on('game:activity:updated', setActivityStatistics)
+
+    socket.on(
+      'game:activity:list:updated',
+      (stat: TimestampedServerActivityStatistics) =>
+        setActivityStats(stats => [...stats, stat]),
+    )
 
     socket.on('challenge:added', (chall: Challenge) =>
       setChallenges(challs => [...challs, chall]),
@@ -162,6 +185,7 @@ function useProvideAdmin(): AdminContext {
     challenges,
     attempts,
     activityStatistics: statistics,
+    activityStats,
     createChallenge: chall =>
       new Promise<Challenge>((resolve, reject) => {
         if (!socket) throw new Error('connection is not available')
