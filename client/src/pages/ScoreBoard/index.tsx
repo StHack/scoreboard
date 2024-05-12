@@ -33,7 +33,7 @@ export function ScoreBoard() {
         pt="3"
       >
         Team scoreboard
-        <Box as="h3" fontSize="3">
+        <Box as="span" display="block" fontSize="3">
           {teamScored} scorers - {teamsScore.length} teams
         </Box>
       </Box>
@@ -48,7 +48,7 @@ export function ScoreBoard() {
         pt="3"
       >
         Challenges
-        <Box as="h3" fontSize="3">
+        <Box as="span" display="block" fontSize="3">
           {challsUnsolved} remaining from {challenges.length}
         </Box>
       </Box>

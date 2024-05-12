@@ -49,7 +49,7 @@ export default tseslint.config({
         ignoreArrowShorthand: true,
       },
     ],
-    '@typescript-eslint/no-unnecessary-condition': ['warn'],
+    '@typescript-eslint/no-unnecessary-condition': ['off'],
     '@typescript-eslint/restrict-template-expressions': [
       'error',
       {
