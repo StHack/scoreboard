@@ -5,8 +5,8 @@ import debug from 'debug'
 import { config } from 'dotenv'
 import express from 'express'
 import { createServer } from 'http'
+import { Redis } from 'ioredis'
 import { join } from 'path'
-import { createClient, RedisClientType } from 'redis'
 import { registerAdminNamespace } from 'services/admin.js'
 import {
   registerAuthentification,
@@ -19,7 +19,7 @@ import { registerPlayerNamespace } from 'services/player.js'
 import { getServerConfig } from 'services/serverconfig.js'
 import { registerServerStatisticsHandler } from 'services/serverStatistics.js'
 import { Server } from 'socket.io'
-import { redisConnectionString } from 'sthack-config.js'
+import { redisConnectionString } from './sthack-config.js'
 
 if (process.env.NODE_ENV !== 'production') {
   config()
@@ -30,15 +30,17 @@ const logger = debug('sthack')
 
 const httpServer = createServer({}, app)
 
+const pubClient = new Redis(redisConnectionString())
+const subClient = pubClient.duplicate()
+const serverConfigClient = pubClient.duplicate()
+const sessionClient = pubClient.duplicate()
+
 const io = new Server(httpServer, {
   transports: ['websocket'],
   path: '/api/socket',
   maxHttpBufferSize: 15e6, // 15MB
+  adapter: createAdapter(pubClient, subClient),
 })
-const pubClient = createClient({ url: redisConnectionString() })
-const subClient = pubClient.duplicate()
-const serverConfigClient = pubClient.duplicate() as RedisClientType
-const sessionClient = pubClient.duplicate() as RedisClientType
 
 const serverConfig = getServerConfig(serverConfigClient)
 
@@ -79,24 +81,15 @@ if (process.env.NODE_ENV === 'production') {
 
 const PORT = 4400
 
-await Promise.all([
-  pubClient.connect(),
-  subClient.connect(),
-  serverConfigClient.connect(),
-  sessionClient.connect(),
-]).then(async () => {
-  io.adapter(createAdapter(pubClient, subClient))
+const opened = await serverConfig.getGameOpened()
+if (opened) {
+  serverStatFetcher.start()
+}
 
-  const opened = await serverConfig.getGameOpened()
-  if (opened) {
-    serverStatFetcher.start()
-  }
-
-  httpServer.listen(PORT, () => {
-    logger(
-      `⚡️[server]: Server is running at %s in %s mode`,
-      `http://localhost:${PORT.toString()}`,
-      process.env.NODE_ENV ?? '',
-    )
-  })
+httpServer.listen(PORT, () => {
+  logger(
+    `⚡️[server]: Server is running at %s in %s mode`,
+    `http://localhost:${PORT.toString()}`,
+    process.env.NODE_ENV ?? '',
+  )
 })

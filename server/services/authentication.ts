@@ -2,18 +2,18 @@ import { CreateUser, User as OurUser } from '@sthack/scoreboard-common'
 import RedisStore from 'connect-redis'
 import { getUser, login, registerUser } from 'db/UsersDb.js'
 import debug from 'debug'
-import { Handler, IRouter, json, Request } from 'express'
+import { Handler, IRouter, json,Request } from 'express'
 import session from 'express-session'
+import { Redis } from 'ioredis'
 import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
-import { RedisClientType } from 'redis'
 import { Namespace, Server } from 'socket.io'
 import { salt } from 'sthack-config.js'
 import { ServerConfig } from './serverconfig.js'
 
 const logger = debug('sthack:authentication')
 
-const sessionMiddleware = (sessionRedisClient: RedisClientType) => {
+const sessionMiddleware = (sessionRedisClient: Redis) => {
   return session({
     secret: salt(),
     store: new RedisStore({ client: sessionRedisClient }),
@@ -26,7 +26,7 @@ export function registerAuthentification(
   app: IRouter,
   io: Server,
   serverConfig: ServerConfig,
-  sessionRedisClient: RedisClientType,
+  sessionRedisClient: Redis,
 ) {
   app.use(sessionMiddleware(sessionRedisClient))
   app.use(json())
@@ -139,7 +139,7 @@ const wrap = (middleware: Handler) => (socket: any, next: any) => {
 
 export function registerAuthentificationForSocket(
   io: Namespace,
-  sessionRedisClient: RedisClientType,
+  sessionRedisClient: Redis,
 ) {
   io.use(wrap(sessionMiddleware(sessionRedisClient)))
   io.use(wrap(passport.initialize()))
