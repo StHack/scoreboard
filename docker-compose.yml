@@ -70,10 +70,12 @@ services:
 
   redis-dev:
     <<: *redis-conf
+    image: redis/redis-stack:7.2.0-v10
     profiles:
       - dev
     ports:
       - 6379:6379
+      - 8001:8001
 
   mongo-express:
     image: mongo-express

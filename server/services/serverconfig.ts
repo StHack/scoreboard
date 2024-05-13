@@ -1,16 +1,16 @@
 import { GameConfig } from '@sthack/scoreboard-common'
 import { countTeam } from 'db/UsersDb.js'
-import { RedisClientType } from 'redis'
+import { Redis } from 'ioredis'
 
 export class ServerConfig {
-  redisClient: RedisClientType
+  redisClient: Redis
 
-  constructor(redisClient: RedisClientType) {
+  constructor(redisClient: Redis) {
     this.redisClient = redisClient
   }
 
   public async getRegistrationClosed(): Promise<boolean> {
-    const str = await this.redisClient.hGet(
+    const str = await this.redisClient.hget(
       'serverConfig',
       'registrationClosed',
     )
@@ -18,7 +18,7 @@ export class ServerConfig {
   }
 
   public async setRegistrationClosed(status: boolean): Promise<void> {
-    await this.redisClient.hSet(
+    await this.redisClient.hset(
       'serverConfig',
       'registrationClosed',
       JSON.stringify(status),
@@ -26,12 +26,12 @@ export class ServerConfig {
   }
 
   public async getGameOpened(): Promise<boolean> {
-    const str = await this.redisClient.hGet('serverConfig', 'gameOpened')
+    const str = await this.redisClient.hget('serverConfig', 'gameOpened')
     return JSON.parse(str ?? 'false') as boolean
   }
 
   public async setGameOpened(status: boolean): Promise<void> {
-    await this.redisClient.hSet(
+    await this.redisClient.hset(
       'serverConfig',
       'gameOpened',
       JSON.stringify(status),
@@ -39,12 +39,12 @@ export class ServerConfig {
   }
 
   public async getTeamSize(): Promise<number> {
-    const teamSizeStr = await this.redisClient.hGet('serverConfig', 'teamSize')
+    const teamSizeStr = await this.redisClient.hget('serverConfig', 'teamSize')
     return teamSizeStr ? parseInt(teamSizeStr) : 5
   }
 
   public async setTeamSize(teamSize: number): Promise<void> {
-    await this.redisClient.hSet('serverConfig', 'teamSize', teamSize)
+    await this.redisClient.hset('serverConfig', 'teamSize', teamSize)
   }
 
   public async getGameConfig(): Promise<GameConfig> {
@@ -66,6 +66,6 @@ export class ServerConfig {
   }
 }
 
-export function getServerConfig(redisClient: RedisClientType) {
+export function getServerConfig(redisClient: Redis) {
   return new ServerConfig(redisClient)
 }
