@@ -5,11 +5,13 @@ import {
   Callback,
   CallbackOrError,
   Challenge,
+  FileContent,
   Reward,
   ServerActivityStatistics,
   TimestampedServerActivityStatistics,
   User,
 } from '@sthack/scoreboard-common'
+import { createHash } from 'crypto'
 import { removeAchievement } from 'db/AchievementDb.js'
 import { listAttempt } from 'db/AttemptDb.js'
 import {
@@ -17,12 +19,14 @@ import {
   listChallenge,
   updateChallenge,
 } from 'db/ChallengeDb.js'
+import { createFile } from 'db/FIleDb.js'
 import { addMessage } from 'db/MessageDb.js'
 import { createReward, removeReward } from 'db/RewardDb.js'
 import { listServerActivityStatistics } from 'db/ServerActivityStatisticsDb.js'
 import { listUser, removeUser, updateUser } from 'db/UsersDb.js'
 import debug from 'debug'
 import { Request } from 'express'
+import { extname } from 'path'
 import { Namespace } from 'socket.io'
 import { emitEventLog } from './events.js'
 import {
@@ -323,6 +327,15 @@ export function registerAdminNamespace(
       callback(attempt)
     })
 
+    adminSocket.on(
+      'file:upload',
+      async (file: FileContent, callback: Callback<string>) => {
+        const name = getFileName(file)
+        await createFile({ ...file, name })
+        callback('/api/content/' + name)
+      },
+    )
+
     async function emitGameConfigUpdate() {
       const updatedConfig = await serverConfig.getGameConfig()
       gameIo.emit('game:config:updated', updatedConfig)
@@ -334,4 +347,10 @@ export function registerAdminNamespace(
       adminSocket.in(username).disconnectSockets(true)
     }
   })
+}
+
+function getFileName(file: FileContent) {
+  return (
+    createHash('sha256').update(file.content).digest('hex') + extname(file.name)
+  )
 }
