@@ -10,9 +10,10 @@ import { LabelInput } from 'components/LabelInput'
 import Popup from 'components/Popup'
 import { SelectInput } from 'components/SelectInput'
 import { TextInput } from 'components/TextInput'
+import { useAdmin } from 'hooks/useAdmin'
 import { useChallengeForm } from 'hooks/useChallengeForm'
 import { useThemeMode } from 'hooks/useThemeMode'
-import { useRef, useState } from 'react'
+import { ChangeEvent, SyntheticEvent, useRef, useState } from 'react'
 
 export type AdminProps = {
   chall?: Challenge
@@ -33,10 +34,43 @@ export function ChallengeForm({ chall, onClose }: AdminProps) {
     isNewChallenge,
     preview,
   } = useChallengeForm(chall, onClose)
+  const { uploadFile } = useAdmin()
   const ref = useRef<HTMLFormElement>(null)
   const [showPreview, setShowPreview] = useState<boolean>(false)
   const [editFlag, setEditFlag] = useState<boolean>(false)
   const { currentTheme } = useThemeMode()
+
+  const fileHandler = async (
+    files: FileList,
+    event: SyntheticEvent<HTMLDivElement>,
+  ) => {
+    if (!files.length) {
+      return
+    }
+
+    event.preventDefault()
+    const target = event.nativeEvent.target as HTMLTextAreaElement
+    for (const file of files) {
+      if (file.size > 15e6) {
+        alert(`File ${file.name} is too large (max 15MB)`)
+        continue
+      }
+      const uploadedPath = await uploadFile(file)
+      const mdLink = file.type.startsWith('image/')
+        ? `![${file.name}](${uploadedPath})`
+        : `[${file.name}](${uploadedPath})`
+
+      descriptionProps.onChange({
+        target: {
+          value:
+            descriptionProps.value.substring(0, target.selectionStart) +
+            mdLink +
+            descriptionProps.value.substring(target.selectionEnd),
+        },
+      } as ChangeEvent<HTMLInputElement>)
+    }
+  }
+
   return (
     <Popup
       customAction={
@@ -68,6 +102,12 @@ export function ChallengeForm({ chall, onClose }: AdminProps) {
             onChange={(str, e) => e && descriptionProps.onChange(e)}
             preview="edit"
             data-color-mode={currentTheme}
+            textareaProps={{
+              placeholder:
+                "Write your description in markdown format\n\nTips: you can copy-paste or drag'n drop images/files to upload them and get a link (max: 15MB)",
+            }}
+            onPaste={e => fileHandler(e.clipboardData.files, e)}
+            onDrop={e => fileHandler(e.dataTransfer.files, e)}
           />
         </LabelInput>
 

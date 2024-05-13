@@ -13,6 +13,7 @@ import {
   registerAuthentificationForSocket,
 } from 'services/authentication.js'
 import { registerCtfTime } from 'services/ctftime.js'
+import { registerFileEndpoint } from 'services/file.js'
 import { registerGameNamespace } from 'services/game.js'
 import { registerPlayerNamespace } from 'services/player.js'
 import { getServerConfig } from 'services/serverconfig.js'
@@ -32,6 +33,7 @@ const httpServer = createServer({}, app)
 const io = new Server(httpServer, {
   transports: ['websocket'],
   path: '/api/socket',
+  maxHttpBufferSize: 15e6, // 15MB
 })
 const pubClient = createClient({ url: redisConnectionString() })
 const subClient = pubClient.duplicate()
@@ -42,6 +44,7 @@ const serverConfig = getServerConfig(serverConfigClient)
 
 await initMongo()
 registerCtfTime(app, serverConfig)
+registerFileEndpoint(app)
 registerAuthentification(app, io, serverConfig, sessionClient)
 
 const adminIo = io.of('/api/admin')
@@ -93,7 +96,7 @@ await Promise.all([
     logger(
       `⚡️[server]: Server is running at %s in %s mode`,
       `http://localhost:${PORT.toString()}`,
-      process.env.NODE_ENV ?? ''
+      process.env.NODE_ENV ?? '',
     )
   })
 })

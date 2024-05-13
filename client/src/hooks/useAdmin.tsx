@@ -46,6 +46,7 @@ export type AdminContext = {
   deleteAchievement: (achievement: Achievement) => void
   deleteReward: (reward: Reward) => void
   sendMessage: (message: string, challengeId?: string) => void
+  uploadFile: (file: File) => Promise<string>
 }
 
 const defaultStatistics: ServerActivityStatistics = {
@@ -66,12 +67,9 @@ const adminContext = createContext<AdminContext>({
   attempts: [],
   activityStatistics: defaultStatistics,
   activityStats: [],
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
-  createChallenge: () => Promise.resolve<Challenge>(undefined as any),
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
-  createReward: () => Promise.resolve<Reward>(undefined as any),
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
-  updateChallenge: () => Promise.resolve<Challenge>(undefined as any),
+  createChallenge: () => Promise.resolve<Challenge>({} as Challenge),
+  createReward: () => Promise.resolve<Reward>({} as Reward),
+  updateChallenge: () => Promise.resolve<Challenge>({} as Challenge),
   brokeChallenge: () => {},
   repairChallenge: () => {},
   openGame: () => {},
@@ -87,6 +85,7 @@ const adminContext = createContext<AdminContext>({
   deleteAchievement: () => {},
   deleteReward: () => {},
   sendMessage: () => {},
+  uploadFile: () => Promise.resolve<string>(''),
 })
 
 export function ProvideAdmin({ children }: PropsWithChildren<object>) {
@@ -321,5 +320,21 @@ function useProvideAdmin(): AdminContext {
 
       socket.emit('game:sendMessage', message, challengeId)
     },
+    uploadFile: file =>
+      new Promise<string>((resolve, reject) => {
+        if (!socket) throw new Error('connection is not available')
+
+        socket.emit(
+          'file:upload',
+          {
+            name: file.name,
+            contentType: file.type || 'application/octet-stream',
+            content: file,
+          },
+          (response: string) => {
+            resolve(response)
+          },
+        )
+      }),
   }
 }
