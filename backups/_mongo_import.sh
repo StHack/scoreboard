@@ -1,7 +1,7 @@
 #!/bin/bash
 # set -euo pipefail
 
-for FULL_FILENAME in /docker-entrypoint-initdb.d/*.json;
+for FULL_FILENAME in /backups/*.json;
 do
   FILENAME=${FULL_FILENAME##*/}
   COLLECTION_NAME="${FILENAME%.json}"

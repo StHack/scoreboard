@@ -1,4 +1,4 @@
-# Sthack CTF Interface 2021
+# Sthack CTF Scoreboard Interface
 
 ## Dev environment
 
@@ -118,4 +118,15 @@ db.users.updateOne({ username: "your_username" }, { $set: { isAdmin: true } })
 
 # import data
 mongoimport messages.json -d test -c messages -u "sthack-admin" -p "sthack-password" --authenticationDatabase admin --jsonArray --drop
+```
+
+### Post-event
+
+Don't forget to make the final export and commit it to this git. For that, run the following commands:
+
+```bash
+docker compose --profile prod exec mongo /backups/_mongo_exports.sh
+git add .
+git commit -m "feat: add $(date +%Y) edition data"
+git push
 ```
