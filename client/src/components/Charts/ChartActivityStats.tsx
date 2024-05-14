@@ -1,5 +1,6 @@
 import { useTheme } from '@emotion/react'
 import { useAdmin } from 'hooks/useAdmin'
+import { useState } from 'react'
 import {
   Brush,
   CartesianGrid,
@@ -18,14 +19,28 @@ export function ChartActivityStats() {
 
   const theme = useTheme()
 
+  const [active, setActive] = useState<string[]>([])
+
+  const toggleActive = (value: string) => {
+    setActive(prev =>
+      prev.includes(value) ? prev.filter(el => el !== value) : [...prev, value],
+    )
+  }
+
   return (
-    <ResponsiveContainer width="100%" height={400}>
+    <ResponsiveContainer width="100%" height={500}>
       <LineChart data={activityStats}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="timestamp" scale="time" tickFormatter={format} />
         <YAxis />
         <Tooltip content={<ChartTooltip />} labelFormatter={formatLong} />
-        <Legend />
+        <Legend
+          onClick={data => toggleActive(data.dataKey as string)}
+          verticalAlign="top"
+          margin={{
+            bottom: -10,
+          }}
+        />
 
         {Object.entries(lines).map(([key, label], i) => (
           <Line
@@ -34,6 +49,7 @@ export function ChartActivityStats() {
             name={label}
             type="monotone"
             stroke={theme.colors.charts[i]}
+            hide={active.length > 0 && !active.includes(key)}
           />
         ))}
         <Brush
