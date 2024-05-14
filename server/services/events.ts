@@ -23,7 +23,7 @@ export async function emitEventLog(
   type: string,
   { message, ...options }: { message: string } & Record<string, unknown>,
 ): Promise<void> {
-  gameIo.emit('events:happen', { type, message, options })
+  gameIo.emit('events:happen', { type, message })
 
   const config = discordConfig()
 
