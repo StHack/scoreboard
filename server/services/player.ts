@@ -1,3 +1,4 @@
+import { Lock, Redlock } from '@sesamecare-oss/redlock'
 import { CallbackOrError, User } from '@sthack/scoreboard-common'
 import {
   getChallengeAchievement,
@@ -17,6 +18,7 @@ export function registerPlayerNamespace(
   gameIo: Namespace,
   playerIo: Namespace,
   serverConfig: ServerConfig,
+  redlock: Redlock,
 ) {
   const logger = debug('sthack:player')
 
@@ -73,13 +75,18 @@ export function registerPlayerNamespace(
           return
         }
 
-        const achievements = await getChallengeAchievement(challengeId)
-        if (achievements.find(a => a.teamname === user.team)) {
-          callback({ error: 'Already solved by your team!' })
-          return
-        }
+        let lock: Lock | undefined = undefined
+        const lockKey = `lock-${user.team}-${challengeId}`
 
         try {
+          lock = await redlock.acquire([lockKey], 5_000)
+
+          const achievements = await getChallengeAchievement(challengeId)
+          if (achievements.find(a => a.teamname === user.team)) {
+            callback({ error: 'Already solved by your team!' })
+            return
+          }
+
           const isValid = await checkChallenge(challengeId, flag)
           callback({ isValid })
 
@@ -110,6 +117,10 @@ export function registerPlayerNamespace(
           } else {
             callback({ error: 'Nope' })
           }
+        } finally {
+          await lock?.release().catch(() => {
+            logger('release of lock %s failed', lockKey)
+          })
         }
       },
     )

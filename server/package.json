@@ -17,6 +17,7 @@
   "author": "nagarian",
   "license": "MIT",
   "dependencies": {
+    "@sesamecare-oss/redlock": "^1.2.1",
     "@socket.io/redis-adapter": "^8.3.0",
     "@sthack/scoreboard-common": "^4.0.0",
     "connect-redis": "^7.1.1",

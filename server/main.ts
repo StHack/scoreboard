@@ -1,4 +1,5 @@
 process.env.DEBUG = 'express:application,socket.io:server,sthack*'
+import { Redlock } from '@sesamecare-oss/redlock'
 import { createAdapter } from '@socket.io/redis-adapter'
 import { initMongo } from 'db/main.js'
 import debug from 'debug'
@@ -29,11 +30,14 @@ const app = express()
 const logger = debug('sthack')
 
 const httpServer = createServer({}, app)
-
 const pubClient = new Redis(redisConnectionString())
 const subClient = pubClient.duplicate()
 const serverConfigClient = pubClient.duplicate()
 const sessionClient = pubClient.duplicate()
+const redlockClient = pubClient.duplicate()
+const redlock = new Redlock([redlockClient], {
+  retryCount: 0,
+})
 
 const io = new Server(httpServer, {
   transports: ['websocket'],
@@ -63,7 +67,7 @@ registerAuthentificationForSocket(playerIo, sessionClient)
 registerAuthentificationForSocket(adminIo, sessionClient)
 
 registerGameNamespace(adminIo, gameIo, playerIo, serverConfig)
-registerPlayerNamespace(adminIo, gameIo, playerIo, serverConfig)
+registerPlayerNamespace(adminIo, gameIo, playerIo, serverConfig, redlock)
 registerAdminNamespace(
   adminIo,
   gameIo,
