@@ -323,7 +323,8 @@ export function registerAdminNamespace(
     })
 
     adminSocket.on('attempt:list', async (callback: Callback<Attempt[]>) => {
-      const attempt = await listAttempt()
+      const gameOpen = await serverConfig.getGameOpened()
+      const attempt = await listAttempt({ nolimit: !gameOpen })
       callback(attempt)
     })
 

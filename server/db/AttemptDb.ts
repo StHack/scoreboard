@@ -20,8 +20,10 @@ export async function registerAttempt(attempt: BaseAttempt): Promise<Attempt> {
   return doc.toObject(removeMongoPropertiesWithOptions({ removeId: false }))
 }
 
-export async function listAttempt(): Promise<Attempt[]> {
-  const results = await AttemptModel.find().sort({ updatedAt: -1 }).limit(200)
+export async function listAttempt({ nolimit = false }): Promise<Attempt[]> {
+  const results = nolimit
+    ? await AttemptModel.find().sort({ updatedAt: -1 })
+    : await AttemptModel.find().sort({ updatedAt: -1 }).limit(200)
 
   return results.map(r =>
     r.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
@@ -44,7 +46,9 @@ export async function getSimilarAttempts({
   challengeId,
   teamname,
 }: BaseAttempt): Promise<Attempt[]> {
-  const docs = await AttemptModel.find({ challengeId, teamname }).sort({ createdAt: -1 })
+  const docs = await AttemptModel.find({ challengeId, teamname }).sort({
+    createdAt: -1,
+  })
   return docs.map(d =>
     d.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
   )
