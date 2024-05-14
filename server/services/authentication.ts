@@ -1,8 +1,9 @@
+import { ExecutionError, Lock, Redlock } from '@sesamecare-oss/redlock'
 import { CreateUser, User as OurUser } from '@sthack/scoreboard-common'
 import RedisStore from 'connect-redis'
 import { getUser, login, registerUser } from 'db/UsersDb.js'
 import debug from 'debug'
-import { Handler, IRouter, json,Request } from 'express'
+import { Handler, IRouter, json, Request } from 'express'
 import session from 'express-session'
 import { Redis } from 'ioredis'
 import passport from 'passport'
@@ -27,6 +28,7 @@ export function registerAuthentification(
   io: Server,
   serverConfig: ServerConfig,
   sessionRedisClient: Redis,
+  redlock: Redlock,
 ) {
   app.use(sessionMiddleware(sessionRedisClient))
   app.use(json())
@@ -90,17 +92,31 @@ export function registerAuthentification(
       return
     }
 
+    const user = (req.body || {}) as CreateUser
+
+    let lock: Lock | undefined = undefined
+    const lockKey = `register-${user.team}`
     try {
+      lock = await redlock.acquire([lockKey], 5_000)
+
       const maxTeamSize = await serverConfig.getTeamSize()
-      await registerUser((req.body || {}) as CreateUser, maxTeamSize)
+      await registerUser(user, maxTeamSize)
       res.sendStatus(201)
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof ExecutionError) {
+        res
+          .status(400)
+          .send('You were too fast for your account creation, please retry')
+      } else if (error instanceof Error) {
         res.status(400).send(error.message)
       } else {
         logger('an unexpected error occured %o', error)
         res.status(500).send(error)
       }
+    } finally {
+      await lock?.release().catch(() => {
+        logger('release of lock %s failed', lockKey)
+      })
     }
   })
 
