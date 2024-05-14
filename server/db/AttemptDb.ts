@@ -40,6 +40,16 @@ export async function listAttemptAfter(date: Date): Promise<Attempt[]> {
   )
 }
 
+export async function getSimilarAttempts({
+  challengeId,
+  teamname,
+}: BaseAttempt): Promise<Attempt[]> {
+  const docs = await AttemptModel.find({ challengeId, teamname }).sort({ createdAt: -1 })
+  return docs.map(d =>
+    d.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
+  )
+}
+
 export async function getTeamAttempt(teamname: string): Promise<Attempt[]> {
   const docs = await AttemptModel.find({ teamname })
   return docs.map(d =>

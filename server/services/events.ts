@@ -1,5 +1,6 @@
 import {
   Achievement,
+  BaseAttempt,
   Challenge,
   computeGameScore,
   Reward,
@@ -72,6 +73,7 @@ const discordFormatHandler: [
   ['challenge:solve', solve],
   ['challenge:broke'],
   ['challenge:repair'],
+  ['player:attempt', attempt],
 ]
 
 async function gameEnd(options: {
@@ -181,5 +183,17 @@ function solve({
 
   return Promise.resolve(
     `## 💥 Breakthrough! "${username}" Team "${teamname}" just solved challenge "${name}"`,
+  )
+}
+
+function attempt({
+  attempt,
+  challenge: { name },
+}: {
+  attempt: BaseAttempt
+  challenge: Challenge
+}): Promise<string> {
+  return Promise.resolve(
+    `## ⚠️ Team "${attempt.teamname}" has reach the warning threshold of attempts made for the chall "${name}"`,
   )
 }
