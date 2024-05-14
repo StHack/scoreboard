@@ -25,5 +25,11 @@ export default tseslint.config({
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['off'],
     '@typescript-eslint/no-misused-promises': ['off'],
+    '@typescript-eslint/restrict-template-expressions': [
+      'error',
+      {
+        allowNumber: true,
+      },
+    ],
   },
 })
