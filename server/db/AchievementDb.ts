@@ -11,6 +11,8 @@ const schema = new Schema<Achievement>(
   { timestamps: true },
 )
 
+schema.index({ challengeId: 1, teamname: 1 }, { unique: true })
+
 const AchievementModel = model<Achievement>('Achievement', schema)
 
 const removeMongoProperties = removeMongoPropertiesWithOptions({
@@ -21,17 +23,6 @@ const removeMongoProperties = removeMongoPropertiesWithOptions({
 export async function registerAchievement(
   achievement: BaseAchievement,
 ): Promise<Achievement> {
-  const { challengeId, teamname } = achievement
-
-  const alreadyAchieved = await AchievementModel.findOne({
-    challengeId,
-    teamname,
-  })
-
-  if (alreadyAchieved) {
-    return alreadyAchieved.toObject(removeMongoProperties)
-  }
-
   const doc = new AchievementModel(achievement)
   await doc.save()
 
@@ -49,6 +40,12 @@ export async function getTeamAchievement(
 ): Promise<Achievement[]> {
   const docs = await AchievementModel.find({ teamname }).sort({ updatedAt: -1 })
   return docs.map(d => d.toObject(removeMongoProperties))
+}
+
+export async function countChallengeAchievement(
+  challengeId: string,
+): Promise<number> {
+  return await AchievementModel.countDocuments({ challengeId })
 }
 
 export async function getChallengeAchievement(
