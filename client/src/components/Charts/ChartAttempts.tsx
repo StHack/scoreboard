@@ -7,8 +7,10 @@ import {
   BarChart,
   Brush,
   CartesianGrid,
+  ComposedChart,
   DefaultLegendContent,
   Legend,
+  Line,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -31,7 +33,13 @@ export function ChartAttemptsPanel() {
       }),
       {},
     ),
-  ).map(([challenge, teams]) => ({ teams, challenge }))
+  ).map(([challenge, teams]) => ({
+    teams,
+    avg:
+      Object.values(teams).reduce((sum, cur) => sum + cur, 0) /
+      Object.values(teams).length,
+    challenge,
+  }))
 
   const teams = [...new Set(attempts.map(u => u.teamname))]
 
@@ -55,8 +63,8 @@ export function ChartAttemptsPanel() {
   }
 
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <BarChart
+    <ResponsiveContainer width="100%" height={600}>
+      <ComposedChart
         data={chartData.filter(c => !inactiveChalls.includes(c.challenge))}
         onClick={nextState => {
           const active = nextState.activeLabel
@@ -67,7 +75,8 @@ export function ChartAttemptsPanel() {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="challenge" />
-        <YAxis />
+        <YAxis yAxisId="left" orientation="left" />
+        <YAxis yAxisId="right" orientation="right" />
         <Tooltip content={<ChartTooltip />} />
         <Legend
           payload={chartData
@@ -99,10 +108,12 @@ export function ChartAttemptsPanel() {
             name={t}
             stackId="a"
             fill={theme.colors.charts[i % theme.colors.charts.length]}
+            yAxisId="left"
           />
         ))}
+        <Line dataKey="avg" yAxisId="right" />
         <Brush dataKey="name" height={30} stroke={theme.colors.secondary} />
-      </BarChart>
+      </ComposedChart>
     </ResponsiveContainer>
   )
 }
