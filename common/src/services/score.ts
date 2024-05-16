@@ -1,8 +1,13 @@
 import { Achievement } from '../models/Achievement.js'
 import { Challenge } from '../models/Challenge.js'
 import { GameConfig } from '../models/GameConfig.js'
-import { ChallengeScore, GameScore, TeamScore } from '../models/GameScore.js'
-import { Reward } from '../models/Reward.js'
+import {
+  ChallengeScore,
+  GameScore,
+  RewardScore,
+  TeamScore,
+} from '../models/GameScore.js'
+import { BaseReward, Reward } from '../models/Reward.js'
 
 export function computeGameScore(
   achievements: Achievement[],
@@ -12,13 +17,16 @@ export function computeGameScore(
   config: GameConfig,
 ): GameScore {
   const challsScore = computeChallenges(challenges, achievements, config)
-  const teamsScore = computeTeams(teams, challsScore, rewards, config)
+  const rewardsScore = computeRewards(rewards, config)
+  const teamsScore = computeTeams(teams, challsScore, rewardsScore)
 
   return {
     challsScore,
     teamsScore,
   }
 }
+
+//#region challenge score
 function computeChallenges(
   challenges: Challenge[],
   achievements: Achievement[],
@@ -49,14 +57,36 @@ function computeChallenge(
   }
 }
 
+function computeChallengeScore(
+  challenge: Challenge,
+  config: GameConfig,
+  solvedCount: number = 0,
+): number {
+  return config.baseChallScore * (config.teamCount - solvedCount)
+}
+//#endregion
+
+//#region reward score
+function computeRewards(rewards: Reward[], config: GameConfig): RewardScore[] {
+  return rewards.map<RewardScore>(r => ({
+    reward: r,
+    score: computeRewardScore(r, config),
+  }))
+}
+
+export function computeRewardScore(reward: BaseReward, config: GameConfig): number {
+  return reward.value * config.teamCount
+}
+//#endregion
+
+//#region team score
 function computeTeams(
   teams: string[],
   challsScore: Record<string, ChallengeScore>,
-  rewards: Reward[],
-  config: GameConfig,
+  rewards: RewardScore[],
 ): TeamScore[] {
   return teams
-    .map(t => computeTeam(challsScore, t, rewards, config))
+    .map(t => computeTeam(challsScore, t, rewards))
     .sort((a, b) => b.score - a.score)
     .map((ts, i, tss) => ({
       ...ts,
@@ -67,17 +97,17 @@ function computeTeams(
 function computeTeam(
   challsScore: Record<string, ChallengeScore>,
   team: string,
-  rewards: Reward[],
-  config: GameConfig,
+  rewards: RewardScore[],
 ): TeamScore {
   const challengeResolved = Object.values(challsScore).filter(cs =>
     cs.achievements.find(a => a.teamname === team),
   )
-  const rewardAcquired = rewards.filter(r => r.teamname === team)
+  const rewardAcquired = rewards.filter(r => r.reward.teamname === team)
+
   return {
     rank: 0,
     team,
-    score: computeTeamScore(challengeResolved, rewardAcquired, config),
+    score: computeTeamScore(challengeResolved, rewardAcquired),
     breakthroughs: challengeResolved
       .map(cs => cs.achievements[0] ?? ({ teamname: '' } as Achievement))
       .filter(a => a.teamname === team),
@@ -90,25 +120,11 @@ function computeTeam(
 
 function computeTeamScore(
   challsScore: ChallengeScore[],
-  rewards: Reward[],
-  config: GameConfig,
+  rewards: RewardScore[],
 ): number {
   return (
     challsScore.reduce((agg, cs) => agg + cs.score, 0) +
-    rewards
-      .map(r => computeRewardScore(r, config))
-      .reduce((acc, cur) => acc + cur, 0)
+    rewards.reduce((acc, cur) => acc + cur.score, 0)
   )
 }
-
-function computeChallengeScore(
-  challenge: Challenge,
-  config: GameConfig,
-  solvedCount: number = 0,
-): number {
-  return config.baseChallScore * (config.teamCount - solvedCount)
-}
-
-function computeRewardScore(reward: Reward, config: GameConfig): number {
-  return reward.value
-}
+//#endregion

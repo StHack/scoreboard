@@ -1,3 +1,4 @@
+import { BaseReward, computeRewardScore } from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
 import { LabelInput } from 'components/LabelInput'
 import Popup from 'components/Popup'
@@ -5,6 +6,7 @@ import { SelectInput } from 'components/SelectInput'
 import { TextInput } from 'components/TextInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useField } from 'hooks/useField'
+import { useGame } from 'hooks/useGame'
 import { ChangeEvent, RefObject, useRef } from 'react'
 
 export type RewardEditMode = 'password' | 'team'
@@ -15,6 +17,7 @@ export type RewardFormProps = {
 
 export function RewardForm({ onClose }: RewardFormProps) {
   const { createReward, users } = useAdmin()
+  const { gameConfig } = useGame()
   const existingTeams = [...new Set(users.map(u => u.team))].sort()
   const ref = useRef<HTMLFormElement>(null)
   const { inputProp: teamProps } = useField<string>({
@@ -32,13 +35,19 @@ export function RewardForm({ onClose }: RewardFormProps) {
   })
 
   const { inputProp: valueProps } = useField<number>({
-    defaultValue: 100,
+    defaultValue: gameConfig.baseChallScore,
     disabled: false,
     name: 'value',
     required: true,
     valueRetriever: e =>
       (e as ChangeEvent<HTMLInputElement>).currentTarget.valueAsNumber,
   })
+
+  const demoReward: BaseReward = {
+    label: labelProps.value,
+    teamname: teamProps.value,
+    value: valueProps.value,
+  }
 
   return (
     <Popup
@@ -54,11 +63,7 @@ export function RewardForm({ onClose }: RewardFormProps) {
         onSubmit={async e => {
           e.preventDefault()
           try {
-            await createReward({
-              label: labelProps.value,
-              teamname: teamProps.value,
-              value: valueProps.value,
-            })
+            await createReward(demoReward)
             onClose()
           } catch (error) {
             alert(JSON.stringify(error))
@@ -73,8 +78,15 @@ export function RewardForm({ onClose }: RewardFormProps) {
           <TextInput type="text" {...labelProps} />
         </LabelInput>
 
-        <LabelInput label="Points value" required>
-          <TextInput type="number" {...valueProps} />
+        <LabelInput label="Base points value" required>
+          <TextInput
+            type="number"
+            placeholder={gameConfig.baseChallScore.toString()}
+            {...valueProps}
+          />
+          <Box fontStyle="italic" pt="2" pl="2" as="p">
+            {`So currently it will be valued to ${computeRewardScore(demoReward, gameConfig)}pts (teams count: ${gameConfig.teamCount}, chall base score: ${gameConfig.baseChallScore})`}
+          </Box>
         </LabelInput>
       </Box>
     </Popup>

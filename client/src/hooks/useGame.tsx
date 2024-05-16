@@ -65,8 +65,7 @@ function useProvideGame(): GameContext {
 
   const achievements = rawAchievements.map(a => ({
     ...a,
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    challenge: challenges.find(c => c._id === a.challengeId)!,
+    challenge: challenges.find(c => c._id === a.challengeId) as Challenge,
   }))
 
   const messages = rawMessages.map(a => ({

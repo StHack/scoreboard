@@ -202,7 +202,7 @@ export function ScoreCard({
                 placeItems="center"
                 gap="1"
               >
-                {rewards.map(({ _id, label, value, createdAt }) => (
+                {rewards.map(({ reward: { _id, label, createdAt }, score }) => (
                   <Box
                     key={_id}
                     as="li"
@@ -211,7 +211,7 @@ export function ScoreCard({
                     gap="2"
                   >
                     <IconLogo2023Icon size="2em" />
-                    {`${label} (${value} pts) at ${createdAt.toLocaleTimeString()}`}
+                    {`${label} (${score} pts) at ${createdAt.toLocaleTimeString()}`}
                     <IconLogo2023Icon size="2em" />
                   </Box>
                 ))}
