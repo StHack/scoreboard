@@ -1,5 +1,7 @@
 import { GameConfig } from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
+import { Button } from 'components/Button'
+import { IconDiscord, IconTwitter } from 'components/Icon'
 import { ToggleInput } from 'components/ToggleInput'
 import { useAuth } from 'hooks/useAuthentication'
 import { useGame } from 'hooks/useGame'
@@ -34,6 +36,36 @@ export function Rules() {
         <ReactMarkdown components={ReactMarkdownRenderers}>
           {rulesMarkdown(gameConfig)}
         </ReactMarkdown>
+
+        <Box
+          display="flex"
+          flexDirection="row"
+          pt="4"
+          placeContent="space-evenly"
+          gap="2"
+        >
+          <Button
+            href="https://discord.com/invite/A4p6faRFzf"
+            backgroundColor="#7289DA"
+            color="#FFFFFF"
+            borderColor="#7289DA"
+            icon={IconDiscord}
+            fontSize="0"
+          >
+            Discord
+          </Button>
+          <Button
+            href="https://twitter.com/sth4ck"
+            backgroundColor="#000"
+            color="#FFF"
+            borderColor="#000"
+            icon={IconTwitter}
+            fontSize="0"
+          >
+            Follow @sth4ck
+          </Button>
+        </Box>
+
         {isAuthenticated && (
           <Box display="grid" placeContent="center" py="4">
             <ToggleInput
@@ -70,7 +102,7 @@ const rulesMarkdown = (gameConfig: GameConfig) => `
 
 ## CTF Rules
 
-- Team size limit is ${gameConfig.teamSize}
+- Team size limit is **${gameConfig.teamSize}**
 - Remote players are not allowed
 - Sharing flags is forbidden
 - Don't attack the scoring system
@@ -90,7 +122,7 @@ team_points = chall_point + reward_points
 Where:
 
 - \`base_score\` is the constant **${gameConfig.baseChallScore}**
-- \`total_teams\` is the total number of teams playing the CTF (Currently: ${gameConfig.teamCount})
+- \`total_teams\` is the total number of teams playing the CTF (Currently: **${gameConfig.teamCount}**)
 - \`solvers\` is the number of teams that solved this challenge
 - \`reward_points\` is the sum of bonus points given by the staff when special challenge is solved
 
@@ -101,10 +133,14 @@ This means you should expect the challenge points and your score to:
 
 There is no bonus points for breakthrough.
 
+## Difference from 2023 edition
+
+- There is no more lock of challenge when someone solve it
+- Challenge difficulty doesn't have any more weight on the score computation
+
 ## Help/Questions
 
 You can come and ask us your questions directly at the staff desk.
-Follow us on twitter at <https://twitter.com/sth4ck>
 `
 
 const creditsMarkdown = `
