@@ -6,7 +6,7 @@ import Popup from 'components/Popup'
 import { TextInput } from 'components/TextInput'
 import { useField } from 'hooks/useField'
 import { usePlayer } from 'hooks/usePlayer'
-import { useState } from 'react'
+import { PropsWithChildren, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import {
@@ -14,9 +14,12 @@ import {
   GridAreaProps,
   space,
   SpaceProps,
+  textAlign,
+  TextAlignProps,
   typography,
   TypographyProps,
 } from 'styled-system'
+import { cleanStyledSystem } from 'styles'
 import { ReactMarkdownRenderers } from 'styles/react-markdown'
 import { Messages } from './Messages'
 
@@ -144,13 +147,21 @@ const Grid = styled.div`
     'flag      flag    flag'
     'msg       msg     msg';
 `
-const Text = styled.p<SpaceProps & GridAreaProps & TypographyProps>`
-  text-align: center;
-  ${space}
-  ${gridArea}
-  ${typography}
-`
-Text.defaultProps = {
-  fontSize: '3',
-  m: '2',
-}
+
+type TextProps = TextAlignProps & SpaceProps & GridAreaProps & TypographyProps
+
+const T = styled('p', cleanStyledSystem)<TextProps>(
+  textAlign,
+  space,
+  gridArea,
+  typography,
+)
+
+const Text = ({
+  fontSize = '3',
+  m = '2',
+  textAlign = 'center',
+  ...p
+}: PropsWithChildren<TextProps>) => (
+  <T fontSize={fontSize} m={m} textAlign={textAlign} {...p} />
+)

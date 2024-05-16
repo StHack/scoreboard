@@ -1,5 +1,3 @@
-import { css } from '@emotion/react'
-import styled from '@emotion/styled'
 import { Box } from 'components/Box'
 import {
   IconAchievement,
@@ -8,18 +6,8 @@ import {
   IconGame,
   IconUsers,
 } from 'components/Icon'
-import { NavLink, Route, Routes } from 'react-router-dom'
-import {
-  display,
-  DisplayProps,
-  flexbox,
-  FlexboxProps,
-  fontSize,
-  FontSizeProps,
-  space,
-  SpaceProps,
-} from 'styled-system'
-import { gap, GapProps } from 'styles'
+import { Link } from 'components/Link'
+import { Route, Routes } from 'react-router-dom'
 import { AchievementPanel } from './components/AchievementPanel'
 import { AttemptPanel } from './components/AttemptPanel'
 import { ChallengePanel } from './components/ChallengePanel'
@@ -39,6 +27,7 @@ export function Admin() {
       height="100%"
     >
       <Box
+        as="nav"
         display="flex"
         flexDirection="row"
         justifyContent={['space-around', 'center']}
@@ -79,30 +68,4 @@ export function Admin() {
       </Box>
     </Box>
   )
-}
-
-const Link = styled(NavLink)<
-  SpaceProps & FontSizeProps & DisplayProps & FlexboxProps & GapProps
->(
-  space,
-  fontSize,
-  display,
-  flexbox,
-  gap,
-  css`
-    text-decoration: none;
-
-    &.active {
-      text-decoration: underline;
-    }
-  `,
-)
-Link.defaultProps = {
-  display: 'flex',
-  flexDirection: ['column', 'row'],
-  alignItems: 'center',
-  fontSize: [0, 2, 3],
-  px: [1, 2, 3],
-  py: 2,
-  gap: [1, 2],
 }
