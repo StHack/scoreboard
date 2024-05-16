@@ -8,13 +8,18 @@ export type ChallengeScore = {
   achievements: Achievement[]
 }
 
+export type RewardScore = {
+  reward: Reward
+  score: number
+}
+
 export type TeamScore = {
   rank: number
   team: string
   score: number
   breakthroughs: Achievement[]
   solved: Achievement[]
-  rewards: Reward[]
+  rewards: RewardScore[]
 }
 
 export type GameScore = {
