@@ -20,7 +20,8 @@ const ListItem = styled.li`
   }
 `
 
-const UnorderedList = styled.ol`
+const List = styled.ul<SpaceProps>`
+  ${space}
   & > li::before {
     content: '▪ ';
   }
@@ -51,11 +52,12 @@ export const ReactMarkdownRenderers: Components = {
   h4: p => <Text as="h4" my="2" fontSize="2" {...p} />,
   h5: p => <Text as="h5" my="2" fontSize="2" {...p} />,
   h6: p => <Text as="h6" my="2" fontSize="2" {...p} />,
-  p: p => <Text fontSize="0" textAlign="initial" {...p} />,
+  p: p => <Text fontSize="0" textAlign="initial" py="1" {...p} />,
   // eslint-disable-next-line jsx-a11y/anchor-has-content
   a: p => <a {...p} target="_blank" rel="noopener noreferrer" />,
   li: p => <ListItem {...p} />,
-  ol: p => <UnorderedList {...p} />,
+  ul: p => <List as="ul" py="1" {...p} />,
+  ol: p => <List as="ol" py="1" {...p} />,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
   code: Code as any,
   blockquote: p => (
