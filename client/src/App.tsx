@@ -29,7 +29,7 @@ const AppBlock = styled.div`
   position: relative;
 `
 
-const Container = styled.div`
+const Container = styled.main`
   overflow: auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
