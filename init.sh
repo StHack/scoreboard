@@ -80,10 +80,10 @@ fi
 
 # prepare docker env
 echo "Building docker for $PROFILE"
-docker compose --profile "$PROFILE" build
+sudo docker compose --profile "$PROFILE" build
 
 echo "Launching docker for $PROFILE"
-docker compose --profile "$PROFILE" up -d --wait
+sudo docker compose --profile "$PROFILE" up -d --wait
 
 # create admin user
 if [ -n "$USERNAME" ]; then
@@ -99,7 +99,7 @@ if [ -n "$USERNAME" ]; then
 
     npm run -w server create-admin -- --user "$USERNAME" --password "$PASSWORD"
   else
-    docker compose --profile "$PROFILE" exec website \
+    sudo docker compose --profile "$PROFILE" exec website \
       npm run -w server create-admin -- --user "$USERNAME" --password "$PASSWORD"
   fi
 fi

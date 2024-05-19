@@ -92,7 +92,7 @@ To support discord notification you need to specify a discord token and a channe
 ./init.sh -u your_username -t discord_token -c discord_channel
 ```
 
-or manually update `.env` file to add variables `APP_DISCORD_TOKEN` and `APP_DISCORD_CHANNEL`, then restart service with `docker compose --profile prod up -d`
+or manually update `.env` file to add variables `APP_DISCORD_TOKEN` and `APP_DISCORD_CHANNEL`, then restart service with `sudo docker compose --profile prod up -d`
 
 ### Fixing code issues during events
 
@@ -101,12 +101,12 @@ If a major issue occurs during the events that is required to make a code fix, f
 1. Make a fix on your computer and test it
 2. Make a commit and push it
 3. ssh into the machine and run `git pull`
-4. Then re-do a `./init.sh` or `docker compose --profile prod build && docker compose --profile prod up -d`
+4. Then re-do a `./init.sh` or `sudo docker compose --profile prod build && sudo docker compose --profile prod up -d`
 
 ### Mongo debugging during event
 
 ```bash
-docker compose exec mongo mongosh -u "sthack-admin" -p "sthack-password"
+sudo docker compose exec mongo mongosh -u "sthack-admin" -p "sthack-password"
 
 # mongo command
 show dbs
@@ -125,7 +125,7 @@ mongoimport messages.json -d test -c messages -u "sthack-admin" -p "sthack-passw
 Don't forget to make the final export and commit it to this git. For that, run the following commands:
 
 ```bash
-docker compose --profile prod exec mongo /backups/_mongo_exports.sh
+sudo docker compose --profile prod exec mongo /backups/_mongo_exports.sh
 git add .
 git commit -m "feat: add $(date +%Y) edition data"
 git push
