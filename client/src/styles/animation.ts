@@ -38,3 +38,26 @@ export const SlideInRight = keyframes`
     transform: translate3d(0, 0, 0);
   }
 `
+
+export const Flip = keyframes`
+	0% {
+		transform: perspective(400px) rotateY(0);
+		animation-timing-function: ease-out;
+	}
+	40% {
+		transform: perspective(400px) translateZ(150px) rotateY(170deg);
+		animation-timing-function: ease-out;
+	}
+	50% {
+		transform: perspective(400px) translateZ(150px) rotateY(190deg) scale(1);
+		animation-timing-function: ease-in;
+	}
+	80% {
+		transform: perspective(400px) rotateY(360deg) scale(.95);
+		animation-timing-function: ease-in;
+	}
+	100% {
+		transform: perspective(400px) scale(1);
+		animation-timing-function: ease-in;
+	}
+`

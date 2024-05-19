@@ -2,6 +2,7 @@ import { ThemeProvider } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'
+import { Loader } from 'components/Loader'
 import { ProvideAdmin } from 'hooks/useAdmin'
 import { useAuth } from 'hooks/useAuthentication'
 import { ProvideGame } from 'hooks/useGame'
@@ -53,11 +54,10 @@ export default function App() {
           : theme
       }
     >
-      <Suspense fallback={<div>Loading...</div>}>
-        <BrowserRouter>
-          <AppBlock>
-            <Header />
-
+      <BrowserRouter>
+        <AppBlock>
+          <Header />
+          <Suspense fallback={<Loader size="10" placeSelf="center" />}>
             <Container>
               <Routes>
                 <Route
@@ -133,11 +133,10 @@ export default function App() {
                 />
               </Routes>
             </Container>
-
-            <Footer />
-          </AppBlock>
-        </BrowserRouter>
-      </Suspense>
+          </Suspense>
+          <Footer />
+        </AppBlock>
+      </BrowserRouter>
     </ThemeProvider>
   )
 }
