@@ -17,7 +17,14 @@ export function Register() {
   } = useRegisterForm()
 
   return (
-    <Box display="grid" placeItems="center" maxWidth="60rem" margin="0 auto">
+    <Box
+      display="grid"
+      alignItems="center"
+      width="100%"
+      maxWidth="40rem"
+      margin="0 auto"
+      padding="4"
+    >
       <Box display="flex" flexDirection="column">
         <Banner mb="4" width="100%" />
 
@@ -75,4 +82,5 @@ export function Register() {
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  font-size: ${p => p.theme.fontSizes[1]};
 `

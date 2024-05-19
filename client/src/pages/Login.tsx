@@ -16,7 +16,14 @@ export function Login() {
   } = useGame()
 
   return (
-    <Box display="grid" placeItems="center" maxWidth="60rem" margin="0 auto">
+    <Box
+      display="grid"
+      alignItems="center"
+      width="100%"
+      maxWidth="40rem"
+      margin="0 auto"
+      padding="4"
+    >
       <Box display="flex" flexDirection="column" gap="2">
         <BBanner width="100%" />
         <Logo mb="2" />
@@ -70,6 +77,7 @@ export function Login() {
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  font-size: ${p => p.theme.fontSizes[1]};
 `
 
 const Logo = styled(IconLogo2024)`
