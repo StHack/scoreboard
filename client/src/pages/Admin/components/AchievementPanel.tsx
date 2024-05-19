@@ -30,7 +30,13 @@ export function AchievementPanel() {
   const { achievements, rewards } = useGame()
 
   return (
-    <Box display="grid" gridAutoFlow="row" overflowY="hidden" gap="2">
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="stretch"
+      overflowY="hidden"
+      gap="2"
+    >
       <Box display="flex" flexDirection="row" gap="2">
         <Button
           onClick={() => setOpenCreateReward(true)}
@@ -54,6 +60,7 @@ export function AchievementPanel() {
             Rewards
           </Box>
           <Table
+            flex="1 0 auto"
             data={rewards.filter(
               r =>
                 r.teamname.toLowerCase().includes(search) ||
@@ -70,6 +77,7 @@ export function AchievementPanel() {
         Achievements
       </Box>
       <Table
+        flex="0 1 100%"
         data={achievements.filter(
           a =>
             a.challenge.name.toLowerCase().includes(search) ||
