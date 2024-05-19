@@ -33,6 +33,7 @@ export function ChallengeForm({ chall, onClose }: AdminProps) {
     error,
     isNewChallenge,
     preview,
+    isDirty,
   } = useChallengeForm(chall, onClose)
   const { uploadFile } = useAdmin()
   const ref = useRef<HTMLFormElement>(null)
@@ -83,6 +84,7 @@ export function ChallengeForm({ chall, onClose }: AdminProps) {
           ? 'Create a new challenge'
           : `Edition of challenge "${chall?.name ?? 'new challenge'}"`
       }
+      useClickOutside={!isDirty}
       onCancel={onClose}
       onValidate={() => ref.current?.requestSubmit()}
       useBg={false}

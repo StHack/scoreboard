@@ -137,6 +137,15 @@ export function useChallengeForm(
 
     isNewChallenge,
     isLoading,
+    isDirty:
+      nameField.isDirty ||
+      authorField.isDirty ||
+      categoryField.isDirty ||
+      descriptionField.isDirty ||
+      difficultyField.isDirty ||
+      imgField.isDirty ||
+      flagsField.isDirty ||
+      isBrokenField.isDirty,
     reset,
     error,
     preview,

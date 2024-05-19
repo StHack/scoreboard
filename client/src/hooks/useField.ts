@@ -31,5 +31,6 @@ export function useField<T>({
       ) => setValue(valueRetriever ? valueRetriever(e) : (e.target.value as T)),
     },
     reset,
+    isDirty: value !== defaultValue,
   }
 }

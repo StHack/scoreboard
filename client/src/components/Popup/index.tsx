@@ -18,6 +18,7 @@ type PopupProps = {
   children?: ReactNode
   customAction?: ReactNode
   useBg?: boolean
+  useClickOutside?: boolean
 }
 
 export default function Popup({
@@ -31,6 +32,7 @@ export default function Popup({
   px = [2, 3, 5],
   py = [3, 3, 3],
   useBg = true,
+  useClickOutside = true,
   ...rest
 }: PopupProps & SpaceProps) {
   return (
@@ -38,9 +40,12 @@ export default function Popup({
       px={px}
       py={py}
       {...rest}
-      onClick={event =>
-        event.currentTarget === event.target &&
-        (onCancel ? onCancel() : onClose?.())
+      onClick={
+        useClickOutside
+          ? event =>
+              event.currentTarget === event.target &&
+              (onCancel ? onCancel() : onClose?.())
+          : undefined
       }
     >
       <PopupContainer useBg={useBg}>
