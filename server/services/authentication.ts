@@ -132,7 +132,7 @@ export function registerAuthentification(
       io.in(socketId).disconnectSockets(true)
     }
 
-    req.logout(err => {
+    req.logout(() => {
       res.cookie('connect.sid', '', { expires: new Date() })
       res.send('Logged out succesfully')
     })

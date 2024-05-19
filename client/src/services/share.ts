@@ -1,5 +1,5 @@
 export function exportAsJson(data: unknown, filename: string): Promise<void> {
-  return new Promise<void>((resolve, reject) => {
+  return new Promise<void>(resolve => {
     const file = new Blob([JSON.stringify(data)], { type: 'application/json' })
 
     const a = document.createElement('a')

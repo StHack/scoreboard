@@ -321,7 +321,7 @@ function useProvideAdmin(): AdminContext {
       socket.emit('game:sendMessage', message, challengeId)
     },
     uploadFile: file =>
-      new Promise<string>((resolve, reject) => {
+      new Promise<string>(resolve => {
         if (!socket) throw new Error('connection is not available')
 
         socket.emit(

@@ -1,13 +1,6 @@
 import { useTheme } from '@emotion/react'
 import { TeamScore } from '@sthack/scoreboard-common'
-import {
-  Cell,
-  Legend,
-  Pie,
-  PieChart,
-  ResponsiveContainer,
-  Tooltip,
-} from 'recharts'
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts'
 import { ChartTooltip } from './ChartTooltip'
 
 type ChartPlayerScorerProps = {
@@ -59,9 +52,4 @@ export function ChartPlayerScorer({
       </PieChart>
     </ResponsiveContainer>
   )
-}
-
-function Label({ ...p }) {
-  console.log(p)
-  return <div>{p.name}</div>
 }

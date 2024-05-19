@@ -18,5 +18,5 @@
     "skipLibCheck": true,
     "moduleResolution": "node16"
   },
-  "include": [".", "../common/src/models/Common.ts"]
+  "include": ["."]
 }

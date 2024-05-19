@@ -1,10 +1,9 @@
 import { css } from '@emotion/react'
-import styled, { StyledComponent } from '@emotion/styled'
-import { FunctionComponent, SVGProps } from 'react'
+import styled from '@emotion/styled'
+import { FunctionComponent } from 'react'
 import {
   color,
   ColorProps,
-  layout,
   LayoutProps,
   size,
   SizeProps,

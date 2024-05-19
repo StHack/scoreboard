@@ -34,7 +34,7 @@ export function getServerActivityStatistics(
     },
   }
 
-  for (const [id, soc] of playerIo.sockets) {
+  for (const [, soc] of playerIo.sockets) {
     const req = soc.request as Request
     if (!req.user || req.user.team === 'admin') {
       continue

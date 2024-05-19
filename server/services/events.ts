@@ -38,7 +38,7 @@ export async function emitEventLog(
     return
   }
 
-  const [name, func] = handler
+  const [, func] = handler
 
   if (typeof func === 'string') {
     await sendMessageToDiscord(func)

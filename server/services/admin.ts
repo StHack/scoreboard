@@ -179,10 +179,10 @@ export function registerAdminNamespace(
       await serverConfig.setGameOpened(false)
       await emitGameConfigUpdate()
 
-      for (const [id, soc] of playerIo.sockets) {
+      for (const [, soc] of playerIo.sockets) {
         const req = soc.request as Request
         req.user && logout(req.user.username)
-        req.logOut(err => {
+        req.logOut(() => {
           soc.disconnect(true)
         })
       }

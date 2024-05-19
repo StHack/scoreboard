@@ -4,11 +4,9 @@ import { useAdmin } from 'hooks/useAdmin'
 import { useState } from 'react'
 import {
   Bar,
-  BarChart,
   Brush,
   CartesianGrid,
   ComposedChart,
-  DefaultLegendContent,
   Legend,
   Line,
   ResponsiveContainer,

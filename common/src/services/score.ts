@@ -74,7 +74,10 @@ function computeRewards(rewards: Reward[], config: GameConfig): RewardScore[] {
   }))
 }
 
-export function computeRewardScore(reward: BaseReward, config: GameConfig): number {
+export function computeRewardScore(
+  reward: BaseReward,
+  config: GameConfig,
+): number {
   return reward.value * config.teamCount
 }
 //#endregion

@@ -1,14 +1,6 @@
-import { css, useTheme } from '@emotion/react'
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import {
-  Alignment,
-  decodeImage,
-  Fit,
-  ImageAsset,
-  Layout,
-  Rive,
-  useRive,
-} from '@rive-app/react-canvas'
+import { decodeImage, ImageAsset, Rive, useRive } from '@rive-app/react-canvas'
 import { Challenge, ChallengeScore } from '@sthack/scoreboard-common'
 import { categoryToImg } from 'components/CategoryImg'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -32,8 +24,6 @@ export function ChallengeCard({
   const isSolved = achievements.some(a => a.teamname === currentTeam)
   const animationToPlay = isSolved ? 'idle exploded' : 'idle'
   const [initialAnimation] = useState(() => animationToPlay)
-
-  const theme = useTheme()
 
   const riveRef = useRef<Rive>()
 
@@ -178,7 +168,7 @@ function setImage(src: string, imageAsset: ImageAsset): Promise<void> {
         resolve()
       })
     }
-    baseImage.onerror = (...rest) => {
+    baseImage.onerror = () => {
       reject(new Error('Image failed to load'))
     }
   })
