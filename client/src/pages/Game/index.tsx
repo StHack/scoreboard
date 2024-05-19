@@ -4,6 +4,7 @@ import { Box } from 'components/Box'
 import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
 import { ChallengeCard } from 'components/ChallengeCard'
 import { Messages } from 'components/Messages'
+import Popup from 'components/Popup'
 import { useGame } from 'hooks/useGame'
 import { usePlayer } from 'hooks/usePlayer'
 import { Fragment, useEffect, useState } from 'react'
@@ -18,6 +19,7 @@ export function Game() {
   const {
     challenges,
     score: { challsScore: challScore },
+    gameConfig: { gameOpened },
     messages,
   } = useGame()
 
@@ -161,14 +163,26 @@ export function Game() {
         borderRadius="medium"
       />
 
-      {selectedChall && (
-        <ChallDescriptionPopup
-          challenge={selectedChall}
-          score={challScore[selectedChall._id]}
-          messages={messages.filter(m => m.challengeId === selectedChall._id)}
-          onClose={() => setSelectedChall(undefined)}
-        />
-      )}
+      {selectedChall &&
+        (gameOpened ? (
+          <ChallDescriptionPopup
+            challenge={selectedChall}
+            score={challScore[selectedChall._id]}
+            messages={messages.filter(m => m.challengeId === selectedChall._id)}
+            onClose={() => setSelectedChall(undefined)}
+          />
+        ) : (
+          <Popup
+            onClose={() => setSelectedChall(undefined)}
+            title={selectedChall.name}
+          >
+            <Box color="red" textAlign="center" p="4" fontSize="3">
+              Game is currently closed, if you want to see or test this
+              challenge, go to the challenge page of the admin section and click
+              on its icon to open the preview
+            </Box>
+          </Popup>
+        ))}
     </Box>
   )
 }

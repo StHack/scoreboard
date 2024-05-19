@@ -13,6 +13,7 @@ import { IconBreak, IconCreate, IconEdit, IconRepair } from 'components/Icon'
 import { SearchInput } from 'components/SearchInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
+import { ProvidePlayer } from 'hooks/usePlayer'
 import { useState } from 'react'
 import { ChallengeForm } from './ChallengeForm'
 
@@ -187,13 +188,14 @@ function ChallengeBlock({
         </Button>
       </Box>
       {showPreview && (
-        <ChallDescriptionPopup
-          challenge={chall}
-          messages={messages}
-          onClose={() => setShowPreview(false)}
-          score={score}
-          readonly
-        />
+        <ProvidePlayer>
+          <ChallDescriptionPopup
+            challenge={chall}
+            messages={messages}
+            onClose={() => setShowPreview(false)}
+            score={score}
+          />
+        </ProvidePlayer>
       )}
     </Box>
   )
