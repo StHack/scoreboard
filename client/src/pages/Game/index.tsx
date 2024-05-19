@@ -63,6 +63,7 @@ export function Game() {
         'chall chall message'
         `,
       ]}
+      gridTemplateRows={[null, 'auto auto 1fr', 'auto 1fr']}
       gridTemplateColumns="2fr 2fr minmax(25rem, 1fr)"
       flexDirection="column"
       p="2"

@@ -20,6 +20,7 @@ export function ScoreBoard() {
       display={['flex', 'grid']}
       alignItems={['stretch', 'start']}
       flexDirection="column"
+      gridTemplateRows="auto 1fr"
       gridTemplateColumns="3fr 1fr"
       gap="4"
       p="2"
