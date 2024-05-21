@@ -28,10 +28,7 @@ NB: you can also specify arguments `-u your_username` (and optionaly `-p your_pa
    ```
 
 2. Then run `docker compose --profile dev up -d` to start databases
-
-### Step 2 - NPM configuration
-
-1. Create file `server/.env` with the following content
+3. Create file `server/.env` with the following content
 
    ```bash
    NODE_ENV=development
@@ -46,9 +43,9 @@ NB: you can also specify arguments `-u your_username` (and optionaly `-p your_pa
    APP_DISCORD_CHANNEL=XXXXXXXX
    ```
 
-2. Run the npm command `npm i` to restore packages
-3. Run the npm command `npm run start` to launch everything, then go to `http://localhost:3000` to access the app or `http://localhost:8081` to access mongo-express
-4. (Optional): you can create a first admin user by using the npm script `npm run -w server create-admin -- --user my_user --password my_password` or by using init script (see above)
+4. Run the npm command `npm i` to restore packages
+5. Run the npm command `npm run start` to launch everything, then go to `http://localhost:3000` to access the app or `http://localhost:8081` to access mongo-express or `http://localhost:8001` to access Redinsight
+6. (Optional): you can create a first admin user by using the npm script `npm run -w server create-admin -- --user my_user --password my_password` or by using init script (see above)
 
 ### Sample data
 
