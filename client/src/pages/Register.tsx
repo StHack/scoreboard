@@ -33,7 +33,7 @@ export function Register() {
             <TextInput
               type="text"
               autoComplete="username"
-              minLength={5}
+              minLength={3}
               maxLength={42}
               {...usernameProps}
             />
@@ -52,7 +52,7 @@ export function Register() {
           <LabelInput label="Team">
             <TextInput
               type="text"
-              minLength={5}
+              minLength={3}
               maxLength={42}
               {...teamProps}
             />

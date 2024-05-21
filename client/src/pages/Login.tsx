@@ -33,7 +33,7 @@ export function Login() {
             <TextInput
               type="text"
               autoComplete="username"
-              minLength={5}
+              minLength={3}
               maxLength={42}
               {...usernameProps}
             />

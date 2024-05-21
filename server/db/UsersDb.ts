@@ -15,13 +15,13 @@ const schema = new Schema<DbUser>({
   username: {
     type: String,
     required: true,
-    minlength: 5,
+    minlength: 3,
     maxlength: 42,
     unique: true,
   },
   password: { type: String, required: true, minlength: 5 },
   salt: { type: String, required: true },
-  team: { type: String, required: true, minlength: 5, maxlength: 42 },
+  team: { type: String, required: true, minlength: 3, maxlength: 42 },
   isAdmin: { type: Boolean, required: true },
 })
 
