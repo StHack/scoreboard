@@ -94,7 +94,7 @@ export function registerAdminNamespace(
           const challenge = await createChallenge(chall)
           callback(challenge)
           gameIo.emit('challenge:added', challenge)
-          adminSocket.emit('challenge:added', challenge)
+          adminIo.emit('challenge:added', challenge)
           await emitEventLog(gameIo, 'challenge:create', {
             message: `A new challenge has been added, try your chance on "${challenge.name}"`,
           })
@@ -140,7 +140,7 @@ export function registerAdminNamespace(
           const challenge = await updateChallenge(challengeId, chall)
           callback(challenge)
           gameIo.emit('challenge:updated', challenge)
-          adminSocket.emit('challenge:updated', challenge)
+          adminIo.emit('challenge:updated', challenge)
           await emitEventLog(gameIo, 'challenge:update', {
             message: `Challenge "${challenge.name}" has been updated`,
             challenge,
@@ -158,7 +158,7 @@ export function registerAdminNamespace(
     adminSocket.on('challenge:broke', async (challengeId: string) => {
       const updated = await updateChallenge(challengeId, { isBroken: true })
       gameIo.emit('challenge:updated', updated)
-      adminSocket.emit('challenge:updated', updated)
+      adminIo.emit('challenge:updated', updated)
       await emitEventLog(gameIo, 'challenge:broke', {
         message: `Challenge "${updated.name}" is marked has broken, we are working to repair it, please try another challenge`,
         challenge: updated,
@@ -168,7 +168,7 @@ export function registerAdminNamespace(
     adminSocket.on('challenge:repair', async (challengeId: string) => {
       const updated = await updateChallenge(challengeId, { isBroken: false })
       gameIo.emit('challenge:updated', updated)
-      adminSocket.emit('challenge:updated', updated)
+      adminIo.emit('challenge:updated', updated)
       await emitEventLog(gameIo, 'challenge:repair', {
         message: `Challenge "${updated.name}" is fixed, you can try to solve it again`,
         challenge: updated,
