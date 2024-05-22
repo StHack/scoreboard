@@ -164,12 +164,18 @@ export async function countTeam(): Promise<number> {
   return result.length
 }
 
-export function validateUser({ username, team }: Partial<DbUser>) {
-  if (username === '__proto__') {
-    throw new Error('Invalid username')
+const unsafeWords = ['__proto__', 'constructor', 'prototype']
+const unauthorizedUsernames = ['admin']
+export function validateUser(user: Omit<CreateUser, 'password'>) {
+  const username = user.username.toLocaleLowerCase()
+  const team = user.team.toLocaleLowerCase()
+
+  for (const unsafeWord of unsafeWords) {
+    if (username.includes(unsafeWord)) throw new Error('Invalid username')
+    if (team.includes(unsafeWord)) throw new Error('Invalid team')
   }
 
-  if (team === '__proto__') {
-    throw new Error('Invalid team')
+  for (const unauthorizedUser of unauthorizedUsernames) {
+    if (username.includes(unauthorizedUser)) throw new Error('Invalid username')
   }
 }
