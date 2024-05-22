@@ -30,12 +30,12 @@ export function UserPanel() {
         u.username.toLowerCase().includes(search) ||
         u.team.toLowerCase().includes(search),
     )
-    .reduce<Record<string, User[]>>(
-      (acc, cur) => ({
-        ...acc,
-        [cur.team]: [...(acc[cur.team] ?? []), cur],
-      }),
-      {},
+    .reduce(
+      (acc, cur) =>
+        acc.has(cur.team)
+          ? acc.set(cur.team, [...(acc.get(cur.team) as User[]), cur])
+          : acc.set(cur.team, [cur]),
+      new Map<string, User[]>(),
     )
 
   const updatePassword = (u: User) => {
@@ -84,10 +84,10 @@ export function UserPanel() {
         overflowY="auto"
         gap="2"
       >
-        {teams.admin && (
+        {teams.has('admin') && (
           <TeamCard
             team="admin"
-            teams={teams.admin}
+            members={teams.get('admin') as User[]}
             updatePassword={updatePassword}
             changeTeam={changeTeam}
             updateAdminStatus={updateAdminStatus}
@@ -96,20 +96,20 @@ export function UserPanel() {
             gridArea={[
               null,
               'auto/1/auto/3',
-              `1/auto/${Object.keys(teams).length}/auto`,
+              `1/auto/${teams.size}/auto`,
             ]}
             alignSelf={[null, 'start']}
           />
         )}
 
-        {Object.entries(teams)
+        {[...teams]
           .filter(([t]) => t !== 'admin')
           .sort(([t1], [t2]) => t1.localeCompare(t2))
-          .map(([team, teams]) => (
+          .map(([team, users]) => (
             <TeamCard
               key={team}
               team={team}
-              teams={teams}
+              members={users}
               updatePassword={updatePassword}
               changeTeam={changeTeam}
               updateAdminStatus={updateAdminStatus}
@@ -135,7 +135,7 @@ export function UserPanel() {
 
 type TeamCardProps = {
   team: string
-  teams: User[]
+  members: User[]
   updatePassword: (user: User) => void
   changeTeam: (user: User) => void
   updateAdminStatus: (user: User) => void
@@ -144,7 +144,7 @@ type TeamCardProps = {
 }
 function TeamCard({
   team,
-  teams,
+  members,
   updatePassword,
   changeTeam,
   updateAdminStatus,
@@ -170,12 +170,12 @@ function TeamCard({
       <Box
         as="h3"
         fontSize="2"
-        color={teams.length > gameConfig.teamSize ? 'secondary' : undefined}
+        color={members.length > gameConfig.teamSize ? 'secondary' : undefined}
       >
-        {team} ({teams.length} players)
+        {team} ({members.length} players)
       </Box>
       <Box as="ul" pl="2" display="flex" flexDirection="column" gap="2" p="2">
-        {teams.map(u => (
+        {members.map(u => (
           <Box
             key={u.username}
             color={u.isAdmin ? 'secondary' : undefined}
