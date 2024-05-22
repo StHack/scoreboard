@@ -1,4 +1,4 @@
-@server = https://localhost:4400
+@server = http://localhost:4400
 ###
 POST {{server}}/register
 Content-Type: application/json
@@ -18,3 +18,7 @@ Content-Type: application/json
 }
 ###
 POST {{server}}/logout
+###
+GET {{server}}/api/ctftime/team
+###
+GET {{server}}/api/ctftime/capture
