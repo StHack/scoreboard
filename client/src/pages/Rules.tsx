@@ -115,18 +115,15 @@ const rulesMarkdown = (gameConfig: GameConfig) => `
 This year the scoring is dynamic, the formula is the following:
 
 \`\`\`text
-chall_points = base_score * (total_teams - solvers)
-reward_points = base_reward * total_teams
-team_points = chall_point + reward_points
+team_points = base_score * (total_teams - solvers) + Hack4Values_points
 \`\`\`
 
 Where:
 
 - \`base_score\` is the constant **${gameConfig.baseChallScore}**
-- \`base_reward\` is a constant defined by reward and by the staff (can be positive or negative values)
 - \`total_teams\` is the total number of teams playing the CTF (Currently: **${gameConfig.teamCount}**)
 - \`solvers\` is the number of teams that solved this challenge
-- \`reward_points\` is the sum of bonus points given by the staff when special challenge is solved
+- \`Hack4Values_points\` is bonus points for participating and reporting real vulnerabilities to the [Hack4Values program](https://sthack.fr/hack4values)
 
 This means you should expect the challenge points and your score to:
 
@@ -139,7 +136,6 @@ There is no bonus points for breakthrough.
 
 - There is no more lock of challenge when someone solve it
 - Challenge difficulty doesn't have any more weight on the score computation
-- Reward are now proportional to the team count (same way has challenge score)
 
 ## Help/Questions
 
