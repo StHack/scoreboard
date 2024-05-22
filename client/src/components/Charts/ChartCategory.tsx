@@ -33,8 +33,8 @@ export function ChartCategory({ teamScore: { solved } }: ChartCategoryProps) {
         ...agg,
         [cur.challenge.category]: {
           ...(agg[cur.challenge.category] ?? {}),
-          [cur.username]:
-            (agg[cur.challenge.category]?.[cur.username] ?? 0) + 1,
+          [`u/${cur.username}`]:
+            (agg[cur.challenge.category]?.[`u/${cur.username}`] ?? 0) + 1,
           total: (agg[cur.challenge.category]?.total ?? 0) + 1,
         },
       }),
@@ -94,7 +94,7 @@ export function ChartCategoryTooltip({
               key={name}
               as="li"
               color={payload[0].color}
-            >{`${name}: ${count}`}</Box>
+            >{`${name.substring(2)}: ${count}`}</Box>
           ))}
       </Box>
     </Box>

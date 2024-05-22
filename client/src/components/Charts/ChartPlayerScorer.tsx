@@ -15,15 +15,12 @@ export function ChartPlayerScorer({
     return null
   }
 
-  const chartPlayerScorer = Object.entries(
-    solved.reduce<Record<string, number>>(
-      (agg, cur) => ({
-        ...agg,
-        [cur.username]: (agg[cur.username] ?? 0) + 1,
-      }),
-      {},
+  const chartPlayerScorer = [
+    ...solved.reduce(
+      (agg, cur) => agg.set(cur.username, (agg.get(cur.username) ?? 0) + 1),
+      new Map<string, number>(),
     ),
-  ).map(([user, count]) => ({ user, count }))
+  ].map(([user, count]) => ({ user, count }))
 
   return (
     <ResponsiveContainer width="100%" height={300}>

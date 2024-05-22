@@ -40,7 +40,9 @@ export function getServerActivityStatistics(
       continue
     }
 
-    const { username, team } = req.user
+    const { username: u, team: t } = req.user
+    const username = `u/${u}`
+    const team = `t/${t}`
 
     let teamStat = statistics.teams[team]
     if (!teamStat) {
