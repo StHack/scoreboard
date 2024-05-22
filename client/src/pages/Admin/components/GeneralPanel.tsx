@@ -239,7 +239,7 @@ function ActivityStatistics() {
         ))}
       </Ul>
 
-      {activityStatistics.admins.length === 0 && (
+      {activityStatistics.admins.length > 0 && (
         <>
           <Box as="h3" fontSize="2" mt="2" gridColumn="span 6">
             Admins connected
