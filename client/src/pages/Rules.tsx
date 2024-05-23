@@ -115,15 +115,18 @@ const rulesMarkdown = (gameConfig: GameConfig) => `
 This year the scoring is dynamic, the formula is the following:
 
 \`\`\`text
-team_points = base_score * (total_teams - solvers) + Hack4Values_points
+chall_points = base_score * (total_teams - solvers)
+Hack4Values_points = base_reward_h4v * total_teams
+team_points = chall_point + Hack4Values_points
 \`\`\`
 
 Where:
 
 - \`base_score\` is the constant **${gameConfig.baseChallScore}**
+- \`base_reward_h4v\` is the base value of the reward acquire through the Hack4Values program (see below)
 - \`total_teams\` is the total number of teams playing the CTF (Currently: **${gameConfig.teamCount}**)
 - \`solvers\` is the number of teams that solved this challenge
-- \`Hack4Values_points\` is bonus points for participating and reporting real vulnerabilities to the [Hack4Values program](https://sthack.fr/hack4values)
+- \`Hack4Values_points\` is bonus points for participating and reporting real vulnerabilities to the Hack4Values program (see below)
 
 This means you should expect the challenge points and your score to:
 
@@ -132,10 +135,23 @@ This means you should expect the challenge points and your score to:
 
 There is no bonus points for breakthrough.
 
+## Hack4Values rewards
+
+You can access the detail of the [Hack4Values program here](https://sthack.fr/hack4values)
+
+For this year, the first 5 teams will be rewarded as follow:
+
+1. \`base_reward_h4v = 50\` so currently it will valued to **${50 * gameConfig.teamCount}**
+2. \`base_reward_h4v = 45\` so currently it will valued to **${45 * gameConfig.teamCount}**
+3. \`base_reward_h4v = 40\` so currently it will valued to **${40 * gameConfig.teamCount}**
+4. \`base_reward_h4v = 35\` so currently it will valued to **${35 * gameConfig.teamCount}**
+5. \`base_reward_h4v = 30\` so currently it will valued to **${30 * gameConfig.teamCount}**
+
 ## Difference from 2023 edition
 
 - There is no more lock of challenge when someone solve it
 - Challenge difficulty doesn't have any more weight on the score computation
+- Hack4Values_points are now proportional to the team count (same way has challenge score)
 
 ## Help/Questions
 
