@@ -63,7 +63,13 @@ export function ChallengePanel() {
             <ChallengeBlock
               key={c._id}
               chall={c}
-              score={challsScore[c._id]}
+              score={
+                challsScore[c._id] ?? {
+                  challenge: c,
+                  score: 0,
+                  achievements: [],
+                }
+              }
               messages={messages.filter(m => m.challengeId === c._id)}
               attempts={attempts.filter(a => a.challengeId === c._id)}
               onBrokeClick={brokeChallenge}
