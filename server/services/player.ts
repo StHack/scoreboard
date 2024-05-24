@@ -100,8 +100,8 @@ export function registerPlayerNamespace(
           const checkers = [
             () => checkGameOpen(serverConfig),
             () => checkTeamSolved(attempt),
-            () => checkBruteforce(gameIo, attempt),
             () => checkFlag(attempt),
+            () => checkBruteforce(gameIo, attempt),
           ]
 
           for (const checker of checkers) {
