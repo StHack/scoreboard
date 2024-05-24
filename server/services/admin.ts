@@ -244,7 +244,10 @@ export function registerAdminNamespace(
     adminSocket.on(
       'game:sendMessage',
       async (message: string, challengeId?: string) => {
-        const result = await addMessage({ content: message, challengeId })
+        const result = await addMessage({
+          content: message,
+          challengeId: challengeId || undefined,
+        })
 
         gameIo.emit('game:newMessage', result)
 
