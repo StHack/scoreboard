@@ -28,3 +28,7 @@ export function getRelativeTime(d1: Date, d2 = new Date()): string {
 export function fromNow(seconds: number): Date {
   return new Date(new Date().getTime() + seconds * 1000)
 }
+
+export function from(date: Date, seconds: number): Date {
+  return new Date(date.getTime() + seconds * 1000)
+}

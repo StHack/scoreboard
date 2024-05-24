@@ -19,7 +19,7 @@ import { Namespace } from 'socket.io'
 import { emitEventLog } from './events.js'
 import { registerSocketConnectivityChange } from './serveractivity.js'
 import { ServerConfig } from './serverconfig.js'
-import { fromNow, getRelativeTime } from './time.js'
+import { from, fromNow, getRelativeTime } from './time.js'
 
 export function registerPlayerNamespace(
   adminIo: Namespace,
@@ -100,8 +100,8 @@ export function registerPlayerNamespace(
           const checkers = [
             () => checkGameOpen(serverConfig),
             () => checkTeamSolved(attempt),
-            () => checkFlag(attempt),
             () => checkBruteforce(gameIo, attempt),
+            () => checkFlag(attempt),
           ]
 
           for (const checker of checkers) {
@@ -197,18 +197,22 @@ async function checkBruteforce(
   const lastAttempt = attempts[0] as Attempt
 
   for (const { count, waiting, warning } of rules) {
-    const delay = fromNow(waiting)
-    if (attempts.length >= count && lastAttempt.createdAt < delay) {
-      if (warning && attempts.length === count) {
-        const challenge = await getChallenge(attempt.challengeId)
-        await emitEventLog(gameIo, 'player:attempt', {
-          message: `Team "${attempt.teamname}" has reach the warning threshold of attempts made for the chall "${challenge?.name ?? ''}"`,
-          attempt,
-          challenge,
-        })
-      }
+    if (attempts.length < count) {
+      continue
+    }
 
-      // return `Bruteforce is not allowed, and you have already attempted this chall ${attempts.length} times ! Wait ${waiting}s`
+    if (warning && attempts.length === count) {
+      const challenge = await getChallenge(attempt.challengeId)
+      await emitEventLog(gameIo, 'player:attempt', {
+        message: `Team "${attempt.teamname}" has reach the warning threshold of attempts made for the chall "${challenge?.name ?? ''}"`,
+        attempt,
+        challenge,
+      })
+    }
+
+    const delay = from(lastAttempt.createdAt, waiting)
+    if (delay > new Date()) {
+      return `Bruteforce is not allowed, and you have already attempted this chall ${attempts.length} times ! Wait ${waiting}s`
     }
   }
 
