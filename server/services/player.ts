@@ -208,7 +208,7 @@ async function checkBruteforce(
         })
       }
 
-      return `Bruteforce is not allowed, and you have already attempted this chall ${attempts.length} times ! Wait ${getRelativeTime(delay)}`
+      // return `Bruteforce is not allowed, and you have already attempted this chall ${attempts.length} times ! Wait ${waiting}s`
     }
   }
 
