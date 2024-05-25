@@ -69,8 +69,8 @@ Also, by default all the data are stored in a named volumes, so if you want/need
 ### Build for prod and prepare VM
 
 ```bash
-git clone https://github.com/StHack/2021-scoreboard.git
-cd ./2021-scoreboard
+git clone git@github.com:StHack/scoreboard.git
+cd ./scoreboard
 ./init.sh -u your_username # specify the username you want for the first admin (recommended)
 ```
 
@@ -123,7 +123,19 @@ Don't forget to make the final export and commit it to this git. For that, run t
 
 ```bash
 sudo docker compose --profile prod exec mongo /backups/_mongo_exports.sh
-git add .
+git add *
+ssh-keygen -t ed25519 -C email@email.com
+cat ~/.ssh/id_ed25519.pub
+# push that key into github settings -> https://github.com/settings/keys
+git config user.name ""
+git config user.email email@email.com
 git commit -m "feat: add $(date +%Y) edition data"
 git push
+## retrieve sensitive data for staff-only analysis
+sudo docker compose --profile prod logs > logs.txt
+sudo docker compose --profile prod logs website > logs-website.txt
+## from your computer
+scp ubuntu@XX.XX.XX.XX:/home/ubuntu/scoreboard/backups/$(date +%Y)/attempts-uncensored.json .
+scp ubuntu@XX.XX.XX.XX:/home/ubuntu/scoreboard/logs.txt .
+scp ubuntu@XX.XX.XX.XX:/home/ubuntu/scoreboard/logs-website.txt .
 ```
