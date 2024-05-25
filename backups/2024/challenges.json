@@ -1,0 +1,451 @@
+[{
+	"_id": {
+		"$oid": "664deab397675c97adee1548"
+	},
+	"name": "Bienvenue dans le monde des 12",
+	"description": "![Dofus](https://scoreboard.sthack.fr/api/content/8d7bab8031402314bd5d6fa9eb494d5c3e8fb3daa6911b8a3e7dde78fa4b5587.webp)\n\n**Bonsoir jeune sthackventurier, envie de parcourir le monde des 12 comme il était en 2010 ?**\n\nA quand remonte ta dernière nuit blanche sur Incarnam hein ?\nRDV à Astrub pour taper des bouftous, drop des panos prespic, *vend code audio no noob no arnak*, **et bien sûr respecter les CGU**.**\n\n**Sauras-tu aboutir à la réunification des 6 ~~dofus~~ flags dans la nuit ?**\n\n---\n\n➜ **Une série d'épreuves liées à Dofus 1.29**, toutes répertoriées dans la catégorie \"Dofus\".\nTout se passe sur un serveur privé réservé aux participants du CTF.\nToutes les épreuves Dofus sont indépendantes les unes des autres.\n\n**Plusieurs NPCs ont été ajoutés au monde des 12 et te proposeront des challenges pour le moins... inattendus.**\n\n---\n\n➜ **Le point d'entrée est le même pour tous les challs : inscris-toi, télécharge le client, et lance le jeu !**\n\nUne émissaire de la Sthack a été envoyée dans le monde des 12 : **Jane Doe**.  \nVous retrouverez ce NPC in-game sur certaines cartes importantes, elle pourrait vous aiguiller quant à vos aventures Dofusiennes de ce soir.  \nHa et pour les disciples de Iop, peut-être est-il nécessaire de le préciser : **la force brute ne sert à rien cette nuit.**\n\n---\n\n➜ **Lien pour s'inscrire et télécharger le client : http://dofus.sthack.fr**\n\n**Ce premier chall est juste le chall d'intro, jusqu'à ce que tu sois connecté au serveur et prêt à ~~cheater~~ jouer !\nParle au NPC Jane Doe dès que tu la croises pour ton premier flag,** première map à la sortie du temple d'Incarnam.\nTu pourras ensuite enchaîner sur n'importe quelle autre épreuve.\n\n---\n\n### ⚠️ **Notes importantes :**\n- **les challs sont dispos UNIQUEMENT si le jeu est lancé en français**\n- pour tous les challs Dofus, si tu veux garder ton taff et tes flags pour toi, il est *vivement* recommandé d'utiliser un VPN...\n-  si jamais ton personnage est buggé tu peux utiliser **la commande `.debug`** directement dans le chat du jeu *(`.help` pour voir toutes les commandes disponibles)*",
+	"img": "/api/content/8d7bab8031402314bd5d6fa9eb494d5c3e8fb3daa6911b8a3e7dde78fa4b5587.webp",
+	"author": "north & hessman & it4",
+	"flag": "6f769434bddefcdf8bdfd76bb9ef340853a62adc179d84479ad80fad4b94397c",
+	"salt": "d6a0db01-1627-4cc9-8c70-af24ccb85002",
+	"category": "Dofus",
+	"difficulty": "easy",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664ded8197675c97adee1596"
+	},
+	"name": "A Baulte from the blue",
+	"description": "**Yuchein Baulte est un coureur hors-pair.** Personne dans le monde des 12 n'a encore réussi à battre l'un de ses temps.\n\n**Allez à sa rencontre pour démarrer une course contre lui, et tentez de l'emporter !**\n\n**Position** : [0,2] à Incarnam, vous trouverez Yuchein Baulte  \n**Catégorie** : **Network/Dev/Misc**\n\n![image.png](/api/content/d662903917cfe32cf8d48ecebca29402286bd31476a56d9f732bf42933a5ffaf.png)",
+	"img": "/api/content/da6ab59f4539a276f0eec54ba6fd82b1aa4dac529f396a603f9f7e08f9d271bd.webp",
+	"author": "north & hessman & it4",
+	"flag": "4673fbadac81fb83ce9fd0b8dd46a2af71bf71785494f72ee1cee40ba85cbd76",
+	"salt": "a73ac30b-55d7-48b1-9845-80b661151977",
+	"category": "Dofus",
+	"difficulty": "easy",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664dee9d97675c97adee15d8"
+	},
+	"name": "I wanna be the very best",
+	"description": "**Quoi de plus prestigieux que d'atteindre le niveau maximal ?** À la simple vue de l'aura de puissance débloquée au niveau 200, vous serez respectés de tous, y compris des autres joueurs chevronnés.\n\n**Cependant, atteindre le niveau maximal en quelques heures est un objectif qui semble difficilement atteignable, ou au moins terriblement fastidieux...**\n\n**Catégorie** : Network/Dev/Misc\n\n![image.png](/api/content/69053021a0fb0a6f986c8920844542bd893f5e81d58b79f1508e1373ed9b27c3.png)",
+	"img": "/api/content/9d61055f8600a2b3e7ab378bbdcc7787dd7d46c5328139b92685c7003c928e6c.webp",
+	"author": "north & hessman & it4",
+	"flag": "dfd341bd1ad4ec85c3f139db3e74ebe46f10e0106abd05ff8d7721bcfc6cc089",
+	"salt": "ba75c471-fa01-4715-b8ca-4ffe43c305b3",
+	"category": "Dofus",
+	"difficulty": "easy",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664def6f97675c97adee15f5"
+	},
+	"name": "The elite spell",
+	"description": "**Faire des erreurs dans son build**, un point de stat mal dépensé, ou pire : un point de sort mal dépensé, **c'est déjà arrivé à tout le monde** (noob). Et quelle plaie pour récupérer ce point mal dépensé ! \n \nHeureusement, sur notre serveur privé, est mis à votre disposition **dès Incarnam la possibilité de tout réinitialiser facilement !**\n\n**Cependant, un habitant d'Incarnam tient des propos étranges à ce sujet...**\n\n**Position** : [3,0] à Incarnam, vous trouverez Way Hersharck  \n**Catégorie** : Network/Misc\n\n![image.png](/api/content/b1ac0f8a3cdfee613c559b42fd15a58443f54cd59320be98333ead171eafb217.png)",
+	"img": "/api/content/b660ffdea45e00df819fc481192173f0627eabb6e4bfb76021ca88b105dc62e7.webp",
+	"author": "north & hessman & it4",
+	"flag": "fe50b729a4401c715a1f6cc15faf9ba71281a6f603dfe1f000e95278e4ffe912",
+	"salt": "38d338c0-54ac-4d81-9c42-e6c4ad7aaaf3",
+	"category": "Dofus",
+	"difficulty": "easy",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664defe997675c97adee1649"
+	},
+	"name": "Very Ignorant Programmer",
+	"description": "Tout ce qui passe dans le monde des 12, reste dans le monde des 12.\n\nMais il est aussi notoire que tout se sait très vite sur ces terres Amaknéennes... les tofus ont des oreilles.\n\nD'étranges rumeurs circulent au sujet de certains membres de la communauté ces temps-ci, **certains fraudeurs sembleraient capables de s'arroger des droits que personne ne leur a concédés.**\n\n**Position** : [0,0] à Amakna, vous trouverez Céline \"C\" Emesse\n**Catégorie** : Web/Misc\n\n![image.png](/api/content/9380b3cddd3fa9a4a2a0e8921fe27953f6d45537049f828cb83c02c75863c004.png)",
+	"img": "/api/content/93065af08c0c2463cedbec7a45de4421f0ebf20ef92a639d7cc694e0ff71da90.webp",
+	"author": "north & hessman & it4",
+	"flag": "1db9203ef2697f4ebb42d6bbf8639efafca456c8d8584c8fb8b92119a32396d0",
+	"salt": "28cf2925-3c56-419c-b667-7f4f52150bec",
+	"category": "Dofus",
+	"difficulty": "easy",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664df0a897675c97adee164f"
+	},
+	"name": "Drink or drive (or fight)",
+	"description": "**Comme chacun en Amakna le sait, les disciples de la déesse Pandawa ont la panse extensible quand il s'agit d'ingurgiter des litres de boisson houblonnée.** Chaque région de Pandala comprend de nombreuses brasseries et autres champs de malt. Un bon disciple de la déesse se démarque en se délectant de tout nouveau breuvage inédit à son palais !\n\nQuand la taverne d'Incarnam s'est mise à brasser sa propre boisson, et à proposer sa bière uniquement localement (tous des hippies-hipsters les habitants d'Incarnam), cet endroit est devenu un lieu de pélerinage pour tous les habitués de Picole et autre Souffle Alcoolisé.\n\n**Mais l'un de ces Pandas en pélerinage ne semblent pas vouloir décoller.** La taverne d'Incarnam ne connaît pas un jour de répit depuis qu'il est là. Beaucoup ont essayé de le sortir par la force, mais cela semble impossible, la breuvage semble lui donner une force surhumaine...\n\n**Position** : [3,3] à Incarnam, dans la taverne, vous trouverez Justin Derniaifut  \n**Catégorie** : Misc\n\n![image.png](/api/content/6aba5de9874ecc7574eb0be8134b260c9d60bc2e3ac64d880b7de2c470ec6bdc.png)",
+	"img": "/api/content/a316b3b3234c0290626c6949bc6625806c50a8f2a78015410a9979e496ea7e07.webp",
+	"author": "north & hessman & it4",
+	"flag": "7e50ba92f793ff3d30f04da68f5e7c70a911ea067e30228d25fc2ea8e10521a1",
+	"salt": "efa296a1-ae5a-468a-82ec-e4d27522944a",
+	"category": "Dofus",
+	"difficulty": "easy",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664df10797675c97adee1652"
+	},
+	"name": "New ticketing in user interface",
+	"description": "**Pour faciliter le travail de nos modérateurs, en tant que développeurs-mainteneurs de ce serveur Dofus privé, nous avons mis en place un système de tickets.** Ici que vous pouvez faire vos signalements pour les bots, mettons fin au règne des bots et leur impudence !\n\nVous pouvez utiliser des commandes directement in-game pour utiliser ce système de tickets, pour nous reporter des bugs, ou nous signaler des cheaters, ou n'importe quel autre soucis que vous pourriez renconrer pendant votre aventure.\n\n> **Hint : utiliser `.help` dans le chat in-game pour avoir des informations sur les commandes disponibles !**\n\n**Position** : [4,-22] à Astrub, vous trouverez Euzekiel Mappe\n**Catégorie** : Dev\n\n![image.png](/api/content/5d0fb3f646d12c1d14003059a1bbef7210bc46ea738c0c613b9763aeed55ad27.png)",
+	"img": "/api/content/e5e30bfcc817e2c240bdb7a14475ab7a9950e5c71ca2c97bd0b96172db9180a2.webp",
+	"author": "north & hessman & it4",
+	"flag": "9953dcd3f367fd4ea7dc30437466491d0eef9ba83ca1ac8d270ca7a4c662f53a",
+	"salt": "1f3ad126-5c7f-401d-9f34-9935d0aacbaa",
+	"category": "Dofus",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664e646d8fa0f20074e563bc"
+	},
+	"name": "TrollTrace.com",
+	"description": "Vous avez entendu parler du nouveau site **TrollTrace** disponible dans la petite ville de **South Park** ? \n\nIl permet de **diffuser l'identité des trolls d'internet**. \n\nIl est possible de faire un signalement pour que leur **support automatisé** s'occupe d'analyser votre plainte.\n\nRandy est persuadé que **les admin et le support sont eux mêmes des trolls** qui souhaitent conserver leur monopole sur le cyberharcèlement !\n\nVous pouvez toujours essayer de **devenir membre du support et de l'administration** et vérifier par vous-même...\n\n* **Challenge** : [https://southpark.sthack.fr](https://southpark.sthack.fr)\n* **Source** : [https://southpark.sthack.fr/sources/sources.zip](https://southpark.sthack.fr/sources/sources.zip)\n* Le **flag** est en **deux parties**\n* Le **bruteforce** n'est **pas utile**",
+	"img": "/api/content/a59fb38816ac958819ccd810e965d7ae8cbccc84eb7ab60ccbfb094a12d99faf.webp",
+	"author": "north & hessman",
+	"flag": "a72967e60084b6fe19e4fabe6280010813df443da5ccc956382761e6bf27ce29",
+	"salt": "6f0e0fca-f478-4eb4-b323-d72d8d343d0f",
+	"category": "web",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664ee2dc8fa0f20074e564c7"
+	},
+	"name": "Code Lyoko",
+	"description": "Jeremie a réussi à prendre le contrôle du code de XANA pendant un court instant et a réussi à y placer une porte dérobée. Il vous demande de récupérer la main sur XANA au plus vite !\n\n**nc 51.20.123.75 1337**\n\n[chall](/api/content/8f612a248da7de80738a208bed1d4d19a27621adf12a2f0adcf55a05af9f06a0)",
+	"img": "",
+	"author": "ghozt",
+	"flag": "89c4531c9477b2cd6568dd48b6b3a20db029cb18a7132ac8a47022a1cdc3d43f",
+	"salt": "7cb589dc-15b4-49a2-96eb-ebd242e149bd",
+	"category": "reverse",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664f14de8fa0f20074e566f9"
+	},
+	"name": "Bugged Bunny",
+	"description": "Acme est une initiative open source gratuite qui fournit des services cloud. Nous venons de mettre en place un nouveau runtime de conteneurs que nous espérons conforme aux standards de runtime ! Cependant, notre développeur nous a avertis que les syscall peuvent être dangereux, donc nous interdisons tout programme contenant des syscall/int 80. Veuillez nous fournir votre programme et nous le lancerons sur notre serveur ! (Notre serveur a une archi x64)\n\nVous pouvez trouver notre programme de runtime ici : **http://bunny.sthack.fr/runtime.go**\n\nIMPORTANT : Étant donnée que le challenge repose sur de la containerisation, ne soyez pas destructif sur la machine s'il vous plait :) .",
+	"img": "",
+	"author": "Kaddate",
+	"flag": "0bfd6b68288e6888d1195352fb6ce26f9bbdbaba17c940b20f2a5c8093542f31",
+	"salt": "83bb2568-cbac-47a1-b68b-29493df61a39",
+	"category": "web,shellcode,progra",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664f3d948fa0f20074e5693d"
+	},
+	"name": "Find the Earth",
+	"description": "Aider Ulysse a retrouvé les coordonnées de la Terre. Malheureusement Zeus a maudit le capitaine qui n'a plus accès à la cabin du capitaine. Créer toi un compte et aidez-nous.\n\n[L'interface du vaisseau](http://51.20.72.47:5000/)",
+	"img": "/api/content/48f6d233427435787ddeeed66bb25c341e71ddb084bd4b99c82cefe4bf14dcaf.webp",
+	"author": "Keclem",
+	"flag": "d510ed86f6f29c8235f227e0d9b02333e9237cac7c4398b6566eedc9e743e27e",
+	"salt": "9631a355-45e3-4b6e-a21b-65b694d611d9",
+	"category": "web",
+	"difficulty": "easy",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664f50611f444cdafefe2a8e"
+	},
+	"name": "Dory",
+	"description": "Dory voyage parmi les étoiles de mer, tout ce dont elle se rappelle, son nom... Aidez la à retrouver sa coquille...\n\n`nc seastars.boisson.homeip.net 40011`\n[dory](/api/content/36d3893bc8505e6a891fd81178a4a26b3cbb4c1bf9b6bd11776dea6769238a7b)",
+	"img": "/api/content/482a15952e77157a1229f5b42adccd0fc954a2597668194520405622dd0dcc24.webp",
+	"author": "franb & ghozt",
+	"flag": "fd9938b12ace72e160708cd06521f92b078bc7340ebaba5c85ab2d14428e04f9",
+	"salt": "4e233698-8b4a-4c92-b184-9d5a40f4a419",
+	"category": "pwn",
+	"difficulty": "hard",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664f52f01f444cdafefe2ba8"
+	},
+	"name": "ACME - Reclamation Center",
+	"description": "Not happy with our products ? \n\nSend us a message ! We will read it asap :).\n\n[Challenge](https://reclamation-center.sthack.fr) \n\n\n*Goal is to obtain a reverse shell with a valid TTY :)*",
+	"img": "/api/content/9ec295549b22674f2e221b371102ebebe2b33a499a05f2293592a02d76cdaaca.webp",
+	"author": "shoxxdj",
+	"flag": "5119ab91e2cdb20507f7b70edebbd867bcbf5259aac9f92a908d5620863b2061",
+	"salt": "523221f6-2bf6-48af-ae1f-a1b29563a903",
+	"category": "web",
+	"difficulty": "hard",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664f530e1f444cdafefe2bb4"
+	},
+	"name": "Droopy",
+	"description": "Hello happytaxpayers, je suis droopy, j'aime faire les choses étape par étape :) et vous savez quoi, ça me rends heureux, mais ce qui me rends le plus heureux, c'est de voir les shells qui popent.\n\n`nc taxpayers.boisson.homeip.net 40012`\n\n[droopy](/api/content/ece1e49e7027ef5ab22da69ac6b93ca744c03369642fdec831442b29e9f7afd7)",
+	"img": "/api/content/d89a14dbf95e7be5958f6fe9c4e57185704a32efcad46e0ccaafde5ceafcc1e8.webp",
+	"author": "franb & ghozt",
+	"flag": "66df0ce0e1dea2a6b601e6874451dcb7b75c317dcd6a732b78d24f19e5d6d810",
+	"salt": "60354a0f-abed-4cde-a6e8-7dfe6e53d4ef",
+	"category": "pwn",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664f5e551f444cdafefe2fed"
+	},
+	"name": "journalismz",
+	"description": "Certaines informations fournies par BFN indiquent qu'un terroriste mélanoderme notable de la tribu Titchi, connue pour ses nombreux méfaits, agît aux abords de Bordeaux.\n\nIl aurait réalisé ses méfaits le 23/05/2024 vers 19h aux alentours de la cité du vin, sur le quai du chantier naval. Essayez de regarder ce qu'il a pu faire à cette heure là.\n\nNos informateurs nous ont conseillé d'aller récupérer une photo qui a fuité sur snapchat au niveau du ponton de la cité du vin ce midi. \n\nVous avez comme un doute sur les informations reçues...\n\nInfo : le flag est en deux parties",
+	"img": "/api/content/a3bfd4e290fdf4fb07fb250337100b087c00dbcd888a2ddae6b0a20f6bfd2fde.webp",
+	"author": "Amnezik",
+	"flag": "d9896080d38e27d9fc8a6a44434532add4679f1e8f25d5b175310ab489edf630",
+	"salt": "d9af3b8d-1fc0-4b2d-9a86-4797d64f68eb",
+	"category": "osint",
+	"difficulty": "easy",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664f63641f444cdafefe3130"
+	},
+	"name": "Pocket Server Rack 1/3",
+	"description": "Chall hardware, circuit imprimé dispo à l'entrée ou MP `a620fba3c3ff648510697f7e` sur Discord\n![challenge](https://scoreboard.sthack.fr/api/content/f3429ce3a5b80bd866bbbe7975d4c375f8709daac355ffff81c8f6e1ab880c03.webp)",
+	"img": "/api/content/f3429ce3a5b80bd866bbbe7975d4c375f8709daac355ffff81c8f6e1ab880c03.webp",
+	"author": "hackdaddy",
+	"flag": "a7f72b86e6703589d077d15524d63c1f5ee79a832b115eb185e1bf354a400cb0",
+	"salt": "461541fe-5a5f-4a2d-97d3-9eca6326b71f",
+	"category": "hardware",
+	"difficulty": "easy",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664f63921f444cdafefe313f"
+	},
+	"name": "Pocket Server Rack 2/3",
+	"description": "[ i ] Les 3 challs \"Pocket Server Rack\" utilise le même ciruit imprimé [ i ]\n\nGaston a laisser un fichier dans un VM",
+	"img": "",
+	"author": "hackdaddy",
+	"flag": "7322285dc32eb477d428289cef7c3e2c71c018fa9addf895197a8493208d5ed0",
+	"salt": "9d9dc09c-ede3-425e-a47c-f57c818dd475",
+	"category": "forensic",
+	"difficulty": "easy",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "664f63e01f444cdafefe3143"
+	},
+	"name": "Pocket Server Rack 3/3",
+	"description": "[ i ] Les 3 challs \"Pocket Server Rack\" utilise le même ciruit imprimé [ i ]\n\nUn dernier fichier semble completement inaccessible",
+	"img": "",
+	"author": "hackdaddy",
+	"flag": "5ed882b28586495eb9943b84a97800db81e87dafe6e412b6b9d02be84a40306d",
+	"salt": "adff6ece-5cea-4885-b150-28c979b96078",
+	"category": "hardware",
+	"difficulty": "hard",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "66505cc61f444cdafefe35a6"
+	},
+	"name": "Do Your Updates Son",
+	"description": "> I know I should update my infra... But man these cartoons are just the best, I can't get my eyes off it! Well, at least my db stores them all so I can watch them anytime now! ^.^\n\n- Sources : https://drive.google.com/file/d/1Ti0io4xDuoMbJP5ptTwR9oEfyJOIydgn/view\n- Test your sploit locally, then get remote flag remotely !\n- The dockers restart every 30mn for night-long autofix, this is expected\n- If your sploit works locally and not remotely, don't waste time & reach out ! ;)\n- No `STHACK{` prefix for this one, sorry..\n- Have a nice CTF ! <3\n\nYour journery starts here : http://do-your-updates-son.sthack.fr/",
+	"img": "/api/content/4cd9894a816737d0a6d1f267d23b234951819eb9662090fe818029e13d783663.webp",
+	"author": "laluka",
+	"flag": "863bd708067a4f184923d0c13fa2304c6ff2486ce9da1f2cfdaa7ff9e95ef94d",
+	"salt": "54723e70-5de3-4cc2-a796-0037e08d61b3",
+	"category": "web",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "66505da81f444cdafefe35f3"
+	},
+	"name": "Stream Is Lit Isnt It",
+	"description": "> Unthread my plot, Chain your bugz, and Remember to Have Fun! ^_^\n\n- Sources : https://drive.google.com/file/d/1dobXx9cJH7Vb8UU1wnydpM286f98tXYV/view\n- Test your sploit locally, then get remote flag remotely !\n- The dockers restart every 30mn for night-long autofix, this is expected\n- If your sploit works locally and not remotely, don't waste time & reach out ! ;)\n- No `STHACK{` prefix for this one, sorry..\n- Have a nice CTF ! <3\n\nYour journery starts here : http://stream-is-lit-isnt-it.sthack.fr/\n\nhttps://drive.google.com/file/d/1dobXx9cJH7Vb8UU1wnydpM286f98tXYV/view?usp=sharing",
+	"img": "/api/content/1e61a30e58455c09bcb1574bfa4f04fc59156d5894e5254d3cde494cc93b88ca.webp",
+	"author": "laluka",
+	"flag": "6c47616c47f72086708cc7fd286127942446002438434716d797e82967336c60",
+	"salt": "da9b36aa-ad45-4118-b6bf-ba87edebf8f6",
+	"category": "web",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6650608b1f444cdafefe3681"
+	},
+	"name": "Blobloblock",
+	"description": "BloBloblbolboblolbllbllbolbolboloblbblllboooooooblllblblbopp blop blup blop blip blup\n\n\nCode : http://13.51.171.160:3000/code\n\nÉpreuve : http://13.51.171.160:3000/",
+	"img": "/api/content/349c0d6c1a08558d4878e3b1a25c0711e46715504731368b68b576ad032ef876.webp",
+	"author": "Amnezik",
+	"flag": "55d75ee8a2f6d235dc21360d46849cf2a64479f89bd1a1217394c806ca8d1bc2",
+	"salt": "e6a61875-3b3e-4b40-9e26-07ccbe1170cb",
+	"category": "crypto",
+	"difficulty": "easy",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "66508d2000f456724bf6fd76"
+	},
+	"name": "catseyes",
+	"description": "![image](https://scoreboard.sthack.fr/api/content/d22df2226d2c18ca3b6b99c5c28ec8d699387bc84ad3d5f00a4b298a970d761c.webp)\n\n**En résumé :**\n\n- Le commissaire surveille quentin (en ssh via un bastion)\n- Quentin surveille le tableau (en curl)\n- Vous (catseyes) avez la main sur le bastion et devez voler le tableau (c'est à dire afficher la page web affichant le tableau où est le flag)\n\n\nVous êtes plusieurs sur le chall, il n'y a pas de cloisonnement fort entre les équipes.\n\n**Quelques règles de bon sens s'appliquent :**\n\n1. Soyez fairplay et jouer cette épreuve sans intérferer volontairement avec les autres.\nNe pas bloquer les autres.\nAucun scan violant ou brute force n'est nécessaire pour résoudre le chall.\n2. Ne pas laisser de traces sur le bastion qui est partagé qui donnerait la réponse aux autres équipes qui jouent en même temps que vous : penser a l'upload au moment de récupérer le flag, ne le laisser pas trainer, purger votre history, etc.\n3. N'espionnez pas les autres, trouvez par vous même !\n\nVous pouvez vous connecter au bastion sur cette adresse 13.49.125.176, avec le compte root, sur le port 2222, avec la clé ssh suivante : \n\n```\n-----BEGIN OPENSSH PRIVATE KEY-----\nb3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAArAAAABNlY2RzYS\n1zaGEyLW5pc3RwNTIxAAAACG5pc3RwNTIxAAAAhQQBkz3SnFhbBR4j0PiyO+WzFz4PYIV0\n7rsudx/l2UJ01GG72uvY5yoGLEud2kSfkZrF+Oa81XT9segPzJt+L9ST790AnP8LP/DHU3\nnYaKZkpND5+DFmVAiYZKJlJuDiFcBdzIPmnoenBxuQDlfsdAjqzJx/PxulnysFnvYNMlef\nANipIVkAAAEQwbyk/8G8pP8AAAATZWNkc2Etc2hhMi1uaXN0cDUyMQAAAAhuaXN0cDUyMQ\nAAAIUEAZM90pxYWwUeI9D4sjvlsxc+D2CFdO67Lncf5dlCdNRhu9rr2OcqBixLndpEn5Ga\nxfjmvNV0/bHoD8ybfi/Uk+/dAJz/Cz/wx1N52GimZKTQ+fgxZlQImGSiZSbg4hXAXcyD5p\n6HpwcbkA5X7HQI6sycfz8bpZ8rBZ72DTJXnwDYqSFZAAAAQgGACxLjwlAnTqKxq+LFFdrV\n3qryvI4pzlmlBLXcFAiyi4qOU1o277+zYtv3CmQ+qRr22cHlAzV4Y8Fl6dSV0SwvGAAAAA\nxyb290QGJhc3Rpb24BAgMEBQY=\n-----END OPENSSH PRIVATE KEY-----\n```\n",
+	"img": "/api/content/d22df2226d2c18ca3b6b99c5c28ec8d699387bc84ad3d5f00a4b298a970d761c.webp",
+	"author": "vieux",
+	"flag": "2ecba82e043bc376c707796acf90df5935a9f96f9c3be4dbfa886b41a599cb66",
+	"salt": "e4e520d9-992c-4362-aee4-79cb0f726b5f",
+	"category": "network",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6650a56200f456724bf6fea3"
+	},
+	"name": "Jeanne et Serge font du TLS",
+	"description": "![image](https://scoreboard.sthack.fr/api/content/285b1044eb7a0a00a762c0222e99b82aa6e1924d4a0e36feaab4c267cb8966dc.webp)\n\nJ'ai un peu alluciné en tombant sur ce tuto WTF qui est pourtant sur le site officiel rsyslog !\n\nhttps://www.rsyslog.com/tls-secured-syslog-via-relp/\n\nPour jouer (et découvrir si Serge est effectivement amoureux ou pas de Jeanne !!) vennez vous brancher sur le switch dédié à ce challenge.\n\nLe flag est dans les logs, à vous de jouer !\n\nChaque port du switch est dans un vlan dédié, donc pas de risque d'interférer avec les autres joueurs, vous pouvez y aller !\n\nInterdiction de toucher aux raspberry pi ni aux cables 1 et 13 sur lesquels ils sont branchés.",
+	"img": "/api/content/285b1044eb7a0a00a762c0222e99b82aa6e1924d4a0e36feaab4c267cb8966dc.webp",
+	"author": "vieux",
+	"flag": "ca7862a45b2eda2df1e44739596f73df655e95d1fafdd8513d06c37be6654a8b",
+	"salt": "b6c7ff40-9ae1-4577-87d3-d20b88abc049",
+	"category": "network",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6650ce0b00f456724bf70396"
+	},
+	"name": "chall down",
+	"description": "chall down",
+	"img": "",
+	"author": "chall down",
+	"flag": "cd9012b5f9667e13b25a94b524c41aaf6b061b86b0f412c64134196154566bc8",
+	"salt": "c136b94b-bb58-4236-84b6-e85b1ba2f712",
+	"category": "down",
+	"difficulty": "easy",
+	"isBroken": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6650d62b00f456724bf712f5"
+	},
+	"name": "Secret Agency",
+	"description": "A vous de fouiller les pièces accessible de la mairie à la recheche d'un équipement estampillé \"TOP SECRET\" et trouver un moyen de récupérer le flag.\n\n!!! NE PAS TOUCHER AU MATERIEL ESTAMPILLE TOP SECRET !!!\nDu matériel est à votre dispositionsur la table au centre du hall d'entrée",
+	"img": "",
+	"author": "Agrorec",
+	"flag": "dbbf101172475e1512c5edcf05da5b282671c3c86fbdca31e2333228483368c8",
+	"salt": "150c37af-850d-4155-93ad-45c419b1758b",
+	"category": "Radio",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6650e82800f456724bf7b782"
+	},
+	"name": "Lockpick - Etape 1",
+	"description": "Rendez-vous sur la page https://lockpick.sthack.fr et créez une team au nom de votre équipe\n\nFORMAT DE FLAG SUR LA PLATEFORME : STHACK{}\n\nPour atteindre ce flag, il vous faudra comptabiliser **25 points** sur la plateforme\n\nChaque challenge comporte une inscription lettres.chiffres, correspondant aux serrures, cadenas etc. présents sur les tables \n\nDu matériel est à votre disposition, puis remettez-le la où vous l'avez trouvé svp :)\n\nLorsque vous avez le nombre de points requis, venez voir un des créateurs du challenge qui vous donnera le flag pour le scoreboard sthack !\n\nFaites attention au matos, faites attention à vous, remettez après ouverture les épreuves à l'origine svp :)\n\n!!! SEULE LA SERRURE EST LA CIBLE IL EST INTERDIT DE S'ATTAQUER AUX BOITES, etc... !!!",
+	"img": "",
+	"author": "Agrorec - Ajani",
+	"flag": "ef08bb8a0aaddf0ff83ce17255cdc1f09ddeae0ddfd6a81c8c7d4081d0a7a8dd",
+	"salt": "8a666320-f6b2-4458-b3d3-6c1da459ab1b",
+	"category": "web",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6650e89a00f456724bf7ba8c"
+	},
+	"name": "Lockpick - Etape 2",
+	"description": "Rendez-vous sur la page https://lockpick.sthack.fr et créez une team au nom de votre équipe\n\nFORMAT DE FLAG SUR LA PLATEFORME : STHACK{}\n\nPour atteindre ce flag, il vous faudra comptabiliser **80 points** sur la plateforme\n\nChaque challenge comporte une inscription lettres.chiffres, correspondant aux serrures, cadenas etc. présents sur les tables \n\nDu matériel est à votre disposition, puis remettez-le la où vous l'avez trouvé svp :)\n\nLorsque vous avez le nombre de points requis, venez voir un des créateurs du challenge qui vous donnera le flag pour le scoreboard sthack !\n\nFaites attention au matos, faites attention à vous, remettez après ouverture les épreuves à l'origine svp :)\n\n!!! SEULE LA SERRURE EST LA CIBLE IL EST INTERDIT DE S'ATTAQUER AUX BOITES, etc... !!!",
+	"img": "",
+	"author": "Agrorec - Ajani",
+	"flag": "86cd16193e1999a349bec99e1de7007b51ca1c6aba296f348767811f8f00d9e8",
+	"salt": "761285fd-deb9-40bd-86db-4b00f744b1d3",
+	"category": "web",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6650e8cb00f456724bf7bcb9"
+	},
+	"name": "Lockpick - Etape 3",
+	"description": "Rendez-vous sur la page https://lockpick.sthack.fr et créez une team au nom de votre équipe\n\nFORMAT DE FLAG SUR LA PLATEFORME : STHACK{}\n\nPour atteindre ce flag, il vous faudra comptabiliser **150 points** sur la plateforme\n\nChaque challenge comporte une inscription lettres.chiffres, correspondant aux serrures, cadenas etc. présents sur les tables \n\nDu matériel est à votre disposition, puis remettez-le la où vous l'avez trouvé svp :)\n\nLorsque vous avez le nombre de points requis, venez voir un des créateurs du challenge qui vous donnera le flag pour le scoreboard sthack !\n\nFaites attention au matos, faites attention à vous, remettez après ouverture les épreuves à l'origine svp :)\n\n!!! SEULE LA SERRURE EST LA CIBLE IL EST INTERDIT DE S'ATTAQUER AUX BOITES, etc... !!!",
+	"img": "",
+	"author": "Agrorec - Ajani",
+	"flag": "6c49bea391df714c53afe2ee83cc0121ba6769ca699adb69eb5c30300e6e48cd",
+	"salt": "eaf0fb0a-ea91-412e-bfe1-ec3aaa3fd06d",
+	"category": "web",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6650f4738e417c3fb3b450e8"
+	},
+	"name": "Cap'N Crunch is a *Phreak*",
+	"description": "**LISEZ TOUT !**\n\n\n*Avant le hacking, il y avait le phreaking, l'attaque du réseau téléphonique. *\n\nAujourd'hui le capitaine doit payer sa facture d'éléctricité. Le viel homme n'aime pas les nouvelles technologies et il continue de payer ses factures par téléphone...\n\nTrouvez un moyen de récupérer son numéro de carte bancaire.\n\n\nConsignes :\n\n*Faites attention au matériel et à vous !!!*\n\nVous pouvez utiliser le matériel sur la table du challenge et les fers à souder. \n\nLa seule interraction autorisée avec \"l'armoire de rue\" est de vous connecter sur les dominos exposés (parceque j'avais pas de punch down block à la maison...).\n\n**Des petits circuits protecteurs son dispo sur la table. Vous êtes vivement encouragé à les installer entre vos circuit et vos machines si vous les reliez**\n\n\nLe format du flag est STHACK{NUMERO_CARTE:DATE_MMYY:CVV}\n\n\n\n",
+	"img": "/api/content/0aee9fb7bb1a453fa3cbe4de4dae6b24dffcc7014122494406d1289c6f062b8c.webp",
+	"author": "ajani",
+	"flag": "76050d1b0a9581f03cb8a3e34674f64ed0cb718d139d0025a47c3b820510c601",
+	"salt": "ea35e911-96d7-4d4c-9b8b-41638d4305eb",
+	"category": "hardware",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "665100048e417c3fb3b4853d"
+	},
+	"name": "La hess de Sophie",
+	"description": "Sophie a perdu sa vidéo préférée... Est-ce que vous pouvez l'aider à la retrouver ?\n[sophie](/api/content/e60302ac5e4334b3602e65ccb194a77a9cf415bb11ddd45cd6139646263ee878)",
+	"img": "",
+	"author": "vic",
+	"flag": "3f98fc54b5c013d3b6c133c5513e2e1aec5faf9c8b3c5fd439ef80bc7e96707f",
+	"salt": "ab3ebe77-4f0b-4485-a158-6954cfdb0da3",
+	"category": "reverse",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+}]
+

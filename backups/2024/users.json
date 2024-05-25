@@ -1,0 +1,1828 @@
+[
+  {
+    "_id": {
+      "$oid": "664ce1b623ce27b4f50bce07"
+    },
+    "username": "Nagarian",
+    "password": "",
+    "salt": "adabd55b-519d-47c0-8b35-8827b274e076",
+    "team": "admin",
+    "isAdmin": true,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "664ce3c53d339f0c1a5e2426"
+    },
+    "username": "hessman",
+    "password": "",
+    "salt": "14e05c53-528b-45d3-aa81-b89afd2884dd",
+    "team": "admin",
+    "isAdmin": true,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "664d064f3d339f0c1a5e247f"
+    },
+    "username": "ajani",
+    "password": "",
+    "salt": "c940d192-0310-4025-b0f6-2d5745c6da0f",
+    "team": "admin",
+    "isAdmin": true,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "664d07993d339f0c1a5e24ad"
+    },
+    "username": "Kaddate",
+    "password": "",
+    "salt": "5cff9ed6-b7df-43b1-a967-368b9eb21fde",
+    "team": "admin",
+    "isAdmin": true,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "664d08453d339f0c1a5e24e8"
+    },
+    "username": "Agrorec",
+    "password": "",
+    "salt": "0e7d335a-c038-48bf-91a8-adbf609a4096",
+    "team": "admin",
+    "isAdmin": true,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "664d0c273d339f0c1a5e25e0"
+    },
+    "username": "Keclem",
+    "password": "",
+    "salt": "e771155b-1266-49a5-8562-b56aa39b4203",
+    "team": "admin",
+    "isAdmin": true,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "664d125997675c97adee1313"
+    },
+    "username": "it4",
+    "password": "",
+    "salt": "582c8007-3028-4ea2-91fc-a4cb3fd2a1f7",
+    "team": "admin",
+    "isAdmin": true,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "664da40297675c97adee140f"
+    },
+    "username": "ghozt",
+    "password": "",
+    "salt": "28cbd538-693d-4890-9d00-b66db8c68b32",
+    "team": "admin",
+    "isAdmin": true,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "664da9a497675c97adee141e"
+    },
+    "username": "laluka",
+    "password": "",
+    "salt": "effadd2b-a3b2-482d-ad09-9ff0f3aa59e9",
+    "team": "admin",
+    "isAdmin": true,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "664f513b1f444cdafefe2aed"
+    },
+    "username": "shoxxdj",
+    "password": "",
+    "salt": "26e75f33-62ca-49cc-a6a7-12c7e91b22ae",
+    "team": "admin",
+    "isAdmin": true,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "664f51a71f444cdafefe2b4c"
+    },
+    "username": "Amnezik",
+    "password": "",
+    "salt": "2ff22af1-b257-4071-852f-4b8abae1cb0b",
+    "team": "admin",
+    "isAdmin": true,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "664f60c41f444cdafefe300a"
+    },
+    "username": "hackdaddy",
+    "password": "",
+    "salt": "952cb9c6-8ee4-4af2-8979-7c6092fb62c5",
+    "team": "admin",
+    "isAdmin": true,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66502f801f444cdafefe330f"
+    },
+    "username": "NorthBlue333",
+    "password": "",
+    "salt": "e051c6ce-707d-4dca-a131-d175f1f45fa4",
+    "team": "admin",
+    "isAdmin": true,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "665056ce1f444cdafefe3440"
+    },
+    "username": "vic",
+    "password": "",
+    "salt": "2dcd12b6-9654-4999-9dcf-8b61657f89eb",
+    "team": "admin",
+    "isAdmin": true,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66508acc00f456724bf6fce6"
+    },
+    "username": "vieux",
+    "password": "",
+    "salt": "2b3cfd5f-bbad-4038-a6d5-da124bcdf50f",
+    "team": "admin",
+    "isAdmin": true,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650b8fd00f456724bf7005c"
+    },
+    "username": "fufu",
+    "password": "",
+    "salt": "b64a7933-db84-4d85-82f7-91f400b48232",
+    "team": "fufu",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650b90800f456724bf70067"
+    },
+    "username": "Matis",
+    "password": "",
+    "salt": "e0eddae3-063e-4429-8429-e84a11b6266d",
+    "team": "Blackberry",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650b91200f456724bf7006e"
+    },
+    "username": "ninjawill543",
+    "password": "",
+    "salt": "79d878e7-921e-4db1-aa0f-b59dffb27009",
+    "team": "Bottom’s Up",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650b95a00f456724bf700d0"
+    },
+    "username": "M4X2**2",
+    "password": "",
+    "salt": "f1d50b5c-2183-4613-a6cc-f1211277f6d2",
+    "team": "Bottom’s Up",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650b96d00f456724bf700df"
+    },
+    "username": "Vallsp",
+    "password": "",
+    "salt": "9cc91c99-f372-4b29-b4b7-10962d2c19a7",
+    "team": "Ctrl@Hack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650b97000f456724bf700e3"
+    },
+    "username": "Amine33",
+    "password": "",
+    "salt": "fc4af127-061a-4119-8fbf-9f468db35bd7",
+    "team": "Bottom’s Up",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650b97900f456724bf700ec"
+    },
+    "username": "MrZerkeur",
+    "password": "",
+    "salt": "e410d867-7a18-49d0-bb49-7dde2fdc871e",
+    "team": "Equipe1",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650b9ac00f456724bf7010a"
+    },
+    "username": "s4ur0n41",
+    "password": "",
+    "salt": "7ebfed25-ae83-4072-a803-ced7ee1cf07d",
+    "team": "onepoint",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650b9b000f456724bf70114"
+    },
+    "username": "SeigneurHugo",
+    "password": "",
+    "salt": "82907481-8cac-44c8-9a24-81d0941d568f",
+    "team": "Equipe1",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650b9cf00f456724bf70141"
+    },
+    "username": "iota",
+    "password": "",
+    "salt": "b6f463ea-2884-4325-8dc9-ccc963bba421",
+    "team": "Ctrl@Hack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650b9f200f456724bf70152"
+    },
+    "username": "SeigneurQuentin",
+    "password": "",
+    "salt": "9241303b-efb8-47cc-a7bf-5792629960b9",
+    "team": "Equipe1",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650ba7a00f456724bf70171"
+    },
+    "username": "pierre",
+    "password": "",
+    "salt": "80f1fc0a-700f-4838-9dc8-2d10a673b090",
+    "team": "onepoint",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650bac000f456724bf70178"
+    },
+    "username": "Iota",
+    "password": "",
+    "salt": "ca7a958a-908c-4e85-a58a-fa38aa3e3258",
+    "team": "Ctrl@Hack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650bba300f456724bf7017d"
+    },
+    "username": "Shydoow",
+    "password": "",
+    "salt": "6219dab5-f697-4410-a147-7da85c5f588d",
+    "team": "ByteBandits",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650bd2100f456724bf701fa"
+    },
+    "username": "argwaster",
+    "password": "",
+    "salt": "a6958c7b-f5ca-42eb-b920-13523940e60d",
+    "team": "Equipe1",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650c0f400f456724bf7027c"
+    },
+    "username": "Hassoul",
+    "password": "",
+    "salt": "b3784abc-76e2-4468-8cd0-7402dd4e4c38",
+    "team": "Hassoul",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650c15800f456724bf70282"
+    },
+    "username": "MrCostaud",
+    "password": "",
+    "salt": "0f8edc25-61f5-48fb-a088-b5f9416f306e",
+    "team": "MrMme",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650cf7000f456724bf703ef"
+    },
+    "username": "jirem",
+    "password": "",
+    "salt": "1ebaaf3c-ece1-4083-af3a-c939489ba948",
+    "team": "hackvens",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650cf9600f456724bf703f5"
+    },
+    "username": "Prepouce_",
+    "password": "",
+    "salt": "a5ff1dc7-13d9-4eb6-b19e-d7531436310e",
+    "team": "hackvens",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650cfce00f456724bf70424"
+    },
+    "username": "kobh4x",
+    "password": "",
+    "salt": "314fa27b-b619-4d4d-92d6-87df440946a1",
+    "team": "Econocom",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d01900f456724bf70487"
+    },
+    "username": "voydsthack",
+    "password": "",
+    "salt": "030f318a-b682-442f-8998-adbd5fb04a41",
+    "team": "Biscotte",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d03800f456724bf704bc"
+    },
+    "username": "arpaflow",
+    "password": "",
+    "salt": "476d53bf-77e9-457a-9ae9-6ff6dd8f8e82",
+    "team": "Ctrl@Hack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d04900f456724bf704d4"
+    },
+    "username": "n1mphosec",
+    "password": "",
+    "salt": "a0546ee2-1fc7-44c3-9857-664cfff94b02",
+    "team": "Inglorious Flagsterds",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d04f00f456724bf704e7"
+    },
+    "username": "Gatux",
+    "password": "",
+    "salt": "ff069028-9c08-4a0f-9bf1-fb846af869dd",
+    "team": "🌶️ Pepper",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d05100f456724bf704ea"
+    },
+    "username": "onimoushan",
+    "password": "",
+    "salt": "2bdf4cf3-0056-448b-bcbc-9bf5679ce3dd",
+    "team": "Inglorious Flagsterds",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d09500f456724bf7052d"
+    },
+    "username": "ponpon",
+    "password": "",
+    "salt": "51fc7904-0db9-4254-9c7d-9783130a4ea2",
+    "team": "🌶️ Pepper",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d0ad00f456724bf70544"
+    },
+    "username": "sp1der",
+    "password": "",
+    "salt": "632ece7d-ea69-42d9-9496-b35c942e1cab",
+    "team": "Ctrl@Hack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d10d00f456724bf70586"
+    },
+    "username": "Kwetzakwak",
+    "password": "",
+    "salt": "8e1279b8-af2e-44d7-861e-3f0f39407709",
+    "team": "🌶️ Pepper",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d12a00f456724bf7058f"
+    },
+    "username": "Roca",
+    "password": "",
+    "salt": "4e2af908-54c0-4b25-8440-f626c7fe4440",
+    "team": "Econocom",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d13300f456724bf70592"
+    },
+    "username": "mzl",
+    "password": "",
+    "salt": "5b811116-c5ee-4a46-b9fc-8005044b5c58",
+    "team": "Econocom",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d13a00f456724bf70595"
+    },
+    "username": "Reider33",
+    "password": "",
+    "salt": "41550380-ec93-484d-a7f6-3610302ed71a",
+    "team": "Touristhack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d16800f456724bf705be"
+    },
+    "username": "StargX",
+    "password": "",
+    "salt": "d1e2e8ef-2448-41b5-8f75-2c283e34d82f",
+    "team": "Touristhack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d1b200f456724bf70633"
+    },
+    "username": "Airlaxx",
+    "password": "",
+    "salt": "9b86153e-42dc-4184-8412-93962263bf2c",
+    "team": "Touristhack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d1c400f456724bf70636"
+    },
+    "username": "Zexord",
+    "password": "",
+    "salt": "de825d8f-0d1d-413d-b190-c8b77b44e379",
+    "team": "Touristhack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d1e400f456724bf70652"
+    },
+    "username": "hack42",
+    "password": "",
+    "salt": "1b770a68-e7b7-4066-a935-56fef2294d33",
+    "team": "Inglorious Flagsterds",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d24900f456724bf706a8"
+    },
+    "username": "OliveBxM",
+    "password": "",
+    "salt": "36993a56-ca4f-4e84-821d-0448020a74a5",
+    "team": "BxM",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d26300f456724bf706eb"
+    },
+    "username": "codeoverflow",
+    "password": "",
+    "salt": "de2ca306-3894-4c98-bbfe-18565d8ee076",
+    "team": "🧂 Salt",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d27500f456724bf70711"
+    },
+    "username": "P4r3ss3uX",
+    "password": "",
+    "salt": "71cd197e-a93e-4844-8a06-e9fbe4bca6d2",
+    "team": "🧂 Salt",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d28d00f456724bf7072a"
+    },
+    "username": "BlueSeaHorse",
+    "password": "",
+    "salt": "51fb8f53-5984-4112-8420-acf8ccce2046",
+    "team": "Touristhack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d29f00f456724bf7072f"
+    },
+    "username": "animalart",
+    "password": "",
+    "salt": "91af31c5-0678-4204-b2c7-fa337c3a91b1",
+    "team": "🧂 Salt",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d2a500f456724bf70739"
+    },
+    "username": "4stronomical",
+    "password": "",
+    "salt": "21ab7f4f-f1a8-4c77-8451-efd24fe87777",
+    "team": "Chevrons",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d2bf00f456724bf70747"
+    },
+    "username": "Patate",
+    "password": "",
+    "salt": "8af0b69a-25b0-4cd8-81af-df1178aadec1",
+    "team": "🌶️ Pepper",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d39d00f456724bf707cc"
+    },
+    "username": "astronomical",
+    "password": "",
+    "salt": "d3eb7a66-d01d-4888-9abc-1fa164c9d9bb",
+    "team": "🧂 Salt",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d3ba00f456724bf707e2"
+    },
+    "username": "Nayru",
+    "password": "",
+    "salt": "22a464c1-5d99-48e4-9486-c455037efdf3",
+    "team": "Inglorious Flagsterds",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d40200f456724bf70829"
+    },
+    "username": "Pastoufle",
+    "password": "",
+    "salt": "6e680529-6d82-45d9-b1f1-d8bb478ef77a",
+    "team": "les_clowns",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d40a00f456724bf70839"
+    },
+    "username": "neird4",
+    "password": "",
+    "salt": "a6dc7ecb-43a1-4ded-8d14-bdc8201fce74",
+    "team": "les_clowns",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d40d00f456724bf70863"
+    },
+    "username": "rebel",
+    "password": "",
+    "salt": "f3474d13-94b5-43dd-a2e0-cb72f4357183",
+    "team": "les_clowns",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d41300f456724bf70869"
+    },
+    "username": "CubituS",
+    "password": "",
+    "salt": "48eef299-f6d2-4be2-9fc1-21bed8084c3f",
+    "team": "les_clowns",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d42f00f456724bf708c0"
+    },
+    "username": "tillamen",
+    "password": "",
+    "salt": "c83d78d6-6692-49d9-b613-abc7705b0604",
+    "team": "les_clowns",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d4c400f456724bf7096d"
+    },
+    "username": "hellothere",
+    "password": "",
+    "salt": "394c1b77-90db-4e47-b0c9-05e9d0fe3be9",
+    "team": "hackvens",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d58000f456724bf70a45"
+    },
+    "username": "Oblivios",
+    "password": "",
+    "salt": "66682c28-c42b-4edd-abff-e471907ad43e",
+    "team": "Skav",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d58b00f456724bf70a5b"
+    },
+    "username": "ThaySan",
+    "password": "",
+    "salt": "7c7b1988-ddf9-4125-8881-9f95591a4382",
+    "team": "Skav",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d5cb00f456724bf70b4c"
+    },
+    "username": "Nelok",
+    "password": "",
+    "salt": "c101330d-3f90-4ddb-8c07-378a513d4127",
+    "team": "Skav",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d5e200f456724bf70c2c"
+    },
+    "username": "Walleza",
+    "password": "",
+    "salt": "09708beb-2bc6-4f21-809b-e08e96fb76dd",
+    "team": "Biscotte",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d5e900f456724bf70cb4"
+    },
+    "username": "Le A",
+    "password": "",
+    "salt": "0484a33f-3c68-4017-bb1e-7653ca66d042",
+    "team": "🌶️ Pepper",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d60300f456724bf70ec0"
+    },
+    "username": "Carambole",
+    "password": "",
+    "salt": "6139ed7e-e15b-41f9-9bfc-e36574a5d9fc",
+    "team": "Skav",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d65000f456724bf71678"
+    },
+    "username": "maxime",
+    "password": "",
+    "salt": "446c9764-cdb7-4a0a-9822-e699956ad65c",
+    "team": "hackvens",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d66c00f456724bf71a31"
+    },
+    "username": "barney",
+    "password": "",
+    "salt": "cd641075-211b-412e-84fc-320413d450e2",
+    "team": "PinkyUnicorn",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d67000f456724bf71a4e"
+    },
+    "username": "g0h4n",
+    "password": "",
+    "salt": "17164909-c217-4641-acbd-d61c739b224a",
+    "team": "PinkyUnicorn",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d68000f456724bf71b2a"
+    },
+    "username": "Qu3n71n",
+    "password": "",
+    "salt": "07492c90-f010-4e99-a4f8-9217c152c713",
+    "team": "BxM",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d68500f456724bf71b52"
+    },
+    "username": "Aleknight",
+    "password": "",
+    "salt": "52359cf6-77b4-43e3-b0ac-9d7059301b03",
+    "team": "PinkyUnicorn",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d69800f456724bf71cd7"
+    },
+    "username": "dhoney",
+    "password": "",
+    "salt": "1ff349ed-c4c6-4ea1-9a7f-5e0445d23f21",
+    "team": "Bottom’s Up",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d6bf00f456724bf71ef5"
+    },
+    "username": "geoffrey",
+    "password": "",
+    "salt": "fc9d2b16-46cd-4284-9ef6-6528413fa1f3",
+    "team": "Bottom’s Up",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d6d700f456724bf72118"
+    },
+    "username": "gamray",
+    "password": "",
+    "salt": "f8a023b7-f81d-4b08-9c89-d3708c03e1d9",
+    "team": "gobelins",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d6e700f456724bf721e7"
+    },
+    "username": "Grominouille",
+    "password": "",
+    "salt": "f556571f-d28f-4815-a996-ebabd390d0e7",
+    "team": "PinkyUnicorn",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d6ee00f456724bf72257"
+    },
+    "username": "gc41m37735",
+    "password": "",
+    "salt": "e473afcc-62cb-4e4f-9212-d3151854a884",
+    "team": "f13ldf0lks",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d6fb00f456724bf72306"
+    },
+    "username": "nugget🪐",
+    "password": "",
+    "salt": "251e3d2d-b1ae-45fc-bc09-19ff21cd4287",
+    "team": "pouetctfmaker",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d70100f456724bf72336"
+    },
+    "username": "Pouet",
+    "password": "",
+    "salt": "42866fdd-e5d8-477c-a12a-1354fe16631d",
+    "team": "pouetctfmaker",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d71000f456724bf723ae"
+    },
+    "username": "rayanlecat",
+    "password": "",
+    "salt": "94104852-7063-4a89-adc0-41e12e87a987",
+    "team": "sthalckoolique",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d71900f456724bf723da"
+    },
+    "username": "Ad4m5",
+    "password": "",
+    "salt": "35663aec-4c7e-4fd4-8534-c2fd4419e8f5",
+    "team": "Menu big m'Hack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d72200f456724bf7241c"
+    },
+    "username": "T0t0r0",
+    "password": "",
+    "salt": "16bc96bd-2f24-4ad9-9684-a19b4fb33230",
+    "team": "sthalckoolique",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d72300f456724bf7242e"
+    },
+    "username": "ey3ball",
+    "password": "",
+    "salt": "e6c7ec89-6067-42b9-aed4-b0d1f5660803",
+    "team": "not_f13ldf0lks",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d74e00f456724bf727a4"
+    },
+    "username": "tic",
+    "password": "",
+    "salt": "f7edc939-038e-4976-aee0-3a92a9400044",
+    "team": "f13ldf0lks",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d75200f456724bf727d2"
+    },
+    "username": "paucamea",
+    "password": "",
+    "salt": "ee530ca9-38e5-4b50-bc22-7a9edde099ac",
+    "team": "f13ldf0lks",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d75200f456724bf727d8"
+    },
+    "username": "404Benja",
+    "password": "",
+    "salt": "cb99e50f-3f8b-44c5-904f-0bc2c6530a4b",
+    "team": "f13ldf0lks",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d77300f456724bf72a9f"
+    },
+    "username": "dryy",
+    "password": "",
+    "salt": "e1a0b400-575c-44d0-9de1-b9be0e4f57b7",
+    "team": "Marly Golmons",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d77b00f456724bf72ab9"
+    },
+    "username": "0xm47h_",
+    "password": "",
+    "salt": "b87afacc-cc65-4935-b7bd-d647634fdbec",
+    "team": "Marly Golmons",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d77f00f456724bf72ae3"
+    },
+    "username": "asmeloxas",
+    "password": "",
+    "salt": "faa54c92-4df5-4b38-8afa-448c6fb4944d",
+    "team": "Marly Golmons",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d78100f456724bf72af1"
+    },
+    "username": "j1mmydu83nky",
+    "password": "",
+    "salt": "cb11704b-4a41-4b6d-99d0-fc8042f6fc02",
+    "team": "f13ldf0lks",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d78700f456724bf72b4e"
+    },
+    "username": "Waaaaat",
+    "password": "",
+    "salt": "b14cb046-c4ea-4aed-a973-aa10ffec74c7",
+    "team": "Marly Golmons",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d78d00f456724bf72c2f"
+    },
+    "username": "gc41m3773s",
+    "password": "",
+    "salt": "496b1531-eea8-450a-beb1-bee93b3dc8b3",
+    "team": "not_f13ldf0lks",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d79600f456724bf72cee"
+    },
+    "username": "yombb",
+    "password": "",
+    "salt": "9f02ecb1-06b6-4b94-a3e8-7edf33c92076",
+    "team": "not_f13ldf0lks",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d7ad00f456724bf72fd1"
+    },
+    "username": "cptrskv",
+    "password": "",
+    "salt": "0253c934-6732-441f-98fa-a72d100509ea",
+    "team": "Marly Golmons",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d7c100f456724bf73108"
+    },
+    "username": "0xSeb",
+    "password": "",
+    "salt": "a7efa2cc-8aa0-4ac9-becd-a47c93c6e7ae",
+    "team": "Menu big m'Hack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d7c800f456724bf731a4"
+    },
+    "username": "F3d0m",
+    "password": "",
+    "salt": "dc832711-ed32-4ad1-a529-0e05672b9fd3",
+    "team": "Biscotte",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d7d600f456724bf73313"
+    },
+    "username": "null",
+    "password": "",
+    "salt": "0fe4b354-84a2-4f14-b530-77d65928675f",
+    "team": "totopirate",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d7e200f456724bf7341a"
+    },
+    "username": "matis",
+    "password": "",
+    "salt": "013caa38-3df5-425f-ab52-3c539b0ad159",
+    "team": "Blackberry",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d7e500f456724bf73427"
+    },
+    "username": "gc4lm3tt3s",
+    "password": "",
+    "salt": "399976e4-3517-4c08-ac69-6a7b45a2759d",
+    "team": "not_f13ldf0lks",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d80500f456724bf73644"
+    },
+    "username": "LeSam",
+    "password": "",
+    "salt": "bc1aaf9b-68c9-4dfc-b826-653b00a7c4a7",
+    "team": "Blackberry",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d80800f456724bf7369c"
+    },
+    "username": "YabaGW",
+    "password": "",
+    "salt": "8e53661e-1bbb-48d9-9630-0f2db0ee10e6",
+    "team": "Biscotte",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d81500f456724bf73797"
+    },
+    "username": "dany",
+    "password": "",
+    "salt": "701ed816-1ab2-47d6-92b2-73a5809f0d1c",
+    "team": "Blackberry",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d81c00f456724bf7380d"
+    },
+    "username": "Tomes",
+    "password": "",
+    "salt": "289e3b84-3c57-4b9a-add1-0776501ae921",
+    "team": "ByteBandits",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d84100f456724bf73c06"
+    },
+    "username": "sheriff64",
+    "password": "",
+    "salt": "7f90a12d-c527-4049-bf00-d65214623948",
+    "team": "Ada6tf",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d87600f456724bf73e56"
+    },
+    "username": "Jules_tt_court",
+    "password": "",
+    "salt": "8b9c5e57-366b-4420-a743-29a157a7add9",
+    "team": "ByteBandits",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d8e000f456724bf7431a"
+    },
+    "username": "Express",
+    "password": "",
+    "salt": "07ad8134-cb54-4ad6-a12d-e264c6a03c03",
+    "team": "PinkyUnicorn",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d8f400f456724bf743c9"
+    },
+    "username": "Baguette",
+    "password": "",
+    "salt": "56e0484b-da14-4f8a-af66-4d1f4d4ccfcb",
+    "team": "Ada6tf",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d90500f456724bf74439"
+    },
+    "username": "Erak_",
+    "password": "",
+    "salt": "3b87e35c-1806-4e43-a265-506cfb433ba6",
+    "team": "Ada6tf",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d93800f456724bf746a4"
+    },
+    "username": "Verzek",
+    "password": "",
+    "salt": "a9ffc7c8-33c6-4af5-b3f0-018a33bf5d8c",
+    "team": "BxM",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d9c300f456724bf74c3b"
+    },
+    "username": "_yombb",
+    "password": "",
+    "salt": "e409861d-45b5-4b34-992d-6b6bca7ed16e",
+    "team": "not_f13ldf0lks",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d9c500f456724bf74c3e"
+    },
+    "username": "pan",
+    "password": "",
+    "salt": "09dfb7ae-e142-401c-9520-17a05acabf16",
+    "team": "not_f13ldf0ks",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d9c600f456724bf74c41"
+    },
+    "username": "0b11stan",
+    "password": "",
+    "salt": "847db378-a738-4ac8-bffa-b44376e13050",
+    "team": "Menu big m'Hack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d9d200f456724bf74cb1"
+    },
+    "username": "OuiSouss",
+    "password": "",
+    "salt": "4b69e982-fba9-4638-8e33-b8b8c3f9b712",
+    "team": "Ada7TF",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d9e500f456724bf74dd5"
+    },
+    "username": "Ducksteel",
+    "password": "",
+    "salt": "13acd818-51ce-4510-93ca-d3d7976c7a51",
+    "team": "pouetctfmaker",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d9ee00f456724bf74e97"
+    },
+    "username": "valcarauce",
+    "password": "",
+    "salt": "31a0650a-d274-4f07-82a9-bb5df53f687c",
+    "team": "🧂 Salt",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650d9fc00f456724bf74f3e"
+    },
+    "username": "Sythis",
+    "password": "",
+    "salt": "a26c77e8-5c97-4380-91ed-0c8eefbcd247",
+    "team": "Ada7TF",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650da0400f456724bf74feb"
+    },
+    "username": "ninou",
+    "password": "",
+    "salt": "c36af69d-eb98-4068-a9f4-800c7f20005a",
+    "team": "onepoint",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650da0a00f456724bf75030"
+    },
+    "username": "Yomiji",
+    "password": "",
+    "salt": "a3131f59-238e-444b-bff9-42971b7a0b7f",
+    "team": "Menu big m'Hack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650da2200f456724bf750dd"
+    },
+    "username": "Camion",
+    "password": "",
+    "salt": "5d6727e1-a52b-439e-9a24-ec12fe1c77cd",
+    "team": "Les zinzins de la Sthack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650da5900f456724bf75248"
+    },
+    "username": "victor",
+    "password": "",
+    "salt": "9bc929ee-1bc3-41a1-821a-cfa71296337f",
+    "team": "Visiteur",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650da8200f456724bf7533e"
+    },
+    "username": "PetitCoeur",
+    "password": "",
+    "salt": "fca55e47-4a5c-4917-ac72-8638d84ec3b5",
+    "team": "Idefix",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650daa900f456724bf75547"
+    },
+    "username": "mrzor",
+    "password": "",
+    "salt": "89293eb4-1595-4c31-99b0-6f311ff3c128",
+    "team": "Inglorious Flagsterds",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650dac400f456724bf755c0"
+    },
+    "username": "Kaizen",
+    "password": "",
+    "salt": "635b2bc5-3ab6-43d6-ac2d-5896b9a9df8f",
+    "team": "gobelins",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650dadf00f456724bf7571a"
+    },
+    "username": "Arlo",
+    "password": "",
+    "salt": "adbd48f0-fc81-48e6-8b0f-16d446b3965c",
+    "team": "Les zinzins de la Sthack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650daf200f456724bf757c6"
+    },
+    "username": "piloupilou",
+    "password": "",
+    "salt": "ceb3a0f7-ec91-4838-b7cd-c56ecdc19fd6",
+    "team": "Les zinzins de la Sthack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650dafd00f456724bf758db"
+    },
+    "username": "kneshi",
+    "password": "",
+    "salt": "52502caf-8eef-42ed-928c-144abeb06db8",
+    "team": "pouetctfmaker",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650db3e00f456724bf75c31"
+    },
+    "username": "char0x42",
+    "password": "",
+    "salt": "832b5f2f-8b90-457f-b55f-59aff24c1f8b",
+    "team": "Les zinzins de la Sthack",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650dbdf00f456724bf764b2"
+    },
+    "username": "DSky",
+    "password": "",
+    "salt": "4909d828-6dd4-4acf-8a53-bd2b940d2ac5",
+    "team": "pouetctfmaker",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650dcdd00f456724bf76a47"
+    },
+    "username": "nd3c",
+    "password": "",
+    "salt": "52abf3f6-03c9-42a0-af4d-7b2baa46d802",
+    "team": "Ada6tf",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650dd2700f456724bf76c0e"
+    },
+    "username": "capybarhack",
+    "password": "",
+    "salt": "b80df774-b1f4-44f1-8862-512558fa2dd9",
+    "team": "Lolilol33!!",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650dd3c00f456724bf76cc0"
+    },
+    "username": "Archaeornithomimus",
+    "password": "",
+    "salt": "946ceb7b-bd10-4fa4-b4e2-3319abcbb7ae",
+    "team": "Cr'Hack'Hot",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650ddc200f456724bf77065"
+    },
+    "username": "puissance86",
+    "password": "",
+    "salt": "dc3795b2-c524-4a60-9aca-90a18b27e9f9",
+    "team": "Cr'Hack'Hot",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650de7900f456724bf77513"
+    },
+    "username": "luminouw",
+    "password": "",
+    "salt": "c2b793cc-44e1-4fd3-85de-661859d310b9",
+    "team": "Ada6tf",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650de9c00f456724bf775e1"
+    },
+    "username": "yann40",
+    "password": "",
+    "salt": "39f57f2e-b4f7-49e7-966a-c4ebeb736434",
+    "team": "Idefix",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650dece00f456724bf77702"
+    },
+    "username": "chackal",
+    "password": "",
+    "salt": "cfff4308-728b-4145-b4c9-eafa3f5cddff",
+    "team": "sthalckoolique",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650dee300f456724bf7776d"
+    },
+    "username": "Tonyo",
+    "password": "",
+    "salt": "a8ba2dd1-1292-4cce-836d-af180b6c4b3e",
+    "team": "Ada7TF",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650df0500f456724bf7799a"
+    },
+    "username": "midoo",
+    "password": "",
+    "salt": "4e7d8d9d-1d1d-4ffb-b7ee-601ef5a3b665",
+    "team": "sthalckoolique",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650df3a00f456724bf77bf5"
+    },
+    "username": "Worty",
+    "password": "",
+    "salt": "d5c7c397-afda-427a-bce2-abaa4ebec076",
+    "team": "👾👾",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650dfe200f456724bf780d2"
+    },
+    "username": "WannaCry",
+    "password": "",
+    "salt": "232c9f91-6425-4650-be42-ae4d51e74e2a",
+    "team": "👾👾",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650dfe300f456724bf780d8"
+    },
+    "username": "FoxCie",
+    "password": "",
+    "salt": "eb1b6070-8ff7-4256-9521-91d7ba46d8da",
+    "team": "Ada7TF",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650dfe900f456724bf78136"
+    },
+    "username": "SponeZii",
+    "password": "",
+    "salt": "52d8a10e-44f6-49a6-8781-0bfdba58d3f0",
+    "team": "sthalckoolique",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650dfff00f456724bf7824d"
+    },
+    "username": "kpapy",
+    "password": "",
+    "salt": "d7915b89-a734-4b24-adc8-cbb7c1261ce9",
+    "team": "BxM",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650e01500f456724bf783ad"
+    },
+    "username": "romanishell",
+    "password": "",
+    "salt": "998bf0e7-29c2-45ba-9e36-e1d865863a81",
+    "team": "👾👾",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650e02c00f456724bf78473"
+    },
+    "username": "pwnii",
+    "password": "",
+    "salt": "98be813f-7a21-48de-9965-a7944f56a341",
+    "team": "👾👾",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650e04600f456724bf784fd"
+    },
+    "username": "Aji",
+    "password": "",
+    "salt": "2e1bab04-33ba-47cb-a826-c6e43ac52b01",
+    "team": "BxM",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650e0b800f456724bf7890a"
+    },
+    "username": "Aether",
+    "password": "",
+    "salt": "c388febd-7b5f-4025-a274-be60b58f3a3b",
+    "team": "LesPiresHat",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650e12b00f456724bf78c92"
+    },
+    "username": "malon",
+    "password": "",
+    "salt": "30881769-b164-40df-b95d-a34aea8f097e",
+    "team": "👾👾",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650e2e000f456724bf795d1"
+    },
+    "username": "penis",
+    "password": "",
+    "salt": "23f8a3f2-5b4b-45fe-990e-87e94afb9c59",
+    "team": "penis",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650e3b000f456724bf79a31"
+    },
+    "username": "xX_rFuMeR0ndu33_xXx",
+    "password": "",
+    "salt": "7e39db49-1e3f-4461-a68a-8a89f2e8d3a2",
+    "team": "onepoint",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650e45500f456724bf79e44"
+    },
+    "username": "poc",
+    "password": "",
+    "salt": "47a2226b-20cc-45bc-a63d-540668858858",
+    "team": "@everyone",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650e54400f456724bf7a4fa"
+    },
+    "username": "DaXou",
+    "password": "",
+    "salt": "5a18d4ca-f666-42a9-897d-2cf0621728e7",
+    "team": "Les absents",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650e60000f456724bf7abf0"
+    },
+    "username": "fufufu",
+    "password": "",
+    "salt": "bac347c7-25ab-4169-b5dc-62db05837277",
+    "team": "penis",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650e60a00f456724bf7ac7e"
+    },
+    "username": "YanZaX",
+    "password": "",
+    "salt": "2535200c-33e9-4895-8a81-63605b2a97fb",
+    "team": "admin",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650e8e600f456724bf7bd80"
+    },
+    "username": "V3locidad",
+    "password": "",
+    "salt": "a3757cf5-4a8f-4c07-930e-90f520cab7b6",
+    "team": "onepoint",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650f5b68e417c3fb3b45787"
+    },
+    "username": "Zetarus",
+    "password": "",
+    "salt": "305f5373-2e44-4144-90cb-fdd0f9fc3400",
+    "team": "Econocom",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650f5d18e417c3fb3b457f7"
+    },
+    "username": "DaXou.",
+    "password": "",
+    "salt": "7be4b9b7-6abe-446f-9bf0-4eb35ea32d33",
+    "team": "Econocom",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650f6c18e417c3fb3b45d51"
+    },
+    "username": "Rocarius",
+    "password": "",
+    "salt": "3d575054-b51e-4a1e-a544-d464b4e9104e",
+    "team": "Les absents",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "665107cade242e848930a16b"
+    },
+    "username": "senchurion",
+    "password": "",
+    "salt": "0d54f462-7ac3-4716-907b-ef6d1c827fb9",
+    "team": "gobelins",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6651099bde242e848930ad93"
+    },
+    "username": "boring",
+    "password": "",
+    "salt": "c6afe790-be2e-48b4-951c-93c7fa331308",
+    "team": "gobelins",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66510f0dde242e848930cad1"
+    },
+    "username": "udo29",
+    "password": "",
+    "salt": "162c2dc8-31b1-48b8-adb5-5f2d14920b2f",
+    "team": "LesPiresHat",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6651264dde242e84893127e3"
+    },
+    "username": "IUseMacBTW",
+    "password": "",
+    "salt": "0d00c598-5dc7-48f8-a0fa-654b1eba7fcc",
+    "team": "gobelins",
+    "isAdmin": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "665196f1de242e848931d756"
+    },
+    "username": "temp1",
+    "password": "",
+    "salt": "0c117ab0-8d08-4fd6-a7b1-9832c53b88fd",
+    "team": "temp1",
+    "isAdmin": false,
+    "__v": 0
+  }
+]
