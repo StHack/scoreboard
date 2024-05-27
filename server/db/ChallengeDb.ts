@@ -90,17 +90,18 @@ export async function removeChallenge(challengeId: string): Promise<void> {
 
 export async function updateChallenge(
   challengeId: string,
-  challenge: Partial<Challenge>,
+  { flag, ...challenge }: Partial<Challenge>,
 ): Promise<Challenge> {
-  if (challenge.flag) {
+  if (flag) {
     const chall = await ChallengeModel.findById(challengeId)
 
-    if (!chall)
+    if (!chall) {
       throw new Error(
         `Challenge ${challengeId} can't be updated because it was not found`,
       )
+    }
 
-    challenge.flag = flagHasher(challenge.flag, chall.salt)
+    ;(challenge as Challenge).flag = flagHasher(flag, chall.salt)
   }
 
   const document = await ChallengeModel.findByIdAndUpdate(
