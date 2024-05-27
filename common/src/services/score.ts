@@ -47,7 +47,8 @@ function computeChallenge(
   config: GameConfig,
 ): ChallengeScore {
   const a = achievements
-    .filter(a => a.challengeId === challenge._id)
+    // we need to keep simple equality check because on server side, we haven't a string but a Mongoose ObjectId
+    .filter(a => a.challengeId == challenge._id)
     .sort((x, y) => x.createdAt.getTime() - y.createdAt.getTime())
 
   return {
