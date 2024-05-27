@@ -164,7 +164,15 @@ export async function countTeam(): Promise<number> {
   return result.length
 }
 
-const unsafeWords = ['__proto__', 'constructor', 'prototype']
+const unsafeWords = [
+  '__proto__',
+  'constructor',
+  'prototype',
+  '`',
+  '@everyone',
+  '@here',
+]
+const bannedStartingCharacters = ['@', 'u/', 'u-', 't/', 't-']
 const unauthorizedUsernames = ['admin']
 export function validateUser(user: Omit<CreateUser, 'password'>) {
   const username = user.username.toLocaleLowerCase()
@@ -175,7 +183,18 @@ export function validateUser(user: Omit<CreateUser, 'password'>) {
     if (team.includes(unsafeWord)) throw new Error('Invalid team')
   }
 
+  for (const bannedStarting of bannedStartingCharacters) {
+    if (username.startsWith(bannedStarting)) {
+      throw new Error('Invalid username - prefix like that is not allowed')
+    }
+    if (team.startsWith(bannedStarting)) {
+      throw new Error('Invalid team - prefix like that is not allowed')
+    }
+  }
+
   for (const unauthorizedUser of unauthorizedUsernames) {
-    if (username.includes(unauthorizedUser)) throw new Error('Invalid username')
+    if (username.includes(unauthorizedUser)) {
+      throw new Error('Invalid username - this is an unallowed one')
+    }
   }
 }

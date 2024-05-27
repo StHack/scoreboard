@@ -3,6 +3,7 @@ import {
   BaseAttempt,
   Challenge,
   computeGameScore,
+  computeRewardScore,
   Reward,
   TeamScore,
 } from '@sthack/scoreboard-common'
@@ -12,7 +13,6 @@ import { listReward } from 'db/RewardDb.js'
 import { listTeam } from 'db/UsersDb.js'
 import debug from 'debug'
 import { Namespace } from 'socket.io'
-import { discordConfig } from 'sthack-config.js'
 import { setTimeout } from 'timers/promises'
 import { sendMessageToDiscord } from './discord.js'
 import { ServerConfig } from './serverconfig.js'
@@ -25,12 +25,6 @@ export async function emitEventLog(
   { message, ...options }: { message: string } & Record<string, unknown>,
 ): Promise<void> {
   gameIo.emit('events:happen', { type, message })
-
-  const config = discordConfig()
-
-  if (!config) {
-    return
-  }
 
   const handler = discordFormatHandler.find(([name]) => name === type)
   if (!handler) {
@@ -155,14 +149,17 @@ async function gameEnd(options: {
   ].filter(str => str)
 }
 
-function reward({
-  reward: { teamname, value, label },
+async function reward({
+  reward,
+  serverConfig,
 }: {
   reward: Reward
+  serverConfig: ServerConfig
 }): Promise<string> {
-  return Promise.resolve(
-    `## 🏆 Reward given to team **${teamname}**: ${label} - ${value.toString()}pts`,
-  )
+  const gameConfig = await serverConfig.getGameConfig()
+  const currentValue = computeRewardScore(reward, gameConfig)
+  const { teamname, value, label } = reward
+  return `## 🏆 Reward \`${label}\` has been given!\nto team \`${teamname}\` with a base value of \`${value}\`pts which correspond to \`${currentValue}\`pts with the current team count`
 }
 
 function solve({
@@ -182,7 +179,7 @@ function solve({
   const { name } = challenge
 
   return Promise.resolve(
-    `## 💥 Breakthrough! "${username}" Team "${teamname}" just solved challenge "${name}"`,
+    `## 💥 Breakthrough on challenge \`${name}\`!\n\`${username}\` from team \`${teamname}\` just solved it`,
   )
 }
 
@@ -194,6 +191,6 @@ function attempt({
   challenge: Challenge
 }): Promise<string> {
   return Promise.resolve(
-    `## ⚠️ Team "${attempt.teamname}" has reach the warning threshold of attempts made for the chall "${name}"`,
+    `## ⚠️ Bruteforce attempts on challenge \`${name}\`!\nTeam \`${attempt.teamname}\` has reach the warning threshold of attempts made`,
   )
 }

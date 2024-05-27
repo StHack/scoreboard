@@ -7,6 +7,7 @@ export async function sendMessageToDiscord(message: string): Promise<void> {
   const config = discordConfig()
 
   if (!config) {
+    logger('%s', message)
     return
   }
 

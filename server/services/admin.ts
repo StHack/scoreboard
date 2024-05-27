@@ -118,6 +118,7 @@ export function registerAdminNamespace(
           await emitEventLog(gameIo, 'reward:create', {
             message: `A reward has been given to team "${rewardCreated.teamname}" for ${rewardCreated.value.toString()} points`,
             reward: rewardCreated,
+            serverConfig,
           })
         } catch (error) {
           if (error instanceof Error) {
