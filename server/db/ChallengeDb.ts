@@ -26,11 +26,15 @@ const schema = new Schema<DbChallenge>({
 
 const ChallengeModel = model<DbChallenge>('Challenge', schema)
 
-const flagHasher = (password: string | undefined, salt: string) =>
-  password &&
-  createHash('sha256')
+const flagHasher = (password: string | undefined, salt: string) => {
+  if (!password || password.trim() === '') {
+    throw new Error('Proposal cannot be null or empty')
+  }
+
+  return createHash('sha256')
     .update(password + salt)
     .digest('hex')
+}
 
 const removeProperties: ToObjectOptions = removeMongoPropertiesWithOptions({
   removeId: false,
