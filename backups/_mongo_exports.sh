@@ -27,9 +27,24 @@ for COLLECTION_NAME in "${COLLECTIONS_TO_EXPORT[@]}"; do
 
 done
 
+# clean attempts values
 ATTEMPTS_FILE="/backups/${YEAR}/attempts.json"
 cp "$ATTEMPTS_FILE" "/backups/${YEAR}/attempts-uncensored.json"
 jq '(.[].proposal) |= ""' "$ATTEMPTS_FILE" > "$ATTEMPTS_FILE.tmp" && mv "$ATTEMPTS_FILE.tmp" "$ATTEMPTS_FILE"
 
+# clean users password
 USERS_FILE="/backups/${YEAR}/users.json"
 jq '(.[].password) |= ""' "$USERS_FILE" > "$USERS_FILE.tmp" && mv "$USERS_FILE.tmp" "$USERS_FILE"
+
+# clean unused files
+FILES_FILE="files.json"
+jq -r '.[].name' <"${FILES_FILE}" | while read -r FILE_NAME; do
+  IS_REFERENCED=$(grep -R -l "$FILE_NAME" . --exclude="${FILES_FILE}" -c)
+
+  if [ -n "$IS_REFERENCED" ]; then
+    echo "${FILE_NAME} has been referenced into ${IS_REFERENCED}"
+  else
+    echo "${FILE_NAME} has not been referenced, removing it"
+    jq "map(select(.name != \"${FILE_NAME}\"))" "$FILES_FILE" > "$FILES_FILE.tmp" && mv "$FILES_FILE.tmp" "$FILES_FILE"
+  fi
+done

@@ -1,101 +1,102 @@
-[{
-	"_id": {
-		"$oid": "6650f58f8e417c3fb3b456a8"
-	},
-	"content": "Le challenge a été fix ! (désolé Uwu)",
-	"challengeId": {
-		"$oid": "664f14de8fa0f20074e566f9"
-	},
-	"createdAt": {
-		"$date": "2024-05-24T20:16:15.232Z"
-	},
-	"updatedAt": {
-		"$date": "2024-05-24T20:16:15.232Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6650f8ae8e417c3fb3b4648b"
-	},
-	"content": "Si vous avez des lenteurs sur les challenges Dofus n'hesitez pas a passer sur un partage de connexion",
-	"challengeId": {
-		"$oid": "664deab397675c97adee1548"
-	},
-	"createdAt": {
-		"$date": "2024-05-24T20:29:34.119Z"
-	},
-	"updatedAt": {
-		"$date": "2024-05-24T20:29:34.119Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "665105a2de242e8489308f29"
-	},
-	"content": "Désolé pour les dernières déconnexion que vous avez subis sur le scoreboard, je viens de redeploy quelques correctifs, my bad :x",
-	"createdAt": {
-		"$date": "2024-05-24T21:24:50.093Z"
-	},
-	"updatedAt": {
-		"$date": "2024-05-24T21:24:50.093Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "665105d3de242e8489309083"
-	},
-	"content": "Le challenge d'écoute téléphonique (avec les fers à souder) (Cap'n Crunch is a *phreak*) est ouvert dans la salle crochetage.",
-	"createdAt": {
-		"$date": "2024-05-24T21:25:39.735Z"
-	},
-	"updatedAt": {
-		"$date": "2024-05-24T21:25:39.735Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "665106a9de242e8489309658"
-	},
-	"content": "Les récompenses en terme de points pour la partie Hack4Values du CTF viennent d'être attribuer aux équipes !!",
-	"createdAt": {
-		"$date": "2024-05-24T21:29:13.093Z"
-	},
-	"updatedAt": {
-		"$date": "2024-05-24T21:29:13.093Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "66510c14de242e848930bb6f"
-	},
-	"content": "Le challenge \"La hess de Sophie\" vient d'être ajouter, good luck !",
-	"createdAt": {
-		"$date": "2024-05-24T21:52:20.581Z"
-	},
-	"updatedAt": {
-		"$date": "2024-05-24T21:52:20.581Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "66511b9dde242e848930fe74"
-	},
-	"content": "Backup rotated... If you send me website name of where you was able to find the first part of the flag I give you this part @luckidu33 on discord or speak to amenzik",
-	"challengeId": {
-		"$oid": "664f5e551f444cdafefe2fed"
-	},
-	"createdAt": {
-		"$date": "2024-05-24T22:58:37.334Z"
-	},
-	"updatedAt": {
-		"$date": "2024-05-24T22:58:37.334Z"
-	},
-	"__v": 0
-}]
-
+[
+  {
+    "_id": {
+      "$oid": "6650f58f8e417c3fb3b456a8"
+    },
+    "content": "Le challenge a été fix ! (désolé Uwu)",
+    "challengeId": {
+      "$oid": "664f14de8fa0f20074e566f9"
+    },
+    "createdAt": {
+      "$date": "2024-05-24T20:16:15.232Z"
+    },
+    "updatedAt": {
+      "$date": "2024-05-24T20:16:15.232Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6650f8ae8e417c3fb3b4648b"
+    },
+    "content": "Si vous avez des lenteurs sur les challenges Dofus n'hesitez pas a passer sur un partage de connexion",
+    "challengeId": {
+      "$oid": "664deab397675c97adee1548"
+    },
+    "createdAt": {
+      "$date": "2024-05-24T20:29:34.119Z"
+    },
+    "updatedAt": {
+      "$date": "2024-05-24T20:29:34.119Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "665105a2de242e8489308f29"
+    },
+    "content": "Désolé pour les dernières déconnexion que vous avez subis sur le scoreboard, je viens de redeploy quelques correctifs, my bad :x",
+    "createdAt": {
+      "$date": "2024-05-24T21:24:50.093Z"
+    },
+    "updatedAt": {
+      "$date": "2024-05-24T21:24:50.093Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "665105d3de242e8489309083"
+    },
+    "content": "Le challenge d'écoute téléphonique (avec les fers à souder) (Cap'n Crunch is a *phreak*) est ouvert dans la salle crochetage.",
+    "createdAt": {
+      "$date": "2024-05-24T21:25:39.735Z"
+    },
+    "updatedAt": {
+      "$date": "2024-05-24T21:25:39.735Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "665106a9de242e8489309658"
+    },
+    "content": "Les récompenses en terme de points pour la partie Hack4Values du CTF viennent d'être attribuer aux équipes !!",
+    "createdAt": {
+      "$date": "2024-05-24T21:29:13.093Z"
+    },
+    "updatedAt": {
+      "$date": "2024-05-24T21:29:13.093Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66510c14de242e848930bb6f"
+    },
+    "content": "Le challenge \"La hess de Sophie\" vient d'être ajouter, good luck !",
+    "createdAt": {
+      "$date": "2024-05-24T21:52:20.581Z"
+    },
+    "updatedAt": {
+      "$date": "2024-05-24T21:52:20.581Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66511b9dde242e848930fe74"
+    },
+    "content": "Backup rotated... If you send me website name of where you was able to find the first part of the flag I give you this part @luckidu33 on discord or speak to amenzik",
+    "challengeId": {
+      "$oid": "664f5e551f444cdafefe2fed"
+    },
+    "createdAt": {
+      "$date": "2024-05-24T22:58:37.334Z"
+    },
+    "updatedAt": {
+      "$date": "2024-05-24T22:58:37.334Z"
+    },
+    "__v": 0
+  }
+]
