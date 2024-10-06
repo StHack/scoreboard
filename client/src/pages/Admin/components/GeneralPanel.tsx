@@ -3,18 +3,20 @@ import { Box, BoxProps } from 'components/Box'
 import { Button } from 'components/Button'
 import { ChartActivityStats } from 'components/Charts/ChartActivityStats'
 import { ChartAttemptsPanel } from 'components/Charts/ChartAttempts'
+import { ConditionalLoader } from 'components/Loader'
 import { SelectInput } from 'components/SelectInput'
 import { TextInput } from 'components/TextInput'
 import { ToggleInput } from 'components/ToggleInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useField } from 'hooks/useField'
-import { useGame } from 'hooks/useGame'
+import { GameContextLoadingState, useGame } from 'hooks/useGame'
 import { FormEventHandler, PropsWithChildren, ReactNode } from 'react'
 
 export function GeneralPanel() {
   const {
     gameConfig: { teamSize, registrationOpened, gameOpened },
     challenges,
+    isLoaded,
   } = useGame()
   const {
     attempts,
@@ -100,39 +102,47 @@ export function GeneralPanel() {
           teamSizeInput.reset()
         }}
       >
-        <TextInput
-          placeholder="Set a new team size limit"
-          type="number"
-          flex="1"
-          {...teamSizeInput.inputProp}
-        />
-        <Button type="submit" flex={['100%', '0']}>
-          Send
-        </Button>
+        <ConditionalLoader
+          showLoader={!isLoaded(GameContextLoadingState.config)}
+        >
+          <TextInput
+            placeholder="Set a new team size limit"
+            type="number"
+            flex="1"
+            {...teamSizeInput.inputProp}
+          />
+          <Button type="submit" flex={['100%', '0']}>
+            Send
+          </Button>
+        </ConditionalLoader>
       </BoxPanel>
 
       <BoxPanel title="Game state">
-        <ToggleInput
-          checked={gameOpened}
-          onChange={value =>
-            value
-              ? openGame()
-              : confirm('Are you sure to stop the game?') && closeGame()
-          }
+        <ConditionalLoader
+          showLoader={!isLoaded(GameContextLoadingState.config)}
         >
-          Game Status
-        </ToggleInput>
-        <ToggleInput
-          checked={registrationOpened}
-          onChange={value =>
-            value
-              ? openRegistration()
-              : confirm('Are you sure to stop the registration?') &&
-                closeRegistration()
-          }
-        >
-          Registration Status
-        </ToggleInput>
+          <ToggleInput
+            checked={gameOpened}
+            onChange={value =>
+              value
+                ? openGame()
+                : confirm('Are you sure to stop the game?') && closeGame()
+            }
+          >
+            Game Status
+          </ToggleInput>
+          <ToggleInput
+            checked={registrationOpened}
+            onChange={value =>
+              value
+                ? openRegistration()
+                : confirm('Are you sure to stop the registration?') &&
+                  closeRegistration()
+            }
+          >
+            Registration Status
+          </ToggleInput>
+        </ConditionalLoader>
       </BoxPanel>
 
       <ActivityStatistics />

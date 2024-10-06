@@ -38,7 +38,7 @@ import TwitterSvg from './images/twitter.svg?react'
 import UsersSvg from './images/users.svg?react'
 import ValidateSvg from './images/validate.svg?react'
 
-type StyledIconProps = SpaceProps &
+export type StyledIconProps = SpaceProps &
   PlaceProps &
   ColorProps &
   LayoutProps &

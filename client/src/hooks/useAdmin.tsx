@@ -20,11 +20,13 @@ import {
 import { useSocket } from './useSocket'
 
 export type AdminContext = {
+  loadingState: AdminContextLoadingState
   challenges: Challenge[]
   users: User[]
   attempts: Attempt[]
   activityStatistics: ServerActivityStatistics
   activityStats: TimestampedServerActivityStatistics[]
+  isLoaded: (state: AdminContextLoadingState) => boolean
   createChallenge: (chall: BaseChallenge) => Promise<Challenge>
   createReward: (reward: BaseReward) => Promise<Reward>
   updateChallenge: (
@@ -49,6 +51,18 @@ export type AdminContext = {
   uploadFile: (file: File) => Promise<string>
 }
 
+export enum AdminContextLoadingState {
+  none = 0,
+  // eslint-disable-next-line @typescript-eslint/prefer-literal-enum-member
+  challenges = 1 << 0,
+  // eslint-disable-next-line @typescript-eslint/prefer-literal-enum-member
+  users = 1 << 1,
+  // eslint-disable-next-line @typescript-eslint/prefer-literal-enum-member
+  attempts = 1 << 2,
+  // eslint-disable-next-line @typescript-eslint/prefer-literal-enum-member
+  activityStats = 1 << 3,
+}
+
 const defaultStatistics: ServerActivityStatistics = {
   admins: [],
   teamCount: 0,
@@ -62,11 +76,13 @@ const defaultStatistics: ServerActivityStatistics = {
 }
 
 const adminContext = createContext<AdminContext>({
+  loadingState: AdminContextLoadingState.none,
   challenges: [],
   users: [],
   attempts: [],
   activityStatistics: defaultStatistics,
   activityStats: [],
+  isLoaded: () => false,
   createChallenge: () => Promise.resolve<Challenge>({} as Challenge),
   createReward: () => Promise.resolve<Reward>({} as Reward),
   updateChallenge: () => Promise.resolve<Challenge>({} as Challenge),
@@ -99,6 +115,9 @@ export const useAdmin = () => {
 
 function useProvideAdmin(): AdminContext {
   const { socket } = useSocket('/api/admin')
+  const [loadingState, setLoadingState] = useState<AdminContextLoadingState>(
+    AdminContextLoadingState.none,
+  )
   const [challenges, setChallenges] = useState<Challenge[]>([])
   const [users, setUsers] = useState<User[]>([])
   const [rawAttempts, setRawAttempts] = useState<Attempt[]>([])
@@ -118,19 +137,25 @@ function useProvideAdmin(): AdminContext {
 
     socket.emit('challenge:list', (response: Challenge[]) => {
       setChallenges([...response])
+      setLoadingState(state => state | AdminContextLoadingState.challenges)
     })
 
     socket.emit('users:list', (users: User[]) => {
       setUsers([...users])
+      setLoadingState(state => state | AdminContextLoadingState.users)
     })
 
     socket.emit('attempt:list', (attempts: Attempt[]) => {
       setRawAttempts(
         attempts.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
       )
+      setLoadingState(state => state | AdminContextLoadingState.attempts)
     })
 
-    socket.emit('game:activity', setActivityStatistics)
+    socket.emit('game:activity', (activity: ServerActivityStatistics) => {
+      setActivityStatistics(activity)
+      setLoadingState(state => state | AdminContextLoadingState.activityStats)
+    })
 
     socket.emit(
       'game:activity:list',
@@ -180,11 +205,14 @@ function useProvideAdmin(): AdminContext {
     setUsers(users.map(u => (u.username === user.username ? user : u)))
 
   return {
+    loadingState,
     users,
     challenges,
     attempts,
     activityStatistics: statistics,
     activityStats,
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
+    isLoaded: state => (loadingState & state) === state,
     createChallenge: chall =>
       new Promise<Challenge>((resolve, reject) => {
         if (!socket) throw new Error('connection is not available')
