@@ -123,6 +123,7 @@ export function useChallengeForm(
 
   return {
     formProps: {
+      name: isNewChallenge ? 'create-challenge' : 'edit-challenge',
       onSubmitCapture: onFormSubmit,
     },
     nameProps: nameField.inputProp,

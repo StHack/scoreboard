@@ -48,7 +48,7 @@ export default function Popup({
           : undefined
       }
     >
-      <PopupContainer useBg={useBg}>
+      <PopupContainer useBg={useBg} as="dialog">
         {title && <PopupTitle>{title}</PopupTitle>}
         {title && <hr />}
 

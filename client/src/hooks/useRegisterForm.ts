@@ -55,6 +55,7 @@ export function useRegisterForm() {
 
   return {
     formProps: {
+      name: 'register',
       onSubmitCapture: onFormSubmit,
     },
     usernameProps: usernameField.inputProp,

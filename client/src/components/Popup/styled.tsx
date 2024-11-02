@@ -72,6 +72,7 @@ export const PopupContainer = styled(Box)<SpaceProps & { useBg: boolean }>`
   flex-direction: column;
   place-items: stretch;
   overflow: hidden;
+  border: none;
   border-radius: 0.5rem;
   animation: 250ms ${BounceIn};
 `

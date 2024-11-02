@@ -139,3 +139,13 @@ scp ubuntu@XX.XX.XX.XX:/home/ubuntu/scoreboard/backups/$(date +%Y)/attempts-unce
 scp ubuntu@XX.XX.XX.XX:/home/ubuntu/scoreboard/logs.txt .
 scp ubuntu@XX.XX.XX.XX:/home/ubuntu/scoreboard/logs-website.txt .
 ```
+
+## Tests
+
+In order to run Playwright test, you will need to create a specific admin account:
+
+```js
+username: 'user42',
+password: 'user42',
+team: 'admin',
+```

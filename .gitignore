@@ -5,3 +5,5 @@ dist
 build
 *.tsbuildinfo
 /backups/**/*-uncensored.json
+playwright/.auth
+*.log

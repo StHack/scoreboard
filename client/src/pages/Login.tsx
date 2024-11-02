@@ -50,7 +50,7 @@ export function Login() {
           </LabelInput>
 
           {error && (
-            <Box backgroundColor="red" color="white">
+            <Box backgroundColor="red" color="white" role="alert">
               {error}
             </Box>
           )}

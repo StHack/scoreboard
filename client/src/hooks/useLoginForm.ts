@@ -42,6 +42,7 @@ export function useLoginForm() {
 
   return {
     formProps: {
+      name: 'login',
       onSubmitCapture: onFormSubmit,
     },
     usernameProps: usernameField.inputProp,
