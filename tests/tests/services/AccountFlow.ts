@@ -97,6 +97,12 @@ export class AccountFlow {
   }
 }
 
+export const playwrightUserTest: CreateUser = {
+  username: `playwright-test`,
+  password: `playwright-test`,
+  team: `playwright-test`,
+}
+
 type AccountFLowLoginOption = {
   persistAuth: boolean
   checkAuth: boolean

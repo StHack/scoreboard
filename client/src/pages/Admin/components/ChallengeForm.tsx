@@ -118,7 +118,9 @@ export function ChallengeForm({ chall, onClose }: AdminProps) {
             <TextInput type="text" {...flagsProps} />
           )}
           {!isNewChallenge && !editFlag && (
-            <Button onClick={() => setEditFlag(true)}>Edit flag</Button>
+            <Button type="button" onClick={() => setEditFlag(true)}>
+              Edit flag
+            </Button>
           )}
         </LabelInput>
 

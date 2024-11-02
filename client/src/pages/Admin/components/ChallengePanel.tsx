@@ -52,6 +52,7 @@ export function ChallengePanel() {
         gridTemplateColumns="repeat(auto-fit, minmax(40rem, 1fr))"
         overflowY="auto"
         gap="2"
+        role="list"
       >
         {challenges
           .filter(
@@ -136,6 +137,7 @@ function ChallengeBlock({
         'card stats'
         'card actions'
       `}
+      role="listitem"
     >
       <Box
         gap="1"

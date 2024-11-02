@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 import { CreateUser } from '@sthack/scoreboard-common'
-import { AccountFlow } from './services/AccountFlow.js'
+import { AccountFlow, playwrightUserTest } from './services/AccountFlow.js'
 import { AdminFlow } from './services/AdminFlow.js'
 
 test('Admin - Login', async ({ page }) => {
@@ -41,12 +41,6 @@ test('User - new one flow', async ({ page, browser }) => {
 
   await expect(page).toHaveURL('/')
 })
-
-const playwrightUserTest: CreateUser = {
-  username: `playwright-test`,
-  password: `playwright-test`,
-  team: `playwright-test`,
-}
 
 test('User - Create reusable test account', async ({ page, browser }) => {
   const adminFlow = await AdminFlow.createNewSession(browser)

@@ -77,14 +77,14 @@ export function ChallDescriptionPopup({
         )}
 
         {challenge.isBroken && (
-          <Text gridArea="desc" my="2">
+          <Text gridArea="desc" my="2" role="alert">
             This challenge is currently considered as broken and cannot be
             completed right now.
           </Text>
         )}
 
         {myTeamSolved && (
-          <Text gridArea="flag" my="2">
+          <Text gridArea="flag" my="2" role="alert">
             {myTeamSolved.username} has already solved this chall !
           </Text>
         )}
@@ -117,7 +117,7 @@ export function ChallDescriptionPopup({
             />
 
             {error && (
-              <Box backgroundColor="red" color="white">
+              <Box backgroundColor="red" color="white" role="alert">
                 {error}
               </Box>
             )}
@@ -162,6 +162,6 @@ const Text = ({
   m = '2',
   textAlign = 'center',
   ...p
-}: PropsWithChildren<TextProps>) => (
+}: PropsWithChildren<TextProps & { role?: string }>) => (
   <T fontSize={fontSize} m={m} textAlign={textAlign} {...p} />
 )
