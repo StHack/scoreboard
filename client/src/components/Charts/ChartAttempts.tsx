@@ -26,7 +26,8 @@ export function ChartAttemptsPanel() {
         ...agg,
         [cur.challenge]: {
           ...(agg[cur.challenge] ?? {}),
-          [`t/${cur.teamname}`]: (agg[cur.challenge]?.[`t/${cur.teamname}`] ?? 0) + 1,
+          [`t/${cur.teamname}`]:
+            (agg[cur.challenge]?.[`t/${cur.teamname}`] ?? 0) + 1,
         },
       }),
       {},

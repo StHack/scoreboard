@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.7-labs
-FROM node:20-alpine as build
+FROM node:22-alpine as build
 
 WORKDIR /src
 
@@ -11,7 +11,7 @@ COPY . .
 RUN npm run build
 RUN cp -r ./client/dist ./server/build && rm -rf client
 
-FROM node:20-alpine as run
+FROM node:22-alpine as run
 
 WORKDIR /app
 

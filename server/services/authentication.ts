@@ -121,9 +121,9 @@ export function registerAuthentification(
   })
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  app.post('/api/login', passport.authenticate('local'), (req, res) =>
-    res.send(req.user),
-  )
+  app.post('/api/login', passport.authenticate('local'), (req, res) => {
+    res.send(req.user)
+  })
 
   app.post('/api/logout', (req, res) => {
     const socketId = req.session.socketId
@@ -148,9 +148,9 @@ export function registerAuthentification(
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const wrap = (middleware: Handler) => (socket: any, next: any) => {
+const wrap = (middleware: Handler) => async (socket: any, next: any) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
-  middleware(socket.request, {} as any, next)
+  await middleware(socket.request, {} as any, next)
 }
 
 export function registerAuthentificationForSocket(
@@ -161,7 +161,9 @@ export function registerAuthentificationForSocket(
   io.use(wrap(passport.initialize()))
   io.use(wrap(passport.session() as Handler))
   io.use((socket, next) => {
-    ;(socket.request as Request).user ? next() : next(new Error('unauthorized'))
+    next(
+      (socket.request as Request).user ? undefined : new Error('unauthorized'),
+    )
   })
 
   io.on('connect', async socket => {
@@ -185,6 +187,7 @@ declare module 'express-session' {
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Express {
+    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
     interface User extends OurUser {}
   }
 }

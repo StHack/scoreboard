@@ -182,7 +182,9 @@ export function registerAdminNamespace(
 
       for (const [, soc] of playerIo.sockets) {
         const req = soc.request as Request
-        req.user && logout(req.user.username)
+        if (req.user) {
+          logout(req.user.username)
+        }
         req.logOut(() => {
           soc.disconnect(true)
         })

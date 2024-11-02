@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-globals */
 import { User } from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
@@ -93,11 +92,7 @@ export function UserPanel() {
             updateAdminStatus={updateAdminStatus}
             logout={logout}
             remove={remove}
-            gridArea={[
-              null,
-              'auto/1/auto/3',
-              `1/auto/${teams.size}/auto`,
-            ]}
+            gridArea={[null, 'auto/1/auto/3', `1/auto/${teams.size}/auto`]}
             alignSelf={[null, 'start']}
           />
         )}

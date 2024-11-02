@@ -26,7 +26,9 @@ export class ServerStatisticsFetcher {
   }
 
   public stop(): void {
-    this.interval && clearInterval(this.interval)
+    if (this.interval) {
+      clearInterval(this.interval)
+    }
   }
 
   public registerCallback(callback: ServerStatisticsFetcherCallback): void {

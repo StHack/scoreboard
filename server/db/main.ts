@@ -17,7 +17,9 @@ export function removeMongoPropertiesWithOptions({
     versionKey: false,
     transform: function (doc, ret) {
       delete ret.id
-      removeId && delete ret._id
+      if (removeId) {
+        delete ret._id
+      }
       for (const props of propsToRemove) {
         // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
         delete ret[props]

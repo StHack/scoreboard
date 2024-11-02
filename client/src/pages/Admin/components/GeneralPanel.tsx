@@ -64,11 +64,12 @@ export function GeneralPanel() {
         flexWrap="wrap"
         onSubmit={e => {
           e.preventDefault()
-          messageInput.inputProp.value &&
+          if (messageInput.inputProp.value) {
             sendMessage(
               messageInput.inputProp.value,
               messageChallengeInput.inputProp.value,
             )
+          }
           messageInput.reset()
         }}
       >
@@ -97,8 +98,9 @@ export function GeneralPanel() {
         flexWrap="wrap"
         onSubmit={e => {
           e.preventDefault()
-          teamSizeInput.inputProp.value &&
+          if (teamSizeInput.inputProp.value) {
             setTeamSize(parseInt(teamSizeInput.inputProp.value))
+          }
           teamSizeInput.reset()
         }}
       >
