@@ -4,7 +4,7 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
 export default tseslint.config(
   {
-    ignores: ['eslint.config.js'],
+    ignores: ['eslint.config.js', 'playwright-report'],
   },
   {
     extends: [

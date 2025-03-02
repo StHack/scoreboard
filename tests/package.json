@@ -14,7 +14,7 @@
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^9.14.0",
-    "@playwright/test": "^1.48.2",
+    "@playwright/test": "^1.50.1",
     "@sthack/scoreboard-common": "^4.0.0",
     "@types/node": "^22.8.6",
     "eslint": "^9.14.0",

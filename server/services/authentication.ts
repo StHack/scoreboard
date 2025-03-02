@@ -1,6 +1,6 @@
 import { ExecutionError, Lock, Redlock } from '@sesamecare-oss/redlock'
 import { CreateUser, User as OurUser } from '@sthack/scoreboard-common'
-import RedisStore from 'connect-redis'
+import { RedisStore } from 'connect-redis'
 import { getUser, login, registerUser } from 'db/UsersDb.js'
 import debug from 'debug'
 import { Handler, IRouter, json, Request } from 'express'

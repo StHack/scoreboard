@@ -70,9 +70,9 @@ export function Rules() {
           <Box display="grid" placeContent="center" py="4">
             <ToggleInput
               checked={hasReadRules}
-              onChange={() => {
+              onChange={async () => {
                 readRules()
-                navigate('/')
+                await navigate('/')
               }}
               disabled={hasReadRules}
             >

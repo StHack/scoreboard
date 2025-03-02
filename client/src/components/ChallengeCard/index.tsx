@@ -25,7 +25,7 @@ export function ChallengeCard({
   const animationToPlay = isSolved ? 'idle exploded' : 'idle'
   const [initialAnimation] = useState(() => animationToPlay)
 
-  const riveRef = useRef<Rive>()
+  const riveRef = useRef<Rive>(undefined)
 
   const { rive, setCanvasRef, setContainerRef } = useRive(
     {

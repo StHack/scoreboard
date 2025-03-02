@@ -47,7 +47,7 @@ export function useRegisterForm() {
     setIsLoading(false)
 
     if (ok) {
-      navigate('/login')
+      await navigate('/login')
     } else {
       setError(error)
     }
