@@ -5,15 +5,35 @@ import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
 import { ChallengeCard } from 'components/ChallengeCard'
 import { Messages } from 'components/Messages'
 import Popup from 'components/Popup'
+import { useAuth } from 'hooks/useAuthentication'
 import { useGame } from 'hooks/useGame'
-import { usePlayer } from 'hooks/usePlayer'
+import { ProvidePlayer, usePlayer } from 'hooks/usePlayer'
 import { Fragment, useEffect, useState } from 'react'
+import { Navigate, Outlet } from 'react-router-dom'
 import {
   getGroup,
   getGroupSort,
   GroupBySelector,
   GroupByType,
 } from './components/GroupBySelector'
+
+export function GameLayout() {
+  const { isAuthenticated, hasReadRules } = useAuth()
+
+  if (!isAuthenticated) {
+    return <Navigate to="/auth/login" replace />
+  }
+
+  if (!hasReadRules) {
+    return <Navigate to="/rules" replace />
+  }
+
+  return (
+    <ProvidePlayer>
+      <Outlet />
+    </ProvidePlayer>
+  )
+}
 
 export function Game() {
   const {

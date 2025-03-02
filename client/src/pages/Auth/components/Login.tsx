@@ -67,7 +67,7 @@ export function Login() {
         </Form>
 
         {registrationOpened && (
-          <Link to="/register">Not registered yet ? Click here</Link>
+          <Link to="/auth/register">Not registered yet ? Click here</Link>
         )}
       </Box>
     </Box>

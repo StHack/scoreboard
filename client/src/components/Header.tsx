@@ -26,9 +26,7 @@ export function Header() {
       </NavLink>
 
       {user && (
-        <span>
-          {user.username} / {user.team}
-        </span>
+        <GameLink to="/game" label={`${user.username} / ${user.team}`} />
       )}
 
       <nav>
@@ -36,8 +34,10 @@ export function Header() {
           <GameLink to="/scoreboard" label="Scoreboard" />
           <GameLink to="/rules" label="Rules" />
           {isAuthorized && <GameLink to="/admin" label="Admin" />}
-          {!isAuthenticated && <GameLink to="/register" label="Register" />}
-          {!isAuthenticated && <GameLink to="/login" label="Login" />}
+          {!isAuthenticated && (
+            <GameLink to="/auth/register" label="Register" />
+          )}
+          {!isAuthenticated && <GameLink to="/auth/login" label="Login" />}
 
           {isAuthenticated && (
             <Box as="li" display="flex">
@@ -71,11 +71,7 @@ const NavLinkStyled = styled(NavLink)<SpaceProps>`
   }
 `
 
-type GameLinkProps = {
-  to: string
-  label: string
-  hideOnMobile?: boolean
-}
+type GameLinkProps = { to: string; label: string; hideOnMobile?: boolean }
 function GameLink({ to, label }: GameLinkProps) {
   return (
     <Box as="li" display={['none', 'flex']}>

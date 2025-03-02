@@ -2,14 +2,20 @@ import styled from '@emotion/styled'
 import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'
 import { Loader } from 'components/Loader'
-import { ProvideAdmin } from 'hooks/useAdmin'
 import { useAuth } from 'hooks/useAuthentication'
-import { ProvidePlayer } from 'hooks/usePlayer'
-import { Game } from 'pages/Game'
-import { Login } from 'pages/Login'
-import { Register } from 'pages/Register'
+import { useGame } from 'hooks/useGame'
+import { AdminLayout } from 'pages/Admin'
+import { AchievementPanel } from 'pages/Admin/components/AchievementPanel'
+import { AttemptPanel } from 'pages/Admin/components/AttemptPanel'
+import { ChallengePanel } from 'pages/Admin/components/ChallengePanel'
+import { GeneralPanel } from 'pages/Admin/components/GeneralPanel'
+import { UserPanel } from 'pages/Admin/components/UserPanel'
+import { AuthLayout } from 'pages/Auth'
+import { Login } from 'pages/Auth/components/Login'
+import { Register } from 'pages/Auth/components/Register'
+import { Game, GameLayout } from 'pages/Game'
 import { Rules } from 'pages/Rules'
-import { lazy, ReactElement, ReactNode, Suspense } from 'react'
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 const Admin = lazy(() =>
@@ -35,8 +41,6 @@ const Container = styled.main`
 `
 
 export default function App() {
-  const { isAuthenticated, isAuthorized, hasReadRules } = useAuth()
-
   return (
     <BrowserRouter>
       <AppBlock>
@@ -44,55 +48,26 @@ export default function App() {
         <Suspense fallback={<Loader size="10" placeSelf="center" />}>
           <Container>
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <ProtectedRoute
-                    condition={isAuthenticated && hasReadRules}
-                    fallbackTo={isAuthenticated ? '/rules' : '/login'}
-                  >
-                    <ProvidePlayer>
-                      <Game />
-                    </ProvidePlayer>
-                  </ProtectedRoute>
-                }
-              />
-
-              <Route
-                path="/login"
-                element={
-                  <ProtectedRoute condition={!isAuthenticated} fallbackTo="/">
-                    <Login />
-                  </ProtectedRoute>
-                }
-              />
-
-              <Route
-                path="/register"
-                element={
-                  <ProtectedRoute condition={!isAuthenticated} fallbackTo="/">
-                    <Register />
-                  </ProtectedRoute>
-                }
-              />
-
-              <Route
-                path="/admin/*"
-                element={
-                  <ProtectedRoute
-                    condition={isAuthenticated && isAuthorized}
-                    fallbackTo="/"
-                  >
-                    <ProvideAdmin>
-                      <Admin />
-                    </ProvideAdmin>
-                  </ProtectedRoute>
-                }
-              />
-
+              <Route path="/" element={<Home />} />
               <Route path="/scoreboard" element={<ScoreBoard />} />
-
               <Route path="/rules" element={<Rules />} />
+
+              <Route path="/auth" element={<AuthLayout />}>
+                <Route path="login" element={<Login />} />
+                <Route path="register" element={<Register />} />
+              </Route>
+
+              <Route path="/game" element={<GameLayout />}>
+                <Route index element={<Game />} />
+              </Route>
+
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<GeneralPanel />} />
+                <Route path="challenges" element={<ChallengePanel />} />
+                <Route path="users" element={<UserPanel />} />
+                <Route path="achievements" element={<AchievementPanel />} />
+                <Route path="attempts" element={<AttemptPanel />} />
+              </Route>
             </Routes>
           </Container>
         </Suspense>
@@ -102,20 +77,36 @@ export default function App() {
   )
 }
 
-type ProtectedRouteProps = {
-  children: ReactNode
-  condition: boolean
-  fallbackTo: string
-}
+function Home() {
+  const {
+    gameConfig: { gameOpened },
+    isLoaded,
+  } = useGame()
+  const { isAuthenticated, isAuthorized, hasReadRules } = useAuth()
 
-function ProtectedRoute({
-  children,
-  condition,
-  fallbackTo: redirectTo,
-}: ProtectedRouteProps): ReactElement {
-  if (!condition) {
-    return <Navigate to={redirectTo} replace />
+  if (isAuthorized) {
+    return <Navigate to="/admin" replace />
   }
 
-  return <>{children}</>
+  if (!isAuthenticated) {
+    return <Navigate to="/auth/login" replace />
+  }
+
+  if (!hasReadRules) {
+    return <Navigate to="/rules" replace />
+  }
+
+  if (!gameOpened) {
+    return <Navigate to="/scoreboard" replace />
+  }
+
+  if (!isLoaded) {
+    return <Loader size="10" placeSelf="center" />
+  }
+
+  if (gameOpened) {
+    return <Navigate to="/game" replace />
+  }
+
+  return null
 }

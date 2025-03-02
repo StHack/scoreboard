@@ -74,11 +74,11 @@ test('User - should be kicked on game ended', async ({ browser }) => {
     await adminFlow.forceGameState(false)
   })
 
-  await expect(userFlow.page).toHaveURL('/login')
+  await expect(userFlow.page).toHaveURL('/auth/login')
 
   await userFlow.page.reload()
 
-  await expect(userFlow.page).toHaveURL('/login')
+  await expect(userFlow.page).toHaveURL('/auth/login')
 
   await userFlow.login({ checkAuth: false })
 

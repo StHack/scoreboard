@@ -36,7 +36,7 @@ export class AccountFlow {
     checkRegister = true,
   }: Partial<{ checkRegister: boolean }> = {}) {
     await test.step('Register', async () => {
-      await this.page.goto('/register')
+      await this.page.goto('/auth/register')
 
       await test.step('Fill the form', async () => {
         await this.page.getByLabel('Username').fill(this.user.username)
@@ -46,7 +46,7 @@ export class AccountFlow {
       })
 
       if (checkRegister) {
-        await expect(this.page).toHaveURL('/login')
+        await expect(this.page).toHaveURL('/auth/login')
       }
     })
   }
@@ -56,7 +56,7 @@ export class AccountFlow {
     checkAuth = true,
   }: Partial<AccountFLowLoginOption> = {}) {
     await test.step('Login', async () => {
-      await this.page.goto('/login')
+      await this.page.goto('/auth/login')
 
       await test.step('Fill the form', async () => {
         await this.page.getByLabel('Username').fill(this.user.username)

@@ -7,14 +7,28 @@ import {
   IconUsers,
 } from 'components/Icon'
 import { Link } from 'components/Link'
-import { Route, Routes } from 'react-router-dom'
-import { AchievementPanel } from './components/AchievementPanel'
-import { AttemptPanel } from './components/AttemptPanel'
-import { ChallengePanel } from './components/ChallengePanel'
-import { GeneralPanel } from './components/GeneralPanel'
-import { UserPanel } from './components/UserPanel'
+import { ProvideAdmin } from 'hooks/useAdmin'
+import { useAuth } from 'hooks/useAuthentication'
+import { PropsWithChildren } from 'react'
+import { Navigate, Outlet } from 'react-router-dom'
 
-export function Admin() {
+export function AdminLayout() {
+  const { isAuthenticated, isAuthorized } = useAuth()
+
+  if (!isAuthenticated || !isAuthorized) {
+    return <Navigate to="/" replace />
+  }
+
+  return (
+    <ProvideAdmin>
+      <Admin>
+        <Outlet />
+      </Admin>
+    </ProvideAdmin>
+  )
+}
+
+export function Admin({ children }: PropsWithChildren) {
   return (
     <Box
       display="flex"
@@ -35,36 +49,30 @@ export function Admin() {
         overflowX="auto"
         px="1"
       >
-        <Link to="" end>
+        <Link to="/admin" end>
           <IconGame color="currentColor" size="1.5em" />
           General
         </Link>
-        <Link to="challenges">
+        <Link to="/admin/challenges">
           <IconChallenge color="currentColor" size="1.5em" />
           Challenges
         </Link>
-        <Link to="users">
+        <Link to="/admin/users">
           <IconUsers color="currentColor" size="1.5em" />
           Users
         </Link>
-        <Link to="achievements">
+        <Link to="/admin/achievements">
           <IconAchievement color="currentColor" size="1.5em" />
           Achievements
         </Link>
-        <Link to="attempts">
+        <Link to="/admin/attempts">
           <IconAttempt color="currentColor" size="1.5em" />
           Attempts
         </Link>
       </Box>
 
       <Box display="grid" flex="1" pt="2" overflowY="auto">
-        <Routes>
-          <Route path="" element={<GeneralPanel />} />
-          <Route path="challenges" element={<ChallengePanel />} />
-          <Route path="users" element={<UserPanel />} />
-          <Route path="achievements" element={<AchievementPanel />} />
-          <Route path="attempts" element={<AttemptPanel />} />
-        </Routes>
+        {children}
       </Box>
     </Box>
   )

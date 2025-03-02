@@ -43,7 +43,7 @@ export function Footer() {
         </Link>
 
         {isAuthenticated && (
-          <Link to="/" end>
+          <Link to="/game" end>
             <IconGame color="currentColor" size="1.5em" />
             Game
           </Link>
@@ -62,13 +62,13 @@ export function Footer() {
         )}
 
         {!isAuthenticated && registrationOpened && (
-          <Link to="/register">
+          <Link to="/auth/register">
             <IconCreate color="currentColor" size="1.5em" />
             Register
           </Link>
         )}
         {!isAuthenticated && (
-          <Link to="/login">
+          <Link to="/auth/login">
             <IconAttempt color="currentColor" size="1.5em" />
             Login
           </Link>
