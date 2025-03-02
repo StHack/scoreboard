@@ -51,7 +51,7 @@ const defaultGameConfig = {
   teamSize: 0,
 }
 
-const gameContext = createContext<GameContext>({
+const GameContext = createContext<GameContext>({
   loadingState: GameContextLoadingState.none,
   challenges: [],
   achievements: [],
@@ -67,11 +67,11 @@ const gameContext = createContext<GameContext>({
 
 export function ProvideGame({ children }: PropsWithChildren<object>) {
   const game = useProvideGame()
-  return <gameContext.Provider value={game}>{children}</gameContext.Provider>
+  return <GameContext value={game}>{children}</GameContext>
 }
 
 export const useGame = () => {
-  return useContext(gameContext)
+  return useContext(GameContext)
 }
 
 function useProvideGame(): GameContext {

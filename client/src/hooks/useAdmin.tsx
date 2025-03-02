@@ -75,7 +75,7 @@ const defaultStatistics: ServerActivityStatistics = {
   },
 }
 
-const adminContext = createContext<AdminContext>({
+const AdminContext = createContext<AdminContext>({
   loadingState: AdminContextLoadingState.none,
   challenges: [],
   users: [],
@@ -106,11 +106,11 @@ const adminContext = createContext<AdminContext>({
 
 export function ProvideAdmin({ children }: PropsWithChildren<object>) {
   const admin = useProvideAdmin()
-  return <adminContext.Provider value={admin}>{children}</adminContext.Provider>
+  return <AdminContext value={admin}>{children}</AdminContext>
 }
 
 export const useAdmin = () => {
-  return useContext(adminContext)
+  return useContext(AdminContext)
 }
 
 function useProvideAdmin(): AdminContext {

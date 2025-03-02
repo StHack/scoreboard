@@ -15,7 +15,7 @@ export type PlayerContext = {
   markMessageAsRead: (message: Message) => void
 }
 
-const playerContext = createContext<PlayerContext>({
+const PlayerContext = createContext<PlayerContext>({
   myScore: 0,
   myTeamScore: 0,
   myTeamName: '',
@@ -29,12 +29,12 @@ const playerContext = createContext<PlayerContext>({
 export function ProvidePlayer({ children }: PropsWithChildren<object>) {
   const player = useProvidePlayer()
   return (
-    <playerContext.Provider value={player}>{children}</playerContext.Provider>
+    <PlayerContext value={player}>{children}</PlayerContext>
   )
 }
 
 export const usePlayer = () => {
-  return useContext(playerContext)
+  return useContext(PlayerContext)
 }
 
 function useProvidePlayer(): PlayerContext {

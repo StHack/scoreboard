@@ -25,7 +25,7 @@ export type AuthContext = {
   }>
 }
 
-const authContext = createContext<AuthContext>({
+const AuthContext = createContext<AuthContext>({
   user: undefined,
   isAuthenticated: false,
   isAuthorized: false,
@@ -37,11 +37,11 @@ const authContext = createContext<AuthContext>({
 
 export function ProvideAuth({ children }: PropsWithChildren<object>) {
   const auth = useProvideAuth()
-  return <authContext.Provider value={auth}>{children}</authContext.Provider>
+  return <AuthContext value={auth}>{children}</AuthContext>
 }
 
 export const useAuth = () => {
-  return useContext(authContext)
+  return useContext(AuthContext)
 }
 
 function useProvideAuth(): AuthContext {
