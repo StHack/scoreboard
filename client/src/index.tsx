@@ -1,9 +1,10 @@
 import { ThemeProvider } from '@emotion/react'
 import { ProvideAuth } from 'hooks/useAuthentication'
+import { ProvideGame } from 'hooks/useGame'
 import { useThemeMode } from 'hooks/useThemeMode'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import DefaultStyles from 'styles'
+import DefaultStyles, { ProvideTheme } from 'styles'
 import { darkTheme, lightTheme } from 'styles/theme'
 import App from './App'
 
@@ -22,7 +23,11 @@ function AppWrapper() {
     <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
       <DefaultStyles />
       <ProvideAuth>
-        <App />
+        <ProvideTheme>
+          <ProvideGame>
+            <App />
+          </ProvideGame>
+        </ProvideTheme>
       </ProvideAuth>
     </ThemeProvider>
   )

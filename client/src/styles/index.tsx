@@ -1,8 +1,10 @@
-import { css, Global } from '@emotion/react'
+import { css, Global, ThemeProvider } from '@emotion/react'
 import { StyledOptions } from '@emotion/styled'
 import shouldForwardProp from '@styled-system/should-forward-prop'
 import * as CSS from 'csstype'
+import { useAuth } from 'hooks/useAuthentication'
 import { ThemeMode, useThemeMode } from 'hooks/useThemeMode'
+import { PropsWithChildren } from 'react'
 import {
   FlexboxProps,
   RequiredTheme,
@@ -28,9 +30,30 @@ export default function DefaultStyles() {
   )
 }
 
-type ColorSchemeProps = {
-  currentTheme: ThemeMode
+export function ProvideTheme({ children }: PropsWithChildren) {
+  const { isAuthorized } = useAuth()
+
+  return (
+    <ThemeProvider
+      theme={theme =>
+        isAuthorized
+          ? {
+              ...theme,
+              colors: {
+                ...theme.colors,
+                secondary: theme.colors.pink,
+                secondaryText: theme.colors.white,
+              },
+            }
+          : theme
+      }
+    >
+      {children}
+    </ThemeProvider>
+  )
 }
+
+type ColorSchemeProps = { currentTheme: ThemeMode }
 function ColorScheme({ currentTheme }: ColorSchemeProps) {
   return (
     <Global

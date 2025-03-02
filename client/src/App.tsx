@@ -1,11 +1,9 @@
-import { ThemeProvider } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'
 import { Loader } from 'components/Loader'
 import { ProvideAdmin } from 'hooks/useAdmin'
 import { useAuth } from 'hooks/useAuthentication'
-import { ProvideGame } from 'hooks/useGame'
 import { ProvidePlayer } from 'hooks/usePlayer'
 import { Game } from 'pages/Game'
 import { Login } from 'pages/Login'
@@ -40,104 +38,67 @@ export default function App() {
   const { isAuthenticated, isAuthorized, hasReadRules } = useAuth()
 
   return (
-    <ThemeProvider
-      theme={theme =>
-        isAuthorized
-          ? {
-              ...theme,
-              colors: {
-                ...theme.colors,
-                secondary: theme.colors.pink,
-                secondaryText: theme.colors.white,
-              },
-            }
-          : theme
-      }
-    >
-      <BrowserRouter>
-        <AppBlock>
-          <Header />
-          <Suspense fallback={<Loader size="10" placeSelf="center" />}>
-            <Container>
-              <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <ProtectedRoute
-                      condition={isAuthenticated && hasReadRules}
-                      fallbackTo={isAuthenticated ? '/rules' : '/login'}
-                    >
-                      <ProvideGame>
-                        <ProvidePlayer>
-                          <Game />
-                        </ProvidePlayer>
-                      </ProvideGame>
-                    </ProtectedRoute>
-                  }
-                />
+    <BrowserRouter>
+      <AppBlock>
+        <Header />
+        <Suspense fallback={<Loader size="10" placeSelf="center" />}>
+          <Container>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute
+                    condition={isAuthenticated && hasReadRules}
+                    fallbackTo={isAuthenticated ? '/rules' : '/login'}
+                  >
+                    <ProvidePlayer>
+                      <Game />
+                    </ProvidePlayer>
+                  </ProtectedRoute>
+                }
+              />
 
-                <Route
-                  path="/login"
-                  element={
-                    <ProtectedRoute condition={!isAuthenticated} fallbackTo="/">
-                      <ProvideGame>
-                        <Login />
-                      </ProvideGame>
-                    </ProtectedRoute>
-                  }
-                />
+              <Route
+                path="/login"
+                element={
+                  <ProtectedRoute condition={!isAuthenticated} fallbackTo="/">
+                    <Login />
+                  </ProtectedRoute>
+                }
+              />
 
-                <Route
-                  path="/register"
-                  element={
-                    <ProtectedRoute condition={!isAuthenticated} fallbackTo="/">
-                      <ProvideGame>
-                        <Register />
-                      </ProvideGame>
-                    </ProtectedRoute>
-                  }
-                />
+              <Route
+                path="/register"
+                element={
+                  <ProtectedRoute condition={!isAuthenticated} fallbackTo="/">
+                    <Register />
+                  </ProtectedRoute>
+                }
+              />
 
-                <Route
-                  path="/admin/*"
-                  element={
-                    <ProtectedRoute
-                      condition={isAuthenticated && isAuthorized}
-                      fallbackTo="/"
-                    >
-                      <ProvideGame>
-                        <ProvideAdmin>
-                          <Admin />
-                        </ProvideAdmin>
-                      </ProvideGame>
-                    </ProtectedRoute>
-                  }
-                />
+              <Route
+                path="/admin/*"
+                element={
+                  <ProtectedRoute
+                    condition={isAuthenticated && isAuthorized}
+                    fallbackTo="/"
+                  >
+                    <ProvideAdmin>
+                      <Admin />
+                    </ProvideAdmin>
+                  </ProtectedRoute>
+                }
+              />
 
-                <Route
-                  path="/scoreboard"
-                  element={
-                    <ProvideGame>
-                      <ScoreBoard />
-                    </ProvideGame>
-                  }
-                />
+              <Route path="/scoreboard" element={<ScoreBoard />} />
 
-                <Route
-                  path="/rules"
-                  element={
-                    <ProvideGame>
-                      <Rules />
-                    </ProvideGame>
-                  }
-                />
-              </Routes>
-            </Container>
-          </Suspense>
-          <Footer />
-        </AppBlock>
-      </BrowserRouter>
-    </ThemeProvider>
+              <Route path="/rules" element={<Rules />} />
+            </Routes>
+          </Container>
+        </Suspense>
+        <Footer />
+      </AppBlock>
+    </BrowserRouter>
   )
 }
 
