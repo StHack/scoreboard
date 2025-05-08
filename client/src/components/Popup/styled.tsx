@@ -33,6 +33,7 @@ export const PopupContainer = styled(Box)<SpaceProps & { useBg: boolean }>`
   width: 100%;
   max-width: 80rem;
   max-height: 100%;
+  position: initial;
 
   transition: all 0.3s;
 
