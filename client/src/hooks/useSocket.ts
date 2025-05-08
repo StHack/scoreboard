@@ -17,13 +17,18 @@ export function useSocket(namespace: string) {
       setIsConnected(true)
     })
 
-    socket.on('disconnect', async () => {
+    socket.on('disconnect', async (reason, description) => {
       setIsConnected(false)
-      await logOut()
+      console.log('disconnected', reason, description)
+
+      if (reason === 'io server disconnect') {
+        // server forced us to disconnect (ie: game ended or forced logout by admin)
+        await logOut()
+      }
     })
 
-    socket.on('connect_error', async () => {
-      await logOut()
+    socket.on('connect_error', err => {
+      console.log('connect_error', err)
     })
 
     setSocket(socket)
@@ -31,6 +36,7 @@ export function useSocket(namespace: string) {
     return () => {
       socket.off('connect')
       socket.off('disconnect')
+      socket.off('connect_error')
       socket.disconnect()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
