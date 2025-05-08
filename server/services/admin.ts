@@ -91,6 +91,10 @@ export function registerAdminNamespace(
       'challenge:create',
       async (chall: BaseChallenge, callback: CallbackOrError<Challenge>) => {
         try {
+          if (!chall.flag) {
+            throw new Error('flag is required')
+          }
+
           const challenge = await createChallenge(chall)
           callback(challenge)
           gameIo.emit('challenge:added', challenge)

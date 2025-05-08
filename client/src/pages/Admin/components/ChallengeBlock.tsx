@@ -8,9 +8,10 @@ import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
 import { ChallengeCard } from 'components/ChallengeCard'
-import { IconBreak, IconEdit, IconRepair } from 'components/Icon'
+import { IconBreak, IconEdit, IconFlagEdit, IconRepair } from 'components/Icon'
 import { ProvidePlayer } from 'hooks/usePlayer'
 import { useState } from 'react'
+import { FlagEditForm } from './FlagEditForm'
 
 type ChallengeBlockProps = {
   chall: Challenge
@@ -31,8 +32,8 @@ export function ChallengeBlock({
   onRepairClick,
 }: ChallengeBlockProps) {
   const { author, category, difficulty, isBroken, name } = chall
-  const lastSolve = score.achievements[score.achievements.length - 1]
   const [showPreview, setShowPreview] = useState<boolean>(false)
+  const [showFlagEdit, setShowFlagEdit] = useState<boolean>(false)
 
   return (
     <Box
@@ -67,47 +68,41 @@ export function ChallengeBlock({
           onClick={() => setShowPreview(true)}
           size="6"
         />
-        <p>
-          {category} - {difficulty}
-        </p>
-        <p>{author}</p>
       </Box>
       <Box gridArea="stats">
         <Box as="h1" fontSize="2">
           {name}
         </Box>
-        <p>
-          Attempted <b>{attempts.length}</b> times
-        </p>
-        <p>
-          Solved <b>{score.achievements.length}</b> times
-          {lastSolve && (
-            <span>
-              {` (last by "${lastSolve.username}" from "${lastSolve.teamname}")`}
-            </span>
-          )}
-        </p>
+        <p>{`by "${author}"`}</p>
+        <p>{`${category} - ${difficulty}`}</p>
       </Box>
 
       <Box
         gridArea="actions"
         display="flex"
         flexWrap="wrap"
-        gap="1"
+        gap="2"
         alignItems="start"
       >
         {!isBroken && (
-          <Button onClick={() => onBrokeClick(chall)} icon={IconBreak}>
+          <Button px="2" onClick={() => onBrokeClick(chall)} icon={IconBreak}>
             Broke
           </Button>
         )}
         {isBroken && (
-          <Button onClick={() => onRepairClick(chall)} icon={IconRepair}>
+          <Button px="2" onClick={() => onRepairClick(chall)} icon={IconRepair}>
             Repair
           </Button>
         )}
-        <Button onClick={() => onEditClick(chall)} icon={IconEdit}>
+        <Button px="2" onClick={() => onEditClick(chall)} icon={IconEdit}>
           Edit
+        </Button>
+        <Button
+          px="2"
+          onClick={() => setShowFlagEdit(true)}
+          icon={IconFlagEdit}
+        >
+          Flag
         </Button>
       </Box>
       {showPreview && (
@@ -119,6 +114,10 @@ export function ChallengeBlock({
             score={score}
           />
         </ProvidePlayer>
+      )}
+
+      {showFlagEdit && (
+        <FlagEditForm chall={chall} onClose={() => setShowFlagEdit(false)} />
       )}
     </Box>
   )

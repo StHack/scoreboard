@@ -21,6 +21,8 @@ import DeleteSvg from './images/delete.svg?react'
 import DemoteSvg from './images/demote.svg?react'
 import DiscordSvg from './images/discord.svg?react'
 import EditSvg from './images/edit.svg?react'
+import FlagSvg from './images/flag.svg?react'
+import FlagEditSvg from './images/flag-edit.svg?react'
 import GameSvg from './images/game.svg?react'
 import JsonSvg from './images/json.svg?react'
 import LogoSvg from './images/Logo.svg?react'
@@ -67,6 +69,8 @@ export const IconDelete: Icon = BaseSvg.withComponent(DeleteSvg)
 export const IconDemote: Icon = BaseSvg.withComponent(DemoteSvg)
 export const IconDiscord: Icon = BaseSvg.withComponent(DiscordSvg)
 export const IconEdit: Icon = BaseSvg.withComponent(EditSvg)
+export const IconFlag: Icon = BaseSvg.withComponent(FlagSvg)
+export const IconFlagEdit: Icon = BaseSvg.withComponent(FlagEditSvg)
 export const IconGame: Icon = BaseSvg.withComponent(GameSvg)
 export const IconJson: Icon = BaseSvg.withComponent(JsonSvg)
 export const IconLogo2023: Icon = BaseSvg.withComponent(Logo2023Svg)

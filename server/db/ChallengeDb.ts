@@ -114,10 +114,11 @@ export async function updateChallenge(
     { new: true },
   )
 
-  if (!document)
+  if (!document) {
     throw new Error(
       `Challenge ${challengeId} hasn't been updated because it was not found`,
     )
+  }
 
   return document.toObject(removeProperties)
 }

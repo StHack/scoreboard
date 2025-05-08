@@ -58,7 +58,6 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
   const { uploadFile } = useAdmin()
   const ref = useRef<HTMLFormElement>(null)
   const [showPreview, setShowPreview] = useState<boolean>(false)
-  const [editFlag, setEditFlag] = useState<boolean>(false)
   const { currentTheme } = useThemeMode()
 
   const fileHandler = async (
@@ -121,15 +120,17 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
       <Box
         display={['flex', 'grid']}
         gridTemplateAreas={`
-        "name name"
-        "auth flag"
-        "cat  desc"
-        "dif  desc"
-        "img  desc"
-        ".    desc"
-        "err  err "
-        "act  act "
-      `}
+          "name name"
+          "auth ${isNewChallenge ? 'flag' : 'desc'}"
+          "cat  desc"
+          "dif  desc"
+          "img  desc"
+          ".    desc"
+          "err  err "
+          "act  act "
+        `}
+        gridTemplateColumns="auto 1fr"
+        gridTemplateRows="auto auto auto auto auto 1fr auto auto"
         flexDirection="column"
         maxWidth="maximalCentered"
         px="2"
@@ -166,16 +167,11 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
           />
         </LabelInput>
 
-        <LabelInput label="Flag" gridArea="flag" required={isNewChallenge}>
-          {(isNewChallenge || editFlag) && (
+        {isNewChallenge && (
+          <LabelInput label="Flag" gridArea="flag" required={isNewChallenge}>
             <TextInput type="text" {...flagsProps} />
-          )}
-          {!isNewChallenge && !editFlag && (
-            <Button type="button" onClick={() => setEditFlag(true)}>
-              Edit flag
-            </Button>
-          )}
-        </LabelInput>
+          </LabelInput>
+        )}
 
         <LabelInput label="Category" gridArea="cat" required>
           <DropdownInput {...categoryProps} predefinedValues={Categories} />
@@ -234,10 +230,7 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
 
           <Button
             // variant="secondary"
-            onClick={() => {
-              reset()
-              setEditFlag(false)
-            }}
+            onClick={reset}
             title="Reset form"
             type="button"
             disabled={!isDirty}
