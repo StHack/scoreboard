@@ -3,16 +3,22 @@ import { useAdmin } from 'hooks/useAdmin'
 import { ChangeEvent, InputHTMLAttributes, useRef } from 'react'
 import { convertToWebp } from 'services/files'
 import { Box } from './Box'
+import { Button } from './Button'
 
+type ImageInputProps = {
+  fallbackImage?: string
+}
 export function ImageInput({
   value,
+  fallbackImage,
+  alt,
   onChange,
   ...props
-}: InputHTMLAttributes<HTMLInputElement>) {
+}: ImageInputProps & InputHTMLAttributes<HTMLInputElement>) {
   const ref = useRef<HTMLInputElement>(null)
   const { uploadFile } = useAdmin()
   return (
-    <Box>
+    <Box display="grid" py="2" gap="2" as="label">
       <Hidden
         ref={ref}
         {...props}
@@ -37,29 +43,24 @@ export function ImageInput({
         }}
       />
 
-      {value && (
-        <ImageB
-          src={value as string}
-          alt="Uploaded picture"
-          onClickCapture={e => {
-            e.preventDefault()
-            onChange?.({
-              target: { value: undefined },
-            } as unknown as ChangeEvent<HTMLInputElement>)
-          }}
-        />
-      )}
+      <ImageB
+        src={value as string ?? fallbackImage}
+        alt={alt}
+        onClickCapture={e => {
+          e.preventDefault()
+          onChange?.({
+            target: { value: undefined },
+          } as unknown as ChangeEvent<HTMLInputElement>)
+        }}
+      />
 
-      {!value && (
-        <Box
-          display="flex"
-          height="3"
-          placeContent="center"
-          alignItems="center"
-        >
-          Upload an image
-        </Box>
-      )}
+      <Button
+        type="button"
+        placeSelf="center"
+        onClick={() => ref.current?.click()}
+      >
+        {value ? 'Change image' : 'Upload image'}
+      </Button>
     </Box>
   )
 }

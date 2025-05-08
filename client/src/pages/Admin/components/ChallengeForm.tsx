@@ -1,8 +1,8 @@
-import styled from '@emotion/styled'
 import { Categories, Challenge, Difficulties } from '@sthack/scoreboard-common'
 import MDEditor from '@uiw/react-md-editor'
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
+import { categoryToImg } from 'components/CategoryImg'
 import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
 import { DropdownInput } from 'components/DropdownInput'
 import { ImageInput } from 'components/ImageInput'
@@ -126,6 +126,7 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
         "cat  desc"
         "dif  desc"
         "img  desc"
+        ".    desc"
         "err  err "
         "act  act "
       `}
@@ -153,6 +154,8 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
             value={descriptionProps.value}
             onChange={(str, e) => e && descriptionProps.onChange(e)}
             preview="edit"
+            height="100%"
+            visibleDragbar={false}
             data-color-mode={currentTheme}
             textareaProps={{
               placeholder:
@@ -183,7 +186,12 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
         </LabelInput>
 
         <LabelInput label="Image" gridArea="img">
-          <ImageInput {...imgProps} />
+          <ImageInput
+            {...imgProps}
+            value={imgProps.value}
+            fallbackImage={categoryToImg(categoryProps.value)}
+            alt="Icon of your challenge"
+          />
         </LabelInput>
 
         {error && (
