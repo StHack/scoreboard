@@ -8,7 +8,14 @@ import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
 import { ChallengeCard } from 'components/ChallengeCard'
-import { IconBreak, IconEdit, IconFlagEdit, IconRepair } from 'components/Icon'
+import {
+  IconBreak,
+  IconDelete,
+  IconEdit,
+  IconFlagEdit,
+  IconPreview,
+  IconRepair,
+} from 'components/Icon'
 import { ProvidePlayer } from 'hooks/usePlayer'
 import { useState } from 'react'
 import { FlagEditForm } from './FlagEditForm'
@@ -19,6 +26,7 @@ type ChallengeBlockProps = {
   messages: Message[]
   attempts: Attempt[]
   onBrokeClick: (chall: Challenge) => void
+  onDeleteClick: (chall: Challenge) => void
   onEditClick: (chall: Challenge) => void
   onRepairClick: (chall: Challenge) => void
 }
@@ -28,6 +36,7 @@ export function ChallengeBlock({
   messages,
   attempts,
   onBrokeClick,
+  onDeleteClick,
   onEditClick,
   onRepairClick,
 }: ChallengeBlockProps) {
@@ -81,29 +90,58 @@ export function ChallengeBlock({
         gridArea="actions"
         display="flex"
         flexWrap="wrap"
+        placeContent="start"
         gap="2"
-        alignItems="start"
       >
         {!isBroken && (
-          <Button px="2" onClick={() => onBrokeClick(chall)} icon={IconBreak}>
-            Broke
-          </Button>
+          <Button
+            px="2"
+            onClick={() => onBrokeClick(chall)}
+            icon={IconBreak}
+            title="Mark challenge as broken"
+          />
         )}
         {isBroken && (
-          <Button px="2" onClick={() => onRepairClick(chall)} icon={IconRepair}>
-            Repair
-          </Button>
+          <Button
+            px="2"
+            onClick={() => onRepairClick(chall)}
+            icon={IconRepair}
+            title="Repair challenge"
+          />
         )}
-        <Button px="2" onClick={() => onEditClick(chall)} icon={IconEdit}>
-          Edit
-        </Button>
+        <Button
+          px="2"
+          onClick={() => onEditClick(chall)}
+          icon={IconEdit}
+          title="Edit challenge"
+        />
         <Button
           px="2"
           onClick={() => setShowFlagEdit(true)}
           icon={IconFlagEdit}
-        >
-          Flag
-        </Button>
+          title="Edit flag"
+        />
+        <Button
+          px="2"
+          onClick={() => setShowPreview(true)}
+          icon={IconPreview}
+          title="Preview challenge"
+        />
+        <Button
+          px="2"
+          onClick={() => {
+            if (
+              confirm(
+                `Are you sure to delete Challenge:\n\n${chall.name}\n\nby "${chall.author}"?\n\nThis action is irreversible and you need to first manually delete all associated achievements.`,
+              )
+            ) {
+              onDeleteClick(chall)
+            }
+          }}
+          icon={IconDelete}
+          variant="danger"
+          title="Delete challenge"
+        />
       </Box>
       {showPreview && (
         <ProvidePlayer>

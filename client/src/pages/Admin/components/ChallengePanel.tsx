@@ -10,7 +10,13 @@ import { useNavigate } from 'react-router-dom'
 import { ChallengeBlock } from './ChallengeBlock'
 
 export function ChallengePanel() {
-  const { challenges, attempts, brokeChallenge, repairChallenge } = useAdmin()
+  const {
+    challenges,
+    attempts,
+    brokeChallenge,
+    deleteChallenge,
+    repairChallenge,
+  } = useAdmin()
   const [search, setSearch] = useState<string>('')
   const {
     messages,
@@ -68,6 +74,7 @@ export function ChallengePanel() {
               onBrokeClick={brokeChallenge}
               onEditClick={() => navigate(`/admin/challenges/${c._id}/edit`)}
               onRepairClick={repairChallenge}
+              onDeleteClick={deleteChallenge}
             />
           ))}
       </Box>

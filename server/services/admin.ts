@@ -12,11 +12,15 @@ import {
   User,
 } from '@sthack/scoreboard-common'
 import { createHash } from 'crypto'
-import { removeAchievement } from 'db/AchievementDb.js'
+import {
+  countChallengeAchievement,
+  removeAchievement,
+} from 'db/AchievementDb.js'
 import { listAttempt } from 'db/AttemptDb.js'
 import {
   createChallenge,
   listChallenge,
+  removeChallenge,
   updateChallenge,
 } from 'db/ChallengeDb.js'
 import { createFile } from 'db/FIleDb.js'
@@ -179,6 +183,33 @@ export function registerAdminNamespace(
         challenge: updated,
       })
     })
+
+    adminSocket.on(
+      'challenge:delete',
+      async (challengeId: string, callback: CallbackOrError<void>) => {
+        const achievementCount = await countChallengeAchievement(challengeId)
+
+        if (achievementCount > 0) {
+          callback({
+            error: 'You cannot delete a challenge with achievements',
+          })
+          return
+        }
+
+        const deleted = await removeChallenge(challengeId)
+        if (!deleted) {
+          return
+        }
+
+        gameIo.emit('challenge:deleted', deleted)
+        adminIo.emit('challenge:deleted', deleted)
+        await emitEventLog(gameIo, 'challenge:delete', {
+          message: `Challenge "${deleted.name}" has been deleted`,
+          challenge: deleted,
+        })
+        callback()
+      },
+    )
 
     adminSocket.on('game:end', async () => {
       await serverConfig.setGameOpened(false)

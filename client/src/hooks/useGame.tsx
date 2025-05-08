@@ -145,6 +145,10 @@ function useProvideGame(): GameContext {
       ),
     )
 
+    socket.on('challenge:deleted', (chall: Challenge) =>
+      setChallenges(challs => challs.filter(c => c._id !== chall._id)),
+    )
+
     socket.on('achievement:added', (achievement: Achievement) => {
       setRawAchievements(a => [
         { ...achievement, createdAt: new Date(achievement.createdAt) },

@@ -81,6 +81,7 @@ export function Button({
   borderRadius = 4,
   placeItems = 'center',
   placeContent = 'center',
+  type = 'button',
   ...rest
 }: ButtonProps) {
   const defaultPaddingFix =
@@ -90,6 +91,7 @@ export function Button({
 
   return (
     <Btn
+      type={type}
       variant={variant}
       px={px}
       py={py}

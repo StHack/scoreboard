@@ -88,8 +88,13 @@ export async function checkChallenge(
   return flagHasher(flag, chall.salt) === chall.flag
 }
 
-export async function removeChallenge(challengeId: string): Promise<void> {
-  await ChallengeModel.findByIdAndDelete(challengeId)
+export async function removeChallenge(
+  challengeId: string,
+): Promise<Challenge | undefined> {
+  const deleted = await ChallengeModel.findByIdAndDelete(challengeId)
+  return deleted?.toObject(
+    removeMongoPropertiesWithOptions({ removeId: false }),
+  )
 }
 
 export async function updateChallenge(

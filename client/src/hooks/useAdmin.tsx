@@ -34,6 +34,7 @@ export type AdminContext = {
     chall: BaseChallenge,
   ) => Promise<Challenge>
   brokeChallenge: (chall: Challenge) => void
+  deleteChallenge: (chall: Challenge) => void
   repairChallenge: (chall: Challenge) => void
   openGame: () => void
   closeGame: () => void
@@ -87,6 +88,7 @@ const AdminContext = createContext<AdminContext>({
   createReward: () => Promise.resolve<Reward>({} as Reward),
   updateChallenge: () => Promise.resolve<Challenge>({} as Challenge),
   brokeChallenge: () => {},
+  deleteChallenge: () => {},
   repairChallenge: () => {},
   openGame: () => {},
   closeGame: () => {},
@@ -186,6 +188,10 @@ function useProvideAdmin(): AdminContext {
       ),
     )
 
+    socket.on('challenge:deleted', (challId: string) =>
+      setChallenges(challs => challs.filter(c => c._id !== challId)),
+    )
+
     socket.on('attempt:added', (attempt: Attempt) =>
       setRawAttempts(attempts => [
         { ...attempt, createdAt: new Date(attempt.createdAt) },
@@ -267,6 +273,23 @@ function useProvideAdmin(): AdminContext {
 
       socket.emit('challenge:broke', chall._id)
     },
+    deleteChallenge: chall =>
+      new Promise<void>((resolve, reject) => {
+        if (!socket) throw new Error('connection is not available')
+
+        socket.emit(
+          'challenge:delete',
+          chall._id,
+          (response: ServerError | undefined) => {
+            if (response) {
+              reject(new Error(response.error))
+            } else {
+              setChallenges(challs => challs.filter(c => c._id !== chall._id))
+              resolve()
+            }
+          },
+        )
+      }),
     repairChallenge: chall => {
       if (!socket) throw new Error('connection is not available')
 

@@ -33,6 +33,7 @@ import LogoDogSvg from './images/logo-dog.svg?react'
 import LogoPigeonSvg from './images/logo-pigeon.svg?react'
 import LogoutSvg from './images/logout.svg?react'
 import PasswordSvg from './images/password.svg?react'
+import PreviewSvg from './images/preview.svg?react'
 import PromoteSvg from './images/promote.svg?react'
 import RepairSvg from './images/repair.svg?react'
 import TeamsSvg from './images/teams.svg?react'
@@ -80,6 +81,7 @@ export const IconLogoDog: Icon = BaseSvg.withComponent(LogoDogSvg)
 export const IconLogoPigeon: Icon = BaseSvg.withComponent(LogoPigeonSvg)
 export const IconLogout: Icon = BaseSvg.withComponent(LogoutSvg)
 export const IconPassword: Icon = BaseSvg.withComponent(PasswordSvg)
+export const IconPreview: Icon = BaseSvg.withComponent(PreviewSvg)
 export const IconPromote: Icon = BaseSvg.withComponent(PromoteSvg)
 export const IconRepair: Icon = BaseSvg.withComponent(RepairSvg)
 export const IconTeams: Icon = BaseSvg.withComponent(TeamsSvg)
