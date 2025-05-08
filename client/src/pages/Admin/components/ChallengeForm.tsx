@@ -214,7 +214,10 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
         >
           <Button
             variant="secondary"
-            onClick={onClose}
+            onClick={async () => {
+              reset()
+              await onClose()
+            }}
             title="Discard changes"
             type="button"
           >

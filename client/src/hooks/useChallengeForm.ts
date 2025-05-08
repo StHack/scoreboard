@@ -4,7 +4,7 @@ import {
   Challenge,
   Difficulty,
 } from '@sthack/scoreboard-common'
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { useAdmin } from './useAdmin'
 import { useAuth } from './useAuthentication'
 import { useField } from './useField'
@@ -19,10 +19,21 @@ export function useChallengeForm(
   const { createChallenge, updateChallenge } = useAdmin()
   const { user: { username } = {} } = useAuth()
 
-  const { author, category, description, difficulty, img, isBroken, name } =
-    chall || {}
+  const {
+    _id,
+    author,
+    category,
+    description,
+    difficulty,
+    img,
+    isBroken,
+    name,
+  } = chall || {}
+
+  const draftKeyPrefix = `draft-challenge-${isNewChallenge ? 'new' : _id}`
 
   const nameField = useField<string>({
+    draftKeyPrefix,
     name: 'name',
     defaultValue: name ?? '',
     disabled: isLoading,
@@ -30,18 +41,21 @@ export function useChallengeForm(
   })
 
   const authorField = useField<string>({
+    draftKeyPrefix,
     name: 'author',
     defaultValue: author ?? username ?? '',
     disabled: isLoading,
     required: true,
   })
   const categoryField = useField<Category>({
+    draftKeyPrefix,
     name: 'category',
     defaultValue: category ?? 'web',
     disabled: isLoading,
     required: true,
   })
   const descriptionField = useField<string>({
+    draftKeyPrefix,
     name: 'description',
     defaultValue: description ?? '',
     disabled: isLoading,
@@ -49,6 +63,7 @@ export function useChallengeForm(
   })
 
   const difficultyField = useField<Difficulty>({
+    draftKeyPrefix,
     name: 'difficulty',
     defaultValue: difficulty ?? 'medium',
     disabled: isLoading,
@@ -63,18 +78,31 @@ export function useChallengeForm(
   })
 
   const imgField = useField<string | undefined>({
+    draftKeyPrefix,
     name: 'img',
     defaultValue: img,
     disabled: isLoading,
   })
 
   const isBrokenField = useField<boolean | undefined>({
+    draftKeyPrefix,
     name: 'isBroken',
     defaultValue: isBroken,
     disabled: isLoading,
   })
 
+  const cleanDraft = () => {
+    localStorage.removeItem(`${draftKeyPrefix}-name`)
+    localStorage.removeItem(`${draftKeyPrefix}-author`)
+    localStorage.removeItem(`${draftKeyPrefix}-category`)
+    localStorage.removeItem(`${draftKeyPrefix}-description`)
+    localStorage.removeItem(`${draftKeyPrefix}-difficulty`)
+    localStorage.removeItem(`${draftKeyPrefix}-img`)
+    localStorage.removeItem(`${draftKeyPrefix}-isBroken`)
+  }
+
   const reset = () => {
+    cleanDraft()
     nameField.reset()
     authorField.reset()
     categoryField.reset()
@@ -105,6 +133,7 @@ export function useChallengeForm(
         await updateChallenge(chall._id, payload)
       }
 
+      cleanDraft()
       onSuccess()
     } catch (error) {
       if (error instanceof Error) {

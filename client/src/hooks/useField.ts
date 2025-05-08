@@ -1,20 +1,27 @@
 import { ChangeEvent, useState } from 'react'
+import { useStorage } from './useStorage'
 
 export type FieldProps<T> = {
   defaultValue: T
   name: string
   disabled: boolean
+  draftKeyPrefix?: string
   required?: boolean
   valueRetriever?: (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => T
 }
 export function useField<T>({
+  draftKeyPrefix: formId,
   defaultValue,
   valueRetriever,
   ...props
 }: FieldProps<T>) {
-  const [value, setValue] = useState<T>(defaultValue)
+  const [value, setValue] = formId
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    ? useStorage<T>(`${formId}-${props.name}`, defaultValue)
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    : useState<T>(defaultValue)
 
   const reset = () => {
     setValue(defaultValue)
