@@ -4,7 +4,7 @@ import {
   Challenge,
   Difficulty,
 } from '@sthack/scoreboard-common'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import { useAdmin } from './useAdmin'
 import { useAuth } from './useAuthentication'
 import { useField } from './useField'
@@ -80,10 +80,12 @@ export function useChallengeForm(
     categoryField.reset()
     descriptionField.reset()
     difficultyField.reset()
+    flagsField.reset()
+    imgField.reset()
     isBrokenField.reset()
   }
 
-  const onFormSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
+  const onFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     try {
@@ -105,7 +107,13 @@ export function useChallengeForm(
 
       onSuccess()
     } catch (error) {
-      setError(error as string)
+      if (error instanceof Error) {
+        setError(error.message)
+      } else if (typeof error === 'string') {
+        setError(error)
+      } else {
+        setError(JSON.stringify(error))
+      }
     }
   }
 

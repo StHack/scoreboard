@@ -1,4 +1,6 @@
+import { Loader } from 'components/Loader'
 import { useAuth } from 'hooks/useAuthentication'
+import { PropsWithChildren } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
 export function AuthLayout() {
@@ -9,4 +11,14 @@ export function AuthLayout() {
   }
 
   return <Outlet />
+}
+
+export function AuthLoader({ children }: PropsWithChildren) {
+  const { isLoading } = useAuth()
+
+  if (isLoading) {
+    return <Loader size="10" placeSelf="center" />
+  }
+
+  return children
 }

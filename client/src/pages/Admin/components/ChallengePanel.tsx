@@ -15,23 +15,23 @@ import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
 import { ProvidePlayer } from 'hooks/usePlayer'
 import { useState } from 'react'
-import { ChallengeForm } from './ChallengeForm'
+import { useNavigate } from 'react-router-dom'
 
 export function ChallengePanel() {
-  const [openEdit, setOpenEdit] = useState<boolean>(false)
   const { challenges, attempts, brokeChallenge, repairChallenge } = useAdmin()
-  const [challToEdit, setChallToEdit] = useState<Challenge>()
   const [search, setSearch] = useState<string>('')
   const {
     messages,
     score: { challsScore },
   } = useGame()
 
+  const navigate = useNavigate()
+
   return (
     <Box display="flex" flexDirection="column" overflow="hidden" gap="2">
       <Box display="flex" flexDirection="row" gap="2">
         <Button
-          onClick={() => setOpenEdit(true)}
+          onClick={() => navigate(`/admin/challenges/create`)}
           title="Create challenge"
           icon={IconCreate}
           responsiveLabel
@@ -74,24 +74,11 @@ export function ChallengePanel() {
               messages={messages.filter(m => m.challengeId === c._id)}
               attempts={attempts.filter(a => a.challengeId === c._id)}
               onBrokeClick={brokeChallenge}
-              onEditClick={() => {
-                setChallToEdit(c)
-                setOpenEdit(true)
-              }}
+              onEditClick={() => navigate(`/admin/challenges/${c._id}/edit`)}
               onRepairClick={repairChallenge}
             />
           ))}
       </Box>
-
-      {openEdit && (
-        <ChallengeForm
-          chall={challToEdit}
-          onClose={() => {
-            setOpenEdit(false)
-            setChallToEdit(undefined)
-          }}
-        />
-      )}
     </Box>
   )
 }

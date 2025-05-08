@@ -72,7 +72,7 @@ export function Rules() {
               checked={hasReadRules}
               onChange={async () => {
                 readRules()
-                await navigate('/')
+                await navigate('/game')
               }}
               disabled={hasReadRules}
             >

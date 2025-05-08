@@ -7,20 +7,39 @@ import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
 import { DropdownInput } from 'components/DropdownInput'
 import { ImageInput } from 'components/ImageInput'
 import { LabelInput } from 'components/LabelInput'
-import Popup from 'components/Popup'
+import { Loader } from 'components/Loader'
 import { SelectInput } from 'components/SelectInput'
 import { TextInput } from 'components/TextInput'
-import { useAdmin } from 'hooks/useAdmin'
+import { AdminContextLoadingState, useAdmin } from 'hooks/useAdmin'
 import { useChallengeForm } from 'hooks/useChallengeForm'
 import { useThemeMode } from 'hooks/useThemeMode'
-import { ChangeEvent, SyntheticEvent, useRef, useState } from 'react'
+import {
+  ChangeEvent,
+  SyntheticEvent,
+  useCallback,
+  useRef,
+  useState,
+} from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { BoxPanel } from './GeneralPanel'
 
-export type AdminProps = {
-  chall?: Challenge
-  onClose: () => void
+export function ChallengeFormLayout() {
+  const { isLoaded, challenges } = useAdmin()
+  const { challengeId } = useParams()
+
+  if (!isLoaded(AdminContextLoadingState.challenges)) {
+    return <Loader size="10" placeSelf="center" />
+  }
+
+  return <ChallengeForm chall={challenges.find(c => c._id === challengeId)} />
 }
 
-export function ChallengeForm({ chall, onClose }: AdminProps) {
+export function ChallengeForm({ chall }: { chall?: Challenge }) {
+  const navigate = useNavigate()
+  const onClose = useCallback(async () => {
+    await navigate('/admin/challenges')
+  }, [navigate])
+
   const {
     formProps,
     nameProps,
@@ -33,6 +52,7 @@ export function ChallengeForm({ chall, onClose }: AdminProps) {
     error,
     isNewChallenge,
     preview,
+    reset,
     isDirty,
   } = useChallengeForm(chall, onClose)
   const { uploadFile } = useAdmin()
@@ -72,33 +92,63 @@ export function ChallengeForm({ chall, onClose }: AdminProps) {
     }
   }
 
+  const title = isNewChallenge
+    ? 'Create a new challenge'
+    : `Edition of challenge "${chall?.name ?? 'new challenge'}"`
+
   return (
-    <Popup
-      customAction={
-        <Button onClick={() => setShowPreview(v => !v)}>
-          {showPreview ? 'Hide' : 'Show'} Preview
-        </Button>
-      }
+    <BoxPanel
       title={
-        isNewChallenge
-          ? 'Create a new challenge'
-          : `Edition of challenge "${chall?.name ?? 'new challenge'}"`
+        <Box
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          width="100%"
+          gap="2"
+        >
+          <title>{title}</title>
+          {title}
+          {isDirty && (
+            <Box as="span" fontStyle="italic" color="red">
+              (Unsaved changes)
+            </Box>
+          )}
+        </Box>
       }
-      useClickOutside={!isDirty}
-      onCancel={onClose}
-      onValidate={() => ref.current?.requestSubmit()}
-      useBg={false}
+      flexDirection="column"
+      onSubmitCapture={formProps.onSubmitCapture}
     >
-      <Form ref={ref} {...formProps}>
-        <LabelInput label="Name" required>
+      <Box
+        display={['flex', 'grid']}
+        gridTemplateAreas={`
+        "name name"
+        "auth flag"
+        "cat  desc"
+        "dif  desc"
+        "img  desc"
+        "err  err "
+        "act  act "
+      `}
+        flexDirection="column"
+        maxWidth="maximalCentered"
+        px="2"
+        gap="3"
+        margin="0 auto"
+        width="100%"
+      >
+        <LabelInput label="Name" gridArea="name" required>
           <TextInput type="text" {...nameProps} />
         </LabelInput>
 
-        <LabelInput label="Author" required>
+        <LabelInput label="Author" gridArea="auth" required>
           <TextInput type="text" {...authorProps} />
         </LabelInput>
 
-        <LabelInput label="Description (markdown format)" required>
+        <LabelInput
+          label="Description (markdown format)"
+          gridArea="desc"
+          required
+        >
           <MDEditor
             value={descriptionProps.value}
             onChange={(str, e) => e && descriptionProps.onChange(e)}
@@ -113,7 +163,7 @@ export function ChallengeForm({ chall, onClose }: AdminProps) {
           />
         </LabelInput>
 
-        <LabelInput label="Flag" required={isNewChallenge}>
+        <LabelInput label="Flag" gridArea="flag" required={isNewChallenge}>
           {(isNewChallenge || editFlag) && (
             <TextInput type="text" {...flagsProps} />
           )}
@@ -124,20 +174,20 @@ export function ChallengeForm({ chall, onClose }: AdminProps) {
           )}
         </LabelInput>
 
-        <LabelInput label="Category" required>
+        <LabelInput label="Category" gridArea="cat" required>
           <DropdownInput {...categoryProps} predefinedValues={Categories} />
         </LabelInput>
 
-        <LabelInput label="Difficulty" required>
+        <LabelInput label="Difficulty" gridArea="dif" required>
           <SelectInput predefinedValues={Difficulties} {...difficultyProps} />
         </LabelInput>
 
-        <LabelInput label="Image">
+        <LabelInput label="Image" gridArea="img">
           <ImageInput {...imgProps} />
         </LabelInput>
 
         {error && (
-          <Box backgroundColor="red" color="white" role="alert">
+          <Box gridArea="err" backgroundColor="red" color="white" role="alert">
             {error}
           </Box>
         )}
@@ -147,16 +197,57 @@ export function ChallengeForm({ chall, onClose }: AdminProps) {
             challenge={preview}
             messages={[]}
             onClose={() => setShowPreview(false)}
-            score={{ challenge: {} as Challenge, achievements: [], score: 100 }}
+            score={{
+              challenge: {} as Challenge,
+              achievements: [],
+              score: 100,
+            }}
             readonly
           />
         )}
-      </Form>
-    </Popup>
+
+        <Box
+          gridArea="act"
+          display="grid"
+          gridAutoFlow="column"
+          justifyContent="space-evenly"
+        >
+          <Button
+            variant="secondary"
+            onClick={onClose}
+            title="Discard changes"
+            type="button"
+          >
+            Discard
+          </Button>
+
+          <Button
+            // variant="secondary"
+            onClick={() => {
+              reset()
+              setEditFlag(false)
+            }}
+            title="Reset form"
+            type="button"
+            disabled={!isDirty}
+          >
+            Reset
+          </Button>
+
+          <Button onClick={() => setShowPreview(true)} type="button">
+            Preview
+          </Button>
+
+          <Button
+            variant="primary"
+            disabled={!isDirty}
+            title={isNewChallenge ? 'Create' : 'Update'}
+            type="submit"
+          >
+            {isNewChallenge ? 'Create' : 'Update'}
+          </Button>
+        </Box>
+      </Box>
+    </BoxPanel>
   )
 }
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`

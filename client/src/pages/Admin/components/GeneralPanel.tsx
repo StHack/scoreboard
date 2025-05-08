@@ -50,19 +50,28 @@ export function GeneralPanel() {
 
   return (
     <Box
-      display="flex"
+      display={["flex", "grid"]}
       flexDirection="column"
       maxWidth="maximalCentered"
       px="2"
       gap="3"
       margin="0 auto"
       width="100%"
+      gridTemplateColumns="1fr 3fr"
+      gridTemplateAreas={`
+        "msg    sstats"
+        "gstate sstats"
+        "tsize  sstats"
+        ".      sstats"
+        ".      attempts"
+      `}
     >
       <BoxPanel
+        gridArea="msg"
         title="Announcement"
         flexDirection="row"
         flexWrap="wrap"
-        onSubmit={e => {
+        onSubmitCapture={e => {
           e.preventDefault()
           if (messageInput.inputProp.value) {
             sendMessage(
@@ -93,10 +102,11 @@ export function GeneralPanel() {
       </BoxPanel>
 
       <BoxPanel
+        gridArea="tsize"
         title={`Team sizing (currently ${teamSize})`}
         flexDirection="row"
         flexWrap="wrap"
-        onSubmit={e => {
+        onSubmitCapture={e => {
           e.preventDefault()
           if (teamSizeInput.inputProp.value) {
             setTeamSize(parseInt(teamSizeInput.inputProp.value))
@@ -119,7 +129,7 @@ export function GeneralPanel() {
         </ConditionalLoader>
       </BoxPanel>
 
-      <BoxPanel title="Game state">
+      <BoxPanel gridArea="gstate" title="Game state">
         <ConditionalLoader
           showLoader={!isLoaded(GameContextLoadingState.config)}
         >
@@ -150,6 +160,7 @@ export function GeneralPanel() {
       <ActivityStatistics />
 
       <BoxPanel
+        gridArea="attempts"
         title={`Attempts by challs and teams (last ${attempts.length})`}
         display="grid"
         placeItems="center"
@@ -162,19 +173,20 @@ export function GeneralPanel() {
 
 type BoxPanelProps = BoxProps & {
   title: ReactNode
-  onSubmit?: FormEventHandler<HTMLDivElement>
+  onSubmitCapture?: FormEventHandler<HTMLDivElement | HTMLFormElement>
 }
 
 export function BoxPanel({
   title,
   children,
-  onSubmit,
+  onSubmitCapture,
   ...props
 }: PropsWithChildren<BoxPanelProps>) {
   return (
     <Box
-      display="flex"
-      flexDirection="column"
+      display="grid"
+      gridAutoFlow="row"
+      gridTemplateRows="auto 1fr"
       gap="2"
       backgroundColor="background"
       p="3"
@@ -182,11 +194,11 @@ export function BoxPanel({
       borderWidth="medium"
       borderStyle="solid"
       borderRadius="medium"
-      as={onSubmit ? 'form' : 'div'}
-      onSubmit={onSubmit}
+      as={onSubmitCapture ? 'form' : 'div'}
+      onSubmitCapture={onSubmitCapture}
       {...props}
     >
-      <Box as="h2" fontSize="2" flex="1 1 100%" mb="2">
+      <Box as="h2" fontSize="2" mb="2">
         {title}
       </Box>
       {children}
@@ -198,12 +210,13 @@ function ActivityStatistics() {
   const { activityStatistics } = useAdmin()
   return (
     <BoxPanel
+      gridArea="sstats"
       title="Server Statistics"
       display="grid"
       gridTemplateColumns="repeat(6, 1fr)"
       placeItems="center"
     >
-      <Box as="h3" fontSize="2" textAlign="center" gridColumn="span 6">
+      <Box as="h3" fontSize="2" gridColumn="span 6">
         Socket Statistics
       </Box>
 

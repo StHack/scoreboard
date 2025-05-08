@@ -1,11 +1,12 @@
 import styled from '@emotion/styled'
 import { PropsWithChildren } from 'react'
-import { space, SpaceProps } from 'styled-system'
+import { gridArea, GridAreaProps, space, SpaceProps } from 'styled-system'
 
-const Label = styled.label<SpaceProps>`
+const Label = styled.label<SpaceProps & GridAreaProps>`
   display: flex;
   flex-direction: column;
   ${space}
+  ${gridArea}
 `
 
 const Span = styled.span<{ required?: boolean }>`
@@ -15,7 +16,7 @@ const Span = styled.span<{ required?: boolean }>`
   }
 `
 
-type LabelInputProps = SpaceProps & {
+type LabelInputProps = {
   label: string
   required?: boolean
 }
@@ -25,7 +26,7 @@ export function LabelInput({
   required,
   my = 2,
   ...rest
-}: PropsWithChildren<LabelInputProps>) {
+}: PropsWithChildren<LabelInputProps & SpaceProps & GridAreaProps>) {
   return (
     <Label my={my} {...rest}>
       <Span required={required}>{label}</Span>

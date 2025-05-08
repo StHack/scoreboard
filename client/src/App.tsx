@@ -7,10 +7,11 @@ import { useGame } from 'hooks/useGame'
 import { AdminLayout } from 'pages/Admin'
 import { AchievementPanel } from 'pages/Admin/components/AchievementPanel'
 import { AttemptPanel } from 'pages/Admin/components/AttemptPanel'
+import { ChallengeFormLayout } from 'pages/Admin/components/ChallengeForm'
 import { ChallengePanel } from 'pages/Admin/components/ChallengePanel'
 import { GeneralPanel } from 'pages/Admin/components/GeneralPanel'
 import { UserPanel } from 'pages/Admin/components/UserPanel'
-import { AuthLayout } from 'pages/Auth'
+import { AuthLayout, AuthLoader } from 'pages/Auth'
 import { Login } from 'pages/Auth/components/Login'
 import { Register } from 'pages/Auth/components/Register'
 import { Game, GameLayout } from 'pages/Game'
@@ -45,32 +46,41 @@ export default function App() {
     <BrowserRouter>
       <AppBlock>
         <Header />
-        <Suspense fallback={<Loader size="10" placeSelf="center" />}>
-          <Container>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/scoreboard" element={<ScoreBoard />} />
-              <Route path="/rules" element={<Rules />} />
+        <AuthLoader>
+          <Suspense fallback={<Loader size="10" placeSelf="center" />}>
+            <Container>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/scoreboard" element={<ScoreBoard />} />
+                <Route path="/rules" element={<Rules />} />
 
-              <Route path="/auth" element={<AuthLayout />}>
-                <Route path="login" element={<Login />} />
-                <Route path="register" element={<Register />} />
-              </Route>
+                <Route path="/auth" element={<AuthLayout />}>
+                  <Route path="login" element={<Login />} />
+                  <Route path="register" element={<Register />} />
+                </Route>
 
-              <Route path="/game" element={<GameLayout />}>
-                <Route index element={<Game />} />
-              </Route>
+                <Route path="/game" element={<GameLayout />}>
+                  <Route index element={<Game />} />
+                </Route>
 
-              <Route path="/admin" element={<AdminLayout />}>
-                <Route index element={<GeneralPanel />} />
-                <Route path="challenges" element={<ChallengePanel />} />
-                <Route path="users" element={<UserPanel />} />
-                <Route path="achievements" element={<AchievementPanel />} />
-                <Route path="attempts" element={<AttemptPanel />} />
-              </Route>
-            </Routes>
-          </Container>
-        </Suspense>
+                <Route path="/admin" element={<AdminLayout />}>
+                  <Route index element={<GeneralPanel />} />
+                  <Route path="challenges">
+                    <Route index element={<ChallengePanel />} />
+                    <Route path="create" element={<ChallengeFormLayout />} />
+                    <Route
+                      path=":challengeId/edit"
+                      element={<ChallengeFormLayout />}
+                    />
+                  </Route>
+                  <Route path="users" element={<UserPanel />} />
+                  <Route path="achievements" element={<AchievementPanel />} />
+                  <Route path="attempts" element={<AttemptPanel />} />
+                </Route>
+              </Routes>
+            </Container>
+          </Suspense>
+        </AuthLoader>
         <Footer />
       </AppBlock>
     </BrowserRouter>

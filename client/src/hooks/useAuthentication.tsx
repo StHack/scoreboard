@@ -11,6 +11,7 @@ import { useStorage } from './useStorage'
 
 export type AuthContext = {
   user?: User
+  isLoading: boolean
   isAuthenticated: boolean
   isAuthorized: boolean
   hasReadRules: boolean
@@ -27,6 +28,7 @@ export type AuthContext = {
 
 const AuthContext = createContext<AuthContext>({
   user: undefined,
+  isLoading: true,
   isAuthenticated: false,
   isAuthorized: false,
   hasReadRules: false,
@@ -45,6 +47,7 @@ export const useAuth = () => {
 }
 
 function useProvideAuth(): AuthContext {
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [user, setUser] = useState<User>()
   const [hasReadRules, setHasReadRules] = useStorage<boolean>(
     `hasReadRules-${new Date().getFullYear()}`,
@@ -57,6 +60,8 @@ function useProvideAuth(): AuthContext {
       if (ok) {
         setUser(user)
       }
+
+      setIsLoading(false)
     }
 
     void init()
@@ -64,7 +69,8 @@ function useProvideAuth(): AuthContext {
 
   return {
     user,
-    isAuthenticated: user !== undefined,
+    isLoading,
+    isAuthenticated: !isLoading && user !== undefined,
     isAuthorized: !!user?.isAdmin,
     hasReadRules,
     readRules: () => setHasReadRules(true),
