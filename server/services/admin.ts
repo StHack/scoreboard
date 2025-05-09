@@ -19,6 +19,7 @@ import {
 import { listAttempt } from 'db/AttemptDb.js'
 import {
   createChallenge,
+  getChallenge,
   listChallenge,
   removeChallenge,
   updateChallenge,
@@ -282,19 +283,21 @@ export function registerAdminNamespace(
     adminSocket.on(
       'game:sendMessage',
       async (message: string, challengeId?: string) => {
+        const chall = challengeId ? await getChallenge(challengeId) : undefined
+
         const result = await addMessage({
           content: message,
-          challengeId: challengeId || undefined,
+          challengeId: chall?._id,
         })
 
         gameIo.emit('game:newMessage', result)
 
         await emitEventLog(gameIo, 'game:sendMessage', {
-          message: challengeId
+          message: chall?._id
             ? `A new hint from the staff has been shared`
             : `A new message from the staff has been shared`,
           messageSend: message,
-          challengeId,
+          challenge: chall,
         })
       },
     )

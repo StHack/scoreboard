@@ -68,6 +68,7 @@ const discordFormatHandler: [
   ['challenge:broke'],
   ['challenge:repair'],
   ['player:attempt', attempt],
+  ['game:sendMessage', sendMessage],
 ]
 
 async function gameEnd(options: {
@@ -193,4 +194,18 @@ function attempt({
   return Promise.resolve(
     `## ⚠️ Bruteforce attempts on challenge \`${name}\`!\nTeam \`${attempt.teamname}\` has reach the warning threshold of attempts made`,
   )
+}
+
+function sendMessage({
+  messageSend,
+  challenge,
+}: {
+  messageSend: string
+  challenge?: Challenge
+}): Promise<string> {
+  const title = challenge
+    ? `A new hint from the staff has been shared for challenge \`${challenge.name}\`!`
+    : `A new message from the staff has been shared`
+
+  return Promise.resolve(`## 📣 ${title}\n\n${messageSend}`)
 }
