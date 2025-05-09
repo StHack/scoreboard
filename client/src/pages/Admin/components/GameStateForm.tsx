@@ -19,7 +19,7 @@ export function GameStateForm({ gridArea }: { gridArea: string }) {
           checked={gameOpened}
           onChange={value =>
             value
-              ? openGame()
+              ? confirm('Are you sure to open the game?') && openGame()
               : confirm('Are you sure to stop the game?') && closeGame()
           }
         >
