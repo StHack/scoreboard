@@ -29,6 +29,7 @@ export function AttemptPanel() {
         />
       </Box>
       <Table
+        tableLayout="auto"
         data={attempts.filter(
           a =>
             a.challenge.toLowerCase().includes(search) ||

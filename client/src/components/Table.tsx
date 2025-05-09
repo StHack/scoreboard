@@ -12,6 +12,7 @@ export type ColumnDefinition<T> = {
 }
 
 export type TableProps<T> = {
+  tableLayout?: TableLayout
   data: T[]
   columns: ColumnDefinition<T>[]
   rowKey: (row: T) => string
@@ -19,6 +20,7 @@ export type TableProps<T> = {
 }
 
 export function Table<T>({
+  tableLayout,
   data,
   columns,
   rowKey,
@@ -44,8 +46,8 @@ export function Table<T>({
     : data
 
   return (
-    <Box overflowX="hidden" overflowY="auto" borderRadius="medium" {...props}>
-      <StyledTable>
+    <Box overflow="auto" borderRadius="medium" {...props}>
+      <StyledTable tableLayout={tableLayout ?? 'fixed'}>
         <thead>
           <tr>
             {columns.map(column => (
@@ -97,9 +99,11 @@ export function Table<T>({
   )
 }
 
-export const StyledTable = styled.table`
+type TableLayout = 'fixed' | 'auto'
+
+export const StyledTable = styled.table<{ tableLayout: TableLayout }>`
   background-color: ${p => p.theme.colors.background};
-  table-layout: fixed;
+  table-layout: ${p => p.tableLayout};
   width: 100%;
   text-align: center;
   vertical-align: middle;
