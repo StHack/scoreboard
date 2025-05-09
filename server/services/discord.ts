@@ -12,11 +12,10 @@ export async function sendMessageToDiscord(message: string): Promise<void> {
   }
 
   const resp = await fetch(
-    `https://discordapp.com/api/channels/${config.channel}/messages`,
+    `https://discord.com/api/webhooks/${config.channel}/${config.token}`,
     {
       method: 'POST',
       headers: {
-        Authorization: `Bot ${config.token}`,
         'User-Agent': 'Sthack Bot - CTF interface notifier',
         'Content-Type': 'application/json',
       },

@@ -83,13 +83,30 @@ Feeds specifications for CTFtime has been implemented cf: <https://ctftime.org/j
 
 ### Discord notification
 
-To support discord notification you need to specify a discord token and a channel id when you run the init script, ie:
+To support discord notification, we are using webhook functionality, so you need to setup it for the new channel, from it you'll be able to retrieve the `channel_id` and a `token`., then you can use them to run the init script, ie:
 
 ```bash
 ./init.sh -u your_username -t discord_token -c discord_channel
 ```
 
 or manually update `.env` file to add variables `APP_DISCORD_TOKEN` and `APP_DISCORD_CHANNEL`, then restart service with `sudo docker compose --profile prod up -d`
+
+> To check if your configuration is right, you can use that HTTP request:
+
+```http
+@wchannel = 1369236898719076402
+@wtoken = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+###
+# webhook
+###
+POST https://discord.com/api/webhooks/{{wchannel}}/{{wtoken}}
+User-Agent: Sthack Bot - CTF interface notifier
+Content-Type: application/json
+
+{
+  "content": "Test message 💥"
+}
+```
 
 ### Fixing code issues during events
 
