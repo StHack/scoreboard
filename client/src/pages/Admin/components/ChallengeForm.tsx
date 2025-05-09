@@ -1,6 +1,7 @@
 import { Categories, Challenge, Difficulties } from '@sthack/scoreboard-common'
 import MDEditor from '@uiw/react-md-editor'
 import { Box } from 'components/Box'
+import { BoxPanel } from 'components/BoxPanel'
 import { Button } from 'components/Button'
 import { categoryToImg } from 'components/CategoryImg'
 import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
@@ -21,7 +22,6 @@ import {
   useState,
 } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { BoxPanel } from './GeneralPanel'
 
 export function ChallengeFormLayout() {
   const { isLoaded, challenges } = useAdmin()
