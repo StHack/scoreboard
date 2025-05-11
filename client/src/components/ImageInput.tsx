@@ -2,7 +2,8 @@ import styled from '@emotion/styled'
 import { useAdmin } from 'hooks/useAdmin'
 import { ChangeEvent, InputHTMLAttributes, useRef } from 'react'
 import { convertToWebp } from 'services/files'
-import { Box } from './Box'
+import { flex, SpaceProps } from 'styled-system'
+import { gap, GapProps } from 'styles'
 import { Button } from './Button'
 
 type ImageInputProps = {
@@ -18,7 +19,7 @@ export function ImageInput({
   const ref = useRef<HTMLInputElement>(null)
   const { uploadFile } = useAdmin()
   return (
-    <Box display="grid" py="2" gap="2" as="label">
+    <Container py="2" gap="2" as="label">
       <Hidden
         ref={ref}
         {...props}
@@ -44,7 +45,7 @@ export function ImageInput({
       />
 
       <ImageB
-        src={value as string ?? fallbackImage}
+        src={(value as string) ?? fallbackImage}
         alt={alt}
         onClickCapture={e => {
           e.preventDefault()
@@ -61,9 +62,29 @@ export function ImageInput({
       >
         {value ? 'Change image' : 'Upload image'}
       </Button>
-    </Box>
+    </Container>
   )
 }
+
+const Container = styled.div<SpaceProps & GapProps>`
+  display: grid;
+  padding: ${p => p.theme.space[1]};
+  font-size: ${p => p.theme.fontSizes[1]};
+  background-color: ${p => p.theme.colors.background};
+  border-bottom: solid;
+  border-color: ${p => p.theme.colors.greys[0]};
+  border-width: ${p => p.theme.borderWidths.medium};
+  border-radius: ${p => p.theme.radii.small};
+  transition: border-color 250ms;
+  color: ${p => p.theme.colors.text};
+  ${flex}
+  ${gap}
+
+  &:focus,
+  &:focus-within {
+    border-color: ${p => p.theme.colors.greys[2]};
+  }
+`
 
 const ImageB = styled.img`
   object-fit: contain;

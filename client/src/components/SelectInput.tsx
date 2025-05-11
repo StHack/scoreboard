@@ -55,6 +55,7 @@ export function SelectInput({
 const Select = styled.select`
   padding: ${p => p.theme.space[1]};
   font-size: ${p => p.theme.fontSizes[1]};
+  background-color: ${p => p.theme.colors.background};
   border-bottom: solid;
   border-color: ${p => p.theme.colors.greys[0]};
   border-width: ${p => p.theme.borderWidths.medium};

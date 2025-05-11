@@ -1,20 +1,7 @@
 import styled from '@emotion/styled'
 import { PropsWithChildren } from 'react'
-import { gridArea, GridAreaProps, space, SpaceProps } from 'styled-system'
-
-const Label = styled.label<SpaceProps & GridAreaProps>`
-  display: flex;
-  flex-direction: column;
-  ${space}
-  ${gridArea}
-`
-
-const Span = styled.span<{ required?: boolean }>`
-  :after {
-    content: ${p => (p.required ? "'*'" : '')};
-    color: ${p => p.theme.colors.red};
-  }
-`
+import { GridAreaProps, SpaceProps } from 'styled-system'
+import { Box } from './Box'
 
 type LabelInputProps = {
   label: string
@@ -28,9 +15,24 @@ export function LabelInput({
   ...rest
 }: PropsWithChildren<LabelInputProps & SpaceProps & GridAreaProps>) {
   return (
-    <Label my={my} {...rest}>
+    <Box
+      as="label"
+      display="flex"
+      flexDirection="column"
+      placeItems="stretch"
+      gap="1"
+      my={my}
+      {...rest}
+    >
       <Span required={required}>{label}</Span>
       {children}
-    </Label>
+    </Box>
   )
 }
+
+const Span = styled.span<{ required?: boolean }>`
+  :after {
+    content: ${p => (p.required ? "'*'" : '')};
+    color: ${p => p.theme.colors.red};
+  }
+`

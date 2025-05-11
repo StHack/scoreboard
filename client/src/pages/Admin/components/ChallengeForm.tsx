@@ -146,6 +146,20 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
           <TextInput type="text" {...authorProps} />
         </LabelInput>
 
+        {isNewChallenge && (
+          <LabelInput label="Flag" gridArea="flag" required={isNewChallenge}>
+            <TextInput type="text" {...flagsProps} />
+          </LabelInput>
+        )}
+
+        <LabelInput label="Category" gridArea="cat" required>
+          <DropdownInput {...categoryProps} predefinedValues={Categories} />
+        </LabelInput>
+
+        <LabelInput label="Difficulty" gridArea="dif" required>
+          <SelectInput predefinedValues={Difficulties} {...difficultyProps} />
+        </LabelInput>
+
         <LabelInput
           label="Description (markdown format)"
           gridArea="desc"
@@ -165,20 +179,6 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
             onPaste={e => fileHandler(e.clipboardData.files, e)}
             onDrop={e => fileHandler(e.dataTransfer.files, e)}
           />
-        </LabelInput>
-
-        {isNewChallenge && (
-          <LabelInput label="Flag" gridArea="flag" required={isNewChallenge}>
-            <TextInput type="text" {...flagsProps} />
-          </LabelInput>
-        )}
-
-        <LabelInput label="Category" gridArea="cat" required>
-          <DropdownInput {...categoryProps} predefinedValues={Categories} />
-        </LabelInput>
-
-        <LabelInput label="Difficulty" gridArea="dif" required>
-          <SelectInput predefinedValues={Difficulties} {...difficultyProps} />
         </LabelInput>
 
         <LabelInput label="Image" gridArea="img">

@@ -1,7 +1,10 @@
 import { Message } from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
 import { usePlayer } from 'hooks/usePlayer'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { BorderRadiusProps, GridAreaProps, SpaceProps } from 'styled-system'
+import { ReactMarkdownRenderers } from 'styles/react-markdown'
 import { Button } from './Button'
 import { IconValidate } from './Icon'
 
@@ -84,7 +87,12 @@ function MessageBlock({
       <span>[{createdAt.toLocaleTimeString('fr')}] </span>
       {challenge && <span>[{challenge}] </span>}
       <Box as="span" display="block" pl="3" flex="1 1 100%" minWidth="0">
-        {content}
+        <ReactMarkdown
+          components={ReactMarkdownRenderers}
+          remarkPlugins={[remarkGfm]}
+        >
+          {content}
+        </ReactMarkdown>
       </Box>
     </Box>
   )

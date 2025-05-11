@@ -1,7 +1,7 @@
 import { BoxPanel } from 'components/BoxPanel'
 import { Button } from 'components/Button'
 import { SelectInput } from 'components/SelectInput'
-import { TextInput } from 'components/TextInput'
+import { TextArea, TextInput } from 'components/TextInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useField } from 'hooks/useField'
 import { useGame } from 'hooks/useGame'
@@ -41,10 +41,12 @@ export function AnnouncementForm({ gridArea } : GridAreaProps) {
         messageInput.reset()
       }}
     >
-      <TextInput
-        placeholder="Broadcast a message to everyone"
+      <TextArea
+        as="textarea"
+        placeholder="Broadcast a message to everyone (markdown supported)"
         flex="1"
         autoComplete="off"
+        rows={5}
         {...messageInput.inputProp}
       />
       <SelectInput
