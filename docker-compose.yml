@@ -7,7 +7,7 @@ x-redis-config: &redis-conf
     - apps
 
 x-mongo-config: &mongo-conf
-  image: mongo:7
+  image: mongo:8
   restart: always
   environment:
     MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
@@ -36,6 +36,11 @@ services:
       APP_SALT: ${APP_SALT}
       APP_DISCORD_TOKEN: ${APP_DISCORD_TOKEN}
       APP_DISCORD_CHANNEL: ${APP_DISCORD_CHANNEL}
+    logging:
+      driver: "local"
+      options:
+        max-size: "20m"
+        max-file: "50"
     networks:
       - apps
     depends_on:
@@ -71,7 +76,7 @@ services:
 
   redis-dev:
     <<: *redis-conf
-    image: redis/redis-stack:7.2.0-v10
+    image: redis/redis-stack:7.4.0-v3
     profiles:
       - dev
     ports:
