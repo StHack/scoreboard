@@ -29,6 +29,7 @@ import LogoSvg from './images/Logo.svg?react'
 import Logo2023Svg from './images/logo-2023.svg?react'
 import Logo2023IconSvg from './images/logo-2023-icon.svg?react'
 import Logo2024Svg from './images/logo-2024.svg?react'
+import Logo2025Svg from './images/logo-2025.svg?react'
 import LogoDogSvg from './images/logo-dog.svg?react'
 import LogoPigeonSvg from './images/logo-pigeon.svg?react'
 import LogoutSvg from './images/logout.svg?react'
@@ -77,6 +78,7 @@ export const IconJson: Icon = BaseSvg.withComponent(JsonSvg)
 export const IconLogo2023: Icon = BaseSvg.withComponent(Logo2023Svg)
 export const IconLogo2023Icon: Icon = BaseSvg.withComponent(Logo2023IconSvg)
 export const IconLogo2024: Icon = BaseSvg.withComponent(Logo2024Svg)
+export const IconLogo2025: Icon = BaseSvg.withComponent(Logo2025Svg)
 export const IconLogoDog: Icon = BaseSvg.withComponent(LogoDogSvg)
 export const IconLogoPigeon: Icon = BaseSvg.withComponent(LogoPigeonSvg)
 export const IconLogout: Icon = BaseSvg.withComponent(LogoutSvg)

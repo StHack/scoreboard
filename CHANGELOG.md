@@ -1,5 +1,29 @@
 # Changelog
 
+## 2025
+
+- scoreboard
+  - 2025 theme: logo, challengecard, background
+  - rework routing + add loaders
+  - add more animations
+  - add flag pattern to help player understand the format
+- admin
+  - split routes to ease page reloading
+  - add admin roles to avoid mistakes during the event
+  - add save draft challenge in local storage
+  - improve challenge edition design
+  - extract challenge edition to its own form
+  - add deletion of challenge
+  - add sending to Discord of messages
+  - add markdown support for messages
+  - add time-based charts for attempts and achievements
+- chore tech
+  - React 19 adaptations
+  - add integration testing (playwright based)
+  - bug fixing
+  - update dependencies
+  - persist docker logs on relaunch
+
 ## 2024
 
 - scoreboard

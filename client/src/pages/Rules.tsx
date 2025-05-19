@@ -147,11 +147,12 @@ For this year, the first 5 teams will be rewarded as follow:
 4. \`base_reward_h4v = 35\` so currently it will valued to **${35 * gameConfig.teamCount}**
 5. \`base_reward_h4v = 30\` so currently it will valued to **${30 * gameConfig.teamCount}**
 
-## Difference from 2023 edition
+## Difference from 2024 edition
 
-- There is no more lock of challenge when someone solve it
-- Challenge difficulty doesn't have any more weight on the score computation
-- Hack4Values_points are now proportional to the team count (same way has challenge score)
+- Theme has been changed to **Supply chain**
+- No rules has been changed !
+
+For the full changelog, please refer to the [changelog](https://github.com/StHack/scoreboard/blob/main/CHANGELOG.md)
 
 ## Help/Questions
 
@@ -161,6 +162,6 @@ You can come and ask us your questions directly at the staff desk.
 const creditsMarkdown = `
 # Credits
 
-- Background Image (Desert landscape for video conferencing) by [Freepik](https://www.freepik.com/free-vector/desert-landscape-video-conferencing_9702292.htm#fromView=search&page=1&position=25&uuid=db343912-2fc4-4ebe-b524-9de31cb44cce)
+- Background Image (Conveyor belt and assembly machine at factory, plant or warehouse. cartoon interior of workshop production line with automated machinery. Engineering equipment on manufactory) by [upklyak](https://www.freepik.com/free-vector/conveyor-belt-assembly-machine-factory-plant-warehouse-cartoon-interior-workshop-production-line-with-automated-machinery-engineering-equipment-manufactory_10798243.htm)
 - Popup Layout (Ancienne télévision vintage isolée) by [brgfx sur Freepik](https://fr.freepik.com/vecteurs-libre/ancienne-television-vintage-isolee_30700323.htm#fromView=search&page=1&position=2&uuid=bbb3428b-9004-4fa9-ab1e-4718b11c75f3)
 `

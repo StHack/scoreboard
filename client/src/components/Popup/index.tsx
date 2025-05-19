@@ -31,7 +31,7 @@ export default function Popup({
   minHeightRequired,
   px = [2, 3, 5],
   py = [3, 3, 3],
-  useBg = true,
+  useBg = false,
   useClickOutside = true,
   ...rest
 }: PopupProps & SpaceProps) {

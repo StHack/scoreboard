@@ -119,11 +119,9 @@ const resetCss = (theme: Theme) => css`
     overscroll-behavior: none;
     line-height: normal;
     min-width: ${theme.sizes.minimalRequired};
-    background-image: url(${Bg});
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background:
+      linear-gradient(#88888820, #88888820),
+      url(${Bg}) center / cover no-repeat fixed;
   }
 
   ul {
