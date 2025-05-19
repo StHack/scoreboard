@@ -1,6 +1,5 @@
-import { User } from '@sthack/scoreboard-common'
+import { User, UserRole } from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
-import { Button } from 'components/Button'
 import { ExportJsonButton } from 'components/ExportJsonButton'
 import {
   IconDelete,
@@ -10,17 +9,17 @@ import {
   IconPromote,
   IconTeams,
 } from 'components/Icon'
+import { RoleBasedButton } from 'components/RoleBasedButton'
 import { SearchInput } from 'components/SearchInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
 import { useState } from 'react'
 import { AlignSelfProps, GridAreaProps, JustifySelfProps } from 'styled-system'
 import { UserEditMode, UserForm } from './UserForm'
+import { UserRoleForm } from './UserRoleForm'
 
 export function UserPanel() {
-  const { users, toggleIsAdmin, deleteUser, logoutUser } = useAdmin()
-  const [userToEdit, setUserToEdit] = useState<User>()
-  const [userEditMode, setUserEditMode] = useState<UserEditMode>()
+  const { users } = useAdmin()
   const [search, setSearch] = useState<string>('')
 
   const teams = users
@@ -36,34 +35,6 @@ export function UserPanel() {
           : acc.set(cur.team, [cur]),
       new Map<string, User[]>(),
     )
-
-  const updatePassword = (u: User) => {
-    setUserToEdit(u)
-    setUserEditMode('password')
-  }
-  const changeTeam = (u: User) => {
-    setUserToEdit(u)
-    setUserEditMode('team')
-  }
-  const updateAdminStatus = (u: User) => {
-    if (u.isAdmin) {
-      toggleIsAdmin(u)
-    } else if (
-      confirm(`Are you sure to grant user "${u.username}" admin privilege ?`)
-    ) {
-      toggleIsAdmin(u)
-    }
-  }
-  const logout = (u: User) => {
-    if (confirm(`Are you sure to disconnect user "${u.username}" ?`)) {
-      logoutUser(u)
-    }
-  }
-  const remove = (u: User) => {
-    if (confirm(`Are you sure to delete User:\n\n${u.username}\n${u.team}`)) {
-      deleteUser(u)
-    }
-  }
 
   return (
     <Box display="flex" flexDirection="column" overflowY="hidden" gap="2">
@@ -87,11 +58,6 @@ export function UserPanel() {
           <TeamCard
             team="admin"
             members={teams.get('admin') as User[]}
-            updatePassword={updatePassword}
-            changeTeam={changeTeam}
-            updateAdminStatus={updateAdminStatus}
-            logout={logout}
-            remove={remove}
             gridArea={[null, 'auto/1/auto/3', `1/auto/${teams.size}/auto`]}
             alignSelf={[null, 'start']}
           />
@@ -101,29 +67,9 @@ export function UserPanel() {
           .filter(([t]) => t !== 'admin')
           .sort(([t1], [t2]) => t1.localeCompare(t2))
           .map(([team, users]) => (
-            <TeamCard
-              key={team}
-              team={team}
-              members={users}
-              updatePassword={updatePassword}
-              changeTeam={changeTeam}
-              updateAdminStatus={updateAdminStatus}
-              logout={logout}
-              remove={remove}
-            />
+            <TeamCard key={team} team={team} members={users} />
           ))}
       </Box>
-
-      {userEditMode && userToEdit && (
-        <UserForm
-          user={userToEdit}
-          editMode={userEditMode}
-          onClose={() => {
-            setUserToEdit(undefined)
-            setUserEditMode(undefined)
-          }}
-        />
-      )}
     </Box>
   )
 }
@@ -131,20 +77,10 @@ export function UserPanel() {
 type TeamCardProps = {
   team: string
   members: User[]
-  updatePassword: (user: User) => void
-  changeTeam: (user: User) => void
-  updateAdminStatus: (user: User) => void
-  logout: (user: User) => void
-  remove: (user: User) => void
 }
 function TeamCard({
   team,
   members,
-  updatePassword,
-  changeTeam,
-  updateAdminStatus,
-  logout,
-  remove,
   ...props
 }: TeamCardProps & GridAreaProps & AlignSelfProps & JustifySelfProps) {
   const { gameConfig } = useGame()
@@ -171,48 +107,84 @@ function TeamCard({
       </Box>
       <Box as="ul" pl="2" display="flex" flexDirection="column" gap="2" p="2">
         {members.map(u => (
-          <Box
-            key={u.username}
-            color={u.isAdmin ? 'secondary' : undefined}
-            display="flex"
-            alignItems="center"
-            gap="2"
-            justifyContent="end"
-          >
-            <Box as="span" fontSize="1.2em" justifySelf="start">
-              {u.isAdmin && <IconPromote size="1" />} {u.username}
-            </Box>
-            <Button
-              onClick={() => updatePassword(u)}
-              icon={IconPassword}
-              title="Change Password"
-            />
-            <Button
-              onClick={() => changeTeam(u)}
-              icon={IconTeams}
-              title="Change Team"
-            />
-            {(u.team === 'admin' || u.isAdmin) && (
-              <Button
-                onClick={() => updateAdminStatus(u)}
-                icon={u.isAdmin ? IconDemote : IconPromote}
-                title={u.isAdmin ? 'Revoke admin right' : 'Promote to admin'}
-              />
-            )}
-            <Button
-              onClick={() => logout(u)}
-              icon={IconLogout}
-              title="Disconnect"
-            />
-            <Button
-              onClick={() => remove(u)}
-              variant="danger"
-              icon={IconDelete}
-              title="Delete"
-            />
-          </Box>
+          <UserRow key={u.username} user={u} />
         ))}
       </Box>
+    </Box>
+  )
+}
+
+type UserRowProps = {
+  user: User
+}
+function UserRow({ user }: UserRowProps) {
+  const [userEditMode, setUserEditMode] = useState<UserEditMode>()
+  const [editRole, setEditRole] = useState<boolean>(false)
+  const { deleteUser, logoutUser } = useAdmin()
+
+  return (
+    <Box
+      color={user.roles.includes(UserRole.Admin) ? 'secondary' : undefined}
+      display="flex"
+      alignItems="center"
+      gap="2"
+      justifyContent="end"
+    >
+      <Box as="span" fontSize="1.2em" justifySelf="start">
+        {user.roles.includes(UserRole.RoleManager) && <IconPromote size="1" />}
+        {` ${user.username}`}
+      </Box>
+      <RoleBasedButton
+        onClick={() => setUserEditMode('password')}
+        icon={IconPassword}
+        title="Change Password"
+        roleRequired={UserRole.Moderator}
+      />
+      <RoleBasedButton
+        onClick={() => setUserEditMode('team')}
+        icon={IconTeams}
+        title="Change Team"
+        roleRequired={UserRole.Moderator}
+      />
+      <RoleBasedButton
+        onClick={() =>
+          confirm(`Are you sure to disconnect user "${user.username}" ?`) &&
+          logoutUser(user)
+        }
+        icon={IconLogout}
+        title="Disconnect"
+        roleRequired={UserRole.Moderator}
+      />
+      <RoleBasedButton
+        onClick={() => setEditRole(true)}
+        icon={user.roles.includes(UserRole.Admin) ? IconDemote : IconPromote}
+        variant="secondary"
+        title="Change Roles"
+        roleRequired={UserRole.RoleManager}
+      />
+      <RoleBasedButton
+        onClick={() =>
+          confirm(
+            `Are you sure to delete User:\n\n${user.username}\n${user.team}`,
+          ) && deleteUser(user)
+        }
+        variant="danger"
+        icon={IconDelete}
+        title="Delete"
+        roleRequired={UserRole.Moderator}
+      />
+
+      {userEditMode && (
+        <UserForm
+          user={user}
+          editMode={userEditMode}
+          onClose={() => setUserEditMode(undefined)}
+        />
+      )}
+
+      {editRole && (
+        <UserRoleForm user={user} onClose={() => setEditRole(false)} />
+      )}
     </Box>
   )
 }

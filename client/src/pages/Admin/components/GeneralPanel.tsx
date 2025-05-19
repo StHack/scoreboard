@@ -19,7 +19,7 @@ export function GeneralPanel() {
       gap="3"
       margin="0 auto"
       width="100%"
-      gridTemplateColumns="1fr 3fr"
+      gridTemplateColumns="min-content 3fr"
       gridTemplateAreas={`
         "msg    sstats"
         "gstate sstats"

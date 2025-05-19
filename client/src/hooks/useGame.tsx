@@ -179,7 +179,7 @@ function useProvideGame(): GameContext {
       setRewards(rewards => rewards.filter(r => !(r._id === deleted._id)))
     })
 
-    socket.on('game:newMessage', (message: Message) => {
+    socket.on('game:announcement:made', (message: Message) => {
       setRawMessages(m => [
         { ...message, createdAt: new Date(message.createdAt) },
         ...m,
@@ -193,11 +193,12 @@ function useProvideGame(): GameContext {
     return () => {
       socket.off('challenge:added')
       socket.off('challenge:updated')
+      socket.off('challenge:deleted')
       socket.off('achievement:added')
       socket.off('reward:added')
       socket.off('achievement:deleted')
       socket.off('reward:deleted')
-      socket.off('game:newMessage')
+      socket.off('game:announcement:made')
       socket.off('game:config:updated')
     }
   }, [socket])

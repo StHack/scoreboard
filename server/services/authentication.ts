@@ -1,5 +1,9 @@
 import { ExecutionError, Lock, Redlock } from '@sesamecare-oss/redlock'
-import { CreateUser, User as OurUser } from '@sthack/scoreboard-common'
+import {
+  CreateUser,
+  User as OurUser,
+  UserRole,
+} from '@sthack/scoreboard-common'
 import { RedisStore } from 'connect-redis'
 import { getUser, login, registerUser } from 'db/UsersDb.js'
 import debug from 'debug'
@@ -47,7 +51,7 @@ export function registerAuthentification(
 
         const gameIsOpened = await serverConfig.getGameOpened()
 
-        if (!gameIsOpened && !user.isAdmin) {
+        if (!gameIsOpened && !user.roles.includes(UserRole.Admin)) {
           done(null, false)
           return
         }

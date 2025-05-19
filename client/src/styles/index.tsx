@@ -1,5 +1,6 @@
 import { css, Global, ThemeProvider } from '@emotion/react'
 import { StyledOptions } from '@emotion/styled'
+import { UserRole } from '@sthack/scoreboard-common'
 import shouldForwardProp from '@styled-system/should-forward-prop'
 import * as CSS from 'csstype'
 import { useAuth } from 'hooks/useAuthentication'
@@ -31,12 +32,12 @@ export default function DefaultStyles() {
 }
 
 export function ProvideTheme({ children }: PropsWithChildren) {
-  const { isAuthorized } = useAuth()
+  const { roles } = useAuth()
 
   return (
     <ThemeProvider
       theme={theme =>
-        isAuthorized
+        roles.includes(UserRole.Admin)
           ? {
               ...theme,
               colors: {

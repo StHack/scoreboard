@@ -7,7 +7,7 @@
     "password": "",
     "salt": "28a50f05-4d4b-4330-8040-e401abb198de",
     "team": "admin",
-    "isAdmin": true,
+    "roles": ["user", "admin"],
     "__v": 0
   },
   {
@@ -18,7 +18,7 @@
     "password": "",
     "salt": "59d22252-4941-478a-ae7a-44a4528ba517",
     "team": "admin",
-    "isAdmin": true,
+    "roles": ["user", "admin"],
     "__v": 0
   },
   {
@@ -29,7 +29,7 @@
     "password": "",
     "salt": "d08e61d0-2dae-4dcd-aa53-8d28b9ed6279",
     "team": "admin",
-    "isAdmin": true,
+    "roles": ["user", "admin"],
     "__v": 0
   },
   {
@@ -40,7 +40,7 @@
     "password": "",
     "salt": "0f88bc5c-2052-4dbd-966a-77ec328fe11d",
     "team": "admin",
-    "isAdmin": true,
+    "roles": ["user", "admin"],
     "__v": 0
   },
   {
@@ -51,7 +51,7 @@
     "password": "",
     "salt": "8b1f9041-8cd2-4175-abbe-de2e634b599a",
     "team": "admin",
-    "isAdmin": true,
+    "roles": ["user", "admin"],
     "__v": 0
   },
   {
@@ -62,7 +62,7 @@
     "password": "",
     "salt": "f9f968c8-59b8-4835-b935-d72086ac0441",
     "team": "admin",
-    "isAdmin": true,
+    "roles": ["user", "admin"],
     "__v": 0
   },
   {
@@ -73,7 +73,7 @@
     "password": "",
     "salt": "810f9a05-2ba5-4cdb-aaf1-cc6440613943",
     "team": "admin",
-    "isAdmin": true,
+    "roles": ["user", "admin"],
     "__v": 0
   },
   {
@@ -84,7 +84,7 @@
     "password": "",
     "salt": "5c272fd6-32b3-44f8-8de9-2174730bfc2f",
     "team": "admin",
-    "isAdmin": true,
+    "roles": ["user", "admin"],
     "__v": 0
   },
   {
@@ -95,7 +95,7 @@
     "password": "",
     "salt": "54014f34-5773-454c-a03e-840a4fce694d",
     "team": "admin",
-    "isAdmin": true,
+    "roles": ["user", "admin"],
     "__v": 0
   },
   {
@@ -106,7 +106,7 @@
     "password": "",
     "salt": "41348ac4-2d5d-4dfd-8a26-c07256b65266",
     "team": "admin",
-    "isAdmin": true,
+    "roles": ["user", "admin"],
     "__v": 0
   },
   {
@@ -117,7 +117,7 @@
     "password": "",
     "salt": "170c0edd-e4dc-438e-9a61-5ffe393d6b3b",
     "team": "admin",
-    "isAdmin": true,
+    "roles": ["user", "admin"],
     "__v": 0
   },
   {
@@ -128,7 +128,7 @@
     "password": "",
     "salt": "269a373d-3bf6-435f-a9fb-cea98990ee5c",
     "team": "admin",
-    "isAdmin": true,
+    "roles": ["user", "admin"],
     "__v": 0
   },
   {
@@ -139,7 +139,7 @@
     "password": "",
     "salt": "6e0f67b8-d025-40c0-be54-197a9d48b1cc",
     "team": "Login-Sécurité",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -150,7 +150,7 @@
     "password": "",
     "salt": "5957153a-e2ed-48cd-a990-8b82248afa80",
     "team": "Login Sécurité",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -161,7 +161,7 @@
     "password": "",
     "salt": "fb651e28-6577-476d-ad40-0a8181236392",
     "team": "Login Sécurité",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -172,7 +172,7 @@
     "password": "",
     "salt": "a50fcc33-5739-44f1-aaa5-8a49279bea70",
     "team": "Login Sécurité",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -183,7 +183,7 @@
     "password": "",
     "salt": "90c07b20-ec21-4e8c-9f6f-7327727b4870",
     "team": "Login Sécurité",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -194,7 +194,7 @@
     "password": "",
     "salt": "4db620ce-5ea1-4fcf-b137-7a937d7a80a7",
     "team": "Login Sécurité",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -205,7 +205,7 @@
     "password": "",
     "salt": "77375e0b-28bf-4169-beb7-ae18164c3836",
     "team": "Le bistrot des légendes",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -216,7 +216,7 @@
     "password": "",
     "salt": "80c8c0fe-d4de-40f1-98f3-29be9f2e6e10",
     "team": "Cybiere",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -227,7 +227,7 @@
     "password": "",
     "salt": "9278e98e-00d8-4e8b-b70c-b8b31110c1e6",
     "team": "Cybiere",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -238,7 +238,7 @@
     "password": "",
     "salt": "8fae75c4-6c92-4738-bb6a-5329f7df4ef3",
     "team": "Opencyber",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -249,7 +249,7 @@
     "password": "",
     "salt": "ebe6a5ca-cbac-4f94-bda1-65da539877c5",
     "team": "Root du rhum - 1",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -260,7 +260,7 @@
     "password": "",
     "salt": "c6da1066-23e6-435e-8823-8c0901e35fe0",
     "team": "AlwaySober",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -271,7 +271,7 @@
     "password": "",
     "salt": "13f269b1-8da5-4679-8505-1be566d5c992",
     "team": "Cybiere",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -282,7 +282,7 @@
     "password": "",
     "salt": "64133958-7a6a-4b0a-96cf-80e15fe27183",
     "team": "Opencyber",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -293,7 +293,7 @@
     "password": "",
     "salt": "6082b324-dab2-4248-b672-83b5afba4461",
     "team": "Opencyber",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -304,7 +304,7 @@
     "password": "",
     "salt": "c69bf218-da3b-40a4-8345-73101f8712fd",
     "team": "Les Pires Hat",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -315,7 +315,7 @@
     "password": "",
     "salt": "dec964a3-d741-4220-8035-c310211e0057",
     "team": "ippsec",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -326,7 +326,7 @@
     "password": "",
     "salt": "429916b3-45eb-4336-984b-9c06a60a1688",
     "team": "Cybiere",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -337,7 +337,7 @@
     "password": "",
     "salt": "7d70984d-c1fa-46ab-9089-3880dc4d32ad",
     "team": "Yolosw4g",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -348,7 +348,7 @@
     "password": "",
     "salt": "959bfcc3-4bca-463a-89b8-4d05c16ef59f",
     "team": "Cybiere",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -359,7 +359,7 @@
     "password": "",
     "salt": "4e3e1fc7-9ed7-481f-b3c0-961834756a5d",
     "team": "JohnBRoot",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -370,7 +370,7 @@
     "password": "",
     "salt": "8d24fa12-6a00-4c54-ad12-5661c04c0a82",
     "team": "JohnBRoot",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -381,7 +381,7 @@
     "password": "",
     "salt": "bc33476e-09be-4213-8e28-8b1ff75a797f",
     "team": "Root du rhum - 2",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -392,7 +392,7 @@
     "password": "",
     "salt": "5b887b6f-7406-441e-a908-90e4ae4945f3",
     "team": "IPPLOG4J",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -403,7 +403,7 @@
     "password": "",
     "salt": "cd9b48e9-bd46-455a-8cd2-f9eafe12e38b",
     "team": "hahaha",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -414,7 +414,7 @@
     "password": "",
     "salt": "9a345a1a-5c1c-40da-80a2-f99c4d6e239f",
     "team": "TeamWithoutName",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -425,7 +425,7 @@
     "password": "",
     "salt": "61584b0a-0c40-4886-8436-1e7a8d87c7b4",
     "team": "TeamWithoutName",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -436,7 +436,7 @@
     "password": "",
     "salt": "ec32e3cb-f883-4caf-b611-ce6e0258411e",
     "team": "Les Pires Hat",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -447,7 +447,7 @@
     "password": "",
     "salt": "8ccdb844-1f55-49b0-b96a-5b084c3e5db0",
     "team": "Yolosw4g",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -458,7 +458,7 @@
     "password": "",
     "salt": "16735dff-0e4c-44e8-a0a5-28dbc4a3f95c",
     "team": "Root du rhum - 1",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -469,7 +469,7 @@
     "password": "",
     "salt": "4997516e-0edf-4f4c-a903-513838812f3a",
     "team": "ippsec",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -480,7 +480,7 @@
     "password": "",
     "salt": "8bea3745-f85e-47e6-b62a-343022ccf9b4",
     "team": "TeamWithoutName",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -491,7 +491,7 @@
     "password": "",
     "salt": "aefb843f-dfee-4e5d-9941-8a983160ef2d",
     "team": "JohnBRoot",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -502,7 +502,7 @@
     "password": "",
     "salt": "c2738145-516c-4b00-857b-e0f9b48e0aa1",
     "team": "TeamWithoutName",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -513,7 +513,7 @@
     "password": "",
     "salt": "a552d308-e375-41a1-84d7-18bbe6333461",
     "team": "Les Pires Hat",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -524,7 +524,7 @@
     "password": "",
     "salt": "1b75fc91-39ab-4b23-8ec4-3c79be41e6d5",
     "team": "Yolosw4g",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -535,7 +535,7 @@
     "password": "",
     "salt": "4783a5ab-8644-4c0c-8517-b05d2ba3e097",
     "team": "Yolosw4g",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -546,7 +546,7 @@
     "password": "",
     "salt": "608eebdc-667f-4982-94de-590ecc0fb102",
     "team": "Yolosw4g",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -557,7 +557,7 @@
     "password": "",
     "salt": "0a015ecf-6330-45b9-9c60-a6ffad02d9f9",
     "team": "JohnBRoot",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -568,7 +568,7 @@
     "password": "",
     "salt": "6cb929c9-8599-4a21-9cc8-f3770ddaa050",
     "team": "Root du rhum - 1",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -579,7 +579,7 @@
     "password": "",
     "salt": "a4b83d52-1f50-4134-ae9c-be6ee1dec544",
     "team": "fi3ldfoks.Ay",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -590,7 +590,7 @@
     "password": "",
     "salt": "a501ca88-0824-4cdc-959f-a16312a6d648",
     "team": "IPPLOG4J",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -601,7 +601,7 @@
     "password": "",
     "salt": "adc25066-adcc-46b5-9f32-c15b54011c5d",
     "team": "fi3ldfoks.Ay",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -612,7 +612,7 @@
     "password": "",
     "salt": "9b6fd04d-167c-4e14-8265-d6c6b861b1bb",
     "team": "AutreChose",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -623,7 +623,7 @@
     "password": "",
     "salt": "669c7ef7-3a7f-4f42-b477-b869659680ac",
     "team": "ippsec",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -634,7 +634,7 @@
     "password": "",
     "salt": "5b7b538e-dca1-44c6-9ec7-d0f24c4f3c96",
     "team": "Les Pires Hat",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -645,7 +645,7 @@
     "password": "",
     "salt": "cc23efc9-fdf1-45c1-bd86-b7843631df9d",
     "team": "fi3ldfoks.Ay",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -656,7 +656,7 @@
     "password": "",
     "salt": "2341e721-7b9c-4d76-aa97-f835056de2fd",
     "team": "Opencyber",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -667,7 +667,7 @@
     "password": "",
     "salt": "3493e4de-2f91-4f25-ba0f-fd25825a6262",
     "team": "ippsec",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -678,7 +678,7 @@
     "password": "",
     "salt": "d6b63044-a1dc-4cf7-be8f-2218c8f7c804",
     "team": "TeamWithoutName",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -689,7 +689,7 @@
     "password": "",
     "salt": "e59b72b2-751f-48d3-94fd-3b6c479e5dd7",
     "team": "fi3ldfoks.Ay",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -700,7 +700,7 @@
     "password": "",
     "salt": "0dedcede-ce9f-4d13-9d6a-4daba712c461",
     "team": "b4By&b33r",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -711,7 +711,7 @@
     "password": "",
     "salt": "b7706145-f6d9-40fd-8615-5a9fa2729984",
     "team": "fi3ldfoks.Ay",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -722,7 +722,7 @@
     "password": "",
     "salt": "e1ee51fa-9156-41c5-afcb-093b22d800b0",
     "team": "Root du rhum - 1",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -733,7 +733,7 @@
     "password": "",
     "salt": "07088928-8d61-48cf-8f2d-3ad6febb8b33",
     "team": "b4By&b33r",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -744,7 +744,7 @@
     "password": "",
     "salt": "a31b834c-d15b-40c7-a8d0-c0679e5fd376",
     "team": "b4By&b33r",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -755,7 +755,7 @@
     "password": "",
     "salt": "b86a1dd5-733f-44dc-ae31-9b391c15630d",
     "team": "JohnBRoot",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -766,7 +766,7 @@
     "password": "",
     "salt": "834746f2-6e6e-4fb3-b47c-4695fcb53980",
     "team": "Euskaldunh4ck",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -777,7 +777,7 @@
     "password": "",
     "salt": "9d227c74-43d8-4fa4-88ae-7982a9084103",
     "team": "IPPLOG4J",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -788,7 +788,7 @@
     "password": "",
     "salt": "f33eb277-6d87-40a2-9d59-83fbf0a1ce7c",
     "team": "AutreChose",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -799,7 +799,7 @@
     "password": "",
     "salt": "b72e461f-3ffd-4478-9312-d8518240b03e",
     "team": "Euskaldunh4ck",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -810,7 +810,7 @@
     "password": "",
     "salt": "aa4cdd24-3fb4-434a-81bb-117bab7c51b9",
     "team": "ADACTF",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -821,7 +821,7 @@
     "password": "",
     "salt": "dcb989dd-5d26-422f-9060-c1fdecc0ddac",
     "team": "ADACTF",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -832,7 +832,7 @@
     "password": "",
     "salt": "569d091e-370d-4cf5-bbca-78f70401032d",
     "team": "AutreChose",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -843,7 +843,7 @@
     "password": "",
     "salt": "df922eec-0f09-4eb0-aa13-d193afbef1ae",
     "team": "Euskaldunh4ck",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -854,7 +854,7 @@
     "password": "",
     "salt": "9a423c04-d5a1-478c-85f3-df2d866531bf",
     "team": "ADACTF",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -865,7 +865,7 @@
     "password": "",
     "salt": "97cc3991-a365-4d40-a431-bbd3644dcc9f",
     "team": "ADACTF",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -876,7 +876,7 @@
     "password": "",
     "salt": "a08c48c6-6ad3-4a90-a906-ad9a8e171e5a",
     "team": "ADACTF",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -887,7 +887,7 @@
     "password": "",
     "salt": "b3e5b395-9d7d-4e6e-9eed-27d0f5c5854c",
     "team": "Ugly Duck",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -898,7 +898,7 @@
     "password": "",
     "salt": "10113bf8-19ce-4fba-bf6b-466e00f34f2c",
     "team": "Les Pires Hat",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -909,7 +909,7 @@
     "password": "",
     "salt": "55f11c58-72eb-4082-a5ba-8370206bd901",
     "team": "Adactf",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -920,7 +920,7 @@
     "password": "",
     "salt": "2c965ea1-e405-4d71-ac68-3e9a6631f9f6",
     "team": "Testotron",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -931,7 +931,7 @@
     "password": "",
     "salt": "aa7c6315-d5d7-4085-a17c-8360e9c2e94f",
     "team": "uglyduck",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -942,7 +942,7 @@
     "password": "",
     "salt": "f33c5d70-ed47-4a16-9351-b4c699351dd9",
     "team": "Euskaldunh4ck",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -953,7 +953,7 @@
     "password": "",
     "salt": "5efe60cb-0a9b-4d86-b8ed-d261c56c7e09",
     "team": "NoTeam:)",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -964,7 +964,7 @@
     "password": "",
     "salt": "f8ac559a-bcd4-48a8-8871-a84fb0583839",
     "team": "Euskaldunh4ck",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -975,7 +975,7 @@
     "password": "",
     "salt": "9ccb38ca-5826-4192-a9f7-b8a53102822b",
     "team": "420verflow",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -986,7 +986,7 @@
     "password": "",
     "salt": "1531b77d-22da-4904-92d3-1c33057df327",
     "team": "420ver3fl0w",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -997,7 +997,7 @@
     "password": "",
     "salt": "8b327433-366b-455e-8566-584ef053eec6",
     "team": "Le bistrot des légendes",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -1008,7 +1008,7 @@
     "password": "",
     "salt": "f558ecd7-ec1d-4a57-bf12-91a3266898a7",
     "team": "420verfl0w",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -1019,7 +1019,7 @@
     "password": "",
     "salt": "586974f6-f74b-4353-80ee-678ae30d8c62",
     "team": "420verflow",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -1030,7 +1030,7 @@
     "password": "",
     "salt": "22cd4f50-6472-45f8-9920-265e506af08e",
     "team": "42Overfl0w",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -1041,7 +1041,7 @@
     "password": "",
     "salt": "46eec45b-4516-4663-88a7-8b4f25bba3b3",
     "team": "Ugly Duck",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -1052,7 +1052,7 @@
     "password": "",
     "salt": "4fdb76ff-5a47-4976-8ea2-539a4162086f",
     "team": "testotron",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   },
   {
@@ -1063,7 +1063,7 @@
     "password": "",
     "salt": "813ea1db-11d7-43d3-9e5e-0082afc70115",
     "team": "abcde",
-    "isAdmin": false,
+    "roles": ["user", "player"],
     "__v": 0
   }
 ]

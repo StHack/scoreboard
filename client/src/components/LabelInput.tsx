@@ -1,22 +1,27 @@
 import styled from '@emotion/styled'
 import { PropsWithChildren } from 'react'
-import { GridAreaProps, SpaceProps } from 'styled-system'
+import { FlexDirectionProps, GridAreaProps, SpaceProps } from 'styled-system'
+import { GapProps } from 'styles'
 import { Box } from './Box'
 
 type LabelInputProps = {
   label: string
   required?: boolean
+  as?: React.ElementType | undefined
 }
 export function LabelInput({
+  as = 'label',
   label,
   children,
   required,
   my = 2,
   ...rest
-}: PropsWithChildren<LabelInputProps & SpaceProps & GridAreaProps>) {
+}: PropsWithChildren<
+  LabelInputProps & SpaceProps & GridAreaProps & FlexDirectionProps & GapProps
+>) {
   return (
     <Box
-      as="label"
+      as={as}
       display="flex"
       flexDirection="column"
       placeItems="stretch"

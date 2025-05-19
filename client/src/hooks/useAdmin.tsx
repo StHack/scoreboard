@@ -9,6 +9,7 @@ import {
   ServerError,
   TimestampedServerActivityStatistics,
   User,
+  UserRole,
 } from '@sthack/scoreboard-common'
 import {
   createContext,
@@ -43,7 +44,7 @@ export type AdminContext = {
   setTeamSize: (teamSize: number) => void
   changeTeam: (user: User, team: string) => void
   changePassword: (user: User, password: string) => void
-  toggleIsAdmin: (user: User) => void
+  changeRoles: (user: User, roles: UserRole[]) => void
   deleteUser: (user: User) => void
   logoutUser: (user: User) => void
   deleteAchievement: (achievement: Achievement) => void
@@ -97,7 +98,7 @@ const AdminContext = createContext<AdminContext>({
   setTeamSize: () => {},
   changeTeam: () => {},
   changePassword: () => {},
-  toggleIsAdmin: () => {},
+  changeRoles: () => {},
   deleteUser: () => {},
   logoutUser: () => {},
   deleteAchievement: () => {},
@@ -201,8 +202,10 @@ function useProvideAdmin(): AdminContext {
 
     return () => {
       socket.off('game:activity:updated')
+      socket.off('game:activity:list:updated')
       socket.off('challenge:added')
       socket.off('challenge:updated')
+      socket.off('challenge:deleted')
       socket.off('attempt:added')
     }
   }, [socket])
@@ -224,7 +227,7 @@ function useProvideAdmin(): AdminContext {
         if (!socket) throw new Error('connection is not available')
 
         socket.emit(
-          'challenge:create',
+          'challenge:actions:create',
           chall,
           (response: Challenge | ServerError) => {
             if ('error' in response) {
@@ -240,7 +243,7 @@ function useProvideAdmin(): AdminContext {
         if (!socket) throw new Error('connection is not available')
 
         socket.emit(
-          'reward:create',
+          'reward:actions:create',
           reward,
           (response: Reward | ServerError) => {
             if ('error' in response) {
@@ -256,7 +259,7 @@ function useProvideAdmin(): AdminContext {
         if (!socket) throw new Error('connection is not available')
 
         socket.emit(
-          'challenge:update',
+          'challenge:actions:update',
           challengeId,
           chall,
           (response: Challenge | ServerError) => {
@@ -271,14 +274,14 @@ function useProvideAdmin(): AdminContext {
     brokeChallenge: chall => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('challenge:broke', chall._id)
+      socket.emit('challenge:actions:broke', chall._id)
     },
     deleteChallenge: chall =>
       new Promise<void>((resolve, reject) => {
         if (!socket) throw new Error('connection is not available')
 
         socket.emit(
-          'challenge:delete',
+          'challenge:actions:delete',
           chall._id,
           (response: ServerError | undefined) => {
             if (response) {
@@ -293,70 +296,75 @@ function useProvideAdmin(): AdminContext {
     repairChallenge: chall => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('challenge:repair', chall._id)
+      socket.emit('challenge:actions:repair', chall._id)
     },
     openGame: () => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('game:open')
+      socket.emit('game:actions:open')
     },
     closeGame: () => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('game:end')
+      socket.emit('game:actions:end')
     },
     openRegistration: () => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('game:openRegistration')
+      socket.emit('game:actions:openRegistration')
     },
     closeRegistration: () => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('game:closeRegistration')
+      socket.emit('game:actions:closeRegistration')
     },
     setTeamSize: teamSize => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('game:setTeamSize', teamSize)
+      socket.emit('game:actions:setTeamSize', teamSize)
     },
     changeTeam: (user, team) => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('users:changeTeam', user.username, team, updateUsers)
+      socket.emit('users:actions:changeTeam', user.username, team, updateUsers)
     },
     changePassword: (user, password) => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('users:changePassword', user.username, password, updateUsers)
+      socket.emit(
+        'users:actions:changePassword',
+        user.username,
+        password,
+        updateUsers,
+      )
     },
-    toggleIsAdmin: user => {
+    changeRoles: (user, roles) => {
       if (!socket) throw new Error('connection is not available')
 
       socket.emit(
-        'users:changeIsAdmin',
+        'users:actions:changeRoles',
         user.username,
-        !user.isAdmin,
+        roles,
         updateUsers,
       )
     },
     deleteUser: user => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('users:delete', user.username, () =>
+      socket.emit('users:actions:delete', user.username, () =>
         setUsers(users.filter(u => u.username !== user.username)),
       )
     },
     logoutUser: user => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('users:logout', user.username)
+      socket.emit('users:actions:logout', user.username)
     },
     deleteAchievement: achievement => {
       if (!socket) throw new Error('connection is not available')
 
       socket.emit(
-        'achievement:delete',
+        'achievement:actions:delete',
         achievement.teamname,
         achievement.challengeId,
       )
@@ -364,19 +372,19 @@ function useProvideAdmin(): AdminContext {
     deleteReward: reward => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('reward:delete', reward._id)
+      socket.emit('reward:actions:delete', reward._id)
     },
     sendMessage: (message, challengeId) => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('game:sendMessage', message, challengeId)
+      socket.emit('game:annoucement:actions:sendMessage', message, challengeId)
     },
     uploadFile: file =>
       new Promise<string>(resolve => {
         if (!socket) throw new Error('connection is not available')
 
         socket.emit(
-          'file:upload',
+          'challenge:actions:file:upload',
           {
             name: file.name,
             contentType: file.type || 'application/octet-stream',

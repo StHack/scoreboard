@@ -1,7 +1,9 @@
+import { UserRole } from '@sthack/scoreboard-common'
 import { BoxPanel } from 'components/BoxPanel'
 import { ConditionalLoader } from 'components/Loader'
 import { ToggleInput } from 'components/ToggleInput'
 import { useAdmin } from 'hooks/useAdmin'
+import { useAuth } from 'hooks/useAuthentication'
 import { GameContextLoadingState, useGame } from 'hooks/useGame'
 
 export function GameStateForm({ gridArea }: { gridArea: string }) {
@@ -11,6 +13,12 @@ export function GameStateForm({ gridArea }: { gridArea: string }) {
   } = useGame()
   const { openGame, closeGame, openRegistration, closeRegistration } =
     useAdmin()
+
+  const { roles } = useAuth()
+
+  if (!roles.includes(UserRole.GameMaster)) {
+    return null
+  }
 
   return (
     <BoxPanel gridArea={gridArea} title="Game state">

@@ -28,9 +28,7 @@ const PlayerContext = createContext<PlayerContext>({
 
 export function ProvidePlayer({ children }: PropsWithChildren<object>) {
   const player = useProvidePlayer()
-  return (
-    <PlayerContext value={player}>{children}</PlayerContext>
-  )
+  return <PlayerContext value={player}>{children}</PlayerContext>
 }
 
 export const usePlayer = () => {

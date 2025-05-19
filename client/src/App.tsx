@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { UserRole } from '@sthack/scoreboard-common'
 import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'
 import { Loader } from 'components/Loader'
@@ -92,9 +93,9 @@ function Home() {
     gameConfig: { gameOpened },
     isLoaded,
   } = useGame()
-  const { isAuthenticated, isAuthorized, hasReadRules } = useAuth()
+  const { isAuthenticated, roles, hasReadRules } = useAuth()
 
-  if (isAuthorized) {
+  if (roles.includes(UserRole.Admin)) {
     return <Navigate to="/admin" replace />
   }
 

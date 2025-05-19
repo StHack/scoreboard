@@ -1,7 +1,8 @@
+import { UserRole } from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
-import { Button } from 'components/Button'
 import { ExportJsonButton } from 'components/ExportJsonButton'
 import { IconCreate } from 'components/Icon'
+import { RoleBasedButton } from 'components/RoleBasedButton'
 import { SearchInput } from 'components/SearchInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
@@ -28,14 +29,15 @@ export function ChallengePanel() {
   return (
     <Box display="flex" flexDirection="column" overflow="hidden" gap="2">
       <Box display="flex" flexDirection="row" gap="2">
-        <Button
+        <RoleBasedButton
           onClick={() => navigate(`/admin/challenges/create`)}
           title="Create challenge"
           icon={IconCreate}
           responsiveLabel
+          roleRequired={UserRole.Author}
         >
           Create challenge
-        </Button>
+        </RoleBasedButton>
         <ExportJsonButton data={challenges} filename="challenges" />
         <SearchInput
           search={search}

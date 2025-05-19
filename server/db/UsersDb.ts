@@ -1,4 +1,4 @@
-import { CreateUser, User } from '@sthack/scoreboard-common'
+import { CreateUser, User, UserRole } from '@sthack/scoreboard-common'
 import { createHash, randomUUID } from 'crypto'
 import { model, Schema, ToObjectOptions } from 'mongoose'
 import { removeMongoPropertiesWithOptions } from './main.js'
@@ -8,7 +8,7 @@ type DbUser = {
   password: string
   salt: string
   team: string
-  isAdmin: boolean
+  roles: UserRole[]
 }
 
 const schema = new Schema<DbUser>({
@@ -22,7 +22,12 @@ const schema = new Schema<DbUser>({
   password: { type: String, required: true, minlength: 5 },
   salt: { type: String, required: true },
   team: { type: String, required: true, minlength: 3, maxlength: 42 },
-  isAdmin: { type: Boolean, required: true },
+  roles: {
+    type: [String],
+    required: true,
+    enum: Object.values(UserRole),
+    default: [UserRole.User],
+  },
 })
 
 const UserModel = model<DbUser>('User', schema)
@@ -57,7 +62,7 @@ export async function registerUser(
       password: hashed,
       salt,
       team,
-      isAdmin: false,
+      roles: [UserRole.User, UserRole.Player],
     })
 
     await doc.save()
@@ -123,7 +128,7 @@ export async function listTeam(): Promise<string[]> {
 
 export async function updateUser(
   username: string,
-  { team, password, isAdmin }: Partial<DbUser>,
+  { team, password, roles }: Partial<DbUser>,
 ): Promise<User> {
   validateUser({ username, team: team ?? '' })
   if (password) {
@@ -140,7 +145,7 @@ export async function updateUser(
 
   const document = await UserModel.findOneAndUpdate(
     { username },
-    { team, isAdmin, password },
+    { team, roles, password },
     { new: true },
   )
 

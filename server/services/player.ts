@@ -5,6 +5,7 @@ import {
   CallbackOrError,
   Challenge,
   User,
+  UserRole,
 } from '@sthack/scoreboard-common'
 import {
   countChallengeAchievement,
@@ -19,7 +20,7 @@ import { Namespace } from 'socket.io'
 import { emitEventLog } from './events.js'
 import { registerSocketConnectivityChange } from './serveractivity.js'
 import { ServerConfig } from './serverconfig.js'
-import { from, fromNow, getRelativeTime } from './time.js'
+import { from } from './time.js'
 
 export function registerPlayerNamespace(
   adminIo: Namespace,
@@ -65,7 +66,7 @@ export function registerPlayerNamespace(
           proposal: flag,
         }
 
-        if (user.isAdmin) {
+        if (user.roles.includes(UserRole.Admin)) {
           try {
             const isValid = await checkChallenge(challengeId, flag)
             callback({
@@ -124,7 +125,7 @@ export function registerPlayerNamespace(
           gameIo.emit('achievement:added', achievement)
 
           const challenge = (await getChallenge(challengeId)) as Challenge
-          await emitEventLog(gameIo, 'challenge:solve', {
+          await emitEventLog(gameIo, 'challenge:solved', {
             message:
               achievementCount === 0
                 ? `💥 Breakthrough! "${achievement.username}" Team "${achievement.teamname}" just solved challenge "${challenge.name}"`
@@ -203,7 +204,7 @@ async function checkBruteforce(
 
     if (warning && attempts.length === count) {
       const challenge = await getChallenge(attempt.challengeId)
-      await emitEventLog(gameIo, 'player:attempt', {
+      await emitEventLog(gameIo, 'player:attempted', {
         message: `Team "${attempt.teamname}" has reach the warning threshold of attempts made for the chall "${challenge?.name ?? ''}"`,
         attempt,
         challenge,

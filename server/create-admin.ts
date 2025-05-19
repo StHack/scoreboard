@@ -1,3 +1,4 @@
+import { UserRole } from '@sthack/scoreboard-common'
 import { initMongo } from 'db/main.js'
 import { registerUser, updateUser } from 'db/UsersDb.js'
 import { config } from 'dotenv'
@@ -59,7 +60,18 @@ try {
     `User created:\nusername:${c.b + c.g} ${user} ${c._}\npassword:${c.b + c.g} ${password} ${c._}`,
   )
 
-  await updateUser(user, { isAdmin: true })
+  await updateUser(user, {
+    roles: [
+      UserRole.User,
+      UserRole.Admin,
+      UserRole.Announcer,
+      UserRole.Author,
+      UserRole.GameMaster,
+      UserRole.Moderator,
+      UserRole.Rewarder,
+      UserRole.RoleManager,
+    ],
+  })
   console.log(`User ${c.b + c.g} ${user} ${c._} has been promoted to admin`)
 
   exit(0)

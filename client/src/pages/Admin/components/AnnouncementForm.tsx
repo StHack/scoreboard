@@ -1,15 +1,18 @@
+import { UserRole } from '@sthack/scoreboard-common'
 import { BoxPanel } from 'components/BoxPanel'
 import { Button } from 'components/Button'
 import { SelectInput } from 'components/SelectInput'
-import { TextArea, TextInput } from 'components/TextInput'
+import { TextArea } from 'components/TextInput'
 import { useAdmin } from 'hooks/useAdmin'
+import { useAuth } from 'hooks/useAuthentication'
 import { useField } from 'hooks/useField'
 import { useGame } from 'hooks/useGame'
 import { GridAreaProps } from 'styled-system'
 
-export function AnnouncementForm({ gridArea } : GridAreaProps) {
+export function AnnouncementForm({ gridArea }: GridAreaProps) {
   const { challenges } = useGame()
   const { sendMessage } = useAdmin()
+  const { roles } = useAuth()
 
   const messageInput = useField<string>({
     defaultValue: '',
@@ -23,6 +26,10 @@ export function AnnouncementForm({ gridArea } : GridAreaProps) {
     name: 'message-challenge',
     disabled: false,
   })
+
+  if (!roles.includes(UserRole.Announcer)) {
+    return null
+  }
 
   return (
     <BoxPanel

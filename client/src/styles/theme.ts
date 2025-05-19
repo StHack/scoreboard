@@ -170,6 +170,7 @@ export const lightTheme: Theme = {
       borderStyle: 'solid',
       color: 'secondaryText',
       ':disabled': {
+        backgroundColor: 'grey',
         color: 'greys.1',
       },
     },
@@ -185,6 +186,11 @@ export const lightTheme: Theme = {
       borderColor: 'red',
       '&:hover:enabled': {
         filter: 'opacity(0.5)',
+      },
+      ':disabled': {
+        backgroundColor: 'grey',
+        color: 'greys.1',
+        borderColor: 'currentColor',
       },
     },
   },

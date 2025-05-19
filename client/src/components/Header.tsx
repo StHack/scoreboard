@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { UserRole } from '@sthack/scoreboard-common'
 import { useAuth } from 'hooks/useAuthentication'
 import { NavLink } from 'react-router-dom'
 import { space, SpaceProps } from 'styled-system'
@@ -7,7 +8,7 @@ import { Button } from './Button'
 import { IconLogout, Logo } from './Icon'
 
 export function Header() {
-  const { user, isAuthenticated, isAuthorized, logOut } = useAuth()
+  const { user, isAuthenticated, roles, logOut } = useAuth()
 
   return (
     <Box
@@ -33,7 +34,9 @@ export function Header() {
         <Box display="flex" flexDirection="row" alignItems="center" as="ul">
           <GameLink to="/scoreboard" label="Scoreboard" />
           <GameLink to="/rules" label="Rules" />
-          {isAuthorized && <GameLink to="/admin" label="Admin" />}
+          {roles.includes(UserRole.Admin) && (
+            <GameLink to="/admin" label="Admin" />
+          )}
           {!isAuthenticated && (
             <GameLink to="/auth/register" label="Register" />
           )}

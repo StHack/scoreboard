@@ -61,14 +61,14 @@ const discordFormatHandler: [
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (string | ((options: any) => Promise<string | string[]>))?,
 ][] = [
-  ['game:open', '# 🏴‍☠️ CTF is now open'],
-  ['game:end', gameEnd],
-  ['reward:create', reward],
-  ['challenge:solve', solve],
-  ['challenge:broke'],
-  ['challenge:repair'],
-  ['player:attempt', attempt],
-  ['game:sendMessage', sendMessage],
+  ['game:opened', '# 🏴‍☠️ CTF is now open'],
+  ['game:ended', gameEnd],
+  ['reward:added', reward],
+  ['challenge:solved', solve],
+  ['challenge:broken'],
+  ['challenge:repaired'],
+  ['player:attempted', attempt],
+  ['game:announcement:made', sendMessage],
 ]
 
 async function gameEnd(options: {

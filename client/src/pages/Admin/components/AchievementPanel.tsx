@@ -1,8 +1,8 @@
-import { Achievement, Reward } from '@sthack/scoreboard-common'
+import { Achievement, Reward, UserRole } from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
-import { Button } from 'components/Button'
 import { ExportJsonButton } from 'components/ExportJsonButton'
 import { IconCreate, IconDelete } from 'components/Icon'
+import { RoleBasedButton } from 'components/RoleBasedButton'
 import { SearchInput } from 'components/SearchInput'
 import { ColumnDefinition, Table } from 'components/Table'
 import { useAdmin } from 'hooks/useAdmin'
@@ -38,14 +38,15 @@ export function AchievementPanel() {
       gap="2"
     >
       <Box display="flex" flexDirection="row" gap="2">
-        <Button
+        <RoleBasedButton
           onClick={() => setOpenCreateReward(true)}
           title="Create reward"
           icon={IconCreate}
           responsiveLabel
+          roleRequired={UserRole.Rewarder}
         >
           Create reward
-        </Button>
+        </RoleBasedButton>
         <ExportJsonButton data={achievements} filename="achievements" />
         <ExportJsonButton data={rewards} filename="rewards" />
         <SearchInput
@@ -102,7 +103,8 @@ type AchievementActionsProps = {
 function AchievementActions({ row }: AchievementActionsProps) {
   const { deleteAchievement } = useAdmin()
   return (
-    <Button
+    <RoleBasedButton
+      roleRequired={UserRole.GameMaster}
       variant="danger"
       icon={IconDelete}
       responsiveLabel
@@ -120,7 +122,7 @@ function AchievementActions({ row }: AchievementActionsProps) {
       }}
     >
       Delete
-    </Button>
+    </RoleBasedButton>
   )
 }
 
@@ -130,7 +132,8 @@ type RewardActionsProps = {
 function RewardActions({ row }: RewardActionsProps) {
   const { deleteReward } = useAdmin()
   return (
-    <Button
+    <RoleBasedButton
+      roleRequired={UserRole.Rewarder}
       variant="danger"
       icon={IconDelete}
       responsiveLabel
@@ -148,6 +151,6 @@ function RewardActions({ row }: RewardActionsProps) {
       }}
     >
       Delete
-    </Button>
+    </RoleBasedButton>
   )
 }

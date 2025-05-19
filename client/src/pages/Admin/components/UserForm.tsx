@@ -17,7 +17,7 @@ export type UserFormProps = {
 }
 
 export function UserForm({ user, editMode, onClose }: UserFormProps) {
-  const { changePassword, changeTeam, users } = useAdmin()
+  const { changePassword, changeTeam, changeRoles, users } = useAdmin()
   const ref = useRef<HTMLFormElement>(null)
   const { inputProp } = useField<string>({
     defaultValue: editMode === 'team' ? user.team : '',
@@ -26,7 +26,9 @@ export function UserForm({ user, editMode, onClose }: UserFormProps) {
     required: true,
   })
 
-  const existingTeams = [...new Set(users.map(u => u.team))].sort()
+  const existingTeams = [
+    ...new Set(users.map(u => u.team).filter(u => u !== 'admin')),
+  ].sort()
 
   return (
     <Popup

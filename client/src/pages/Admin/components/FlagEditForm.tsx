@@ -30,7 +30,8 @@ export function FlagEditForm({ chall, onClose }: FlagEditFormProps) {
         as="form"
         ref={ref}
         onSubmitCapture={formProps.onSubmitCapture as FormEventHandler}
-        px="3" pb="2"
+        px="3"
+        pb="2"
         display="flex"
         flexDirection="column"
       >

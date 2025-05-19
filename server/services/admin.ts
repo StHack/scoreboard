@@ -10,6 +10,7 @@ import {
   ServerActivityStatistics,
   TimestampedServerActivityStatistics,
   User,
+  UserRole,
 } from '@sthack/scoreboard-common'
 import { createHash } from 'crypto'
 import {
@@ -41,6 +42,22 @@ import {
 import { ServerConfig } from './serverconfig.js'
 import { ServerStatisticsFetcher } from './serverStatistics.js'
 
+const requiredRoles: { prefix: string; role: UserRole }[] = [
+  { prefix: 'game:actions:', role: UserRole.GameMaster },
+  { prefix: 'achievement:actions:', role: UserRole.GameMaster },
+
+  { prefix: 'game:annoucement:actions:', role: UserRole.Announcer },
+  { prefix: 'challenge:actions:', role: UserRole.Author },
+  { prefix: 'reward:actions:', role: UserRole.Rewarder },
+
+  { prefix: 'users:actions:changeTeam', role: UserRole.Moderator },
+  { prefix: 'users:actions:changePassword', role: UserRole.Moderator },
+  { prefix: 'users:actions:logout', role: UserRole.Moderator },
+
+  { prefix: 'users:actions:delete', role: UserRole.RoleManager },
+  { prefix: 'users:actions:changeRoles', role: UserRole.RoleManager },
+]
+
 export function registerAdminNamespace(
   adminIo: Namespace,
   gameIo: Namespace,
@@ -57,7 +74,7 @@ export function registerAdminNamespace(
   adminIo.use((socket, next) => {
     const user = (socket.request as Request<User>).user
 
-    if (user?.isAdmin) {
+    if (user?.roles.includes(UserRole.Admin)) {
       next()
     } else {
       logger(
@@ -71,6 +88,7 @@ export function registerAdminNamespace(
   })
 
   adminIo.on('connection', adminSocket => {
+    // Log the connection
     adminSocket.use(([event, ...args], next) => {
       logger(
         '%s\t%s\t%s\t%o',
@@ -80,6 +98,25 @@ export function registerAdminNamespace(
         args,
       )
       next()
+    })
+
+    // Check if the user has the required role for the event
+    adminSocket.use(([ev, ...args], next) => {
+      const userRoles = (adminSocket.request as Request<User>).user?.roles ?? []
+
+      const requiredRole = requiredRoles.find(r => ev.startsWith(r.prefix))
+      if (requiredRole && !userRoles.includes(requiredRole.role)) {
+        logger(
+          '%s\t%s\t%s\t%o',
+          adminSocket.conn.transport.sid,
+          (adminSocket.request as Request<User>).user?.username,
+          ev,
+          args,
+        )
+        next(new Error(`Unauthorized: ${requiredRole.role} required`))
+      } else {
+        next()
+      }
     })
 
     registerSocketConnectivityChange(adminSocket, adminIo, gameIo, playerIo)
@@ -93,7 +130,7 @@ export function registerAdminNamespace(
     )
 
     adminSocket.on(
-      'challenge:create',
+      'challenge:actions:create',
       async (chall: BaseChallenge, callback: CallbackOrError<Challenge>) => {
         try {
           if (!chall.flag) {
@@ -104,7 +141,7 @@ export function registerAdminNamespace(
           callback(challenge)
           gameIo.emit('challenge:added', challenge)
           adminIo.emit('challenge:added', challenge)
-          await emitEventLog(gameIo, 'challenge:create', {
+          await emitEventLog(gameIo, 'challenge:created', {
             message: `A new challenge has been added, try your chance on "${challenge.name}"`,
           })
         } catch (error) {
@@ -118,13 +155,13 @@ export function registerAdminNamespace(
     )
 
     adminSocket.on(
-      'reward:create',
+      'reward:actions:create',
       async (reward: BaseReward, callback: CallbackOrError<Reward>) => {
         try {
           const rewardCreated = await createReward(reward)
           callback(rewardCreated)
           gameIo.emit('reward:added', rewardCreated)
-          await emitEventLog(gameIo, 'reward:create', {
+          await emitEventLog(gameIo, 'reward:added', {
             message: `A reward has been given to team "${rewardCreated.teamname}" for ${rewardCreated.value.toString()} points`,
             reward: rewardCreated,
             serverConfig,
@@ -140,7 +177,7 @@ export function registerAdminNamespace(
     )
 
     adminSocket.on(
-      'challenge:update',
+      'challenge:actions:update',
       async (
         challengeId: string,
         chall: BaseChallenge,
@@ -151,7 +188,7 @@ export function registerAdminNamespace(
           callback(challenge)
           gameIo.emit('challenge:updated', challenge)
           adminIo.emit('challenge:updated', challenge)
-          await emitEventLog(gameIo, 'challenge:update', {
+          await emitEventLog(gameIo, 'challenge:updated', {
             message: `Challenge "${challenge.name}" has been updated`,
             challenge,
           })
@@ -165,28 +202,28 @@ export function registerAdminNamespace(
       },
     )
 
-    adminSocket.on('challenge:broke', async (challengeId: string) => {
+    adminSocket.on('challenge:actions:broke', async (challengeId: string) => {
       const updated = await updateChallenge(challengeId, { isBroken: true })
       gameIo.emit('challenge:updated', updated)
       adminIo.emit('challenge:updated', updated)
-      await emitEventLog(gameIo, 'challenge:broke', {
+      await emitEventLog(gameIo, 'challenge:broken', {
         message: `Challenge "${updated.name}" is marked has broken, we are working to repair it, please try another challenge`,
         challenge: updated,
       })
     })
 
-    adminSocket.on('challenge:repair', async (challengeId: string) => {
+    adminSocket.on('challenge:actions:repair', async (challengeId: string) => {
       const updated = await updateChallenge(challengeId, { isBroken: false })
       gameIo.emit('challenge:updated', updated)
       adminIo.emit('challenge:updated', updated)
-      await emitEventLog(gameIo, 'challenge:repair', {
+      await emitEventLog(gameIo, 'challenge:repaired', {
         message: `Challenge "${updated.name}" is fixed, you can try to solve it again`,
         challenge: updated,
       })
     })
 
     adminSocket.on(
-      'challenge:delete',
+      'challenge:actions:delete',
       async (challengeId: string, callback: CallbackOrError<void>) => {
         const achievementCount = await countChallengeAchievement(challengeId)
 
@@ -204,7 +241,7 @@ export function registerAdminNamespace(
 
         gameIo.emit('challenge:deleted', deleted)
         adminIo.emit('challenge:deleted', deleted)
-        await emitEventLog(gameIo, 'challenge:delete', {
+        await emitEventLog(gameIo, 'challenge:deleted', {
           message: `Challenge "${deleted.name}" has been deleted`,
           challenge: deleted,
         })
@@ -212,7 +249,7 @@ export function registerAdminNamespace(
       },
     )
 
-    adminSocket.on('game:end', async () => {
+    adminSocket.on('game:actions:end', async () => {
       await serverConfig.setGameOpened(false)
       await emitGameConfigUpdate()
 
@@ -228,7 +265,7 @@ export function registerAdminNamespace(
 
       serverStatFetcher.stop()
 
-      await emitEventLog(gameIo, 'game:end', {
+      await emitEventLog(gameIo, 'game:ended', {
         message: `Game is now closed. Thanks for your participation`,
         serverConfig,
       })
@@ -254,34 +291,34 @@ export function registerAdminNamespace(
       },
     )
 
-    adminSocket.on('game:open', async () => {
+    adminSocket.on('game:actions:open', async () => {
       await serverConfig.setGameOpened(true)
       await emitGameConfigUpdate()
 
       serverStatFetcher.start()
 
-      await emitEventLog(gameIo, 'game:open', {
+      await emitEventLog(gameIo, 'game:opened', {
         message: `Game is now opened. Good luck to everyone`,
       })
     })
 
-    adminSocket.on('game:openRegistration', async () => {
+    adminSocket.on('game:actions:openRegistration', async () => {
       await serverConfig.setRegistrationClosed(false)
       await emitGameConfigUpdate()
     })
 
-    adminSocket.on('game:closeRegistration', async () => {
+    adminSocket.on('game:actions:closeRegistration', async () => {
       await serverConfig.setRegistrationClosed(true)
       await emitGameConfigUpdate()
     })
 
-    adminSocket.on('game:setTeamSize', async (teamSize: number) => {
+    adminSocket.on('game:actions:setTeamSize', async (teamSize: number) => {
       await serverConfig.setTeamSize(teamSize)
       await emitGameConfigUpdate()
     })
 
     adminSocket.on(
-      'game:sendMessage',
+      'game:annoucement:actions:sendMessage',
       async (message: string, challengeId?: string) => {
         const chall = challengeId ? await getChallenge(challengeId) : undefined
 
@@ -290,9 +327,9 @@ export function registerAdminNamespace(
           challengeId: chall?._id,
         })
 
-        gameIo.emit('game:newMessage', result)
+        gameIo.emit('game:announcement:made', result)
 
-        await emitEventLog(gameIo, 'game:sendMessage', {
+        await emitEventLog(gameIo, 'game:announcement:made', {
           message: chall?._id
             ? `A new hint from the staff has been shared`
             : `A new message from the staff has been shared`,
@@ -308,7 +345,7 @@ export function registerAdminNamespace(
     })
 
     adminSocket.on(
-      'users:changeTeam',
+      'users:actions:changeTeam',
       async (username: string, team: string, callback: Callback<User>) => {
         const user = await updateUser(username, { team })
         callback(user)
@@ -316,7 +353,7 @@ export function registerAdminNamespace(
     )
 
     adminSocket.on(
-      'users:changePassword',
+      'users:actions:changePassword',
       async (username: string, password: string, callback: Callback<User>) => {
         const user = await updateUser(username, { password })
         callback(user)
@@ -324,11 +361,14 @@ export function registerAdminNamespace(
     )
 
     adminSocket.on(
-      'users:changeIsAdmin',
-      async (username: string, isAdmin: boolean, callback: Callback<User>) => {
-        const user = isAdmin
-          ? await updateUser(username, { isAdmin: true, team: 'admin' })
-          : await updateUser(username, { isAdmin: false })
+      'users:actions:changeRoles',
+      async (username: string, roles: UserRole[], callback: Callback<User>) => {
+        const user = roles.includes(UserRole.Admin)
+          ? await updateUser(username, {
+              roles: roles.filter(r => r !== UserRole.Player),
+              team: 'admin',
+            })
+          : await updateUser(username, { roles })
 
         adminIo.in(user.username).disconnectSockets(true)
 
@@ -337,7 +377,7 @@ export function registerAdminNamespace(
     )
 
     adminSocket.on(
-      'users:delete',
+      'users:actions:delete',
       async (username: string, callback: Callback<void>) => {
         await removeUser(username)
         logout(username)
@@ -345,10 +385,10 @@ export function registerAdminNamespace(
       },
     )
 
-    adminSocket.on('users:logout', logout)
+    adminSocket.on('users:actions:logout', logout)
 
     adminSocket.on(
-      'achievement:delete',
+      'achievement:actions:delete',
       async (teamname: string, challengeId: string) => {
         const deleted = await removeAchievement(teamname, challengeId)
 
@@ -358,7 +398,7 @@ export function registerAdminNamespace(
       },
     )
 
-    adminSocket.on('reward:delete', async (id: string) => {
+    adminSocket.on('reward:actions:delete', async (id: string) => {
       const deleted = await removeReward(id)
 
       if (deleted) {
@@ -373,7 +413,7 @@ export function registerAdminNamespace(
     })
 
     adminSocket.on(
-      'file:upload',
+      'challenge:actions:file:upload',
       async (file: FileContent, callback: Callback<string>) => {
         const name = getFileName(file)
         await createFile({ ...file, name })

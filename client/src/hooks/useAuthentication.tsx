@@ -1,4 +1,4 @@
-import { User } from '@sthack/scoreboard-common'
+import { User, UserRole } from '@sthack/scoreboard-common'
 import {
   createContext,
   PropsWithChildren,
@@ -13,7 +13,7 @@ export type AuthContext = {
   user?: User
   isLoading: boolean
   isAuthenticated: boolean
-  isAuthorized: boolean
+  roles: UserRole[]
   hasReadRules: boolean
   readRules: () => void
   logOut: () => Promise<void>
@@ -30,7 +30,7 @@ const AuthContext = createContext<AuthContext>({
   user: undefined,
   isLoading: true,
   isAuthenticated: false,
-  isAuthorized: false,
+  roles: [UserRole.User],
   hasReadRules: false,
   readRules: () => {},
   logOut: () => Promise.resolve(),
@@ -71,7 +71,7 @@ function useProvideAuth(): AuthContext {
     user,
     isLoading,
     isAuthenticated: !isLoading && user !== undefined,
-    isAuthorized: !!user?.isAdmin,
+    roles: user?.roles ?? [UserRole.User],
     hasReadRules,
     readRules: () => setHasReadRules(true),
     logOut: async () => {

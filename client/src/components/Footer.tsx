@@ -1,3 +1,4 @@
+import { UserRole } from '@sthack/scoreboard-common'
 import { useAuth } from 'hooks/useAuthentication'
 import { useGame } from 'hooks/useGame'
 import { Box } from './Box'
@@ -12,7 +13,7 @@ import {
 import { Link } from './Link'
 
 export function Footer() {
-  const { isAuthenticated, isAuthorized } = useAuth()
+  const { isAuthenticated, roles } = useAuth()
   const {
     gameConfig: { registrationOpened },
   } = useGame()
@@ -54,7 +55,7 @@ export function Footer() {
           Scoreboard
         </Link>
 
-        {isAuthorized && (
+        {roles.includes(UserRole.Admin) && (
           <Link to="/admin">
             <IconPromote color="currentColor" size="1.5em" />
             Admin

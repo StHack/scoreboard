@@ -1,3 +1,4 @@
+import { UserRole } from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
 import {
   IconAchievement,
@@ -13,9 +14,9 @@ import { PropsWithChildren } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
 export function AdminLayout() {
-  const { isAuthenticated, isAuthorized } = useAuth()
+  const { isAuthenticated, roles } = useAuth()
 
-  if (!isAuthenticated || !isAuthorized) {
+  if (!isAuthenticated || !roles.includes(UserRole.Admin)) {
     return <Navigate to="/" replace />
   }
 

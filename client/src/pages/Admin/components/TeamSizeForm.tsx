@@ -1,8 +1,10 @@
+import { UserRole } from '@sthack/scoreboard-common'
 import { BoxPanel } from 'components/BoxPanel'
 import { Button } from 'components/Button'
 import { ConditionalLoader } from 'components/Loader'
 import { TextInput } from 'components/TextInput'
 import { useAdmin } from 'hooks/useAdmin'
+import { useAuth } from 'hooks/useAuthentication'
 import { useField } from 'hooks/useField'
 import { GameContextLoadingState, useGame } from 'hooks/useGame'
 import { GridAreaProps } from 'styled-system'
@@ -13,6 +15,7 @@ export function TeamSizeForm({ gridArea }: GridAreaProps) {
     isLoaded,
   } = useGame()
   const { setTeamSize } = useAdmin()
+  const { roles } = useAuth()
 
   const teamSizeInput = useField<string>({
     defaultValue: '',
@@ -20,6 +23,10 @@ export function TeamSizeForm({ gridArea }: GridAreaProps) {
     disabled: false,
     required: true,
   })
+
+  if (!roles.includes(UserRole.GameMaster)) {
+    return null
+  }
 
   return (
     <BoxPanel
