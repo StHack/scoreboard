@@ -11,12 +11,27 @@ export type FieldProps<T> = {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => T
 }
+
+export type useFieldReturn<T> = {
+  inputProp: {
+    value: T
+    name: string
+    disabled: boolean
+    required?: boolean
+    onChange: (
+      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+    ) => void
+  }
+  reset: () => void
+  isDirty: boolean
+}
+
 export function useField<T>({
   draftKeyPrefix: formId,
   defaultValue,
   valueRetriever,
   ...props
-}: FieldProps<T>) {
+}: FieldProps<T>) : useFieldReturn<T> {
   const [value, setValue] = formId
     // eslint-disable-next-line react-hooks/rules-of-hooks
     ? useStorage<T>(`${formId}-${props.name}`, defaultValue)

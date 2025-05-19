@@ -1,5 +1,10 @@
 import styled from '@emotion/styled'
-import { Challenge, ChallengeScore, Message } from '@sthack/scoreboard-common'
+import {
+  Challenge,
+  ChallengeScore,
+  FlagPattern,
+  Message,
+} from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
 import { Button } from 'components/Button'
 import Popup from 'components/Popup'
@@ -45,6 +50,7 @@ export function ChallDescriptionPopup({
     category,
     description,
     difficulty,
+    flagPattern,
   } = challenge
   const [error, setError] = useState<string>()
   const { attemptChall, myTeamName } = usePlayer()
@@ -109,20 +115,36 @@ export function ChallDescriptionPopup({
             }}
             py="3"
             px="4"
+            gap="3"
           >
             <TextInput
-              placeholder="Propose your flag"
+              placeholder={
+                flagPattern !== FlagPattern.disabled
+                  ? `The flag follow the format (including the pattern): ${flagPattern}`
+                  : 'Propose your flag'
+              }
+              pattern={
+                flagPattern === FlagPattern.standard
+                  ? FlagPattern.standardInputPattern
+                  : undefined
+              }
               {...inputProp}
               disabled={readonly ? true : inputProp.disabled}
             />
 
             {error && (
-              <Box backgroundColor="red" color="white" role="alert">
+              <Box
+                backgroundColor={
+                  error.startsWith('Flag is correct') ? 'green' : 'red'
+                }
+                color="white"
+                role="alert"
+              >
                 {error}
               </Box>
             )}
 
-            <Button alignSelf="center" type="submit" mt="3" disabled={readonly}>
+            <Button alignSelf="center" type="submit" disabled={readonly}>
               Submit your flag
             </Button>
           </Box>

@@ -1,17 +1,19 @@
 import { Challenge } from '@sthack/scoreboard-common'
 import { Box } from 'components/Box'
-import { LabelInput } from 'components/LabelInput'
 import Popup from 'components/Popup'
-import { TextInput } from 'components/TextInput'
 import { useChallengeForm } from 'hooks/useChallengeForm'
 import { FormEventHandler, useRef } from 'react'
+import { FlagInput } from './FlagInput'
 
 type FlagEditFormProps = {
   chall: Challenge
   onClose: () => void
 }
 export function FlagEditForm({ chall, onClose }: FlagEditFormProps) {
-  const { formProps, flagsProps, error } = useChallengeForm(chall, onClose)
+  const { formProps, flagsProps, flagPatternProps, error } = useChallengeForm(
+    chall,
+    onClose,
+  )
   const ref = useRef<HTMLDivElement>(null)
 
   return (
@@ -28,11 +30,14 @@ export function FlagEditForm({ chall, onClose }: FlagEditFormProps) {
         as="form"
         ref={ref}
         onSubmitCapture={formProps.onSubmitCapture as FormEventHandler}
-        p="2"
+        px="3" pb="2"
+        display="flex"
+        flexDirection="column"
       >
-        <LabelInput label="Specify the new flag" gridArea="flag" required>
-          <TextInput type="text" {...flagsProps} required minLength={1} />
-        </LabelInput>
+        <FlagInput
+          flagsProps={flagsProps}
+          flagPatternProps={flagPatternProps}
+        />
 
         {error && (
           <Box gridArea="err" backgroundColor="red" color="white" role="alert">

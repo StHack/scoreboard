@@ -3,6 +3,7 @@ import {
   Category,
   Challenge,
   Difficulty,
+  FlagPattern,
 } from '@sthack/scoreboard-common'
 import { FormEvent, useState } from 'react'
 import { useAdmin } from './useAdmin'
@@ -28,6 +29,7 @@ export function useChallengeForm(
     img,
     isBroken,
     name,
+    flagPattern,
   } = chall || {}
 
   const draftKeyPrefix = `draft-challenge-${isNewChallenge ? 'new' : _id}`
@@ -77,6 +79,13 @@ export function useChallengeForm(
     required: isNewChallenge,
   })
 
+  const flagPatternField = useField<string>({
+    name: 'flag',
+    defaultValue: flagPattern ?? FlagPattern.standard,
+    disabled: isLoading,
+    required: false,
+  })
+
   const imgField = useField<string | undefined>({
     draftKeyPrefix,
     name: 'img',
@@ -99,6 +108,8 @@ export function useChallengeForm(
     localStorage.removeItem(`${draftKeyPrefix}-difficulty`)
     localStorage.removeItem(`${draftKeyPrefix}-img`)
     localStorage.removeItem(`${draftKeyPrefix}-isBroken`)
+    localStorage.removeItem(`${draftKeyPrefix}-flag`)
+    localStorage.removeItem(`${draftKeyPrefix}-flagPattern`)
   }
 
   const reset = () => {
@@ -109,6 +120,7 @@ export function useChallengeForm(
     descriptionField.reset()
     difficultyField.reset()
     flagsField.reset()
+    flagPatternField.reset()
     imgField.reset()
     isBrokenField.reset()
   }
@@ -118,13 +130,14 @@ export function useChallengeForm(
 
     try {
       const payload: BaseChallenge = {
+        name: nameField.inputProp.value,
         author: authorField.inputProp.value,
         category: categoryField.inputProp.value,
         description: descriptionField.inputProp.value,
         img: imgField.inputProp.value ?? '',
         difficulty: difficultyField.inputProp.value,
         flag: flagsField.inputProp.value,
-        name: nameField.inputProp.value,
+        flagPattern: flagPatternField.inputProp.value,
       }
 
       if (chall === undefined) {
@@ -156,6 +169,7 @@ export function useChallengeForm(
     isBroken: false,
     name: nameField.inputProp.value,
     flag: flagsField.inputProp.value,
+    flagPattern: flagPatternField.inputProp.value,
   }
 
   return {
@@ -170,6 +184,7 @@ export function useChallengeForm(
     difficultyProps: difficultyField.inputProp,
     imgProps: imgField.inputProp,
     flagsProps: flagsField.inputProp,
+    flagPatternProps: flagPatternField.inputProp,
 
     isBrokenProps: isNewChallenge ? undefined : isBrokenField.inputProp,
 
@@ -183,6 +198,7 @@ export function useChallengeForm(
       difficultyField.isDirty ||
       imgField.isDirty ||
       flagsField.isDirty ||
+      flagPatternField.isDirty ||
       isBrokenField.isDirty,
     reset,
     error,

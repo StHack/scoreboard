@@ -7,6 +7,7 @@ export type BaseChallenge = {
   img: string
   author: string
   flag?: string
+  flagPattern: string
   category: Category
   difficulty: Difficulty
 }
@@ -14,4 +15,10 @@ export type BaseChallenge = {
 export type Challenge = BaseChallenge & {
   isBroken: boolean
   _id: string
+}
+
+export const FlagPattern = {
+  standard: 'STHACK{XXXXXXXXXXX}',
+  disabled: '',
+  standardInputPattern: 'STHACK\\{.+\\}',
 }

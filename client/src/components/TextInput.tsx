@@ -19,6 +19,10 @@ export const TextInput = styled.input<SpaceProps & FlexProps>`
     border-color: ${p => p.theme.colors.greys[2]};
   }
 
+  &:invalid&:not(:placeholder-shown) {
+    border-color: ${p => p.theme.colors.red};
+  }
+
   ::-webkit-search-decoration,
   ::-webkit-search-cancel-button,
   ::-webkit-search-results-button,

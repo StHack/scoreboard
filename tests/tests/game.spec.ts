@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { BaseChallenge } from '@sthack/scoreboard-common'
+import { BaseChallenge, FlagPattern } from '@sthack/scoreboard-common'
 import { playwrightUserTest } from './services/AccountFlow.js'
 import { AdminFlow } from './services/AdminFlow.js'
 import { PlayerFlow } from './services/PlayerFlow.js'
@@ -11,6 +11,7 @@ const challengeData = (flag: string): BaseChallenge => ({
   difficulty: 'easy',
   name: `Testing chall #${new Date().getTime()}`,
   flag,
+  flagPattern: FlagPattern.disabled,
   img: '',
 })
 

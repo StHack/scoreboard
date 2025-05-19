@@ -22,6 +22,7 @@ import {
   useState,
 } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { FlagInput } from './FlagInput'
 
 export function ChallengeFormLayout() {
   const { isLoaded, challenges } = useAdmin()
@@ -49,6 +50,7 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
     difficultyProps,
     imgProps,
     flagsProps,
+    flagPatternProps,
     error,
     isNewChallenge,
     preview,
@@ -122,7 +124,7 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
         gridTemplateAreas={`
           "name name"
           "auth ${isNewChallenge ? 'flag' : 'desc'}"
-          "cat  desc"
+          "cat  ${isNewChallenge ? 'flag' : 'desc'}"
           "dif  desc"
           "img  desc"
           ".    desc"
@@ -134,7 +136,7 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
         flexDirection="column"
         maxWidth="maximalCentered"
         px="2"
-        gap="3"
+        gap={['1', '3']}
         margin="0 auto"
         width="100%"
       >
@@ -147,9 +149,12 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
         </LabelInput>
 
         {isNewChallenge && (
-          <LabelInput label="Flag" gridArea="flag" required={isNewChallenge}>
-            <TextInput type="text" {...flagsProps} />
-          </LabelInput>
+          <FlagInput
+            gridArea="flag"
+            alignSelf="start"
+            flagPatternProps={flagPatternProps}
+            flagsProps={flagsProps}
+          />
         )}
 
         <LabelInput label="Category" gridArea="cat" required>

@@ -17,6 +17,7 @@ const schema = new Schema<DbChallenge>({
   img: { type: String },
   author: { type: String, required: true },
   flag: { type: String, required: true },
+  flagPattern: { type: String, required: true },
   salt: { type: String, required: true },
   category: { type: String, required: true },
   difficulty: { type: String, enum: Difficulties, required: true },
