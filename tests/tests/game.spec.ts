@@ -16,7 +16,7 @@ const challengeData = (flag: string): BaseChallenge => ({
 })
 
 test('New challenge', async ({ browser }) => {
-  const flag = 'TH1S_1S_M1_FL4G'
+  const flag = 'STHACK{TH1S_1S_M1_FL4G}'
   const challenge = challengeData(flag)
 
   const adminFlow = await AdminFlow.createNewSession(browser)
@@ -24,8 +24,7 @@ test('New challenge', async ({ browser }) => {
   const player = await PlayerFlow.createNewSession(browser, playwrightUserTest)
   await player.goToGame()
 
-  await adminFlow.goToChallengesPage()
-  await adminFlow.openChallengeModalCreate()
+  await adminFlow.goToChallengeCreate()
   await adminFlow.fillChallengeForm(challenge)
 
   await player.openChallenge(challenge.name)
@@ -38,7 +37,7 @@ test(
     tag: ['@Edition-2024'],
   },
   async ({ browser }) => {
-    const flag = 'TH1S_1S_M1_FL4G'
+    const flag = 'STHACK{TH1S_1S_M1_FL4G}'
     const challenge = challengeData(flag)
 
     const adminFlow = await AdminFlow.createNewSession(browser)
@@ -49,11 +48,10 @@ test(
     )
     await player.goToGame()
 
-    await adminFlow.goToChallengesPage()
-    await adminFlow.openChallengeModalCreate()
+    await adminFlow.goToChallengeCreate()
     await adminFlow.fillChallengeForm(challenge)
 
-    await adminFlow.openChallengeModalEdit(challenge.name)
+    await adminFlow.goToChallengeEdit(challenge.name)
     await adminFlow.fillChallengeForm({ description: 'New description' })
 
     await player.openChallenge(challenge.name)
@@ -62,7 +60,7 @@ test(
 )
 
 test('Only the last flag is usable', async ({ browser }) => {
-  const flag = 'TH1S_1S_M1_FL4G'
+  const flag = 'STHACK{TH1S_1S_M1_FL4G}'
   const challenge = challengeData(flag)
 
   const adminFlow = await AdminFlow.createNewSession(browser)
@@ -70,14 +68,13 @@ test('Only the last flag is usable', async ({ browser }) => {
   const player = await PlayerFlow.createNewSession(browser, playwrightUserTest)
   await player.goToGame()
 
-  await adminFlow.goToChallengesPage()
-  await adminFlow.openChallengeModalCreate()
+  await adminFlow.goToChallengeCreate()
   await adminFlow.fillChallengeForm(challenge)
 
-  const newFlag = 'TH1S_1S_M1_FL4G_2'
+  const newFlag = 'STHACK{TH1S_1S_M1_FL4G_2}'
 
-  await adminFlow.openChallengeModalEdit(challenge.name)
-  await adminFlow.fillChallengeForm({ flag: newFlag })
+  await adminFlow.openChallengeEditFlag(challenge.name)
+  await adminFlow.editChallengeFlag(challenge.name, { flag: newFlag })
 
   await player.openChallenge(challenge.name)
   await player.submitFlag(flag, false)
@@ -96,7 +93,7 @@ test(
   },
   async ({ browser }) => {
     test.slow()
-    const flag = 'TH1S_1S_M1_FL4G'
+    const flag = 'STHACK{TH1S_1S_M1_FL4G}'
     const challenge = challengeData(flag)
 
     const adminFlow = await AdminFlow.createNewSession(browser)
@@ -108,10 +105,10 @@ test(
     await player.goToGame()
 
     await adminFlow.goToChallengesPage()
-    await adminFlow.openChallengeModalCreate()
+    await adminFlow.goToChallengeCreate()
     await adminFlow.fillChallengeForm(challenge)
 
-    const invalidFlag = 'B4D_FL4G'
+    const invalidFlag = 'STHACK{B4D_FL4G}'
 
     await player.openChallenge(challenge.name)
 

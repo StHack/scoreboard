@@ -39,7 +39,7 @@ test('User - new one flow', async ({ page, browser }) => {
 
   await accountFlow.readRules()
 
-  await expect(page).toHaveURL('/')
+  await expect(page).toHaveURL('/game')
 })
 
 test('User - Create reusable test account', async ({ page, browser }) => {

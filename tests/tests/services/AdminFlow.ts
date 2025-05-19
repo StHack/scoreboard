@@ -30,8 +30,7 @@ export class AdminFlow {
 
   async forceGameState(state: boolean = true) {
     await test.step(`Force game state to ${state ? 'open' : 'closed'}`, async () => {
-      await this.page.goto('/')
-      await this.page.getByRole('link', { name: 'Admin' }).click()
+      await this.page.goto('/admin')
 
       await expect(this.page).toHaveURL('/admin')
 
@@ -51,42 +50,55 @@ export class AdminFlow {
   }
 
   async goToChallengesPage() {
-    await test.step('Go to Challenge page', async () => {
-      await this.page.goto('/')
-      await this.page.getByRole('link', { name: 'Admin' }).click()
-      await expect(this.page).toHaveURL('/admin')
-      await this.page.getByRole('link', { name: 'Challenges' }).click()
+    await test.step('Go to challenges page', async () => {
+      await this.page.goto('/admin/challenges')
       await expect(this.page).toHaveURL('/admin/challenges')
     })
   }
 
-  async openChallengeModalCreate() {
-    await test.step('Open challenge creation modal', async () => {
-      await this.page.getByRole('button', { name: 'Create challenge' }).click()
+  async goToChallengeCreate() {
+    await test.step('Go to challenge create page', async () => {
+      await this.page.goto('/admin/challenges/create')
 
-      await expect(
-        this.page.getByRole('dialog').getByRole('heading'),
-      ).toContainText('Create a new challenge')
+      await expect(this.page.getByRole('heading')).toContainText(
+        'Create a new challenge',
+      )
     })
   }
 
-  async openChallengeModalEdit(challengeName: string) {
-    await test.step(`Open challenge ${challengeName} edition modal`, async () => {
+  async goToChallengeEdit(challengeName: string) {
+    await test.step(`Go to challenge ${challengeName} edition`, async () => {
       await this.page
         .getByRole('listitem')
         .filter({ hasText: challengeName })
-        .getByRole('button', { name: 'Edit' })
+        .getByRole('button', { name: 'Edit challenge' })
+        .click()
+
+      await expect(this.page).toHaveURL(/\/admin\/challenges\/.+\/edit/)
+
+      await expect(this.page.getByRole('heading')).toContainText(
+        `Edition of challenge "${challengeName}"`,
+      )
+    })
+  }
+
+  async openChallengeEditFlag(challengeName: string) {
+    await test.step(`Go to challenge ${challengeName} flag edition`, async () => {
+      await this.page
+        .getByRole('listitem')
+        .filter({ hasText: challengeName })
+        .getByRole('button', { name: 'Edit flag' })
         .click()
 
       await expect(
         this.page.getByRole('dialog').getByRole('heading'),
-      ).toContainText(`Edition of challenge "${challengeName}"`)
+      ).toContainText(`Modification of "${challengeName}" flag`)
     })
   }
 
   async fillChallengeForm(challenge: Partial<BaseChallenge>) {
     await test.step('Fill challenge form', async () => {
-      const popupForm = this.page.getByRole('dialog')
+      const popupForm = this.page
 
       if (challenge.name) {
         await popupForm.getByLabel('Name').fill(challenge.name)
@@ -107,7 +119,35 @@ export class AdminFlow {
         await popupForm.getByLabel('Flag').fill(challenge.flag)
       }
 
+      await popupForm.getByRole('button', { name: /(Create|Update)/ }).click()
+
+      await expect(popupForm).toHaveURL('/admin/challenges')
+    })
+  }
+
+  async editChallengeFlag(
+    challengeName: string,
+    challenge: Partial<Pick<BaseChallenge, 'flag' | 'flagPattern'>>,
+  ) {
+    await test.step(`Edit challenge ${challengeName} flag`, async () => {
+      const popupForm = this.page.getByRole('dialog')
+
+      if (challenge.flag) {
+        const flagEdit = popupForm.getByLabel('Edit flag')
+        if (await flagEdit.isVisible()) {
+          await flagEdit.click()
+        }
+
+        await popupForm.getByLabel('Flag').fill(challenge.flag)
+      }
+
+      if (challenge.flagPattern) {
+        await popupForm.getByLabel('Flag pattern').fill(challenge.flagPattern)
+      }
+
       await popupForm.getByRole('button', { name: 'Confirm' }).click()
+
+      await expect(popupForm).not.toBeVisible()
     })
   }
 

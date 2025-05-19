@@ -82,7 +82,7 @@ export class AccountFlow {
 
   async readRules() {
     await test.step('Read the rules', async () => {
-      await expect(this.page).toHaveURL('/rules')
+      await this.page.goto('/rules')
 
       await expect(
         this.page.getByRole('heading', { name: 'Rules', exact: true }),
@@ -90,7 +90,7 @@ export class AccountFlow {
 
       await this.page.getByLabel('I confirm that I have read').click()
 
-      await expect(this.page).toHaveURL('/')
+      await expect(this.page).toHaveURL('/game')
 
       await this.page.context().storageState({ path: this.authFilePath })
     })

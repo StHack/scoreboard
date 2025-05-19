@@ -20,7 +20,7 @@ export class PlayerFlow {
   }
 
   async goToGame() {
-    await this.page.goto('/')
+    await this.page.goto('/game')
 
     // if (this.page.url() !== '/') {
     //   await this.account.login({ persistAuth: false, checkAuth: true })
@@ -45,7 +45,7 @@ export class PlayerFlow {
     await test.step('Submit challenge flag', async () => {
       const form = this.page.getByRole('dialog')
 
-      await form.getByPlaceholder('Propose your flag').fill(flag)
+      await form.getByRole('textbox').fill(flag)
       await form.getByRole('button', { name: 'Submit your flag' }).click()
       if (isSuccessful) {
         await expect(form).not.toBeVisible()

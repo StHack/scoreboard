@@ -116,6 +116,9 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
           )}
         </Box>
       }
+      maxWidth="maximalCentered"
+      width="100%"
+      placeSelf="center"
       flexDirection="column"
       onSubmitCapture={formProps.onSubmitCapture}
     >
@@ -134,7 +137,6 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
         gridTemplateColumns="auto 1fr"
         gridTemplateRows="auto auto auto auto auto 1fr auto auto"
         flexDirection="column"
-        maxWidth="maximalCentered"
         px="2"
         gap={['1', '3']}
         margin="0 auto"
