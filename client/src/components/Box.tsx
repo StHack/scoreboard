@@ -52,4 +52,10 @@ export const StyledBoxComposed = compose(
   gap,
 )
 
-export const Box = styled('div', cleanStyledSystem)<BoxProps>(StyledBoxComposed)
+const StyledBox = styled('div', cleanStyledSystem)<BoxProps>(StyledBoxComposed)
+
+export function Box<E extends React.ElementType = 'div'>(
+  props: Omit<React.ComponentPropsWithRef<E>, 'as'> & BoxProps & { as?: E },
+) {
+  return <StyledBox {...props} />
+}

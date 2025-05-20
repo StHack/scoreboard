@@ -19,7 +19,9 @@ export type useFieldReturn<T> = {
     disabled: boolean
     required?: boolean
     onChange: (
-      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+      e: ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >,
     ) => void
   }
   reset: () => void
@@ -31,12 +33,12 @@ export function useField<T>({
   defaultValue,
   valueRetriever,
   ...props
-}: FieldProps<T>) : useFieldReturn<T> {
+}: FieldProps<T>): useFieldReturn<T> {
   const [value, setValue] = formId
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    ? useStorage<T>(`${formId}-${props.name}`, defaultValue)
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    : useState<T>(defaultValue)
+    ? // eslint-disable-next-line react-hooks/rules-of-hooks
+      useStorage<T>(`${formId}-${props.name}`, defaultValue)
+    : // eslint-disable-next-line react-hooks/rules-of-hooks
+      useState<T>(defaultValue)
 
   const reset = () => {
     setValue(defaultValue)
