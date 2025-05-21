@@ -1,22 +1,11 @@
-import { css, useTheme } from '@emotion/react'
-import styled from '@emotion/styled'
+import { useTheme } from '@emotion/react'
 import { ChallengeScore, TeamScore } from '@sthack/scoreboard-common'
-import { Box, BoxProps, StyledBoxComposed } from 'components/Box'
+import { Box, MotionBox } from 'components/Box'
 import { ChartCategory } from 'components/Charts/ChartCategory'
 import { ChartPlayerScorer } from 'components/Charts/ChartPlayerScorer'
 import { IconLogo2023Icon } from 'components/Icon'
-import {
-  AnimatePresence,
-  DragControls,
-  motion,
-  MotionValue,
-  Reorder,
-  useDragControls,
-  useMotionValue,
-  Variants,
-} from 'framer-motion'
+import { AnimatePresence, Variants } from 'framer-motion'
 import { useMemo, useState } from 'react'
-import { cleanStyledSystemOnly } from 'styles'
 
 export type TeamsScoreBoardProps = {
   teamsScore: TeamScore[]
@@ -26,9 +15,6 @@ export function TeamsScoreBoard({
   teamsScore,
   challsScore,
 }: TeamsScoreBoardProps) {
-  const y = useMotionValue(0)
-  const dragControls = useDragControls()
-
   const lastScorerIndex = teamsScore.findLastIndex(
     s => s.score > 0 && s.rank > 3,
   )
@@ -36,10 +22,7 @@ export function TeamsScoreBoard({
     lastScorerIndex > 0 ? teamsScore[lastScorerIndex - 1] : undefined
 
   return (
-    <StyledReorderGroup
-      axis="y"
-      values={teamsScore}
-      onReorder={() => {}}
+    <Box
       display="flex"
       flexDirection="column"
       gap="2"
@@ -52,11 +35,9 @@ export function TeamsScoreBoard({
           teamScore={cs}
           challsScore={challsScore}
           isLastScorer={cs === beforeLastScorer}
-          dragControls={dragControls}
-          y={y}
         />
       ))}
-    </StyledReorderGroup>
+    </Box>
   )
 }
 
@@ -64,15 +45,11 @@ type ScoreCardProps = {
   teamScore: TeamScore
   isLastScorer: boolean
   challsScore: Record<string, ChallengeScore>
-  dragControls: DragControls
-  y: MotionValue<number>
 }
 export function ScoreCard({
   teamScore,
   isLastScorer,
   challsScore,
-  dragControls,
-  y,
 }: ScoreCardProps) {
   const theme = useTheme()
   const variants = useMemo<Variants>(
@@ -107,12 +84,8 @@ export function ScoreCard({
   const solvedNotBreakthrough = solved.filter(s => !breakthroughs.includes(s))
 
   return (
-    <Item
-      value={score}
-      style={{ y }}
-      drag={false}
-      dragListener={false}
-      dragControls={dragControls}
+    <MotionBox
+      layout
       variants={variants}
       initial="unclassed"
       animate={
@@ -139,6 +112,7 @@ export function ScoreCard({
       display="flex"
       flexDirection="column"
       gap="2"
+      style={{ cursor: 'pointer' }}
     >
       <Box
         as="header"
@@ -174,7 +148,8 @@ export function ScoreCard({
 
       <AnimatePresence initial={false}>
         {focused && (
-          <Section
+          <MotionBox
+            as="section"
             key="content"
             initial="collapsed"
             animate="open"
@@ -283,29 +258,9 @@ export function ScoreCard({
               <ChartCategory teamScore={teamScore} />
               <ChartPlayerScorer teamScore={teamScore} />
             </Box>
-          </Section>
+          </MotionBox>
         )}
       </AnimatePresence>
-    </Item>
+    </MotionBox>
   )
 }
-
-const StyledReorderGroup = styled(
-  Reorder.Group,
-  cleanStyledSystemOnly(StyledBoxComposed),
-)<BoxProps>(StyledBoxComposed)
-
-const Item = styled(
-  Reorder.Item,
-  cleanStyledSystemOnly(StyledBoxComposed),
-)<BoxProps>(
-  StyledBoxComposed,
-  css`
-    cursor: pointer;
-  `,
-)
-
-const Section = styled(
-  motion.section,
-  cleanStyledSystemOnly(StyledBoxComposed),
-)<BoxProps>(StyledBoxComposed)

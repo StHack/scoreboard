@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { motion, MotionProps } from 'framer-motion'
 import {
   background,
   BackgroundColorProps,
@@ -58,4 +59,13 @@ export function Box<E extends React.ElementType = 'div'>(
   props: Omit<React.ComponentPropsWithRef<E>, 'as'> & BoxProps & { as?: E },
 ) {
   return <StyledBox {...props} />
+}
+
+const MotionStyledBox = motion(StyledBox)
+export function MotionBox<E extends React.ElementType = 'div'>(
+  props: Omit<React.ComponentPropsWithRef<E>, 'as'> &
+    BoxProps &
+    MotionProps & { as?: E },
+) {
+  return <MotionStyledBox {...props} />
 }

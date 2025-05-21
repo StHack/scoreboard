@@ -1,5 +1,7 @@
+import { useTheme } from '@emotion/react'
 import { Message } from '@sthack/scoreboard-common'
-import { Box } from 'components/Box'
+import { Box, MotionBox } from 'components/Box'
+import { AnimatePresence } from 'framer-motion'
 import { usePlayer } from 'hooks/usePlayer'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
@@ -34,14 +36,16 @@ export function Messages({
         {title}
       </Box>
 
-      {messages.map(m => (
-        <MessageBlock
-          key={m.createdAt.getTime()}
-          message={m}
-          hasBeenRead={readMessages.includes(m._id)}
-          onReadClick={markMessageAsRead}
-        />
-      ))}
+      <AnimatePresence>
+        {messages.map(m => (
+          <MessageBlock
+            key={m.createdAt.getTime()}
+            message={m}
+            hasBeenRead={readMessages.includes(m._id)}
+            onReadClick={markMessageAsRead}
+          />
+        ))}
+      </AnimatePresence>
     </Box>
   )
 }
@@ -57,20 +61,28 @@ function MessageBlock({
   onReadClick,
 }: MessageBlockProps) {
   const { content, createdAt, challenge } = message
+  const { colors, radii, borderWidths } = useTheme()
   return (
-    <Box
+    <MotionBox
       as="p"
       p="2"
-      backgroundColor={hasBeenRead ? undefined : 'primary'}
-      borderColor="primaryText"
-      borderRadius={hasBeenRead ? undefined : 'medium'}
-      borderStyle={hasBeenRead ? undefined : 'solid'}
-      borderTopStyle={hasBeenRead ? 'solid' : undefined}
-      borderWidth={hasBeenRead ? 'medium' : 'thick'}
+      initial={{ opacity: 0, x: 40 }}
+      animate={{
+        opacity: 1,
+        x: 0,
+        backgroundColor: hasBeenRead ? 'transparent' : colors.primary,
+        borderRadius: hasBeenRead ? '0px' : radii.medium,
+        borderStyle: hasBeenRead ? 'none' : 'solid',
+        borderTopStyle: hasBeenRead ? 'solid' : 'solid',
+        borderWidth: hasBeenRead ? borderWidths.medium : borderWidths.thick,
+      }}
+      exit={{ opacity: 0, x: 40 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       display="flex"
       flexWrap="wrap"
       alignItems="center"
       gap="1"
+      borderColor="primaryText"
     >
       {!hasBeenRead && (
         <Button
@@ -94,6 +106,6 @@ function MessageBlock({
           {content}
         </ReactMarkdown>
       </Box>
-    </Box>
+    </MotionBox>
   )
 }

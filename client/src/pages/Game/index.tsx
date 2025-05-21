@@ -1,6 +1,6 @@
 import { useTheme } from '@emotion/react'
 import { Challenge } from '@sthack/scoreboard-common'
-import { Box } from 'components/Box'
+import { Box, MotionBox } from 'components/Box'
 import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
 import { ChallengeCard } from 'components/ChallengeCard'
 import { Messages } from 'components/Messages'
@@ -8,7 +8,7 @@ import Popup from 'components/Popup'
 import { useAuth } from 'hooks/useAuthentication'
 import { useGame } from 'hooks/useGame'
 import { ProvidePlayer, usePlayer } from 'hooks/usePlayer'
-import { Fragment, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 import {
   getGroup,
@@ -141,10 +141,8 @@ export function Game() {
       />
 
       <Box
-        display="flex"
-        flexWrap="wrap"
-        alignContent="flex-start"
-        justifyContent="space-evenly"
+        display="grid"
+        gridAutoFlow={['row', 'column']}
         gap="2"
         overflowY="auto"
         gridArea="chall"
@@ -152,7 +150,22 @@ export function Game() {
         {Object.entries(groups)
           .sort(([g1], [g2]) => getGroupSort(groupBy)(g1, g2))
           .map(([key, challs]) => (
-            <Fragment key={key}>
+            <MotionBox
+              key={key}
+              layout
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={{
+                visible: { transition: { staggerChildren: 0.07 } },
+                hidden: {},
+              }}
+              display="flex"
+              flexWrap="wrap"
+              alignContent="flex-start"
+              justifyContent="space-evenly"
+              gap="2"
+            >
               <Box
                 as="h2"
                 fontSize="3"
@@ -164,16 +177,25 @@ export function Game() {
                 {key}
               </Box>
               {challs.map(c => (
-                <ChallengeCard
+                <MotionBox
                   key={c._id}
-                  challenge={c}
-                  score={challScore[c._id]}
-                  currentTeam={myTeamName}
-                  onClick={() => setSelectedChall(c)}
-                  size="13"
-                />
+                  layout
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                >
+                  <ChallengeCard
+                    challenge={c}
+                    score={challScore[c._id]}
+                    currentTeam={myTeamName}
+                    onClick={() => setSelectedChall(c)}
+                    size="13"
+                  />
+                </MotionBox>
               ))}
-            </Fragment>
+            </MotionBox>
           ))}
       </Box>
 
