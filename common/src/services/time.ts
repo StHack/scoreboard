@@ -33,8 +33,10 @@ export function from(date: Date, seconds: number): Date {
   return new Date(date.getTime() + seconds * 1000)
 }
 
-export const formatTimeShort = (input: Date | undefined) =>
-  input?.toLocaleTimeString() ?? ''
+export const formatTimeShort = (input: Date | string | undefined) =>
+  input instanceof Date ? input.toLocaleTimeString() : (input?.toString() ?? '')
 
-export const formatTimeLong = (input: Date | undefined) =>
-  `${input?.toLocaleDateString() ?? ''} - ${input?.toLocaleTimeString() ?? ''}`
+export const formatTimeLong = (input: Date | string | undefined) =>
+  input instanceof Date
+    ? `${input.toLocaleDateString()} - ${input.toLocaleTimeString()}`
+    : (input?.toString() ?? '')
