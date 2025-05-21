@@ -58,7 +58,7 @@ export function RewardForm({ onClose }: RewardFormProps) {
       <Box
         as="form"
         display="flex"
-        ref={ref as unknown as RefObject<HTMLDivElement>}
+        ref={ref}
         flexDirection="column"
         onSubmit={async e => {
           e.preventDefault()

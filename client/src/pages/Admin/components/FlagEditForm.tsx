@@ -14,7 +14,7 @@ export function FlagEditForm({ chall, onClose }: FlagEditFormProps) {
     chall,
     onClose,
   )
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLFormElement>(null)
 
   return (
     <Popup
