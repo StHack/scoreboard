@@ -25,12 +25,14 @@ export function ChartTooltip({
       <Box as="h4" fontWeight="bold" mb="1">
         {labelFormatter ? labelFormatter(label, payload) : label}
       </Box>
-      {payload.map((p, i) => (
-        <Box key={i} as="li" color={p.color} mb="1">
-          {`${p.name}: ${p.value}`}
-          {p.unit}
-        </Box>
-      ))}
+      {payload
+        .sort((a, b) => parseInt(b.value ?? '') - parseInt(a.value ?? ''))
+        .map((p, i) => (
+          <Box key={i} as="li" color={p.color} mb="1">
+            {`${p.name}: ${p.value}`}
+            {p.unit}
+          </Box>
+        ))}
     </Box>
   )
 }

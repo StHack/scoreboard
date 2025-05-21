@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { PropsWithChildren } from 'react'
-import { FlexDirectionProps, GridAreaProps, SpaceProps } from 'styled-system'
+import { FlexboxProps, GridAreaProps, SpaceProps } from 'styled-system'
 import { GapProps } from 'styles'
 import { Box } from './Box'
 
@@ -17,7 +17,7 @@ export function LabelInput({
   my = 2,
   ...rest
 }: PropsWithChildren<
-  LabelInputProps & SpaceProps & GridAreaProps & FlexDirectionProps & GapProps
+  LabelInputProps & SpaceProps & GridAreaProps & GapProps & FlexboxProps
 >) {
   return (
     <Box

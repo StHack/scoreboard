@@ -10,7 +10,7 @@ import {
 } from 'styled-system'
 
 export type SelectInputValue = {
-  value: string
+  value: string | number
   label: string
 }
 

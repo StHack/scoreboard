@@ -1,4 +1,5 @@
 import { useTheme } from '@emotion/react'
+import { formatTimeLong, formatTimeShort } from '@sthack/scoreboard-common'
 import { useAdmin } from 'hooks/useAdmin'
 import { useState } from 'react'
 import {
@@ -31,9 +32,13 @@ export function ChartActivityStats() {
     <ResponsiveContainer width="100%" height={500}>
       <LineChart data={activityStats}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="timestamp" scale="time" tickFormatter={format} />
+        <XAxis
+          dataKey="timestamp"
+          scale="time"
+          tickFormatter={formatTimeShort}
+        />
         <YAxis />
-        <Tooltip content={<ChartTooltip />} labelFormatter={formatLong} />
+        <Tooltip content={<ChartTooltip />} labelFormatter={formatTimeLong} />
         <Legend
           onClick={data => toggleActive(data.dataKey as string)}
           verticalAlign="top"
@@ -55,7 +60,7 @@ export function ChartActivityStats() {
         <Brush
           dataKey="timestamp"
           stroke={theme.colors.secondary}
-          tickFormatter={format}
+          tickFormatter={formatTimeShort}
         >
           <LineChart>
             <CartesianGrid strokeDasharray="3 3" />
@@ -82,7 +87,3 @@ const lines = {
   'sockets.player': 'Socket - Player NS',
   'sockets.admin': 'Socket - Admin NS',
 }
-
-const format = (input: Date) => input?.toLocaleTimeString?.() ?? ''
-const formatLong = (input: Date) =>
-  `${input?.toLocaleDateString?.() ?? ''} - ${input?.toLocaleTimeString?.() ?? ''}`

@@ -4,6 +4,7 @@ import {
   BaseAttempt,
   CallbackOrError,
   Challenge,
+  from,
   UserRole,
 } from '@sthack/scoreboard-common'
 import {
@@ -23,7 +24,6 @@ import {
 } from './middleware.js'
 import { registerSocketConnectivityChange } from './serveractivity.js'
 import { ServerConfig } from './serverconfig.js'
-import { from } from './time.js'
 
 export function registerPlayerNamespace(
   adminIo: Namespace,
@@ -34,7 +34,12 @@ export function registerPlayerNamespace(
 ) {
   const logger = debug('sthack:player')
 
-  registerNamespaceRequiredRoles(adminIo, logger, [UserRole.Player, UserRole.Admin], 'any')
+  registerNamespaceRequiredRoles(
+    adminIo,
+    logger,
+    [UserRole.Player, UserRole.Admin],
+    'any',
+  )
 
   playerIo.on('connection', playerSocket => {
     registerSocketLogger(playerSocket, logger)

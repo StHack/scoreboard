@@ -1,6 +1,8 @@
 import { Box } from 'components/Box'
 import { BoxPanel } from 'components/BoxPanel'
+import { ChartAchievementsOverTime } from 'components/Charts/ChartAchievementsOverTime'
 import { ChartAttemptsPanel } from 'components/Charts/ChartAttempts'
+import { ChartAttemptsOverTime } from 'components/Charts/ChartAttemptsOverTime'
 import { useAdmin } from 'hooks/useAdmin'
 import { ActivityStatisticsPanel } from './ActivityStatisticsPanel'
 import { AnnouncementForm } from './AnnouncementForm'
@@ -26,6 +28,7 @@ export function GeneralPanel() {
         "tsize  sstats"
         ".      sstats"
         ".      attempts"
+        ".      achievements"
       `}
     >
       <AnnouncementForm gridArea="msg" />
@@ -41,8 +44,21 @@ export function GeneralPanel() {
         title={`Attempts by challs and teams (last ${attempts.length})`}
         display="grid"
         placeItems="center"
+        gap="2"
       >
         <ChartAttemptsPanel />
+
+        <ChartAttemptsOverTime />
+      </BoxPanel>
+
+      <BoxPanel
+        gridArea="achievements"
+        title="Achievements over time"
+        display="grid"
+        placeItems="center"
+        gap="2"
+      >
+        <ChartAchievementsOverTime />
       </BoxPanel>
     </Box>
   )

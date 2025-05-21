@@ -79,6 +79,7 @@ export function ChartAttemptsPanel() {
         <Tooltip content={<ChartTooltip />} />
         <Legend
           payload={chartData
+            .sort((a, b) => a.challenge.localeCompare(b.challenge))
             .map<Payload>(cd => ({
               value: cd.challenge,
               dataKey: cd.challenge,
@@ -88,14 +89,16 @@ export function ChartAttemptsPanel() {
               color: theme.colors.secondary,
             }))
             .concat(
-              teams.map((t, i) => ({
-                value: t,
-                id: `team-${t}`,
-                dataKey: `teams["${t}"]`,
-                legendIcon: <IconUsers />,
-                inactive: activeUsers.length > 0 && !activeUsers.includes(t),
-                color: theme.colors.charts[i % theme.colors.charts.length],
-              })),
+              teams
+                .sort((a, b) => a.localeCompare(b))
+                .map((t, i) => ({
+                  value: t,
+                  id: `team-${t}`,
+                  dataKey: `teams["${t}"]`,
+                  legendIcon: <IconUsers />,
+                  inactive: activeUsers.length > 0 && !activeUsers.includes(t),
+                  color: theme.colors.charts[i % theme.colors.charts.length],
+                })),
             )}
           onClick={data => handleLegendClick(data)}
         />
