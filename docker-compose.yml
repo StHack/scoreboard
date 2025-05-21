@@ -37,10 +37,10 @@ services:
       APP_DISCORD_TOKEN: ${APP_DISCORD_TOKEN}
       APP_DISCORD_CHANNEL: ${APP_DISCORD_CHANNEL}
     logging:
-      driver: "local"
+      driver: 'local'
       options:
-        max-size: "20m"
-        max-file: "50"
+        max-size: '20m'
+        max-file: '50'
     networks:
       - apps
     depends_on:

@@ -11,9 +11,9 @@
     "noImplicitThis": true,
     "noUncheckedIndexedAccess": true,
 
-    "lib": ["es2023"],
+    "lib": ["ESNext"],
     "module": "node16",
-    "target": "es2022",
+    "target": "ESNext",
     "strict": true,
     "skipLibCheck": true,
     "moduleResolution": "node16"

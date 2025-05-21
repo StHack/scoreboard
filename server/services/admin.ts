@@ -36,13 +36,19 @@ import { extname } from 'path'
 import { Namespace } from 'socket.io'
 import { emitEventLog } from './events.js'
 import {
+  registerNamespaceRequiredRoles,
+  registerSocketLogger,
+  registerSocketRequiredRoles,
+  RequiredRole,
+} from './middleware.js'
+import {
   getServerActivityStatistics,
   registerSocketConnectivityChange,
 } from './serveractivity.js'
 import { ServerConfig } from './serverconfig.js'
 import { ServerStatisticsFetcher } from './serverStatistics.js'
 
-const requiredRoles: { prefix: string; role: UserRole }[] = [
+const requiredRoles: RequiredRole[] = [
   { prefix: 'game:actions:', role: UserRole.GameMaster },
   { prefix: 'achievement:actions:', role: UserRole.GameMaster },
 
@@ -71,53 +77,12 @@ export function registerAdminNamespace(
     adminIo.emit('game:activity:list:updated', stats)
   })
 
-  adminIo.use((socket, next) => {
-    const user = (socket.request as Request<User>).user
-
-    if (user?.roles.includes(UserRole.Admin)) {
-      next()
-    } else {
-      logger(
-        '%s\t%s\tattempt admin path',
-        socket.conn.transport.sid,
-        user?.username,
-      )
-
-      next(new Error('unauthorized'))
-    }
-  })
+  registerNamespaceRequiredRoles(adminIo, logger, [UserRole.Admin], 'all')
 
   adminIo.on('connection', adminSocket => {
-    // Log the connection
-    adminSocket.use(([event, ...args], next) => {
-      logger(
-        '%s\t%s\t%s\t%o',
-        adminSocket.conn.transport.sid,
-        (adminSocket.request as Request<User>).user?.username,
-        event,
-        args,
-      )
-      next()
-    })
+    registerSocketLogger(adminSocket, logger)
 
-    // Check if the user has the required role for the event
-    adminSocket.use(([ev, ...args], next) => {
-      const userRoles = (adminSocket.request as Request<User>).user?.roles ?? []
-
-      const requiredRole = requiredRoles.find(r => ev.startsWith(r.prefix))
-      if (requiredRole && !userRoles.includes(requiredRole.role)) {
-        logger(
-          '%s\t%s\t%s\t%o',
-          adminSocket.conn.transport.sid,
-          (adminSocket.request as Request<User>).user?.username,
-          ev,
-          args,
-        )
-        next(new Error(`Unauthorized: ${requiredRole.role} required`))
-      } else {
-        next()
-      }
-    })
+    registerSocketRequiredRoles(adminSocket, logger, requiredRoles)
 
     registerSocketConnectivityChange(adminSocket, adminIo, gameIo, playerIo)
 

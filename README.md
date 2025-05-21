@@ -128,7 +128,7 @@ use sthack-scoreboard
 show collections
 db.achievements.find()
 db.achievements.deleteMany({})
-db.users.updateOne({ username: "your_username" }, { $set: { isAdmin: true } })
+db.users.updateOne({ username: "your_username" }, { $set: { roles: ['user','admin'] } })
 
 # import data
 mongoimport messages.json -d test -c messages -u "sthack-admin" -p "sthack-password" --authenticationDatabase admin --jsonArray --drop
