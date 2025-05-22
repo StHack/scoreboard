@@ -1,9 +1,9 @@
 {
   "$schema": "http://json.schemastore.org/web-manifest",
   "id": "sthack-scoreboard",
-  "short_name": "Sthack CTF 2024",
-  "name": "Sthack CTF Edition 2024",
-  "description": "Welcome to the Sthack CTF Edition 2024!",
+  "short_name": "Sthack CTF 2025",
+  "name": "Sthack CTF Edition 2025",
+  "description": "Welcome to the Sthack CTF Edition 2025!",
   "orientation": "any",
   "start_url": "./",
   "scope": ".",
