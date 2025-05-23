@@ -28,6 +28,8 @@ export class ServerStatisticsFetcher {
   public stop(): void {
     if (this.interval) {
       clearInterval(this.interval)
+      this.interval = undefined
+      this.logger('stopped')
     }
   }
 
@@ -55,6 +57,7 @@ export class ServerStatisticsFetcher {
     }
 
     this.interval = setInterval(() => this.trigger(), this.intervalTime)
+    this.logger('started')
 
     this.trigger().catch((e: unknown) => {
       this.logger('an error occured %o', e)
