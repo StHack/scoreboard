@@ -71,7 +71,8 @@ services:
       # - ./backups/2021:/backups/
       # - ./backups/2022:/backups/
       # - ./backups/2023:/backups/
-      - ./backups/2024:/backups/
+      # - ./backups/2024:/backups/
+      - ./backups/2025:/backups/
       - ./backups/_mongo_import.sh:/docker-entrypoint-initdb.d/_mongo_import.sh
 
   redis-dev:
