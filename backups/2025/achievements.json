@@ -1,0 +1,3301 @@
+[{
+	"_id": {
+		"$oid": "6830c4a88a20280c8f78b14d"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "Ad4m5",
+	"teamname": "Sth4ck0s",
+	"createdAt": {
+		"$date": "2025-05-23T18:55:36.538Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T18:55:36.538Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830c5378a20280c8f78b21f"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "marukuxd",
+	"teamname": "Poulet Phreaks 2600",
+	"createdAt": {
+		"$date": "2025-05-23T18:57:59.63Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T18:57:59.63Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830c5a68a20280c8f78b293"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "loukoum",
+	"teamname": "dos",
+	"createdAt": {
+		"$date": "2025-05-23T18:59:50.131Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T18:59:50.131Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830c5e08a20280c8f78b2c5"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "maximegirardet",
+	"teamname": "hackvens",
+	"createdAt": {
+		"$date": "2025-05-23T19:00:48.099Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:00:48.099Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830c65d8a20280c8f78b329"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "lalu",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-23T19:02:53.547Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:02:53.547Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830c69f8a20280c8f78b391"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "n1mpH",
+	"teamname": "Inglorious Flagsterds",
+	"createdAt": {
+		"$date": "2025-05-23T19:03:59.43Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:03:59.43Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830c6c28a20280c8f78b3c6"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "esgn",
+	"teamname": "foobar",
+	"createdAt": {
+		"$date": "2025-05-23T19:04:34.62Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:04:34.62Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830c7e18a20280c8f78b501"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "Ad4m5",
+	"teamname": "Sth4ck0s",
+	"createdAt": {
+		"$date": "2025-05-23T19:09:21.953Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:09:21.953Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830c9918a20280c8f78b5d1"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "tillamen",
+	"teamname": "Lonely Chads",
+	"createdAt": {
+		"$date": "2025-05-23T19:16:33.81Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:16:33.81Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830c9ef8a20280c8f78b633"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "OuiSouss",
+	"teamname": "ADACTF",
+	"createdAt": {
+		"$date": "2025-05-23T19:18:07.99Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:18:07.99Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830ca978a20280c8f78b66d"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "vulnerable",
+	"teamname": "hackvens",
+	"createdAt": {
+		"$date": "2025-05-23T19:20:55.104Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:20:55.104Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830cb0a8a20280c8f78b6f1"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "flawseeker",
+	"teamname": "PinkyUnicorn",
+	"createdAt": {
+		"$date": "2025-05-23T19:22:50.491Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:22:50.491Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830cbc18a20280c8f78b739"
+	},
+	"challengeId": "682f1a108a20280c8f789b4f",
+	"username": "Tomtombinary",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-23T19:25:53.73Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:25:53.73Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830ccb58a20280c8f78b7f3"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "LexIt",
+	"teamname": "arpanode",
+	"createdAt": {
+		"$date": "2025-05-23T19:29:57.443Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:29:57.443Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830ccc38a20280c8f78b7fc"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "Nanakix",
+	"teamname": "sthack_frites",
+	"createdAt": {
+		"$date": "2025-05-23T19:30:11.962Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:30:11.962Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830cde18a20280c8f78b8db"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "Trachinus",
+	"teamname": "Root66",
+	"createdAt": {
+		"$date": "2025-05-23T19:34:57.826Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:34:57.826Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830d11b8a20280c8f78bad0"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "Phantasia",
+	"teamname": "Pwn Patrouille",
+	"createdAt": {
+		"$date": "2025-05-23T19:48:43.308Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:48:43.308Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830d1328a20280c8f78baea"
+	},
+	"challengeId": "682f1a108a20280c8f789b4f",
+	"username": "Penis2",
+	"teamname": "Penis2",
+	"createdAt": {
+		"$date": "2025-05-23T19:49:06.333Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:49:06.333Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830d20b8a20280c8f78bb2c"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "Tomtombinary",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-23T19:52:43.894Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:52:43.894Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830d2988a20280c8f78bb75"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "OliveBxM",
+	"teamname": "BdxMet",
+	"createdAt": {
+		"$date": "2025-05-23T19:55:04.616Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T19:55:04.616Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830d4a18a20280c8f78bc40"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "Reyko",
+	"teamname": "Bottom's Up",
+	"createdAt": {
+		"$date": "2025-05-23T20:03:45.846Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:03:45.846Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830d5708a20280c8f78bc9b"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "Nayru",
+	"teamname": "Inglorious Flagsterds",
+	"createdAt": {
+		"$date": "2025-05-23T20:07:12.282Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:07:12.282Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830d7728a20280c8f78bde7"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "DaXou",
+	"teamname": "CtrlHack",
+	"createdAt": {
+		"$date": "2025-05-23T20:15:46.481Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:15:46.481Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830d8a98a20280c8f78bed8"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "Roockbye",
+	"teamname": "ValHack",
+	"createdAt": {
+		"$date": "2025-05-23T20:20:57.983Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:20:57.983Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830da288a20280c8f78c022"
+	},
+	"challengeId": "68308c5f8a20280c8f789d4e",
+	"username": "NtCreateRemoteThreadEx",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-23T20:27:20.988Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:27:20.988Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830db028a20280c8f78c0ff"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "rootjuice",
+	"teamname": "hackcidentV2",
+	"createdAt": {
+		"$date": "2025-05-23T20:30:58.143Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:30:58.143Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830dc488a20280c8f78c1cb"
+	},
+	"challengeId": "68308e2c8a20280c8f789d9e",
+	"username": "lbrochard",
+	"teamname": "BdxMet",
+	"createdAt": {
+		"$date": "2025-05-23T20:36:24.77Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:36:24.77Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830dc7f8a20280c8f78c222"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "Test_CTF",
+	"teamname": "Test_CTF",
+	"createdAt": {
+		"$date": "2025-05-23T20:37:19.455Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:37:19.455Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830dc9a8a20280c8f78c252"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "Tomtombinary",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-23T20:37:46.17Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:37:46.17Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830dcaa8a20280c8f78c25c"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "NtQueueApcThreadEx",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-23T20:38:02.407Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:38:02.407Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830dcf38a20280c8f78c2bf"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "helphy",
+	"teamname": "Poulet Phreaks 2600",
+	"createdAt": {
+		"$date": "2025-05-23T20:39:15.032Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:39:15.032Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830dd0a8a20280c8f78c2de"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "tillamen",
+	"teamname": "Lonely Chads",
+	"createdAt": {
+		"$date": "2025-05-23T20:39:38.327Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:39:38.327Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830dd1a8a20280c8f78c30a"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "n1mpH",
+	"teamname": "Inglorious Flagsterds",
+	"createdAt": {
+		"$date": "2025-05-23T20:39:54.75Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:39:54.75Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830df6b8a20280c8f78c4b6"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "Olam",
+	"teamname": "CtrlHack",
+	"createdAt": {
+		"$date": "2025-05-23T20:49:47.946Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:49:47.946Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830df818a20280c8f78c4fd"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "Trachinus",
+	"teamname": "Root66",
+	"createdAt": {
+		"$date": "2025-05-23T20:50:09.214Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:50:09.214Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830dfe58a20280c8f78c544"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "barney",
+	"teamname": "PinkyUnicorn",
+	"createdAt": {
+		"$date": "2025-05-23T20:51:49.131Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:51:49.131Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e0d68a20280c8f78c60a"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "Tom",
+	"teamname": "Blob",
+	"createdAt": {
+		"$date": "2025-05-23T20:55:50.429Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:55:50.429Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e0ff8a20280c8f78c65f"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "esgn",
+	"teamname": "foobar",
+	"createdAt": {
+		"$date": "2025-05-23T20:56:31.343Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:56:31.343Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e1128a20280c8f78c67f"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "sug4r",
+	"teamname": "f13ldf0lks",
+	"createdAt": {
+		"$date": "2025-05-23T20:56:50.326Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:56:50.326Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e1238a20280c8f78c699"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "animalart",
+	"teamname": "sthack_frites",
+	"createdAt": {
+		"$date": "2025-05-23T20:57:07.893Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:57:07.893Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e1288a20280c8f78c6a0"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "romzzq",
+	"teamname": "dos",
+	"createdAt": {
+		"$date": "2025-05-23T20:57:12.174Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:57:12.174Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e1a28a20280c8f78c784"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "helphy",
+	"teamname": "Poulet Phreaks 2600",
+	"createdAt": {
+		"$date": "2025-05-23T20:59:14.494Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T20:59:14.494Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e21d8a20280c8f78c839"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "DeserteurAdacis",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-23T21:01:17.776Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:01:17.776Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e21e8a20280c8f78c840"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "vulnerable",
+	"teamname": "hackvens",
+	"createdAt": {
+		"$date": "2025-05-23T21:01:18.524Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:01:18.524Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e2248a20280c8f78c847"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "Nugget",
+	"teamname": "ChickenThugz",
+	"createdAt": {
+		"$date": "2025-05-23T21:01:24.044Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:01:24.044Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e2d48a20280c8f78c8f4"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "boring",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-23T21:04:20.674Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:04:20.674Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e3608a20280c8f78c97b"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "OliveBxM",
+	"teamname": "BdxMet",
+	"createdAt": {
+		"$date": "2025-05-23T21:06:40.628Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:06:40.628Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e3c68a20280c8f78c9a9"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "Ad4m5",
+	"teamname": "Sth4ck0s",
+	"createdAt": {
+		"$date": "2025-05-23T21:08:22.508Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:08:22.508Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e4088a20280c8f78c9f7"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "Erak",
+	"teamname": "ADA7&F",
+	"createdAt": {
+		"$date": "2025-05-23T21:09:28.163Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:09:28.163Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e41d8a20280c8f78ca16"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "NtQueueApcThreadEx",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-23T21:09:49.671Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:09:49.671Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e4788a20280c8f78ca50"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "archie",
+	"teamname": "cat0verfl0w",
+	"createdAt": {
+		"$date": "2025-05-23T21:11:20.828Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:11:20.828Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e4808a20280c8f78ca57"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "Test_CTF",
+	"teamname": "Test_CTF",
+	"createdAt": {
+		"$date": "2025-05-23T21:11:28.654Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:11:28.654Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e4d08a20280c8f78ca8a"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "TomyThePingu",
+	"teamname": "ValHack",
+	"createdAt": {
+		"$date": "2025-05-23T21:12:48.136Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:12:48.136Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e5378a20280c8f78caf9"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "azubal",
+	"teamname": "Akatsuki",
+	"createdAt": {
+		"$date": "2025-05-23T21:14:31.603Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:14:31.603Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e5568a20280c8f78cb09"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "BigM4c",
+	"teamname": "ChickenThugz",
+	"createdAt": {
+		"$date": "2025-05-23T21:15:02.011Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:15:02.011Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e5858a20280c8f78cb6d"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "rootjuice",
+	"teamname": "hackcidentV2",
+	"createdAt": {
+		"$date": "2025-05-23T21:15:49.289Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:15:49.289Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e5ac8a20280c8f78cbb4"
+	},
+	"challengeId": "68308e2c8a20280c8f789d9e",
+	"username": "Nayru",
+	"teamname": "Inglorious Flagsterds",
+	"createdAt": {
+		"$date": "2025-05-23T21:16:28.04Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:16:28.04Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e5af8a20280c8f78cbc0"
+	},
+	"challengeId": "68308e2c8a20280c8f789d9e",
+	"username": "Vasco-shoot",
+	"teamname": "ValHack",
+	"createdAt": {
+		"$date": "2025-05-23T21:16:31.301Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:16:31.301Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e5e88a20280c8f78cc0f"
+	},
+	"challengeId": "68308e2c8a20280c8f789d9e",
+	"username": "senchurion",
+	"teamname": "blob",
+	"createdAt": {
+		"$date": "2025-05-23T21:17:28.218Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:17:28.218Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e6628a20280c8f78cc60"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "lbrochard",
+	"teamname": "BdxMet",
+	"createdAt": {
+		"$date": "2025-05-23T21:19:30.399Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:19:30.399Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e6b78a20280c8f78cc87"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "wheelroot",
+	"teamname": "Root66",
+	"createdAt": {
+		"$date": "2025-05-23T21:20:55.855Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:20:55.855Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e6c58a20280c8f78cc9d"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "sug4r",
+	"teamname": "f13ldf0lks",
+	"createdAt": {
+		"$date": "2025-05-23T21:21:09.258Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:21:09.258Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e7388a20280c8f78cd32"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "Tom2",
+	"teamname": "blob",
+	"createdAt": {
+		"$date": "2025-05-23T21:23:04.036Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:23:04.036Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e7868a20280c8f78cd5e"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "codeoverflow",
+	"teamname": "sthack_frites",
+	"createdAt": {
+		"$date": "2025-05-23T21:24:22.332Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:24:22.332Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e7d48a20280c8f78cdac"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "Enoxiia",
+	"teamname": "blob",
+	"createdAt": {
+		"$date": "2025-05-23T21:25:40.133Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:25:40.133Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830e8108a20280c8f78cdf7"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "Reyko",
+	"teamname": "Bottom's Up",
+	"createdAt": {
+		"$date": "2025-05-23T21:26:40.949Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:26:40.949Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830ea4351154f108fb34732"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "maaaeeel",
+	"teamname": "Root66",
+	"createdAt": {
+		"$date": "2025-05-23T21:36:03.269Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:36:03.269Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830ea7e51154f108fb34783"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "spnx",
+	"teamname": "arpanode",
+	"createdAt": {
+		"$date": "2025-05-23T21:37:02.825Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:37:02.825Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830eaee51154f108fb347f9"
+	},
+	"challengeId": "68308e2c8a20280c8f789d9e",
+	"username": "Tonyo",
+	"teamname": "ADA7&F",
+	"createdAt": {
+		"$date": "2025-05-23T21:38:54.037Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:38:54.037Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830ebaf51154f108fb348cc"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "Erak",
+	"teamname": "ADA7&F",
+	"createdAt": {
+		"$date": "2025-05-23T21:42:07.148Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:42:07.148Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830ebf551154f108fb348d8"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "codeoverflow",
+	"teamname": "sthack_frites",
+	"createdAt": {
+		"$date": "2025-05-23T21:43:17.867Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:43:17.867Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830ed2451154f108fb349ad"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "p4st1s",
+	"teamname": "Poulet Phreaks 2600",
+	"createdAt": {
+		"$date": "2025-05-23T21:48:20.246Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:48:20.246Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830ed3b51154f108fb349bf"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "Enoxiia",
+	"teamname": "blob",
+	"createdAt": {
+		"$date": "2025-05-23T21:48:43.745Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:48:43.745Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830edae51154f108fb34a2e"
+	},
+	"challengeId": "68308e2c8a20280c8f789d9e",
+	"username": "OuiSouss",
+	"teamname": "ADACTF",
+	"createdAt": {
+		"$date": "2025-05-23T21:50:38.126Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:50:38.126Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830ee1351154f108fb34a65"
+	},
+	"challengeId": "68308e2c8a20280c8f789d9e",
+	"username": "Reyko",
+	"teamname": "Bottom's Up",
+	"createdAt": {
+		"$date": "2025-05-23T21:52:19.849Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:52:19.849Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830ee3a51154f108fb34a80"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "r0g",
+	"teamname": "Bottom's Up",
+	"createdAt": {
+		"$date": "2025-05-23T21:52:58.673Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:52:58.673Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830ee6b51154f108fb34abe"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "gc41m37735",
+	"teamname": "f13ldf0lks",
+	"createdAt": {
+		"$date": "2025-05-23T21:53:47.781Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:53:47.781Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830eef351154f108fb34b4d"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "yann40",
+	"teamname": "Idefix",
+	"createdAt": {
+		"$date": "2025-05-23T21:56:03.331Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:56:03.331Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830eefa51154f108fb34b5c"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "Ad4m5",
+	"teamname": "Sth4ck0s",
+	"createdAt": {
+		"$date": "2025-05-23T21:56:10.058Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:56:10.058Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830ef3551154f108fb34b82"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "kobz",
+	"teamname": "CtrlHack",
+	"createdAt": {
+		"$date": "2025-05-23T21:57:09.323Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:57:09.323Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830ef5a51154f108fb34bb9"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "sheriff64",
+	"teamname": "ADACTF",
+	"createdAt": {
+		"$date": "2025-05-23T21:57:46.3Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:57:46.3Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830efae51154f108fb34c16"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "barney",
+	"teamname": "PinkyUnicorn",
+	"createdAt": {
+		"$date": "2025-05-23T21:59:10.123Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T21:59:10.123Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f00051154f108fb34c4a"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "LeSam",
+	"teamname": "GentleHack",
+	"createdAt": {
+		"$date": "2025-05-23T22:00:32.505Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:00:32.505Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f06951154f108fb34cb7"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "Alaska667",
+	"teamname": "hackcidentV2",
+	"createdAt": {
+		"$date": "2025-05-23T22:02:17.954Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:02:17.954Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f0e551154f108fb34d13"
+	},
+	"challengeId": "6830bc288a20280c8f789f73",
+	"username": "hack42",
+	"teamname": "Inglorious Flagsterds",
+	"createdAt": {
+		"$date": "2025-05-23T22:04:21.564Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:04:21.564Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f11351154f108fb34d3b"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "OuiSouss",
+	"teamname": "ADACTF",
+	"createdAt": {
+		"$date": "2025-05-23T22:05:07.254Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:05:07.254Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f20451154f108fb34de8"
+	},
+	"challengeId": "6830bc288a20280c8f789f73",
+	"username": "boring",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-23T22:09:08.761Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:09:08.761Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f20e51154f108fb34dfb"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "siefr3dus",
+	"teamname": "Bottom's Up",
+	"createdAt": {
+		"$date": "2025-05-23T22:09:18.59Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:09:18.59Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f26451154f108fb34e3f"
+	},
+	"challengeId": "68308e2c8a20280c8f789d9e",
+	"username": "BlueSeaHorse",
+	"teamname": "Apéroot",
+	"createdAt": {
+		"$date": "2025-05-23T22:10:44.386Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:10:44.386Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f33d51154f108fb34f1a"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "Reider",
+	"teamname": "Apéroot",
+	"createdAt": {
+		"$date": "2025-05-23T22:14:21.256Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:14:21.256Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f39f51154f108fb34f35"
+	},
+	"challengeId": "6830c0ad8a20280c8f78ac9d",
+	"username": "T0t0r0",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-23T22:15:59.909Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:15:59.909Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f42151154f108fb34f80"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "Math-X",
+	"teamname": "cat0verfl0w",
+	"createdAt": {
+		"$date": "2025-05-23T22:18:09.832Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:18:09.832Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f49351154f108fb34fed"
+	},
+	"challengeId": "6830bc288a20280c8f789f73",
+	"username": "Tom2",
+	"teamname": "blob",
+	"createdAt": {
+		"$date": "2025-05-23T22:20:03.624Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:20:03.624Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f67151154f108fb3517e"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "esgn",
+	"teamname": "foobar",
+	"createdAt": {
+		"$date": "2025-05-23T22:28:01.737Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:28:01.737Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f79451154f108fb3526b"
+	},
+	"challengeId": "682f26618a20280c8f789b8c",
+	"username": "midoo",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-23T22:32:52.23Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:32:52.23Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f7a751154f108fb3527e"
+	},
+	"challengeId": "68308e2c8a20280c8f789d9e",
+	"username": "Olam",
+	"teamname": "CtrlHack",
+	"createdAt": {
+		"$date": "2025-05-23T22:33:11.65Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:33:11.65Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f7dd51154f108fb352c2"
+	},
+	"challengeId": "682f26618a20280c8f789b8c",
+	"username": "totopirate",
+	"teamname": "PinkyUnicorn",
+	"createdAt": {
+		"$date": "2025-05-23T22:34:05.744Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:34:05.744Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f8c051154f108fb3532a"
+	},
+	"challengeId": "68308e2c8a20280c8f789d9e",
+	"username": "boring",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-23T22:37:52.596Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:37:52.596Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f9b351154f108fb35457"
+	},
+	"challengeId": "683090598a20280c8f789dd3",
+	"username": "NtAllocateVirtualMemoryEx",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-23T22:41:55.776Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:41:55.776Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830f9cf51154f108fb35462"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "Shark_Alone",
+	"teamname": "cat0verfl0w",
+	"createdAt": {
+		"$date": "2025-05-23T22:42:23.489Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:42:23.489Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830fb9151154f108fb35582"
+	},
+	"challengeId": "6830922b8a20280c8f789dd8",
+	"username": "NtAllocateVirtualMemoryEx",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-23T22:49:53.152Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:49:53.152Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830fbbe51154f108fb355ba"
+	},
+	"challengeId": "682f1a108a20280c8f789b4f",
+	"username": "Express",
+	"teamname": "PinkyUnicorn",
+	"createdAt": {
+		"$date": "2025-05-23T22:50:38.326Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:50:38.326Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830fd8451154f108fb35681"
+	},
+	"challengeId": "6830bc288a20280c8f789f73",
+	"username": "Kwetzakwak",
+	"teamname": "sthack_frites",
+	"createdAt": {
+		"$date": "2025-05-23T22:58:12.125Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:58:12.125Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830fdbc51154f108fb356c4"
+	},
+	"challengeId": "6830bc9d8a20280c8f789fb7",
+	"username": "Tom2",
+	"teamname": "blob",
+	"createdAt": {
+		"$date": "2025-05-23T22:59:08.473Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:59:08.473Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830fde351154f108fb356ed"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "chackal",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-23T22:59:47.412Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T22:59:47.412Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830fe1a51154f108fb35735"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "Shark_Alone",
+	"teamname": "cat0verfl0w",
+	"createdAt": {
+		"$date": "2025-05-23T23:00:42.432Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:00:42.432Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6830ff4151154f108fb3585f"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "Aji",
+	"teamname": "BdxMet",
+	"createdAt": {
+		"$date": "2025-05-23T23:05:37.301Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:05:37.301Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831009651154f108fb358d5"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "Trachinus",
+	"teamname": "Root66",
+	"createdAt": {
+		"$date": "2025-05-23T23:11:18.614Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:11:18.614Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683100c351154f108fb358e5"
+	},
+	"challengeId": "68308c5f8a20280c8f789d4e",
+	"username": "p4st1s",
+	"teamname": "Poulet Phreaks 2600",
+	"createdAt": {
+		"$date": "2025-05-23T23:12:03.283Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:12:03.283Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683101de51154f108fb359b8"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "ZeyKii",
+	"teamname": "GentleHack",
+	"createdAt": {
+		"$date": "2025-05-23T23:16:46.138Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:16:46.138Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831027451154f108fb35a18"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "vulnerable",
+	"teamname": "hackvens",
+	"createdAt": {
+		"$date": "2025-05-23T23:19:16.613Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:19:16.613Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683102fe51154f108fb35ab5"
+	},
+	"challengeId": "68308c5f8a20280c8f789d4e",
+	"username": "animalart",
+	"teamname": "sthack_frites",
+	"createdAt": {
+		"$date": "2025-05-23T23:21:34.96Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:21:34.96Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831035451154f108fb35b2b"
+	},
+	"challengeId": "6830bc288a20280c8f789f73",
+	"username": "conflict",
+	"teamname": "Root66",
+	"createdAt": {
+		"$date": "2025-05-23T23:23:00.733Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:23:00.733Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831047a51154f108fb35c28"
+	},
+	"challengeId": "6830bc9d8a20280c8f789fb7",
+	"username": "NtCreateRemoteThreadEx",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-23T23:27:54.854Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:27:54.854Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683104b551154f108fb35c4e"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "Tonyo",
+	"teamname": "ADA7&F",
+	"createdAt": {
+		"$date": "2025-05-23T23:28:53.226Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:28:53.226Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831051951154f108fb35ca5"
+	},
+	"challengeId": "6830e17e8a20280c8f78c6ea",
+	"username": "Tomtombinary",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-23T23:30:33.493Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:30:33.493Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831057851154f108fb35d1b"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "tillamen",
+	"teamname": "Lonely Chads",
+	"createdAt": {
+		"$date": "2025-05-23T23:32:08.904Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:32:08.904Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683105c251154f108fb35d5b"
+	},
+	"challengeId": "6830d87b8a20280c8f78bea9",
+	"username": "Phantasia",
+	"teamname": "Pwn Patrouille",
+	"createdAt": {
+		"$date": "2025-05-23T23:33:22.992Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:33:22.992Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683106f551154f108fb35e0f"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "n1mpH",
+	"teamname": "Inglorious Flagsterds",
+	"createdAt": {
+		"$date": "2025-05-23T23:38:29.383Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:38:29.383Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831079351154f108fb35e53"
+	},
+	"challengeId": "68308d2b8a20280c8f789d94",
+	"username": "lemonaids",
+	"teamname": "hackvens",
+	"createdAt": {
+		"$date": "2025-05-23T23:41:07.207Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:41:07.207Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831089a51154f108fb35f1b"
+	},
+	"challengeId": "68308c5f8a20280c8f789d4e",
+	"username": "lalu",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-23T23:45:30.223Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:45:30.223Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831091951154f108fb35f5b"
+	},
+	"challengeId": "6830bc9d8a20280c8f789fb7",
+	"username": "conflict",
+	"teamname": "Root66",
+	"createdAt": {
+		"$date": "2025-05-23T23:47:37.702Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:47:37.702Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310a4051154f108fb36027"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "azubal",
+	"teamname": "Akatsuki",
+	"createdAt": {
+		"$date": "2025-05-23T23:52:32.308Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:52:32.308Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310ac051154f108fb36055"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "totopirate",
+	"teamname": "PinkyUnicorn",
+	"createdAt": {
+		"$date": "2025-05-23T23:54:40.317Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:54:40.317Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310b1251154f108fb3608c"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "Spartan",
+	"teamname": "ValHack",
+	"createdAt": {
+		"$date": "2025-05-23T23:56:02.696Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:56:02.696Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310bca51154f108fb360e6"
+	},
+	"challengeId": "6830df5b8a20280c8f78c4a5",
+	"username": "tillamen",
+	"teamname": "Lonely Chads",
+	"createdAt": {
+		"$date": "2025-05-23T23:59:06.992Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:59:06.992Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310bfd51154f108fb3612a"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "esgn",
+	"teamname": "foobar",
+	"createdAt": {
+		"$date": "2025-05-23T23:59:57.87Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-23T23:59:57.87Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310c4f51154f108fb3614d"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "NtQueueApcThreadEx",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-24T00:01:19.55Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:01:19.55Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310c7b51154f108fb3617e"
+	},
+	"challengeId": "6830df5b8a20280c8f78c4a5",
+	"username": "totopirate",
+	"teamname": "PinkyUnicorn",
+	"createdAt": {
+		"$date": "2025-05-24T00:02:03.884Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:02:03.884Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310d0851154f108fb361e9"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "senchurion",
+	"teamname": "blob",
+	"createdAt": {
+		"$date": "2025-05-24T00:04:24.668Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:04:24.668Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310d2651154f108fb361f6"
+	},
+	"challengeId": "6830df5b8a20280c8f78c4a5",
+	"username": "onimoushan",
+	"teamname": "Inglorious Flagsterds",
+	"createdAt": {
+		"$date": "2025-05-24T00:04:54.667Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:04:54.667Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310d3a51154f108fb36204"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "sharpy",
+	"teamname": "Inglorious Flagsterds",
+	"createdAt": {
+		"$date": "2025-05-24T00:05:14.268Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:05:14.268Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310d9551154f108fb36239"
+	},
+	"challengeId": "68308c5f8a20280c8f789d4e",
+	"username": "sheriff64",
+	"teamname": "ADACTF",
+	"createdAt": {
+		"$date": "2025-05-24T00:06:45.496Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:06:45.496Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310dc451154f108fb3625f"
+	},
+	"challengeId": "6830bce58a20280c8f789ff2",
+	"username": "NtCreateRemoteThreadEx",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-24T00:07:32.858Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:07:32.858Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310e2c51154f108fb362db"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "LexIt",
+	"teamname": "arpanode",
+	"createdAt": {
+		"$date": "2025-05-24T00:09:16.9Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:09:16.9Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310e4151154f108fb36313"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "Erak",
+	"teamname": "ADA7&F",
+	"createdAt": {
+		"$date": "2025-05-24T00:09:37.187Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:09:37.187Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310e8451154f108fb3632a"
+	},
+	"challengeId": "6830df5b8a20280c8f78c4a5",
+	"username": "NtQueueApcThreadEx",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-24T00:10:44.298Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:10:44.298Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310ec051154f108fb36342"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "LeSam",
+	"teamname": "GentleHack",
+	"createdAt": {
+		"$date": "2025-05-24T00:11:44.79Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:11:44.79Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310f5851154f108fb363b4"
+	},
+	"challengeId": "683090598a20280c8f789dd3",
+	"username": "lalu",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-24T00:14:16.778Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:14:16.778Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68310f7951154f108fb363c8"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "Oblivios",
+	"teamname": "Lonely Chads",
+	"createdAt": {
+		"$date": "2025-05-24T00:14:49.15Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:14:49.15Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683110a551154f108fb36555"
+	},
+	"challengeId": "6830dc518a20280c8f78c1d5",
+	"username": "siefr3dus",
+	"teamname": "Bottom's Up",
+	"createdAt": {
+		"$date": "2025-05-24T00:19:49.395Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:19:49.395Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831118a51154f108fb365ed"
+	},
+	"challengeId": "6830bce58a20280c8f789ff2",
+	"username": "Tom2",
+	"teamname": "blob",
+	"createdAt": {
+		"$date": "2025-05-24T00:23:38.535Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:23:38.535Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683111c251154f108fb36622"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "F3d0m",
+	"teamname": "foobar",
+	"createdAt": {
+		"$date": "2025-05-24T00:24:34.024Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:24:34.024Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683111ee51154f108fb36669"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "Erak",
+	"teamname": "ADA7&F",
+	"createdAt": {
+		"$date": "2025-05-24T00:25:18.604Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:25:18.604Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831127e51154f108fb366a9"
+	},
+	"challengeId": "68308c5f8a20280c8f789d4e",
+	"username": "Grominet",
+	"teamname": "PinkyUnicorn",
+	"createdAt": {
+		"$date": "2025-05-24T00:27:42.085Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:27:42.085Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831128e51154f108fb366be"
+	},
+	"challengeId": "6830922b8a20280c8f789dd8",
+	"username": "lalu",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-24T00:27:58.752Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:27:58.752Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831134f51154f108fb3672f"
+	},
+	"challengeId": "6830bc288a20280c8f789f73",
+	"username": "Tomtombinary",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-24T00:31:11.813Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:31:11.813Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831145851154f108fb36801"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "Arlo",
+	"teamname": "hackcidentV2",
+	"createdAt": {
+		"$date": "2025-05-24T00:35:36.311Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:35:36.311Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683115c051154f108fb368db"
+	},
+	"challengeId": "6830df5b8a20280c8f78c4a5",
+	"username": "Trachinus",
+	"teamname": "Root66",
+	"createdAt": {
+		"$date": "2025-05-24T00:41:36.156Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:41:36.156Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831170951154f108fb369dd"
+	},
+	"challengeId": "6830dc518a20280c8f78c1d5",
+	"username": "Niratra",
+	"teamname": "foobar",
+	"createdAt": {
+		"$date": "2025-05-24T00:47:05.736Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:47:05.736Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831172c51154f108fb369fc"
+	},
+	"challengeId": "6830df5b8a20280c8f78c4a5",
+	"username": "Arlo",
+	"teamname": "hackcidentV2",
+	"createdAt": {
+		"$date": "2025-05-24T00:47:40.339Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:47:40.339Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831173e51154f108fb36a0d"
+	},
+	"challengeId": "6830eada51154f108fb347d8",
+	"username": "ThaySan",
+	"teamname": "Lonely Chads",
+	"createdAt": {
+		"$date": "2025-05-24T00:47:58.482Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:47:58.482Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831176251154f108fb36a35"
+	},
+	"challengeId": "6830bf008a20280c8f78a518",
+	"username": "Vdstx",
+	"teamname": "Apéroot",
+	"createdAt": {
+		"$date": "2025-05-24T00:48:34.866Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:48:34.866Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831178451154f108fb36a82"
+	},
+	"challengeId": "6830bc9d8a20280c8f789fb7",
+	"username": "Kwetzakwak",
+	"teamname": "sthack_frites",
+	"createdAt": {
+		"$date": "2025-05-24T00:49:08.692Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:49:08.692Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683117e551154f108fb36aaf"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "mmm",
+	"teamname": "hackvens",
+	"createdAt": {
+		"$date": "2025-05-24T00:50:45.521Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:50:45.521Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831182751154f108fb36aee"
+	},
+	"challengeId": "68308c5f8a20280c8f789d4e",
+	"username": "lemonaids",
+	"teamname": "hackvens",
+	"createdAt": {
+		"$date": "2025-05-24T00:51:51.918Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:51:51.918Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683118ef51154f108fb36b3c"
+	},
+	"challengeId": "683090598a20280c8f789dd3",
+	"username": "sheriff64",
+	"teamname": "ADACTF",
+	"createdAt": {
+		"$date": "2025-05-24T00:55:11.42Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:55:11.42Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831191651154f108fb36b77"
+	},
+	"challengeId": "6830bc288a20280c8f789f73",
+	"username": "vulnerable",
+	"teamname": "hackvens",
+	"createdAt": {
+		"$date": "2025-05-24T00:55:50.267Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:55:50.267Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831195751154f108fb36c46"
+	},
+	"challengeId": "6830bc288a20280c8f789f73",
+	"username": "QU3NT1N",
+	"teamname": "BdxMet",
+	"createdAt": {
+		"$date": "2025-05-24T00:56:55.709Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T00:56:55.709Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311a2251154f108fb36ca4"
+	},
+	"challengeId": "68308c5f8a20280c8f789d4e",
+	"username": "piair",
+	"teamname": "foobar",
+	"createdAt": {
+		"$date": "2025-05-24T01:00:18.15Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:00:18.15Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311a6851154f108fb36ced"
+	},
+	"challengeId": "68308e2c8a20280c8f789d9e",
+	"username": "effect",
+	"teamname": "Root66",
+	"createdAt": {
+		"$date": "2025-05-24T01:01:28.766Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:01:28.766Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311aa451154f108fb36d0a"
+	},
+	"challengeId": "6830e0638a20280c8f78c5b9",
+	"username": "totopirate",
+	"teamname": "PinkyUnicorn",
+	"createdAt": {
+		"$date": "2025-05-24T01:02:28.27Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:02:28.27Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311aaf51154f108fb36d2c"
+	},
+	"challengeId": "6830922b8a20280c8f789dd8",
+	"username": "sheriff64",
+	"teamname": "ADACTF",
+	"createdAt": {
+		"$date": "2025-05-24T01:02:39.805Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:02:39.805Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311bbd51154f108fb36da9"
+	},
+	"challengeId": "6830eada51154f108fb347d8",
+	"username": "totopirate",
+	"teamname": "PinkyUnicorn",
+	"createdAt": {
+		"$date": "2025-05-24T01:07:09.806Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:07:09.806Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311c4051154f108fb36e19"
+	},
+	"challengeId": "6830dc518a20280c8f78c1d5",
+	"username": "sharpy",
+	"teamname": "Inglorious Flagsterds",
+	"createdAt": {
+		"$date": "2025-05-24T01:09:20.808Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:09:20.808Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311cdb51154f108fb36e84"
+	},
+	"challengeId": "6830e0638a20280c8f78c5b9",
+	"username": "NtQueueApcThreadEx",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-24T01:11:55.407Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:11:55.407Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311dab51154f108fb36f2d"
+	},
+	"challengeId": "6830dc518a20280c8f78c1d5",
+	"username": "Nugget",
+	"teamname": "ChickenThugz",
+	"createdAt": {
+		"$date": "2025-05-24T01:15:23.488Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:15:23.488Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311df751154f108fb36f92"
+	},
+	"challengeId": "682f16ba8a20280c8f789b31",
+	"username": "Reider",
+	"teamname": "Apéroot",
+	"createdAt": {
+		"$date": "2025-05-24T01:16:39.362Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:16:39.362Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311df751154f108fb36f99"
+	},
+	"challengeId": "6830e17e8a20280c8f78c6ea",
+	"username": "Express",
+	"teamname": "PinkyUnicorn",
+	"createdAt": {
+		"$date": "2025-05-24T01:16:39.598Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:16:39.598Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311e0c51154f108fb36fd9"
+	},
+	"challengeId": "6830bce58a20280c8f789ff2",
+	"username": "conflict",
+	"teamname": "Root66",
+	"createdAt": {
+		"$date": "2025-05-24T01:17:00.529Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:17:00.529Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311e3651154f108fb3700c"
+	},
+	"challengeId": "683045e98a20280c8f789ca4",
+	"username": "ixod3",
+	"teamname": "blob",
+	"createdAt": {
+		"$date": "2025-05-24T01:17:42.132Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:17:42.132Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311e6451154f108fb3702d"
+	},
+	"challengeId": "6830c0ad8a20280c8f78ac9d",
+	"username": "NtAllocateVirtualMemoryEx",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-24T01:18:28.76Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:18:28.76Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311eb651154f108fb3705f"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "spnx",
+	"teamname": "arpanode",
+	"createdAt": {
+		"$date": "2025-05-24T01:19:50.491Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:19:50.491Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311ef351154f108fb3707f"
+	},
+	"challengeId": "6830e0638a20280c8f78c5b9",
+	"username": "Oblivios",
+	"teamname": "Lonely Chads",
+	"createdAt": {
+		"$date": "2025-05-24T01:20:51.171Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:20:51.171Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68311f9f51154f108fb3712b"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "r0g",
+	"teamname": "Bottom's Up",
+	"createdAt": {
+		"$date": "2025-05-24T01:23:43.117Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:23:43.117Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831202651154f108fb3717d"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "OuiSouss",
+	"teamname": "ADACTF",
+	"createdAt": {
+		"$date": "2025-05-24T01:25:58.868Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:25:58.868Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831210b51154f108fb371d6"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "Express",
+	"teamname": "PinkyUnicorn",
+	"createdAt": {
+		"$date": "2025-05-24T01:29:47.487Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:29:47.487Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683121aa51154f108fb3725c"
+	},
+	"challengeId": "6830bc9d8a20280c8f789fb7",
+	"username": "vulnerable",
+	"teamname": "hackvens",
+	"createdAt": {
+		"$date": "2025-05-24T01:32:26.226Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:32:26.226Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683121c151154f108fb37267"
+	},
+	"challengeId": "6830df5b8a20280c8f78c4a5",
+	"username": "Erak",
+	"teamname": "ADA7&F",
+	"createdAt": {
+		"$date": "2025-05-24T01:32:49.568Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:32:49.568Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683121ca51154f108fb3726e"
+	},
+	"challengeId": "6830df5b8a20280c8f78c4a5",
+	"username": "sheriff64",
+	"teamname": "ADACTF",
+	"createdAt": {
+		"$date": "2025-05-24T01:32:58.224Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:32:58.224Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683122f151154f108fb37316"
+	},
+	"challengeId": "68308c5f8a20280c8f789d4e",
+	"username": "hack42",
+	"teamname": "Inglorious Flagsterds",
+	"createdAt": {
+		"$date": "2025-05-24T01:37:53.941Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:37:53.941Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683123d751154f108fb373b8"
+	},
+	"challengeId": "6830eada51154f108fb347d8",
+	"username": "NtQueueApcThreadEx",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-24T01:41:43.751Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:41:43.751Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683124b351154f108fb3744e"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "midoo",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-24T01:45:23.859Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:45:23.859Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831254551154f108fb374ea"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "senchurion",
+	"teamname": "blob",
+	"createdAt": {
+		"$date": "2025-05-24T01:47:49.85Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:47:49.85Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683125bc51154f108fb37526"
+	},
+	"challengeId": "6830dc518a20280c8f78c1d5",
+	"username": "lalu",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-24T01:49:48.383Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:49:48.383Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831273151154f108fb37656"
+	},
+	"challengeId": "683090598a20280c8f789dd3",
+	"username": "p4st1s",
+	"teamname": "Poulet Phreaks 2600",
+	"createdAt": {
+		"$date": "2025-05-24T01:56:01.3Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:56:01.3Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683127f851154f108fb376cc"
+	},
+	"challengeId": "6830bc288a20280c8f789f73",
+	"username": "Benja",
+	"teamname": "f13ldf0lks",
+	"createdAt": {
+		"$date": "2025-05-24T01:59:20.157Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T01:59:20.157Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831289e51154f108fb3771e"
+	},
+	"challengeId": "6830e0638a20280c8f78c5b9",
+	"username": "conflict",
+	"teamname": "Root66",
+	"createdAt": {
+		"$date": "2025-05-24T02:02:06.831Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:02:06.831Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831297851154f108fb377ce"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "Benja",
+	"teamname": "f13ldf0lks",
+	"createdAt": {
+		"$date": "2025-05-24T02:05:44.522Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:05:44.522Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68312b3451154f108fb3785d"
+	},
+	"challengeId": "6830bce58a20280c8f789ff2",
+	"username": "vulnerable",
+	"teamname": "hackvens",
+	"createdAt": {
+		"$date": "2025-05-24T02:13:08.267Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:13:08.267Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68312b9651154f108fb3787c"
+	},
+	"challengeId": "6830df5b8a20280c8f78c4a5",
+	"username": "mmm",
+	"teamname": "hackvens",
+	"createdAt": {
+		"$date": "2025-05-24T02:14:46.94Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:14:46.94Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68312ba451154f108fb37884"
+	},
+	"challengeId": "6830bce58a20280c8f789ff2",
+	"username": "Kwetzakwak",
+	"teamname": "sthack_frites",
+	"createdAt": {
+		"$date": "2025-05-24T02:15:00.405Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:15:00.405Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68312c8551154f108fb3791e"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "ZeyKii",
+	"teamname": "GentleHack",
+	"createdAt": {
+		"$date": "2025-05-24T02:18:45.2Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:18:45.2Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68312cbb51154f108fb3792a"
+	},
+	"challengeId": "683045e98a20280c8f789ca4",
+	"username": "luminouw",
+	"teamname": "AD4CTF",
+	"createdAt": {
+		"$date": "2025-05-24T02:19:39.164Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:19:39.164Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68312d0b51154f108fb3795e"
+	},
+	"challengeId": "683045e98a20280c8f789ca4",
+	"username": "sheriff64",
+	"teamname": "ADACTF",
+	"createdAt": {
+		"$date": "2025-05-24T02:20:59.927Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:20:59.927Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68312d1551154f108fb3796e"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "helphy",
+	"teamname": "Poulet Phreaks 2600",
+	"createdAt": {
+		"$date": "2025-05-24T02:21:09.958Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:21:09.958Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68312dec51154f108fb37a10"
+	},
+	"challengeId": "6830e0638a20280c8f78c5b9",
+	"username": "Arlo",
+	"teamname": "hackcidentV2",
+	"createdAt": {
+		"$date": "2025-05-24T02:24:44.088Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:24:44.088Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68312e4251154f108fb37a75"
+	},
+	"challengeId": "682f26618a20280c8f789b8c",
+	"username": "eRa",
+	"teamname": "Bottom's Up",
+	"createdAt": {
+		"$date": "2025-05-24T02:26:10.312Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:26:10.312Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68312e8a51154f108fb37a95"
+	},
+	"challengeId": "68308c5f8a20280c8f789d4e",
+	"username": "Trachinus",
+	"teamname": "Root66",
+	"createdAt": {
+		"$date": "2025-05-24T02:27:22.119Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:27:22.119Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68312f3b51154f108fb37b04"
+	},
+	"challengeId": "6830df5b8a20280c8f78c4a5",
+	"username": "helphy",
+	"teamname": "Poulet Phreaks 2600",
+	"createdAt": {
+		"$date": "2025-05-24T02:30:19.359Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:30:19.359Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831308151154f108fb37b9e"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "sheriff64",
+	"teamname": "ADACTF",
+	"createdAt": {
+		"$date": "2025-05-24T02:35:45.406Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:35:45.406Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683135cd51154f108fb37e1f"
+	},
+	"challengeId": "6830eada51154f108fb347d8",
+	"username": "Trachinus",
+	"teamname": "Root66",
+	"createdAt": {
+		"$date": "2025-05-24T02:58:21.992Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:58:21.992Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831361f51154f108fb37e56"
+	},
+	"challengeId": "68308e2c8a20280c8f789d9e",
+	"username": "lalu",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-24T02:59:43.427Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T02:59:43.427Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683136e751154f108fb37f0a"
+	},
+	"challengeId": "6830e0638a20280c8f78c5b9",
+	"username": "sheriff64",
+	"teamname": "ADACTF",
+	"createdAt": {
+		"$date": "2025-05-24T03:03:03.44Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:03:03.44Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683136ed51154f108fb37f13"
+	},
+	"challengeId": "6830dc518a20280c8f78c1d5",
+	"username": "DeserteurAdacis",
+	"teamname": "LPH Galaxy",
+	"createdAt": {
+		"$date": "2025-05-24T03:03:09.811Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:03:09.811Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683137b551154f108fb37f71"
+	},
+	"challengeId": "6830dc468a20280c8f78c1c5",
+	"username": "lbrochard",
+	"teamname": "BdxMet",
+	"createdAt": {
+		"$date": "2025-05-24T03:06:29.215Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:06:29.215Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "683137df51154f108fb37fa6"
+	},
+	"challengeId": "6830ecdd51154f108fb34978",
+	"username": "Reyko",
+	"teamname": "Bottom's Up",
+	"createdAt": {
+		"$date": "2025-05-24T03:07:11.435Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:07:11.435Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831383851154f108fb37fca"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "ZeyKii",
+	"teamname": "GentleHack",
+	"createdAt": {
+		"$date": "2025-05-24T03:08:40.959Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:08:40.959Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831384251154f108fb37fda"
+	},
+	"challengeId": "6830bc9d8a20280c8f789fb7",
+	"username": "chackal",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-24T03:08:50.214Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:08:50.214Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831388851154f108fb3802a"
+	},
+	"challengeId": "6830922b8a20280c8f789dd8",
+	"username": "helphy",
+	"teamname": "Poulet Phreaks 2600",
+	"createdAt": {
+		"$date": "2025-05-24T03:10:00.916Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:10:00.916Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831397651154f108fb3807f"
+	},
+	"challengeId": "6830dc518a20280c8f78c1d5",
+	"username": "sug4r",
+	"teamname": "f13ldf0lks",
+	"createdAt": {
+		"$date": "2025-05-24T03:13:58.975Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:13:58.975Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831398a51154f108fb38098"
+	},
+	"challengeId": "6830bc9d8a20280c8f789fb7",
+	"username": "Benja",
+	"teamname": "f13ldf0lks",
+	"createdAt": {
+		"$date": "2025-05-24T03:14:18.366Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:14:18.366Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68313a7551154f108fb38158"
+	},
+	"challengeId": "683090598a20280c8f789dd3",
+	"username": "barney",
+	"teamname": "PinkyUnicorn",
+	"createdAt": {
+		"$date": "2025-05-24T03:18:13.244Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:18:13.244Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68313b5251154f108fb381ca"
+	},
+	"challengeId": "68308c5f8a20280c8f789d4e",
+	"username": "aube",
+	"teamname": "Bottom's Up",
+	"createdAt": {
+		"$date": "2025-05-24T03:21:54.013Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:21:54.013Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68313edd51154f108fb383e5"
+	},
+	"challengeId": "6830e0638a20280c8f78c5b9",
+	"username": "helphy",
+	"teamname": "Poulet Phreaks 2600",
+	"createdAt": {
+		"$date": "2025-05-24T03:37:01.94Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:37:01.94Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "68313f4a51154f108fb3840d"
+	},
+	"challengeId": "6830bbde8a20280c8f789f63",
+	"username": "Vasco-shoot",
+	"teamname": "ValHack",
+	"createdAt": {
+		"$date": "2025-05-24T03:38:50.622Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:38:50.622Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831404451154f108fb3848c"
+	},
+	"challengeId": "6830922b8a20280c8f789dd8",
+	"username": "Grominet",
+	"teamname": "PinkyUnicorn",
+	"createdAt": {
+		"$date": "2025-05-24T03:43:00.52Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:43:00.52Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831406a51154f108fb384ba"
+	},
+	"challengeId": "683090598a20280c8f789dd3",
+	"username": "conflict",
+	"teamname": "Root66",
+	"createdAt": {
+		"$date": "2025-05-24T03:43:38.277Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:43:38.277Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831414b51154f108fb38555"
+	},
+	"challengeId": "6830df5b8a20280c8f78c4a5",
+	"username": "midoo",
+	"teamname": "definitely-not-first",
+	"createdAt": {
+		"$date": "2025-05-24T03:47:23.128Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:47:23.128Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6831419651154f108fb3859a"
+	},
+	"challengeId": "6830922b8a20280c8f789dd8",
+	"username": "conflict",
+	"teamname": "Root66",
+	"createdAt": {
+		"$date": "2025-05-24T03:48:38.53Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-24T03:48:38.53Z"
+	},
+	"__v": 0
+}]
+
