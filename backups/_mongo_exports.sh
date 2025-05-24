@@ -37,7 +37,7 @@ USERS_FILE="/backups/${YEAR}/users.json"
 jq '(.[].password) |= ""' "$USERS_FILE" > "$USERS_FILE.tmp" && mv "$USERS_FILE.tmp" "$USERS_FILE"
 
 # clean unused files
-FILES_FILE="files.json"
+FILES_FILE="/backups/${YEAR}/files.json"
 jq -r '.[].name' <"${FILES_FILE}" | while read -r FILE_NAME; do
   IS_REFERENCED=$(grep -R -l "$FILE_NAME" . --exclude="${FILES_FILE}" -c)
 
