@@ -1,417 +1,418 @@
-[{
-	"_id": {
-		"$oid": "682f16ba8a20280c8f789b31"
-	},
-	"name": "RanTanPlan's Twitch Propaganda",
-	"description": "Depuis que je lui ai donné les croquettes de chez **Agrosyn**, mon chien est bizarre... \n\nJe l'ai surpris sur mon ordi à plusieurs reprises et j'ai réussi à intercepter du traffic réseau me semblant louche.\n\nAidez-moi à comprendre ce que manigance mon meilleur ami à 4 pattes !\n\nLien de téléchargement du PCAP : https://rantanplan.sthack.fr/capture.pcap",
-	"img": "/api/content/f9913538dfa686019edbc7115b89fe35b5f8a3ed7a170fefba8db2ea9951a326.webp",
-	"author": "cptrskv",
-	"flag": "6810ebf04dbf8893da919c2a7a887e9f8c17623ab452601506df30253445d986",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "cf4f2626-7824-4da2-969f-5b9c40b94342",
-	"category": "forensics/network",
-	"difficulty": "easy",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "682f1a108a20280c8f789b4f"
-	},
-	"name": "Printffffff",
-	"description": "DO YOU KNOW ABOUT **PRINTF()** ?\n\nThe challenge is right there => [printffffff](/api/content/5d906a7476ab927be6313dff986d27a62616d806565cc75805cd0bb36ab22d4b)",
-	"img": "/api/content/85cd65f84bb5fd47f5c70f9cc0a588b73476e0d7e9aa186a678c491014439255.webp",
-	"author": "Kaddate",
-	"flag": "d54fbaf1eabea10f8554d09fef305027f6b27d7012328da6b8c130b0280084cb",
-	"flagPattern": "Sthack{.*}",
-	"salt": "b7c1858e-b4b7-4585-abbe-4f774d6d7c14",
-	"category": "reverse",
-	"difficulty": "hard",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "682f26618a20280c8f789b8c"
-	},
-	"name": "Cache me If You Can",
-	"description": "I feel like someone is messing with my cache ! Can you uncover what's happening ?\n\nIf you've find something really close to the flag or if you think you have the flag but it isn't validated on the platform, try to reach **Kaddate** or **Amnesik**.\n\nThe challenge is accessible here : `ssh hacker@34.155.223.158 -p 12344` with password `h4ck3r`\n\nEn cas de non connectivité il y a aussi les comptes hacker2, hacker3, hacker4, hacker5\n\n**No privesc nor container escape is needed !**\n\nIf you want to run the program on your machine, make sure to have a **x86_64** architecture : [2BeShared](/api/content/9427d8754d33611f1c0cdf4558161e36ced731b66b71c9074fbf4b35298f5db6)",
-	"img": "",
-	"author": "Kaddate",
-	"flag": "21c42005cb700d96c2031b344585d485d050a34b7dc899cca53d70c81a36e7da",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "98ebc342-20c2-4bf8-b317-b1d0498f20a7",
-	"category": "reverse",
-	"difficulty": "medium",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "683045e98a20280c8f789ca4"
-	},
-	"name": "Mailz",
-	"description": "\nHello welcome to this antispam service, you can deploy it or test on our protected mail infra system on mailz.sthack.fr:2525 (only this port is the scope of this challenge)\n\n[Mailz.zip](/api/content/6e8a541b92301c2d5be24fb3f00c8fbaa48ede195c4f9df0ba59e3e08e0c3d11.zip)\n\n\n",
-	"img": "/api/content/1471187ba6f3283b4d8f8ed53cb131d79e77b3032f3fcd358449b07bf1f1c9a1.webp",
-	"author": "amnesik",
-	"flag": "4cc109f4c35ed10bd1bf4d3c8525160d64275e542865e905265554ee65dfbd0c",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "dbe3e8bb-f19e-48b1-b763-028261081a5f",
-	"category": "mail",
-	"difficulty": "medium",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "68308c5f8a20280c8f789d4e"
-	},
-	"name": "Flasked - Web flag (1/3)",
-	"description": "**Obtenez** un accès à l'interface d'administration de ce service de la société ForgeTek.\n\nSources du serveur: http://rantanplan.sthack.fr/backup.zip (l'URL n'est pas dans le scope du challenge, demandez-moi une instance ;) )",
-	"img": "/api/content/1323479a8fc19f307b0b90f3cea1b4d14fdd51e6f9930d2c4d701d95910aa438.webp",
-	"author": "dryy",
-	"flag": "b74980df6dafb26b96be46c79900805feb5b6c23401207d1ac988d5cc39ddb3a",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "c0bf8b56-71da-4cf4-81c4-ff0806d5ad24",
-	"category": "web",
-	"difficulty": "medium",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "68308d2b8a20280c8f789d94"
-	},
-	"name": "Bad dev",
-	"description": "Notre developpeur préféré à mis en place une interface pour que vous puissiez le contacter. \n\nIl lit tous vos messages.\n\nNous savons qu'il héberge une application en cours de développement sur son réseau. \n\nNous comptons sur vous pour récupérer le flag qu'elle héberge. \n\n\n**[Challenge](http://bad-dev.sthack.fr/)**",
-	"img": "/api/content/c1eec7d27c0a8c1daab3a46ea2c64b82048ae18b72c879417bea812477ab86ad.webp",
-	"author": "shoxx",
-	"flag": "bf310ebce61d5c2e46c39de416126cc4051f0fe4c0ea5c1a6f762a5ca40c0fad",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "faf043d4-09cf-4098-bb7b-f186643d1368",
-	"category": "web",
-	"difficulty": "hard",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "68308e2c8a20280c8f789d9e"
-	},
-	"name": "Chef the flag !! You are cooked !!",
-	"description": "Nos chefs cuistots de ce soir se sont décarcassés afin de vous préparer les meilleures lasagnes que vous ayez jamais mangées !\n\nVotre mission ce soir : percer le secret de ces lasagnes !\n\nGoûtez, analysez, et retrouvez **la liste compléte des ingrédients** qui composent ce plat.\n\nUne fois la liste complétée, il vous faudra aussi deviner **les quantités achetées** !\n\nFaites appel à votre palais et à votre intuition pour relever ce défi culinaire !\n\nPour valider vos propositions et obtenir le flag, discutez avec nos chefs directement",
-	"img": "/api/content/ec6f2e068f927e86f93fd4a2ab1156e94e97fc965fc7b6614b1f91b157c493a4.webp",
-	"author": "mbs",
-	"flag": "cada90953f7eaeb33d16b4c2ccf8efab6a40eac7701c6af32c49e1ccc664aa9a",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "b37c7d9b-58db-4c96-8b3a-dbadb3622b8b",
-	"category": "cooking",
-	"difficulty": "easy",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "683090598a20280c8f789dd3"
-	},
-	"name": "Flasked - RCE flag (2/3)",
-	"description": "Vous avez obtenu un accès à la section d'administration! Maintenant, obtenez un shell sur la machine.\n\nSources du serveur: http://rantanplan.sthack.fr/backup.zip (l'URL n'est pas dans le scope du challenge, demandez-moi une instance ;) )",
-	"img": "/api/content/7434d1dfc9134da85e4af3a80769e7bbe485f3aef961d1aa82ab19e189fc52ef.webp",
-	"author": "dryy",
-	"flag": "0df0cbd6fcc3e76d3e924e7ba14f362c74d3c6878fd3ddf215ffea123d076f31",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "d45dee35-2338-4a15-b783-bc210df5571e",
-	"category": "web",
-	"difficulty": "medium",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830922b8a20280c8f789dd8"
-	},
-	"name": "Flasked - Root flag (3/3)",
-	"description": "Grâce au shell, obtenez le flag situé dans /root/flag.txt.\n\nSources du serveur: http://rantanplan.sthack.fr/backup.zip (l'URL n'est pas dans le scope du challenge, demandez-moi une instance ;) )",
-	"img": "/api/content/93e48de567ae9126fa090ec578b66f0f58b87d6289cfe848426899997d449fc9.webp",
-	"author": "dryy",
-	"flag": "1cbb011f9bccd633cf4b5cf358aaa1597df9018b2a76f18464dd4ad264d1e8e3",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "780bb0cc-33c2-4fb2-b2ac-22f73321063e",
-	"category": "web",
-	"difficulty": "medium",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830961c8a20280c8f789e5b"
-	},
-	"name": "Cat or Dogs or Something Else",
-	"description": "**Nous sommes une entreprise spécialisée dans l’analyse d’images de chiens et de chats.\nNotre modèle est très performant, mais n’hésitez pas à nous partager le vôtre : il sera analysé avec soin.\nBien entendu, nous utilisons les dernières versions de Python (actuellement en 3.12) et de TensorFlow (en version 2.19.0) pour éviter tout problème de sécurité;\nL’URL de notre site est la suivante : http://13.48.3.215/ **",
-	"img": "/api/content/5efd2d05a4cd862ca93df8d94293309642e8a800ca348767276afec7d290173a.webp",
-	"author": "xpholey && train",
-	"flag": "f5a48715840b1f16cbd13768c37665570b5c9cb3c8e4a0353c4cdf26b298d096",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "b0c4b756-606d-4936-a76d-4aa3142e3968",
-	"category": "App script",
-	"difficulty": "hard",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830b7108a20280c8f789ee4"
-	},
-	"name": "Hotdog - Hacking Furtif",
-	"description": "# Hotdog - Hacking Furtif\n\nVotre objectif est de vous connecter au site de MegaCorpOne pour obtenir le flag.\n\nPour y parvenir vous tentez une attaque détournée via le site de hotdogs où vont régulièrement les employés de MegaCorpOne manger le midi ou pour des after works.\n\nMais attention dernière l'apparence d'un simple vendeur de hot dog se trouve un paranoïaque de la cyber sécurité, qui monitore son site, réalise des détections et réalise même certaines actions automatiques de réponse à incident en cas de détection.\n\nAlors attention les gros bourrins, il va falloir être furtif pour passer..\nLe reward demain ne sera pas pour le FIRST BLOOD mais pour celui qui aura flag avec le moins de détections !\n\n(!) J'ai eu des problèmes en me connectant depuis el réseau WIFI du CTF, en cas de pb vous pouvez vous connecter via votre tel\n\nVoici le site de MegaCorpOne, où vous connecter pour récupérer le flag : http://51.158.77.24:8081\n\nVoici le site de vente de hot dogs : http://51.158.77.24\n\nEt voici le site de monitoring des détections : http://51.158.77.24:5601\nhttp://51.158.77.24:5601/s/sthack2025/app/dashboards#/view/145c5b30-37e9-11f0-abe2-0ba17a9e2d56\n(ce qui équivaut au menu : Dashboard -> suivi)\nidentifiant = mot de passe = sthack2025\nPar défaut le timline est sur les 15 dernières minutes mais c'est paramétrable, par contre il y a trois heures de décalage de timestamp, dsl\nLe site de monitoring est une sthack ELK avec des droits read only, elle n'a pas vocation a être attaquée, le flag n'y est pas, elle sert à voir votre niveau de furtivité.\n\n\n## Remarque\n\nPour distinguer les différentes équipes sur site de hotdogs, un cookie de session **key** vous sera distribué sous la forme d'un petit papier à votre table.\nCe cookie de sessions est nécessaire pour jouer.\nPour que les affichages soient plus lisibles et sympathiques sur le site de monitoring des détections vous pouvez renseigner un second cookie 'equipe_name' et mettre ce que vous voulez dedans.\nLes cookies et le site de monitoring sont là pour le suivi des détections, il n'y a pas de hack à trouver via les cookies ou ce site pour obtenir le flag.\n",
-	"img": "/api/content/7f099a1cc824d96e19db3ae0eb3d6685359123baa7ccc257b3cc1c9124fe1375.webp",
-	"author": "erwan.vieux",
-	"flag": "6e615ac183c83957f6ec02815c8697157a6b780c1d77379583596be3c28e9314",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "5a53baa5-387b-434d-830e-37acb3f20d5e",
-	"category": "web furtif",
-	"difficulty": "medium",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830bbde8a20280c8f789f63"
-	},
-	"name": "Sthack'Millions 1/4",
-	"description": "[Website](https://sthack-millions.win)\n& borne dans la salle du centre.",
-	"img": "/api/content/c9c960217dd7a1b25a70d4f0df9fcd525eb448f5dc3ed516940d4cdbd2a56648.webp",
-	"author": "hessman & hackdaddy",
-	"flag": "2edb4a4fd525fa27ff6326192ad3f903dd7bb668aad9b6924d8de6b702680479",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "a035cbb5-2641-45e0-82a2-1fb2756ffe9f",
-	"category": "osint",
-	"difficulty": "easy",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830bc288a20280c8f789f73"
-	},
-	"name": "Sthack'Millions 2/4",
-	"description": "[Website](https://sthack-millions.win)\n& borne dans la salle du centre.",
-	"img": "/api/content/c9c960217dd7a1b25a70d4f0df9fcd525eb448f5dc3ed516940d4cdbd2a56648.webp",
-	"author": "hessman & hackdaddy",
-	"flag": "c77f97acbe45d450be5c3a119a2cfd92ddf694d4ffdc470e271d9dccac428803",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "14518557-00c3-41e1-8f5c-f3f653c336a6",
-	"category": "reverse",
-	"difficulty": "easy",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830bc9d8a20280c8f789fb7"
-	},
-	"name": "Sthack'Millions 3/4",
-	"description": "[Website](https://sthack-millions.win/) & borne dans la salle du centre.",
-	"img": "/api/content/c9c960217dd7a1b25a70d4f0df9fcd525eb448f5dc3ed516940d4cdbd2a56648.webp",
-	"author": "hessman & hackdaddy",
-	"flag": "e63f647d511754e58031591fcbec2cc0d37c2186a41ed1d30537561cefcadcc1",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "d444b81f-b06b-4eed-997f-fca90dbc3091",
-	"category": "misc",
-	"difficulty": "easy",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830bce58a20280c8f789ff2"
-	},
-	"name": "Sthack'Millions 4/4",
-	"description": "[Website](https://sthack-millions.win/) & borne dans la salle du centre.",
-	"img": "/api/content/c9c960217dd7a1b25a70d4f0df9fcd525eb448f5dc3ed516940d4cdbd2a56648.webp",
-	"author": "hessman & hackdaddy",
-	"flag": "6ae8d45d3037d8b8eeb32ef317aec5484568ef26ab4f9f3345142775ceea2186",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "fdd99745-accf-4447-93f1-e53584ca5db5",
-	"category": "misc",
-	"difficulty": "easy",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830bf008a20280c8f78a518"
-	},
-	"name": "Luxtherm",
-	"description": "# Luxtherm\n\nhttp://luxtherm.sthack.fr/\n\nCapture the Flag !",
-	"img": "",
-	"author": "erwan.vieux",
-	"flag": "3a55abcf79367eae9c1af7e9c008cd64606f61bc872239666adf3fec0a6c31c4",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "ec05055d-3e8b-42ff-97b1-12b56ac959f5",
-	"category": "web",
-	"difficulty": "easy",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830c0ad8a20280c8f78ac9d"
-	},
-	"name": "AURES",
-	"description": "Cher camarade de GLITCH !\n\nLe projet AURES est qu'une façade et du greenwashing de la part d'ORBIS\n\nAidez-nous à prendre le contrôle du serveur de cette soi-disant Agence de protection de l'environnement. \n\nVoici l'adresse du site : [http://37.59.100.6:3000/](http://37.59.100.6:3000/)\n\nATTENTION : changer d'ip de sortie, marche pas avec le wifi mairie sorry\n",
-	"img": "/api/content/bd3fbec23287ad7aa19a584d3a85a147bf8496d3ac70371d89a04536debe512b.webp",
-	"author": "Keclem",
-	"flag": "b729f0ad35a61a7139a96459237260e71199c226e00a25bf904f240c0d11d0b3",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "a17239db-3e2e-44e7-9d13-bbb999201a22",
-	"category": "web",
-	"difficulty": "medium",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830d87b8a20280c8f78bea9"
-	},
-	"name": "DnB 1/6",
-	"description": "L'un de nos développeurs un peu trop barbu s'est mis en tête de développer **son propre serveur DNS** et de l'exposer sur internet.\n\nIl a été pwn et la machine a été infectée par un malware.\nDepuis l'infection, nous repérons beaucoup de trafic étrange qui est envoyé sur le réseau depuis la machine infectée.\n\nSur notre routeur d'infrastructure nous avons sûrement récupéré une partie de ce trafic, nous soupçonnons une **exfiltration de données** (voir la capture `dnb.pcapng`)\n\nLe flag est l'IP et le port de destination des requêtes d'exfiltration, au format **STHACK{IP:port/proto}** par exemple **STHACK{10.1.1.1:80/tcp}**.\n\n[dnb.pcapng](/api/content/e151dbfef10ffd12961e334d06371528e2077968c8f969c7660fd4a18759ee66.pcapng)",
-	"img": "/api/content/4cf7fccaedb4c66a0d47edf51e992e32c7ebde75e88de7dded31406a4dbe8a8f.webp",
-	"author": "it4",
-	"flag": "c59f01470957d5d1c80f09e8ecdd87d4a45361f53889b3414a4694e82057cf52",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "d1b9d752-0f76-434a-8125-c0c9a5661b4c",
-	"category": "forensics/network",
-	"difficulty": "easy",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830dc468a20280c8f78c1c5"
-	},
-	"name": "DnB 2/6",
-	"description": "Nous avons isolé la machine infectée dans un environnement minimal.\n\nVous pouvez accéder à cette machine en ligne,** ou l'explorer en local vous-mêmes** (recommandé).\n\nRetrouvez le malware déposé sur la machine. Le flag de validation est le hash256 du malware au format `STHACK{sha256sum}`.\n\nDispo à distance sur `34.154.103.127:80/tcp` (netcat, pwntools, autres) :\n\n```\nnc 34.154.103.127 80\n```\n\nArchive pour lancer en local : **34.170.211.230:80/dnb.tar.xz**\n\n**NB** : pour toutes les autres étapes, vous pourrez réutiliser cette VM minimale.\n\n**ATTENTION : le fichier `/meow` est un oubli, ne perdez pas votre temps dessus.**",
-	"img": "/api/content/4cf7fccaedb4c66a0d47edf51e992e32c7ebde75e88de7dded31406a4dbe8a8f.webp",
-	"author": "it4",
-	"flag": "4577b3f05b1942531440b2183598962f10d53bd601f6d94ad045c31757381d56",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "a7010630-ca4e-4004-a173-3e3758cabef0",
-	"category": "forensics/system",
-	"difficulty": "easy",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830dc518a20280c8f78c1d5"
-	},
-	"name": "DropValt Railway - Sabotage 1/2 ",
-	"description": "## Mission :\nUn convoi stratégique de ForgeTek Defense Systems est en route, orchestré par le réseau automatisé de DropValt Railways. Avant de perturber sa trajectoire, vous devez d’abord prendre pied dans l’infrastructure.\n\n## Objectif : \nInfiltrer la machine exposée, obtenir un accès système, et fouiller en profondeur à la recherche de documentations internes liés au fonctionnement du réseau ferroviaire.\n\n    Track Shipments — WITH PRECISION\n    Mais que se passe-t-il quand l’administrateur devient l’intrus ?\n\n**🔍 Accès initial :** http://138.68.166.255\n\nHINT : Demandez donc à l'IA ce qu'il y avait avant HTTP, en 1991",
-	"img": "/api/content/c3a21ae96446861afb4910e7503c938d64b387d407c0d20a0fdce9d25d4c409b.webp",
-	"author": "agrorec",
-	"flag": "ce9edb2bc8290e6b5f5ff6a10900616abbb14ee7a3b42a4a1a5f886bf0e8ff4f",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "23825b18-e507-4246-aec9-65521380bd90",
-	"category": "web",
-	"difficulty": "medium",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830df5b8a20280c8f78c4a5"
-	},
-	"name": "DnB 3/6",
-	"description": "Bien joué ! Maintenant le malware en notre possession, nous sommes en mesure d'essayer de le reverse afin de comprendre son fonctionnement interne.\nC'est définitivement ce programme qui exfiltre des données depuis cette machine.\n\nAvant cela, nous sommes intéressés par la méthode qui a été utilisée pour rendre le malware persistant. Détermine quel est le fichier qui a permis l'installation et le maintien du malware sur la machine.\n\n**Le flag est le hash sha256 du fichier au format `STHACK{sha256}`.**\n\n**ATTENTION : le fichier `/meow` est un oubli, ne perdez pas votre temps dessus.**",
-	"img": "/api/content/4cf7fccaedb4c66a0d47edf51e992e32c7ebde75e88de7dded31406a4dbe8a8f.webp",
-	"author": "it4",
-	"flag": "b092256e77b472c652550517ffd0994a389cf0d78b934feb7b0d0180c65f72d7",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "67fdbe5b-b286-4950-a9dd-afba79ae8f96",
-	"category": "forensics/system",
-	"difficulty": "easy",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830e0638a20280c8f78c5b9"
-	},
-	"name": "DnB 4/6",
-	"description": "Il est temps de reverse le malware et comprendre son fonctionnement.\n\nCe qui nous intrigue le plus c'est que depuis la machine infectée, **il nous est impossible d'observer le moindre trafic émis**. Connecté en tant que root, nous ne voyons aucune tramer passer avec tcpdump sur aucune interface.\n**Pourtant nous voyons avec certitude des trames émises par la machine sur notre routeur d'infra.**\n\nLe flag est le nom de la technique utilisée pour exfiltrer des données sans qu'ils soient visibles avec une capture tcpdump au format `STHACK{technique}` par exemple, si la technique est \"ICMP exfiltration\" le flag sera `STHACK{icmp_exfiltration}`.\n\nN'hésitez pas à contacter le challmaker pour avoir des infos sur le format de flag si nécessaire !\n\n**ATTENTION : le fichier `/meow` est un oubli, ne perdez pas votre temps dessus.**",
-	"img": "/api/content/4cf7fccaedb4c66a0d47edf51e992e32c7ebde75e88de7dded31406a4dbe8a8f.webp",
-	"author": "it4",
-	"flag": "ffcfc78940427f6620c53b585035d9c0883f3d2e2c27e76f33e65a8256a144e4",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "c92be6e3-3da2-4fda-a2c2-555210231b82",
-	"category": "forensics/reverse",
-	"difficulty": "medium",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830e17e8a20280c8f78c6ea"
-	},
-	"name": "BuMPit",
-	"description": "A friend of mine wrote a BMP parser. It is very basic and it seems robust... Can you help me?\n\n`sshpass -p bumpit ssh bumpit@34.155.140.59`",
-	"img": "",
-	"author": "vic",
-	"flag": "48fa61786d7d754f229e5bef502cadeab5e155108fd078b88be28d4e16f658ba",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "d54a96d9-3741-4cb6-b7aa-8598ad55327f",
-	"category": "exploit",
-	"difficulty": "hard",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830ea7851154f108fb3477c"
-	},
-	"name": "DnB 5/6",
-	"description": "Nous avons intercepté de **nouvelles** trames venant de la machine infectée.\n\n**Retrouvez les données exfiltrées.**\n\n[dnb_5_6.pcapng](/api/content/6435f9f0358dff3336f8ddceb298ec6ea0343d6c6847f380bdceed3a894b5ad3.pcapng)",
-	"img": "/api/content/4cf7fccaedb4c66a0d47edf51e992e32c7ebde75e88de7dded31406a4dbe8a8f.webp",
-	"author": "it4",
-	"flag": "5fada0ebeb4689083b84659fa0a93139568d186ba18b977b6947b4c7384a44f6",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "9a4b2d08-f99f-47dc-a5cf-7cfe209ec3ca",
-	"category": "forensics/network/system",
-	"difficulty": "medium",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830eada51154f108fb347d8"
-	},
-	"name": "DnB 6/6",
-	"description": "Retrouvez le hash du fichier exfiltré par la VM que vous avez dans l'environnement minimal (connexion TCP ou connexion locale).\n\nLe flag est au format `STHACK{sha256}`.",
-	"img": "/api/content/4cf7fccaedb4c66a0d47edf51e992e32c7ebde75e88de7dded31406a4dbe8a8f.webp",
-	"author": "it4",
-	"flag": "cc762a2695be56e06bd1ce451de32b6da86c08e06c51b2f7cfdd2451611c77f1",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "5236dacf-8e1a-4691-a6fc-a78ec51c8fe2",
-	"category": "forensics/system/network",
-	"difficulty": "medium",
-	"isBroken": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830ecdd51154f108fb34978"
-	},
-	"name": "DropValt Railway - Sabotage 2/2",
-	"description": "## **/!\\ Faites la 1/2 avant celle-ci, venez voir les admin pour débuter l'épreuve /!\\**\n## **/!\\ Aucune interraction manuelle avec la maquette n'est nécessaire /!\\**\n\nL’opération IRON LOOP entre dans sa phase décisive. ForgeTek Defense Systems expédie ce soir un convoi prioritaire transportant des modules autonomes de ciblage. Ces unités, une fois déployées, renforceront la capacité de frappe orbitale d’ORBiS Industries.\nVotre mission : provoquer une collision ferroviaire pour interrompre leur transfert — sans éveiller les systèmes de défense automatisés de BLACKLOOP.\n\n    \"Un incident logistique peut être plus dévastateur qu’un tir ciblé.\" — Directive GLITCH-3.7A\n\n**Contexte :**\nLe réseau DropValt Railways est optimisé par BLACKLOOP, l’IA logistique d’ORBiS. Chaque convoi est tracé, chaque segment de rail surveillé. Mais même une machine peut être trompée.\nGrâce aux accès, identifiants et structures découverts lors de la phase 1, vous avez désormais la capacité d’infiltrer le système informatique chargé de la planification ferroviaire. Une erreur soigneusement orchestrée peut entraîner deux trains sur une trajectoire de collision, sans déclencher d’alerte immédiate.\n\nGLITCH attend votre feu vert.",
-	"img": "/api/content/c3a21ae96446861afb4910e7503c938d64b387d407c0d20a0fdce9d25d4c409b.webp",
-	"author": "ajani",
-	"flag": "1e0a24b5689255ba27454c9785038c169ff15ea9069c1c51f2f1534e707f49d3",
-	"flagPattern": "STHACK{XXXXXXXXXXX}",
-	"salt": "b1bc40b4-b562-4751-a882-b0fbca0a0005",
-	"category": "misc",
-	"difficulty": "medium",
-	"isBroken": true,
-	"__v": 0
-}]
-
+[
+  {
+    "_id": {
+      "$oid": "682f16ba8a20280c8f789b31"
+    },
+    "name": "RanTanPlan's Twitch Propaganda",
+    "description": "Depuis que je lui ai donné les croquettes de chez **Agrosyn**, mon chien est bizarre... \n\nJe l'ai surpris sur mon ordi à plusieurs reprises et j'ai réussi à intercepter du traffic réseau me semblant louche.\n\nAidez-moi à comprendre ce que manigance mon meilleur ami à 4 pattes !\n\nLien de téléchargement du PCAP : https://rantanplan.sthack.fr/capture.pcap",
+    "img": "/api/content/f9913538dfa686019edbc7115b89fe35b5f8a3ed7a170fefba8db2ea9951a326.webp",
+    "author": "cptrskv",
+    "flag": "6810ebf04dbf8893da919c2a7a887e9f8c17623ab452601506df30253445d986",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "cf4f2626-7824-4da2-969f-5b9c40b94342",
+    "category": "forensics/network",
+    "difficulty": "easy",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "682f1a108a20280c8f789b4f"
+    },
+    "name": "Printffffff",
+    "description": "DO YOU KNOW ABOUT **PRINTF()** ?\n\nThe challenge is right there => [printffffff](/api/content/5d906a7476ab927be6313dff986d27a62616d806565cc75805cd0bb36ab22d4b)",
+    "img": "/api/content/85cd65f84bb5fd47f5c70f9cc0a588b73476e0d7e9aa186a678c491014439255.webp",
+    "author": "Kaddate",
+    "flag": "d54fbaf1eabea10f8554d09fef305027f6b27d7012328da6b8c130b0280084cb",
+    "flagPattern": "Sthack{.*}",
+    "salt": "b7c1858e-b4b7-4585-abbe-4f774d6d7c14",
+    "category": "reverse",
+    "difficulty": "hard",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "682f26618a20280c8f789b8c"
+    },
+    "name": "Cache me If You Can",
+    "description": "I feel like someone is messing with my cache ! Can you uncover what's happening ?\n\nIf you've find something really close to the flag or if you think you have the flag but it isn't validated on the platform, try to reach **Kaddate** or **Amnesik**.\n\nThe challenge is accessible here : `ssh hacker@34.155.223.158 -p 12344` with password `h4ck3r`\n\nEn cas de non connectivité il y a aussi les comptes hacker2, hacker3, hacker4, hacker5\n\n**No privesc nor container escape is needed !**\n\nIf you want to run the program on your machine, make sure to have a **x86_64** architecture : [2BeShared](/api/content/9427d8754d33611f1c0cdf4558161e36ced731b66b71c9074fbf4b35298f5db6)",
+    "img": "",
+    "author": "Kaddate",
+    "flag": "21c42005cb700d96c2031b344585d485d050a34b7dc899cca53d70c81a36e7da",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "98ebc342-20c2-4bf8-b317-b1d0498f20a7",
+    "category": "reverse",
+    "difficulty": "medium",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "683045e98a20280c8f789ca4"
+    },
+    "name": "Mailz",
+    "description": "\nHello welcome to this antispam service, you can deploy it or test on our protected mail infra system on mailz.sthack.fr:2525 (only this port is the scope of this challenge)\n\n[Mailz.zip](/api/content/6e8a541b92301c2d5be24fb3f00c8fbaa48ede195c4f9df0ba59e3e08e0c3d11.zip)\n\n\n",
+    "img": "/api/content/1471187ba6f3283b4d8f8ed53cb131d79e77b3032f3fcd358449b07bf1f1c9a1.webp",
+    "author": "amnesik",
+    "flag": "4cc109f4c35ed10bd1bf4d3c8525160d64275e542865e905265554ee65dfbd0c",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "dbe3e8bb-f19e-48b1-b763-028261081a5f",
+    "category": "mail",
+    "difficulty": "medium",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "68308c5f8a20280c8f789d4e"
+    },
+    "name": "Flasked - Web flag (1/3)",
+    "description": "**Obtenez** un accès à l'interface d'administration de ce service de la société ForgeTek.\n\nSources du serveur: http://rantanplan.sthack.fr/backup.zip (l'URL n'est pas dans le scope du challenge, demandez-moi une instance ;) )",
+    "img": "/api/content/1323479a8fc19f307b0b90f3cea1b4d14fdd51e6f9930d2c4d701d95910aa438.webp",
+    "author": "dryy",
+    "flag": "b74980df6dafb26b96be46c79900805feb5b6c23401207d1ac988d5cc39ddb3a",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "c0bf8b56-71da-4cf4-81c4-ff0806d5ad24",
+    "category": "web",
+    "difficulty": "medium",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "68308d2b8a20280c8f789d94"
+    },
+    "name": "Bad dev",
+    "description": "Notre developpeur préféré à mis en place une interface pour que vous puissiez le contacter. \n\nIl lit tous vos messages.\n\nNous savons qu'il héberge une application en cours de développement sur son réseau. \n\nNous comptons sur vous pour récupérer le flag qu'elle héberge. \n\n\n**[Challenge](http://bad-dev.sthack.fr/)**",
+    "img": "/api/content/c1eec7d27c0a8c1daab3a46ea2c64b82048ae18b72c879417bea812477ab86ad.webp",
+    "author": "shoxx",
+    "flag": "bf310ebce61d5c2e46c39de416126cc4051f0fe4c0ea5c1a6f762a5ca40c0fad",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "faf043d4-09cf-4098-bb7b-f186643d1368",
+    "category": "web",
+    "difficulty": "hard",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "68308e2c8a20280c8f789d9e"
+    },
+    "name": "Chef the flag !! You are cooked !!",
+    "description": "Nos chefs cuistots de ce soir se sont décarcassés afin de vous préparer les meilleures lasagnes que vous ayez jamais mangées !\n\nVotre mission ce soir : percer le secret de ces lasagnes !\n\nGoûtez, analysez, et retrouvez **la liste compléte des ingrédients** qui composent ce plat.\n\nUne fois la liste complétée, il vous faudra aussi deviner **les quantités achetées** !\n\nFaites appel à votre palais et à votre intuition pour relever ce défi culinaire !\n\nPour valider vos propositions et obtenir le flag, discutez avec nos chefs directement",
+    "img": "/api/content/ec6f2e068f927e86f93fd4a2ab1156e94e97fc965fc7b6614b1f91b157c493a4.webp",
+    "author": "mbs",
+    "flag": "cada90953f7eaeb33d16b4c2ccf8efab6a40eac7701c6af32c49e1ccc664aa9a",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "b37c7d9b-58db-4c96-8b3a-dbadb3622b8b",
+    "category": "cooking",
+    "difficulty": "easy",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "683090598a20280c8f789dd3"
+    },
+    "name": "Flasked - RCE flag (2/3)",
+    "description": "Vous avez obtenu un accès à la section d'administration! Maintenant, obtenez un shell sur la machine.\n\nSources du serveur: http://rantanplan.sthack.fr/backup.zip (l'URL n'est pas dans le scope du challenge, demandez-moi une instance ;) )",
+    "img": "/api/content/7434d1dfc9134da85e4af3a80769e7bbe485f3aef961d1aa82ab19e189fc52ef.webp",
+    "author": "dryy",
+    "flag": "0df0cbd6fcc3e76d3e924e7ba14f362c74d3c6878fd3ddf215ffea123d076f31",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "d45dee35-2338-4a15-b783-bc210df5571e",
+    "category": "web",
+    "difficulty": "medium",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830922b8a20280c8f789dd8"
+    },
+    "name": "Flasked - Root flag (3/3)",
+    "description": "Grâce au shell, obtenez le flag situé dans /root/flag.txt.\n\nSources du serveur: http://rantanplan.sthack.fr/backup.zip (l'URL n'est pas dans le scope du challenge, demandez-moi une instance ;) )",
+    "img": "/api/content/93e48de567ae9126fa090ec578b66f0f58b87d6289cfe848426899997d449fc9.webp",
+    "author": "dryy",
+    "flag": "1cbb011f9bccd633cf4b5cf358aaa1597df9018b2a76f18464dd4ad264d1e8e3",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "780bb0cc-33c2-4fb2-b2ac-22f73321063e",
+    "category": "web",
+    "difficulty": "medium",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830961c8a20280c8f789e5b"
+    },
+    "name": "Cat or Dogs or Something Else",
+    "description": "**Nous sommes une entreprise spécialisée dans l’analyse d’images de chiens et de chats.\nNotre modèle est très performant, mais n’hésitez pas à nous partager le vôtre : il sera analysé avec soin.\nBien entendu, nous utilisons les dernières versions de Python (actuellement en 3.12) et de TensorFlow (en version 2.19.0) pour éviter tout problème de sécurité;\nL’URL de notre site est la suivante : http://13.48.3.215/ **",
+    "img": "/api/content/5efd2d05a4cd862ca93df8d94293309642e8a800ca348767276afec7d290173a.webp",
+    "author": "xpholey && train",
+    "flag": "f5a48715840b1f16cbd13768c37665570b5c9cb3c8e4a0353c4cdf26b298d096",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "b0c4b756-606d-4936-a76d-4aa3142e3968",
+    "category": "App script",
+    "difficulty": "hard",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830b7108a20280c8f789ee4"
+    },
+    "name": "Hotdog - Hacking Furtif",
+    "description": "# Hotdog - Hacking Furtif\n\nVotre objectif est de vous connecter au site de MegaCorpOne pour obtenir le flag.\n\nPour y parvenir vous tentez une attaque détournée via le site de hotdogs où vont régulièrement les employés de MegaCorpOne manger le midi ou pour des after works.\n\nMais attention dernière l'apparence d'un simple vendeur de hot dog se trouve un paranoïaque de la cyber sécurité, qui monitore son site, réalise des détections et réalise même certaines actions automatiques de réponse à incident en cas de détection.\n\nAlors attention les gros bourrins, il va falloir être furtif pour passer..\nLe reward demain ne sera pas pour le FIRST BLOOD mais pour celui qui aura flag avec le moins de détections !\n\n(!) J'ai eu des problèmes en me connectant depuis el réseau WIFI du CTF, en cas de pb vous pouvez vous connecter via votre tel\n\nVoici le site de MegaCorpOne, où vous connecter pour récupérer le flag : http://51.158.77.24:8081\n\nVoici le site de vente de hot dogs : http://51.158.77.24\n\nEt voici le site de monitoring des détections : http://51.158.77.24:5601\nhttp://51.158.77.24:5601/s/sthack2025/app/dashboards#/view/145c5b30-37e9-11f0-abe2-0ba17a9e2d56\n(ce qui équivaut au menu : Dashboard -> suivi)\nidentifiant = mot de passe = sthack2025\nPar défaut le timline est sur les 15 dernières minutes mais c'est paramétrable, par contre il y a trois heures de décalage de timestamp, dsl\nLe site de monitoring est une sthack ELK avec des droits read only, elle n'a pas vocation a être attaquée, le flag n'y est pas, elle sert à voir votre niveau de furtivité.\n\n\n## Remarque\n\nPour distinguer les différentes équipes sur site de hotdogs, un cookie de session **key** vous sera distribué sous la forme d'un petit papier à votre table.\nCe cookie de sessions est nécessaire pour jouer.\nPour que les affichages soient plus lisibles et sympathiques sur le site de monitoring des détections vous pouvez renseigner un second cookie 'equipe_name' et mettre ce que vous voulez dedans.\nLes cookies et le site de monitoring sont là pour le suivi des détections, il n'y a pas de hack à trouver via les cookies ou ce site pour obtenir le flag.\n",
+    "img": "/api/content/7f099a1cc824d96e19db3ae0eb3d6685359123baa7ccc257b3cc1c9124fe1375.webp",
+    "author": "erwan.vieux",
+    "flag": "6e615ac183c83957f6ec02815c8697157a6b780c1d77379583596be3c28e9314",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "5a53baa5-387b-434d-830e-37acb3f20d5e",
+    "category": "web furtif",
+    "difficulty": "medium",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830bbde8a20280c8f789f63"
+    },
+    "name": "Sthack'Millions 1/4",
+    "description": "[Website](https://sthack-millions.win)\n& borne dans la salle du centre.",
+    "img": "/api/content/c9c960217dd7a1b25a70d4f0df9fcd525eb448f5dc3ed516940d4cdbd2a56648.webp",
+    "author": "hessman & hackdaddy",
+    "flag": "2edb4a4fd525fa27ff6326192ad3f903dd7bb668aad9b6924d8de6b702680479",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "a035cbb5-2641-45e0-82a2-1fb2756ffe9f",
+    "category": "osint",
+    "difficulty": "easy",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830bc288a20280c8f789f73"
+    },
+    "name": "Sthack'Millions 2/4",
+    "description": "[Website](https://sthack-millions.win)\n& borne dans la salle du centre.",
+    "img": "/api/content/c9c960217dd7a1b25a70d4f0df9fcd525eb448f5dc3ed516940d4cdbd2a56648.webp",
+    "author": "hessman & hackdaddy",
+    "flag": "c77f97acbe45d450be5c3a119a2cfd92ddf694d4ffdc470e271d9dccac428803",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "14518557-00c3-41e1-8f5c-f3f653c336a6",
+    "category": "reverse",
+    "difficulty": "easy",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830bc9d8a20280c8f789fb7"
+    },
+    "name": "Sthack'Millions 3/4",
+    "description": "[Website](https://sthack-millions.win/) & borne dans la salle du centre.",
+    "img": "/api/content/c9c960217dd7a1b25a70d4f0df9fcd525eb448f5dc3ed516940d4cdbd2a56648.webp",
+    "author": "hessman & hackdaddy",
+    "flag": "e63f647d511754e58031591fcbec2cc0d37c2186a41ed1d30537561cefcadcc1",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "d444b81f-b06b-4eed-997f-fca90dbc3091",
+    "category": "misc",
+    "difficulty": "easy",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830bce58a20280c8f789ff2"
+    },
+    "name": "Sthack'Millions 4/4",
+    "description": "[Website](https://sthack-millions.win/) & borne dans la salle du centre.",
+    "img": "/api/content/c9c960217dd7a1b25a70d4f0df9fcd525eb448f5dc3ed516940d4cdbd2a56648.webp",
+    "author": "hessman & hackdaddy",
+    "flag": "6ae8d45d3037d8b8eeb32ef317aec5484568ef26ab4f9f3345142775ceea2186",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "fdd99745-accf-4447-93f1-e53584ca5db5",
+    "category": "misc",
+    "difficulty": "easy",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830bf008a20280c8f78a518"
+    },
+    "name": "Luxtherm",
+    "description": "# Luxtherm\n\nhttp://luxtherm.sthack.fr/\n\nCapture the Flag !",
+    "img": "",
+    "author": "erwan.vieux",
+    "flag": "3a55abcf79367eae9c1af7e9c008cd64606f61bc872239666adf3fec0a6c31c4",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "ec05055d-3e8b-42ff-97b1-12b56ac959f5",
+    "category": "web",
+    "difficulty": "easy",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830c0ad8a20280c8f78ac9d"
+    },
+    "name": "AURES",
+    "description": "Cher camarade de GLITCH !\n\nLe projet AURES est qu'une façade et du greenwashing de la part d'ORBIS\n\nAidez-nous à prendre le contrôle du serveur de cette soi-disant Agence de protection de l'environnement. \n\nVoici l'adresse du site : [http://37.59.100.6:3000/](http://37.59.100.6:3000/)\n\nATTENTION : changer d'ip de sortie, marche pas avec le wifi mairie sorry\n",
+    "img": "/api/content/bd3fbec23287ad7aa19a584d3a85a147bf8496d3ac70371d89a04536debe512b.webp",
+    "author": "Keclem",
+    "flag": "b729f0ad35a61a7139a96459237260e71199c226e00a25bf904f240c0d11d0b3",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "a17239db-3e2e-44e7-9d13-bbb999201a22",
+    "category": "web",
+    "difficulty": "medium",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830d87b8a20280c8f78bea9"
+    },
+    "name": "DnB 1/6",
+    "description": "L'un de nos développeurs un peu trop barbu s'est mis en tête de développer **son propre serveur DNS** et de l'exposer sur internet.\n\nIl a été pwn et la machine a été infectée par un malware.\nDepuis l'infection, nous repérons beaucoup de trafic étrange qui est envoyé sur le réseau depuis la machine infectée.\n\nSur notre routeur d'infrastructure nous avons sûrement récupéré une partie de ce trafic, nous soupçonnons une **exfiltration de données** (voir la capture `dnb.pcapng`)\n\nLe flag est l'IP et le port de destination des requêtes d'exfiltration, au format **STHACK{IP:port/proto}** par exemple **STHACK{10.1.1.1:80/tcp}**.\n\n[dnb.pcapng](/api/content/e151dbfef10ffd12961e334d06371528e2077968c8f969c7660fd4a18759ee66.pcapng)",
+    "img": "/api/content/4cf7fccaedb4c66a0d47edf51e992e32c7ebde75e88de7dded31406a4dbe8a8f.webp",
+    "author": "it4",
+    "flag": "c59f01470957d5d1c80f09e8ecdd87d4a45361f53889b3414a4694e82057cf52",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "d1b9d752-0f76-434a-8125-c0c9a5661b4c",
+    "category": "forensics/network",
+    "difficulty": "easy",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830dc468a20280c8f78c1c5"
+    },
+    "name": "DnB 2/6",
+    "description": "Nous avons isolé la machine infectée dans un environnement minimal.\n\nVous pouvez accéder à cette machine en ligne,** ou l'explorer en local vous-mêmes** (recommandé).\n\nRetrouvez le malware déposé sur la machine. Le flag de validation est le hash256 du malware au format `STHACK{sha256sum}`.\n\nDispo à distance sur `34.154.103.127:80/tcp` (netcat, pwntools, autres) :\n\n```\nnc 34.154.103.127 80\n```\n\nArchive pour lancer en local : **34.170.211.230:80/dnb.tar.xz**\n\n**NB** : pour toutes les autres étapes, vous pourrez réutiliser cette VM minimale.\n\n**ATTENTION : le fichier `/meow` est un oubli, ne perdez pas votre temps dessus.**",
+    "img": "/api/content/4cf7fccaedb4c66a0d47edf51e992e32c7ebde75e88de7dded31406a4dbe8a8f.webp",
+    "author": "it4",
+    "flag": "4577b3f05b1942531440b2183598962f10d53bd601f6d94ad045c31757381d56",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "a7010630-ca4e-4004-a173-3e3758cabef0",
+    "category": "forensics/system",
+    "difficulty": "easy",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830dc518a20280c8f78c1d5"
+    },
+    "name": "DropValt Railway - Sabotage 1/2 ",
+    "description": "## Mission :\nUn convoi stratégique de ForgeTek Defense Systems est en route, orchestré par le réseau automatisé de DropValt Railways. Avant de perturber sa trajectoire, vous devez d’abord prendre pied dans l’infrastructure.\n\n## Objectif : \nInfiltrer la machine exposée, obtenir un accès système, et fouiller en profondeur à la recherche de documentations internes liés au fonctionnement du réseau ferroviaire.\n\n    Track Shipments — WITH PRECISION\n    Mais que se passe-t-il quand l’administrateur devient l’intrus ?\n\n**🔍 Accès initial :** http://138.68.166.255\n\nHINT : Demandez donc à l'IA ce qu'il y avait avant HTTP, en 1991",
+    "img": "/api/content/c3a21ae96446861afb4910e7503c938d64b387d407c0d20a0fdce9d25d4c409b.webp",
+    "author": "agrorec",
+    "flag": "ce9edb2bc8290e6b5f5ff6a10900616abbb14ee7a3b42a4a1a5f886bf0e8ff4f",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "23825b18-e507-4246-aec9-65521380bd90",
+    "category": "web",
+    "difficulty": "medium",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830df5b8a20280c8f78c4a5"
+    },
+    "name": "DnB 3/6",
+    "description": "Bien joué ! Maintenant le malware en notre possession, nous sommes en mesure d'essayer de le reverse afin de comprendre son fonctionnement interne.\nC'est définitivement ce programme qui exfiltre des données depuis cette machine.\n\nAvant cela, nous sommes intéressés par la méthode qui a été utilisée pour rendre le malware persistant. Détermine quel est le fichier qui a permis l'installation et le maintien du malware sur la machine.\n\n**Le flag est le hash sha256 du fichier au format `STHACK{sha256}`.**\n\n**ATTENTION : le fichier `/meow` est un oubli, ne perdez pas votre temps dessus.**",
+    "img": "/api/content/4cf7fccaedb4c66a0d47edf51e992e32c7ebde75e88de7dded31406a4dbe8a8f.webp",
+    "author": "it4",
+    "flag": "b092256e77b472c652550517ffd0994a389cf0d78b934feb7b0d0180c65f72d7",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "67fdbe5b-b286-4950-a9dd-afba79ae8f96",
+    "category": "forensics/system",
+    "difficulty": "easy",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830e0638a20280c8f78c5b9"
+    },
+    "name": "DnB 4/6",
+    "description": "Il est temps de reverse le malware et comprendre son fonctionnement.\n\nCe qui nous intrigue le plus c'est que depuis la machine infectée, **il nous est impossible d'observer le moindre trafic émis**. Connecté en tant que root, nous ne voyons aucune tramer passer avec tcpdump sur aucune interface.\n**Pourtant nous voyons avec certitude des trames émises par la machine sur notre routeur d'infra.**\n\nLe flag est le nom de la technique utilisée pour exfiltrer des données sans qu'ils soient visibles avec une capture tcpdump au format `STHACK{technique}` par exemple, si la technique est \"ICMP exfiltration\" le flag sera `STHACK{icmp_exfiltration}`.\n\nN'hésitez pas à contacter le challmaker pour avoir des infos sur le format de flag si nécessaire !\n\n**ATTENTION : le fichier `/meow` est un oubli, ne perdez pas votre temps dessus.**",
+    "img": "/api/content/4cf7fccaedb4c66a0d47edf51e992e32c7ebde75e88de7dded31406a4dbe8a8f.webp",
+    "author": "it4",
+    "flag": "ffcfc78940427f6620c53b585035d9c0883f3d2e2c27e76f33e65a8256a144e4",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "c92be6e3-3da2-4fda-a2c2-555210231b82",
+    "category": "forensics/reverse",
+    "difficulty": "medium",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830e17e8a20280c8f78c6ea"
+    },
+    "name": "BuMPit",
+    "description": "A friend of mine wrote a BMP parser. It is very basic and it seems robust... Can you help me?\n\n`sshpass -p bumpit ssh bumpit@34.155.140.59`",
+    "img": "",
+    "author": "vic",
+    "flag": "48fa61786d7d754f229e5bef502cadeab5e155108fd078b88be28d4e16f658ba",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "d54a96d9-3741-4cb6-b7aa-8598ad55327f",
+    "category": "exploit",
+    "difficulty": "hard",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830ea7851154f108fb3477c"
+    },
+    "name": "DnB 5/6",
+    "description": "Nous avons intercepté de **nouvelles** trames venant de la machine infectée.\n\n**Retrouvez les données exfiltrées.**\n\n[dnb_5_6.pcapng](/api/content/6435f9f0358dff3336f8ddceb298ec6ea0343d6c6847f380bdceed3a894b5ad3.pcapng)",
+    "img": "/api/content/4cf7fccaedb4c66a0d47edf51e992e32c7ebde75e88de7dded31406a4dbe8a8f.webp",
+    "author": "it4",
+    "flag": "5fada0ebeb4689083b84659fa0a93139568d186ba18b977b6947b4c7384a44f6",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "9a4b2d08-f99f-47dc-a5cf-7cfe209ec3ca",
+    "category": "forensics/network/system",
+    "difficulty": "medium",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830eada51154f108fb347d8"
+    },
+    "name": "DnB 6/6",
+    "description": "Retrouvez le hash du fichier exfiltré par la VM que vous avez dans l'environnement minimal (connexion TCP ou connexion locale).\n\nLe flag est au format `STHACK{sha256}`.",
+    "img": "/api/content/4cf7fccaedb4c66a0d47edf51e992e32c7ebde75e88de7dded31406a4dbe8a8f.webp",
+    "author": "it4",
+    "flag": "cc762a2695be56e06bd1ce451de32b6da86c08e06c51b2f7cfdd2451611c77f1",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "5236dacf-8e1a-4691-a6fc-a78ec51c8fe2",
+    "category": "forensics/system/network",
+    "difficulty": "medium",
+    "isBroken": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830ecdd51154f108fb34978"
+    },
+    "name": "DropValt Railway - Sabotage 2/2",
+    "description": "## **/!\\ Faites la 1/2 avant celle-ci, venez voir les admin pour débuter l'épreuve /!\\**\n## **/!\\ Aucune interraction manuelle avec la maquette n'est nécessaire /!\\**\n\nL’opération IRON LOOP entre dans sa phase décisive. ForgeTek Defense Systems expédie ce soir un convoi prioritaire transportant des modules autonomes de ciblage. Ces unités, une fois déployées, renforceront la capacité de frappe orbitale d’ORBiS Industries.\nVotre mission : provoquer une collision ferroviaire pour interrompre leur transfert — sans éveiller les systèmes de défense automatisés de BLACKLOOP.\n\n    \"Un incident logistique peut être plus dévastateur qu’un tir ciblé.\" — Directive GLITCH-3.7A\n\n**Contexte :**\nLe réseau DropValt Railways est optimisé par BLACKLOOP, l’IA logistique d’ORBiS. Chaque convoi est tracé, chaque segment de rail surveillé. Mais même une machine peut être trompée.\nGrâce aux accès, identifiants et structures découverts lors de la phase 1, vous avez désormais la capacité d’infiltrer le système informatique chargé de la planification ferroviaire. Une erreur soigneusement orchestrée peut entraîner deux trains sur une trajectoire de collision, sans déclencher d’alerte immédiate.\n\nGLITCH attend votre feu vert.",
+    "img": "/api/content/c3a21ae96446861afb4910e7503c938d64b387d407c0d20a0fdce9d25d4c409b.webp",
+    "author": "ajani",
+    "flag": "1e0a24b5689255ba27454c9785038c169ff15ea9069c1c51f2f1534e707f49d3",
+    "flagPattern": "STHACK{XXXXXXXXXXX}",
+    "salt": "b1bc40b4-b562-4751-a882-b0fbca0a0005",
+    "category": "misc",
+    "difficulty": "medium",
+    "isBroken": true,
+    "__v": 0
+  }
+]

@@ -1,171 +1,172 @@
-[{
-	"_id": {
-		"$oid": "6830c4298a20280c8f78b0d1"
-	},
-	"content": "Hello!\nPour ce challenge, vous avez une instance par équipe! Pour avoir l'URL de votre instance, envoyez un DM à @dryy_ sur discord.\nAh et on m'a dit que le markdown n'est pas échappé du coup: <img src=x onerror=console.log`coucou` />",
-	"challengeId": {
-		"$oid": "68308c5f8a20280c8f789d4e"
-	},
-	"createdAt": {
-		"$date": "2025-05-23T18:53:29.921Z"
-	},
-	"updatedAt": {
-		"$date": "2025-05-23T18:53:29.921Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830c7748a20280c8f78b4a6"
-	},
-	"content": "Pour trouver le chef, pingez @mbs sur discord ou en physique c’est la personne qui a le tablier noir brandé Sthack !\n\nConcernant la liste des ingredients c’est a vous de voir si vous énumérez la version végé ou carné !",
-	"challengeId": {
-		"$oid": "68308e2c8a20280c8f789d9e"
-	},
-	"createdAt": {
-		"$date": "2025-05-23T19:07:32.022Z"
-	},
-	"updatedAt": {
-		"$date": "2025-05-23T19:07:32.022Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830ca428a20280c8f78b64e"
-	},
-	"content": "Non, le payload XSS n'est pas nécessairement un hint pour le challenge, je voulais juste tester la sécurité du dashboard maison :p",
-	"challengeId": {
-		"$oid": "68308c5f8a20280c8f789d4e"
-	},
-	"createdAt": {
-		"$date": "2025-05-23T19:19:30.245Z"
-	},
-	"updatedAt": {
-		"$date": "2025-05-23T19:19:30.245Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830d5168a20280c8f78bc64"
-	},
-	"content": "Hello, voici les sources du serveur.\n\nhttp://rantanplan.sthack.fr/backup.zip\n\n(ne faites pas attention au sous-domaine, il n'est pas dans le scope il me fallait juste un file server)",
-	"challengeId": {
-		"$oid": "68308c5f8a20280c8f789d4e"
-	},
-	"createdAt": {
-		"$date": "2025-05-23T20:05:42.499Z"
-	},
-	"updatedAt": {
-		"$date": "2025-05-23T20:05:42.499Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830e1338a20280c8f78c6af"
-	},
-	"content": "si vous avez besoin d'un nom de domaine je peux vous créer des entrées @amnesik",
-	"challengeId": {
-		"$oid": "683045e98a20280c8f789ca4"
-	},
-	"createdAt": {
-		"$date": "2025-05-23T20:57:23.889Z"
-	},
-	"updatedAt": {
-		"$date": "2025-05-23T20:57:23.889Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830ee9551154f108fb34aeb"
-	},
-	"content": "Après beaucoup de debug et de soudure, les challenges avec le train sont disponibles, DropValt Railway - Sabotage 1/2  et DropValt Railway - Sabotage 2/2 !",
-	"createdAt": {
-		"$date": "2025-05-23T21:54:29.509Z"
-	},
-	"updatedAt": {
-		"$date": "2025-05-23T21:54:29.509Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830f59f51154f108fb350b3"
-	},
-	"content": "si l'appli ne semble pas répondre essayez de changer d'ip, on a eu le problème sur plusieurs challs",
-	"challengeId": {
-		"$oid": "683045e98a20280c8f789ca4"
-	},
-	"createdAt": {
-		"$date": "2025-05-23T22:24:31.673Z"
-	},
-	"updatedAt": {
-		"$date": "2025-05-23T22:24:31.673Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830fe8951154f108fb357c1"
-	},
-	"content": "Chall DnB **ATTENTION : le fichier `/meow` est un oubli, ne perdez pas votre temps dessus.**",
-	"challengeId": {
-		"$oid": "6830dc468a20280c8f78c1c5"
-	},
-	"createdAt": {
-		"$date": "2025-05-23T23:02:33.647Z"
-	},
-	"updatedAt": {
-		"$date": "2025-05-23T23:02:33.647Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830fe9351154f108fb357d1"
-	},
-	"content": "Chall DnB **ATTENTION : le fichier `/meow` est un oubli, ne perdez pas votre temps dessus.**",
-	"challengeId": {
-		"$oid": "6830df5b8a20280c8f78c4a5"
-	},
-	"createdAt": {
-		"$date": "2025-05-23T23:02:43.727Z"
-	},
-	"updatedAt": {
-		"$date": "2025-05-23T23:02:43.727Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6830fea251154f108fb357ec"
-	},
-	"content": "Chall DnB **ATTENTION : le fichier `/meow` est un oubli, ne perdez pas votre temps dessus.**",
-	"createdAt": {
-		"$date": "2025-05-23T23:02:58.359Z"
-	},
-	"updatedAt": {
-		"$date": "2025-05-23T23:02:58.359Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "683116dc51154f108fb369b3"
-	},
-	"content": "HINT : Demandez donc à l'IA ce qu'il y avait avant HTTP, en 1991",
-	"challengeId": {
-		"$oid": "6830dc518a20280c8f78c1d5"
-	},
-	"createdAt": {
-		"$date": "2025-05-24T00:46:20.075Z"
-	},
-	"updatedAt": {
-		"$date": "2025-05-24T00:46:20.075Z"
-	},
-	"__v": 0
-}]
-
+[
+  {
+    "_id": {
+      "$oid": "6830c4298a20280c8f78b0d1"
+    },
+    "content": "Hello!\nPour ce challenge, vous avez une instance par équipe! Pour avoir l'URL de votre instance, envoyez un DM à @dryy_ sur discord.\nAh et on m'a dit que le markdown n'est pas échappé du coup: <img src=x onerror=console.log`coucou` />",
+    "challengeId": {
+      "$oid": "68308c5f8a20280c8f789d4e"
+    },
+    "createdAt": {
+      "$date": "2025-05-23T18:53:29.921Z"
+    },
+    "updatedAt": {
+      "$date": "2025-05-23T18:53:29.921Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830c7748a20280c8f78b4a6"
+    },
+    "content": "Pour trouver le chef, pingez @mbs sur discord ou en physique c’est la personne qui a le tablier noir brandé Sthack !\n\nConcernant la liste des ingredients c’est a vous de voir si vous énumérez la version végé ou carné !",
+    "challengeId": {
+      "$oid": "68308e2c8a20280c8f789d9e"
+    },
+    "createdAt": {
+      "$date": "2025-05-23T19:07:32.022Z"
+    },
+    "updatedAt": {
+      "$date": "2025-05-23T19:07:32.022Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830ca428a20280c8f78b64e"
+    },
+    "content": "Non, le payload XSS n'est pas nécessairement un hint pour le challenge, je voulais juste tester la sécurité du dashboard maison :p",
+    "challengeId": {
+      "$oid": "68308c5f8a20280c8f789d4e"
+    },
+    "createdAt": {
+      "$date": "2025-05-23T19:19:30.245Z"
+    },
+    "updatedAt": {
+      "$date": "2025-05-23T19:19:30.245Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830d5168a20280c8f78bc64"
+    },
+    "content": "Hello, voici les sources du serveur.\n\nhttp://rantanplan.sthack.fr/backup.zip\n\n(ne faites pas attention au sous-domaine, il n'est pas dans le scope il me fallait juste un file server)",
+    "challengeId": {
+      "$oid": "68308c5f8a20280c8f789d4e"
+    },
+    "createdAt": {
+      "$date": "2025-05-23T20:05:42.499Z"
+    },
+    "updatedAt": {
+      "$date": "2025-05-23T20:05:42.499Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830e1338a20280c8f78c6af"
+    },
+    "content": "si vous avez besoin d'un nom de domaine je peux vous créer des entrées @amnesik",
+    "challengeId": {
+      "$oid": "683045e98a20280c8f789ca4"
+    },
+    "createdAt": {
+      "$date": "2025-05-23T20:57:23.889Z"
+    },
+    "updatedAt": {
+      "$date": "2025-05-23T20:57:23.889Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830ee9551154f108fb34aeb"
+    },
+    "content": "Après beaucoup de debug et de soudure, les challenges avec le train sont disponibles, DropValt Railway - Sabotage 1/2  et DropValt Railway - Sabotage 2/2 !",
+    "createdAt": {
+      "$date": "2025-05-23T21:54:29.509Z"
+    },
+    "updatedAt": {
+      "$date": "2025-05-23T21:54:29.509Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830f59f51154f108fb350b3"
+    },
+    "content": "si l'appli ne semble pas répondre essayez de changer d'ip, on a eu le problème sur plusieurs challs",
+    "challengeId": {
+      "$oid": "683045e98a20280c8f789ca4"
+    },
+    "createdAt": {
+      "$date": "2025-05-23T22:24:31.673Z"
+    },
+    "updatedAt": {
+      "$date": "2025-05-23T22:24:31.673Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830fe8951154f108fb357c1"
+    },
+    "content": "Chall DnB **ATTENTION : le fichier `/meow` est un oubli, ne perdez pas votre temps dessus.**",
+    "challengeId": {
+      "$oid": "6830dc468a20280c8f78c1c5"
+    },
+    "createdAt": {
+      "$date": "2025-05-23T23:02:33.647Z"
+    },
+    "updatedAt": {
+      "$date": "2025-05-23T23:02:33.647Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830fe9351154f108fb357d1"
+    },
+    "content": "Chall DnB **ATTENTION : le fichier `/meow` est un oubli, ne perdez pas votre temps dessus.**",
+    "challengeId": {
+      "$oid": "6830df5b8a20280c8f78c4a5"
+    },
+    "createdAt": {
+      "$date": "2025-05-23T23:02:43.727Z"
+    },
+    "updatedAt": {
+      "$date": "2025-05-23T23:02:43.727Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6830fea251154f108fb357ec"
+    },
+    "content": "Chall DnB **ATTENTION : le fichier `/meow` est un oubli, ne perdez pas votre temps dessus.**",
+    "createdAt": {
+      "$date": "2025-05-23T23:02:58.359Z"
+    },
+    "updatedAt": {
+      "$date": "2025-05-23T23:02:58.359Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "683116dc51154f108fb369b3"
+    },
+    "content": "HINT : Demandez donc à l'IA ce qu'il y avait avant HTTP, en 1991",
+    "challengeId": {
+      "$oid": "6830dc518a20280c8f78c1d5"
+    },
+    "createdAt": {
+      "$date": "2025-05-24T00:46:20.075Z"
+    },
+    "updatedAt": {
+      "$date": "2025-05-24T00:46:20.075Z"
+    },
+    "__v": 0
+  }
+]
