@@ -1,13 +1,15 @@
 import { BaseReward, computeRewardScore } from '@sthack/scoreboard-common'
-import { Box } from 'components/Box'
-import { LabelInput } from 'components/LabelInput'
-import Popup from 'components/Popup'
-import { SelectInput } from 'components/SelectInput'
-import { TextInput } from 'components/TextInput'
+import {
+  Box,
+  LabelInput,
+  Popup,
+  SelectInput,
+  TextInput,
+} from '@sthack/scoreboard-ui/components'
+import { useField } from '@sthack/scoreboard-ui/hooks'
 import { useAdmin } from 'hooks/useAdmin'
-import { useField } from 'hooks/useField'
 import { useGame } from 'hooks/useGame'
-import { ChangeEvent, RefObject, useRef } from 'react'
+import { ChangeEvent, useRef } from 'react'
 
 export type RewardEditMode = 'password' | 'team'
 

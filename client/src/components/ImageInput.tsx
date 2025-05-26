@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
+import { Button } from '@sthack/scoreboard-ui/components'
+import { gap, GapProps } from '@sthack/scoreboard-ui/styles'
 import { useAdmin } from 'hooks/useAdmin'
 import { ChangeEvent, InputHTMLAttributes, useRef } from 'react'
 import { convertToWebp } from 'services/files'
 import { flex, SpaceProps } from 'styled-system'
-import { gap, GapProps } from 'styles'
-import { Button } from './Button'
 
 type ImageInputProps = {
   fallbackImage?: string

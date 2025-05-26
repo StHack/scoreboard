@@ -1,4 +1,4 @@
-import { Loader } from 'components/Loader'
+import { Loader } from '@sthack/scoreboard-ui/components'
 import { useAuth } from 'hooks/useAuthentication'
 import { PropsWithChildren } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'

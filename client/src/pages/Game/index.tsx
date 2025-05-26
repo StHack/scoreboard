@@ -1,10 +1,13 @@
 import { useTheme } from '@emotion/react'
 import { Challenge } from '@sthack/scoreboard-common'
-import { Box, MotionBox } from 'components/Box'
-import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
-import { ChallengeCard } from 'components/ChallengeCard'
+import {
+  Box,
+  ChallDescriptionPopup,
+  ChallengeCard,
+  MotionBox,
+  Popup,
+} from '@sthack/scoreboard-ui/components'
 import { Messages } from 'components/Messages'
-import Popup from 'components/Popup'
 import { useAuth } from 'hooks/useAuthentication'
 import { useGame } from 'hooks/useGame'
 import { ProvidePlayer, usePlayer } from 'hooks/usePlayer'
@@ -43,8 +46,14 @@ export function Game() {
     messages,
   } = useGame()
 
-  const { myScore, myTeamScore, myTeamName, myTeamRank, isBeforeLastScorer } =
-    usePlayer()
+  const {
+    myScore,
+    myTeamScore,
+    myTeamName,
+    myTeamRank,
+    isBeforeLastScorer,
+    attemptChall,
+  } = usePlayer()
 
   const theme = useTheme()
 
@@ -204,6 +213,7 @@ export function Game() {
         messages={messages}
         gridArea="message"
         borderRadius="medium"
+        forceShow
       />
 
       {selectedChall &&
@@ -211,7 +221,16 @@ export function Game() {
           <ChallDescriptionPopup
             challenge={selectedChall}
             score={challScore[selectedChall._id]}
-            messages={messages.filter(m => m.challengeId === selectedChall._id)}
+            messageBlock={
+              <Messages
+                title="Clues"
+                messages={messages.filter(
+                  m => m.challengeId === selectedChall._id,
+                )}
+              />
+            }
+            myTeamName={myTeamName}
+            attemptChall={attemptChall}
             onClose={() => setSelectedChall(undefined)}
           />
         ) : (

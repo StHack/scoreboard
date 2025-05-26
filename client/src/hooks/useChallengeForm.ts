@@ -5,10 +5,10 @@ import {
   Difficulty,
   FlagPattern,
 } from '@sthack/scoreboard-common'
+import { useField } from '@sthack/scoreboard-ui/hooks'
 import { FormEvent, useState } from 'react'
 import { useAdmin } from './useAdmin'
 import { useAuth } from './useAuthentication'
-import { useField } from './useField'
 
 export function useChallengeForm(
   chall: Challenge | undefined,

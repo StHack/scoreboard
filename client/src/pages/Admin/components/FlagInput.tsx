@@ -1,10 +1,13 @@
 import { Challenge, FlagPattern } from '@sthack/scoreboard-common'
-import { Box } from 'components/Box'
-import { Button } from 'components/Button'
-import { IconFlagEdit, IconRepair } from 'components/Icon'
-import { LabelInput } from 'components/LabelInput'
-import { TextInput } from 'components/TextInput'
-import { useFieldReturn } from 'hooks/useField'
+import {
+  Box,
+  Button,
+  IconFlagEdit,
+  IconRepair,
+  LabelInput,
+  TextInput,
+} from '@sthack/scoreboard-ui/components'
+import { useFieldReturn } from '@sthack/scoreboard-ui/hooks'
 import { ChangeEvent } from 'react'
 import { AlignSelfProps, GridAreaProps } from 'styled-system'
 

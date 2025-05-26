@@ -1,16 +1,16 @@
 import { UserRole } from '@sthack/scoreboard-common'
-import { useAuth } from 'hooks/useAuthentication'
-import { useGame } from 'hooks/useGame'
-import { Box } from './Box'
 import {
+  Box,
   IconAchievement,
   IconAttempt,
   IconChallenge,
   IconCreate,
   IconGame,
   IconPromote,
-} from './Icon'
-import { Link } from './Link'
+  Link,
+} from '@sthack/scoreboard-ui/components'
+import { useAuth } from 'hooks/useAuthentication'
+import { useGame } from 'hooks/useGame'
 
 export function Footer() {
   const { isAuthenticated, roles } = useAuth()

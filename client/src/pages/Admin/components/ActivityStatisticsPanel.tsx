@@ -1,12 +1,14 @@
 import styled from '@emotion/styled'
-import { Box } from 'components/Box'
-import { BoxPanel } from 'components/BoxPanel'
-import { ChartActivityStats } from 'components/Charts/ChartActivityStats'
+import {
+  Box,
+  BoxPanel,
+  ChartActivityStats,
+} from '@sthack/scoreboard-ui/components'
 import { useAdmin } from 'hooks/useAdmin'
 import { GridAreaProps } from 'styled-system'
 
 export function ActivityStatisticsPanel({ gridArea }: GridAreaProps) {
-  const { activityStatistics } = useAdmin()
+  const { activityStatistics, activityStats } = useAdmin()
   return (
     <BoxPanel
       gridArea={gridArea}
@@ -85,7 +87,7 @@ export function ActivityStatisticsPanel({ gridArea }: GridAreaProps) {
       )}
 
       <Box gridColumn="span 6" width="100%">
-        <ChartActivityStats />
+        <ChartActivityStats activityStats={activityStats} />
       </Box>
     </BoxPanel>
   )

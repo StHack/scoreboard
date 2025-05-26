@@ -1,9 +1,11 @@
 import styled from '@emotion/styled'
-import { Box } from 'components/Box'
-import { Button } from 'components/Button'
-import { Banner } from 'components/Icon'
-import { LabelInput } from 'components/LabelInput'
-import { TextInput } from 'components/TextInput'
+import {
+  Banner,
+  Box,
+  Button,
+  LabelInput,
+  TextInput,
+} from '@sthack/scoreboard-ui/components'
 import { useRegisterForm } from 'hooks/useRegisterForm'
 
 export function Register() {

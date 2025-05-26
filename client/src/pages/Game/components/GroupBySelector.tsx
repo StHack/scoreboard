@@ -3,8 +3,7 @@ import {
   Difficulty,
   DifficultyValue,
 } from '@sthack/scoreboard-common'
-import { Box } from 'components/Box'
-import { Button } from 'components/Button'
+import { Box, Button } from '@sthack/scoreboard-ui/components'
 import { AlignSelfProps, GridAreaProps, JustifySelfProps } from 'styled-system'
 
 const GroupBy = ['Default', 'Category', 'Difficulty', 'Author'] as const

@@ -1,7 +1,9 @@
-import { Box } from 'components/Box'
+import {
+  Box,
+  ChallsScoreBoard,
+  TeamsScoreBoard,
+} from '@sthack/scoreboard-ui/components'
 import { useGame } from 'hooks/useGame'
-import { ChallsScoreBoard } from './components/ChallsScoreBoard'
-import { TeamsScoreBoard } from './components/TeamsScoreBoard'
 
 export function ScoreBoard() {
   const {

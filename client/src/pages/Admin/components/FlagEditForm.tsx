@@ -1,6 +1,5 @@
 import { Challenge } from '@sthack/scoreboard-common'
-import { Box } from 'components/Box'
-import Popup from 'components/Popup'
+import { Box, Popup } from '@sthack/scoreboard-ui/components'
 import { useChallengeForm } from 'hooks/useChallengeForm'
 import { FormEventHandler, useRef } from 'react'
 import { FlagInput } from './FlagInput'

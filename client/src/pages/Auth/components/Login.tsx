@@ -1,9 +1,12 @@
 import styled from '@emotion/styled'
-import { Box } from 'components/Box'
-import { Button } from 'components/Button'
-import { Banner, IconLogo2025 } from 'components/Icon'
-import { LabelInput } from 'components/LabelInput'
-import { TextInput } from 'components/TextInput'
+import {
+  Banner,
+  Box,
+  Button,
+  IconLogo2025,
+  LabelInput,
+  TextInput,
+} from '@sthack/scoreboard-ui/components'
 import { useGame } from 'hooks/useGame'
 import { useLoginForm } from 'hooks/useLoginForm'
 import { Link } from 'react-router-dom'

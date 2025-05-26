@@ -1,4 +1,5 @@
 import { User, UserRole } from '@sthack/scoreboard-common'
+import { useStorage } from '@sthack/scoreboard-ui/hooks'
 import {
   createContext,
   PropsWithChildren,
@@ -7,7 +8,6 @@ import {
   useState,
 } from 'react'
 import { login, logout, me } from 'services/authenticate'
-import { useStorage } from './useStorage'
 
 export type AuthContext = {
   user?: User

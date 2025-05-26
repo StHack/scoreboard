@@ -1,6 +1,6 @@
+import { useField } from '@sthack/scoreboard-ui/hooks'
 import { ChangeEvent, useState } from 'react'
 import { useAuth } from './useAuthentication'
-import { useField } from './useField'
 
 export function useLoginForm() {
   const [isLoading, setIsLoading] = useState<boolean>(false)

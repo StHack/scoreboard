@@ -1,16 +1,16 @@
 import { User, UserRole } from '@sthack/scoreboard-common'
-import { Box } from 'components/Box'
-import { ExportJsonButton } from 'components/ExportJsonButton'
 import {
+  Box,
+  ExportJsonButton,
   IconDelete,
   IconDemote,
   IconLogout,
   IconPassword,
   IconPromote,
   IconTeams,
-} from 'components/Icon'
+  SearchInput,
+} from '@sthack/scoreboard-ui/components'
 import { RoleBasedButton } from 'components/RoleBasedButton'
-import { SearchInput } from 'components/SearchInput'
 import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
 import { useState } from 'react'

@@ -1,8 +1,11 @@
 import { Attempt } from '@sthack/scoreboard-common'
-import { Box } from 'components/Box'
-import { ExportJsonButton } from 'components/ExportJsonButton'
-import { SearchInput } from 'components/SearchInput'
-import { ColumnDefinition, Table } from 'components/Table'
+import {
+  Box,
+  ColumnDefinition,
+  ExportJsonButton,
+  SearchInput,
+  Table,
+} from '@sthack/scoreboard-ui/components'
 import { useAdmin } from 'hooks/useAdmin'
 import { useState } from 'react'
 

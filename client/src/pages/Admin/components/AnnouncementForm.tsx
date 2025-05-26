@@ -1,11 +1,13 @@
 import { UserRole } from '@sthack/scoreboard-common'
-import { BoxPanel } from 'components/BoxPanel'
-import { Button } from 'components/Button'
-import { SelectInput } from 'components/SelectInput'
-import { TextArea } from 'components/TextInput'
+import {
+  BoxPanel,
+  Button,
+  SelectInput,
+  TextArea,
+} from '@sthack/scoreboard-ui/components'
+import { useField } from '@sthack/scoreboard-ui/hooks'
 import { useAdmin } from 'hooks/useAdmin'
 import { useAuth } from 'hooks/useAuthentication'
-import { useField } from 'hooks/useField'
 import { useGame } from 'hooks/useGame'
 import { GridAreaProps } from 'styled-system'
 

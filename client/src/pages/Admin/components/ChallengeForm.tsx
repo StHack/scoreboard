@@ -1,19 +1,21 @@
 import { Categories, Challenge, Difficulties } from '@sthack/scoreboard-common'
+import {
+  Box,
+  BoxPanel,
+  Button,
+  categoryToImg,
+  ChallDescriptionPopup,
+  DropdownInput,
+  LabelInput,
+  Loader,
+  SelectInput,
+  TextInput,
+} from '@sthack/scoreboard-ui/components'
+import { useThemeMode } from '@sthack/scoreboard-ui/hooks'
 import MDEditor from '@uiw/react-md-editor'
-import { Box } from 'components/Box'
-import { BoxPanel } from 'components/BoxPanel'
-import { Button } from 'components/Button'
-import { categoryToImg } from 'components/CategoryImg'
-import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
-import { DropdownInput } from 'components/DropdownInput'
 import { ImageInput } from 'components/ImageInput'
-import { LabelInput } from 'components/LabelInput'
-import { Loader } from 'components/Loader'
-import { SelectInput } from 'components/SelectInput'
-import { TextInput } from 'components/TextInput'
 import { AdminContextLoadingState, useAdmin } from 'hooks/useAdmin'
 import { useChallengeForm } from 'hooks/useChallengeForm'
-import { useThemeMode } from 'hooks/useThemeMode'
 import {
   ChangeEvent,
   SyntheticEvent,
@@ -206,7 +208,8 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
         {showPreview && (
           <ChallDescriptionPopup
             challenge={preview}
-            messages={[]}
+            attemptChall={() => Promise.resolve(true)}
+            myTeamName="admin"
             onClose={() => setShowPreview(false)}
             score={{
               challenge: {} as Challenge,

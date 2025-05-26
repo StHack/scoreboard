@@ -1,9 +1,12 @@
-import { Box } from 'components/Box'
-import { BoxPanel } from 'components/BoxPanel'
-import { ChartAchievementsOverTime } from 'components/Charts/ChartAchievementsOverTime'
-import { ChartAttemptsPanel } from 'components/Charts/ChartAttempts'
-import { ChartAttemptsOverTime } from 'components/Charts/ChartAttemptsOverTime'
+import {
+  Box,
+  BoxPanel,
+  ChartAchievementsOverTime,
+  ChartAttemptsOverTime,
+  ChartAttemptsPanel,
+} from '@sthack/scoreboard-ui/components'
 import { useAdmin } from 'hooks/useAdmin'
+import { useGame } from 'hooks/useGame'
 import { ActivityStatisticsPanel } from './ActivityStatisticsPanel'
 import { AnnouncementForm } from './AnnouncementForm'
 import { GameStateForm } from './GameStateForm'
@@ -11,6 +14,7 @@ import { TeamSizeForm } from './TeamSizeForm'
 
 export function GeneralPanel() {
   const { attempts } = useAdmin()
+  const { achievements } = useGame()
 
   return (
     <Box
@@ -46,9 +50,9 @@ export function GeneralPanel() {
         placeItems="center"
         gap="2"
       >
-        <ChartAttemptsPanel />
+        <ChartAttemptsPanel attempts={attempts} />
 
-        <ChartAttemptsOverTime />
+        <ChartAttemptsOverTime attempts={attempts} />
       </BoxPanel>
 
       <BoxPanel
@@ -58,7 +62,7 @@ export function GeneralPanel() {
         placeItems="center"
         gap="2"
       >
-        <ChartAchievementsOverTime />
+        <ChartAchievementsOverTime achievements={achievements} />
       </BoxPanel>
     </Box>
   )

@@ -1,7 +1,9 @@
 import { UserRole } from '@sthack/scoreboard-common'
-import { BoxPanel } from 'components/BoxPanel'
-import { ConditionalLoader } from 'components/Loader'
-import { ToggleInput } from 'components/ToggleInput'
+import {
+  BoxPanel,
+  ConditionalLoader,
+  ToggleInput,
+} from '@sthack/scoreboard-ui/components'
 import { useAdmin } from 'hooks/useAdmin'
 import { useAuth } from 'hooks/useAuthentication'
 import { GameContextLoadingState, useGame } from 'hooks/useGame'

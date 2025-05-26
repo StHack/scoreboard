@@ -1,13 +1,13 @@
 import { UserRole } from '@sthack/scoreboard-common'
-import { Box } from 'components/Box'
 import {
   IconAchievement,
   IconAttempt,
   IconChallenge,
   IconGame,
   IconUsers,
-} from 'components/Icon'
-import { Link } from 'components/Link'
+  Link,
+} from '@sthack/scoreboard-ui/components'
+import { Box } from '@sthack/scoreboard-ui/components'
 import { ProvideAdmin } from 'hooks/useAdmin'
 import { useAuth } from 'hooks/useAuthentication'
 import { PropsWithChildren } from 'react'

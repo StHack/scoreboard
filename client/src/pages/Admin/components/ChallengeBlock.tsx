@@ -5,21 +5,21 @@ import {
   Message,
   UserRole,
 } from '@sthack/scoreboard-common'
-import { Box } from 'components/Box'
-import { Button } from 'components/Button'
-import { ChallDescriptionPopup } from 'components/ChallDescriptionPopup'
-import { ChallengeCard } from 'components/ChallengeCard'
 import {
+  Box,
+  Button,
+  ChallDescriptionPopup,
+  ChallengeCard,
   IconBreak,
   IconDelete,
   IconEdit,
   IconFlagEdit,
   IconPreview,
   IconRepair,
-} from 'components/Icon'
+} from '@sthack/scoreboard-ui/components'
+import { Messages } from 'components/Messages'
 import { RoleBasedButton } from 'components/RoleBasedButton'
-import { useAuth } from 'hooks/useAuthentication'
-import { ProvidePlayer } from 'hooks/usePlayer'
+import { ProvidePlayer, usePlayer } from 'hooks/usePlayer'
 import { useState } from 'react'
 import { FlagEditForm } from './FlagEditForm'
 
@@ -42,7 +42,6 @@ export function ChallengeBlock({
   onEditClick,
   onRepairClick,
 }: ChallengeBlockProps) {
-  const { roles } = useAuth()
   const { author, category, difficulty, isBroken, name } = chall
   const [showPreview, setShowPreview] = useState<boolean>(false)
   const [showFlagEdit, setShowFlagEdit] = useState<boolean>(false)
@@ -149,11 +148,11 @@ export function ChallengeBlock({
       </Box>
       {showPreview && (
         <ProvidePlayer>
-          <ChallDescriptionPopup
+          <Previewer
             challenge={chall}
+            score={score}
             messages={messages}
             onClose={() => setShowPreview(false)}
-            score={score}
           />
         </ProvidePlayer>
       )}
@@ -162,5 +161,25 @@ export function ChallengeBlock({
         <FlagEditForm chall={chall} onClose={() => setShowFlagEdit(false)} />
       )}
     </Box>
+  )
+}
+
+type PreviewerProps = {
+  challenge: Challenge
+  score: ChallengeScore
+  messages: Message[]
+  onClose: () => void
+}
+function Previewer({ challenge, score, messages, onClose }: PreviewerProps) {
+  const { attemptChall, myTeamName } = usePlayer()
+  return (
+    <ChallDescriptionPopup
+      challenge={challenge}
+      messageBlock={<Messages title="Clues" messages={messages} />}
+      onClose={onClose}
+      score={score}
+      attemptChall={attemptChall}
+      myTeamName={myTeamName}
+    />
   )
 }

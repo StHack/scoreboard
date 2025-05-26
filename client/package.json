@@ -17,6 +17,7 @@
     "@emotion/styled": "^11.14.0",
     "@rive-app/react-canvas": "^4.18.3",
     "@sthack/scoreboard-common": "*",
+    "@sthack/scoreboard-ui": "*",
     "@styled-system/css": "^5.1.5",
     "@styled-system/should-forward-prop": "^5.1.5",
     "@uiw/react-md-editor": "^4.0.5",

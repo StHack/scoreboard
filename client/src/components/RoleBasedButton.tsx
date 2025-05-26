@@ -1,6 +1,6 @@
 import { UserRole } from '@sthack/scoreboard-common'
+import { Button, ButtonProps } from '@sthack/scoreboard-ui/components'
 import { useAuth } from 'hooks/useAuthentication'
-import { Button, ButtonProps } from './Button'
 
 type RoleBasedButtonProps = {
   roleRequired: UserRole

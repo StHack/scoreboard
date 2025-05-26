@@ -8,6 +8,7 @@
     "start-server": "npm run start -w server",
     "start-client": "npm run start -w client",
     "start-common": "npm run start -w common",
+    "start-common-ui": "npm run start -w common-ui",
     "start-tests": "npm run start -w tests",
     "prod": "npm run prod -w server",
     "build": "npm run build --workspaces --if-present",
@@ -18,6 +19,7 @@
   },
   "workspaces": [
     "common",
+    "common-ui",
     "client",
     "server",
     "tests"

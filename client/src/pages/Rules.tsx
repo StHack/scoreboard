@@ -1,13 +1,16 @@
 import { GameConfig } from '@sthack/scoreboard-common'
-import { Box } from 'components/Box'
-import { Button } from 'components/Button'
-import { IconDiscord, IconTwitter } from 'components/Icon'
-import { ToggleInput } from 'components/ToggleInput'
+import {
+  Box,
+  Button,
+  IconDiscord,
+  IconTwitter,
+  ToggleInput,
+} from '@sthack/scoreboard-ui/components'
+import { ReactMarkdownRenderers } from '@sthack/scoreboard-ui/styles'
 import { useAuth } from 'hooks/useAuthentication'
 import { useGame } from 'hooks/useGame'
 import ReactMarkdown from 'react-markdown'
 import { useNavigate } from 'react-router-dom'
-import { ReactMarkdownRenderers } from 'styles/react-markdown'
 
 export function Rules() {
   const { gameConfig } = useGame()

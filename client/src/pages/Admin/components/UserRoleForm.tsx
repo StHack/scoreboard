@@ -1,9 +1,11 @@
 import styled from '@emotion/styled'
 import { User, UserRole, UserRoleDescriptions } from '@sthack/scoreboard-common'
-import { Box } from 'components/Box'
-import { LabelInput } from 'components/LabelInput'
-import Popup from 'components/Popup'
-import { TextInput } from 'components/TextInput'
+import {
+  Box,
+  LabelInput,
+  Popup,
+  TextInput,
+} from '@sthack/scoreboard-ui/components'
 import { useAdmin } from 'hooks/useAdmin'
 import { useRef, useState } from 'react'
 

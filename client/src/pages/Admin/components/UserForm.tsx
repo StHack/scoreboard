@@ -1,11 +1,14 @@
 import styled from '@emotion/styled'
 import { User } from '@sthack/scoreboard-common'
-import { LabelInput } from 'components/LabelInput'
-import Popup from 'components/Popup'
-import { SelectInput } from 'components/SelectInput'
-import { TextInput } from 'components/TextInput'
+import {
+  Box,
+  LabelInput,
+  Popup,
+  SelectInput,
+  TextInput,
+} from '@sthack/scoreboard-ui/components'
+import { useField } from '@sthack/scoreboard-ui/hooks'
 import { useAdmin } from 'hooks/useAdmin'
-import { useField } from 'hooks/useField'
 import { useRef } from 'react'
 
 export type UserEditMode = 'password' | 'team'
@@ -17,7 +20,7 @@ export type UserFormProps = {
 }
 
 export function UserForm({ user, editMode, onClose }: UserFormProps) {
-  const { changePassword, changeTeam, changeRoles, users } = useAdmin()
+  const { changePassword, changeTeam, users } = useAdmin()
   const ref = useRef<HTMLFormElement>(null)
   const { inputProp } = useField<string>({
     defaultValue: editMode === 'team' ? user.team : '',
@@ -36,7 +39,10 @@ export function UserForm({ user, editMode, onClose }: UserFormProps) {
       onCancel={onClose}
       onValidate={() => ref.current?.requestSubmit()}
     >
-      <Form
+      <Box
+        as="form"
+        display="flex"
+        flexDirection="column"
         ref={ref}
         onSubmit={e => {
           e.preventDefault()
@@ -59,12 +65,7 @@ export function UserForm({ user, editMode, onClose }: UserFormProps) {
             <SelectInput predefinedValues={existingTeams} {...inputProp} />
           )}
         </LabelInput>
-      </Form>
+      </Box>
     </Popup>
   )
 }
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`

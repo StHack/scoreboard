@@ -1,11 +1,9 @@
 import styled from '@emotion/styled'
 import { UserRole } from '@sthack/scoreboard-common'
+import { Box, Button, IconLogout, Logo } from '@sthack/scoreboard-ui/components'
 import { useAuth } from 'hooks/useAuthentication'
 import { NavLink } from 'react-router-dom'
 import { space, SpaceProps } from 'styled-system'
-import { Box } from './Box'
-import { Button } from './Button'
-import { IconLogout, Logo } from './Icon'
 
 export function Header() {
   const { user, isAuthenticated, roles, logOut } = useAuth()

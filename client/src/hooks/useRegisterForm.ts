@@ -1,7 +1,7 @@
+import { useField } from '@sthack/scoreboard-ui/hooks'
 import { ChangeEvent, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { register } from 'services/authenticate'
-import { useField } from './useField'
 
 export function useRegisterForm() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
