@@ -143,13 +143,3 @@ export const gap = system({
     defaultScale: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   },
 })
-
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const SafariSpecific = (cssRule: any) => css`
-  @media not all and (min-resolution: 0.001dpcm) {
-    @media {
-      ${cssRule}
-    }
-  }
-`
