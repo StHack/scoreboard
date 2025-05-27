@@ -1,16 +1,15 @@
 import { Achievement, Challenge } from '@sthack/scoreboard-common'
 import {
-  Box,
   BoxPanel,
   ChartAchievementsOverTime,
   ConditionalLoader,
   IconAchievement,
 } from '@sthack/scoreboard-ui/components'
 import { BackupDataType, useBackupData } from 'hooks/useBackupData'
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 
-export function Main() {
+export function Achievements() {
   const { year } = useParams()
   const yearNumber = parseInt(year || '', 10)
 
@@ -48,7 +47,7 @@ export function Main() {
       <BoxPanel
         title={
           <>
-            <IconAchievement size="2" /> Achievements over time
+            <IconAchievement size="2" /> Achievements board
           </>
         }
         titleProps={{

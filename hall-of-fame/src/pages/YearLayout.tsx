@@ -1,4 +1,11 @@
-import { Box } from '@sthack/scoreboard-ui/components'
+import {
+  Box,
+  IconAchievement,
+  IconChallenge,
+  IconGame,
+  IconUsers,
+  Link,
+} from '@sthack/scoreboard-ui/components'
 import { Outlet } from 'react-router-dom'
 
 export function YearLayout() {
@@ -13,6 +20,29 @@ export function YearLayout() {
       p="4"
       gap="4"
     >
+      <Box
+        as="nav"
+        display="flex"
+        flexDirection="row"
+        justifyContent={['space-around', 'center']}
+        gap={[1, 2]}
+        overflowX="auto"
+        px="1"
+      >
+        <Link to="" end>
+          <IconUsers color="currentColor" size="1.5em" />
+          Teams
+        </Link>
+        <Link to="challenges">
+          <IconChallenge color="currentColor" size="1.5em" />
+          Challenges
+        </Link>
+        <Link to="achievements">
+          <IconAchievement color="currentColor" size="1.5em" />
+          Achievements
+        </Link>
+      </Box>
+
       <Outlet />
     </Box>
   )
