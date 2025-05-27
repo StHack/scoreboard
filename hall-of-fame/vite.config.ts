@@ -9,7 +9,7 @@ const year = new Date().getFullYear()
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
-  base: command === 'build' ? 'https://hall-of-fame.sthack.fr' : undefined,
+  base: command === 'build' ? 'https://hall-of-fame.sthack.fr/' : '/',
   server: {
     port: 3000,
   },

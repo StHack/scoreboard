@@ -55,7 +55,7 @@ export function useBackupData<K extends BackupDataType>(
 
     setLoading(true)
     setError(undefined)
-    fetch(`${import.meta.env.BASE_URL}/backups/${year}/${type}.json`)
+    fetch(`${import.meta.env.BASE_URL}backups/${year}/${type}.json`)
       .then(res => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         return res.json()

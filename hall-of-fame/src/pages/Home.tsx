@@ -69,7 +69,7 @@ type EditionLinkProps = {
 
 export function EditionLink({ year, logo: Icon }: EditionLinkProps) {
   return (
-    <SLink to={`${import.meta.env.BASE_URL}/year/${year}`} flexDirection="column">
+    <SLink to={`${import.meta.env.BASE_URL}year/${year}`} flexDirection="column">
       <Icon size="13" />
       <Box as="span">{`${year}`}</Box>
     </SLink>
