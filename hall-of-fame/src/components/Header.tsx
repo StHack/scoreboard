@@ -22,8 +22,8 @@ export function Header() {
 
       <nav>
         <Box display="flex" flexDirection="row" alignItems="center" as="ul">
-          <GameLink to="/scoreboard" label="Scoreboard" />
-          <GameLink to="/rules" label="Rules" />
+          {/* <GameLink to="/scoreboard" label="Scoreboard" />
+          <GameLink to="/rules" label="Rules" /> */}
         </Box>
       </nav>
     </Box>

@@ -9,7 +9,7 @@ const year = new Date().getFullYear()
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/scoreboard',
+  // base: '/scoreboard',
   server: {
     port: 3000,
   },
