@@ -61,7 +61,7 @@ const fontSizes: ThemeFontSizes = [
   '3.2rem',
 ]
 fontSizes.body = fontSizes[2]
-fontSizes.title = fontSizes[5]
+fontSizes.title = fontSizes[4]
 fontSizes.subtitle = fontSizes[4]
 
 const fontWeights: ThemeFontWeight = [400, 600]
