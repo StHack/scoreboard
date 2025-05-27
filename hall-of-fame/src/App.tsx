@@ -6,7 +6,7 @@ import { Home } from 'pages/Home'
 import { Main } from 'pages/Main'
 import { YearLayout } from 'pages/YearLayout'
 import { Suspense } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Route, Routes } from 'react-router-dom'
 
 // const ScoreBoard = lazy(() =>
 //   import('pages/ScoreBoard').then(module => ({ default: module.ScoreBoard })),
@@ -28,7 +28,7 @@ const Container = styled.main`
 
 export function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AppBlock>
         <Header />
         <Suspense fallback={<Loader size="10" placeSelf="center" />}>
@@ -43,6 +43,6 @@ export function App() {
         </Suspense>
         <Footer />
       </AppBlock>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
