@@ -57,6 +57,10 @@ export function Challenges() {
     return computeGameScore(a, rewards, challenges, teams, config)
   }, [achievements, challenges, rewards, users])
 
+  if (yearNumber <= 2023) {
+    return <BoxPanel title="Data not available" />
+  }
+
   return (
     <ConditionalLoader
       showLoader={loading}

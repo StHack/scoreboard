@@ -2,8 +2,12 @@ import {
   Box,
   IconAchievement,
   IconChallenge,
+  IconLogo2023,
+  IconLogo2024,
+  IconLogo2025,
   Link,
 } from '@sthack/scoreboard-ui/components'
+import { EditionLink } from './EditionLink'
 
 export function Footer() {
   return (
@@ -26,15 +30,9 @@ export function Footer() {
         overflowX="auto"
         px="1"
       >
-        <Link to="/rules">
-          <IconChallenge color="currentColor" size="1.5em" />
-          Rules
-        </Link>
-
-        <Link to="/scoreboard">
-          <IconAchievement color="currentColor" size="1.5em" />
-          Scoreboard
-        </Link>
+        <EditionLink size={2} year={2025} logo={IconLogo2025} />
+        <EditionLink size={2} year={2024} logo={IconLogo2024} />
+        <EditionLink size={2} year={2023} logo={IconLogo2023} />
       </Box>
     </Box>
   )

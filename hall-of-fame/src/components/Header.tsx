@@ -1,7 +1,14 @@
 import styled from '@emotion/styled'
-import { Box, Logo } from '@sthack/scoreboard-ui/components'
+import {
+  Box,
+  IconLogo2023,
+  IconLogo2024,
+  IconLogo2025,
+  Logo,
+} from '@sthack/scoreboard-ui/components'
 import { NavLink } from 'react-router-dom'
 import { space, SpaceProps } from 'styled-system'
+import { EditionLink } from './EditionLink'
 
 export function Header() {
   return (
@@ -22,8 +29,9 @@ export function Header() {
 
       <nav>
         <Box display="flex" flexDirection="row" alignItems="center" as="ul">
-          {/* <GameLink to="/scoreboard" label="Scoreboard" />
-          <GameLink to="/rules" label="Rules" /> */}
+          <EditionLink size={2} year={2025} logo={IconLogo2025} />
+          <EditionLink size={2} year={2024} logo={IconLogo2024} />
+          <EditionLink size={2} year={2023} logo={IconLogo2023} />
         </Box>
       </nav>
     </Box>

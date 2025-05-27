@@ -5,6 +5,7 @@ import {
   GameScore,
 } from '@sthack/scoreboard-common'
 import {
+  Box,
   BoxPanel,
   ConditionalLoader,
   IconTeams,
@@ -56,6 +57,10 @@ export function Teams() {
 
     return computeGameScore(a, rewards, challenges, teams, config)
   }, [achievements, challenges, rewards, users])
+
+  if (yearNumber <= 2023) {
+    return <BoxPanel title="Data not available" />
+  }
 
   return (
     <ConditionalLoader

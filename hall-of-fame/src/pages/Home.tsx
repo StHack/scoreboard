@@ -1,13 +1,11 @@
-import styled from '@emotion/styled'
 import {
   Box,
   BoxPanel,
-  Icon,
   IconLogo2023,
   IconLogo2024,
   IconLogo2025,
-  Link,
 } from '@sthack/scoreboard-ui/components'
+import { EditionLink } from 'components/EditionLink'
 
 export function Home() {
   return (
@@ -63,23 +61,3 @@ export function Home() {
     </Box>
   )
 }
-
-type EditionLinkProps = {
-  year: number
-  logo: Icon
-}
-
-export function EditionLink({ year, logo: Icon }: EditionLinkProps) {
-  return (
-    <SLink to={`/year/${year}`} flexDirection="column">
-      <Icon size="13" />
-      <Box as="span">{`${year}`}</Box>
-    </SLink>
-  )
-}
-
-const SLink = styled(Link)`
-  svg {
-    filter: drop-shadow(-1px 6px 3px hsl(0deg 0% 0% / 80%));
-  }
-`
