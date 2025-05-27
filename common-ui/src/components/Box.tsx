@@ -61,7 +61,7 @@ export function Box<E extends React.ElementType = 'div'>(
   return <StyledBox {...props} />
 }
 
-const MotionStyledBox = motion(StyledBox)
+const MotionStyledBox = motion.create(StyledBox)
 export function MotionBox<E extends React.ElementType = 'div'>(
   props: Omit<React.ComponentPropsWithRef<E>, 'as'> &
     BoxProps &

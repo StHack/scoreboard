@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { PropsWithChildren } from 'react'
 import { Flip } from '../styles'
+import { BoxPanel } from './BoxPanel'
 import { Logo, StyledIconProps } from './Icon'
 
 export const Loader = styled(Logo)`
@@ -10,18 +11,28 @@ export const Loader = styled(Logo)`
 
 type ConditionalLoaderProps = StyledIconProps & {
   showLoader: boolean
+  error?: Error
 }
 
 export function ConditionalLoader({
   showLoader,
+  error,
   size = 2,
   placeSelf = 'center',
   children,
   ...props
 }: PropsWithChildren<ConditionalLoaderProps>) {
-  return showLoader ? (
-    <Loader size={size} placeSelf={placeSelf} {...props} />
-  ) : (
-    <>{children}</>
-  )
+  if (showLoader) {
+    return <Loader size={size} placeSelf={placeSelf} {...props} />
+  }
+
+  if (error) {
+    return (
+      <BoxPanel title="An error has occurred" placeSelf="center">
+        {error.message}
+      </BoxPanel>
+    )
+  }
+
+  return <>{children}</>
 }

@@ -10,6 +10,7 @@
     "start-common": "npm run start -w common",
     "start-common-ui": "npm run start -w common-ui",
     "start-tests": "npm run start -w tests",
+    "start-hall-of-fame": "npm run start -w hall-of-fame",
     "prod": "npm run prod -w server",
     "build": "npm run build --workspaces --if-present",
     "ts-check": "npm run ts-check --workspaces --if-present",
@@ -21,6 +22,7 @@
     "common",
     "common-ui",
     "client",
+    "hall-of-fame",
     "server",
     "tests"
   ],

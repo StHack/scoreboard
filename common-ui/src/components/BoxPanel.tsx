@@ -4,11 +4,13 @@ import { Box, BoxProps } from './Box'
 type BoxPanelProps = {
   title: ReactNode
   onSubmitCapture?: FormEventHandler<HTMLDivElement | HTMLFormElement>
+  titleProps?: BoxProps
 }
 export function BoxPanel({
   title,
   children,
   onSubmitCapture,
+  titleProps,
   ...props
 }: PropsWithChildren<BoxPanelProps> & BoxProps) {
   return (
@@ -27,7 +29,7 @@ export function BoxPanel({
       onSubmitCapture={onSubmitCapture}
       {...props}
     >
-      <Box as="h2" fontSize="2" mb="2">
+      <Box as="h2" fontSize="2" mb="2" {...titleProps}>
         {title}
       </Box>
       {children}
