@@ -8,8 +8,8 @@ import viteTsconfigPaths from 'vite-tsconfig-paths'
 const year = new Date().getFullYear()
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  // base: '/scoreboard',
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? 'https://hall-of-fame.sthack.fr' : undefined,
   server: {
     port: 3000,
   },
@@ -23,8 +23,12 @@ export default defineConfig({
     exclude: ['node_modules'],
   },
   define: {
-    'import.meta.env.VITE_APP_TITLE': JSON.stringify(`Sthack Hall of Fame ${year}`),
-    'import.meta.env.VITE_APP_DESCRIPTION': JSON.stringify(`Welcome to the Sthack Hall of Fame ${year}`),
+    'import.meta.env.VITE_APP_TITLE': JSON.stringify(
+      `Sthack Hall of Fame ${year}`,
+    ),
+    'import.meta.env.VITE_APP_DESCRIPTION': JSON.stringify(
+      `Welcome to the Sthack Hall of Fame ${year}`,
+    ),
   },
   plugins: [
     react({
@@ -77,4 +81,4 @@ export default defineConfig({
       },
     }),
   ],
-})
+}))
