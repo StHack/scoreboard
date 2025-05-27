@@ -41,8 +41,10 @@ export function Home() {
 
       <BoxPanel title="Previous editions">
         <Box
-          display="grid"
-          gridTemplateColumns={['1fr', 'repeat(3, 1fr)']}
+          display="flex"
+          flexWrap="wrap"
+          flexDirection="row"
+          justifyContent="space-around"
           gap="2"
         >
           <EditionLink year={2025} logo={IconLogo2025} />
@@ -69,7 +71,7 @@ type EditionLinkProps = {
 
 export function EditionLink({ year, logo: Icon }: EditionLinkProps) {
   return (
-    <SLink to={`${import.meta.env.BASE_URL}year/${year}`} flexDirection="column">
+    <SLink to={`/year/${year}`} flexDirection="column">
       <Icon size="13" />
       <Box as="span">{`${year}`}</Box>
     </SLink>

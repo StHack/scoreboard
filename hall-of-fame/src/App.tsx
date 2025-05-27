@@ -34,11 +34,9 @@ export function App() {
         <Suspense fallback={<Loader size="10" placeSelf="center" />}>
           <Container>
             <Routes>
-              <Route path={import.meta.env.BASE_URL}>
-                <Route index element={<Home />} />
-                <Route path="year/:year" element={<YearLayout />}>
-                  <Route index element={<Main />} />
-                </Route>
+              <Route path="/" element={<Home />} />
+              <Route path="/year/:year" element={<YearLayout />}>
+                <Route index element={<Main />} />
               </Route>
             </Routes>
           </Container>

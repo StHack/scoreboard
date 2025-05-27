@@ -16,7 +16,7 @@ export function Header() {
       px="large"
       py="small"
     >
-      <NavLink to={import.meta.env.BASE_URL} title="Homepage">
+      <NavLink to="/" title="Homepage">
         <Logo size={2} color="secondaryText" />
       </NavLink>
 
