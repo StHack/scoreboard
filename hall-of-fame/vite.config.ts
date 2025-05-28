@@ -11,7 +11,7 @@ const year = new Date().getFullYear()
 export default defineConfig(({ command }) => ({
   base: command === 'build' ? 'https://hall-of-fame.sthack.fr/' : '/',
   server: {
-    port: 3000,
+    port: 3001,
   },
   build: {
     sourcemap: true,
