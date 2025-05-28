@@ -1,13 +1,5 @@
-import {
-  Box,
-  IconAchievement,
-  IconChallenge,
-  IconLogo2023,
-  IconLogo2024,
-  IconLogo2025,
-  Link,
-} from '@sthack/scoreboard-ui/components'
-import { EditionLink } from './EditionLink'
+import { Box } from '@sthack/scoreboard-ui/components'
+import { EditionLinks } from './EditionLink'
 
 export function Footer() {
   return (
@@ -30,9 +22,7 @@ export function Footer() {
         overflowX="auto"
         px="1"
       >
-        <EditionLink size={2} year={2025} logo={IconLogo2025} />
-        <EditionLink size={2} year={2024} logo={IconLogo2024} />
-        <EditionLink size={2} year={2023} logo={IconLogo2023} />
+        <EditionLinks size="2" />
       </Box>
     </Box>
   )

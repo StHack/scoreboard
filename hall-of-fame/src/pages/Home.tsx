@@ -1,11 +1,5 @@
-import {
-  Box,
-  BoxPanel,
-  IconLogo2023,
-  IconLogo2024,
-  IconLogo2025,
-} from '@sthack/scoreboard-ui/components'
-import { EditionLink } from 'components/EditionLink'
+import { Box, BoxPanel } from '@sthack/scoreboard-ui/components'
+import { EditionLinks } from 'components/EditionLink'
 
 export function Home() {
   return (
@@ -45,9 +39,7 @@ export function Home() {
           justifyContent="space-around"
           gap="2"
         >
-          <EditionLink year={2025} logo={IconLogo2025} />
-          <EditionLink year={2024} logo={IconLogo2024} />
-          <EditionLink year={2023} logo={IconLogo2023} />
+          <EditionLinks />
         </Box>
       </BoxPanel>
 
