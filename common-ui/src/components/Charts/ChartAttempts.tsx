@@ -25,10 +25,10 @@ export function ChartAttemptsPanel({ attempts }: ChartAttemptsPanelProps) {
     attempts.reduce<Record<string, Record<string, number>>>(
       (agg, cur) => ({
         ...agg,
-        [cur.challenge]: {
-          ...(agg[cur.challenge] ?? {}),
+        [cur.challenge.name]: {
+          ...(agg[cur.challenge.name] ?? {}),
           [`t/${cur.teamname}`]:
-            (agg[cur.challenge]?.[`t/${cur.teamname}`] ?? 0) + 1,
+            (agg[cur.challenge.name]?.[`t/${cur.teamname}`] ?? 0) + 1,
         },
       }),
       {},

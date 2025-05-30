@@ -14,9 +14,9 @@ export function YearLayout() {
       width="100%"
       maxWidth="maximalCentered"
       justifySelf="center"
-      display="grid"
-      gridAutoFlow="row"
-      alignItems="center"
+      display="flex"
+      flexDirection="column"
+      alignItems="stretch"
       p="4"
       gap="4"
     >
@@ -37,7 +37,7 @@ export function YearLayout() {
           <IconChallenge color="currentColor" size="1.5em" />
           Challenges
         </Link>
-        <Link to="stats">
+        <Link to="statistics">
           <IconGame color="currentColor" size="1.5em" />
           Statistics
         </Link>

@@ -16,7 +16,7 @@ export function Challenges() {
 
   return (
     <PageLoader
-      title="Challenge ScoreBoard"
+      title="Challenges ScoreBoard"
       icon={IconChallenge}
       showLoader={loading}
       error={error}

@@ -8,6 +8,7 @@ import {
   ChartAttemptsOverTime,
   ColumnDefinition,
   IconAchievement,
+  IconAttempt,
   IconChallenge,
   IconUsers,
   Table,
@@ -105,7 +106,7 @@ export function ChallengeDetail() {
       )}
 
       {attempts.length > 0 && (
-        <BoxPanel title="Failed Attempts Over time" titleIcon={IconAchievement}>
+        <BoxPanel title="Failed Attempts Over time" titleIcon={IconAttempt}>
           <ChartAttemptsOverTime
             attempts={attempts}
             defaultGroup="team"

@@ -12,7 +12,7 @@
     "salt": "",
     "category": "web",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -28,7 +28,7 @@
     "salt": "",
     "category": "web",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -44,7 +44,7 @@
     "salt": "",
     "category": "reverse",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -60,7 +60,7 @@
     "salt": "",
     "category": "reverse",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -76,7 +76,7 @@
     "salt": "",
     "category": "crypto",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -92,7 +92,7 @@
     "salt": "",
     "category": "misc",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -108,7 +108,7 @@
     "salt": "",
     "category": "reverse",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -124,7 +124,7 @@
     "salt": "",
     "category": "misc",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -140,7 +140,7 @@
     "salt": "",
     "category": "reverse",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -156,7 +156,7 @@
     "salt": "",
     "category": "progra",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -172,7 +172,7 @@
     "salt": "",
     "category": "pwn",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -180,7 +180,7 @@
       "$oid": "6169ca2b35b68ab26338862c"
     },
     "name": "Beers & Flag 1)",
-    "dscription": "I dev a new game !!\n\nTry to win and you'll have a gift :)\n\n`nc 54.155.73.130 1234`",
+    "description": "I dev a new game !!\n\nTry to win and you'll have a gift :)\n\n`nc 54.155.73.130 1234`",
     "img": "",
     "author": "phenol/ghozt",
     "flag": "8eb9a20ea66b7379640a9b9f051668c9bccddab27618089ca0072154eea1b471",
@@ -188,7 +188,7 @@
     "salt": "",
     "category": "game",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -204,7 +204,7 @@
     "salt": "",
     "category": "misc",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -220,7 +220,7 @@
     "salt": "",
     "category": "forensic",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -236,7 +236,7 @@
     "salt": "",
     "category": "reverse",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -252,7 +252,7 @@
     "salt": "",
     "category": "reverse",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -268,7 +268,7 @@
     "salt": "",
     "category": "hardware",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -284,7 +284,7 @@
     "salt": "",
     "category": "hardware",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -300,7 +300,7 @@
     "salt": "",
     "category": "hardware",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -316,7 +316,7 @@
     "salt": "",
     "category": "hardware",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -332,7 +332,7 @@
     "salt": "",
     "category": "network",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -348,7 +348,7 @@
     "salt": "",
     "category": "web",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -364,7 +364,7 @@
     "salt": "",
     "category": "web",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -380,7 +380,7 @@
     "salt": "",
     "category": "web",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -388,7 +388,7 @@
       "$oid": "6169ec9a85d880d5b5067175"
     },
     "name": "Beers & Flag 2)",
-    "dscription": "\n\n\nFor your pleasure, I've decreased the minimum number of win needed, but I've had some weird warning during the build about printf...\n\n\n\n\n\n`nc 34.242.121.94 1235`",
+    "description": "\n\n\nFor your pleasure, I've decreased the minimum number of win needed, but I've had some weird warning during the build about printf...\n\n\n\n\n\n`nc 34.242.121.94 1235`",
     "img": "",
     "author": "phenol/ghozt",
     "flag": "4691f54b580260c147c0e80547b0597afaee4906c561f7831d0a446add0e6741",
@@ -396,7 +396,7 @@
     "salt": "",
     "category": "pwn",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -412,7 +412,7 @@
     "salt": "",
     "category": "web",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -428,7 +428,7 @@
     "salt": "",
     "category": "web",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -436,7 +436,7 @@
       "$oid": "616a240b85d880d5b5068f0b"
     },
     "name": "Beers & Flag 3)",
-    "dscription": "Hi folks, it seems there is some reversing task in this binary. \nAs we are nice people (and as it seems you drink too much beers) we give you this gift : \n\n`https://sthatic.s3.eu-central-1.amazonaws.com/vic/beersandflag2`\nn`nc 34.244.193.105 1234`",
+    "description": "Hi folks, it seems there is some reversing task in this binary. \nAs we are nice people (and as it seems you drink too much beers) we give you this gift : \n\n`https://sthatic.s3.eu-central-1.amazonaws.com/vic/beersandflag2`\nn`nc 34.244.193.105 1234`",
     "img": "",
     "author": "Phenol/ghozt",
     "flag": "78cce53a2e3e7c1a4abced351926c036ec3b15110dd016d0dacf25e29ccead8f",
@@ -444,7 +444,7 @@
     "salt": "",
     "category": "reverse",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   },
   {
@@ -452,7 +452,7 @@
       "$oid": "616a246b85d880d5b5068f25"
     },
     "name": "Beers & Flag 4)",
-    "dscription": "Hey !! You exploit me few times ago !!\n\nGo ahead, now get a shell :)\n\n`https://sthatic.s3.eu-central-1.amazonaws.com/vic/beersandflag4`\nn`nc 34.244.231.137 1234`",
+    "description": "Hey !! You exploit me few times ago !!\n\nGo ahead, now get a shell :)\n\n`https://sthatic.s3.eu-central-1.amazonaws.com/vic/beersandflag4`\nn`nc 34.244.231.137 1234`",
     "img": "",
     "author": "Phenol/ghozt",
     "flag": "b69dbfe6ee7fabed38c9dc409c6da19229fcbee283eb0f606e9ca362900dd10e",
@@ -460,7 +460,7 @@
     "salt": "",
     "category": "pwn",
     "difficulty": "medium",
-    "isBroken": true,
+    "isBroken": false,
     "__v": 0
   }
 ]

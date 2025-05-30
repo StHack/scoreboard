@@ -7,6 +7,7 @@ import {
   ChartAttemptsOverTime,
   ColumnDefinition,
   IconAchievement,
+  IconAttempt,
   IconLogo2023Icon,
   IconUsers,
   ScoreCard,
@@ -106,7 +107,7 @@ export function TeamDetail() {
       )}
 
       {attempts.length > 0 && (
-        <BoxPanel title="Failed Attempts Over time" titleIcon={IconAchievement}>
+        <BoxPanel title="Failed Attempts Over time" titleIcon={IconAttempt}>
           <ChartAttemptsOverTime
             attempts={attempts}
             defaultGroup="user"
