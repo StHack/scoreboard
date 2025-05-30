@@ -8,6 +8,7 @@ import {
   Link,
   Logo,
 } from '@sthack/scoreboard-ui/components'
+import { useLocation } from 'react-router-dom'
 import { SizeProps } from 'styled-system'
 
 export type EditionLinkProps = {
@@ -20,8 +21,14 @@ export function EditionLink({
   logo: Icon,
   size = '13',
 }: EditionLinkProps & SizeProps) {
+  const location = useLocation()
+
+  const route = location.pathname.startsWith('/year/')
+    ? location.pathname.replace(/^\/year\/\d*/, `/year/${year}`)
+    : `/year/${year}`
+
   return (
-    <SLink to={`/year/${year}`} flexDirection="column">
+    <SLink to={route} flexDirection="column">
       <Icon size={size} />
       <Box as="span">{`${year}`}</Box>
     </SLink>
