@@ -6,10 +6,8 @@ import {
 import { useGame } from 'hooks/useGame'
 
 export function ScoreBoard() {
-  const {
-    score: { challsScore, teamsScore },
-    challenges,
-  } = useGame()
+  const { score, challenges } = useGame()
+  const { challsScore, teamsScore } = score
 
   const challsUnsolved =
     challenges.length -
@@ -40,7 +38,7 @@ export function ScoreBoard() {
           {teamScored} scorers - {teamsScore.length} teams
         </Box>
       </Box>
-      <TeamsScoreBoard teamsScore={teamsScore} challsScore={challsScore} />
+      <TeamsScoreBoard gameScore={score} />
 
       <Box
         as="h2"

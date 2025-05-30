@@ -34,7 +34,12 @@ export function from(date: Date, seconds: number): Date {
 }
 
 export const formatTimeShort = (input: Date | string | undefined) =>
-  input instanceof Date ? input.toLocaleTimeString() : (input?.toString() ?? '')
+  input instanceof Date
+    ? input.toLocaleTimeString(undefined, {
+        hour: '2-digit',
+        minute: '2-digit',
+      })
+    : (input?.toString() ?? '')
 
 export const formatTimeLong = (input: Date | string | undefined) =>
   input instanceof Date

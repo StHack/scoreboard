@@ -2,9 +2,10 @@ import styled from '@emotion/styled'
 import { Loader } from '@sthack/scoreboard-ui/components'
 import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'
-import { Achievements } from 'pages/Achievements'
+import { ChallengeDetail } from 'pages/ChallengeDetail'
 import { Challenges } from 'pages/Challenges'
 import { Home } from 'pages/Home'
+import { TeamDetail } from 'pages/TeamDetail'
 import { Teams } from 'pages/Teams'
 import { YearLayout } from 'pages/YearLayout'
 import { Suspense } from 'react'
@@ -39,8 +40,12 @@ export function App() {
               <Route path="/" element={<Home />} />
               <Route path="/year/:year" element={<YearLayout />}>
                 <Route index element={<Teams />} />
+                <Route path="team/:team" element={<TeamDetail />} />
                 <Route path="challenges" element={<Challenges />} />
-                <Route path="achievements" element={<Achievements />} />
+                <Route
+                  path="challenge/:challengeId"
+                  element={<ChallengeDetail />}
+                />
               </Route>
             </Routes>
           </Container>

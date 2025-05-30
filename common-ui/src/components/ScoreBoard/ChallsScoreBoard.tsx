@@ -15,10 +15,12 @@ import { useState } from 'react'
 export type ChallsScoreBoardProps = {
   challsScore: Record<string, ChallengeScore>
   challenges: Challenge[]
+  hrefPattern?: (challenge: Challenge) => string
 }
 export function ChallsScoreBoard({
   challsScore,
   challenges,
+  hrefPattern,
 }: ChallsScoreBoardProps) {
   const [selectedBreakthrough, setSelectedBreakthrough] =
     useState<Achievement>()
@@ -34,9 +36,13 @@ export function ChallsScoreBoard({
             score={challsScore[c._id]}
             currentTeam={challsScore[c._id].achievements[0]?.teamname}
             onClick={() =>
+              !hrefPattern &&
               setSelectedBreakthrough(challsScore[c._id].achievements[0])
             }
             size="12"
+            // @ts-expect-error not a real one
+            as={hrefPattern && 'a'}
+            href={hrefPattern && hrefPattern(c)}
           />
         ))}
       {selectedBreakthrough && (

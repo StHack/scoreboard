@@ -25,6 +25,7 @@ export type TeamScore = {
 export type GameScore = {
   challsScore: Record<string, ChallengeScore>
   teamsScore: TeamScore[]
+  beforeLastScorer?: TeamScore
 }
 
 export type PlayerScore = {

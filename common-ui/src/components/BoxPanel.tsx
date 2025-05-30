@@ -1,13 +1,16 @@
 import { FormEventHandler, PropsWithChildren, ReactNode } from 'react'
 import { Box, BoxProps } from './Box'
+import { Icon } from './Icon'
 
 type BoxPanelProps = {
   title: ReactNode
+  titleIcon?: Icon
   onSubmitCapture?: FormEventHandler<HTMLDivElement | HTMLFormElement>
   titleProps?: BoxProps
 }
 export function BoxPanel({
   title,
+  titleIcon: TitleIcon,
   children,
   onSubmitCapture,
   titleProps,
@@ -29,7 +32,15 @@ export function BoxPanel({
       onSubmitCapture={onSubmitCapture}
       {...props}
     >
-      <Box as="h2" fontSize="2" mb="2" {...titleProps}>
+      <Box
+        as="h2"
+        fontSize="2"
+        display="flex"
+        alignItems="center"
+        gap="2"
+        {...titleProps}
+      >
+        {TitleIcon && <TitleIcon size="2" />}
         {title}
       </Box>
       {children}

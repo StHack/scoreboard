@@ -121,6 +121,7 @@ export const StyledTable = styled.table<{ tableLayout: TableLayout }>`
     padding: ${p => p.theme.space[2]};
     overflow: hidden;
     text-overflow: ellipsis;
+    vertical-align: middle;
   }
 
   th {

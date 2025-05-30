@@ -20,9 +20,16 @@ export function computeGameScore(
   const rewardsScore = computeRewards(rewards, config)
   const teamsScore = computeTeams(teams, challsScore, rewardsScore)
 
+  const scorersNotOnPodium = teamsScore.filter(s => s.score > 0 && s.rank > 3)
+  const beforeLastScorer =
+    scorersNotOnPodium.length > 2
+      ? scorersNotOnPodium[scorersNotOnPodium.length - 2]
+      : undefined
+
   return {
     challsScore,
     teamsScore,
+    beforeLastScorer,
   }
 }
 

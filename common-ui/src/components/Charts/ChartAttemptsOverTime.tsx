@@ -33,16 +33,21 @@ const AGG_OPTIONS = [
 type AllowedAggregation = (typeof AGG_OPTIONS)[number]['value']
 
 const GROUP_OPTIONS = [
+  { label: 'User', value: 'user' },
   { label: 'Team', value: 'team' },
   { label: 'Challenge', value: 'challenge' },
 ] as const
 type AllowedGroup = (typeof GROUP_OPTIONS)[number]['value']
 
-function formatBucket(ts: Date, minutes: number) {
-  const d = new Date(ts)
-  d.setSeconds(0, 0)
-  d.setMinutes(Math.floor(d.getMinutes() / minutes) * minutes)
-  return d.getTime()
+function groupKey(
+  groupBy: AllowedGroup,
+  { challenge, teamname, username }: Attempt,
+): string {
+  return groupBy === 'team'
+    ? `t/${teamname}`
+    : groupBy === 'challenge'
+      ? `c/${challenge.name}`
+      : `u/${username}`
 }
 
 export type ChartAttemptsOverTimeProps = {
@@ -52,6 +57,8 @@ export type ChartAttemptsOverTimeProps = {
   hideSelectorTime?: boolean
   hideSelectorGroup?: boolean
   forcedActive?: string
+  minDate?: Date
+  maxDate?: Date
 }
 
 export function ChartAttemptsOverTime({
@@ -61,43 +68,54 @@ export function ChartAttemptsOverTime({
   hideSelectorTime,
   hideSelectorGroup,
   forcedActive,
+  minDate,
+  maxDate,
 }: ChartAttemptsOverTimeProps) {
   const theme = useTheme()
   const [agg, setAgg] = useState(defaultTime)
   const [groupBy, setGroupBy] = useState<AllowedGroup>(defaultGroup)
   const [active, setActive] = useState<string[]>(
-    forcedActive
-      ? [
-          defaultGroup === 'challenge'
-            ? `c/${forcedActive}`
-            : `t/${forcedActive}`,
-        ]
-      : [],
+    forcedActive ? [`${defaultGroup[0]}/${forcedActive}`] : [],
   )
 
   const groups = useMemo(
-    () => [
-      ...new Set(
-        attempts.map(a =>
-          groupBy === 'team' ? `t/${a.teamname}` : `c/${a.challenge}`,
-        ),
-      ),
-    ],
+    () => [...new Set(attempts.map(a => groupKey(groupBy, a)))],
     [attempts, groupBy],
   )
 
   const data = useMemo(() => {
-    const buckets: Record<string, Record<string, number>> = {}
+    if (attempts.length === 0) return []
+
+    // 1. Find min and max time
+    const times = attempts.map(a => a.createdAt.getTime())
+    const minTime = minDate?.getTime() ?? Math.min(...times)
+    const maxTime = maxDate?.getTime() ?? Math.max(...times)
+
+    console.log(minDate, maxDate)
+
+    // 2. Generate all bucket start times
+    const bucketMs = agg * 60 * 1000
+    const buckets: Record<number, Record<string, number>> = {}
+
+    for (
+      let t = Math.floor(minTime / bucketMs) * bucketMs;
+      t <= maxTime;
+      t += bucketMs
+    ) {
+      buckets[t] = {}
+    }
+
+    // 3. Fill buckets with achievement counts
     for (const ach of attempts) {
-      const time = formatBucket(ach.createdAt, agg)
-      const key =
-        groupBy === 'team' ? `t/${ach.teamname}` : `c/${ach.challenge}`
+      const time = Math.floor(ach.createdAt.getTime() / bucketMs) * bucketMs
+      const key = groupKey(groupBy, ach)
       if (!buckets[time]) buckets[time] = {}
       buckets[time][key] = (buckets[time][key] ?? 0) + 1
     }
-    // Fill missing group keys with 0
+
+    // 4. Fill missing group keys with 0
     return Object.entries(buckets)
-      .sort(([a], [b]) => a.localeCompare(b))
+      .sort(([a], [b]) => Number(a) - Number(b))
       .map(([time, groupsObj]) => {
         const filled: Record<string, number> = {}
         for (const group of groups) {
@@ -105,7 +123,7 @@ export function ChartAttemptsOverTime({
         }
         return { time: new Date(Number(time)), ...filled }
       })
-  }, [attempts, agg, groupBy, groups])
+  }, [attempts, minDate, maxDate, agg, groupBy, groups])
 
   const handleLegendClick = (data: Payload) => {
     if (!data.id) return

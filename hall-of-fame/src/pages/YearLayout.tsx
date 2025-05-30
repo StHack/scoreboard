@@ -37,9 +37,9 @@ export function YearLayout() {
           <IconChallenge color="currentColor" size="1.5em" />
           Challenges
         </Link>
-        <Link to="achievements">
-          <IconAchievement color="currentColor" size="1.5em" />
-          Achievements
+        <Link to="stats">
+          <IconGame color="currentColor" size="1.5em" />
+          Statistics
         </Link>
       </Box>
 

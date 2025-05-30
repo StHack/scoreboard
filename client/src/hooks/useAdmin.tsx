@@ -132,7 +132,7 @@ function useProvideAdmin(): AdminContext {
 
   const attempts = rawAttempts.map(a => ({
     ...a,
-    challenge: challenges.find(c => c._id === a.challengeId)?.name ?? '',
+    challenge: challenges.find(c => c._id === a.challengeId) as Challenge,
   }))
 
   useEffect(() => {

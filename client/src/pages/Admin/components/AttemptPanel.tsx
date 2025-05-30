@@ -10,7 +10,7 @@ import { useAdmin } from 'hooks/useAdmin'
 import { useState } from 'react'
 
 const columns: ColumnDefinition<Attempt>[] = [
-  { header: 'Challenge', rowValue: row => row.challenge },
+  { header: 'Challenge', rowValue: row => row.challenge.name },
   { header: 'Team', rowValue: row => row.teamname },
   { header: 'User', rowValue: row => row.username },
   { header: 'Attempt', rowValue: row => row.proposal },
@@ -35,7 +35,7 @@ export function AttemptPanel() {
         tableLayout="auto"
         data={attempts.filter(
           a =>
-            a.challenge.toLowerCase().includes(search) ||
+            a.challenge.name.toLowerCase().includes(search) ||
             a.teamname.toLowerCase().includes(search) ||
             a.username.toLowerCase().includes(search) ||
             a.proposal.toLowerCase().includes(search),

@@ -9,7 +9,7 @@ export const Loader = styled(Logo)`
   animation: ${Flip} 2s ease infinite;
 `
 
-type ConditionalLoaderProps = StyledIconProps & {
+export type ConditionalLoaderProps = {
   showLoader: boolean
   error?: Error
 }
@@ -21,18 +21,31 @@ export function ConditionalLoader({
   placeSelf = 'center',
   children,
   ...props
-}: PropsWithChildren<ConditionalLoaderProps>) {
+}: PropsWithChildren<ConditionalLoaderProps & StyledIconProps>) {
   if (showLoader) {
     return <Loader size={size} placeSelf={placeSelf} {...props} />
   }
 
   if (error) {
     return (
-      <BoxPanel title="An error has occurred" placeSelf="center">
+      <BoxPanel
+        title={
+          error instanceof NoDataError
+            ? 'No data found'
+            : 'An error has occurred'
+        }
+        placeSelf="center"
+      >
         {error.message}
       </BoxPanel>
     )
   }
 
   return <>{children}</>
+}
+export class NoDataError extends Error {
+  constructor(message = 'No data available') {
+    super(message)
+    this.name = 'NoDataError'
+  }
 }

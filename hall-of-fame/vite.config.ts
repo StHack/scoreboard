@@ -5,8 +5,6 @@ import { VitePWA } from 'vite-plugin-pwa'
 import svgrPlugin from 'vite-plugin-svgr'
 import viteTsconfigPaths from 'vite-tsconfig-paths'
 
-const year = new Date().getFullYear()
-
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
   base: command === 'build' ? 'https://hall-of-fame.sthack.fr/' : '/',
@@ -24,10 +22,10 @@ export default defineConfig(({ command }) => ({
   },
   define: {
     'import.meta.env.VITE_APP_TITLE': JSON.stringify(
-      `Sthack Hall of Fame ${year}`,
+      `Sthack Hall of Fame`,
     ),
     'import.meta.env.VITE_APP_DESCRIPTION': JSON.stringify(
-      `Welcome to the Sthack Hall of Fame ${year}`,
+      `Welcome to the Sthack Hall of Fame`,
     ),
   },
   plugins: [
@@ -55,9 +53,9 @@ export default defineConfig(({ command }) => ({
       },
 
       manifest: {
-        short_name: `Sthack HoF ${year}`,
-        name: `Sthack Hall of Fame ${year}`,
-        description: `Welcome to the Sthack Hall of Fame ${year}`,
+        short_name: `Sthack HoF`,
+        name: `Sthack Hall of Fame`,
+        description: `Welcome to the Sthack Hall of Fame`,
         lang: 'en',
         dir: 'ltr',
         orientation: 'any',
