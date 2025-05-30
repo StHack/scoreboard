@@ -1,4 +1,5 @@
 import { useTheme } from '@emotion/react'
+import styled from '@emotion/styled'
 import {
   Attempt,
   formatTimeLong,
@@ -28,31 +29,51 @@ const AGG_OPTIONS = [
   { label: '15 minutes', value: 15 },
   { label: '30 minutes', value: 30 },
   { label: '1 hour', value: 60 },
-]
+] as const
+type AllowedAggregation = (typeof AGG_OPTIONS)[number]['value']
 
 const GROUP_OPTIONS = [
   { label: 'Team', value: 'team' },
   { label: 'Challenge', value: 'challenge' },
-]
+] as const
+type AllowedGroup = (typeof GROUP_OPTIONS)[number]['value']
 
 function formatBucket(ts: Date, minutes: number) {
   const d = new Date(ts)
   d.setSeconds(0, 0)
   d.setMinutes(Math.floor(d.getMinutes() / minutes) * minutes)
-  return d.toISOString().slice(0, 16) // up to minute
+  return d.getTime()
 }
 
 export type ChartAttemptsOverTimeProps = {
   attempts: Attempt[]
+  defaultTime?: AllowedAggregation
+  defaultGroup?: AllowedGroup
+  hideSelectorTime?: boolean
+  hideSelectorGroup?: boolean
+  forcedActive?: string
 }
 
 export function ChartAttemptsOverTime({
   attempts,
+  defaultTime = 30,
+  defaultGroup = 'team',
+  hideSelectorTime,
+  hideSelectorGroup,
+  forcedActive,
 }: ChartAttemptsOverTimeProps) {
   const theme = useTheme()
-  const [agg, setAgg] = useState(15)
-  const [groupBy, setGroupBy] = useState<'team' | 'challenge'>('team')
-  const [active, setActive] = useState<string[]>([])
+  const [agg, setAgg] = useState(defaultTime)
+  const [groupBy, setGroupBy] = useState<AllowedGroup>(defaultGroup)
+  const [active, setActive] = useState<string[]>(
+    forcedActive
+      ? [
+          defaultGroup === 'challenge'
+            ? `c/${forcedActive}`
+            : `t/${forcedActive}`,
+        ]
+      : [],
+  )
 
   const groups = useMemo(
     () => [
@@ -82,7 +103,7 @@ export function ChartAttemptsOverTime({
         for (const group of groups) {
           filled[group] = groupsObj[group] ?? 0
         }
-        return { time: new Date(time), ...filled }
+        return { time: new Date(Number(time)), ...filled }
       })
   }, [attempts, agg, groupBy, groups])
 
@@ -96,48 +117,60 @@ export function ChartAttemptsOverTime({
 
   return (
     <>
-      <Box display="flex" flexDirection="row" alignItems="center" gap="3">
-        <LabelInput label="Time range" flexDirection="row" alignItems="center">
-          <SelectInput
-            value={agg}
-            predefinedValues={AGG_OPTIONS}
-            onChange={e => setAgg(Number(e.target.value))}
-          />
-        </LabelInput>
-        <LabelInput label="Group by" flexDirection="row" alignItems="center">
-          <SelectInput
-            value={groupBy}
-            predefinedValues={GROUP_OPTIONS}
-            onChange={e => {
-              setActive([])
-              setGroupBy(e.target.value as 'team' | 'challenge')
-            }}
-          />
-        </LabelInput>
-      </Box>
+      <Filters display="flex" flexDirection="row" alignItems="center" gap="3">
+        {!hideSelectorTime && (
+          <LabelInput
+            label="Time range"
+            flexDirection="row"
+            alignItems="center"
+          >
+            <SelectInput
+              value={agg}
+              predefinedValues={AGG_OPTIONS}
+              onChange={e =>
+                setAgg(Number(e.target.value) as AllowedAggregation)
+              }
+            />
+          </LabelInput>
+        )}
+        {!hideSelectorGroup && (
+          <LabelInput label="Group by" flexDirection="row" alignItems="center">
+            <SelectInput
+              value={groupBy}
+              predefinedValues={GROUP_OPTIONS}
+              onChange={e => {
+                setActive([])
+                setGroupBy(e.target.value as AllowedGroup)
+              }}
+            />
+          </LabelInput>
+        )}
+      </Filters>
       <ResponsiveContainer width="100%" height={500}>
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="time" tickFormatter={formatTimeShort} />
           <YAxis allowDecimals={false} />
           <Tooltip content={<ChartTooltip />} labelFormatter={formatTimeLong} />
-          <Legend
-            payload={groups
-              .sort((a, b) => a.localeCompare(b))
-              .map((group, i) => ({
-                value: group,
-                id: group,
-                dataKey: group,
-                legendIcon: group.startsWith('c/') ? (
-                  <IconChallenge />
-                ) : (
-                  <IconUsers />
-                ),
-                inactive: active.length > 0 && !active.includes(group),
-                color: theme.colors.charts[i % theme.colors.charts.length],
-              }))}
-            onClick={data => handleLegendClick(data)}
-          />
+          {!forcedActive && (
+            <Legend
+              payload={groups
+                .sort((a, b) => a.localeCompare(b))
+                .map((group, i) => ({
+                  value: group,
+                  id: group,
+                  dataKey: group,
+                  legendIcon: group.startsWith('c/') ? (
+                    <IconChallenge />
+                  ) : (
+                    <IconUsers />
+                  ),
+                  inactive: active.length > 0 && !active.includes(group),
+                  color: theme.colors.charts[i % theme.colors.charts.length],
+                }))}
+              onClick={data => handleLegendClick(data)}
+            />
+          )}
           {groups.map((group, i) => (
             <Line
               key={group}
@@ -173,3 +206,9 @@ export function ChartAttemptsOverTime({
     </>
   )
 }
+
+const Filters = styled(Box)`
+  &:empty {
+    display: none;
+  }
+`
