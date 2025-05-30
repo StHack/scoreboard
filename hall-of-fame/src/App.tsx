@@ -5,6 +5,7 @@ import { Header } from 'components/Header'
 import { ChallengeDetail } from 'pages/ChallengeDetail'
 import { Challenges } from 'pages/Challenges'
 import { Home } from 'pages/Home'
+import { Statistics } from 'pages/Statistics'
 import { TeamDetail } from 'pages/TeamDetail'
 import { Teams } from 'pages/Teams'
 import { YearLayout } from 'pages/YearLayout'
@@ -46,6 +47,7 @@ export function App() {
                   path="challenge/:challengeId"
                   element={<ChallengeDetail />}
                 />
+                <Route path="statistics" element={<Statistics />} />
               </Route>
             </Routes>
           </Container>

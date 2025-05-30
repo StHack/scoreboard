@@ -57,6 +57,7 @@ export function ChartActivityStats({ activityStats }: ChartActivityStatsProps) {
             key={key}
             dataKey={key}
             name={label}
+            dot={false}
             type="monotone"
             stroke={theme.colors.charts[i]}
             hide={active.length > 0 && !active.includes(key)}
@@ -75,6 +76,7 @@ export function ChartActivityStats({ activityStats }: ChartActivityStatsProps) {
                 key={key}
                 dataKey={key}
                 name={label}
+                dot={false}
                 type="monotone"
                 stroke={theme.colors.charts[i]}
               />
