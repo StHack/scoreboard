@@ -18,7 +18,13 @@ import {
   typography,
   variant,
 } from 'styled-system'
-import { cleanStyledSystem, gap, GapProps, place, PlaceProps } from '../styles'
+import {
+  cleanStyledSystem,
+  gap,
+  GapProps,
+  place,
+  PlaceProps,
+} from '../styles/styled'
 import { Box } from './Box'
 import { Icon } from './Icon'
 

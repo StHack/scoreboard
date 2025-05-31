@@ -3,7 +3,6 @@ import { Challenge } from '@sthack/scoreboard-common'
 import {
   Box,
   ChallDescriptionPopup,
-  ChallengeCard,
   MotionBox,
   Popup,
 } from '@sthack/scoreboard-ui/components'
@@ -55,7 +54,10 @@ export function Game() {
     attemptChall,
   } = usePlayer()
 
-  const theme = useTheme()
+  const {
+    colors: { beforeLastOne },
+    edition: { card: ChallengeCard },
+  } = useTheme()
 
   const [groupBy, setGroupBy] = useState<GroupByType>('Default')
   const groups = challenges.reduce<Record<string, Challenge[]>>(
@@ -122,7 +124,7 @@ export function Game() {
         }
         background={
           myTeamRank > 3 && myTeamScore > 0 && isBeforeLastScorer
-            ? theme.colors.beforeLastOne
+            ? beforeLastOne
             : undefined
         }
         color="primaryText"

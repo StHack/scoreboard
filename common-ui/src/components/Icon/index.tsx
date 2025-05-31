@@ -10,11 +10,12 @@ import {
   space,
   SpaceProps,
 } from 'styled-system'
-import { cleanStyledSystem, place, PlaceProps } from '../../styles'
+import { cleanStyledSystem, place, PlaceProps } from '../../styles/styled'
 import AchievementSvg from './images/achievement.svg?react'
 import AttemptSvg from './images/attempt.svg?react'
 import BannerSvg from './images/Banner.svg?react'
 import BreakSvg from './images/break.svg?react'
+import BreakthroughSvg from './images/breakthrough.svg?react'
 import ChallengeSvg from './images/challenge.svg?react'
 import CreateSvg from './images/create.svg?react'
 import DeleteSvg from './images/delete.svg?react'
@@ -26,12 +27,6 @@ import FlagEditSvg from './images/flag-edit.svg?react'
 import GameSvg from './images/game.svg?react'
 import JsonSvg from './images/json.svg?react'
 import LogoSvg from './images/Logo.svg?react'
-import Logo2023Svg from './images/logo-2023.svg?react'
-import Logo2023IconSvg from './images/logo-2023-icon.svg?react'
-import Logo2024Svg from './images/logo-2024.svg?react'
-import Logo2025Svg from './images/logo-2025.svg?react'
-import LogoDogSvg from './images/logo-dog.svg?react'
-import LogoPigeonSvg from './images/logo-pigeon.svg?react'
 import LogoutSvg from './images/logout.svg?react'
 import PasswordSvg from './images/password.svg?react'
 import PreviewSvg from './images/preview.svg?react'
@@ -50,7 +45,7 @@ export type StyledIconProps = SpaceProps &
 
 export type Icon = FunctionComponent<StyledIconProps>
 
-const BaseSvg = styled('svg', cleanStyledSystem)(
+export const BaseSvg = styled('svg', cleanStyledSystem)(
   space,
   size,
   color,
@@ -75,12 +70,7 @@ export const IconFlag: Icon = BaseSvg.withComponent(FlagSvg)
 export const IconFlagEdit: Icon = BaseSvg.withComponent(FlagEditSvg)
 export const IconGame: Icon = BaseSvg.withComponent(GameSvg)
 export const IconJson: Icon = BaseSvg.withComponent(JsonSvg)
-export const IconLogo2023: Icon = BaseSvg.withComponent(Logo2023Svg)
-export const IconLogo2023Icon: Icon = BaseSvg.withComponent(Logo2023IconSvg)
-export const IconLogo2024: Icon = BaseSvg.withComponent(Logo2024Svg)
-export const IconLogo2025: Icon = BaseSvg.withComponent(Logo2025Svg)
-export const IconLogoDog: Icon = BaseSvg.withComponent(LogoDogSvg)
-export const IconLogoPigeon: Icon = BaseSvg.withComponent(LogoPigeonSvg)
+export const IconBreakthrough: Icon = BaseSvg.withComponent(BreakthroughSvg)
 export const IconLogout: Icon = BaseSvg.withComponent(LogoutSvg)
 export const IconPassword: Icon = BaseSvg.withComponent(PasswordSvg)
 export const IconPreview: Icon = BaseSvg.withComponent(PreviewSvg)

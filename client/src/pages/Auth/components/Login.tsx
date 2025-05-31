@@ -3,7 +3,7 @@ import {
   Banner,
   Box,
   Button,
-  IconLogo2025,
+  EditionCurrentLogo,
   LabelInput,
   TextInput,
 } from '@sthack/scoreboard-ui/components'
@@ -83,7 +83,7 @@ const Form = styled.form`
   font-size: ${p => p.theme.fontSizes[1]};
 `
 
-const Logo = styled(IconLogo2025)`
+const Logo = styled(EditionCurrentLogo)`
   filter: drop-shadow(-1px 6px 3px hsl(0deg 0% 0% / 80%));
 `
 

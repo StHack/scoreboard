@@ -107,7 +107,7 @@ radii.large = radii[3]
 
 const breakpoints: ThemeBreakpoints = ['768px', '970px', '1024px']
 
-export const lightTheme: Theme = {
+export const lightTheme: Omit<Theme, 'edition'> = {
   colors: {
     ...baseColors,
     primary: baseColors.white,
@@ -196,7 +196,7 @@ export const lightTheme: Theme = {
   },
 }
 
-export const darkTheme: Theme = {
+export const darkTheme: Omit<Theme, 'edition'> = {
   ...lightTheme,
   colors: {
     ...lightTheme.colors,

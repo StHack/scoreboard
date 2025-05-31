@@ -1,10 +1,8 @@
 import styled from '@emotion/styled'
-import { Button } from '@sthack/scoreboard-ui/components'
-import { gap, GapProps } from '@sthack/scoreboard-ui/styles'
+import { Box, Button } from '@sthack/scoreboard-ui/components'
 import { useAdmin } from 'hooks/useAdmin'
 import { ChangeEvent, InputHTMLAttributes, useRef } from 'react'
 import { convertToWebp } from 'services/files'
-import { flex, SpaceProps } from 'styled-system'
 
 type ImageInputProps = {
   fallbackImage?: string
@@ -19,7 +17,20 @@ export function ImageInput({
   const ref = useRef<HTMLInputElement>(null)
   const { uploadFile } = useAdmin()
   return (
-    <Container py="2" gap="2" as="label">
+    <Container
+      display="grid"
+      padding="1"
+      fontSize="1"
+      backgroundColor="background"
+      borderBottom="solid"
+      borderColor="greys.0"
+      borderWidth="medium"
+      borderRadius="small"
+      color="text"
+      py="2"
+      gap="2"
+      as="label"
+    >
       <Hidden
         ref={ref}
         {...props}
@@ -66,19 +77,8 @@ export function ImageInput({
   )
 }
 
-const Container = styled.div<SpaceProps & GapProps>`
-  display: grid;
-  padding: ${p => p.theme.space[1]};
-  font-size: ${p => p.theme.fontSizes[1]};
-  background-color: ${p => p.theme.colors.background};
-  border-bottom: solid;
-  border-color: ${p => p.theme.colors.greys[0]};
-  border-width: ${p => p.theme.borderWidths.medium};
-  border-radius: ${p => p.theme.radii.small};
+const Container = styled(Box)`
   transition: border-color 250ms;
-  color: ${p => p.theme.colors.text};
-  ${flex}
-  ${gap}
 
   &:focus,
   &:focus-within {

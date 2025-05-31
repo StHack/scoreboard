@@ -1,4 +1,5 @@
 import { Property } from 'csstype'
+import { EditionTheme } from '../components/Editions/types'
 
 type Radii = Property.BorderRadius<0>
 type Size = Property.Height<0> | Property.Width<0>
@@ -107,5 +108,7 @@ declare module '@emotion/react' {
     shadows: ThemeShadow
 
     buttons: unknown
+
+    edition: EditionTheme
   }
 }

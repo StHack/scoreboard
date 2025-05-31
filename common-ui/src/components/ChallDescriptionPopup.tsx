@@ -18,7 +18,8 @@ import {
   TypographyProps,
 } from 'styled-system'
 import { useField } from '../hooks'
-import { cleanStyledSystem, ReactMarkdownRenderers } from '../styles'
+import { ReactMarkdownRenderers } from '../styles'
+import { cleanStyledSystem } from '../styles/styled'
 import { Box } from './Box'
 import { Button } from './Button'
 import { Popup } from './Popup'

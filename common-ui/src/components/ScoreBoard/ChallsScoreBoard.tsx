@@ -1,3 +1,4 @@
+import { useTheme } from '@emotion/react'
 import {
   Achievement,
   Challenge,
@@ -5,7 +6,6 @@ import {
 } from '@sthack/scoreboard-common'
 import {
   Box,
-  ChallengeCard,
   ColumnDefinition,
   Popup,
   Table,
@@ -24,6 +24,10 @@ export function ChallsScoreBoard({
 }: ChallsScoreBoardProps) {
   const [selectedBreakthrough, setSelectedBreakthrough] =
     useState<Achievement>()
+
+  const {
+    edition: { card: ChallengeCard },
+  } = useTheme()
 
   return (
     <Box display="flex" flexWrap="wrap" justifyContent="space-evenly" gap="2">

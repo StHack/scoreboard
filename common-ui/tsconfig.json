@@ -2,11 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "target": "ESNext",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     // "baseUrl": "src",
     "esModuleInterop": false,
@@ -24,7 +20,5 @@
     "declarationMap": true,
     "emitDeclarationOnly": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

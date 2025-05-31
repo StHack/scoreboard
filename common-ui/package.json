@@ -21,6 +21,10 @@
     "./styles": {
       "import": "./src/styles/index.ts",
       "types": "./src/styles/index.ts"
+    },
+    "./styled": {
+      "import": "./src/styles/styled.ts",
+      "types": "./src/styles/styled.ts"
     }
   },
   "scripts": {

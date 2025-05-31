@@ -14,7 +14,7 @@ import {
   space,
   SpaceProps,
 } from 'styled-system'
-import { cleanStyledSystem, gap, GapProps } from '../styles'
+import { cleanStyledSystem, gap, GapProps } from '../styles/styled'
 
 type LinkProps = ColorProps &
   SpaceProps &

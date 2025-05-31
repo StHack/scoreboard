@@ -23,7 +23,13 @@ import {
   typography,
   TypographyProps,
 } from 'styled-system'
-import { cleanStyledSystem, gap, GapProps, place, PlaceProps } from '../styles'
+import {
+  cleanStyledSystem,
+  gap,
+  GapProps,
+  place,
+  PlaceProps,
+} from '../styles/styled'
 
 export type BoxProps = SpaceProps &
   LayoutProps &

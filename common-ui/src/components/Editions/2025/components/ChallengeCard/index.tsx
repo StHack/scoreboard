@@ -1,24 +1,18 @@
 import { keyframes, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
-import { Challenge, ChallengeScore } from '@sthack/scoreboard-common'
 import { size, space } from 'styled-system'
-import { Box, BoxProps } from '../Box'
-import { categoryToImg } from '../CategoryImg'
+import { Box } from '../../../../Box'
+import { categoryToImg } from '../../../../CategoryImg'
+import { ChallengeCardProps } from '../../../types'
 
-type ChallengeCardProps = {
-  challenge: Challenge
-  score: ChallengeScore
-  currentTeam?: string
-  onClick: () => void
-}
-export function ChallengeCard({
+export function ChallengeCard2025({
   challenge,
   currentTeam,
   size = 10,
   score: { score, achievements },
   onClick,
   ...props
-}: ChallengeCardProps & BoxProps) {
+}: ChallengeCardProps) {
   const { name, img, category, isBroken } = challenge
   const isSolved = achievements.some(a => a.teamname === currentTeam)
   const openState: ChallState = isBroken
@@ -111,7 +105,7 @@ export function ChallengeCard({
   )
 }
 
-export type ChallState = 'broken' | 'open' | 'solved'
+type ChallState = 'broken' | 'open' | 'solved'
 
 const Img = styled.img`
   width: 100%;

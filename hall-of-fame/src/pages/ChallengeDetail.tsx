@@ -1,9 +1,9 @@
+import { useTheme } from '@emotion/react'
 import { Achievement } from '@sthack/scoreboard-common'
 import {
   Box,
   BoxPanel,
   BoxProps,
-  ChallengeCard,
   ChartAchievementsOverTime,
   ChartAttemptsOverTime,
   ColumnDefinition,
@@ -29,6 +29,10 @@ export function ChallengeDetail() {
   const { challenge } = challScore
   const { author, category, difficulty, name, description, isBroken } =
     challenge
+
+  const {
+    edition: { card: ChallengeCard },
+  } = useTheme()
 
   return (
     <PageLoader

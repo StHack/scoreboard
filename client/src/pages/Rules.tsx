@@ -1,3 +1,5 @@
+import { Theme } from '@emotion/react'
+import { useTheme } from '@emotion/react'
 import { GameConfig } from '@sthack/scoreboard-common'
 import {
   Box,
@@ -16,6 +18,9 @@ export function Rules() {
   const { gameConfig } = useGame()
   const { isAuthenticated, hasReadRules, readRules } = useAuth()
   const navigate = useNavigate()
+  const {
+    edition: { backgroundCredit },
+  } = useTheme()
 
   return (
     <Box
@@ -93,7 +98,7 @@ export function Rules() {
         backgroundColor="background"
       >
         <ReactMarkdown components={ReactMarkdownRenderers}>
-          {creditsMarkdown}
+          {creditsMarkdown({ backgroundCredit })}
         </ReactMarkdown>
       </Box>
     </Box>
@@ -162,9 +167,22 @@ For the full changelog, please refer to the [changelog](https://github.com/StHac
 You can come and ask us your questions directly at the staff desk.
 `
 
-const creditsMarkdown = `
+const creditsMarkdown = ({
+  backgroundCredit,
+}: {
+  backgroundCredit?: Theme['edition']['backgroundCredit']
+}) => `
 # Credits
 
-- Background Image (Conveyor belt and assembly machine at factory, plant or warehouse. cartoon interior of workshop production line with automated machinery. Engineering equipment on manufactory) by [upklyak](https://www.freepik.com/free-vector/conveyor-belt-assembly-machine-factory-plant-warehouse-cartoon-interior-workshop-production-line-with-automated-machinery-engineering-equipment-manufactory_10798243.htm)
+${creditToMarkdown(backgroundCredit, 'Background Image')}
 - Popup Layout (Ancienne télévision vintage isolée) by [brgfx sur Freepik](https://fr.freepik.com/vecteurs-libre/ancienne-television-vintage-isolee_30700323.htm#fromView=search&page=1&position=2&uuid=bbb3428b-9004-4fa9-ab1e-4718b11c75f3)
 `
+
+function creditToMarkdown(
+  credit: Theme['edition']['backgroundCredit'] | undefined,
+  title: string,
+) {
+  return credit
+    ? `- ${title} (${credit.label}) by [${credit.author}](${credit.href})`
+    : ''
+}

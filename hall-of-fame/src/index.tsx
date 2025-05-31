@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@emotion/react'
-import { UserRole } from '@sthack/scoreboard-common'
+import { getEditionTheme } from '@sthack/scoreboard-ui/components'
 import { useThemeMode } from '@sthack/scoreboard-ui/hooks'
 import {
   darkTheme,
@@ -24,8 +24,8 @@ function AppWrapper() {
 
   return (
     <ThemeProvider theme={currentTheme === 'light' ? lightTheme : darkTheme}>
-      <DefaultStyles />
-      <ProvideTheme roles={[UserRole.User]}>
+      <ProvideTheme edition={getEditionTheme(new Date().getFullYear())}>
+        <DefaultStyles />
         <App />
       </ProvideTheme>
     </ThemeProvider>

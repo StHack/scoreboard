@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { PropsWithChildren } from 'react'
 import { FlexboxProps, GridAreaProps, SpaceProps } from 'styled-system'
-import { GapProps } from '../styles'
+import { GapProps } from '../styles/styled'
 import { Box } from './Box'
 
 type LabelInputProps = {

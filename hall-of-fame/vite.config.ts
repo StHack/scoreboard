@@ -11,6 +11,7 @@ export default defineConfig(({ command }) => ({
   server: {
     port: 3001,
   },
+  assetsInclude: ['**/*.riv'],
   build: {
     sourcemap: true,
   },
@@ -21,9 +22,7 @@ export default defineConfig(({ command }) => ({
     exclude: ['node_modules'],
   },
   define: {
-    'import.meta.env.VITE_APP_TITLE': JSON.stringify(
-      `Sthack Hall of Fame`,
-    ),
+    'import.meta.env.VITE_APP_TITLE': JSON.stringify(`Sthack Hall of Fame`),
     'import.meta.env.VITE_APP_DESCRIPTION': JSON.stringify(
       `Welcome to the Sthack Hall of Fame`,
     ),

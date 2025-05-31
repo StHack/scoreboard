@@ -4,7 +4,7 @@ import {
   Box,
   ChartCategory,
   ChartPlayerScorer,
-  IconLogo2023Icon,
+  IconBreakthrough,
   MotionBox,
 } from '@sthack/scoreboard-ui/components'
 import { AnimatePresence, Variants } from 'framer-motion'
@@ -117,7 +117,7 @@ export function ScoreCard({
                 'fr',
               )}`}
             >
-              <IconLogo2023Icon size="3em" />
+              <IconBreakthrough size="3em" />
             </Box>
           ))}
         </Box>
@@ -162,9 +162,9 @@ export function ScoreCard({
                     alignItems="center"
                     gap="2"
                   >
-                    <IconLogo2023Icon size="2em" />
+                    <IconBreakthrough size="2em" />
                     {`${label} (${score} pts) at ${createdAt.toLocaleTimeString()}`}
-                    <IconLogo2023Icon size="2em" />
+                    <IconBreakthrough size="2em" />
                   </Box>
                 ))}
               </Box>
@@ -193,7 +193,7 @@ export function ScoreCard({
                       alignItems="center"
                       gap="2"
                     >
-                      <IconLogo2023Icon size="2em" />
+                      <IconBreakthrough size="2em" />
                       {`${username} solved "${challenge.name}" (${
                         challsScore[challengeId].score
                       } pts) at ${createdAt.toLocaleTimeString()}`}

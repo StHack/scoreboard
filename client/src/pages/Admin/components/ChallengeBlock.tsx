@@ -1,3 +1,4 @@
+import { useTheme } from '@emotion/react'
 import {
   Attempt,
   Challenge,
@@ -9,7 +10,6 @@ import {
   Box,
   Button,
   ChallDescriptionPopup,
-  ChallengeCard,
   IconBreak,
   IconDelete,
   IconEdit,
@@ -45,6 +45,10 @@ export function ChallengeBlock({
   const { author, category, difficulty, isBroken, name } = chall
   const [showPreview, setShowPreview] = useState<boolean>(false)
   const [showFlagEdit, setShowFlagEdit] = useState<boolean>(false)
+
+  const {
+    edition: { card: ChallengeCard },
+  } = useTheme()
 
   return (
     <Box

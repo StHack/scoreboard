@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 import {
   Box,
+  Edition2023Logo,
+  Edition2024Logo,
+  Edition2025Logo,
   Icon,
-  IconLogo2023,
-  IconLogo2024,
-  IconLogo2025,
   Link,
   Logo,
 } from '@sthack/scoreboard-ui/components'
@@ -44,9 +44,9 @@ const SLink = styled(Link)`
 export function EditionLinks(props: SizeProps) {
   return (
     <>
-      <EditionLink {...props} year={2025} logo={IconLogo2025} />
-      <EditionLink {...props} year={2024} logo={IconLogo2024} />
-      <EditionLink {...props} year={2023} logo={IconLogo2023} />
+      <EditionLink {...props} year={2025} logo={Edition2025Logo} />
+      <EditionLink {...props} year={2024} logo={Edition2024Logo} />
+      <EditionLink {...props} year={2023} logo={Edition2023Logo} />
       <EditionLink {...props} year={2022} logo={Logo} />
       <EditionLink {...props} year={2021} logo={Logo} />
     </>

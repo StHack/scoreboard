@@ -9,7 +9,7 @@ import {
   space,
   SpaceProps,
 } from 'styled-system'
-import { place, PlaceProps } from '../../styles'
+import { place, PlaceProps } from '../../styles/styled'
 import backdoor from './images/backdoor.png'
 import crypto from './images/crypto.png'
 import d from './images/default.png'

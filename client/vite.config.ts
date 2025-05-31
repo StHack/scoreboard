@@ -21,6 +21,7 @@ export default defineConfig({
       },
     },
   },
+  assetsInclude: ['**/*.riv'],
   build: {
     sourcemap: true,
   },

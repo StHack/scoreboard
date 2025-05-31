@@ -8,7 +8,7 @@ import {
   ColumnDefinition,
   IconAchievement,
   IconAttempt,
-  IconLogo2023Icon,
+  IconBreakthrough,
   IconUsers,
   ScoreCard,
   Table,
@@ -140,7 +140,7 @@ function PlayerStatsActions({
           <Button
             key={i}
             size="2"
-            icon={IconLogo2023Icon}
+            icon={IconBreakthrough}
             title={b.challenge.name}
             href={hrefPattern(b.challenge)}
             variant="link"

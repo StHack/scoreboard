@@ -1,4 +1,5 @@
 import { ThemeProvider } from '@emotion/react'
+import { EditionCurrentTheme } from '@sthack/scoreboard-ui/components'
 import { useThemeMode } from '@sthack/scoreboard-ui/hooks'
 import {
   darkTheme,
@@ -39,5 +40,9 @@ function AppWrapper() {
 
 const ProvideThemeWrapper = ({ children }: PropsWithChildren) => {
   const { roles } = useAuth()
-  return <ProvideTheme roles={roles}>{children}</ProvideTheme>
+  return (
+    <ProvideTheme roles={roles} edition={EditionCurrentTheme}>
+      {children}
+    </ProvideTheme>
+  )
 }
