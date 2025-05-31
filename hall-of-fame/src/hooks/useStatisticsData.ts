@@ -50,9 +50,10 @@ export function useStatisticsData() {
         Math.min(
           ...att.map(a => a.createdAt.getTime()),
           ...ach.map(a => a.createdAt.getTime()),
+          ...stats.map(s => s.timestamp.getTime()),
         ),
       ),
-    [ach, att],
+    [ach, att, stats],
   )
 
   const maxDate = useMemo(
@@ -61,9 +62,10 @@ export function useStatisticsData() {
         Math.max(
           ...att.map(a => a.createdAt.getTime()),
           ...ach.map(a => a.createdAt.getTime()),
+          ...stats.map(s => s.timestamp.getTime()),
         ),
       ),
-    [ach, att],
+    [ach, att, stats],
   )
 
   return {

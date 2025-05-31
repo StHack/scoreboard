@@ -24,7 +24,14 @@ export function Statistics() {
       error={error}
     >
       <BoxPanel title="Server activity Over time" titleIcon={IconGame}>
-        {stats.length > 0 && <ChartActivityStats activityStats={stats} />}
+        {stats.length > 0 && (
+          <ChartActivityStats
+            activityStats={stats}
+            defaultTime={5}
+            minDate={minDate}
+            maxDate={maxDate}
+          />
+        )}
         {stats.length === 0 && (
           <Box as="p">No data are available for this year</Box>
         )}
