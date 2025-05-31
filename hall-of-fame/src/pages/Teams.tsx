@@ -5,7 +5,7 @@ import { useHref } from 'react-router-dom'
 
 export function Teams() {
   const { loading, error, gameScore } = useTeamData()
-  const href = useHref('team/:team')
+  const href = useHref('../team/:team')
 
   const hrefPattern = (teamScore: { team: string }) =>
     href.replace(':team', teamScore.team)
