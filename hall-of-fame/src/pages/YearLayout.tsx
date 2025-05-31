@@ -32,7 +32,7 @@ export function YearLayout() {
           overflowX="auto"
           px="1"
         >
-          <Link to="" end>
+          <Link to="teams" end>
             <IconUsers color="currentColor" size="1.5em" />
             Teams
           </Link>

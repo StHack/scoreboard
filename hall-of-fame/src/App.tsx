@@ -8,6 +8,7 @@ import { Home } from 'pages/Home'
 import { Statistics } from 'pages/Statistics'
 import { TeamDetail } from 'pages/TeamDetail'
 import { Teams } from 'pages/Teams'
+import { Year } from 'pages/Year'
 import { YearLayout } from 'pages/YearLayout'
 import { Suspense } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
@@ -40,7 +41,8 @@ export function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/year/:year" element={<YearLayout />}>
-                <Route index element={<Teams />} />
+                <Route index element={<Year />} />
+                <Route path="teams" element={<Teams />} />
                 <Route path="team/:team" element={<TeamDetail />} />
                 <Route path="challenges" element={<Challenges />} />
                 <Route
