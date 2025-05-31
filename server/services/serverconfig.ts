@@ -1,4 +1,4 @@
-import { GameConfig } from '@sthack/scoreboard-common'
+import { DefaultGameConfig, GameConfig } from '@sthack/scoreboard-common'
 import { countTeam } from 'db/UsersDb.js'
 import { Redis } from 'ioredis'
 
@@ -57,10 +57,10 @@ export class ServerConfig {
       ])
 
     return {
+      ...DefaultGameConfig,
       registrationOpened: !registrationClosed,
       gameOpened: gameOpened,
       teamCount,
-      baseChallScore: 50,
       teamSize,
     }
   }

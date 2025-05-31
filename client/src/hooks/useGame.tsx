@@ -2,6 +2,7 @@ import {
   Achievement,
   Challenge,
   computeGameScore,
+  DefaultGameConfig,
   DummyChallenge,
   GameConfig,
   GameScore,
@@ -44,14 +45,6 @@ export enum GameContextLoadingState {
   teams = 1 << 5,
 }
 
-const defaultGameConfig = {
-  registrationOpened: false,
-  gameOpened: false,
-  baseChallScore: 0,
-  teamCount: 0,
-  teamSize: 0,
-}
-
 const GameContext = createContext<GameContext>({
   loadingState: GameContextLoadingState.none,
   challenges: [],
@@ -62,7 +55,7 @@ const GameContext = createContext<GameContext>({
     challsScore: {},
     teamsScore: [],
   },
-  gameConfig: defaultGameConfig,
+  gameConfig: DefaultGameConfig,
   isLoaded: () => false,
 })
 
@@ -85,7 +78,7 @@ function useProvideGame(): GameContext {
   const [rawMessages, setRawMessages] = useState<Message[]>([])
   const [teams, setTeams] = useState<string[]>([])
   const [rewards, setRewards] = useState<Reward[]>([])
-  const [gameConfig, setGameConfig] = useState<GameConfig>(defaultGameConfig)
+  const [gameConfig, setGameConfig] = useState<GameConfig>(DefaultGameConfig)
 
   const achievements = rawAchievements.map(a => ({
     ...a,

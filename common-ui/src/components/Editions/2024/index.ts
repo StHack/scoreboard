@@ -1,3 +1,4 @@
+import { BaseGameConfig } from '@sthack/scoreboard-common'
 import { BaseSvg, Icon } from '../../Icon'
 import { EditionTheme } from '../types'
 import { ChallengeCard2024 } from './components/ChallengeCard'
@@ -15,4 +16,11 @@ export const Edition2024Theme: EditionTheme = {
   },
   logo: Edition2024Logo,
   card: ChallengeCard2024,
+}
+
+export const Edition2024Config: BaseGameConfig = {
+  baseChallScore: 50,
+  teamSize: 5,
+  isRewardProportional: true,
+  isDifficultyIncluded: false,
 }

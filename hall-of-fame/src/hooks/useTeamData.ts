@@ -5,7 +5,7 @@ import {
   GameScore,
   TeamScore,
 } from '@sthack/scoreboard-common'
-import { NoDataError } from '@sthack/scoreboard-ui/components'
+import { getEditionConfig, NoDataError } from '@sthack/scoreboard-ui/components'
 import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { BackupDataType, useBackupData } from './useBackupData'
@@ -48,18 +48,24 @@ export function useTeamData(team?: string) {
   )
 
   const gameScore = useMemo<GameScore>(() => {
-    const teams = [...new Set(usr.map(u => u.team).filter(t => t !== 'admin'))]
+    const teams = [
+      ...new Set(
+        usr
+          .map(u => u.team)
+          .filter(t => (yearNumber > 2022 ? t !== 'admin' : true)),
+      ),
+    ]
 
     const config: GameConfig = {
-      baseChallScore: 50,
+      ...getEditionConfig(yearNumber),
+
       gameOpened: false,
       registrationOpened: false,
-      teamSize: 5,
       teamCount: teams.length,
     }
 
     return computeGameScore(ach, rew, cha, teams, config)
-  }, [ach, cha, rew, usr])
+  }, [ach, cha, rew, usr, yearNumber])
 
   const minDate = useMemo(
     () =>
