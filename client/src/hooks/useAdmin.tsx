@@ -4,6 +4,7 @@ import {
   BaseChallenge,
   BaseReward,
   Challenge,
+  DummyChallenge,
   Reward,
   ServerActivityStatistics,
   ServerError,
@@ -85,9 +86,9 @@ const AdminContext = createContext<AdminContext>({
   activityStatistics: defaultStatistics,
   activityStats: [],
   isLoaded: () => false,
-  createChallenge: () => Promise.resolve<Challenge>({} as Challenge),
+  createChallenge: () => Promise.resolve<Challenge>(DummyChallenge),
   createReward: () => Promise.resolve<Reward>({} as Reward),
-  updateChallenge: () => Promise.resolve<Challenge>({} as Challenge),
+  updateChallenge: () => Promise.resolve<Challenge>(DummyChallenge),
   brokeChallenge: () => {},
   deleteChallenge: () => {},
   repairChallenge: () => {},
@@ -132,7 +133,7 @@ function useProvideAdmin(): AdminContext {
 
   const attempts = rawAttempts.map(a => ({
     ...a,
-    challenge: challenges.find(c => c._id === a.challengeId) as Challenge,
+    challenge: challenges.find(c => c._id === a.challengeId) ?? DummyChallenge,
   }))
 
   useEffect(() => {

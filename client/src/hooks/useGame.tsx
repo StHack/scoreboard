@@ -2,6 +2,7 @@ import {
   Achievement,
   Challenge,
   computeGameScore,
+  DummyChallenge,
   GameConfig,
   GameScore,
   Message,
@@ -88,7 +89,7 @@ function useProvideGame(): GameContext {
 
   const achievements = rawAchievements.map(a => ({
     ...a,
-    challenge: challenges.find(c => c._id === a.challengeId) as Challenge,
+    challenge: challenges.find(c => c._id === a.challengeId) ?? DummyChallenge,
   }))
 
   const messages = rawMessages.map(a => ({

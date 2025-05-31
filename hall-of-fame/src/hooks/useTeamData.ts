@@ -1,6 +1,6 @@
 import {
-  Challenge,
   computeGameScore,
+  DummyChallenge,
   GameConfig,
   GameScore,
   TeamScore,
@@ -33,7 +33,7 @@ export function useTeamData(team?: string) {
     () =>
       rawAch.map(a => ({
         ...a,
-        challenge: cha.find(c => c._id === a.challengeId) as Challenge,
+        challenge: cha.find(c => c._id === a.challengeId) ?? DummyChallenge,
       })),
     [cha, rawAch],
   )
@@ -42,7 +42,7 @@ export function useTeamData(team?: string) {
     () =>
       rawAtt.map(a => ({
         ...a,
-        challenge: cha.find(c => c._id === a.challengeId) as Challenge,
+        challenge: cha.find(c => c._id === a.challengeId) ?? DummyChallenge,
       })),
     [cha, rawAtt],
   )

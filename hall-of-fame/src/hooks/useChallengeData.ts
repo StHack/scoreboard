@@ -1,7 +1,7 @@
 import {
-  Challenge,
   ChallengeScore,
   computeGameScore,
+  DummyChallenge,
   GameConfig,
   GameScore,
 } from '@sthack/scoreboard-common'
@@ -33,7 +33,7 @@ export function useChallengeData(challengeId?: string) {
     () =>
       rawAch.map(a => ({
         ...a,
-        challenge: cha.find(c => c._id === a.challengeId) as Challenge,
+        challenge: cha.find(c => c._id === a.challengeId) ?? DummyChallenge,
       })),
     [cha, rawAch],
   )
@@ -42,7 +42,7 @@ export function useChallengeData(challengeId?: string) {
     () =>
       rawAtt.map(a => ({
         ...a,
-        challenge: cha.find(c => c._id === a.challengeId) as Challenge,
+        challenge: cha.find(c => c._id === a.challengeId) ?? DummyChallenge,
       })),
     [cha, rawAtt],
   )
@@ -125,16 +125,6 @@ export function useChallengeData(challengeId?: string) {
 
 const dummyScore: ChallengeScore = {
   achievements: [],
-  challenge: {
-    _id: '',
-    author: '',
-    category: '',
-    description: '',
-    difficulty: 'easy',
-    flagPattern: '',
-    img: '',
-    isBroken: false,
-    name: '',
-  },
+  challenge: DummyChallenge,
   score: -1,
 }

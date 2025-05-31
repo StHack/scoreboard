@@ -1,6 +1,4 @@
-import {
-  Challenge
-} from '@sthack/scoreboard-common'
+import { DummyChallenge } from '@sthack/scoreboard-common'
 import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { BackupDataType, useBackupData } from './useBackupData'
@@ -32,7 +30,7 @@ export function useStatisticsData() {
     () =>
       rawAch.map(a => ({
         ...a,
-        challenge: cha.find(c => c._id === a.challengeId) as Challenge,
+        challenge: cha.find(c => c._id === a.challengeId) ?? DummyChallenge,
       })),
     [cha, rawAch],
   )
@@ -41,7 +39,7 @@ export function useStatisticsData() {
     () =>
       rawAtt.map(a => ({
         ...a,
-        challenge: cha.find(c => c._id === a.challengeId) as Challenge,
+        challenge: cha.find(c => c._id === a.challengeId) ?? DummyChallenge,
       })),
     [cha, rawAtt],
   )

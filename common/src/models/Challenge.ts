@@ -22,3 +22,15 @@ export const FlagPattern = {
   disabled: '',
   standardInputPattern: 'STHACK\\{.+\\}',
 }
+
+export const DummyChallenge: Challenge = {
+  _id: '',
+  author: '',
+  category: '',
+  description: '',
+  difficulty: 'easy',
+  flagPattern: '',
+  img: '',
+  isBroken: false,
+  name: '',
+}

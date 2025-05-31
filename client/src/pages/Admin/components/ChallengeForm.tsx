@@ -1,4 +1,9 @@
-import { Categories, Challenge, Difficulties } from '@sthack/scoreboard-common'
+import {
+  Categories,
+  Challenge,
+  Difficulties,
+  DummyChallenge,
+} from '@sthack/scoreboard-common'
 import {
   Box,
   BoxPanel,
@@ -212,7 +217,7 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
             myTeamName="admin"
             onClose={() => setShowPreview(false)}
             score={{
-              challenge: {} as Challenge,
+              challenge: DummyChallenge,
               achievements: [],
               score: 100,
             }}
