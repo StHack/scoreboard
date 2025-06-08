@@ -8,7 +8,7 @@ export type ChallengeCardProps = {
   score: ChallengeScore
   currentTeam?: string
   onClick: () => void
-} & BoxProps
+} & Omit<BoxProps, 'color'>
 
 export type EditionThemeCredit = {
   href: string

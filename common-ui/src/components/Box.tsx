@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { motion, MotionProps } from 'framer-motion'
-import { ReactNode } from 'react'
 import {
   background,
   BackgroundProps,
@@ -32,51 +31,44 @@ import {
   PlaceProps,
 } from '../styles/styled'
 
-type ConflictingHTMLProps = 'color' | 'width' | 'height'
+type ConflictingHTMLProps = 'color'
 
-export type BoxProps = SpaceProps &
-  LayoutProps &
-  ShadowProps &
-  BackgroundProps &
-  ColorProps &
-  GridProps &
-  PositionProps &
-  FlexboxProps &
+export type BoxProps = BackgroundProps &
   BorderProps &
+  ColorProps &
+  FlexboxProps &
+  GapProps &
+  GridProps &
+  LayoutProps &
   PlaceProps &
-  TypographyProps &
-  GapProps
+  PositionProps &
+  ShadowProps &
+  SpaceProps &
+  TypographyProps
 
 export const StyledBoxComposed = compose(
-  border,
-  layout,
-  shadow,
   background,
+  border,
   color,
-  space,
-  grid,
-  position,
   flexbox,
-  place,
-  typography,
   gap,
+  grid,
+  layout,
+  place,
+  position,
+  shadow,
+  space,
+  typography,
 )
 
-const StyledBox = styled(
-  'div',
-  cleanStyledSystem,
-)<BoxProps & { as?: React.ElementType }>(StyledBoxComposed) as unknown as <
-  E extends React.ElementType,
->(
-  props: Omit<React.ComponentPropsWithRef<E>, ConflictingHTMLProps | 'as'> &
-    BoxProps & { as?: E },
-) => ReactNode
+const StyledBox = styled('div', cleanStyledSystem)<BoxProps>(StyledBoxComposed)
 
 export function Box<E extends React.ElementType = 'div'>(
   props: Omit<React.ComponentPropsWithRef<E>, ConflictingHTMLProps | 'as'> &
     BoxProps & { as?: E },
 ) {
-  return <StyledBox {...props} />
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return <StyledBox {...(props as any)} />
 }
 
 const MotionStyledBox = motion.create(StyledBox)
@@ -85,5 +77,6 @@ export function MotionBox<E extends React.ElementType = 'div'>(
     BoxProps &
     MotionProps & { as?: E },
 ) {
-  return <MotionStyledBox {...props} />
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return <MotionStyledBox {...(props as any)} />
 }
