@@ -1,12 +1,13 @@
 import styled from '@emotion/styled'
 import { motion, MotionProps } from 'framer-motion'
+import { ReactNode } from 'react'
 import {
   background,
-  BackgroundColorProps,
   BackgroundProps,
   border,
   BorderProps,
   color,
+  ColorProps,
   compose,
   flexbox,
   FlexboxProps,
@@ -31,11 +32,13 @@ import {
   PlaceProps,
 } from '../styles/styled'
 
+type ConflictingHTMLProps = 'color' | 'width' | 'height'
+
 export type BoxProps = SpaceProps &
   LayoutProps &
   ShadowProps &
   BackgroundProps &
-  BackgroundColorProps &
+  ColorProps &
   GridProps &
   PositionProps &
   FlexboxProps &
@@ -59,17 +62,26 @@ export const StyledBoxComposed = compose(
   gap,
 )
 
-const StyledBox = styled('div', cleanStyledSystem)<BoxProps>(StyledBoxComposed)
+const StyledBox = styled(
+  'div',
+  cleanStyledSystem,
+)<BoxProps & { as?: React.ElementType }>(StyledBoxComposed) as unknown as <
+  E extends React.ElementType,
+>(
+  props: Omit<React.ComponentPropsWithRef<E>, ConflictingHTMLProps | 'as'> &
+    BoxProps & { as?: E },
+) => ReactNode
 
 export function Box<E extends React.ElementType = 'div'>(
-  props: Omit<React.ComponentPropsWithRef<E>, 'as'> & BoxProps & { as?: E },
+  props: Omit<React.ComponentPropsWithRef<E>, ConflictingHTMLProps | 'as'> &
+    BoxProps & { as?: E },
 ) {
   return <StyledBox {...props} />
 }
 
 const MotionStyledBox = motion.create(StyledBox)
 export function MotionBox<E extends React.ElementType = 'div'>(
-  props: Omit<React.ComponentPropsWithRef<E>, 'as'> &
+  props: Omit<React.ComponentPropsWithRef<E>, ConflictingHTMLProps | 'as'> &
     BoxProps &
     MotionProps & { as?: E },
 ) {

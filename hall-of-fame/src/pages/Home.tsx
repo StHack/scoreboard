@@ -31,7 +31,11 @@ export function Home() {
         </Box>
       </BoxPanel>
 
-      <BoxPanel title="Previous editions">
+      <BoxPanel
+        title="Previous editions"
+        color="primary"
+        backgroundColor="secondary"
+      >
         <Box
           display="flex"
           flexWrap="wrap"
@@ -39,7 +43,7 @@ export function Home() {
           justifyContent="space-around"
           gap="2"
         >
-          <EditionLinks />
+          <EditionLinks size={['100%', '13']} />
         </Box>
       </BoxPanel>
 

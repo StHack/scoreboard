@@ -1,15 +1,16 @@
 import styled from '@emotion/styled'
 import {
   Box,
+  Edition2021Logo,
   Edition2023Logo,
   Edition2024Logo,
   Edition2025Logo,
   Icon,
   Link,
-  Logo,
 } from '@sthack/scoreboard-ui/components'
 import { useLocation } from 'react-router-dom'
 import { SizeProps } from 'styled-system'
+import { Edition2022Logo } from '../../../common-ui/src/components/Editions/2022'
 
 export type EditionLinkProps = {
   year: number
@@ -47,8 +48,8 @@ export function EditionLinks(props: SizeProps) {
       <EditionLink {...props} year={2025} logo={Edition2025Logo} />
       <EditionLink {...props} year={2024} logo={Edition2024Logo} />
       <EditionLink {...props} year={2023} logo={Edition2023Logo} />
-      <EditionLink {...props} year={2022} logo={Logo} />
-      <EditionLink {...props} year={2021} logo={Logo} />
+      <EditionLink {...props} year={2022} logo={Edition2022Logo} />
+      <EditionLink {...props} year={2021} logo={Edition2021Logo} />
     </>
   )
 }
