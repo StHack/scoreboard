@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import {
   Box,
   Edition2021Logo,
+  Edition2022Logo,
   Edition2023Logo,
   Edition2024Logo,
   Edition2025Logo,
@@ -10,7 +11,6 @@ import {
 } from '@sthack/scoreboard-ui/components'
 import { useLocation } from 'react-router-dom'
 import { SizeProps } from 'styled-system'
-import { Edition2022Logo } from '../../../common-ui/src/components/Editions/2022'
 
 export type EditionLinkProps = {
   year: number
