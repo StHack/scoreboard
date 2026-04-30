@@ -6,7 +6,7 @@ export async function initMongo() {
 }
 
 type removeMongoPropertiesWithOptionsType = {
-  removeId: boolean
+  removeId?: boolean
   propsToRemove?: string[]
 }
 export function removeMongoPropertiesWithOptions({
@@ -16,11 +16,14 @@ export function removeMongoPropertiesWithOptions({
   return {
     versionKey: false,
     transform: function (doc, ret) {
+      // @ts-expect-error manual cleaning of mongo properties, this is not a mongoose document
       delete ret.id
       if (removeId) {
+        // @ts-expect-error manual cleaning of mongo properties, this is not a mongoose document
         delete ret._id
       }
       for (const props of propsToRemove) {
+        // @ts-expect-error manual cleaning of mongo properties, this is not a mongoose document
         // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
         delete ret[props]
       }

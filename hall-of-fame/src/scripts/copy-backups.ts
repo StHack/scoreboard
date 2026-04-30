@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { copyFile, mkdir, readdir, readFile, writeFile } from 'fs/promises'
 import { dirname, join, resolve } from 'path'
 import { fileURLToPath } from 'url'

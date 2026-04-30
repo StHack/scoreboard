@@ -1,3 +1,5 @@
+/// <reference types="node" />
+
 export type FileContent = {
   name: string
   contentType: string

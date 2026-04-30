@@ -26,8 +26,9 @@ export const cleanStyledSystemOnly = (
   },
 })
 
-export interface PlaceProps<ThemeType extends Theme = RequiredTheme>
-  extends FlexboxProps<ThemeType> {
+export interface PlaceProps<
+  ThemeType extends Theme = RequiredTheme,
+> extends FlexboxProps<ThemeType> {
   placeItems?: CSS.Property.PlaceItems
   placeContent?: CSS.Property.PlaceContent
   placeSelf?: CSS.Property.PlaceSelf

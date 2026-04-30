@@ -1,11 +1,11 @@
-import { FormEventHandler, PropsWithChildren, ReactNode } from 'react'
+import { PropsWithChildren, ReactNode, SubmitEventHandler } from 'react'
 import { Box, BoxProps } from './Box'
 import { Icon } from './Icon'
 
 type BoxPanelProps = {
   title: ReactNode
   titleIcon?: Icon
-  onSubmitCapture?: FormEventHandler<HTMLDivElement | HTMLFormElement>
+  onSubmitCapture?: SubmitEventHandler<HTMLDivElement | HTMLFormElement>
   titleProps?: BoxProps
 }
 export function BoxPanel({

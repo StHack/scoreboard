@@ -2,7 +2,12 @@ import { useEffect, useState } from 'react'
 import io, { Socket } from 'socket.io-client'
 import { useAuth } from './useAuthentication'
 
-export function useSocket(namespace: string) {
+interface UseSocketReturn {
+  isConnected: boolean
+  socket?: Socket
+}
+
+export function useSocket(namespace: string): UseSocketReturn {
   const [socket, setSocket] = useState<Socket>()
   const [isConnected, setIsConnected] = useState<boolean>(false)
   const { logOut } = useAuth()

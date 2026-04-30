@@ -6,7 +6,7 @@ import {
   FlagPattern,
 } from '@sthack/scoreboard-common'
 import { useField } from '@sthack/scoreboard-ui/hooks'
-import { FormEvent, useState } from 'react'
+import { SubmitEventHandler, useState } from 'react'
 import { useAdmin } from './useAdmin'
 import { useAuth } from './useAuthentication'
 
@@ -125,7 +125,7 @@ export function useChallengeForm(
     isBrokenField.reset()
   }
 
-  const onFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const onFormSubmit: SubmitEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
 
     try {
