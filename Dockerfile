@@ -1,21 +1,27 @@
 # syntax=docker/dockerfile:1.7-labs
-FROM node:22-alpine as build
+FROM node:24-alpine as base
+
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
+FROM base as build
 
 WORKDIR /src
 
-COPY --parents /*/package.json ./package.json package-lock.json ./
-RUN npm ci
+COPY pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm fetch
 
 COPY . .
+RUN pnpm install --frozen-lockfile
+RUN pnpm run build:scoreboard
 
-RUN npm run build
-RUN cp -r ./client/dist ./server/build && rm -rf client
-
-FROM node:22-alpine as run
+FROM base as run
 
 WORKDIR /app
 
-COPY --from=build /src .
+COPY --from=build /src/dist .
+COPY --from=build /src/tsconfig.json /tsconfig.json
 
 USER node
 

@@ -1,0 +1,10 @@
+packages:
+  - 'common'
+  - 'common-ui'
+  - 'client'
+  - 'hall-of-fame'
+  - 'server'
+  - 'tests'
+
+minimumReleaseAge: 10080
+blockExoticSubdeps: true

@@ -130,16 +130,16 @@ if [ -n "$USERNAME" ]; then
   if [ -n "$DEV" ]; then
     if [ ! -d "./node_modules" ]; then
       echo "Installing npm packages"
-      npm install
+      pnpm install
     fi
 
-    npm run -w server create-admin -- --user "$USERNAME" --password "$PASSWORD"
+    pnpm run create-admin --user "$USERNAME" --password "$PASSWORD"
   else
     sudo docker compose --profile "$PROFILE" exec website \
-      npm run -w server create-admin -- --user "$USERNAME" --password "$PASSWORD"
+      pnpm run create-admin --user "$USERNAME" --password "$PASSWORD"
   fi
 fi
 
 if [ -n "$DEV" ]; then
-  echo -e "Now, you can use ${COLOR_CYAN}npm run start${COLOR_RESET} and start coding"
+  echo -e "Now, you can use ${COLOR_CYAN}pnpm run start${COLOR_RESET} and start coding"
 fi

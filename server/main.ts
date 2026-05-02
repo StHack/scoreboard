@@ -77,9 +77,9 @@ registerAdminNamespace(
 )
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(join(import.meta.dirname, 'build')))
+  app.use(express.static(join(import.meta.dirname, 'client')))
   app.get('/*splat', function (req, res) {
-    res.sendFile(join(import.meta.dirname, 'build', 'index.html'))
+    res.sendFile(join(import.meta.dirname, 'client', 'index.html'))
   })
 }
 

@@ -5,28 +5,26 @@ export function useStorage<T>(
   defaultValue: T,
   migration?: (value: unknown) => T,
 ): [T, Dispatch<SetStateAction<T>>] {
-  const [value, setValue] = useState<T>(defaultValue)
-
-  useEffect(() => {
+  const [value, setValue] = useState<T>(() => {
     const json = localStorage.getItem(key)
     if (!json) {
-      return
+      return defaultValue
     }
 
     const parsed = JSON.parse(json) as T | undefined
 
     if (!parsed) {
-      return
+      return defaultValue
     }
 
     if (migration) {
       const migrated = migration(parsed)
       localStorage.setItem(key, JSON.stringify(migrated))
-      setValue(migrated)
-    } else {
-      setValue(parsed)
+      return migrated
     }
-  }, [key, migration, setValue])
+
+    return parsed
+  })
 
   useEffect(() => {
     if (value && value !== defaultValue) {

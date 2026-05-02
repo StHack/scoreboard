@@ -1,5 +1,6 @@
-import { keyframes, useTheme } from '@emotion/react'
+import { keyframes, PropsOf, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
+import { PropsWithChildren } from 'react'
 import { size, SizeProps, space, SpaceProps } from 'styled-system'
 import { categoryToImg } from '../../../../CategoryImg'
 import { ChallengeCardProps } from '../../../types'
@@ -69,14 +70,12 @@ export function ChallengeCard2023({
           <g>
             <Image
               // id="chall-image-bg"
-              {...ImageDefaultProps}
               as="rect"
               fill="#9c9b9bff"
               openState={openState}
             />
             <Image
               // id="chall-image"
-              {...ImageDefaultProps}
               href={img || categoryToImg(category)}
               preserveAspectRatio="xMidYMid slice"
               openState={openState}
@@ -168,19 +167,24 @@ function stateToPathShape(openState: ChallState) {
 type ImageProps = {
   openState: ChallState
 }
-const Image = styled.image<ImageProps>`
+const BaseImage = styled.image<ImageProps>`
   animation-iteration-count: ${p =>
     p.openState === 'open' ? 1 : 0} !important;
   clip-path: ${p => `url(#${stateToPathShape(p.openState)}-shape)`};
 `
-const ImageDefaultProps = {
-  x: 0,
-  y: 0,
-  width: 1000,
-  height: 1000,
-}
 
-const Flower = styled.g``
+const Image = (props: PropsOf<typeof BaseImage>) => (
+  <BaseImage
+    className="image"
+    x={0}
+    y={0}
+    width={1000}
+    height={1000}
+    {...props}
+  />
+)
+
+const Flower = (props: PropsWithChildren) => <g className="flower" {...props} />
 
 const WiggleHighlight = keyframes`
   0%, 17.5%, 100% {
@@ -211,7 +215,10 @@ const CardWrapper = styled.button<SpaceProps & SizeProps>`
   display: flex;
   flex-direction: column;
 
-  :hover ${Image}, :focus ${Image}, :hover ${Flower}, :focus ${Flower} {
+  :hover .image,
+  :focus .image,
+  :hover .flower,
+  :focus .flower {
     transform-origin: center;
     animation: ${WiggleHighlight} 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97)
       both;

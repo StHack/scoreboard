@@ -18,12 +18,13 @@ export function ToggleInput({
   return (
     <Label {...props}>
       <Input
+        className="toggle"
         type="checkbox"
         checked={checked}
         disabled={disabled}
         onChange={e => onChange(e.target.checked)}
       />
-      <Span />
+      <Span className="toggle" />
       {children}
     </Label>
   )
@@ -82,7 +83,8 @@ const Label = styled.label`
   cursor: pointer;
   gap: 1ch;
 
-  &:focus ${Span}, ${Input}:focus + ${Span} {
+  &:focus span.toggle,
+  input.toggle:focus + span.toggle {
     outline-width: ${p => p.theme.borderWidths.medium};
     outline-style: dotted;
     outline-color: ${p => p.theme.colors.primaryText};
@@ -90,22 +92,27 @@ const Label = styled.label`
     outline-offset: 2px;
   }
 
-  ${Input}:focus:not(:focus-visible) + ${Span}
-  &:focus:not(:focus-visible) ${Span},
+  input.toggle:focus:not(:focus-visible)
+    + span.toggle
+    &:focus:not(:focus-visible)
+    span.toggle,
   &:focus {
     outline: 0;
   }
 
-  &[aria-pressed='true'] ${Span}, ${Input}:checked + ${Span} {
+  &[aria-pressed='true'] span.toggle,
+  input.toggle:checked + span.toggle {
     border-color: ${p => p.theme.colors.secondary};
   }
 
-  &[aria-pressed='true'] ${Span}::before, ${Input}:checked + ${Span}::before {
+  &[aria-pressed='true'] span.toggle::before,
+  input.toggle:checked + span.toggle::before {
     background-color: ${p => p.theme.colors.secondary};
     transform: translate(100%, -50%);
   }
 
-  &[disabled] ${Span}, ${Input}:disabled + ${Span} {
+  &[disabled] span.toggle,
+  input.toggle:disabled + span.toggle {
     opacity: 0.6;
     filter: grayscale(40%);
     cursor: not-allowed;

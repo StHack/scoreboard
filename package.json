@@ -3,31 +3,26 @@
   "version": "4.0.0",
   "private": true,
   "type": "module",
-  "scripts": {
-    "start": "concurrently -c auto \"npm:start-*\"",
-    "start-server": "npm run start -w server",
-    "start-client": "npm run start -w client",
-    "start-common": "npm run start -w common",
-    "start-common-ui": "npm run start -w common-ui",
-    "start-tests": "npm run start -w tests",
-    "start-hall-of-fame": "npm run start -w hall-of-fame",
-    "prod": "npm run prod -w server",
-    "build": "npm run build --workspaces --if-present",
-    "ts-check": "npm run ts-check --workspaces --if-present",
-    "lint": "npm run lint --workspaces --if-present",
-    "lint:fix": "npm run lint:fix --workspaces --if-present",
-    "format": "prettier -w ."
+  "engines": {
+    "node": ">= 24.0.0",
+    "pnpm": ">= 10.0.0"
   },
-  "workspaces": [
-    "common",
-    "common-ui",
-    "client",
-    "hall-of-fame",
-    "server",
-    "tests"
-  ],
+  "scripts": {
+    "start": "pnpm -r --parallel run start",
+    "prod": "pnpm --filter=@sthack/scoreboard-server run prod",
+    "build": "pnpm -r run build",
+    "build:scoreboard": "pnpm run build:sb:prepare && pnpm run build:sb:server && pnpm run build:sb:client",
+    "build:sb:prepare": "rm -rf dist && mkdir -p dist",
+    "build:sb:client": "pnpm -r run build",
+    "build:sb:server": "pnpm --filter @sthack/scoreboard-server --prod deploy --legacy ./dist",
+    "build:HoF": "pnpm --filter=@sthack/scoreboard-hall-of-fame run build",
+    "ts-check": "pnpm -r run ts-check",
+    "lint": "pnpm -r run lint",
+    "lint:fix": "pnpm -r run lint:fix",
+    "format": "prettier -w .",
+    "create-admin": "pnpm run --filter=@sthack/scoreboard-server create-admin"
+  },
   "devDependencies": {
-    "concurrently": "^9.1.2",
-    "prettier": "^3.5.3"
+    "prettier": "^3.8.3"
   }
 }

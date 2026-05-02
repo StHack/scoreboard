@@ -55,7 +55,7 @@ NB: the sample data (2021 dataset) users has their password set to `azerty123` f
 
 ### Node NPM
 
-The expected current node version is 20 (nvm is recommended), and we have used the [npm workspace feature](https://docs.npmjs.com/cli/v10/using-npm/workspaces) so basically you can run both server and client from the root folder.
+The expected current node version is 24 (nvm is recommended), and we have used the [npm workspace feature](https://docs.npmjs.com/cli/v10/using-npm/workspaces) so basically you can run both server and client from the root folder.
 If you need to exec command for one of thoses only you need to append `-w server` or `-w client`. ie: `npm i -w client react@latest`
 
 ### Docker compose

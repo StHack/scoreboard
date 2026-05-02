@@ -36,6 +36,7 @@ export function useSocket(namespace: string): UseSocketReturn {
       console.log('connect_error', err)
     })
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSocket(socket)
 
     return () => {

@@ -59,6 +59,7 @@ export function ChallengeCard2024({
     },
   )
 
+  // eslint-disable-next-line react-hooks/refs
   riveRef.current = rive ?? undefined
 
   const update = useCallback(() => {

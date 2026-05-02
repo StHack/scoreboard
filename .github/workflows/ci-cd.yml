@@ -36,14 +36,14 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: 'npm'
+          node-version: 24
+          cache: 'pnpm'
 
       - name: CI
         run: |
-          npm ci
-          # npm test
-          npm run -w hall-of-fame build
+          pnpm install --frozen-lockfile
+          # pnpm test
+          pnpm run build:HoF
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

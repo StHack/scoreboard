@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import svgrPlugin from 'vite-plugin-svgr'
-import viteTsconfigPaths from 'vite-tsconfig-paths'
 
 const year = new Date().getFullYear()
 const title = `Sthack CTF Edition ${year}`
@@ -24,6 +23,11 @@ export default defineConfig({
   assetsInclude: ['**/*.riv'],
   build: {
     sourcemap: true,
+    outDir: '../dist/client',
+    emptyOutDir: true,
+  },
+  resolve: {
+    tsconfigPaths: true,
   },
   test: {
     globals: true,
@@ -38,11 +42,7 @@ export default defineConfig({
   plugins: [
     react({
       jsxImportSource: '@emotion/react',
-      babel: {
-        plugins: ['@emotion/babel-plugin'],
-      },
     }),
-    viteTsconfigPaths(),
     svgrPlugin(),
     VitePWA({
       devOptions: {

@@ -117,7 +117,7 @@ export async function updateChallenge(
   const document = await ChallengeModel.findByIdAndUpdate(
     challengeId,
     { ...challenge },
-    { new: true },
+    { returnDocument: 'after' },
   )
 
   if (!document) {

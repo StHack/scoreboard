@@ -10,7 +10,7 @@ import { Messages } from 'components/Messages'
 import { useAuth } from 'hooks/useAuthentication'
 import { useGame } from 'hooks/useGame'
 import { ProvidePlayer, usePlayer } from 'hooks/usePlayer'
-import { useEffect, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 import {
   getGroup,
@@ -71,13 +71,11 @@ export function Game() {
     {},
   )
 
-  const [selectedChall, setSelectedChall] = useState<Challenge>()
-
-  useEffect(() => {
-    if (!challenges.find(c => c === selectedChall)) {
-      setSelectedChall(undefined)
-    }
-  }, [challenges, selectedChall])
+  const [_selectedChall, setSelectedChall] = useState<Challenge>()
+  const selectedChall = useMemo(
+    () => _selectedChall && challenges.find(c => c._id === _selectedChall._id),
+    [_selectedChall, challenges],
+  )
 
   return (
     <Box

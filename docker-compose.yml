@@ -1,5 +1,5 @@
 x-redis-config: &redis-conf
-  image: redis:7
+  image: valkey/valkey:9
   restart: always
   volumes:
     - redis-data:/data
@@ -37,10 +37,10 @@ services:
       APP_DISCORD_TOKEN: ${APP_DISCORD_TOKEN}
       APP_DISCORD_CHANNEL: ${APP_DISCORD_CHANNEL}
     logging:
-      driver: 'local'
+      driver: "local"
       options:
-        max-size: '20m'
-        max-file: '50'
+        max-size: "20m"
+        max-file: "50"
     networks:
       - apps
     depends_on:
@@ -77,12 +77,26 @@ services:
 
   redis-dev:
     <<: *redis-conf
-    image: redis/redis-stack:7.4.0-v3
     profiles:
       - dev
     ports:
       - 6379:6379
       - 8001:8001
+
+  redis-admin-dev:
+    image: valkey/valkey-admin
+    restart: always
+    profiles:
+      - dev
+    ports:
+      - 8080:8080
+    environment:
+      VALKEY_HOST: redis-dev
+      VALKEY_PORT: 6379
+    networks:
+      - apps
+    depends_on:
+      - redis-dev
 
   mongo-express:
     image: mongo-express

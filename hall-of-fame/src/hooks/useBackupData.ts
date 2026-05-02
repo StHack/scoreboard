@@ -47,6 +47,7 @@ export function useBackupData<K extends BackupDataType>(
 
   useEffect(() => {
     if (isNaN(year) || !Object.values(BackupDataType).includes(type)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setData([])
       setLoading(false)
       setError(new Error('Invalid year or backup type'))

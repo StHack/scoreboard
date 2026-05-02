@@ -16,7 +16,16 @@
       "path": "./common"
     },
     {
+      "path": "./common-ui"
+    },
+    {
       "path": "./server"
+    },
+    {
+      "path": "./tests"
+    },
+    {
+      "path": "./hall-of-fame"
     }
   ]
 }

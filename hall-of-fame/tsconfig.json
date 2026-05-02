@@ -5,8 +5,6 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "types": ["vite/client", "vite-plugin-svgr/client", "vitest/globals"],
     "allowJs": false,
-    "baseUrl": "src",
-    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strictNullChecks": true,
     "module": "ESNext",
@@ -16,7 +14,10 @@
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "jsx": "react-jsx",
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "paths": {
+      "*": ["./src/*"]
+    }
   },
   "include": ["src", "../common-ui/src/global.d.ts"]
 }

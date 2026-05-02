@@ -1,5 +1,6 @@
 import { keyframes, useTheme } from '@emotion/react'
 import styled from '@emotion/styled'
+import { SVGProps } from 'react'
 import { size, space } from 'styled-system'
 import { Box } from '../../../../Box'
 import { categoryToImg } from '../../../../CategoryImg'
@@ -80,7 +81,7 @@ export function ChallengeCard2025({
           y="277.846"
           width="610.275"
           height="481.428"
-          clipPath={`url(#img-clip)`}
+          clipPath="url(#img-clip)"
         >
           <Img src={img || categoryToImg(category)} alt={name} />
         </foreignObject>
@@ -122,16 +123,20 @@ const Svg = styled.svg`
   max-height: ${p => p.theme.sizes[9]};
   overflow: visible;
 `
-const BoxPath = styled.path`
+const BasePath = styled.path`
   stroke: #3a3a3a;
   stroke-width: 6.627;
   stroke-dasharray: none;
   stroke-opacity: ${p => p.strokeOpacity ?? 1};
 `
 
-const BoxPath2 = styled(BoxPath)`
-  fill: #6c7a89;
-`
+const BoxPath = (props: SVGProps<SVGPathElement>) => {
+  return <BasePath className="primary" {...props} />
+}
+
+const BoxPath2 = (props: SVGProps<SVGPathElement>) => {
+  return <BasePath className="secondary" fill="#6c7a89" {...props} />
+}
 
 const WiggleHighlight = keyframes`
   0%, 17.5%, 100% {
@@ -166,7 +171,7 @@ const CardWrapper = styled(Box)<CardWrapperProps>`
   display: flex;
   flex-direction: column;
 
-  ${BoxPath} {
+  path.primary {
     fill: ${p =>
       p.openState === 'broken'
         ? '#b0b0b0'
@@ -175,7 +180,7 @@ const CardWrapper = styled(Box)<CardWrapperProps>`
           : '#b0c4de'};
   }
 
-  ${BoxPath2} {
+  path.secondary {
     fill: ${p =>
       p.openState === 'broken'
         ? '#888888'
@@ -184,7 +189,8 @@ const CardWrapper = styled(Box)<CardWrapperProps>`
           : '#6c7a89'};
   }
 
-  :hover ${Svg}, :focus ${Svg} {
+  :hover > svg,
+  :focus > svg {
     transform-origin: center;
     animation: ${WiggleHighlight} 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97)
       both;

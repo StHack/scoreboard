@@ -146,7 +146,7 @@ export async function updateUser(
   const document = await UserModel.findOneAndUpdate(
     { username },
     { team, roles, password },
-    { new: true },
+    { returnDocument: 'after' },
   )
 
   if (!document) {

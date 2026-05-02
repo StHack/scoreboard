@@ -4,8 +4,6 @@
     "target": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
-    // "baseUrl": "src",
-    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strictNullChecks": true,
     "module": "ESNext",

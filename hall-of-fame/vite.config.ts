@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import svgrPlugin from 'vite-plugin-svgr'
-import viteTsconfigPaths from 'vite-tsconfig-paths'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
@@ -14,6 +13,9 @@ export default defineConfig(({ command }) => ({
   assetsInclude: ['**/*.riv'],
   build: {
     sourcemap: true,
+  },
+  resolve: {
+    tsconfigPaths: true,
   },
   test: {
     globals: true,
@@ -30,11 +32,7 @@ export default defineConfig(({ command }) => ({
   plugins: [
     react({
       jsxImportSource: '@emotion/react',
-      babel: {
-        plugins: ['@emotion/babel-plugin'],
-      },
     }),
-    viteTsconfigPaths(),
     svgrPlugin(),
     VitePWA({
       devOptions: {

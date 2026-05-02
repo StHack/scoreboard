@@ -1,11 +1,9 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    // "baseUrl": "src",
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "esModuleInterop": false,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
