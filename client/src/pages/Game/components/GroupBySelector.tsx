@@ -25,6 +25,11 @@ export function GroupBySelector({
       width="100%"
       alignItems="baseline"
       gap="2"
+      backgroundColor="background"
+      mt={[2, 3]}
+      p="2"
+      color="primaryText"
+      borderRadius="medium"
       {...props}
     >
       <Box as="p" width="100%" fontSize="1">

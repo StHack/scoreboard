@@ -4,11 +4,12 @@ import { Edition2022Config, Edition2022Theme } from './2022'
 import { Edition2023Config, Edition2023Theme } from './2023'
 import { Edition2024Config, Edition2024Theme } from './2024'
 import { Edition2025Config, Edition2025Theme } from './2025'
+import { Edition2026Config, Edition2026Theme } from './2026'
 import { EditionTheme } from './types'
 
-export const EditionCurrentTheme = Edition2025Theme
-export const EditionCurrentLogo = Edition2025Theme.logo
-export const EditionCurrentConfig = Edition2025Config
+export const EditionCurrentTheme = Edition2026Theme
+export const EditionCurrentLogo = Edition2026Theme.logo
+export const EditionCurrentConfig = Edition2026Config
 
 export * from './2021'
 export * from './2022'
@@ -28,6 +29,8 @@ export function getEditionTheme(year: number): EditionTheme {
       return Edition2024Theme
     case 2025:
       return Edition2025Theme
+    case 2026:
+      return Edition2026Theme
     default:
       return EditionCurrentTheme
   }
@@ -45,6 +48,8 @@ export function getEditionConfig(year: number): BaseGameConfig {
       return Edition2024Config
     case 2025:
       return Edition2025Config
+    case 2026:
+      return Edition2026Config
     default:
       return EditionCurrentConfig
   }

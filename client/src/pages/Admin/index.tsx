@@ -36,7 +36,6 @@ export function Admin({ children }: PropsWithChildren) {
       flexDirection={['column-reverse', 'column']}
       // maxWidth="maximalCentered"
       overflow="hidden"
-      px="2"
       margin="0 auto"
       width="100%"
       height="100%"
@@ -48,6 +47,10 @@ export function Admin({ children }: PropsWithChildren) {
         justifyContent={['space-around', 'center']}
         gap={[1, 2]}
         overflowX="auto"
+        backgroundColor="background"
+        borderY="solid"
+        borderColor="secondary"
+        borderWidth="medium"
         px="1"
       >
         <Link to="/admin" end>
@@ -72,7 +75,7 @@ export function Admin({ children }: PropsWithChildren) {
         </Link>
       </Box>
 
-      <Box display="grid" flex="1" pt="2" overflowY="auto">
+      <Box display="grid" flex="1" p="2" overflowY="auto">
         {children}
       </Box>
     </Box>

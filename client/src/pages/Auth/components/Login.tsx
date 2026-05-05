@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import {
   Banner,
   Box,
+  BoxPanel,
   Button,
   EditionCurrentLogo,
   LabelInput,
@@ -27,7 +28,13 @@ export function Login() {
       margin="0 auto"
       padding="4"
     >
-      <Box display="flex" flexDirection="column" gap="2">
+      <BoxPanel
+        display="flex"
+        flexDirection="column"
+        title="Login"
+        titleProps={{ display: 'none' }}
+        p="4"
+      >
         <BBanner width="100%" />
         <Logo mb="2" />
 
@@ -72,7 +79,7 @@ export function Login() {
         {registrationOpened && (
           <Link to="/auth/register">Not registered yet ? Click here</Link>
         )}
-      </Box>
+      </BoxPanel>
     </Box>
   )
 }

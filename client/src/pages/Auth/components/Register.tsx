@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import {
   Banner,
   Box,
+  BoxPanel,
   Button,
   LabelInput,
   TextInput,
@@ -27,7 +28,13 @@ export function Register() {
       margin="0 auto"
       padding="4"
     >
-      <Box display="flex" flexDirection="column">
+      <BoxPanel
+        display="flex"
+        flexDirection="column"
+        title="Register"
+        titleProps={{ display: 'none' }}
+        p="4"
+      >
         <Banner mb="4" width="100%" />
 
         <Form {...formProps}>
@@ -76,7 +83,7 @@ export function Register() {
             Register
           </Button>
         </Form>
-      </Box>
+      </BoxPanel>
     </Box>
   )
 }

@@ -27,6 +27,7 @@ export function ScoreBoard() {
     >
       <Box
         as="h2"
+        color="primary"
         fontSize="4"
         gridArea="1/1"
         placeSelf="center"
@@ -42,6 +43,7 @@ export function ScoreBoard() {
 
       <Box
         as="h2"
+        color="primary"
         fontSize="4"
         gridArea="1/2"
         placeSelf="center"

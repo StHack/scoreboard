@@ -55,6 +55,17 @@ export const BaseSvg = styled('svg', cleanStyledSystem)(
   `,
 )
 
+export const BaseImgIcon = styled('img', cleanStyledSystem)(
+  space,
+  size,
+  color,
+  place,
+  css`
+    object-fit: contain;
+    width: 100%;
+  `,
+)
+
 export const Logo: Icon = BaseSvg.withComponent(LogoSvg)
 export const Banner: Icon = BaseSvg.withComponent(BannerSvg)
 export const IconAchievement: Icon = BaseSvg.withComponent(AchievementSvg)
