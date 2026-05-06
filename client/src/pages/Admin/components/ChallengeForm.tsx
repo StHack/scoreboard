@@ -171,7 +171,10 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
         </LabelInput>
 
         <LabelInput label="Difficulty" gridArea="dif" required>
-          <SelectInput predefinedValues={Difficulties} {...difficultyProps} />
+          <SelectInput
+            predefinedValues={Difficulties.filter(d => d !== 'special')}
+            {...difficultyProps}
+          />
         </LabelInput>
 
         <LabelInput
