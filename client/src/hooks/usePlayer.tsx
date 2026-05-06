@@ -1,4 +1,4 @@
-import { Message } from '@sthack/scoreboard-common'
+import { Message, TeamScore } from '@sthack/scoreboard-common'
 import { createContext, PropsWithChildren, useContext, useState } from 'react'
 import { useAuth } from './useAuthentication'
 import { useGame } from './useGame'
@@ -6,9 +6,7 @@ import { useSocket } from './useSocket'
 
 export type PlayerContext = {
   myScore: number
-  myTeamScore: number
-  myTeamName: string
-  myTeamRank: number
+  myTeamScore: TeamScore
   isBeforeLastScorer: boolean
   readMessages: string[]
   attemptChall: (challengeId: string, flag: string) => Promise<true | string>
@@ -17,9 +15,14 @@ export type PlayerContext = {
 
 const PlayerContext = createContext<PlayerContext>({
   myScore: 0,
-  myTeamScore: 0,
-  myTeamName: '',
-  myTeamRank: 0,
+  myTeamScore: {
+    team: '',
+    rank: 0,
+    score: 0,
+    breakthroughs: [],
+    solved: [],
+    rewards: [],
+  },
   isBeforeLastScorer: false,
   readMessages: [],
   attemptChall: () => Promise.resolve('Uninitialized'),
@@ -60,9 +63,14 @@ function useProvidePlayer(): PlayerContext {
 
   return {
     myScore,
-    myTeamScore: ts?.score ?? 0,
-    myTeamName: user.team,
-    myTeamRank: teamsScore.find(ts => ts.team === user.team)?.rank ?? 0,
+    myTeamScore: ts ?? {
+      team: user.team,
+      rank: 0,
+      score: 0,
+      breakthroughs: [],
+      solved: [],
+      rewards: [],
+    },
     isBeforeLastScorer: beforeLastScorer?.team === user.team,
     readMessages,
     attemptChall: (challengeId, flag) => {

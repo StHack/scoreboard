@@ -2,7 +2,7 @@ import { useTheme } from '@emotion/react'
 import { Challenge } from '@sthack/scoreboard-common'
 import {
   Box,
-  ChallDescriptionPopup,
+  ChallDescriptionDetail,
   MotionBox,
   Popup,
 } from '@sthack/scoreboard-ui/components'
@@ -42,11 +42,12 @@ export function Game() {
   const {
     challenges,
     score: { challsScore: challScore },
-    gameConfig: { gameOpened },
+    gameConfig,
     messages,
   } = useGame()
+  const { gameOpened } = gameConfig
 
-  const { myTeamName, attemptChall } = usePlayer()
+  const { attemptChall, myTeamScore } = usePlayer()
 
   const {
     edition: { card: ChallengeCard },
@@ -151,7 +152,7 @@ export function Game() {
                   <ChallengeCard
                     challenge={c}
                     score={challScore[c._id]}
-                    currentTeam={myTeamName}
+                    currentTeam={myTeamScore.team}
                     onClick={() => setSelectedChall(c)}
                     size="10"
                   />
@@ -171,21 +172,24 @@ export function Game() {
 
       {selectedChall &&
         (gameOpened ? (
-          <ChallDescriptionPopup
-            challenge={selectedChall}
-            score={challScore[selectedChall._id]}
-            messageBlock={
-              <Messages
-                title="Clues"
-                messages={messages.filter(
-                  m => m.challengeId === selectedChall._id,
-                )}
-              />
-            }
-            myTeamName={myTeamName}
-            attemptChall={attemptChall}
+          <Popup
+            title={selectedChall.name}
             onClose={() => setSelectedChall(undefined)}
-          />
+          >
+            <ChallDescriptionDetail
+              challenge={selectedChall}
+              score={challScore[selectedChall._id]}
+              teamScore={myTeamScore}
+              gameConfig={gameConfig}
+              onFlagSubmit={attemptChall}
+            />
+            <Messages
+              title="Clues"
+              messages={messages.filter(
+                m => m.challengeId === selectedChall._id,
+              )}
+            />
+          </Popup>
         ) : (
           <Popup
             onClose={() => setSelectedChall(undefined)}

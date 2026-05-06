@@ -9,16 +9,18 @@ import {
 import {
   Box,
   Button,
-  ChallDescriptionPopup,
+  ChallDescriptionDetail,
   IconBreak,
   IconDelete,
   IconEdit,
   IconFlagEdit,
   IconPreview,
   IconRepair,
+  Popup,
 } from '@sthack/scoreboard-ui/components'
 import { Messages } from 'components/Messages'
 import { RoleBasedButton } from 'components/RoleBasedButton'
+import { useGame } from 'hooks/useGame'
 import { ProvidePlayer, usePlayer } from 'hooks/usePlayer'
 import { useState } from 'react'
 import { FlagEditForm } from './FlagEditForm'
@@ -175,15 +177,17 @@ type PreviewerProps = {
   onClose: () => void
 }
 function Previewer({ challenge, score, messages, onClose }: PreviewerProps) {
-  const { attemptChall, myTeamName } = usePlayer()
+  const { attemptChall } = usePlayer()
+  const { gameConfig } = useGame()
   return (
-    <ChallDescriptionPopup
-      challenge={challenge}
-      messageBlock={<Messages title="Clues" messages={messages} />}
-      onClose={onClose}
-      score={score}
-      attemptChall={attemptChall}
-      myTeamName={myTeamName}
-    />
+    <Popup title={`Preview: ${challenge.name}`} onClose={onClose}>
+      <ChallDescriptionDetail
+        challenge={challenge}
+        score={score}
+        gameConfig={gameConfig}
+        onFlagSubmit={attemptChall}
+      />
+      <Messages title="Clues" messages={messages} />
+    </Popup>
   )
 }

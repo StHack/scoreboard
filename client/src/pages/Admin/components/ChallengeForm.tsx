@@ -9,10 +9,11 @@ import {
   BoxPanel,
   Button,
   categoryToImg,
-  ChallDescriptionPopup,
+  ChallDescriptionDetail,
   DropdownInput,
   LabelInput,
   Loader,
+  Popup,
   SelectInput,
   TextInput,
 } from '@sthack/scoreboard-ui/components'
@@ -21,13 +22,8 @@ import MDEditor from '@uiw/react-md-editor'
 import { ImageInput } from 'components/ImageInput'
 import { AdminContextLoadingState, useAdmin } from 'hooks/useAdmin'
 import { useChallengeForm } from 'hooks/useChallengeForm'
-import {
-  ChangeEvent,
-  SyntheticEvent,
-  useCallback,
-  useRef,
-  useState,
-} from 'react'
+import { useGame } from 'hooks/useGame'
+import { ChangeEvent, SyntheticEvent, useCallback, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { FlagInput } from './FlagInput'
 
@@ -65,7 +61,7 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
     isDirty,
   } = useChallengeForm(chall, onClose)
   const { uploadFile } = useAdmin()
-  const ref = useRef<HTMLFormElement>(null)
+  const { gameConfig } = useGame()
   const [showPreview, setShowPreview] = useState<boolean>(false)
   const { currentTheme } = useThemeMode()
 
@@ -214,18 +210,22 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
         )}
 
         {showPreview && (
-          <ChallDescriptionPopup
-            challenge={preview}
-            attemptChall={() => Promise.resolve(true)}
-            myTeamName="admin"
+          <Popup
+            title={`Preview: ${preview.name}`}
             onClose={() => setShowPreview(false)}
-            score={{
-              challenge: DummyChallenge,
-              achievements: [],
-              score: 100,
-            }}
-            readonly
-          />
+          >
+            <ChallDescriptionDetail
+              challenge={preview}
+              gameConfig={gameConfig}
+              onFlagSubmit={() => Promise.resolve(true)}
+              score={{
+                challenge: DummyChallenge,
+                achievements: [],
+                score: 100,
+              }}
+              readonly
+            />
+          </Popup>
         )}
 
         <Box
