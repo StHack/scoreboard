@@ -14,8 +14,9 @@ export const Edition2026Theme: EditionTheme = {
 }
 
 export const Edition2026Config: BaseGameConfig = {
-  baseChallScore: 0,
+  baseChallScore: 50,
   teamSize: 5,
   isRewardProportional: true,
   isDifficultyIncluded: false,
+  isNoCompetition: true,
 }

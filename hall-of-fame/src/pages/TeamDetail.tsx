@@ -25,6 +25,9 @@ type PlayerStats = {
   solved: Achievement[]
 }
 
+const playerStatsNoCompetColumn: ColumnDefinition<PlayerStats>[] = [
+  { header: 'User', rowValue: row => row.player.username },
+]
 const playerStatsColumn: ColumnDefinition<PlayerStats>[] = [
   { header: 'User', rowValue: row => row.player.username },
   {
@@ -82,6 +85,7 @@ export function TeamDetail() {
           challsScore={gameScore.challsScore}
           teamScore={score}
           isBeforeLastScorer={score === gameScore.beforeLastScorer}
+          gameConfig={gameScore.config}
           showDetail
         />
       </Box>
@@ -89,7 +93,11 @@ export function TeamDetail() {
       <BoxPanel title="Players details" titleIcon={IconUsers}>
         <Table
           data={playerStats}
-          columns={playerStatsColumn}
+          columns={
+            gameScore.config.isNoCompetition
+              ? playerStatsNoCompetColumn
+              : playerStatsColumn
+          }
           rowKey={row => row.player.username}
           actions={PlayerStatsActions}
         />

@@ -92,62 +92,80 @@ async function gameEnd(options: {
     config,
   )
 
-  const scoreboardRow = (ts: TeamScore) => {
-    return (
-      '|' +
-      [
-        ts.rank.toString().padStart(3),
-        ts.score.toString().padStart(6),
-        (ts.rewards.length || ' ').toString().padStart(2),
-        (ts.breakthroughs.length || ' ').toString().padStart(2),
-        ts.solved.length.toString().padStart(3),
-        ts.team,
-      ]
-        .filter(str => str)
-        .join(' | ')
-    )
-  }
-
-  const scoreboard = gameScore.teamsScore
-    .filter(ts => ts.score > 0)
-    .map(scoreboardRow)
-    .join('\n')
-  const unScorers = gameScore.teamsScore
-    .filter(ts => ts.score === 0)
-    .map(ts => `- ${ts.team}`)
-    .join('\n')
-
-  const challBoard = Object.values(gameScore.challsScore)
-    .filter(cs => cs.achievements.length > 0)
-    .sort((cs1, cs2) => cs2.achievements.length - cs1.achievements.length)
-    .map(
-      cs =>
-        '|' +
-        [
-          cs.achievements.length.toString().padStart(3),
-          cs.score.toString().padStart(6),
-          cs.challenge.name,
+  const scoreboard = tableToMarkdown(
+    config.isNoCompetition
+      ? [
+          { name: '🏆', maxLength: 2, extract: ts => ts.rewards.length },
+          { name: '💥', maxLength: 2, extract: ts => ts.breakthroughs.length },
+          { name: '🚩', maxLength: 3, extract: ts => ts.solved.length },
+          { name: 'Team', extract: ts => ts.team },
         ]
-          .filter(str => str)
-          .join(' | '),
-    )
-    .join('\n')
+      : [
+          { name: '#', maxLength: 3, extract: ts => ts.rank },
+          { name: 'Score', maxLength: 6, extract: ts => ts.score },
+          { name: '🏆', maxLength: 2, extract: ts => ts.rewards.length },
+          { name: '💥', maxLength: 2, extract: ts => ts.breakthroughs.length },
+          { name: '🚩', maxLength: 3, extract: ts => ts.solved.length },
+          { name: 'Team', extract: ts => ts.team },
+        ],
+    gameScore.teamsScore,
+  )
 
-  const unresolvedChalls = Object.values(gameScore.challsScore)
-    .filter(cs => cs.achievements.length === 0)
-    .map(cs => `- ${cs.challenge.name}`)
-    .join('\n')
+  const challBoard = tableToMarkdown(
+    config.isNoCompetition
+      ? [
+          { name: '💥', maxLength: 3, extract: cs => cs.achievements.length },
+          { name: 'Challenge', extract: cs => cs.challenge.name },
+        ]
+      : [
+          { name: '💥', maxLength: 3, extract: cs => cs.achievements.length },
+          { name: 'Score', maxLength: 6, extract: cs => cs.score },
+          { name: 'Challenge', extract: cs => cs.challenge.name },
+        ],
+    Object.values(gameScore.challsScore).sort(
+      (cs1, cs2) => cs2.achievements.length - cs1.achievements.length,
+    ),
+  )
 
   return [
     '# 🏴‍☠️ CTF is now closed',
-    scoreboard &&
-      `## Teams Scoreboard\n\`\`\`|  # | Score  | 🏆 | 💥 | 🚩  | Team\n${scoreboard}\`\`\``,
-    unScorers && `## Teams who hasn't scored\n\`\`\`${unScorers}\`\`\``,
-    challBoard &&
-      `## Challenges Scoreboard\n\`\`\`| 💥 | Score  | Challenge\n${challBoard}\`\`\``,
-    unresolvedChalls &&
-      `## Challenges unresolved\n\`\`\`${unresolvedChalls}\`\`\``,
+    scoreboard && `## Teams Scoreboard\n\`\`\`${scoreboard}\`\`\``,
+    challBoard && `## Challenges Scoreboard\n\`\`\`${challBoard}\`\`\``,
   ].filter(str => str)
+}
+
+type tableToMarkdownDefinition<T> = {
+  name: string
+  maxLength?: number
+  extract: (obj: T) => string | number | undefined
+}
+
+function tableToMarkdown<T>(
+  definition: tableToMarkdownDefinition<T>[],
+  data: T[],
+): string {
+  if (data.length === 0) {
+    return ''
+  }
+
+  return (
+    '|' +
+    [
+      definition
+        .map(def => def.name.slice(0, def.maxLength).padEnd(def.maxLength ?? 0))
+        .join(' | '),
+      ...data.map(obj =>
+        definition
+          .map(def =>
+            (def.extract(obj) || ' ')
+              .toString()
+              .slice(0, def.maxLength)
+              .padStart(def.maxLength ?? 0),
+          )
+          .join(' | '),
+      ),
+    ].join('\n|')
+  )
 }
 
 async function reward({
@@ -160,7 +178,10 @@ async function reward({
   const gameConfig = await serverConfig.getGameConfig()
   const currentValue = computeRewardScore(reward, gameConfig)
   const { teamname, value, label } = reward
-  return `## 🏆 Reward \`${label}\` has been given!\nto team \`${teamname}\` with a base value of \`${value}\`pts which correspond to \`${currentValue}\`pts with the current team count`
+  const baseWording = `## 🏆 Reward \`${label}\` has been given!`
+  return gameConfig.isNoCompetition
+    ? baseWording
+    : `${baseWording}\nto team \`${teamname}\` with a base value of \`${value}\`pts which correspond to \`${currentValue}\`pts with the current team count`
 }
 
 function solve({

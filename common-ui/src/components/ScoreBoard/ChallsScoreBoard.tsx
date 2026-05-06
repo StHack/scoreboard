@@ -1,6 +1,7 @@
 import { useTheme } from '@emotion/react'
 import {
   Achievement,
+  BaseGameConfig,
   Challenge,
   ChallengeScore,
 } from '@sthack/scoreboard-common'
@@ -15,11 +16,13 @@ import { useState } from 'react'
 export type ChallsScoreBoardProps = {
   challsScore: Record<string, ChallengeScore>
   challenges: Challenge[]
+  gameConfig: BaseGameConfig
   hrefPattern?: (challenge: Challenge) => string
 }
 export function ChallsScoreBoard({
   challsScore,
   challenges,
+  gameConfig,
   hrefPattern,
 }: ChallsScoreBoardProps) {
   const [selectedBreakthrough, setSelectedBreakthrough] =
@@ -47,12 +50,15 @@ export function ChallsScoreBoard({
             // @ts-expect-error not a real one
             as={hrefPattern && 'a'}
             href={hrefPattern && hrefPattern(c)}
+            placeItems="center"
+            placeContent="center"
           />
         ))}
       {selectedBreakthrough && (
         <DetailChallPopup
           breakthrough={selectedBreakthrough}
           challScore={challsScore[selectedBreakthrough.challengeId]}
+          gameConfig={gameConfig}
           onClose={() => setSelectedBreakthrough(undefined)}
         />
       )}
@@ -63,16 +69,22 @@ export function ChallsScoreBoard({
 type DetailChallPopupProps = {
   breakthrough: Achievement
   challScore: ChallengeScore
+  gameConfig: BaseGameConfig
   onClose: () => void
 }
 function DetailChallPopup({
   breakthrough,
   challScore,
+  gameConfig: { isNoCompetition },
   onClose,
 }: DetailChallPopupProps) {
   return (
     <Popup
-      title={`${breakthrough.challenge.name} - ${challScore.score} pts`}
+      title={
+        isNoCompetition
+          ? breakthrough.challenge.name
+          : `${breakthrough.challenge.name} - ${challScore.score} pts`
+      }
       onClose={onClose}
     >
       <Box as="h3" fontSize="3" textAlign="center" m="3">

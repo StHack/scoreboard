@@ -18,9 +18,7 @@ export function Rules() {
   const { gameConfig } = useGame()
   const { isAuthenticated, hasReadRules, readRules } = useAuth()
   const navigate = useNavigate()
-  const {
-    edition: { backgroundCredit },
-  } = useTheme()
+  const { edition } = useTheme()
 
   return (
     <Box
@@ -98,7 +96,7 @@ export function Rules() {
         backgroundColor="background"
       >
         <ReactMarkdown components={ReactMarkdownRenderers}>
-          {creditsMarkdown({ backgroundCredit })}
+          {creditsMarkdown(edition)}
         </ReactMarkdown>
       </Box>
     </Box>
@@ -120,6 +118,20 @@ const rulesMarkdown = (gameConfig: GameConfig) => `
 
 ## Scoring
 
+${gameConfig.isNoCompetition ? scoringNoCompetMarkdown(gameConfig) : scoringMarkdown(gameConfig)}
+
+## Difference from 2025 edition
+
+- Theme has been changed to **Funfair**
+
+For the full changelog, please refer to the [changelog](https://github.com/StHack/scoreboard/blob/main/CHANGELOG.md)
+
+## Help/Questions
+
+You can come and ask us your questions directly at the staff desk.
+`
+
+const scoringMarkdown = (gameConfig: GameConfig) => `
 This year the scoring is dynamic, the formula is the following:
 
 \`\`\`text
@@ -154,24 +166,17 @@ For this year, the first 5 teams will be rewarded as follow:
 3. \`base_reward_h4v = 40\` so currently it will valued to **${40 * gameConfig.teamCount}**
 4. \`base_reward_h4v = 35\` so currently it will valued to **${35 * gameConfig.teamCount}**
 5. \`base_reward_h4v = 30\` so currently it will valued to **${30 * gameConfig.teamCount}**
+`
 
-## Difference from 2024 edition
-
-- Theme has been changed to **Supply chain**
-- No rules has been changed !
-
-For the full changelog, please refer to the [changelog](https://github.com/StHack/scoreboard/blob/main/CHANGELOG.md)
-
-## Help/Questions
-
-You can come and ask us your questions directly at the staff desk.
+const scoringNoCompetMarkdown = (gameConfig: GameConfig) => `
+This year we are experimenting with a no-competition CTF, meaning that there will be no leaderboard and no team will be able to see other teams' scores.
+The goal is to encourage collaboration between teams and focus on the fun of solving challenges rather than competing against each other.
 `
 
 const creditsMarkdown = ({
   backgroundCredit,
-}: {
-  backgroundCredit?: Theme['edition']['backgroundCredit']
-}) => `
+  popupBackgroundCredit,
+}: Theme['edition']) => `
 # Credits
 
 ${creditToMarkdown(backgroundCredit, 'Background Image')}

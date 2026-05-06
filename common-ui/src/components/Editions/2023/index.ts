@@ -23,4 +23,5 @@ export const Edition2023Config: BaseGameConfig = {
   teamSize: 5,
   isRewardProportional: false,
   isDifficultyIncluded: true,
+  isNoCompetition: false,
 }

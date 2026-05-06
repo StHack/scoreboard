@@ -1,5 +1,9 @@
 import { useTheme } from '@emotion/react'
-import { ChallengeScore, TeamScore } from '@sthack/scoreboard-common'
+import {
+  BaseGameConfig,
+  ChallengeScore,
+  TeamScore,
+} from '@sthack/scoreboard-common'
 import {
   Box,
   ChartCategory,
@@ -14,6 +18,7 @@ type ScoreCardProps = {
   teamScore: TeamScore
   isBeforeLastScorer: boolean
   challsScore: Record<string, ChallengeScore>
+  gameConfig: BaseGameConfig
   showDetail?: boolean
   href?: string
 }
@@ -22,6 +27,7 @@ export function ScoreCard({
   isBeforeLastScorer,
   challsScore,
   showDetail,
+  gameConfig: { isNoCompetition },
   href,
 }: ScoreCardProps) {
   const theme = useTheme()
@@ -101,9 +107,17 @@ export function ScoreCard({
         placeItems="center"
         gap="2"
       >
-        <span>{showDetail ? `Rank: #${rank}` : rank}</span>
+        <span>
+          {isNoCompetition ? null : showDetail ? `Rank: #${rank}` : rank}
+        </span>
         <span>{team}</span>
-        <span>{showDetail ? `Score: ${score.toLocaleString()}` : score}</span>
+        <span>
+          {isNoCompetition
+            ? null
+            : showDetail
+              ? `Score: ${score.toLocaleString()}`
+              : score}
+        </span>
         <Box
           display="flex"
           flexWrap="wrap"
@@ -163,7 +177,9 @@ export function ScoreCard({
                     gap="2"
                   >
                     <IconBreakthrough size="2em" />
-                    {`${label} (${score} pts) at ${createdAt.toLocaleTimeString()}`}
+                    {isNoCompetition
+                      ? `${label} at ${createdAt.toLocaleTimeString()}`
+                      : `${label} (${score} pts) at ${createdAt.toLocaleTimeString()}`}
                     <IconBreakthrough size="2em" />
                   </Box>
                 ))}
@@ -194,9 +210,11 @@ export function ScoreCard({
                       gap="2"
                     >
                       <IconBreakthrough size="2em" />
-                      {`${username} solved "${challenge.name}" (${
-                        challsScore[challengeId].score
-                      } pts) at ${createdAt.toLocaleTimeString()}`}
+                      {isNoCompetition
+                        ? `${username} solved "${challenge.name}" at ${createdAt.toLocaleTimeString()}`
+                        : `${username} solved "${challenge.name}" (${
+                            challsScore[challengeId].score
+                          } pts) at ${createdAt.toLocaleTimeString()}`}
                     </Box>
                   ),
                 )}
@@ -215,9 +233,11 @@ export function ScoreCard({
                 {solvedNotBreakthrough.map(
                   ({ challengeId, challenge, username, createdAt }) => (
                     <li key={challengeId}>
-                      {`${username} solved "${challenge.name}" (${
-                        challsScore[challengeId].score
-                      } pts) at ${createdAt.toLocaleTimeString()}`}
+                      {isNoCompetition
+                        ? `${username} solved "${challenge.name}" at ${createdAt.toLocaleTimeString()}`
+                        : `${username} solved "${challenge.name}" (${
+                            challsScore[challengeId].score
+                          } pts) at ${createdAt.toLocaleTimeString()}`}
                     </li>
                   ),
                 )}

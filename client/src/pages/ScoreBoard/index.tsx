@@ -1,61 +1,83 @@
 import {
   Box,
+  BoxPanel,
   ChallsScoreBoard,
   TeamsScoreBoard,
 } from '@sthack/scoreboard-ui/components'
 import { useGame } from 'hooks/useGame'
+import { PropsWithChildren } from 'react'
+import { GridAreaProps } from 'styled-system'
 
 export function ScoreBoard() {
-  const { score, challenges } = useGame()
+  const { score, challenges, gameConfig } = useGame()
   const { challsScore, teamsScore } = score
+  const { isNoCompetition } = gameConfig
 
   const challsUnsolved =
     challenges.length -
     Object.values(challsScore).filter(cs => cs.achievements.length).length
 
   const teamScored = teamsScore.filter(ts => ts.score > 0).length
+  const subtitle = isNoCompetition
+    ? `${teamsScore.length} teams`
+    : `${teamScored} scorers - ${teamsScore.length} teams`
 
   return (
     <Box
       display={['flex', 'grid']}
       alignItems={['stretch', 'start']}
-      flexDirection="column"
-      gridTemplateRows="auto 1fr"
-      gridTemplateColumns="3fr 1fr"
+      flexDirection={isNoCompetition ? 'column-reverse' : 'column'}
+      gridTemplateColumns={isNoCompetition ? '2fr 1fr' : '3fr 1fr'}
+      gridTemplateAreas={isNoCompetition ? '"chall team"' : '"team chall"'}
       gap="4"
       p="2"
     >
-      <Box
-        as="h2"
-        color="primary"
-        fontSize="4"
-        gridArea="1/1"
-        placeSelf="center"
-        textAlign="center"
-        pt="3"
-      >
-        Team scoreboard
-        <Box as="span" display="block" fontSize="3">
-          {teamScored} scorers - {teamsScore.length} teams
-        </Box>
-      </Box>
-      <TeamsScoreBoard gameScore={score} />
+      <Block title="Team scoreboard" subtitle={subtitle} gridArea="team">
+        <TeamsScoreBoard gameScore={score} />
+      </Block>
 
-      <Box
-        as="h2"
-        color="primary"
-        fontSize="4"
-        gridArea="1/2"
-        placeSelf="center"
-        textAlign="center"
-        pt="3"
+      <Block
+        title="Challenges scoreboard"
+        subtitle={`${challsUnsolved} remaining from ${challenges.length}`}
+        gridArea="chall"
       >
-        Challenges
+        <ChallsScoreBoard
+          challsScore={challsScore}
+          challenges={challenges}
+          gameConfig={gameConfig}
+        />
+      </Block>
+    </Box>
+  )
+}
+
+type BlockProps = GridAreaProps & {
+  title: string
+  subtitle: string
+}
+function Block({
+  title,
+  subtitle,
+  gridArea,
+  children,
+}: PropsWithChildren<BlockProps>) {
+  return (
+    <Box display="grid" gap="4" gridArea={gridArea}>
+      <BoxPanel
+        title={title}
+        titleProps={{
+          fontSize: 4,
+          width: '100%',
+        }}
+        fontSize="4"
+        placeSelf="center"
+        justifyItems="center"
+      >
         <Box as="span" display="block" fontSize="3">
-          {challsUnsolved} remaining from {challenges.length}
+          {subtitle}
         </Box>
-      </Box>
-      <ChallsScoreBoard challsScore={challsScore} challenges={challenges} />
+      </BoxPanel>
+      {children}
     </Box>
   )
 }

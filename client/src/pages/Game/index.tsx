@@ -18,6 +18,7 @@ import {
   GroupBySelector,
   GroupByType,
 } from './components/GroupBySelector'
+import { UserScore } from './components/UserScore'
 
 export function GameLayout() {
   const { isAuthenticated, hasReadRules } = useAuth()
@@ -45,17 +46,9 @@ export function Game() {
     messages,
   } = useGame()
 
-  const {
-    myScore,
-    myTeamScore,
-    myTeamName,
-    myTeamRank,
-    isBeforeLastScorer,
-    attemptChall,
-  } = usePlayer()
+  const { myTeamName, attemptChall } = usePlayer()
 
   const {
-    colors: { beforeLastOne },
     edition: { card: ChallengeCard },
   } = useTheme()
 
@@ -100,47 +93,7 @@ export function Game() {
       columnGap="4"
       overflowY={[null, 'hidden']}
     >
-      <Box
-        gridArea="score"
-        fontSize={[2, 3]}
-        mt={[2, 3]}
-        py="2"
-        px={[2, 4]}
-        rowGap="2"
-        columnGap={[0, 3]}
-        placeSelf="center"
-        backgroundColor={
-          myTeamRank === 1 && myTeamScore > 0
-            ? 'gold'
-            : myTeamRank === 2 && myTeamScore > 0
-              ? 'silver'
-              : myTeamRank === 3 && myTeamScore > 0
-                ? 'copper'
-                : isBeforeLastScorer
-                  ? undefined
-                  : 'background'
-        }
-        background={
-          myTeamRank > 3 && myTeamScore > 0 && isBeforeLastScorer
-            ? beforeLastOne
-            : undefined
-        }
-        color="primaryText"
-        borderRadius="medium"
-        display="grid"
-        gridTemplateColumns="repeat(3, 1fr)"
-        gridTemplateRows="repeat(2, 1fr)"
-        gridAutoFlow="column"
-        justifyItems="center"
-        textAlign="center"
-      >
-        <span>Your score</span>
-        <span>{myScore}</span>
-        <span>Rank</span>
-        <span>{myTeamRank}</span>
-        <span>Team score</span>
-        <span>{myTeamScore}</span>
-      </Box>
+      <UserScore />
 
       <GroupBySelector
         value={groupBy}

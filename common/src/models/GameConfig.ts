@@ -3,6 +3,7 @@ export type BaseGameConfig = {
   baseChallScore: number
   isRewardProportional: boolean
   isDifficultyIncluded: boolean
+  isNoCompetition: boolean
 }
 
 export type GameConfig = BaseGameConfig & {
@@ -16,6 +17,7 @@ export const DefaultGameConfig: GameConfig = {
   teamSize: 5,
   isRewardProportional: true,
   isDifficultyIncluded: false,
+  isNoCompetition: true,
 
   registrationOpened: false,
   gameOpened: false,

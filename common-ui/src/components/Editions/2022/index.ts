@@ -16,4 +16,5 @@ export const Edition2022Config: BaseGameConfig = {
   teamSize: 5,
   isRewardProportional: false,
   isDifficultyIncluded: true,
+  isNoCompetition: false,
 }

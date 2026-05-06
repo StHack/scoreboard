@@ -1,5 +1,6 @@
 import { Achievement } from './Achievement.js'
 import { Challenge } from './Challenge.js'
+import { BaseGameConfig } from './GameConfig.js'
 import { Reward } from './Reward.js'
 
 export type ChallengeScore = {
@@ -25,6 +26,7 @@ export type TeamScore = {
 export type GameScore = {
   challsScore: Record<string, ChallengeScore>
   teamsScore: TeamScore[]
+  config: BaseGameConfig
   beforeLastScorer?: TeamScore
 }
 

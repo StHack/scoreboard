@@ -31,6 +31,9 @@ export function computeGameScore(
     challsScore,
     teamsScore,
     beforeLastScorer,
+    config: {
+      ...config,
+    },
   }
 }
 
@@ -68,14 +71,21 @@ function computeChallenge(
 
 function computeChallengeScore(
   challenge: Challenge,
-  config: GameConfig,
+  {
+    baseChallScore,
+    isDifficultyIncluded,
+    isNoCompetition,
+    teamCount,
+  }: GameConfig,
   solvedCount: number = 0,
 ): number {
-  return config.isDifficultyIncluded
-    ? config.baseChallScore *
+  return isNoCompetition
+    ? 0
+    : isDifficultyIncluded
+      ? baseChallScore *
         DifficultyValue[challenge.difficulty] *
-        (config.teamCount - solvedCount)
-    : config.baseChallScore * (config.teamCount - solvedCount)
+        (teamCount - solvedCount)
+      : baseChallScore * (teamCount - solvedCount)
 }
 
 const DifficultyValue: Record<Difficulty, number> = {
@@ -96,11 +106,13 @@ function computeRewards(rewards: Reward[], config: GameConfig): RewardScore[] {
 
 export function computeRewardScore(
   reward: BaseReward,
-  config: GameConfig,
+  { isRewardProportional, isNoCompetition, teamCount }: GameConfig,
 ): number {
-  return config.isRewardProportional
-    ? reward.value * config.teamCount
-    : reward.value
+  return isNoCompetition
+    ? 0
+    : isRewardProportional
+      ? reward.value * teamCount
+      : reward.value
 }
 //#endregion
 

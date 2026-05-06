@@ -1,4 +1,4 @@
-import { GameScore, TeamScore } from '@sthack/scoreboard-common'
+import { GameConfig, GameScore, TeamScore } from '@sthack/scoreboard-common'
 import { Box } from '@sthack/scoreboard-ui/components'
 import { ScoreCard } from './ScoreCard'
 
@@ -7,7 +7,7 @@ export type TeamsScoreBoardProps = {
   hrefPattern?: (teamScore: TeamScore) => string
 }
 export function TeamsScoreBoard({
-  gameScore: { teamsScore, challsScore, beforeLastScorer },
+  gameScore: { teamsScore, challsScore, beforeLastScorer, config },
   hrefPattern,
 }: TeamsScoreBoardProps) {
   return (
@@ -24,6 +24,7 @@ export function TeamsScoreBoard({
           teamScore={ts}
           challsScore={challsScore}
           isBeforeLastScorer={ts === beforeLastScorer}
+          gameConfig={config}
           href={hrefPattern && hrefPattern(ts)}
         />
       ))}

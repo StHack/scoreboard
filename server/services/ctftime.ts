@@ -18,6 +18,15 @@ export function registerCtfTime(app: IRouter, serverConfig: ServerConfig) {
         serverConfig.getGameConfig(),
       ])
 
+    if (config.isNoCompetition) {
+      res
+        .status(403)
+        .send(
+          'CTFTime integration is disabled because no-competition mode is enabled',
+        )
+      return
+    }
+
     const gameScore = computeGameScore(
       achievements,
       rewards,

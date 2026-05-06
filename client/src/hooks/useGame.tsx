@@ -54,6 +54,7 @@ const GameContext = createContext<GameContext>({
   score: {
     challsScore: {},
     teamsScore: [],
+    config: DefaultGameConfig,
   },
   gameConfig: DefaultGameConfig,
   isLoaded: () => false,
