@@ -180,7 +180,7 @@ const creditsMarkdown = ({
 # Credits
 
 ${creditToMarkdown(backgroundCredit, 'Background Image')}
-- Popup Layout (Ancienne télévision vintage isolée) by [brgfx sur Freepik](https://fr.freepik.com/vecteurs-libre/ancienne-television-vintage-isolee_30700323.htm#fromView=search&page=1&position=2&uuid=bbb3428b-9004-4fa9-ab1e-4718b11c75f3)
+${creditToMarkdown(popupBackgroundCredit, 'Popup Layout')}
 `
 
 function creditToMarkdown(

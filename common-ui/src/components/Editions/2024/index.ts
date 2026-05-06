@@ -14,6 +14,11 @@ export const Edition2024Theme: EditionTheme = {
     author: 'Freepik',
     label: 'Desert landscape for video conferencing',
   },
+  popupBackgroundCredit: {
+    href: 'https://fr.freepik.com/vecteurs-libre/ancienne-television-vintage-isolee_30700323.htm',
+    author: 'brgfx sur Freepik',
+    label: 'Ancienne télévision vintage isolée',
+  },
   logo: Edition2024Logo,
   card: ChallengeCard2024,
 }

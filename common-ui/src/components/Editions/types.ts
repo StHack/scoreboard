@@ -19,6 +19,7 @@ export type EditionThemeCredit = {
 export type EditionTheme = {
   background?: string
   backgroundCredit?: EditionThemeCredit
+  popupBackgroundCredit?: EditionThemeCredit
   logo: Icon
   card: (props: ChallengeCardProps) => JSX.Element
 }
