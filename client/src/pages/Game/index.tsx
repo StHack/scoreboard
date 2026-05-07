@@ -1,23 +1,10 @@
-import { useTheme } from '@emotion/react'
-import { Challenge } from '@sthack/scoreboard-common'
-import {
-  Box,
-  ChallDescriptionDetail,
-  MotionBox,
-  Popup,
-} from '@sthack/scoreboard-ui/components'
+import { Box } from '@sthack/scoreboard-ui/components'
 import { Messages } from 'components/Messages'
 import { useAuth } from 'hooks/useAuthentication'
 import { useGame } from 'hooks/useGame'
-import { ProvidePlayer, usePlayer } from 'hooks/usePlayer'
-import { useMemo, useState } from 'react'
+import { ProvidePlayer } from 'hooks/usePlayer'
+import { PropsWithChildren } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
-import {
-  getGroup,
-  getGroupSort,
-  GroupBySelector,
-  GroupByType,
-} from './components/GroupBySelector'
 import { UserScore } from './components/UserScore'
 
 export function GameLayout() {
@@ -33,43 +20,15 @@ export function GameLayout() {
 
   return (
     <ProvidePlayer>
-      <Outlet />
+      <Game>
+        <Outlet />
+      </Game>
     </ProvidePlayer>
   )
 }
 
-export function Game() {
-  const {
-    challenges,
-    score: { challsScore: challScore },
-    gameConfig,
-    messages,
-  } = useGame()
-  const { gameOpened } = gameConfig
-
-  const { attemptChall, myTeamScore } = usePlayer()
-
-  const {
-    edition: { card: ChallengeCard },
-  } = useTheme()
-
-  const [groupBy, setGroupBy] = useState<GroupByType>('Default')
-  const groups = challenges.reduce<Record<string, Challenge[]>>(
-    (acc, chall) => ({
-      ...acc,
-      [getGroup(chall, groupBy)]: [
-        ...(acc[getGroup(chall, groupBy)] ?? []),
-        chall,
-      ],
-    }),
-    {},
-  )
-
-  const [_selectedChall, setSelectedChall] = useState<Challenge>()
-  const selectedChall = useMemo(
-    () => _selectedChall && challenges.find(c => c._id === _selectedChall._id),
-    [_selectedChall, challenges],
-  )
+export function Game({ children }: PropsWithChildren) {
+  const { messages } = useGame()
 
   return (
     <Box
@@ -77,13 +36,13 @@ export function Game() {
       gridTemplateAreas={[
         null,
         `
-        'score score message'
-        'group group message'
-        'chall chall message'
+        'score   score message'
+        'control control message'
+        'chall   chall message'
         `,
         `
-        'group score message'
-        'chall chall message'
+        'control score message'
+        'chall   chall message'
         `,
       ]}
       gridTemplateRows={[null, 'auto auto 1fr', 'auto 1fr']}
@@ -96,71 +55,7 @@ export function Game() {
     >
       <UserScore />
 
-      <GroupBySelector
-        value={groupBy}
-        onChange={setGroupBy}
-        gridArea="group"
-        alignSelf="center"
-      />
-
-      <Box
-        display="grid"
-        gridAutoFlow={['row', 'column']}
-        gap="2"
-        overflowY="auto"
-        gridArea="chall"
-      >
-        {Object.entries(groups)
-          .sort(([g1], [g2]) => getGroupSort(groupBy)(g1, g2))
-          .map(([key, challs]) => (
-            <MotionBox
-              key={key}
-              layout
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              variants={{
-                visible: { transition: { staggerChildren: 0.07 } },
-                hidden: {},
-              }}
-              display="flex"
-              flexWrap="wrap"
-              alignContent="flex-start"
-              justifyContent="space-evenly"
-              gap="2"
-            >
-              <Box
-                as="h2"
-                fontSize="3"
-                m="2"
-                mb="1"
-                width="100%"
-                backgroundColor="background"
-              >
-                {key}
-              </Box>
-              {challs.map(c => (
-                <MotionBox
-                  key={c._id}
-                  layout
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0 },
-                  }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                >
-                  <ChallengeCard
-                    challenge={c}
-                    score={challScore[c._id]}
-                    currentTeam={myTeamScore.team}
-                    onClick={() => setSelectedChall(c)}
-                    size="10"
-                  />
-                </MotionBox>
-              ))}
-            </MotionBox>
-          ))}
-      </Box>
+      {children}
 
       <Messages
         title="Message from Staff"
@@ -169,39 +64,6 @@ export function Game() {
         borderRadius="medium"
         forceShow
       />
-
-      {selectedChall &&
-        (gameOpened ? (
-          <Popup
-            title={selectedChall.name}
-            onClose={() => setSelectedChall(undefined)}
-          >
-            <ChallDescriptionDetail
-              challenge={selectedChall}
-              score={challScore[selectedChall._id]}
-              teamScore={myTeamScore}
-              gameConfig={gameConfig}
-              onFlagSubmit={attemptChall}
-            />
-            <Messages
-              title="Clues"
-              messages={messages.filter(
-                m => m.challengeId === selectedChall._id,
-              )}
-            />
-          </Popup>
-        ) : (
-          <Popup
-            onClose={() => setSelectedChall(undefined)}
-            title={selectedChall.name}
-          >
-            <Box color="red" textAlign="center" p="4" fontSize="3">
-              Game is currently closed, if you want to see or test this
-              challenge, go to the challenge page of the admin section and click
-              on its icon to open the preview
-            </Box>
-          </Popup>
-        ))}
     </Box>
   )
 }

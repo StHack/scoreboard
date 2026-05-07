@@ -15,7 +15,9 @@ import { UserPanel } from 'pages/Admin/components/UserPanel'
 import { AuthLayout, AuthLoader } from 'pages/Auth'
 import { Login } from 'pages/Auth/components/Login'
 import { Register } from 'pages/Auth/components/Register'
-import { Game, GameLayout } from 'pages/Game'
+import { GameLayout } from 'pages/Game'
+import { ChallengeDetailPanel } from 'pages/Game/components/ChallengeDetailPanel'
+import { ChallengeListPanel } from 'pages/Game/components/ChallengeListPanel'
 import { Rules } from 'pages/Rules'
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
@@ -61,7 +63,11 @@ export default function App() {
                 </Route>
 
                 <Route path="/game" element={<GameLayout />}>
-                  <Route index element={<Game />} />
+                  <Route index element={<ChallengeListPanel />} />
+                  <Route
+                    path=":challengeId"
+                    element={<ChallengeDetailPanel />}
+                  />
                 </Route>
 
                 <Route path="/admin" element={<AdminLayout />}>
