@@ -158,16 +158,18 @@ function useProvideGame(): GameContext {
       ])
     })
 
-    socket.on('achievement:deleted', (deleted: Achievement) => {
-      setRawAchievements(ach =>
-        ach.filter(
-          a =>
-            !(
-              a.challengeId === deleted.challengeId &&
-              a.teamname === deleted.teamname
-            ),
+    socket.on('achievement:updated', (achievement: Achievement) => {
+      setRawAchievements(a =>
+        a.map(a =>
+          a._id === achievement._id
+            ? { ...achievement, createdAt: new Date(achievement.createdAt) }
+            : a,
         ),
       )
+    })
+
+    socket.on('achievement:deleted', (deleted: Achievement) => {
+      setRawAchievements(ach => ach.filter(a => !(a._id === deleted._id)))
     })
 
     socket.on('reward:deleted', (deleted: Reward) => {
@@ -191,6 +193,7 @@ function useProvideGame(): GameContext {
       socket.off('challenge:deleted')
       socket.off('achievement:added')
       socket.off('reward:added')
+      socket.off('achievement:updated')
       socket.off('achievement:deleted')
       socket.off('reward:deleted')
       socket.off('game:announcement:made')

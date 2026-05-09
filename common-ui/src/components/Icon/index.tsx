@@ -4,6 +4,8 @@ import { FunctionComponent } from 'react'
 import {
   color,
   ColorProps,
+  gridArea,
+  GridAreaProps,
   LayoutProps,
   size,
   SizeProps,
@@ -12,6 +14,7 @@ import {
 } from 'styled-system'
 import { cleanStyledSystem, place, PlaceProps } from '../../styles/styled'
 import AchievementSvg from './images/achievement.svg?react'
+import AISvg from './images/ai.svg?react'
 import AttemptSvg from './images/attempt.svg?react'
 import BannerSvg from './images/Banner.svg?react'
 import BreakSvg from './images/break.svg?react'
@@ -32,6 +35,7 @@ import PasswordSvg from './images/password.svg?react'
 import PreviewSvg from './images/preview.svg?react'
 import PromoteSvg from './images/promote.svg?react'
 import RepairSvg from './images/repair.svg?react'
+import SatisfactionSvg from './images/satisfaction.svg?react'
 import TeamsSvg from './images/teams.svg?react'
 import TwitterSvg from './images/twitter.svg?react'
 import UsersSvg from './images/users.svg?react'
@@ -41,7 +45,8 @@ export type StyledIconProps = SpaceProps &
   PlaceProps &
   ColorProps &
   LayoutProps &
-  SizeProps
+  SizeProps &
+  GridAreaProps
 
 export type Icon = FunctionComponent<StyledIconProps>
 
@@ -50,6 +55,7 @@ export const BaseSvg = styled('svg', cleanStyledSystem)(
   size,
   color,
   place,
+  gridArea,
   css`
     fill: currentColor;
   `,
@@ -60,6 +66,7 @@ export const BaseImgIcon = styled('img', cleanStyledSystem)(
   size,
   color,
   place,
+  gridArea,
   css`
     object-fit: contain;
     width: 100%;
@@ -69,6 +76,7 @@ export const BaseImgIcon = styled('img', cleanStyledSystem)(
 export const Logo: Icon = BaseSvg.withComponent(LogoSvg)
 export const Banner: Icon = BaseSvg.withComponent(BannerSvg)
 export const IconAchievement: Icon = BaseSvg.withComponent(AchievementSvg)
+export const IconAI: Icon = BaseSvg.withComponent(AISvg)
 export const IconAttempt: Icon = BaseSvg.withComponent(AttemptSvg)
 export const IconBreak: Icon = BaseSvg.withComponent(BreakSvg)
 export const IconChallenge: Icon = BaseSvg.withComponent(ChallengeSvg)
@@ -87,6 +95,7 @@ export const IconPassword: Icon = BaseSvg.withComponent(PasswordSvg)
 export const IconPreview: Icon = BaseSvg.withComponent(PreviewSvg)
 export const IconPromote: Icon = BaseSvg.withComponent(PromoteSvg)
 export const IconRepair: Icon = BaseSvg.withComponent(RepairSvg)
+export const IconSatisfaction: Icon = BaseSvg.withComponent(SatisfactionSvg)
 export const IconTeams: Icon = BaseSvg.withComponent(TeamsSvg)
 export const IconTwitter: Icon = BaseSvg.withComponent(TwitterSvg)
 export const IconUsers: Icon = BaseSvg.withComponent(UsersSvg)

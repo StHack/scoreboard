@@ -1,4 +1,4 @@
-import { Message, TeamScore } from '@sthack/scoreboard-common'
+import { CreateSurvey, Message, TeamScore } from '@sthack/scoreboard-common'
 import { createContext, PropsWithChildren, useContext, useState } from 'react'
 import { useAuth } from './useAuthentication'
 import { useGame } from './useGame'
@@ -10,6 +10,7 @@ export type PlayerContext = {
   isBeforeLastScorer: boolean
   readMessages: string[]
   attemptChall: (challengeId: string, flag: string) => Promise<true | string>
+  sendSurvey: (survey: CreateSurvey) => Promise<void>
   markMessageAsRead: (message: Message) => void
 }
 
@@ -26,6 +27,7 @@ const PlayerContext = createContext<PlayerContext>({
   isBeforeLastScorer: false,
   readMessages: [],
   attemptChall: () => Promise.resolve('Uninitialized'),
+  sendSurvey: () => Promise.resolve(),
   markMessageAsRead: () => {},
 })
 
@@ -87,6 +89,19 @@ function useProvidePlayer(): PlayerContext {
               : isValid
                 ? resolve(true)
                 : resolve("Nope that's not the flag !"),
+        )
+      })
+    },
+    sendSurvey: survey => {
+      if (!socket)
+        return Promise.reject(new Error('You are not connected at the moment'))
+
+      return new Promise((resolve, reject) => {
+        socket.emit(
+          'challenge:survey',
+          survey,
+          ({ error }: { error?: string }) =>
+            error ? reject(new Error(error)) : resolve(),
         )
       })
     },

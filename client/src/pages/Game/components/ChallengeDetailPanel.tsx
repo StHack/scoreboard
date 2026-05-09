@@ -3,19 +3,25 @@ import {
   BoxPanel,
   Button,
   ChallDescriptionDetail,
+  Loader,
   Logo,
   MotionBox,
 } from '@sthack/scoreboard-ui/components'
 import { Messages } from 'components/Messages'
-import { useGame } from 'hooks/useGame'
+import { GameContextLoadingState, useGame } from 'hooks/useGame'
 import { usePlayer } from 'hooks/usePlayer'
 import { useNavigate, useParams } from 'react-router-dom'
+import { SurveyPanel } from './SurveyPanel'
 
 export function ChallengeDetailPanel() {
   const { challengeId } = useParams()
-  const { challenges } = useGame()
+  const { challenges, isLoaded } = useGame()
 
   const challenge = challenges.find(c => c._id === challengeId)
+
+  if (!isLoaded(GameContextLoadingState.challenges)) {
+    return <Loader size="10" placeSelf="center" gridArea="chall" />
+  }
 
   if (!challenge) {
     return (
@@ -34,7 +40,13 @@ export function ChallengeDetailPanel() {
     )
   }
 
-  return <ChallengeDetailPanelContent challenge={challenge} />
+  return (
+    <>
+      <title>{`Sthack - ${challenge.name}`}</title>
+      <BackButton />
+      <ChallengeDetailPanelContent challenge={challenge} />
+    </>
+  )
 }
 
 type ChallengeDetailPanelContentProps = {
@@ -50,53 +62,63 @@ function ChallengeDetailPanelContent({
     messages,
   } = useGame()
   const { myTeamScore, attemptChall } = usePlayer()
-  const navigate = useNavigate()
+
+  const achievement = myTeamScore.solved.find(
+    a => a.challengeId === challenge._id,
+  )
 
   return (
-    <>
-      <title>{`Sthack - ${challenge.name}`}</title>
-      <BackButton />
+    <MotionBox
+      layout
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      gridArea="chall"
+      display="flex"
+      flexDirection="column"
+      gap="3"
+      overflowY="auto"
+    >
       <MotionBox
         layout
         initial="hidden"
         animate="visible"
         exit="hidden"
         variants={{
-          hidden: { opacity: 0, y: 20 },
-          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, scale: 0.9 },
+          visible: { opacity: 1, scale: 1 },
         }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        gridArea="chall"
       >
-        <BoxPanel
-          title={challenge.name}
-          titleProps={{
-            justifySelf: 'center',
-            fontSize: '4',
-          }}
-        >
-          <ChallDescriptionDetail
-            challenge={challenge}
-            teamScore={myTeamScore}
-            gameConfig={gameConfig}
-            score={challsScore[challenge._id]}
-            onFlagSubmit={async (challengeId, flag) => {
-              const result = await attemptChall(challengeId, flag)
-
-              if (result === true) {
-                await navigate('/game')
-              }
-
-              return result
-            }}
-          />
-          <Messages
-            title="Clues"
-            messages={messages.filter(m => m.challengeId === challenge._id)}
-          />
-        </BoxPanel>
+        {achievement && <SurveyPanel achievement={achievement} />}
       </MotionBox>
-    </>
+
+      <BoxPanel
+        title={challenge.name}
+        titleProps={{
+          justifySelf: 'center',
+          fontSize: '4',
+        }}
+      >
+        <ChallDescriptionDetail
+          challenge={challenge}
+          teamScore={myTeamScore}
+          gameConfig={gameConfig}
+          score={challsScore[challenge._id]}
+          onFlagSubmit={attemptChall}
+        />
+      </BoxPanel>
+
+      <Messages
+        title="Clues"
+        messages={messages.filter(m => m.challengeId === challenge._id)}
+      />
+    </MotionBox>
   )
 }
 

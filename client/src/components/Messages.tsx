@@ -1,5 +1,5 @@
 import { Message } from '@sthack/scoreboard-common'
-import { Box, MessageBlock } from '@sthack/scoreboard-ui/components'
+import { Box, BoxPanel, MessageBlock } from '@sthack/scoreboard-ui/components'
 import { AnimatePresence } from 'framer-motion'
 import { usePlayer } from 'hooks/usePlayer'
 import { BorderRadiusProps, GridAreaProps, SpaceProps } from 'styled-system'
@@ -23,20 +23,21 @@ export function Messages({
   }
 
   return (
-    <Box
+    <BoxPanel
+      title={title}
+      titleProps={{
+        placeSelf: 'center',
+        fontSize: '3',
+      }}
+      // @ts-expect-error false-positive
+      as="aside"
       display="flex"
       flexDirection="column"
-      backgroundColor="background"
+      overflowX="hidden"
+      overflowY={forceShow ? 'auto' : undefined}
       p="2"
-      as="aside"
-      gap="2"
       {...props}
-      overflowY="auto"
     >
-      <Box as="h2" fontSize="2" textAlign="center">
-        {title}
-      </Box>
-
       <AnimatePresence>
         {messages.map(m => (
           <MessageBlock
@@ -47,6 +48,6 @@ export function Messages({
           />
         ))}
       </AnimatePresence>
-    </Box>
+    </BoxPanel>
   )
 }

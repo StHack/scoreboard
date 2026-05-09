@@ -1,12 +1,20 @@
-import { Achievement, BaseAchievement } from '@sthack/scoreboard-common'
+import { Achievement, BaseAchievement, Survey } from '@sthack/scoreboard-common'
 import { model, Schema } from 'mongoose'
 import { removeMongoPropertiesWithOptions } from './main.js'
+
+const survey = new Schema<Survey>({
+  satisfaction: { type: Number, required: true },
+  perceivedDifficulty: { type: Number, required: true },
+  aiUsage: { type: Number, required: true },
+  feedback: { type: String, required: false },
+})
 
 const schema = new Schema<Achievement>(
   {
     challengeId: { type: String, required: true },
     username: { type: String, required: true },
     teamname: { type: String, required: true },
+    survey: { type: survey, required: false },
   },
   { timestamps: true },
 )
@@ -16,7 +24,7 @@ schema.index({ challengeId: 1, teamname: 1 }, { unique: true })
 const AchievementModel = model<Achievement>('Achievement', schema)
 
 const removeMongoProperties = removeMongoPropertiesWithOptions({
-  removeId: true,
+  removeId: false,
   propsToRemove: [],
 })
 
@@ -29,8 +37,15 @@ export async function registerAchievement(
   return doc.toObject(removeMongoProperties)
 }
 
-export async function listAchievement(): Promise<Achievement[]> {
-  const results = await AchievementModel.find().sort({ updatedAt: -1 })
+type listAchievementParams = {
+  includeFeedback?: boolean
+}
+export async function listAchievement({
+  includeFeedback,
+}: listAchievementParams = {}): Promise<Achievement[]> {
+  const results = await AchievementModel.find()
+    .select(includeFeedback ? [] : ['-survey.feedback'])
+    .sort({ updatedAt: -1 })
 
   return results.map(r => r.toObject(removeMongoProperties))
 }
@@ -79,4 +94,16 @@ export async function removeAchievement(
     challengeId,
   })
   return deleted?.toObject(removeMongoProperties)
+}
+
+export async function setSurvey(
+  achievement: BaseAchievement,
+  survey: Survey,
+): Promise<Achievement | undefined> {
+  const document = await AchievementModel.findOneAndUpdate(
+    achievement,
+    { survey },
+    { returnDocument: 'after' },
+  )
+  return document?.toObject(removeMongoProperties)
 }

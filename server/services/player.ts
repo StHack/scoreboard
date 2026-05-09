@@ -1,16 +1,22 @@
 import { ExecutionError, Lock, Redlock } from '@sesamecare-oss/redlock'
 import {
   Attempt,
+  BaseAchievement,
   BaseAttempt,
   CallbackOrError,
   Challenge,
+  CreateSurvey,
   from,
+  schemaCreateSurvey,
+  schemaSurvey,
+  Survey,
   UserRole,
 } from '@sthack/scoreboard-common'
 import {
   countChallengeAchievement,
   getTeamAchievement,
   registerAchievement,
+  setSurvey,
 } from 'db/AchievementDb.js'
 import { getSimilarAttempts, registerAttempt } from 'db/AttemptDb.js'
 import { checkChallenge, getChallenge } from 'db/ChallengeDb.js'
@@ -153,6 +159,41 @@ export function registerPlayerNamespace(
             logger('release of lock %s failed', lockKey)
           })
         }
+      },
+    )
+
+    playerSocket.on(
+      'challenge:survey',
+      async (survey: CreateSurvey, callback: CallbackOrError<void>) => {
+        const user = (playerSocket.request as Request).user
+
+        if (!user) {
+          callback({ error: 'Nope' })
+          return
+        }
+
+        const validations = schemaCreateSurvey.safeParse(survey)
+        if (!validations.success) {
+          callback({ error: validations.error.message })
+          return
+        }
+
+        const payload = validations.data
+        const achievement: BaseAchievement = {
+          challengeId: payload.challengeId,
+          username: user.username,
+          teamname: user.team,
+        }
+
+        const result = await setSurvey(achievement, payload.survey)
+
+        if (!result) {
+          callback({ error: 'Achievement not found!' })
+          return
+        }
+
+        callback()
+        gameIo.emit('achievement:updated', result)
       },
     )
   })
