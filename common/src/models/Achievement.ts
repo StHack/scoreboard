@@ -1,5 +1,4 @@
-import { Challenge } from './Challenge.js'
-import { Survey } from './Survey.js'
+import { Challenge, DummyChallenge } from './Challenge.js'
 
 export type BaseAchievement = {
   challengeId: string
@@ -10,5 +9,13 @@ export type Achievement = BaseAchievement & {
   createdAt: Date
   _id: string
   challenge: Challenge
-  survey?: Survey
+}
+
+export const DummyAchievement: Achievement = {
+  _id: '',
+  challengeId: '',
+  teamname: '',
+  username: '',
+  challenge: DummyChallenge,
+  createdAt: new Date(),
 }

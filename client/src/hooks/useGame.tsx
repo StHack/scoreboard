@@ -3,17 +3,20 @@ import {
   Challenge,
   computeGameScore,
   DefaultGameConfig,
+  DummyAchievement,
   DummyChallenge,
   GameConfig,
   GameScore,
   Message,
   Reward,
+  Survey,
 } from '@sthack/scoreboard-common'
 import {
   createContext,
   PropsWithChildren,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react'
 import { useSocket } from './useSocket'
@@ -24,6 +27,7 @@ export type GameContext = {
   achievements: Achievement[]
   messages: Message[]
   rewards: Reward[]
+  surveys: Survey[]
   score: GameScore
   gameConfig: GameConfig
   isLoaded: (state: GameContextLoadingState) => boolean
@@ -43,6 +47,8 @@ export enum GameContextLoadingState {
   messages = 1 << 4,
   // eslint-disable-next-line @typescript-eslint/prefer-literal-enum-member
   teams = 1 << 5,
+  // eslint-disable-next-line @typescript-eslint/prefer-literal-enum-member
+  surveys = 1 << 6,
 }
 
 const GameContext = createContext<GameContext>({
@@ -51,6 +57,7 @@ const GameContext = createContext<GameContext>({
   achievements: [],
   messages: [],
   rewards: [],
+  surveys: [],
   score: {
     challsScore: {},
     teamsScore: [],
@@ -76,20 +83,42 @@ function useProvideGame(): GameContext {
   )
   const [challenges, setChallenges] = useState<Challenge[]>([])
   const [rawAchievements, setRawAchievements] = useState<Achievement[]>([])
+  const [rawSurveys, setRawSurveys] = useState<Survey[]>([])
   const [rawMessages, setRawMessages] = useState<Message[]>([])
   const [teams, setTeams] = useState<string[]>([])
   const [rewards, setRewards] = useState<Reward[]>([])
   const [gameConfig, setGameConfig] = useState<GameConfig>(DefaultGameConfig)
 
-  const achievements = rawAchievements.map(a => ({
-    ...a,
-    challenge: challenges.find(c => c._id === a.challengeId) ?? DummyChallenge,
-  }))
+  const achievements = useMemo<Achievement[]>(
+    () =>
+      rawAchievements.map(a => ({
+        ...a,
+        challenge:
+          challenges.find(c => c._id === a.challengeId) ?? DummyChallenge,
+      })),
+    [challenges, rawAchievements],
+  )
 
-  const messages = rawMessages.map(a => ({
-    ...a,
-    challenge: challenges.find(c => c._id === a.challengeId)?.name ?? '',
-  }))
+  const surveys = useMemo<Survey[]>(
+    () =>
+      rawSurveys.map(s => ({
+        ...s,
+        challenge:
+          challenges.find(c => c._id === s.challengeId) ?? DummyChallenge,
+        achievement:
+          achievements.find(a => a._id === s.achievementId) ?? DummyAchievement,
+      })),
+    [achievements, challenges, rawSurveys],
+  )
+
+  const messages = useMemo<Message[]>(
+    () =>
+      rawMessages.map(a => ({
+        ...a,
+        challenge: challenges.find(c => c._id === a.challengeId)?.name ?? '',
+      })),
+    [challenges, rawMessages],
+  )
 
   useEffect(() => {
     if (!socket) return
@@ -109,6 +138,13 @@ function useProvideGame(): GameContext {
         response.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
       )
       setLoadingState(state => state | GameContextLoadingState.achievements)
+    })
+
+    socket.emit('surveys:list', (response: Survey[]) => {
+      setRawSurveys(
+        response.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
+      )
+      setLoadingState(state => state | GameContextLoadingState.surveys)
     })
 
     socket.emit('reward:list', (response: Reward[]) => {
@@ -158,18 +194,19 @@ function useProvideGame(): GameContext {
       ])
     })
 
-    socket.on('achievement:updated', (achievement: Achievement) => {
-      setRawAchievements(a =>
-        a.map(a =>
-          a._id === achievement._id
-            ? { ...achievement, createdAt: new Date(achievement.createdAt) }
-            : a,
-        ),
-      )
+    socket.on('surveys:added', (survey: Survey) => {
+      setRawSurveys(s => [
+        { ...survey, createdAt: new Date(survey.createdAt) },
+        ...s,
+      ])
     })
 
     socket.on('achievement:deleted', (deleted: Achievement) => {
       setRawAchievements(ach => ach.filter(a => !(a._id === deleted._id)))
+    })
+
+    socket.on('surveys:deleted', (deleted: Survey) => {
+      setRawSurveys(sur => sur.filter(s => !(s._id === deleted._id)))
     })
 
     socket.on('reward:deleted', (deleted: Reward) => {
@@ -192,9 +229,10 @@ function useProvideGame(): GameContext {
       socket.off('challenge:updated')
       socket.off('challenge:deleted')
       socket.off('achievement:added')
+      socket.off('surveys:added')
       socket.off('reward:added')
-      socket.off('achievement:updated')
       socket.off('achievement:deleted')
+      socket.off('surveys:deleted')
       socket.off('reward:deleted')
       socket.off('game:announcement:made')
       socket.off('game:config:updated')
@@ -205,6 +243,7 @@ function useProvideGame(): GameContext {
     loadingState,
     challenges,
     achievements,
+    surveys,
     messages,
     rewards,
     score: computeGameScore(

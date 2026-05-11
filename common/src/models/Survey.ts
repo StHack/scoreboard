@@ -1,11 +1,22 @@
-export type Survey = {
+import { Achievement } from './Achievement.js'
+import { Challenge } from './Challenge.js'
+
+export type BaseSurvey = {
   satisfaction: number
   perceivedDifficulty: number
   aiUsage: number
   feedback?: string
 }
 
-export type CreateSurvey = {
+export type Survey = BaseSurvey & {
+  achievementId: string
+
   challengeId: string
-  survey: Survey
+  username: string
+  teamname: string
+
+  challenge: Challenge
+  achievement: Achievement
+  _id: string
+  createdAt: Date
 }

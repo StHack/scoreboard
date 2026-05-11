@@ -1,25 +1,24 @@
 import { ExecutionError, Lock, Redlock } from '@sesamecare-oss/redlock'
 import {
   Attempt,
-  BaseAchievement,
   BaseAttempt,
+  BaseSurvey,
   CallbackOrError,
   Challenge,
-  CreateSurvey,
   from,
-  schemaCreateSurvey,
-  schemaSurvey,
+  schemaBaseSurvey,
   Survey,
   UserRole,
 } from '@sthack/scoreboard-common'
 import {
   countChallengeAchievement,
+  getAchievementBySolveIds,
   getTeamAchievement,
   registerAchievement,
-  setSurvey,
 } from 'db/AchievementDb.js'
 import { getSimilarAttempts, registerAttempt } from 'db/AttemptDb.js'
 import { checkChallenge, getChallenge } from 'db/ChallengeDb.js'
+import { createSurvey } from 'db/SurveyDb.js'
 import debug from 'debug'
 import { Request } from 'express'
 import { Namespace } from 'socket.io'
@@ -164,7 +163,11 @@ export function registerPlayerNamespace(
 
     playerSocket.on(
       'challenge:survey',
-      async (survey: CreateSurvey, callback: CallbackOrError<void>) => {
+      async (
+        challengeId: string,
+        survey: BaseSurvey,
+        callback: CallbackOrError<void>,
+      ) => {
         const user = (playerSocket.request as Request).user
 
         if (!user) {
@@ -172,28 +175,51 @@ export function registerPlayerNamespace(
           return
         }
 
-        const validations = schemaCreateSurvey.safeParse(survey)
+        const validations = schemaBaseSurvey.safeParse(survey)
         if (!validations.success) {
-          callback({ error: validations.error.message })
+          callback({ error: 'Your form has error on it' })
           return
         }
 
-        const payload = validations.data
-        const achievement: BaseAchievement = {
-          challengeId: payload.challengeId,
-          username: user.username,
-          teamname: user.team,
-        }
+        const payload: BaseSurvey = validations.data
 
-        const result = await setSurvey(achievement, payload.survey)
+        const achievement = await getAchievementBySolveIds(
+          challengeId,
+          user.team,
+        )
 
-        if (!result) {
-          callback({ error: 'Achievement not found!' })
+        if (!achievement) {
+          callback({
+            error: 'Finish the challenge in order to fill the survey',
+          })
           return
         }
 
-        callback()
-        gameIo.emit('achievement:updated', result)
+        try {
+          const result = await createSurvey({
+            ...payload,
+            achievementId: achievement._id,
+            challengeId: achievement.challengeId,
+            teamname: achievement.teamname,
+            username: achievement.username,
+          })
+
+          callback()
+
+          gameIo.emit('surveys:added', {
+            ...result,
+            feedback: undefined,
+          } satisfies Survey)
+
+          adminIo.emit('surveys:added', result)
+        } catch (error) {
+          if (typeof error === 'string') {
+            callback({ error })
+          } else {
+            logger('An error occured during survey submission %o', error)
+            callback({ error: 'Nope' })
+          }
+        }
       },
     )
   })

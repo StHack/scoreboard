@@ -60,12 +60,17 @@ function ChallengeDetailPanelContent({
     gameConfig,
     score: { challsScore },
     messages,
+    surveys,
   } = useGame()
   const { myTeamScore, attemptChall } = usePlayer()
 
   const achievement = myTeamScore.solved.find(
     a => a.challengeId === challenge._id,
   )
+
+  const survey = achievement
+    ? surveys.find(s => s.achievementId === achievement._id)
+    : undefined
 
   return (
     <MotionBox
@@ -95,7 +100,7 @@ function ChallengeDetailPanelContent({
         }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       >
-        {achievement && <SurveyPanel achievement={achievement} />}
+        {achievement && !survey && <SurveyPanel achievement={achievement} />}
       </MotionBox>
 
       <BoxPanel

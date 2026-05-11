@@ -8,6 +8,7 @@ import {
   Reward,
   ServerActivityStatistics,
   ServerError,
+  Survey,
   TimestampedServerActivityStatistics,
   User,
   UserRole,
@@ -17,6 +18,7 @@ import {
   PropsWithChildren,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react'
 import { useSocket } from './useSocket'
@@ -26,6 +28,7 @@ export type AdminContext = {
   challenges: Challenge[]
   users: User[]
   attempts: Attempt[]
+  surveys: Survey[]
   activityStatistics: ServerActivityStatistics
   activityStats: TimestampedServerActivityStatistics[]
   isLoaded: (state: AdminContextLoadingState) => boolean
@@ -50,6 +53,7 @@ export type AdminContext = {
   logoutUser: (user: User) => void
   deleteAchievement: (achievement: Achievement) => void
   deleteReward: (reward: Reward) => void
+  deleteSurvey: (survey: Survey) => void
   sendMessage: (message: string, challengeId?: string) => void
   uploadFile: (file: File) => Promise<string>
 }
@@ -64,6 +68,8 @@ export enum AdminContextLoadingState {
   attempts = 1 << 2,
   // eslint-disable-next-line @typescript-eslint/prefer-literal-enum-member
   activityStats = 1 << 3,
+  // eslint-disable-next-line @typescript-eslint/prefer-literal-enum-member
+  surveys = 1 << 4,
 }
 
 const defaultStatistics: ServerActivityStatistics = {
@@ -83,6 +89,7 @@ const AdminContext = createContext<AdminContext>({
   challenges: [],
   users: [],
   attempts: [],
+  surveys: [],
   activityStatistics: defaultStatistics,
   activityStats: [],
   isLoaded: () => false,
@@ -104,6 +111,7 @@ const AdminContext = createContext<AdminContext>({
   logoutUser: () => {},
   deleteAchievement: () => {},
   deleteReward: () => {},
+  deleteSurvey: () => {},
   sendMessage: () => {},
   uploadFile: () => Promise.resolve<string>(''),
 })
@@ -125,6 +133,7 @@ function useProvideAdmin(): AdminContext {
   const [challenges, setChallenges] = useState<Challenge[]>([])
   const [users, setUsers] = useState<User[]>([])
   const [rawAttempts, setRawAttempts] = useState<Attempt[]>([])
+  const [rawSurveys, setRawSurveys] = useState<Survey[]>([])
   const [statistics, setActivityStatistics] =
     useState<ServerActivityStatistics>(defaultStatistics)
   const [activityStats, setActivityStats] = useState<
@@ -135,6 +144,16 @@ function useProvideAdmin(): AdminContext {
     ...a,
     challenge: challenges.find(c => c._id === a.challengeId) ?? DummyChallenge,
   }))
+
+  const surveys = useMemo<Survey[]>(
+    () =>
+      rawSurveys.map(s => ({
+        ...s,
+        challenge:
+          challenges.find(c => c._id === s.challengeId) ?? DummyChallenge,
+      })),
+    [challenges, rawSurveys],
+  )
 
   useEffect(() => {
     if (!socket) return
@@ -154,6 +173,13 @@ function useProvideAdmin(): AdminContext {
         attempts.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
       )
       setLoadingState(state => state | AdminContextLoadingState.attempts)
+    })
+
+    socket.emit('surveys:list', (response: Survey[]) => {
+      setRawSurveys(
+        response.map(a => ({ ...a, createdAt: new Date(a.createdAt) })),
+      )
+      setLoadingState(state => state | AdminContextLoadingState.surveys)
     })
 
     socket.emit('game:activity', (activity: ServerActivityStatistics) => {
@@ -201,6 +227,17 @@ function useProvideAdmin(): AdminContext {
       ]),
     )
 
+    socket.on('surveys:added', (survey: Survey) => {
+      setRawSurveys(s => [
+        { ...survey, createdAt: new Date(survey.createdAt) },
+        ...s,
+      ])
+    })
+
+    socket.on('surveys:deleted', (deleted: Survey) => {
+      setRawSurveys(sur => sur.filter(s => !(s._id === deleted._id)))
+    })
+
     return () => {
       socket.off('game:activity:updated')
       socket.off('game:activity:list:updated')
@@ -208,6 +245,8 @@ function useProvideAdmin(): AdminContext {
       socket.off('challenge:updated')
       socket.off('challenge:deleted')
       socket.off('attempt:added')
+      socket.off('surveys:added')
+      socket.off('surveys:deleted')
     }
   }, [socket])
 
@@ -219,6 +258,7 @@ function useProvideAdmin(): AdminContext {
     users,
     challenges,
     attempts,
+    surveys,
     activityStatistics: statistics,
     activityStats,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
@@ -374,6 +414,11 @@ function useProvideAdmin(): AdminContext {
       if (!socket) throw new Error('connection is not available')
 
       socket.emit('reward:actions:delete', reward._id)
+    },
+    deleteSurvey: survey => {
+      if (!socket) throw new Error('connection is not available')
+
+      socket.emit('surveys:actions:delete', survey._id)
     },
     sendMessage: (message, challengeId) => {
       if (!socket) throw new Error('connection is not available')

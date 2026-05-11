@@ -11,6 +11,7 @@ import { AttemptPanel } from 'pages/Admin/components/AttemptPanel'
 import { ChallengeFormLayout } from 'pages/Admin/components/ChallengeForm'
 import { ChallengePanel } from 'pages/Admin/components/ChallengePanel'
 import { GeneralPanel } from 'pages/Admin/components/GeneralPanel'
+import { SurveyPanel } from 'pages/Admin/components/SurveyPanel'
 import { UserPanel } from 'pages/Admin/components/UserPanel'
 import { AuthLayout, AuthLoader } from 'pages/Auth'
 import { Login } from 'pages/Auth/components/Login'
@@ -83,6 +84,7 @@ export default function App() {
                   <Route path="users" element={<UserPanel />} />
                   <Route path="achievements" element={<AchievementPanel />} />
                   <Route path="attempts" element={<AttemptPanel />} />
+                  <Route path="surveys" element={<SurveyPanel />} />
                 </Route>
               </Routes>
             </Container>

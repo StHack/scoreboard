@@ -8,6 +8,7 @@ import {
   FileContent,
   Reward,
   ServerActivityStatistics,
+  Survey,
   TimestampedServerActivityStatistics,
   User,
   UserRole,
@@ -29,6 +30,11 @@ import { createFile } from 'db/FIleDb.js'
 import { addMessage } from 'db/MessageDb.js'
 import { createReward, removeReward } from 'db/RewardDb.js'
 import { listServerActivityStatistics } from 'db/ServerActivityStatisticsDb.js'
+import {
+  listSurvey,
+  removeSurveyByAchievementId,
+  removeSurveyById,
+} from 'db/SurveyDb.js'
 import { listUser, removeUser, updateUser } from 'db/UsersDb.js'
 import debug from 'debug'
 import { Request } from 'express'
@@ -62,6 +68,8 @@ const requiredRoles: RequiredRole[] = [
 
   { prefix: 'users:actions:delete', role: UserRole.RoleManager },
   { prefix: 'users:actions:changeRoles', role: UserRole.RoleManager },
+
+  { prefix: 'surveys:actions:delete', role: UserRole.Moderator },
 ]
 
 export function registerAdminNamespace(
@@ -357,9 +365,22 @@ export function registerAdminNamespace(
       async (teamname: string, challengeId: string) => {
         const deleted = await removeAchievement(teamname, challengeId)
 
-        if (deleted) {
-          gameIo.emit('achievement:deleted', deleted)
+        if (!deleted) {
+          return
         }
+
+        gameIo.emit('achievement:deleted', deleted)
+
+        const surveyDeleted = await removeSurveyByAchievementId(deleted._id)
+        if (!surveyDeleted) {
+          return
+        }
+
+        gameIo.emit('surveys:deleted', {
+          ...surveyDeleted,
+          feedback: undefined,
+        } satisfies Survey)
+        adminIo.emit('surveys:deleted', surveyDeleted)
       },
     )
 
@@ -369,6 +390,24 @@ export function registerAdminNamespace(
       if (deleted) {
         gameIo.emit('reward:deleted', deleted)
       }
+    })
+
+    adminSocket.on('surveys:list', async (callback: Callback<Survey[]>) => {
+      const surveys = await listSurvey({ includeFeedback: true })
+      callback(surveys)
+    })
+
+    adminSocket.on('surveys:actions:delete', async (id: string) => {
+      const deleted = await removeSurveyById(id)
+      if (!deleted) {
+        return
+      }
+
+      gameIo.emit('surveys:deleted', {
+        ...deleted,
+        feedback: undefined,
+      } satisfies Survey)
+      adminIo.emit('surveys:deleted', deleted)
     })
 
     adminSocket.on('attempt:list', async (callback: Callback<Attempt[]>) => {

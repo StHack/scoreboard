@@ -87,6 +87,7 @@ export function Table<T>({
                   display="flex"
                   flexDirection="column"
                   alignItems="center"
+                  gap="2"
                 >
                   <Actions row={row} />
                 </Box>

@@ -1,7 +1,7 @@
 import {
   Achievement,
-  CreateSurvey,
-  schemaCreateSurvey,
+  BaseSurvey,
+  schemaBaseSurvey,
 } from '@sthack/scoreboard-common'
 import { useField } from '@sthack/scoreboard-ui/hooks'
 import { ChangeEvent, useState } from 'react'
@@ -57,16 +57,13 @@ export function useSurveyForm({ achievement }: useSurveyFormParams) {
     e.preventDefault()
 
     const payload = {
-      challengeId: achievement.challengeId,
-      survey: {
-        satisfaction: satisfactionField.inputProp.value,
-        perceivedDifficulty: perceivedDifficultyField.inputProp.value,
-        aiUsage: aiUsageField.inputProp.value,
-        feedback: feedbackField.inputProp.value,
-      },
-    } satisfies CreateSurvey
+      satisfaction: satisfactionField.inputProp.value,
+      perceivedDifficulty: perceivedDifficultyField.inputProp.value,
+      aiUsage: aiUsageField.inputProp.value,
+      feedback: feedbackField.inputProp.value,
+    } satisfies BaseSurvey
 
-    const validations = schemaCreateSurvey.safeParse(payload)
+    const validations = schemaBaseSurvey.safeParse(payload)
     if (!validations.success) {
       setError('Please fill all the required field')
       return
@@ -75,7 +72,7 @@ export function useSurveyForm({ achievement }: useSurveyFormParams) {
     setIsLoading(true)
 
     try {
-      await sendSurvey(payload)
+      await sendSurvey(achievement.challengeId, payload)
     } catch (error) {
       if (error instanceof Error) setError(error.message)
     } finally {

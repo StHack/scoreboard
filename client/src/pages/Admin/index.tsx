@@ -4,6 +4,7 @@ import {
   IconAttempt,
   IconChallenge,
   IconGame,
+  IconSurvey,
   IconUsers,
   Link,
 } from '@sthack/scoreboard-ui/components'
@@ -68,6 +69,10 @@ export function Admin({ children }: PropsWithChildren) {
         <Link to="/admin/achievements">
           <IconAchievement color="currentColor" size="1.5em" />
           Achievements
+        </Link>
+        <Link to="/admin/surveys">
+          <IconSurvey color="currentColor" size="1.5em" />
+          Surveys
         </Link>
         <Link to="/admin/attempts">
           <IconAttempt color="currentColor" size="1.5em" />

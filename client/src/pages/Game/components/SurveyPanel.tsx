@@ -33,11 +33,6 @@ export function SurveyPanel({ achievement }: SurveyPanelProps) {
     return undefined
   }
 
-  if (achievement.survey) {
-    // already filled
-    return undefined
-  }
-
   return (
     <BoxPanel
       title={
