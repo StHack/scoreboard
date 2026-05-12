@@ -1,6 +1,6 @@
 import { Challenge, DummyChallenge } from '@sthack/scoreboard-common'
 import {
-  ChallengeCardPanel,
+  ChallengeDetailCardPanel,
   ChallengeFlagCardPanel,
   Popup,
 } from '@sthack/scoreboard-ui/components'
@@ -17,7 +17,7 @@ export function Previewer({ challenge, readonly, onClose }: PreviewerProps) {
   const { gameConfig } = useGame()
   return (
     <Popup title={`Preview: ${challenge.name}`} onClose={onClose}>
-      <ChallengeCardPanel
+      <ChallengeDetailCardPanel
         challenge={challenge}
         challScore={fakeChallScore}
         gameConfig={gameConfig}
@@ -28,9 +28,10 @@ export function Previewer({ challenge, readonly, onClose }: PreviewerProps) {
             gameConfig={gameConfig}
             onFlagSubmit={attemptChall}
             score={fakeChallScore}
+            inline
           />
         )}
-      </ChallengeCardPanel>
+      </ChallengeDetailCardPanel>
     </Popup>
   )
 }

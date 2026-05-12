@@ -1,4 +1,9 @@
-import { Achievement } from '@sthack/scoreboard-common'
+import {
+  Achievement,
+  ratingAIUsage,
+  ratingPerceivedDifficulty,
+  ratingSatisfaction,
+} from '@sthack/scoreboard-common'
 import {
   Box,
   BoxPanel,
@@ -82,7 +87,7 @@ export function SurveyPanel({ achievement }: SurveyPanelProps) {
               {...satisfactionProps}
               icon={IconSatisfaction}
               label="Satisfaction level"
-              labels={['Boring', 'Not very fun', 'Okay', 'Fun', 'Awesome']}
+              labels={ratingSatisfaction}
             />
           </LabelInput>
 
@@ -95,7 +100,7 @@ export function SurveyPanel({ achievement }: SurveyPanelProps) {
             <RatingInput
               {...perceivedDifficultyProps}
               label="Perceived Difficulty level"
-              labels={['too easy', 'easy', 'medium', 'hard', 'too hard']}
+              labels={ratingPerceivedDifficulty}
             />
           </LabelInput>
 
@@ -109,13 +114,7 @@ export function SurveyPanel({ achievement }: SurveyPanelProps) {
               {...aiUsageProps}
               icon={IconAI}
               label="AI Usage"
-              labels={[
-                'I, myself, am the ultimate LLM ! (no AI at all)',
-                "I'm outta credits bro... (you use the AI to get some hints or explanation)",
-                'Me and my AI therapist has collaborated closely (Copilot wrote as much code as you)',
-                "Let's vibe baby !! (you use the AI intensively to solve it)",
-                'Claude is here to put an end to that CTF ! (the AI solved it entirely for you)',
-              ]}
+              labels={ratingAIUsage}
             />
           </LabelInput>
 

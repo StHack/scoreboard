@@ -24,7 +24,6 @@ export function Challenges() {
       <ChallsScoreBoard
         challsScore={gameScore.challsScore}
         challenges={challenges}
-        gameConfig={gameScore.config}
         hrefPattern={hrefPattern}
       />
     </PageLoader>

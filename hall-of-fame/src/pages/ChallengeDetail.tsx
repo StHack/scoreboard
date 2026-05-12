@@ -1,6 +1,6 @@
 import {
   BoxPanel,
-  ChallengeCardPanel,
+  ChallengeDetailCardPanel,
   ChallengeSolverCardPanel,
   ChartAchievementsOverTime,
   ChartAttemptsOverTime,
@@ -26,7 +26,7 @@ export function ChallengeDetail() {
       showLoader={loading}
       error={error}
     >
-      <ChallengeCardPanel
+      <ChallengeDetailCardPanel
         challenge={challenge}
         challScore={challScore}
         gameConfig={gameScore.config}

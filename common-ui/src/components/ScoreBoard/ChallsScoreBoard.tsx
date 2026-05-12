@@ -1,33 +1,19 @@
 import { useTheme } from '@emotion/react'
-import {
-  Achievement,
-  BaseGameConfig,
-  Challenge,
-  ChallengeScore,
-} from '@sthack/scoreboard-common'
-import {
-  Box,
-  ColumnDefinition,
-  Popup,
-  Table,
-} from '@sthack/scoreboard-ui/components'
-import { useState } from 'react'
+import { Challenge, ChallengeScore } from '@sthack/scoreboard-common'
+import { Box } from '@sthack/scoreboard-ui/components'
 
 export type ChallsScoreBoardProps = {
   challsScore: Record<string, ChallengeScore>
   challenges: Challenge[]
-  gameConfig: BaseGameConfig
   hrefPattern?: (challenge: Challenge) => string
+  onChallengeClick?: (challenge: Challenge) => void
 }
 export function ChallsScoreBoard({
   challsScore,
   challenges,
-  gameConfig,
   hrefPattern,
+  onChallengeClick,
 }: ChallsScoreBoardProps) {
-  const [selectedBreakthrough, setSelectedBreakthrough] =
-    useState<Achievement>()
-
   const {
     edition: { card: ChallengeCard },
   } = useTheme()
@@ -42,10 +28,7 @@ export function ChallsScoreBoard({
             challenge={c}
             score={challsScore[c._id]}
             currentTeam={challsScore[c._id].achievements[0]?.teamname}
-            onClick={() =>
-              !hrefPattern &&
-              setSelectedBreakthrough(challsScore[c._id].achievements[0])
-            }
+            onClick={() => onChallengeClick?.(c)}
             size="12"
             // @ts-expect-error not a real one
             as={hrefPattern && 'a'}
@@ -54,56 +37,6 @@ export function ChallsScoreBoard({
             placeContent="center"
           />
         ))}
-      {selectedBreakthrough && (
-        <DetailChallPopup
-          breakthrough={selectedBreakthrough}
-          challScore={challsScore[selectedBreakthrough.challengeId]}
-          gameConfig={gameConfig}
-          onClose={() => setSelectedBreakthrough(undefined)}
-        />
-      )}
     </Box>
   )
 }
-
-type DetailChallPopupProps = {
-  breakthrough: Achievement
-  challScore: ChallengeScore
-  gameConfig: BaseGameConfig
-  onClose: () => void
-}
-function DetailChallPopup({
-  breakthrough,
-  challScore,
-  gameConfig: { isNoCompetition },
-  onClose,
-}: DetailChallPopupProps) {
-  return (
-    <Popup
-      title={
-        isNoCompetition
-          ? breakthrough.challenge.name
-          : `${breakthrough.challenge.name} - ${challScore.score} pts`
-      }
-      onClose={onClose}
-    >
-      <Box as="h3" fontSize="3" textAlign="center" m="3">
-        {`Breakthrough ${label(breakthrough)}`}
-      </Box>
-      <Table
-        data={challScore.achievements}
-        columns={columns}
-        rowKey={row => row.teamname + row.username}
-      />
-    </Popup>
-  )
-}
-
-const columns: ColumnDefinition<Achievement>[] = [
-  { header: 'Time', rowValue: row => row.createdAt.toLocaleTimeString() },
-  { header: 'Player', rowValue: row => row.username },
-  { header: 'Team', rowValue: row => row.teamname },
-]
-
-const label = ({ username, teamname, createdAt }: Achievement) =>
-  ` at ${createdAt.toLocaleTimeString()} by "${username}" of team "${teamname}"`

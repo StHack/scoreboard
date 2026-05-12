@@ -1,3 +1,4 @@
+import { RatingLabels } from '@sthack/scoreboard-common'
 import { ChangeEvent, useState } from 'react'
 import { Box, MotionBox } from './Box'
 import { Icon, Logo } from './Icon'
@@ -8,7 +9,7 @@ type RatingInputProps = {
   name: string
   icon?: Icon
   label?: string
-  labels?: string[]
+  labels?: RatingLabels
   placeholder?: string
   max?: number
 }
@@ -19,7 +20,7 @@ export function RatingInput({
   name,
   icon: Icon = Logo,
   label,
-  labels = [],
+  labels = {},
   placeholder,
   max = 5,
 }: RatingInputProps) {
@@ -98,7 +99,7 @@ export function RatingInput({
                 value={v}
                 checked={value === v}
                 onChange={onChange}
-                aria-label={labels[v - 1]}
+                aria-label={labels[v]}
                 style={{
                   position: 'absolute',
                   opacity: 0,
@@ -121,7 +122,7 @@ export function RatingInput({
         fontSize="1"
         minHeight="1"
       >
-        {labels[current - 1] ?? placeholder}
+        {labels[current] ?? placeholder}
       </MotionBox>
     </Box>
   )

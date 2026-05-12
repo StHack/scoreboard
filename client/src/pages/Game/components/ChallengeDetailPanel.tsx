@@ -2,7 +2,7 @@ import { Challenge } from '@sthack/scoreboard-common'
 import {
   BoxPanel,
   Button,
-  ChallengeCardPanel,
+  ChallengeDetailCardPanel,
   ChallengeFlagCardPanel,
   ChallengeSolverCardPanel,
   IconClue,
@@ -112,7 +112,7 @@ function ChallengeDetailPanelContent({
       />
       {achievement && !survey && <SurveyPanel achievement={achievement} />}
 
-      <ChallengeCardPanel
+      <ChallengeDetailCardPanel
         title="Description"
         challenge={challenge}
         challScore={challScore}
@@ -127,7 +127,7 @@ function ChallengeDetailPanelContent({
           onFlagSubmit={attemptChall}
           inline
         />
-      </ChallengeCardPanel>
+      </ChallengeDetailCardPanel>
 
       {clues.length > 0 && (
         <Messages

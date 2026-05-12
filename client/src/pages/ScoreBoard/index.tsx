@@ -1,3 +1,4 @@
+import { Challenge } from '@sthack/scoreboard-common'
 import {
   Box,
   BoxPanel,
@@ -5,13 +6,16 @@ import {
   TeamsScoreBoard,
 } from '@sthack/scoreboard-ui/components'
 import { useGame } from 'hooks/useGame'
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, useState } from 'react'
 import { GridAreaProps } from 'styled-system'
+import { DetailChallPopup } from './components/DetailChallPopup'
 
 export function ScoreBoard() {
-  const { score, challenges, gameConfig } = useGame()
+  const { score, challenges, gameConfig, surveys } = useGame()
   const { challsScore, teamsScore } = score
   const { isNoCompetition } = gameConfig
+
+  const [selectedChallenge, setSelectedChallenge] = useState<Challenge>()
 
   const challsUnsolved =
     challenges.length -
@@ -44,8 +48,20 @@ export function ScoreBoard() {
         <ChallsScoreBoard
           challsScore={challsScore}
           challenges={challenges}
-          gameConfig={gameConfig}
+          onChallengeClick={c => setSelectedChallenge(c)}
         />
+
+        {selectedChallenge && (
+          <DetailChallPopup
+            challenge={selectedChallenge}
+            challScore={challsScore[selectedChallenge._id]}
+            surveys={surveys.filter(
+              s => s.challengeId === selectedChallenge._id,
+            )}
+            gameConfig={gameConfig}
+            onClose={() => setSelectedChallenge(undefined)}
+          />
+        )}
       </Block>
     </Box>
   )

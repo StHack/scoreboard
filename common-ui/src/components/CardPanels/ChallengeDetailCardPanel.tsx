@@ -18,7 +18,7 @@ type ChallengeCardPanelProps = {
   currentTeam?: string
   title?: string
 }
-export function ChallengeCardPanel({
+export function ChallengeDetailCardPanel({
   challenge,
   challScore,
   gameConfig: { isNoCompetition },
