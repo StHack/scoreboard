@@ -4,6 +4,7 @@ import {
   ChallengeSolverCardPanel,
   ChartAchievementsOverTime,
   ChartAttemptsOverTime,
+  ChartSurveys,
   IconAchievement,
   IconAttempt,
   IconChallenge,
@@ -14,8 +15,16 @@ import { useParams } from 'react-router-dom'
 
 export function ChallengeDetail() {
   const { challengeId } = useParams()
-  const { attempts, challScore, loading, error, minDate, maxDate, gameScore } =
-    useChallengeData(challengeId)
+  const {
+    attempts,
+    challScore,
+    loading,
+    error,
+    minDate,
+    maxDate,
+    gameScore,
+    surveys,
+  } = useChallengeData(challengeId)
 
   const { challenge } = challScore
 
@@ -54,6 +63,12 @@ export function ChallengeDetail() {
             minDate={minDate}
             maxDate={maxDate}
           />
+        </BoxPanel>
+      )}
+
+      {surveys.length > 0 && (
+        <BoxPanel title="Survey results from solvers">
+          <ChartSurveys surveys={surveys} />
         </BoxPanel>
       )}
     </PageLoader>

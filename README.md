@@ -154,6 +154,7 @@ sudo docker compose --profile prod logs website > logs-website.log
 ## from your computer
 git pull
 scp ubuntu@XX.XX.XX.XX:/home/ubuntu/scoreboard/backups/$(date +%Y)/attempts-uncensored.json .
+scp ubuntu@XX.XX.XX.XX:/home/ubuntu/scoreboard/backups/$(date +%Y)/surveys-uncensored.json .
 scp ubuntu@XX.XX.XX.XX:/home/ubuntu/scoreboard/logs.log backups/$(date +%Y)/
 scp ubuntu@XX.XX.XX.XX:/home/ubuntu/scoreboard/logs-website.log backups/$(date +%Y)/
 ```

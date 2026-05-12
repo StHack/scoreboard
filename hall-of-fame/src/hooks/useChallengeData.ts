@@ -1,6 +1,7 @@
 import {
   ChallengeScore,
   computeGameScore,
+  DummyAchievement,
   DummyChallenge,
   GameConfig,
   GameScore,
@@ -21,12 +22,14 @@ export function useChallengeData(challengeId?: string) {
   const attemptsData = useBackupData(yearNumber, BackupDataType.attempts)
   const challengesData = useBackupData(yearNumber, BackupDataType.challenges)
   const rewardsData = useBackupData(yearNumber, BackupDataType.rewards)
+  const surveysData = useBackupData(yearNumber, BackupDataType.surveys)
   const usersData = useBackupData(yearNumber, BackupDataType.users)
 
   const { data: rawAch = [] } = achievementsData
   const { data: rawAtt = [] } = attemptsData
   const { data: cha = [] } = challengesData
   const { data: rew = [] } = rewardsData
+  const { data: rawSur = [] } = surveysData
   const { data: usr = [] } = usersData
 
   const ach = useMemo(
@@ -36,6 +39,17 @@ export function useChallengeData(challengeId?: string) {
         challenge: cha.find(c => c._id === a.challengeId) ?? DummyChallenge,
       })),
     [cha, rawAch],
+  )
+
+  const sur = useMemo(
+    () =>
+      rawSur.map(s => ({
+        ...s,
+        achievement:
+          ach.find(a => a._id === s.achievementId) ?? DummyAchievement,
+        challenge: cha.find(c => c._id === s.challengeId) ?? DummyChallenge,
+      })),
+    [ach, cha, rawSur],
   )
 
   const att = useMemo(
@@ -98,6 +112,11 @@ export function useChallengeData(challengeId?: string) {
     [att, challengeId],
   )
 
+  const surveys = useMemo(
+    () => (challengeId ? sur.filter(s => s.challengeId === challengeId) : sur),
+    [sur, challengeId],
+  )
+
   const challScore = challengeId
     ? gameScore.challsScore[challengeId]
     : undefined
@@ -121,6 +140,7 @@ export function useChallengeData(challengeId?: string) {
     achievements,
     attempts,
     challenges: cha,
+    surveys,
     gameScore,
     challScore: challScore ?? dummyScore,
     minDate,

@@ -9,6 +9,7 @@ COLLECTIONS_TO_EXPORT=(
   "messages"
   "rewards"
   "serveractivitystatistics"
+  "surveys"
   "users"
 )
 
@@ -31,6 +32,11 @@ done
 ATTEMPTS_FILE="/backups/${YEAR}/attempts.json"
 cp "$ATTEMPTS_FILE" "/backups/${YEAR}/attempts-uncensored.json"
 jq '(.[].proposal) |= ""' "$ATTEMPTS_FILE" > "$ATTEMPTS_FILE.tmp" && mv "$ATTEMPTS_FILE.tmp" "$ATTEMPTS_FILE"
+
+# clean surveys values
+SURVEYS_FILE="/backups/${YEAR}/surveys.json"
+cp "$SURVEYS_FILE" "/backups/${YEAR}/surveys-uncensored.json"
+jq '(.[].feedback) |= ""' "$SURVEYS_FILE" > "$SURVEYS_FILE.tmp" && mv "$SURVEYS_FILE.tmp" "$SURVEYS_FILE"
 
 # clean users password
 USERS_FILE="/backups/${YEAR}/users.json"

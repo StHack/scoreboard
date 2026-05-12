@@ -4,6 +4,7 @@ import {
   Challenge,
   Message,
   Reward,
+  Survey,
   TimestampedServerActivityStatistics,
   User,
 } from '@sthack/scoreboard-common'
@@ -17,6 +18,7 @@ export enum BackupDataType {
   messages = 'messages',
   rewards = 'rewards',
   serveractivitystatistics = 'serveractivitystatistics',
+  surveys = 'surveys',
   users = 'users',
 }
 
@@ -28,6 +30,7 @@ export type BackupDataTypeMap = {
   [BackupDataType.messages]: Message[]
   [BackupDataType.rewards]: Reward[]
   [BackupDataType.serveractivitystatistics]: TimestampedServerActivityStatistics[]
+  [BackupDataType.surveys]: Survey[]
   [BackupDataType.users]: User[]
 }
 
