@@ -1,19 +1,12 @@
-import {
-  Categories,
-  Challenge,
-  Difficulties,
-  DummyChallenge,
-} from '@sthack/scoreboard-common'
+import { Categories, Challenge, Difficulties } from '@sthack/scoreboard-common'
 import {
   Box,
   BoxPanel,
   Button,
   categoryToImg,
-  ChallDescriptionDetail,
   DropdownInput,
   LabelInput,
   Loader,
-  Popup,
   SelectInput,
   TextInput,
 } from '@sthack/scoreboard-ui/components'
@@ -26,6 +19,7 @@ import { useGame } from 'hooks/useGame'
 import { ChangeEvent, SyntheticEvent, useCallback, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { FlagInput } from './FlagInput'
+import { Previewer } from './Previewer'
 
 export function ChallengeFormLayout() {
   const { isLoaded, challenges } = useAdmin()
@@ -210,22 +204,11 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
         )}
 
         {showPreview && (
-          <Popup
-            title={`Preview: ${preview.name}`}
+          <Previewer
+            challenge={preview}
             onClose={() => setShowPreview(false)}
-          >
-            <ChallDescriptionDetail
-              challenge={preview}
-              gameConfig={gameConfig}
-              onFlagSubmit={() => Promise.resolve(true)}
-              score={{
-                challenge: DummyChallenge,
-                achievements: [],
-                score: 100,
-              }}
-              readonly
-            />
-          </Popup>
+            readonly
+          />
         )}
 
         <Box

@@ -20,6 +20,7 @@ import BannerSvg from './images/Banner.svg?react'
 import BreakSvg from './images/break.svg?react'
 import BreakthroughSvg from './images/breakthrough.svg?react'
 import ChallengeSvg from './images/challenge.svg?react'
+import ClueSvg from './images/clue.svg?react'
 import CreateSvg from './images/create.svg?react'
 import DeleteSvg from './images/delete.svg?react'
 import DemoteSvg from './images/demote.svg?react'
@@ -81,6 +82,7 @@ export const IconAI: Icon = BaseSvg.withComponent(AISvg)
 export const IconAttempt: Icon = BaseSvg.withComponent(AttemptSvg)
 export const IconBreak: Icon = BaseSvg.withComponent(BreakSvg)
 export const IconChallenge: Icon = BaseSvg.withComponent(ChallengeSvg)
+export const IconClue: Icon = BaseSvg.withComponent(ClueSvg)
 export const IconCreate: Icon = BaseSvg.withComponent(CreateSvg)
 export const IconDelete: Icon = BaseSvg.withComponent(DeleteSvg)
 export const IconDemote: Icon = BaseSvg.withComponent(DemoteSvg)

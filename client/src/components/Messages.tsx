@@ -1,26 +1,19 @@
 import { Message } from '@sthack/scoreboard-common'
-import { Box, BoxPanel, MessageBlock } from '@sthack/scoreboard-ui/components'
+import { BoxPanel, MessageBlock } from '@sthack/scoreboard-ui/components'
 import { AnimatePresence } from 'framer-motion'
 import { usePlayer } from 'hooks/usePlayer'
-import { BorderRadiusProps, GridAreaProps, SpaceProps } from 'styled-system'
 
 type MessagesProps = {
   title: string
   messages: Message[]
-  forceShow?: boolean
 }
 
 export function Messages({
   title,
   messages,
-  forceShow = false,
   ...props
-}: MessagesProps & GridAreaProps & SpaceProps & BorderRadiusProps) {
+}: MessagesProps & Parameters<typeof BoxPanel>[0]) {
   const { readMessages, markMessageAsRead } = usePlayer()
-
-  if (messages.length === 0 && !forceShow) {
-    return undefined
-  }
 
   return (
     <BoxPanel
@@ -29,12 +22,8 @@ export function Messages({
         placeSelf: 'center',
         fontSize: '3',
       }}
-      // @ts-expect-error false-positive
-      as="aside"
       display="flex"
       flexDirection="column"
-      overflowX="hidden"
-      overflowY={forceShow ? 'auto' : undefined}
       p="2"
       {...props}
     >

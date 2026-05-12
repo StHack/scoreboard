@@ -62,7 +62,10 @@ export function Game({ children }: PropsWithChildren) {
         messages={messages}
         gridArea="message"
         borderRadius="medium"
-        forceShow
+        // @ts-expect-error false positive
+        as="aside"
+        overflowX="hidden"
+        overflowY="auto"
       />
     </Box>
   )

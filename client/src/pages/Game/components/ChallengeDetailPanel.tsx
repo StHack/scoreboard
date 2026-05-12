@@ -2,7 +2,10 @@ import { Challenge } from '@sthack/scoreboard-common'
 import {
   BoxPanel,
   Button,
-  ChallDescriptionDetail,
+  ChallengeCardPanel,
+  ChallengeFlagCardPanel,
+  ChallengeSolverCardPanel,
+  IconClue,
   Loader,
   Logo,
   MotionBox,
@@ -72,6 +75,9 @@ function ChallengeDetailPanelContent({
     ? surveys.find(s => s.achievementId === achievement._id)
     : undefined
 
+  const clues = messages.filter(m => m.challengeId === challenge._id)
+  const challScore = challsScore[challenge._id]
+
   return (
     <MotionBox
       layout
@@ -86,42 +92,55 @@ function ChallengeDetailPanelContent({
       gridArea="chall"
       display="flex"
       flexDirection="column"
-      gap="3"
+      gap="2"
       overflowY="auto"
     >
-      <MotionBox
-        layout
-        initial="hidden"
-        animate="visible"
-        exit="hidden"
-        variants={{
-          hidden: { opacity: 0, scale: 0.9 },
-          visible: { opacity: 1, scale: 1 },
-        }}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-      >
-        {achievement && !survey && <SurveyPanel achievement={achievement} />}
-      </MotionBox>
-
       <BoxPanel
-        title={challenge.name}
+        title={
+          <>
+            {challenge.name}
+            <Logo size="2" />
+          </>
+        }
+        titleIcon={Logo}
         titleProps={{
+          // @ts-expect-error irrelevant error
+          as: 'h1',
           justifySelf: 'center',
           fontSize: '4',
         }}
+      />
+      {achievement && !survey && <SurveyPanel achievement={achievement} />}
+
+      <ChallengeCardPanel
+        title="Description"
+        challenge={challenge}
+        challScore={challScore}
+        gameConfig={gameConfig}
+        currentTeam={myTeamScore.team}
       >
-        <ChallDescriptionDetail
+        <ChallengeFlagCardPanel
           challenge={challenge}
           teamScore={myTeamScore}
           gameConfig={gameConfig}
-          score={challsScore[challenge._id]}
+          score={challScore}
           onFlagSubmit={attemptChall}
+          inline
         />
-      </BoxPanel>
+      </ChallengeCardPanel>
 
-      <Messages
-        title="Clues"
-        messages={messages.filter(m => m.challengeId === challenge._id)}
+      {clues.length > 0 && (
+        <Messages
+          title="Clues"
+          titleProps={{}}
+          titleIcon={IconClue}
+          messages={clues}
+        />
+      )}
+
+      <ChallengeSolverCardPanel
+        title="Who has already finish it?"
+        challScore={challScore}
       />
     </MotionBox>
   )

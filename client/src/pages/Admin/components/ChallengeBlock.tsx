@@ -9,26 +9,22 @@ import {
 import {
   Box,
   Button,
-  ChallDescriptionDetail,
   IconBreak,
   IconDelete,
   IconEdit,
   IconFlagEdit,
   IconPreview,
   IconRepair,
-  Popup,
 } from '@sthack/scoreboard-ui/components'
-import { Messages } from 'components/Messages'
 import { RoleBasedButton } from 'components/RoleBasedButton'
-import { useGame } from 'hooks/useGame'
-import { ProvidePlayer, usePlayer } from 'hooks/usePlayer'
+import { ProvidePlayer } from 'hooks/usePlayer'
 import { useState } from 'react'
 import { FlagEditForm } from './FlagEditForm'
+import { Previewer } from './Previewer'
 
 type ChallengeBlockProps = {
   chall: Challenge
   score: ChallengeScore
-  messages: Message[]
   attempts: Attempt[]
   onBrokeClick: (chall: Challenge) => void
   onDeleteClick: (chall: Challenge) => void
@@ -38,7 +34,6 @@ type ChallengeBlockProps = {
 export function ChallengeBlock({
   chall,
   score,
-  messages,
   onBrokeClick,
   onDeleteClick,
   onEditClick,
@@ -154,12 +149,7 @@ export function ChallengeBlock({
       </Box>
       {showPreview && (
         <ProvidePlayer>
-          <Previewer
-            challenge={chall}
-            score={score}
-            messages={messages}
-            onClose={() => setShowPreview(false)}
-          />
+          <Previewer challenge={chall} onClose={() => setShowPreview(false)} />
         </ProvidePlayer>
       )}
 
@@ -167,27 +157,5 @@ export function ChallengeBlock({
         <FlagEditForm chall={chall} onClose={() => setShowFlagEdit(false)} />
       )}
     </Box>
-  )
-}
-
-type PreviewerProps = {
-  challenge: Challenge
-  score: ChallengeScore
-  messages: Message[]
-  onClose: () => void
-}
-function Previewer({ challenge, score, messages, onClose }: PreviewerProps) {
-  const { attemptChall } = usePlayer()
-  const { gameConfig } = useGame()
-  return (
-    <Popup title={`Preview: ${challenge.name}`} onClose={onClose}>
-      <ChallDescriptionDetail
-        challenge={challenge}
-        score={score}
-        gameConfig={gameConfig}
-        onFlagSubmit={attemptChall}
-      />
-      <Messages title="Clues" messages={messages} />
-    </Popup>
   )
 }

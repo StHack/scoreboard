@@ -52,7 +52,9 @@ export function Popup({
         {title && <PopupTitle>{title}</PopupTitle>}
         {title && <hr />}
 
-        <PopupPanel autosize={!minHeightRequired}>{children}</PopupPanel>
+        <PopupPanel autosize={!minHeightRequired} gap="2">
+          {children}
+        </PopupPanel>
 
         <hr />
 

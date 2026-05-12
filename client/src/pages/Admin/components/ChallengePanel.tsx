@@ -73,7 +73,6 @@ export function ChallengePanel() {
                   achievements: [],
                 }
               }
-              messages={messages.filter(m => m.challengeId === c._id)}
               attempts={attempts.filter(a => a.challengeId === c._id)}
               onBrokeClick={brokeChallenge}
               onEditClick={() => navigate(`/admin/challenges/${c._id}/edit`)}
