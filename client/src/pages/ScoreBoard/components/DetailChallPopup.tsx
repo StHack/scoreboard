@@ -54,5 +54,5 @@ export function DetailChallPopup({
     </Popup>
   )
 }
-const label = ({ username, teamname, createdAt }: Achievement) =>
-  ` at ${createdAt.toLocaleTimeString()} by "${username}" of team "${teamname}"`
+const label = ({ username, team, createdAt }: Achievement) =>
+  ` at ${createdAt.toLocaleTimeString()} by "${username}" of team "${team.name}"`

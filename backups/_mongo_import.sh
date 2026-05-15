@@ -1,5 +1,5 @@
 #!/bin/bash
-# set -euo pipefail
+# set -uo pipefail
 
 for FULL_FILENAME in /backups/*.json;
 do
@@ -8,11 +8,11 @@ do
 
   echo "${COLLECTION_NAME}"
 
+  set +e # we allow mongoimport to fail because it is on empty import
   mongoimport "${FULL_FILENAME}" \
     -d "${MONGO_INITDB_DATABASE}" \
     -c "${COLLECTION_NAME}" \
     -u "${MONGO_INITDB_ROOT_USERNAME}" \
     -p "${MONGO_INITDB_ROOT_PASSWORD}" \
-    --authenticationDatabase admin --jsonArray --drop
+    --authenticationDatabase admin --jsonArray --drop --maintainInsertionOrder
 done
-

@@ -7,7 +7,7 @@ const schema = new Schema<Survey>(
     achievementId: { type: String, required: true },
 
     challengeId: { type: String, required: true },
-    teamname: { type: String, required: true },
+    teamId: { type: String, required: true },
     username: { type: String, required: true },
     satisfaction: { type: Number, required: true },
     perceivedDifficulty: { type: Number, required: true },
@@ -30,7 +30,10 @@ const removeMongoProperties = removeMongoPropertiesWithOptions({
 })
 
 export async function createSurvey(
-  survey: Omit<Survey, '_id' | 'challenge' | 'achievement' | 'createdAt'>,
+  survey: Omit<
+    Survey,
+    '_id' | 'challenge' | 'achievement' | 'createdAt' | 'team'
+  >,
 ): Promise<Survey> {
   const doc = new SurveyModel(survey)
   await doc.save()

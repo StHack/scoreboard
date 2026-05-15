@@ -1,4 +1,4 @@
-import { DummyChallenge } from '@sthack/scoreboard-common'
+import { DummyChallenge, DummyTeam } from '@sthack/scoreboard-common'
 import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { BackupDataType, useBackupData } from './useBackupData'
@@ -18,21 +18,22 @@ export function useStatisticsData() {
   )
   const attemptsData = useBackupData(yearNumber, BackupDataType.attempts)
   const challengesData = useBackupData(yearNumber, BackupDataType.challenges)
-  const usersData = useBackupData(yearNumber, BackupDataType.users)
+  const teamsData = useBackupData(yearNumber, BackupDataType.teams)
 
   const { data: stats = [] } = statsData
   const { data: rawAch = [] } = achievementsData
   const { data: rawAtt = [] } = attemptsData
   const { data: cha = [] } = challengesData
-  const { data: usr = [] } = usersData
+  const { data: tm = [] } = teamsData
 
   const ach = useMemo(
     () =>
       rawAch.map(a => ({
         ...a,
         challenge: cha.find(c => c._id === a.challengeId) ?? DummyChallenge,
+        team: tm.find(t => t._id === a.teamId) ?? DummyTeam,
       })),
-    [cha, rawAch],
+    [cha, rawAch, tm],
   )
 
   const att = useMemo(
@@ -40,8 +41,9 @@ export function useStatisticsData() {
       rawAtt.map(a => ({
         ...a,
         challenge: cha.find(c => c._id === a.challengeId) ?? DummyChallenge,
+        team: tm.find(t => t._id === a.teamId) ?? DummyTeam,
       })),
-    [cha, rawAtt],
+    [cha, rawAtt, tm],
   )
 
   const minDate = useMemo(
@@ -74,17 +76,15 @@ export function useStatisticsData() {
       achievementsData.loading &&
       attemptsData.loading &&
       challengesData.loading &&
-      usersData.loading,
+      teamsData.loading,
     error:
       statsData.error ||
       achievementsData.error ||
       attemptsData.error ||
       challengesData.error ||
-      usersData.error,
+      teamsData.error,
     achievements: ach,
     attempts: att,
-    challenges: cha,
-    users: usr,
     minDate,
     maxDate,
     stats,

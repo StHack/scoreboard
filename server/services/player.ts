@@ -6,19 +6,22 @@ import {
   CallbackOrError,
   Challenge,
   from,
+  isPlayer,
+  Player,
   schemaBaseSurvey,
   Survey,
+  Team,
   UserRole,
 } from '@sthack/scoreboard-common'
 import {
   countChallengeAchievement,
   getAchievementBySolveIds,
-  getTeamAchievement,
   registerAchievement,
 } from 'db/AchievementDb.js'
 import { getSimilarAttempts, registerAttempt } from 'db/AttemptDb.js'
 import { checkChallenge, getChallenge } from 'db/ChallengeDb.js'
 import { createSurvey } from 'db/SurveyDb.js'
+import { getTeam } from 'db/TeamDb.js'
 import debug from 'debug'
 import { Request } from 'express'
 import { Namespace } from 'socket.io'
@@ -58,21 +61,14 @@ export function registerPlayerNamespace(
         flag: string,
         callback: CallbackOrError<{ isValid: true }>,
       ) => {
-        const user = (playerSocket.request as Request).user
+        const player = getFullPlayer(playerSocket.request as Request)
 
-        if (!user) {
+        if (!player) {
           callback({ error: 'Nope' })
           return
         }
 
-        const attempt: BaseAttempt = {
-          challengeId,
-          username: user.username,
-          teamname: user.team,
-          proposal: flag,
-        }
-
-        if (user.roles.includes(UserRole.Admin)) {
+        if (player.roles.includes(UserRole.Admin)) {
           try {
             const isValid = await checkChallenge(challengeId, flag)
             callback({
@@ -92,6 +88,13 @@ export function registerPlayerNamespace(
           return
         }
 
+        const attempt: BaseAttempt = {
+          challengeId,
+          username: player.username,
+          teamId: player.teamId,
+          proposal: flag,
+        }
+
         const logAttempt = async () => {
           const saved = await registerAttempt(attempt)
           adminIo.emit('attempt:added', saved)
@@ -99,7 +102,7 @@ export function registerPlayerNamespace(
         }
 
         let lock: Lock | undefined = undefined
-        const lockKey = `lock-${user.team}-${challengeId}`
+        const lockKey = `lock-${player.teamId}-${challengeId}`
 
         try {
           lock = await redlock.acquire([lockKey], 5_000)
@@ -107,7 +110,7 @@ export function registerPlayerNamespace(
           const checkers = [
             () => checkGameOpen(serverConfig),
             () => checkTeamSolved(attempt),
-            () => checkBruteforce(gameIo, attempt),
+            () => checkBruteforce(gameIo, attempt, player),
             () => checkFlag(attempt),
           ]
 
@@ -125,20 +128,22 @@ export function registerPlayerNamespace(
 
           const achievement = await registerAchievement({
             challengeId,
-            teamname: user.team,
-            username: user.username,
+            teamId: player.teamId,
+            username: player.username,
           })
           gameIo.emit('achievement:added', achievement)
 
           const challenge = (await getChallenge(challengeId)) as Challenge
+          const team = (await getTeam(player.teamId)) as Team
           await emitEventLog(gameIo, 'challenge:solved', {
             message:
               achievementCount === 0
-                ? `💥 Breakthrough! "${achievement.username}" Team "${achievement.teamname}" just solved challenge "${challenge.name}"`
-                : `Team "${achievement.teamname}" just solved challenge "${challenge.name}"`,
+                ? `💥 Breakthrough! "${achievement.username}" Team "${team.name}" just solved challenge "${challenge.name}"`
+                : `Team "${team.name}" just solved challenge "${challenge.name}"`,
             isBreakthrough: achievementCount === 0,
             achievement,
             challenge,
+            team,
           })
         } catch (error) {
           await logAttempt()
@@ -168,9 +173,9 @@ export function registerPlayerNamespace(
         survey: BaseSurvey,
         callback: CallbackOrError<void>,
       ) => {
-        const user = (playerSocket.request as Request).user
+        const player = (playerSocket.request as Request).user
 
-        if (!user) {
+        if (!player || !isPlayer(player)) {
           callback({ error: 'Nope' })
           return
         }
@@ -185,7 +190,7 @@ export function registerPlayerNamespace(
 
         const achievement = await getAchievementBySolveIds(
           challengeId,
-          user.team,
+          player.teamId,
         )
 
         if (!achievement) {
@@ -200,7 +205,7 @@ export function registerPlayerNamespace(
             ...payload,
             achievementId: achievement._id,
             challengeId: achievement.challengeId,
-            teamname: achievement.teamname,
+            teamId: achievement.teamId,
             username: achievement.username,
           })
 
@@ -234,13 +239,10 @@ async function checkGameOpen(serverConfig: ServerConfig): CheckResult {
 
 async function checkTeamSolved({
   challengeId,
-  teamname,
+  teamId,
 }: BaseAttempt): CheckResult {
-  const achievements = await getTeamAchievement(teamname)
-  return (
-    !achievements.find(a => a.challengeId === challengeId) ||
-    'Already solved by your team!'
-  )
+  const achievement = await getAchievementBySolveIds(challengeId, teamId)
+  return !achievement || 'Already solved by your team!'
 }
 
 async function checkFlag({ challengeId, proposal }: BaseAttempt): CheckResult {
@@ -251,6 +253,7 @@ async function checkFlag({ challengeId, proposal }: BaseAttempt): CheckResult {
 async function checkBruteforce(
   gameIo: Namespace,
   attempt: BaseAttempt,
+  player: Player,
 ): CheckResult {
   const attempts = await getSimilarAttempts(attempt)
   if (attempts.length === 0) {
@@ -271,11 +274,17 @@ async function checkBruteforce(
     }
 
     if (warning && attempts.length === count) {
-      const challenge = await getChallenge(attempt.challengeId)
+      const challenge = (await getChallenge(attempt.challengeId)) as Challenge
+      const fullAttempt: Attempt = {
+        ...attempt,
+        team: player.team,
+        challenge: challenge,
+        createdAt: new Date(),
+        _id: '',
+      }
       await emitEventLog(gameIo, 'player:attempted', {
-        message: `Team "${attempt.teamname}" has reach the warning threshold of attempts made for the chall "${challenge?.name ?? ''}"`,
-        attempt,
-        challenge,
+        message: `Player "${player.username}" has reach the warning threshold of attempts made for the chall "${challenge.name}"`,
+        attempt: fullAttempt,
       })
     }
 
@@ -286,4 +295,19 @@ async function checkBruteforce(
   }
 
   return true
+}
+
+function getFullPlayer(req: Request): Player | undefined {
+  const player = req.user
+  if (!player || !isPlayer(player)) {
+    return undefined
+  }
+
+  return {
+    ...player,
+    team: {
+      _id: player.teamId,
+      name: req.user?.teamname ?? '',
+    },
+  }
 }

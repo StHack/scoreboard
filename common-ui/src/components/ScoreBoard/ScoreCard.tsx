@@ -110,7 +110,7 @@ export function ScoreCard({
         <span>
           {isNoCompetition ? null : showDetail ? `Rank: #${rank}` : rank}
         </span>
-        <span>{team}</span>
+        <span>{team.name}</span>
         <span>
           {isNoCompetition
             ? null

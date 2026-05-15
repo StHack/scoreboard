@@ -18,6 +18,7 @@ export type SelectInputProps = Omit<
   InputHTMLAttributes<HTMLSelectElement>,
   'width'
 > & {
+  allowEmpty?: boolean
   predefinedValues:
     | string[]
     | readonly string[]
@@ -26,17 +27,16 @@ export type SelectInputProps = Omit<
 }
 
 export function SelectInput({
+  allowEmpty,
   predefinedValues,
   placeholder,
   ...props
 }: SelectInputProps & SpaceProps & FlexProps & LayoutProps) {
   return (
     <Select {...props}>
-      {placeholder && (
-        <option value="" disabled selected hidden>
-          {placeholder}
-        </option>
-      )}
+      <option value="" disabled={!allowEmpty} hidden={!placeholder}>
+        {placeholder}
+      </option>
       {predefinedValues.map(entry =>
         typeof entry === 'string' ? (
           <option key={entry} value={entry}>
@@ -75,5 +75,9 @@ const Select = styled.select`
   ::-webkit-search-results-button,
   ::-webkit-search-results-decoration {
     -webkit-appearance: none;
+  }
+
+  option[value=''] {
+    font-style: italic;
   }
 `

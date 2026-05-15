@@ -5,11 +5,13 @@ import {
   DefaultGameConfig,
   DummyAchievement,
   DummyChallenge,
+  DummyTeam,
   GameConfig,
   GameScore,
   Message,
   Reward,
   Survey,
+  Team,
 } from '@sthack/scoreboard-common'
 import {
   createContext,
@@ -85,8 +87,8 @@ function useProvideGame(): GameContext {
   const [rawAchievements, setRawAchievements] = useState<Achievement[]>([])
   const [rawSurveys, setRawSurveys] = useState<Survey[]>([])
   const [rawMessages, setRawMessages] = useState<Message[]>([])
-  const [teams, setTeams] = useState<string[]>([])
-  const [rewards, setRewards] = useState<Reward[]>([])
+  const [teams, setTeams] = useState<Team[]>([])
+  const [rawRewards, setRawRewards] = useState<Reward[]>([])
   const [gameConfig, setGameConfig] = useState<GameConfig>(DefaultGameConfig)
 
   const achievements = useMemo<Achievement[]>(
@@ -95,8 +97,9 @@ function useProvideGame(): GameContext {
         ...a,
         challenge:
           challenges.find(c => c._id === a.challengeId) ?? DummyChallenge,
+        team: teams.find(t => t._id === a.teamId) ?? DummyTeam,
       })),
-    [challenges, rawAchievements],
+    [challenges, rawAchievements, teams],
   )
 
   const surveys = useMemo<Survey[]>(
@@ -107,8 +110,18 @@ function useProvideGame(): GameContext {
           challenges.find(c => c._id === s.challengeId) ?? DummyChallenge,
         achievement:
           achievements.find(a => a._id === s.achievementId) ?? DummyAchievement,
+        team: teams.find(t => t._id === s.teamId) ?? DummyTeam,
       })),
-    [achievements, challenges, rawSurveys],
+    [achievements, challenges, rawSurveys, teams],
+  )
+
+  const rewards = useMemo<Reward[]>(
+    () =>
+      rawRewards.map(r => ({
+        ...r,
+        team: teams.find(t => t._id === r.teamId) ?? DummyTeam,
+      })),
+    [rawRewards, teams],
   )
 
   const messages = useMemo<Message[]>(
@@ -148,7 +161,7 @@ function useProvideGame(): GameContext {
     })
 
     socket.emit('reward:list', (response: Reward[]) => {
-      setRewards(
+      setRawRewards(
         response.map(r => ({ ...r, createdAt: new Date(r.createdAt) })),
       )
       setLoadingState(state => state | GameContextLoadingState.rewards)
@@ -161,7 +174,7 @@ function useProvideGame(): GameContext {
       setLoadingState(state => state | GameContextLoadingState.messages)
     })
 
-    socket.emit('game:teams', (response: string[]) => {
+    socket.emit('game:teams', (response: Team[]) => {
       setTeams([...response])
       setLoadingState(state => state | GameContextLoadingState.teams)
     })
@@ -188,7 +201,7 @@ function useProvideGame(): GameContext {
     })
 
     socket.on('reward:added', (reward: Reward) => {
-      setRewards(r => [
+      setRawRewards(r => [
         { ...reward, createdAt: new Date(reward.createdAt) },
         ...r,
       ])
@@ -210,7 +223,7 @@ function useProvideGame(): GameContext {
     })
 
     socket.on('reward:deleted', (deleted: Reward) => {
-      setRewards(rewards => rewards.filter(r => !(r._id === deleted._id)))
+      setRawRewards(rewards => rewards.filter(r => !(r._id === deleted._id)))
     })
 
     socket.on('game:announcement:made', (message: Message) => {

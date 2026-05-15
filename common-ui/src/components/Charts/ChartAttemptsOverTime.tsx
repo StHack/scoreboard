@@ -41,10 +41,10 @@ type AllowedGroup = (typeof GROUP_OPTIONS)[number]['value']
 
 function groupKey(
   groupBy: AllowedGroup,
-  { challenge, teamname, username }: Attempt,
+  { challenge, team, username }: Attempt,
 ): string {
   return groupBy === 'team'
-    ? `t/${teamname}`
+    ? `t/${team.name}`
     : groupBy === 'challenge'
       ? `c/${challenge.name}`
       : `u/${username}`

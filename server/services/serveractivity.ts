@@ -1,4 +1,4 @@
-import { ServerActivityStatistics } from '@sthack/scoreboard-common'
+import { ServerActivityStatistics, UserRole } from '@sthack/scoreboard-common'
 import { Request } from 'express'
 import { Namespace, Socket } from 'socket.io'
 
@@ -36,13 +36,17 @@ export function getServerActivityStatistics(
 
   for (const [, soc] of playerIo.sockets) {
     const req = soc.request as Request
-    if (!req.user || req.user.team === 'admin') {
+    if (!req.user) {
       continue
     }
 
-    const { username: u, team: t } = req.user
+    const { username: u, teamname: t, roles } = req.user
     const username = `u/${u}`
-    const team = `t/${t}`
+    const team = roles.includes(UserRole.Admin)
+      ? `admin`
+      : t
+        ? `t/${t}`
+        : 'unafilliated'
 
     let teamStat = statistics.teams[team]
     if (!teamStat) {

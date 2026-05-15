@@ -16,7 +16,7 @@ export function ChallengeCard2024({
   ...props
 }: ChallengeCardProps) {
   const { name, img, category, isBroken } = challenge
-  const isSolved = achievements.some(a => a.teamname === currentTeam)
+  const isSolved = achievements.some(a => a.teamId === currentTeam?._id)
   const animationToPlay = isSolved ? 'idle exploded' : 'idle'
   const [initialAnimation] = useState(() => animationToPlay)
 

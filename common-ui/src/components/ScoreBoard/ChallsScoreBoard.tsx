@@ -27,7 +27,7 @@ export function ChallsScoreBoard({
             key={c._id}
             challenge={c}
             score={challsScore[c._id]}
-            currentTeam={challsScore[c._id].achievements[0]?.teamname}
+            currentTeam={challsScore[c._id].achievements[0]?.team}
             onClick={() => onChallengeClick?.(c)}
             size="12"
             // @ts-expect-error not a real one

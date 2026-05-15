@@ -6,12 +6,12 @@ const schema = new Schema<Achievement>(
   {
     challengeId: { type: String, required: true },
     username: { type: String, required: true },
-    teamname: { type: String, required: true },
+    teamId: { type: String, required: true },
   },
   { timestamps: true },
 )
 
-schema.index({ challengeId: 1, teamname: 1 }, { unique: true })
+schema.index({ challengeId: 1, teamId: 1 }, { unique: true })
 
 const AchievementModel = model<Achievement>('Achievement', schema)
 
@@ -34,26 +34,12 @@ export async function listAchievement(): Promise<Achievement[]> {
   return results.map(r => r.toObject(removeMongoProperties))
 }
 
-export async function getAchievementById(
-  achievementId: string,
-): Promise<Achievement | undefined> {
-  const doc = await AchievementModel.findById(achievementId)
-  return doc?.toObject(removeMongoProperties)
-}
-
 export async function getAchievementBySolveIds(
   challengeId: string,
-  teamname: string,
+  teamId: string,
 ): Promise<Achievement | undefined> {
-  const doc = await AchievementModel.findOne({ challengeId, teamname })
+  const doc = await AchievementModel.findOne({ challengeId, teamId })
   return doc?.toObject(removeMongoProperties)
-}
-
-export async function getTeamAchievement(
-  teamname: string,
-): Promise<Achievement[]> {
-  const docs = await AchievementModel.find({ teamname }).sort({ updatedAt: -1 })
-  return docs.map(d => d.toObject(removeMongoProperties))
 }
 
 export async function countChallengeAchievement(
@@ -62,34 +48,12 @@ export async function countChallengeAchievement(
   return await AchievementModel.countDocuments({ challengeId })
 }
 
-export async function getChallengeAchievement(
-  challengeId: string,
-): Promise<Achievement[]> {
-  const docs = await AchievementModel.find({ challengeId }).sort({
-    updatedAt: -1,
-  })
-  return docs.map(d => d.toObject(removeMongoProperties))
-}
-
-export async function getUserAchievement(
-  username: string,
-): Promise<Achievement[]> {
-  const docs = await AchievementModel.find({ username }).sort({ updatedAt: -1 })
-  return docs.map(d => d.toObject(removeMongoProperties))
-}
-
-export async function removeAllTeamAchievement(
-  teamname: string,
-): Promise<void> {
-  await AchievementModel.deleteMany({ teamname })
-}
-
 export async function removeAchievement(
-  teamname: string,
+  teamId: string,
   challengeId: string,
 ): Promise<Achievement | undefined> {
   const deleted = await AchievementModel.findOneAndDelete({
-    teamname,
+    teamId,
     challengeId,
   })
   return deleted?.toObject(removeMongoProperties)

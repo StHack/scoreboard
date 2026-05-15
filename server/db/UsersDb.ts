@@ -1,13 +1,16 @@
-import { CreateUser, User, UserRole } from '@sthack/scoreboard-common'
+import { CreateUser, Player, User, UserRole } from '@sthack/scoreboard-common'
 import { createHash, randomUUID } from 'crypto'
+import debug from 'debug'
 import { model, Schema, ToObjectOptions } from 'mongoose'
-import { removeMongoPropertiesWithOptions } from './main.js'
+import { removeMongoPropertiesWithOptions, ValidationError } from './main.js'
+
+const logger = debug('Db:User')
 
 type DbUser = {
   username: string
   password: string
   salt: string
-  team: string
+  teamId?: string
   roles: UserRole[]
 }
 
@@ -21,7 +24,7 @@ const schema = new Schema<DbUser>({
   },
   password: { type: String, required: true, minlength: 5 },
   salt: { type: String, required: true },
-  team: { type: String, required: true, minlength: 3, maxlength: 42 },
+  teamId: { type: String, required: false },
   roles: {
     type: [String],
     required: true,
@@ -44,43 +47,37 @@ const removeProperties: ToObjectOptions = removeMongoPropertiesWithOptions({
   propsToRemove: ['password', 'salt'],
 })
 
-export async function registerUser(
-  { username, password, team }: CreateUser,
-  maxTeamSize: number,
-): Promise<void> {
+export async function registerUser({
+  username,
+  password,
+}: CreateUser): Promise<void> {
   const salt = randomUUID()
   const hashed = passwordHasher(password, salt)
-
-  const memberCount = await UserModel.countDocuments({ team })
-  validateUser({ username, team })
-
-  if (memberCount >= maxTeamSize) throw new Error('Team is already full')
 
   try {
     const doc = new UserModel({
       username,
       password: hashed,
       salt,
-      team,
-      roles: [UserRole.User, UserRole.Player],
+      roles: [UserRole.User],
     })
 
     await doc.save()
   } catch (error) {
-    // TODO log error
     if (error instanceof global.Error) {
       if (error.name === 'ValidationError') {
-        throw error
+        throw new ValidationError('Some fields are wrong', { cause: error })
       }
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
       if (error.name === 'MongoServerError' && (error as any).code === 11000) {
-        throw new Error('Username already used')
+        throw new ValidationError('Username already used')
       }
     }
 
-    // eslint-disable-next-line @typescript-eslint/only-throw-error
-    throw 'an unexpected error occured'
+    logger('Unexpected error %o', error)
+
+    throw error
   }
 }
 
@@ -110,6 +107,11 @@ export async function getUser(username: string): Promise<User | undefined> {
   return user.toObject(removeProperties)
 }
 
+export async function getTeamPlayers(teamId: string): Promise<User[]> {
+  const users = await UserModel.find({ teamId })
+  return users.map(p => p.toObject(removeProperties))
+}
+
 export async function removeUser(username: string): Promise<void> {
   await UserModel.findOneAndDelete({ username })
 }
@@ -120,17 +122,10 @@ export async function listUser(): Promise<User[]> {
   return users.map(u => u.toObject(removeProperties))
 }
 
-export async function listTeam(): Promise<string[]> {
-  return await UserModel.distinct('team', {
-    team: { $ne: 'admin' },
-  })
-}
-
 export async function updateUser(
   username: string,
-  { team, password, roles }: Partial<DbUser>,
+  { teamId, password, roles }: Partial<DbUser>,
 ): Promise<User> {
-  validateUser({ username, team: team ?? '' })
   if (password) {
     const user = await UserModel.findOne({ username })
 
@@ -143,9 +138,11 @@ export async function updateUser(
     password = passwordHasher(password, user.salt)
   }
 
+  const additional = teamId === '' ? { $unset: { teamId } } : { teamId }
+
   const document = await UserModel.findOneAndUpdate(
     { username },
-    { team, roles, password },
+    { roles, password, ...additional },
     { returnDocument: 'after' },
   )
 
@@ -156,50 +153,4 @@ export async function updateUser(
   }
 
   return document.toObject(removeProperties)
-}
-
-export async function countTeam(): Promise<number> {
-  const result = await UserModel.aggregate()
-    .match({ team: { $ne: 'admin' } })
-    .group({
-      _id: '$team',
-      count: { $sum: 1 },
-    })
-
-  return result.length
-}
-
-const unsafeWords = [
-  '__proto__',
-  'constructor',
-  'prototype',
-  '`',
-  '@everyone',
-  '@here',
-]
-const bannedStartingCharacters = ['@', 'u/', 'u-', 't/', 't-']
-const unauthorizedUsernames = ['admin']
-export function validateUser(user: Omit<CreateUser, 'password'>) {
-  const username = user.username.toLocaleLowerCase()
-  const team = user.team.toLocaleLowerCase()
-
-  for (const unsafeWord of unsafeWords) {
-    if (username.includes(unsafeWord)) throw new Error('Invalid username')
-    if (team.includes(unsafeWord)) throw new Error('Invalid team')
-  }
-
-  for (const bannedStarting of bannedStartingCharacters) {
-    if (username.startsWith(bannedStarting)) {
-      throw new Error('Invalid username - prefix like that is not allowed')
-    }
-    if (team.startsWith(bannedStarting)) {
-      throw new Error('Invalid team - prefix like that is not allowed')
-    }
-  }
-
-  for (const unauthorizedUser of unauthorizedUsernames) {
-    if (username.includes(unauthorizedUser)) {
-      throw new Error('Invalid username - this is an unallowed one')
-    }
-  }
 }

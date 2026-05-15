@@ -1,13 +1,15 @@
-import { ExecutionError, Lock, Redlock } from '@sesamecare-oss/redlock'
 import {
-  CreateUser,
+  isPlayer,
+  schemaCreateUser,
   User as OurUser,
   UserRole,
 } from '@sthack/scoreboard-common'
 import { RedisStore } from 'connect-redis'
-import { getUser, login, registerUser } from 'db/UsersDb.js'
+import { ValidationError } from 'db/main.js'
+import { getTeam } from 'db/TeamDb.js'
+import { getTeamPlayers, getUser, login, registerUser } from 'db/UsersDb.js'
 import debug from 'debug'
-import { Handler, IRouter, json, Request } from 'express'
+import { Handler, IRouter, json, Request, RequestHandler } from 'express'
 import session from 'express-session'
 import { Redis } from 'ioredis'
 import passport from 'passport'
@@ -32,11 +34,9 @@ export function registerAuthentification(
   io: Server,
   serverConfig: ServerConfig,
   sessionRedisClient: Redis,
-  redlock: Redlock,
 ) {
   app.use(sessionMiddleware(sessionRedisClient))
   app.use(json())
-  app.use(passport.initialize())
   app.use(passport.session())
 
   passport.use(
@@ -71,7 +71,23 @@ export function registerAuthentification(
 
   passport.deserializeUser<string>(async (username, done) => {
     const user = await getUser(username)
-    done(null, user ?? false)
+    if (!user) {
+      done(null, false)
+      return
+    }
+
+    if (!isPlayer(user)) {
+      done(null, user)
+      return
+    }
+
+    const team = await getTeam(user.teamId)
+    if (!team) {
+      done(null, user)
+      return
+    }
+
+    done(null, { ...user, teamname: team.name })
   })
 
   app.post('/api/register', async (req, res) => {
@@ -96,44 +112,65 @@ export function registerAuthentification(
       return
     }
 
-    const user = (req.body || {}) as CreateUser
+    const validations = schemaCreateUser.safeParse(req.body || {})
 
-    let lock: Lock | undefined = undefined
-    const lockKey = `register-${user.team}`
+    if (validations.error) {
+      res.status(400).send('Validations error')
+      return
+    }
+
     try {
-      lock = await redlock.acquire([lockKey], 5_000)
-
-      const maxTeamSize = await serverConfig.getTeamSize()
-      await registerUser(user, maxTeamSize)
+      await registerUser(validations.data)
       res.sendStatus(201)
     } catch (error) {
-      if (error instanceof ExecutionError) {
-        res
-          .status(400)
-          .send('You were too fast for your account creation, please retry')
-      } else if (error instanceof Error) {
+      if (error instanceof ValidationError) {
         res.status(400).send(error.message)
       } else {
         logger('an unexpected error occured %o', error)
-        res.status(500).send(error)
+        res.status(500).send('An error happened')
       }
-    } finally {
-      await lock?.release().catch(() => {
-        logger('release of lock %s failed', lockKey)
-      })
     }
   })
 
+  const meHandler: RequestHandler = async (req, res) => {
+    if (!req.user) {
+      res.sendStatus(401)
+      return
+    }
+
+    if (!req.isAuthenticated()) {
+      res.sendStatus(401)
+      return
+    }
+
+    if (!isPlayer(req.user)) {
+      res.send(req.user)
+      return
+    }
+
+    const team = await getTeam(req.user.teamId)
+    if (!team) {
+      res.send(req.user)
+      return
+    }
+
+    const others = await getTeamPlayers(req.user.teamId)
+    team.players = others.filter(isPlayer)
+
+    res.send({
+      ...req.user,
+      team,
+    })
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  app.post('/api/login', passport.authenticate('local'), (req, res) => {
-    res.send(req.user)
-  })
+  app.post('/api/login', passport.authenticate('local'), meHandler)
 
   app.post('/api/logout', (req, res) => {
-    const socketId = req.session.socketId
+    const user = req.user
 
-    if (socketId) {
-      io.in(socketId).disconnectSockets(true)
+    if (user) {
+      io.in(user.username).disconnectSockets(true)
     }
 
     req.logout(() => {
@@ -142,13 +179,7 @@ export function registerAuthentification(
     })
   })
 
-  app.get('/api/me', (req, res) => {
-    if (req.isAuthenticated()) {
-      res.send(req.user)
-    } else {
-      res.sendStatus(401)
-    }
-  })
+  app.get('/api/me', meHandler)
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -172,26 +203,16 @@ export function registerAuthentificationForSocket(
 
   io.on('connect', async socket => {
     const request = socket.request as Request
-    const session = request.session
-    session.socketId = socket.id
-    session.save()
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     await socket.join(request.user!.username)
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    await socket.join(request.user!.team)
   })
-}
-
-declare module 'express-session' {
-  interface SessionData {
-    socketId: string
-  }
 }
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Express {
-    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-    interface User extends OurUser {}
+    interface User extends OurUser {
+      teamname?: string
+    }
   }
 }

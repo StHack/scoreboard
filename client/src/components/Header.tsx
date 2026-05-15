@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { UserRole } from '@sthack/scoreboard-common'
+import { isPlayer, UserRole } from '@sthack/scoreboard-common'
 import { Box, Button, IconLogout, Logo } from '@sthack/scoreboard-ui/components'
 import { useAuth } from 'hooks/useAuthentication'
 import { NavLink } from 'react-router-dom'
@@ -25,7 +25,14 @@ export function Header() {
       </NavLink>
 
       {user && (
-        <GameLink to="/game" label={`${user.username} / ${user.team}`} />
+        <GameLink
+          to="/game"
+          label={
+            isPlayer(user)
+              ? `${user.username} / ${user.team.name}`
+              : user.username
+          }
+        />
       )}
 
       <nav>

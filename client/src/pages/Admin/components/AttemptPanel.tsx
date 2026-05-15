@@ -11,7 +11,7 @@ import { useState } from 'react'
 
 const columns: ColumnDefinition<Attempt>[] = [
   { header: 'Challenge', rowValue: row => row.challenge.name },
-  { header: 'Team', rowValue: row => row.teamname },
+  { header: 'Team', rowValue: row => row.team.name },
   { header: 'User', rowValue: row => row.username },
   { header: 'Attempt', rowValue: row => row.proposal },
   { header: 'Date', rowValue: row => row.createdAt.toLocaleTimeString() },
@@ -36,7 +36,7 @@ export function AttemptPanel() {
         data={attempts.filter(
           a =>
             a.challenge.name.toLowerCase().includes(search) ||
-            a.teamname.toLowerCase().includes(search) ||
+            a.team.name.toLowerCase().includes(search) ||
             a.username.toLowerCase().includes(search) ||
             a.proposal.toLowerCase().includes(search),
         )}

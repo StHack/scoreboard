@@ -4,7 +4,7 @@ import { removeMongoPropertiesWithOptions } from './main.js'
 
 const schema = new Schema<Reward>(
   {
-    teamname: { type: String, required: true },
+    teamId: { type: String, required: true },
     label: { type: String, required: true },
     value: { type: Number, required: true },
   },
@@ -26,17 +26,6 @@ export async function listReward(): Promise<Reward[]> {
   return results.map(r =>
     r.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
   )
-}
-
-export async function getTeamReward(teamname: string): Promise<Reward[]> {
-  const docs = await RewardModel.find({ teamname }).sort({ updatedAt: -1 })
-  return docs.map(d =>
-    d.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
-  )
-}
-
-export async function removeAllTeamReward(teamname: string): Promise<void> {
-  await RewardModel.deleteMany({ teamname })
 }
 
 export async function removeReward(id: string): Promise<Reward | undefined> {

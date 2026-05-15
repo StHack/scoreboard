@@ -1,5 +1,5 @@
 import { DefaultGameConfig, GameConfig } from '@sthack/scoreboard-common'
-import { countTeam } from 'db/UsersDb.js'
+import { countTeam } from 'db/TeamDb.js'
 import { Redis } from 'ioredis'
 
 export class ServerConfig {

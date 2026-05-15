@@ -20,7 +20,7 @@ export function ChallengeCard2021({
     <Card
       openState={isBroken ? 'broken' : 'open'}
       score={score}
-      isSolved={achievements.some(a => a.teamname === currentTeam)}
+      isSolved={achievements.some(a => a.teamId === currentTeam?._id)}
       m="2"
       {...props}
       onClick={() => onClick()}

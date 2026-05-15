@@ -3,7 +3,7 @@ import { listAchievement } from 'db/AchievementDb.js'
 import { listAttemptAfter } from 'db/AttemptDb.js'
 import { listChallenge } from 'db/ChallengeDb.js'
 import { listReward } from 'db/RewardDb.js'
-import { listTeam } from 'db/UsersDb.js'
+import { listTeam } from 'db/TeamDb.js'
 import { IRouter } from 'express'
 import { ServerConfig } from './serverconfig.js'
 
@@ -63,11 +63,13 @@ export function registerCtfTime(app: IRouter, serverConfig: ServerConfig) {
         ? new Date(parseInt(req.query.lastId))
         : new Date(0)
 
-    const [achievements, attempts, challenges] = await Promise.all([
+    const [achievements, attempts, challenges, teams] = await Promise.all([
       listAchievement(),
       listAttemptAfter(since),
       listChallenge(),
+      listTeam(),
     ])
+    const teamsSet = new Map<string, string>(teams.map(t => [t._id, t.name]))
 
     res.send(
       attempts.map(att => ({
@@ -76,14 +78,14 @@ export function registerCtfTime(app: IRouter, serverConfig: ServerConfig) {
         type: achievements.find(
           ach =>
             att.challengeId === ach.challengeId &&
-            att.teamname === ach.teamname &&
+            att.teamId === ach.teamId &&
             att.username === ach.username &&
             att.createdAt.getTime() >= ach.createdAt.getTime() - 100 &&
             att.createdAt.getTime() <= ach.createdAt.getTime(),
         )
           ? 'taskCorrect'
           : 'taskWrong',
-        team: att.teamname,
+        team: teamsSet.get(att.teamId),
         task: challenges.find(c => c._id === att.challengeId)?.name,
       })),
     )

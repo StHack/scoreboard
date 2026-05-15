@@ -21,7 +21,7 @@ export function ChallengeSolverCardPanel({
         <Table
           data={challScore.achievements}
           columns={columns}
-          rowKey={row => row.teamname + row.username}
+          rowKey={row => row.teamId + row.username}
         />
       )}
       {challScore.achievements.length === 0 && (
@@ -36,5 +36,5 @@ export function ChallengeSolverCardPanel({
 export const columns: ColumnDefinition<Achievement>[] = [
   { header: 'Time', rowValue: row => row.createdAt.toLocaleTimeString() },
   { header: 'Player', rowValue: row => row.username },
-  { header: 'Team', rowValue: row => row.teamname },
+  { header: 'Team', rowValue: row => row.team.name },
 ]

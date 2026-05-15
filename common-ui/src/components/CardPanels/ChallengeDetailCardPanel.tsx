@@ -3,6 +3,7 @@ import {
   BaseGameConfig,
   Challenge,
   ChallengeScore,
+  Team,
 } from '@sthack/scoreboard-common'
 import { Box, BoxPanel, IconChallenge } from '@sthack/scoreboard-ui/components'
 import { PropsWithChildren, useMemo } from 'react'
@@ -15,7 +16,7 @@ type ChallengeCardPanelProps = {
   challScore: ChallengeScore
   gameConfig: BaseGameConfig
   disableLink?: boolean
-  currentTeam?: string
+  currentTeam?: Team
   title?: string
 }
 export function ChallengeDetailCardPanel({

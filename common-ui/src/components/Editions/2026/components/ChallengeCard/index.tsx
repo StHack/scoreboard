@@ -15,7 +15,7 @@ export function ChallengeCard2026({
   ...props
 }: ChallengeCardProps) {
   const { name, img, category, isBroken } = challenge
-  const isSolved = achievements.some(a => a.teamname === currentTeam)
+  const isSolved = achievements.some(a => a.teamId === currentTeam?._id)
   const openState: ChallState = isBroken
     ? 'broken'
     : isSolved

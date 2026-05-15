@@ -1,4 +1,4 @@
-import { Challenge, ChallengeScore } from '@sthack/scoreboard-common'
+import { Challenge, ChallengeScore, Team } from '@sthack/scoreboard-common'
 import { JSX } from 'react'
 import { BoxProps } from '../Box'
 import { Icon } from '../Icon'
@@ -6,7 +6,7 @@ import { Icon } from '../Icon'
 export type ChallengeCardProps = {
   challenge: Challenge
   score: ChallengeScore
-  currentTeam?: string
+  currentTeam?: Team
   onClick: () => void
 } & Omit<BoxProps, 'color'>
 

@@ -14,12 +14,6 @@ export function useRegisterForm() {
     required: true,
     disabled: isLoading,
   })
-  const teamField = useField<string>({
-    name: 'team',
-    defaultValue: '',
-    required: true,
-    disabled: isLoading,
-  })
   const passwordField = useField<string>({
     name: 'password',
     defaultValue: '',
@@ -29,7 +23,6 @@ export function useRegisterForm() {
 
   const reset = () => {
     usernameField.reset()
-    teamField.reset()
     passwordField.reset()
   }
 
@@ -40,7 +33,6 @@ export function useRegisterForm() {
 
     const { ok, error } = await register({
       username: usernameField.inputProp.value,
-      team: teamField.inputProp.value,
       password: passwordField.inputProp.value,
     })
 
@@ -59,7 +51,6 @@ export function useRegisterForm() {
       onSubmitCapture: onFormSubmit,
     },
     usernameProps: usernameField.inputProp,
-    teamProps: teamField.inputProp,
     passwordProps: passwordField.inputProp,
     isLoading,
     reset,

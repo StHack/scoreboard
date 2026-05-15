@@ -80,13 +80,16 @@ function useProvideAuth(): AuthContext {
       setUser(undefined)
     },
     logIn: async (username: string, password: string) => {
-      const { ok, error, user } = await login({
+      const { ok, error } = await login({
         username,
         password,
       })
 
       if (ok) {
-        setUser(user)
+        const r = await me()
+        if (r.ok) {
+          setUser(r.user)
+        }
       }
 
       return { ok, error }

@@ -43,7 +43,7 @@ export function App() {
               <Route path="/year/:year" element={<YearLayout />}>
                 <Route index element={<Year />} />
                 <Route path="teams" element={<Teams />} />
-                <Route path="team/:team" element={<TeamDetail />} />
+                <Route path="team/:teamname" element={<TeamDetail />} />
                 <Route path="challenges" element={<Challenges />} />
                 <Route
                   path="challenge/:challengeId"

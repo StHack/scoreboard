@@ -4,6 +4,7 @@ import {
   LabelInput,
   Popup,
   SelectInput,
+  SelectInputValue,
   TextInput,
 } from '@sthack/scoreboard-ui/components'
 import { useField } from '@sthack/scoreboard-ui/hooks'
@@ -18,12 +19,11 @@ export type RewardFormProps = {
 }
 
 export function RewardForm({ onClose }: RewardFormProps) {
-  const { createReward, users } = useAdmin()
+  const { createReward, teams } = useAdmin()
   const { gameConfig } = useGame()
-  const existingTeams = [...new Set(users.map(u => u.team))].sort()
   const ref = useRef<HTMLFormElement>(null)
   const { inputProp: teamProps } = useField<string>({
-    defaultValue: existingTeams[0] ?? '',
+    defaultValue: '',
     disabled: false,
     name: 'team',
     required: true,
@@ -47,9 +47,15 @@ export function RewardForm({ onClose }: RewardFormProps) {
 
   const demoReward: BaseReward = {
     label: labelProps.value,
-    teamname: teamProps.value,
+    teamId: teamProps.value,
     value: valueProps.value,
   }
+  const existingTeams = teams
+    .map<SelectInputValue>(t => ({
+      label: t.name,
+      value: t._id,
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label))
 
   return (
     <Popup

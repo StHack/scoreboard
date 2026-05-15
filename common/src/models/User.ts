@@ -1,14 +1,22 @@
+import { Team } from './Team.js'
+
 export type CreateUser = {
   username: string
   password: string
-  team: string
 }
 
 export type User = {
   username: string
-  team: string
   roles: UserRole[]
 }
+
+export type Player = User & {
+  teamId: string
+  team: Team
+}
+
+export const isPlayer = (user: User): user is Player =>
+  'teamId' in user && user.roles.includes(UserRole.Player)
 
 export type LoginCredentials = {
   username: string

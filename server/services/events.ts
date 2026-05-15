@@ -1,16 +1,16 @@
 import {
   Achievement,
-  BaseAttempt,
+  Attempt,
   Challenge,
   computeGameScore,
   computeRewardScore,
   Reward,
-  TeamScore,
+  Team,
 } from '@sthack/scoreboard-common'
 import { listAchievement } from 'db/AchievementDb.js'
 import { listChallenge } from 'db/ChallengeDb.js'
 import { listReward } from 'db/RewardDb.js'
-import { listTeam } from 'db/UsersDb.js'
+import { listTeam } from 'db/TeamDb.js'
 import debug from 'debug'
 import { Namespace } from 'socket.io'
 import { setTimeout } from 'timers/promises'
@@ -98,7 +98,7 @@ async function gameEnd(options: {
           { name: '🏆', maxLength: 2, extract: ts => ts.rewards.length },
           { name: '💥', maxLength: 2, extract: ts => ts.breakthroughs.length },
           { name: '🚩', maxLength: 3, extract: ts => ts.solved.length },
-          { name: 'Team', extract: ts => ts.team },
+          { name: 'Team', extract: ts => ts.team.name },
         ]
       : [
           { name: '#', maxLength: 3, extract: ts => ts.rank },
@@ -106,7 +106,7 @@ async function gameEnd(options: {
           { name: '🏆', maxLength: 2, extract: ts => ts.rewards.length },
           { name: '💥', maxLength: 2, extract: ts => ts.breakthroughs.length },
           { name: '🚩', maxLength: 3, extract: ts => ts.solved.length },
-          { name: 'Team', extract: ts => ts.team },
+          { name: 'Team', extract: ts => ts.team.name },
         ],
     gameScore.teamsScore,
   )
@@ -177,7 +177,11 @@ async function reward({
 }): Promise<string> {
   const gameConfig = await serverConfig.getGameConfig()
   const currentValue = computeRewardScore(reward, gameConfig)
-  const { teamname, value, label } = reward
+  const {
+    team: { name: teamname },
+    value,
+    label,
+  } = reward
   const baseWording = `## 🏆 Reward \`${label}\` has been given!`
   return gameConfig.isNoCompetition
     ? baseWording
@@ -188,17 +192,20 @@ function solve({
   isBreakthrough,
   achievement,
   challenge,
+  team,
 }: {
   isBreakthrough: boolean
   achievement: Achievement
   challenge: Challenge
+  team: Team
 }): Promise<string> {
   if (!isBreakthrough) {
     return Promise.resolve('')
   }
 
-  const { username, teamname } = achievement
+  const { username } = achievement
   const { name } = challenge
+  const { name: teamname } = team
 
   return Promise.resolve(
     `## 💥 Breakthrough on challenge \`${name}\`!\n\`${username}\` from team \`${teamname}\` just solved it`,
@@ -206,14 +213,15 @@ function solve({
 }
 
 function attempt({
-  attempt,
-  challenge: { name },
+  attempt: {
+    challenge: { name: challname },
+    team: { name: teamname },
+  },
 }: {
-  attempt: BaseAttempt
-  challenge: Challenge
+  attempt: Attempt
 }): Promise<string> {
   return Promise.resolve(
-    `## ⚠️ Bruteforce attempts on challenge \`${name}\`!\nTeam \`${attempt.teamname}\` has reach the warning threshold of attempts made`,
+    `## ⚠️ Bruteforce attempts on challenge \`${challname}\`!\nTeam \`${teamname}\` has reach the warning threshold of attempts made`,
   )
 }
 

@@ -41,7 +41,7 @@ export function ChallengeFlagCardPanel({
   })
 
   const myTeamSolved = teamScore
-    ? achievements.find(a => a.teamname === teamScore.team)
+    ? achievements.find(a => a.teamId === teamScore.team._id)
     : false
 
   return (

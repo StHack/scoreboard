@@ -13,7 +13,7 @@ import { useState } from 'react'
 
 const columns: ColumnDefinition<Survey>[] = [
   { header: 'Challenge', rowValue: row => row.challenge.name },
-  { header: 'Team', rowValue: row => row.teamname },
+  { header: 'Team', rowValue: row => row.team.name },
   { header: 'User', rowValue: row => row.username },
   { header: 'Satis.', rowValue: row => row.satisfaction.toString() },
   { header: 'AI Usage', rowValue: row => row.aiUsage.toString() },
@@ -42,11 +42,11 @@ export function SurveyPanel() {
       <Table
         tableLayout="auto"
         data={surveys.filter(
-          a =>
-            a.challenge.name.toLowerCase().includes(search) ||
-            a.teamname.toLowerCase().includes(search) ||
-            a.username.toLowerCase().includes(search) ||
-            a.feedback?.toLowerCase().includes(search),
+          s =>
+            s.challenge.name.toLowerCase().includes(search) ||
+            s.team.name.toLowerCase().includes(search) ||
+            s.username.toLowerCase().includes(search) ||
+            s.feedback?.toLowerCase().includes(search),
         )}
         rowKey={row => row._id}
         columns={columns}
@@ -72,7 +72,7 @@ function SurveyActions({ row }: SurveyActionsProps) {
         if (
           confirm(
             `Are you sure to delete Survey:\n\n${row.challenge.name}\n${
-              row.teamname
+              row.team.name
             }\n${row.username}\n${row.createdAt.toISOString()}`,
           )
         ) {

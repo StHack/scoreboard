@@ -1,5 +1,6 @@
 import { Achievement } from './Achievement.js'
 import { Challenge } from './Challenge.js'
+import { Team } from './Team.js'
 
 export type BaseSurvey = {
   satisfaction: number
@@ -13,7 +14,8 @@ export type Survey = BaseSurvey & {
 
   challengeId: string
   username: string
-  teamname: string
+  teamId: string
+  team: Team
 
   challenge: Challenge
   achievement: Achievement

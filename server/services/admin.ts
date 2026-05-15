@@ -6,6 +6,7 @@ import {
   CallbackOrError,
   Challenge,
   FileContent,
+  FullTeam,
   Reward,
   ServerActivityStatistics,
   Survey,
@@ -35,6 +36,7 @@ import {
   removeSurveyByAchievementId,
   removeSurveyById,
 } from 'db/SurveyDb.js'
+import { getTeam, listTeam } from 'db/TeamDb.js'
 import { listUser, removeUser, updateUser } from 'db/UsersDb.js'
 import debug from 'debug'
 import { Request } from 'express'
@@ -131,11 +133,19 @@ export function registerAdminNamespace(
       'reward:actions:create',
       async (reward: BaseReward, callback: CallbackOrError<Reward>) => {
         try {
+          const team = await getTeam(reward.teamId)
+          if (!team) {
+            callback({ error: 'invalid teamId' })
+            return
+          }
+
           const rewardCreated = await createReward(reward)
           callback(rewardCreated)
           gameIo.emit('reward:added', rewardCreated)
+
+          rewardCreated.team = team
           await emitEventLog(gameIo, 'reward:added', {
-            message: `A reward has been given to team "${rewardCreated.teamname}" for ${rewardCreated.value.toString()} points`,
+            message: `A reward has been given to team "${team.name}" for ${rewardCreated.value.toString()} points`,
             reward: rewardCreated,
             serverConfig,
           })
@@ -319,8 +329,8 @@ export function registerAdminNamespace(
 
     adminSocket.on(
       'users:actions:changeTeam',
-      async (username: string, team: string, callback: Callback<User>) => {
-        const user = await updateUser(username, { team })
+      async (username: string, teamId: string, callback: Callback<User>) => {
+        const user = await updateUser(username, { teamId })
         callback(user)
       },
     )
@@ -339,7 +349,7 @@ export function registerAdminNamespace(
         const user = roles.includes(UserRole.Admin)
           ? await updateUser(username, {
               roles: roles.filter(r => r !== UserRole.Player),
-              team: 'admin',
+              teamId: '',
             })
           : await updateUser(username, { roles })
 
@@ -359,6 +369,11 @@ export function registerAdminNamespace(
     )
 
     adminSocket.on('users:actions:logout', logout)
+
+    adminSocket.on('teams:list', async (callback: Callback<FullTeam[]>) => {
+      const teams = await listTeam({ includeJoinToken: true })
+      callback(teams)
+    })
 
     adminSocket.on(
       'achievement:actions:delete',

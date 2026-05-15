@@ -4,7 +4,6 @@
       "$oid": "6169e0557cb509a23c9035cf"
     },
     "username": "melsius",
-    "teamname": "RootDuRhum3",
     "createdAt": {
       "$date": "2021-10-15T20:11:01.711Z"
     },
@@ -12,14 +11,14 @@
       "$date": "2021-10-15T20:11:01.711Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a04743764760742423538a1"
   },
   {
     "_id": {
       "$oid": "6169e05e7cb509a23c90363e"
     },
     "username": "Nicolas",
-    "teamname": "RootDuRhum3",
     "createdAt": {
       "$date": "2021-10-15T20:11:10.259Z"
     },
@@ -27,14 +26,14 @@
       "$date": "2021-10-15T20:11:10.259Z"
     },
     "__v": 0,
-    "challengeId": "6169d62135b68ab263388f09"
+    "challengeId": "6169d62135b68ab263388f09",
+    "teamId": "6a04743764760742423538a1"
   },
   {
     "_id": {
       "$oid": "6169e0637cb509a23c903657"
     },
     "username": "Nicolas",
-    "teamname": "RootDuRhum3",
     "createdAt": {
       "$date": "2021-10-15T20:11:15.174Z"
     },
@@ -42,14 +41,14 @@
       "$date": "2021-10-15T20:11:15.174Z"
     },
     "__v": 0,
-    "challengeId": "6169d5f735b68ab263388ee1"
+    "challengeId": "6169d5f735b68ab263388ee1",
+    "teamId": "6a04743764760742423538a1"
   },
   {
     "_id": {
       "$oid": "6169e1867cb509a23c903808"
     },
     "username": "luminouw",
-    "teamname": "ADACTF",
     "createdAt": {
       "$date": "2021-10-15T20:16:06.842Z"
     },
@@ -57,14 +56,14 @@
       "$date": "2021-10-15T20:16:06.842Z"
     },
     "__v": 0,
-    "challengeId": "6169d65b35b68ab263388f78"
+    "challengeId": "6169d65b35b68ab263388f78",
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
       "$oid": "6169e2257cb509a23c9038be"
     },
     "username": "Headorteil",
-    "teamname": "Login Sécurité",
     "createdAt": {
       "$date": "2021-10-15T20:18:45.876Z"
     },
@@ -72,14 +71,14 @@
       "$date": "2021-10-15T20:18:45.876Z"
     },
     "__v": 0,
-    "challengeId": "6169d96d35b68ab263389201"
+    "challengeId": "6169d96d35b68ab263389201",
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
       "$oid": "6169e2b07cb509a23c90393f"
     },
     "username": "hessman",
-    "teamname": "Les Pires Hat",
     "createdAt": {
       "$date": "2021-10-15T20:21:04.431Z"
     },
@@ -87,14 +86,14 @@
       "$date": "2021-10-15T20:21:04.431Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a0474376476074242353899"
   },
   {
     "_id": {
       "$oid": "6169e2bb7cb509a23c903961"
     },
     "username": "phantasmthewhite",
-    "teamname": "ADACTF",
     "createdAt": {
       "$date": "2021-10-15T20:21:15.113Z"
     },
@@ -102,14 +101,14 @@
       "$date": "2021-10-15T20:21:15.113Z"
     },
     "__v": 0,
-    "challengeId": "6169d62135b68ab263388f09"
+    "challengeId": "6169d62135b68ab263388f09",
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
       "$oid": "6169e2e07cb509a23c903988"
     },
     "username": "phantasmthewhite",
-    "teamname": "ADACTF",
     "createdAt": {
       "$date": "2021-10-15T20:21:52.086Z"
     },
@@ -117,14 +116,14 @@
       "$date": "2021-10-15T20:21:52.086Z"
     },
     "__v": 0,
-    "challengeId": "6169d5f735b68ab263388ee1"
+    "challengeId": "6169d5f735b68ab263388ee1",
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
       "$oid": "6169e3967cb509a23c903a3a"
     },
     "username": "melsius",
-    "teamname": "RootDuRhum3",
     "createdAt": {
       "$date": "2021-10-15T20:24:54.362Z"
     },
@@ -132,14 +131,14 @@
       "$date": "2021-10-15T20:24:54.362Z"
     },
     "__v": 0,
-    "challengeId": "6169ca2b35b68ab26338862c"
+    "challengeId": "6169ca2b35b68ab26338862c",
+    "teamId": "6a04743764760742423538a1"
   },
   {
     "_id": {
       "$oid": "6169e3e47cb509a23c903a81"
     },
     "username": "Nicolas",
-    "teamname": "RootDuRhum3",
     "createdAt": {
       "$date": "2021-10-15T20:26:12.303Z"
     },
@@ -147,14 +146,14 @@
       "$date": "2021-10-15T20:26:12.303Z"
     },
     "__v": 0,
-    "challengeId": "6169d65b35b68ab263388f78"
+    "challengeId": "6169d65b35b68ab263388f78",
+    "teamId": "6a04743764760742423538a1"
   },
   {
     "_id": {
       "$oid": "6169e5237cb509a23c903b35"
     },
     "username": "louisl",
-    "teamname": "cyber-bougie",
     "createdAt": {
       "$date": "2021-10-15T20:31:31.852Z"
     },
@@ -162,14 +161,14 @@
       "$date": "2021-10-15T20:31:31.852Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a04743764760742423538a9"
   },
   {
     "_id": {
       "$oid": "6169e5d17cb509a23c903ba6"
     },
     "username": "vdehors",
-    "teamname": "Synacktiv",
     "createdAt": {
       "$date": "2021-10-15T20:34:25.464Z"
     },
@@ -177,14 +176,14 @@
       "$date": "2021-10-15T20:34:25.464Z"
     },
     "__v": 0,
-    "challengeId": "6169d5f735b68ab263388ee1"
+    "challengeId": "6169d5f735b68ab263388ee1",
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
       "$oid": "6169e5ff7cb509a23c903bbc"
     },
     "username": "vdehors",
-    "teamname": "Synacktiv",
     "createdAt": {
       "$date": "2021-10-15T20:35:11.009Z"
     },
@@ -192,14 +191,14 @@
       "$date": "2021-10-15T20:35:11.009Z"
     },
     "__v": 0,
-    "challengeId": "6169d62135b68ab263388f09"
+    "challengeId": "6169d62135b68ab263388f09",
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
       "$oid": "6169e6597cb509a23c903be4"
     },
     "username": "vdehors",
-    "teamname": "Synacktiv",
     "createdAt": {
       "$date": "2021-10-15T20:36:41.290Z"
     },
@@ -207,14 +206,14 @@
       "$date": "2021-10-15T20:36:41.290Z"
     },
     "__v": 0,
-    "challengeId": "6169d65b35b68ab263388f78"
+    "challengeId": "6169d65b35b68ab263388f78",
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
       "$oid": "6169e7aa7cb509a23c903c80"
     },
     "username": "wmamba",
-    "teamname": "Offsex",
     "createdAt": {
       "$date": "2021-10-15T20:42:18.199Z"
     },
@@ -222,14 +221,14 @@
       "$date": "2021-10-15T20:42:18.199Z"
     },
     "__v": 0,
-    "challengeId": "6169ca2b35b68ab26338862c"
+    "challengeId": "6169ca2b35b68ab26338862c",
+    "teamId": "6a047437647607424235389d"
   },
   {
     "_id": {
       "$oid": "6169e8f07cb509a23c903dd7"
     },
     "username": "3lDiDi",
-    "teamname": "Offsex",
     "createdAt": {
       "$date": "2021-10-15T20:47:44.173Z"
     },
@@ -237,14 +236,14 @@
       "$date": "2021-10-15T20:47:44.173Z"
     },
     "__v": 0,
-    "challengeId": "6169d5f735b68ab263388ee1"
+    "challengeId": "6169d5f735b68ab263388ee1",
+    "teamId": "6a047437647607424235389d"
   },
   {
     "_id": {
       "$oid": "6169e93685d880d5b5066dc4"
     },
     "username": "Karzemrok",
-    "teamname": "ZenSec",
     "createdAt": {
       "$date": "2021-10-15T20:48:54.351Z"
     },
@@ -252,14 +251,14 @@
       "$date": "2021-10-15T20:48:54.351Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a04743764760742423538a7"
   },
   {
     "_id": {
       "$oid": "6169e93a85d880d5b5066dc9"
     },
     "username": "melsius",
-    "teamname": "RootDuRhum3",
     "createdAt": {
       "$date": "2021-10-15T20:48:58.526Z"
     },
@@ -267,14 +266,14 @@
       "$date": "2021-10-15T20:48:58.526Z"
     },
     "__v": 0,
-    "challengeId": "6169d96d35b68ab263389201"
+    "challengeId": "6169d96d35b68ab263389201",
+    "teamId": "6a04743764760742423538a1"
   },
   {
     "_id": {
       "$oid": "6169ea0785d880d5b5066eac"
     },
     "username": "wawdsa",
-    "teamname": "Euskaldunh4ck",
     "createdAt": {
       "$date": "2021-10-15T20:52:23.420Z"
     },
@@ -282,14 +281,14 @@
       "$date": "2021-10-15T20:52:23.420Z"
     },
     "__v": 0,
-    "challengeId": "6169ca2b35b68ab26338862c"
+    "challengeId": "6169ca2b35b68ab26338862c",
+    "teamId": "6a0474376476074242353896"
   },
   {
     "_id": {
       "$oid": "6169eb4b85d880d5b5067082"
     },
     "username": "Headorteil",
-    "teamname": "Login Sécurité",
     "createdAt": {
       "$date": "2021-10-15T20:57:47.840Z"
     },
@@ -297,14 +296,14 @@
       "$date": "2021-10-15T20:57:47.840Z"
     },
     "__v": 0,
-    "challengeId": "6169d5f735b68ab263388ee1"
+    "challengeId": "6169d5f735b68ab263388ee1",
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
       "$oid": "6169ec3b85d880d5b5067150"
     },
     "username": "Walleza",
-    "teamname": "Sinactive",
     "createdAt": {
       "$date": "2021-10-15T21:01:47.833Z"
     },
@@ -312,14 +311,14 @@
       "$date": "2021-10-15T21:01:47.833Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
       "$oid": "6169ec7585d880d5b5067160"
     },
     "username": "3lDiDi",
-    "teamname": "Offsex",
     "createdAt": {
       "$date": "2021-10-15T21:02:45.007Z"
     },
@@ -327,14 +326,14 @@
       "$date": "2021-10-15T21:02:45.007Z"
     },
     "__v": 0,
-    "challengeId": "6169d65b35b68ab263388f78"
+    "challengeId": "6169d65b35b68ab263388f78",
+    "teamId": "6a047437647607424235389d"
   },
   {
     "_id": {
       "$oid": "6169ed5585d880d5b50671c4"
     },
     "username": "melsius",
-    "teamname": "RootDuRhum3",
     "createdAt": {
       "$date": "2021-10-15T21:06:29.154Z"
     },
@@ -342,14 +341,14 @@
       "$date": "2021-10-15T21:06:29.154Z"
     },
     "__v": 0,
-    "challengeId": "6169c3a235b68ab263388515"
+    "challengeId": "6169c3a235b68ab263388515",
+    "teamId": "6a04743764760742423538a1"
   },
   {
     "_id": {
       "$oid": "6169edd585d880d5b50671f4"
     },
     "username": "vulcainreo",
-    "teamname": "LaPiraterie",
     "createdAt": {
       "$date": "2021-10-15T21:08:37.733Z"
     },
@@ -357,14 +356,14 @@
       "$date": "2021-10-15T21:08:37.733Z"
     },
     "__v": 0,
-    "challengeId": "6169d5f735b68ab263388ee1"
+    "challengeId": "6169d5f735b68ab263388ee1",
+    "teamId": "6a0474376476074242353898"
   },
   {
     "_id": {
       "$oid": "6169ef2585d880d5b50672a1"
     },
     "username": "Walleza",
-    "teamname": "Sinactive",
     "createdAt": {
       "$date": "2021-10-15T21:14:13.782Z"
     },
@@ -372,14 +371,14 @@
       "$date": "2021-10-15T21:14:13.782Z"
     },
     "__v": 0,
-    "challengeId": "6169ca2b35b68ab26338862c"
+    "challengeId": "6169ca2b35b68ab26338862c",
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
       "$oid": "6169efa385d880d5b50672f2"
     },
     "username": "bak__",
-    "teamname": "Synacktiv",
     "createdAt": {
       "$date": "2021-10-15T21:16:19.156Z"
     },
@@ -387,14 +386,14 @@
       "$date": "2021-10-15T21:16:19.156Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
       "$oid": "6169f1b585d880d5b5067484"
     },
     "username": "Headorteil",
-    "teamname": "Login Sécurité",
     "createdAt": {
       "$date": "2021-10-15T21:25:09.847Z"
     },
@@ -402,14 +401,14 @@
       "$date": "2021-10-15T21:25:09.847Z"
     },
     "__v": 0,
-    "challengeId": "6169d62135b68ab263388f09"
+    "challengeId": "6169d62135b68ab263388f09",
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
       "$oid": "6169f2a685d880d5b5067581"
     },
     "username": "bak__",
-    "teamname": "Synacktiv",
     "createdAt": {
       "$date": "2021-10-15T21:29:10.615Z"
     },
@@ -417,14 +416,14 @@
       "$date": "2021-10-15T21:29:10.615Z"
     },
     "__v": 0,
-    "challengeId": "6169d63735b68ab263388f21"
+    "challengeId": "6169d63735b68ab263388f21",
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
       "$oid": "6169f2ad85d880d5b506759d"
     },
     "username": "DSpiricate",
-    "teamname": "Sinactive",
     "createdAt": {
       "$date": "2021-10-15T21:29:17.627Z"
     },
@@ -432,14 +431,14 @@
       "$date": "2021-10-15T21:29:17.627Z"
     },
     "__v": 0,
-    "challengeId": "6169c36435b68ab263388507"
+    "challengeId": "6169c36435b68ab263388507",
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
       "$oid": "6169f2b485d880d5b50675a9"
     },
     "username": "g0h4n",
-    "teamname": "PinkyUnicorn",
     "createdAt": {
       "$date": "2021-10-15T21:29:24.183Z"
     },
@@ -447,14 +446,14 @@
       "$date": "2021-10-15T21:29:24.183Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a047437647607424235389e"
   },
   {
     "_id": {
       "$oid": "6169f42e85d880d5b506768c"
     },
     "username": "Grobatow",
-    "teamname": "ez2pwn",
     "createdAt": {
       "$date": "2021-10-15T21:35:42.215Z"
     },
@@ -462,14 +461,14 @@
       "$date": "2021-10-15T21:35:42.215Z"
     },
     "__v": 0,
-    "challengeId": "6169c3a235b68ab263388515"
+    "challengeId": "6169c3a235b68ab263388515",
+    "teamId": "6a04743764760742423538ab"
   },
   {
     "_id": {
       "$oid": "6169f49785d880d5b50676d2"
     },
     "username": "3lDiDi",
-    "teamname": "Offsex",
     "createdAt": {
       "$date": "2021-10-15T21:37:27.873Z"
     },
@@ -477,14 +476,14 @@
       "$date": "2021-10-15T21:37:27.873Z"
     },
     "__v": 0,
-    "challengeId": "6169d62135b68ab263388f09"
+    "challengeId": "6169d62135b68ab263388f09",
+    "teamId": "6a047437647607424235389d"
   },
   {
     "_id": {
       "$oid": "6169f51785d880d5b5067723"
     },
     "username": "qde-1",
-    "teamname": "RootDuRhum1",
     "createdAt": {
       "$date": "2021-10-15T21:39:35.524Z"
     },
@@ -492,14 +491,14 @@
       "$date": "2021-10-15T21:39:35.524Z"
     },
     "__v": 0,
-    "challengeId": "6169d5f735b68ab263388ee1"
+    "challengeId": "6169d5f735b68ab263388ee1",
+    "teamId": "6a047437647607424235389f"
   },
   {
     "_id": {
       "$oid": "6169f53485d880d5b5067758"
     },
     "username": "poly31",
-    "teamname": "Synacktiv",
     "createdAt": {
       "$date": "2021-10-15T21:40:04.813Z"
     },
@@ -507,14 +506,14 @@
       "$date": "2021-10-15T21:40:04.813Z"
     },
     "__v": 0,
-    "challengeId": "6169d28235b68ab263388c00"
+    "challengeId": "6169d28235b68ab263388c00",
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
       "$oid": "6169f59885d880d5b50677a2"
     },
     "username": "jambon69",
-    "teamname": "Login Sécurité",
     "createdAt": {
       "$date": "2021-10-15T21:41:44.635Z"
     },
@@ -522,14 +521,14 @@
       "$date": "2021-10-15T21:41:44.635Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
       "$oid": "6169f60785d880d5b50677be"
     },
     "username": "Nicolas",
-    "teamname": "RootDuRhum3",
     "createdAt": {
       "$date": "2021-10-15T21:43:35.609Z"
     },
@@ -537,14 +536,14 @@
       "$date": "2021-10-15T21:43:35.609Z"
     },
     "__v": 0,
-    "challengeId": "6169d63735b68ab263388f21"
+    "challengeId": "6169d63735b68ab263388f21",
+    "teamId": "6a04743764760742423538a1"
   },
   {
     "_id": {
       "$oid": "6169f73685d880d5b506783d"
     },
     "username": "lorenzo",
-    "teamname": "Sinactive",
     "createdAt": {
       "$date": "2021-10-15T21:48:38.566Z"
     },
@@ -552,14 +551,14 @@
       "$date": "2021-10-15T21:48:38.566Z"
     },
     "__v": 0,
-    "challengeId": "6169c53335b68ab26338855a"
+    "challengeId": "6169c53335b68ab26338855a",
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
       "$oid": "6169f77185d880d5b5067864"
     },
     "username": "Hackdaddy",
-    "teamname": "Les Pires Hat",
     "createdAt": {
       "$date": "2021-10-15T21:49:37.451Z"
     },
@@ -567,14 +566,14 @@
       "$date": "2021-10-15T21:49:37.451Z"
     },
     "__v": 0,
-    "challengeId": "6169c68435b68ab263388598"
+    "challengeId": "6169c68435b68ab263388598",
+    "teamId": "6a0474376476074242353899"
   },
   {
     "_id": {
       "$oid": "6169f82385d880d5b50678d0"
     },
     "username": "ALOOO",
-    "teamname": "RootDuRhum2",
     "createdAt": {
       "$date": "2021-10-15T21:52:35.113Z"
     },
@@ -582,14 +581,14 @@
       "$date": "2021-10-15T21:52:35.113Z"
     },
     "__v": 0,
-    "challengeId": "6169d5f735b68ab263388ee1"
+    "challengeId": "6169d5f735b68ab263388ee1",
+    "teamId": "6a04743764760742423538a0"
   },
   {
     "_id": {
       "$oid": "6169f86385d880d5b50678d7"
     },
     "username": "Headorteil",
-    "teamname": "Login Sécurité",
     "createdAt": {
       "$date": "2021-10-15T21:53:39.429Z"
     },
@@ -597,14 +596,14 @@
       "$date": "2021-10-15T21:53:39.429Z"
     },
     "__v": 0,
-    "challengeId": "6169d63735b68ab263388f21"
+    "challengeId": "6169d63735b68ab263388f21",
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
       "$oid": "6169f8a385d880d5b50678f2"
     },
     "username": "vulcainreo",
-    "teamname": "LaPiraterie",
     "createdAt": {
       "$date": "2021-10-15T21:54:43.224Z"
     },
@@ -612,14 +611,14 @@
       "$date": "2021-10-15T21:54:43.224Z"
     },
     "__v": 0,
-    "challengeId": "6169d62135b68ab263388f09"
+    "challengeId": "6169d62135b68ab263388f09",
+    "teamId": "6a0474376476074242353898"
   },
   {
     "_id": {
       "$oid": "6169f8f685d880d5b5067917"
     },
     "username": "Karzemrok",
-    "teamname": "ZenSec",
     "createdAt": {
       "$date": "2021-10-15T21:56:06.566Z"
     },
@@ -627,14 +626,14 @@
       "$date": "2021-10-15T21:56:06.566Z"
     },
     "__v": 0,
-    "challengeId": "6169ebd485d880d5b5067117"
+    "challengeId": "6169ebd485d880d5b5067117",
+    "teamId": "6a04743764760742423538a7"
   },
   {
     "_id": {
       "$oid": "6169fa7c85d880d5b50679ca"
     },
     "username": "trgfx",
-    "teamname": "Tourist'hack",
     "createdAt": {
       "$date": "2021-10-15T22:02:36.017Z"
     },
@@ -642,14 +641,14 @@
       "$date": "2021-10-15T22:02:36.017Z"
     },
     "__v": 0,
-    "challengeId": "6169d5f735b68ab263388ee1"
+    "challengeId": "6169d5f735b68ab263388ee1",
+    "teamId": "6a04743764760742423538a6"
   },
   {
     "_id": {
       "$oid": "6169fab485d880d5b5067a01"
     },
     "username": "qde-1",
-    "teamname": "RootDuRhum1",
     "createdAt": {
       "$date": "2021-10-15T22:03:32.105Z"
     },
@@ -657,14 +656,14 @@
       "$date": "2021-10-15T22:03:32.105Z"
     },
     "__v": 0,
-    "challengeId": "6169d65b35b68ab263388f78"
+    "challengeId": "6169d65b35b68ab263388f78",
+    "teamId": "6a047437647607424235389f"
   },
   {
     "_id": {
       "$oid": "6169fb8585d880d5b5067a79"
     },
     "username": "vulcainreo",
-    "teamname": "LaPiraterie",
     "createdAt": {
       "$date": "2021-10-15T22:07:01.300Z"
     },
@@ -672,14 +671,14 @@
       "$date": "2021-10-15T22:07:01.300Z"
     },
     "__v": 0,
-    "challengeId": "6169d63735b68ab263388f21"
+    "challengeId": "6169d63735b68ab263388f21",
+    "teamId": "6a0474376476074242353898"
   },
   {
     "_id": {
       "$oid": "6169fbb085d880d5b5067ab0"
     },
     "username": "Nanakix",
-    "teamname": "Sthack Frites",
     "createdAt": {
       "$date": "2021-10-15T22:07:44.618Z"
     },
@@ -687,14 +686,14 @@
       "$date": "2021-10-15T22:07:44.618Z"
     },
     "__v": 0,
-    "challengeId": "6169ca2b35b68ab26338862c"
+    "challengeId": "6169ca2b35b68ab26338862c",
+    "teamId": "6a04743764760742423538a4"
   },
   {
     "_id": {
       "$oid": "6169fd0f85d880d5b5067c4d"
     },
     "username": "Headorteil",
-    "teamname": "Login Sécurité",
     "createdAt": {
       "$date": "2021-10-15T22:13:35.807Z"
     },
@@ -702,14 +701,14 @@
       "$date": "2021-10-15T22:13:35.807Z"
     },
     "__v": 0,
-    "challengeId": "6169d65b35b68ab263388f78"
+    "challengeId": "6169d65b35b68ab263388f78",
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
       "$oid": "6169fe5985d880d5b5067cf0"
     },
     "username": "vdehors",
-    "teamname": "Synacktiv",
     "createdAt": {
       "$date": "2021-10-15T22:19:05.875Z"
     },
@@ -717,14 +716,14 @@
       "$date": "2021-10-15T22:19:05.875Z"
     },
     "__v": 0,
-    "challengeId": "6169ca2b35b68ab26338862c"
+    "challengeId": "6169ca2b35b68ab26338862c",
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
       "$oid": "6169fe6285d880d5b5067cf6"
     },
     "username": "3lDiDi",
-    "teamname": "Offsex",
     "createdAt": {
       "$date": "2021-10-15T22:19:14.106Z"
     },
@@ -732,14 +731,14 @@
       "$date": "2021-10-15T22:19:14.106Z"
     },
     "__v": 0,
-    "challengeId": "6169d63735b68ab263388f21"
+    "challengeId": "6169d63735b68ab263388f21",
+    "teamId": "6a047437647607424235389d"
   },
   {
     "_id": {
       "$oid": "6169ff9285d880d5b5067da1"
     },
     "username": "ALOOO",
-    "teamname": "RootDuRhum2",
     "createdAt": {
       "$date": "2021-10-15T22:24:18.511Z"
     },
@@ -747,14 +746,14 @@
       "$date": "2021-10-15T22:24:18.511Z"
     },
     "__v": 0,
-    "challengeId": "6169d65b35b68ab263388f78"
+    "challengeId": "6169d65b35b68ab263388f78",
+    "teamId": "6a04743764760742423538a0"
   },
   {
     "_id": {
       "$oid": "616a009385d880d5b5067e1b"
     },
     "username": "kZkZoo",
-    "teamname": "ZenSec",
     "createdAt": {
       "$date": "2021-10-15T22:28:35.508Z"
     },
@@ -762,14 +761,14 @@
       "$date": "2021-10-15T22:28:35.508Z"
     },
     "__v": 0,
-    "challengeId": "6169c3a235b68ab263388515"
+    "challengeId": "6169c3a235b68ab263388515",
+    "teamId": "6a04743764760742423538a7"
   },
   {
     "_id": {
       "$oid": "616a00b685d880d5b5067e31"
     },
     "username": "Bdenneu",
-    "teamname": "Login Sécurité",
     "createdAt": {
       "$date": "2021-10-15T22:29:10.018Z"
     },
@@ -777,14 +776,14 @@
       "$date": "2021-10-15T22:29:10.018Z"
     },
     "__v": 0,
-    "challengeId": "6169ca2b35b68ab26338862c"
+    "challengeId": "6169ca2b35b68ab26338862c",
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
       "$oid": "616a031785d880d5b5068009"
     },
     "username": "NorthBlue333",
-    "teamname": "Les Pires Hat",
     "createdAt": {
       "$date": "2021-10-15T22:39:19.772Z"
     },
@@ -792,14 +791,14 @@
       "$date": "2021-10-15T22:39:19.772Z"
     },
     "__v": 0,
-    "challengeId": "6169ca2b35b68ab26338862c"
+    "challengeId": "6169ca2b35b68ab26338862c",
+    "teamId": "6a0474376476074242353899"
   },
   {
     "_id": {
       "$oid": "616a036a85d880d5b5068056"
     },
     "username": "Grominet",
-    "teamname": "Tourist'hack",
     "createdAt": {
       "$date": "2021-10-15T22:40:42.416Z"
     },
@@ -807,14 +806,14 @@
       "$date": "2021-10-15T22:40:42.416Z"
     },
     "__v": 0,
-    "challengeId": "6169c85735b68ab2633885e7"
+    "challengeId": "6169c85735b68ab2633885e7",
+    "teamId": "6a04743764760742423538a6"
   },
   {
     "_id": {
       "$oid": "616a05a185d880d5b5068172"
     },
     "username": "luminouw",
-    "teamname": "ADACTF",
     "createdAt": {
       "$date": "2021-10-15T22:50:09.011Z"
     },
@@ -822,14 +821,14 @@
       "$date": "2021-10-15T22:50:09.011Z"
     },
     "__v": 0,
-    "challengeId": "6169d63735b68ab263388f21"
+    "challengeId": "6169d63735b68ab263388f21",
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
       "$oid": "616a06fd85d880d5b506825a"
     },
     "username": "Hackdaddy",
-    "teamname": "Les Pires Hat",
     "createdAt": {
       "$date": "2021-10-15T22:55:57.260Z"
     },
@@ -837,14 +836,14 @@
       "$date": "2021-10-15T22:55:57.260Z"
     },
     "__v": 0,
-    "challengeId": "6169d5f735b68ab263388ee1"
+    "challengeId": "6169d5f735b68ab263388ee1",
+    "teamId": "6a0474376476074242353899"
   },
   {
     "_id": {
       "$oid": "616a08c385d880d5b5068340"
     },
     "username": "Nanakix",
-    "teamname": "Sthack Frites",
     "createdAt": {
       "$date": "2021-10-15T23:03:31.858Z"
     },
@@ -852,14 +851,14 @@
       "$date": "2021-10-15T23:03:31.858Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a04743764760742423538a4"
   },
   {
     "_id": {
       "$oid": "616a0a8f85d880d5b506843b"
     },
     "username": "Headorteil",
-    "teamname": "Login Sécurité",
     "createdAt": {
       "$date": "2021-10-15T23:11:11.859Z"
     },
@@ -867,14 +866,14 @@
       "$date": "2021-10-15T23:11:11.859Z"
     },
     "__v": 0,
-    "challengeId": "6169c3a235b68ab263388515"
+    "challengeId": "6169c3a235b68ab263388515",
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
       "$oid": "616a0b1d85d880d5b506845c"
     },
     "username": "trgfx",
-    "teamname": "Tourist'hack",
     "createdAt": {
       "$date": "2021-10-15T23:13:33.994Z"
     },
@@ -882,14 +881,14 @@
       "$date": "2021-10-15T23:13:33.994Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a04743764760742423538a6"
   },
   {
     "_id": {
       "$oid": "616a0c7085d880d5b50684f2"
     },
     "username": "vulcainreo",
-    "teamname": "LaPiraterie",
     "createdAt": {
       "$date": "2021-10-15T23:19:12.034Z"
     },
@@ -897,14 +896,14 @@
       "$date": "2021-10-15T23:19:12.034Z"
     },
     "__v": 0,
-    "challengeId": "6169d65b35b68ab263388f78"
+    "challengeId": "6169d65b35b68ab263388f78",
+    "teamId": "6a0474376476074242353898"
   },
   {
     "_id": {
       "$oid": "616a0cf585d880d5b5068527"
     },
     "username": "Aether",
-    "teamname": "ADACTF",
     "createdAt": {
       "$date": "2021-10-15T23:21:25.977Z"
     },
@@ -912,14 +911,14 @@
       "$date": "2021-10-15T23:21:25.977Z"
     },
     "__v": 0,
-    "challengeId": "6169ca2b35b68ab26338862c"
+    "challengeId": "6169ca2b35b68ab26338862c",
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
       "$oid": "616a0d7985d880d5b5068582"
     },
     "username": "ALOOO",
-    "teamname": "RootDuRhum2",
     "createdAt": {
       "$date": "2021-10-15T23:23:37.946Z"
     },
@@ -927,14 +926,14 @@
       "$date": "2021-10-15T23:23:37.946Z"
     },
     "__v": 0,
-    "challengeId": "6169c3a235b68ab263388515"
+    "challengeId": "6169c3a235b68ab263388515",
+    "teamId": "6a04743764760742423538a0"
   },
   {
     "_id": {
       "$oid": "616a0d9285d880d5b5068587"
     },
     "username": "phantasmthewhite",
-    "teamname": "ADACTF",
     "createdAt": {
       "$date": "2021-10-15T23:24:02.452Z"
     },
@@ -942,14 +941,14 @@
       "$date": "2021-10-15T23:24:02.452Z"
     },
     "__v": 0,
-    "challengeId": "6169d96d35b68ab263389201"
+    "challengeId": "6169d96d35b68ab263389201",
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
       "$oid": "616a0d9f85d880d5b506858c"
     },
     "username": "Aether",
-    "teamname": "ADACTF",
     "createdAt": {
       "$date": "2021-10-15T23:24:15.819Z"
     },
@@ -957,14 +956,14 @@
       "$date": "2021-10-15T23:24:15.819Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
       "$oid": "616a119485d880d5b50686f6"
     },
     "username": "nariod",
-    "teamname": "LaPiraterie",
     "createdAt": {
       "$date": "2021-10-15T23:41:08.963Z"
     },
@@ -972,14 +971,14 @@
       "$date": "2021-10-15T23:41:08.963Z"
     },
     "__v": 0,
-    "challengeId": "6169d96d35b68ab263389201"
+    "challengeId": "6169d96d35b68ab263389201",
+    "teamId": "6a0474376476074242353898"
   },
   {
     "_id": {
       "$oid": "616a127385d880d5b506873c"
     },
     "username": "3lDiDi",
-    "teamname": "Offsex",
     "createdAt": {
       "$date": "2021-10-15T23:44:51.511Z"
     },
@@ -987,14 +986,14 @@
       "$date": "2021-10-15T23:44:51.511Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a047437647607424235389d"
   },
   {
     "_id": {
       "$oid": "616a173d85d880d5b5068949"
     },
     "username": "FoxCie",
-    "teamname": "ADACTF",
     "createdAt": {
       "$date": "2021-10-16T00:05:17.913Z"
     },
@@ -1002,14 +1001,14 @@
       "$date": "2021-10-16T00:05:17.913Z"
     },
     "__v": 0,
-    "challengeId": "6169c36435b68ab263388507"
+    "challengeId": "6169c36435b68ab263388507",
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
       "$oid": "616a17b185d880d5b5068983"
     },
     "username": "vdehors",
-    "teamname": "Synacktiv",
     "createdAt": {
       "$date": "2021-10-16T00:07:13.855Z"
     },
@@ -1017,14 +1016,14 @@
       "$date": "2021-10-16T00:07:13.855Z"
     },
     "__v": 0,
-    "challengeId": "6169ec9a85d880d5b5067175"
+    "challengeId": "6169ec9a85d880d5b5067175",
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
       "$oid": "616a180185d880d5b50689a9"
     },
     "username": "Karzemrok",
-    "teamname": "ZenSec",
     "createdAt": {
       "$date": "2021-10-16T00:08:33.209Z"
     },
@@ -1032,14 +1031,14 @@
       "$date": "2021-10-16T00:08:33.209Z"
     },
     "__v": 0,
-    "challengeId": "6169ca2b35b68ab26338862c"
+    "challengeId": "6169ca2b35b68ab26338862c",
+    "teamId": "6a04743764760742423538a7"
   },
   {
     "_id": {
       "$oid": "616a18de85d880d5b5068a18"
     },
     "username": "DSpiricate",
-    "teamname": "Sinactive",
     "createdAt": {
       "$date": "2021-10-16T00:12:14.239Z"
     },
@@ -1047,14 +1046,14 @@
       "$date": "2021-10-16T00:12:14.239Z"
     },
     "__v": 0,
-    "challengeId": "6169e6bd7cb509a23c903c03"
+    "challengeId": "6169e6bd7cb509a23c903c03",
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
       "$oid": "616a18e885d880d5b5068a1f"
     },
     "username": "Layno",
-    "teamname": "Login Sécurité",
     "createdAt": {
       "$date": "2021-10-16T00:12:24.709Z"
     },
@@ -1062,14 +1061,14 @@
       "$date": "2021-10-16T00:12:24.709Z"
     },
     "__v": 0,
-    "challengeId": "6169ebd485d880d5b5067117"
+    "challengeId": "6169ebd485d880d5b5067117",
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
       "$oid": "616a19bc85d880d5b5068ac1"
     },
     "username": "trgfx",
-    "teamname": "Tourist'hack",
     "createdAt": {
       "$date": "2021-10-16T00:15:56.741Z"
     },
@@ -1077,14 +1076,14 @@
       "$date": "2021-10-16T00:15:56.741Z"
     },
     "__v": 0,
-    "challengeId": "6169d62135b68ab263388f09"
+    "challengeId": "6169d62135b68ab263388f09",
+    "teamId": "6a04743764760742423538a6"
   },
   {
     "_id": {
       "$oid": "616a1a6e85d880d5b5068b3c"
     },
     "username": "Grominet",
-    "teamname": "Tourist'hack",
     "createdAt": {
       "$date": "2021-10-16T00:18:54.140Z"
     },
@@ -1092,14 +1091,14 @@
       "$date": "2021-10-16T00:18:54.140Z"
     },
     "__v": 0,
-    "challengeId": "6169ca2b35b68ab26338862c"
+    "challengeId": "6169ca2b35b68ab26338862c",
+    "teamId": "6a04743764760742423538a6"
   },
   {
     "_id": {
       "$oid": "616a1b5785d880d5b5068b73"
     },
     "username": "melsius",
-    "teamname": "RootDuRhum3",
     "createdAt": {
       "$date": "2021-10-16T00:22:47.635Z"
     },
@@ -1107,14 +1106,14 @@
       "$date": "2021-10-16T00:22:47.635Z"
     },
     "__v": 0,
-    "challengeId": "6169c0f935b68ab2633883f3"
+    "challengeId": "6169c0f935b68ab2633883f3",
+    "teamId": "6a04743764760742423538a1"
   },
   {
     "_id": {
       "$oid": "616a20d085d880d5b5068db7"
     },
     "username": "Bdenneu",
-    "teamname": "Login Sécurité",
     "createdAt": {
       "$date": "2021-10-16T00:46:08.079Z"
     },
@@ -1122,14 +1121,14 @@
       "$date": "2021-10-16T00:46:08.079Z"
     },
     "__v": 0,
-    "challengeId": "6169ec9a85d880d5b5067175"
+    "challengeId": "6169ec9a85d880d5b5067175",
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
       "$oid": "616a216585d880d5b5068e27"
     },
     "username": "Headorteil",
-    "teamname": "Login Sécurité",
     "createdAt": {
       "$date": "2021-10-16T00:48:37.558Z"
     },
@@ -1137,14 +1136,14 @@
       "$date": "2021-10-16T00:48:37.558Z"
     },
     "__v": 0,
-    "challengeId": "6169c68435b68ab263388598"
+    "challengeId": "6169c68435b68ab263388598",
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
       "$oid": "616a226b85d880d5b5068e99"
     },
     "username": "3lDiDi",
-    "teamname": "Offsex",
     "createdAt": {
       "$date": "2021-10-16T00:52:59.683Z"
     },
@@ -1152,14 +1151,14 @@
       "$date": "2021-10-16T00:52:59.683Z"
     },
     "__v": 0,
-    "challengeId": "6169c3a235b68ab263388515"
+    "challengeId": "6169c3a235b68ab263388515",
+    "teamId": "6a047437647607424235389d"
   },
   {
     "_id": {
       "$oid": "616a266085d880d5b5068ff7"
     },
     "username": "OlalaBriveLaGaillarde",
-    "teamname": "Shemouel",
     "createdAt": {
       "$date": "2021-10-16T01:09:52.090Z"
     },
@@ -1167,14 +1166,14 @@
       "$date": "2021-10-16T01:09:52.090Z"
     },
     "__v": 0,
-    "challengeId": "6169c2a835b68ab2633884d6"
+    "challengeId": "6169c2a835b68ab2633884d6",
+    "teamId": "6a04743764760742423538a2"
   },
   {
     "_id": {
       "$oid": "616a26e385d880d5b5069048"
     },
     "username": "Eskales",
-    "teamname": "RootDuRhum1",
     "createdAt": {
       "$date": "2021-10-16T01:12:03.994Z"
     },
@@ -1182,14 +1181,14 @@
       "$date": "2021-10-16T01:12:03.994Z"
     },
     "__v": 0,
-    "challengeId": "6169d28235b68ab263388c00"
+    "challengeId": "6169d28235b68ab263388c00",
+    "teamId": "6a047437647607424235389f"
   },
   {
     "_id": {
       "$oid": "616a284c85d880d5b506911b"
     },
     "username": "blackknigth",
-    "teamname": "LaPiraterie",
     "createdAt": {
       "$date": "2021-10-16T01:18:04.233Z"
     },
@@ -1197,14 +1196,14 @@
       "$date": "2021-10-16T01:18:04.233Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a0474376476074242353898"
   },
   {
     "_id": {
       "$oid": "616a2a9685d880d5b5069224"
     },
     "username": "hessman",
-    "teamname": "Les Pires Hat",
     "createdAt": {
       "$date": "2021-10-16T01:27:50.316Z"
     },
@@ -1212,14 +1211,14 @@
       "$date": "2021-10-16T01:27:50.316Z"
     },
     "__v": 0,
-    "challengeId": "6169ced435b68ab263388685"
+    "challengeId": "6169ced435b68ab263388685",
+    "teamId": "6a0474376476074242353899"
   },
   {
     "_id": {
       "$oid": "616a2b9285d880d5b5069287"
     },
     "username": "kpapy",
-    "teamname": "Mairie BDX",
     "createdAt": {
       "$date": "2021-10-16T01:32:02.886Z"
     },
@@ -1227,14 +1226,14 @@
       "$date": "2021-10-16T01:32:02.886Z"
     },
     "__v": 0,
-    "challengeId": "6169ca2b35b68ab26338862c"
+    "challengeId": "6169ca2b35b68ab26338862c",
+    "teamId": "6a047437647607424235389c"
   },
   {
     "_id": {
       "$oid": "616a2bec85d880d5b50692c1"
     },
     "username": "kZkZoo",
-    "teamname": "ZenSec",
     "createdAt": {
       "$date": "2021-10-16T01:33:32.750Z"
     },
@@ -1242,14 +1241,14 @@
       "$date": "2021-10-16T01:33:32.750Z"
     },
     "__v": 0,
-    "challengeId": "6169d65b35b68ab263388f78"
+    "challengeId": "6169d65b35b68ab263388f78",
+    "teamId": "6a04743764760742423538a7"
   },
   {
     "_id": {
       "$oid": "616a2cca85d880d5b5069310"
     },
     "username": "kZkZoo",
-    "teamname": "ZenSec",
     "createdAt": {
       "$date": "2021-10-16T01:37:14.140Z"
     },
@@ -1257,14 +1256,14 @@
       "$date": "2021-10-16T01:37:14.140Z"
     },
     "__v": 0,
-    "challengeId": "6169d5f735b68ab263388ee1"
+    "challengeId": "6169d5f735b68ab263388ee1",
+    "teamId": "6a04743764760742423538a7"
   },
   {
     "_id": {
       "$oid": "616a2d1185d880d5b5069322"
     },
     "username": "Bdenneu",
-    "teamname": "Login Sécurité",
     "createdAt": {
       "$date": "2021-10-16T01:38:25.259Z"
     },
@@ -1272,14 +1271,14 @@
       "$date": "2021-10-16T01:38:25.259Z"
     },
     "__v": 0,
-    "challengeId": "6169ced435b68ab263388685"
+    "challengeId": "6169ced435b68ab263388685",
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
       "$oid": "616a368085d880d5b50695b8"
     },
     "username": "grillette",
-    "teamname": "Sinactive",
     "createdAt": {
       "$date": "2021-10-16T02:18:40.808Z"
     },
@@ -1287,14 +1286,14 @@
       "$date": "2021-10-16T02:18:40.808Z"
     },
     "__v": 0,
-    "challengeId": "6169d5f735b68ab263388ee1"
+    "challengeId": "6169d5f735b68ab263388ee1",
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
       "$oid": "616a369085d880d5b50695c5"
     },
     "username": "grillette",
-    "teamname": "Sinactive",
     "createdAt": {
       "$date": "2021-10-16T02:18:56.684Z"
     },
@@ -1302,14 +1301,14 @@
       "$date": "2021-10-16T02:18:56.684Z"
     },
     "__v": 0,
-    "challengeId": "6169d62135b68ab263388f09"
+    "challengeId": "6169d62135b68ab263388f09",
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
       "$oid": "616a38c085d880d5b5069683"
     },
     "username": "grillette",
-    "teamname": "Sinactive",
     "createdAt": {
       "$date": "2021-10-16T02:28:16.399Z"
     },
@@ -1317,14 +1316,14 @@
       "$date": "2021-10-16T02:28:16.399Z"
     },
     "__v": 0,
-    "challengeId": "6169d65b35b68ab263388f78"
+    "challengeId": "6169d65b35b68ab263388f78",
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
       "$oid": "616a3a7085d880d5b50696eb"
     },
     "username": "mastho",
-    "teamname": "Synacktiv",
     "createdAt": {
       "$date": "2021-10-16T02:35:28.703Z"
     },
@@ -1332,14 +1331,14 @@
       "$date": "2021-10-16T02:35:28.703Z"
     },
     "__v": 0,
-    "challengeId": "6169c11d35b68ab26338840b"
+    "challengeId": "6169c11d35b68ab26338840b",
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
       "$oid": "616a3cf685d880d5b5069782"
     },
     "username": "trgfx",
-    "teamname": "Tourist'hack",
     "createdAt": {
       "$date": "2021-10-16T02:46:14.879Z"
     },
@@ -1347,14 +1346,14 @@
       "$date": "2021-10-16T02:46:14.879Z"
     },
     "__v": 0,
-    "challengeId": "6169d96d35b68ab263389201"
+    "challengeId": "6169d96d35b68ab263389201",
+    "teamId": "6a04743764760742423538a6"
   },
   {
     "_id": {
       "$oid": "616a3e3785d880d5b5069854"
     },
     "username": "mastho",
-    "teamname": "Synacktiv",
     "createdAt": {
       "$date": "2021-10-16T02:51:35.102Z"
     },
@@ -1362,14 +1361,14 @@
       "$date": "2021-10-16T02:51:35.102Z"
     },
     "__v": 0,
-    "challengeId": "6169c2a835b68ab2633884d6"
+    "challengeId": "6169c2a835b68ab2633884d6",
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
       "$oid": "616a3e9a85d880d5b5069875"
     },
     "username": "Thomas",
-    "teamname": "Mairie BDX",
     "createdAt": {
       "$date": "2021-10-16T02:53:14.172Z"
     },
@@ -1377,14 +1376,14 @@
       "$date": "2021-10-16T02:53:14.172Z"
     },
     "__v": 0,
-    "challengeId": "6169c0f935b68ab2633883f3"
+    "challengeId": "6169c0f935b68ab2633883f3",
+    "teamId": "6a047437647607424235389c"
   },
   {
     "_id": {
       "$oid": "616a3f5585d880d5b50698f5"
     },
     "username": "_dorf_",
-    "teamname": "Euskaldunh4ck",
     "createdAt": {
       "$date": "2021-10-16T02:56:21.923Z"
     },
@@ -1392,14 +1391,14 @@
       "$date": "2021-10-16T02:56:21.923Z"
     },
     "__v": 0,
-    "challengeId": "6169d96d35b68ab263389201"
+    "challengeId": "6169d96d35b68ab263389201",
+    "teamId": "6a0474376476074242353896"
   },
   {
     "_id": {
       "$oid": "616a41be85d880d5b50699c0"
     },
     "username": "Karzemrok",
-    "teamname": "ZenSec",
     "createdAt": {
       "$date": "2021-10-16T03:06:38.575Z"
     },
@@ -1407,14 +1406,14 @@
       "$date": "2021-10-16T03:06:38.575Z"
     },
     "__v": 0,
-    "challengeId": "616a0bfc85d880d5b50684af"
+    "challengeId": "616a0bfc85d880d5b50684af",
+    "teamId": "6a04743764760742423538a7"
   },
   {
     "_id": {
       "$oid": "616a430485d880d5b5069a1e"
     },
     "username": "bbordel",
-    "teamname": "Euskaldunh4ck",
     "createdAt": {
       "$date": "2021-10-16T03:12:04.281Z"
     },
@@ -1422,14 +1421,14 @@
       "$date": "2021-10-16T03:12:04.281Z"
     },
     "__v": 0,
-    "challengeId": "6169e6bd7cb509a23c903c03"
+    "challengeId": "6169e6bd7cb509a23c903c03",
+    "teamId": "6a0474376476074242353896"
   },
   {
     "_id": {
       "$oid": "616a444885d880d5b5069a83"
     },
     "username": "mastho",
-    "teamname": "Synacktiv",
     "createdAt": {
       "$date": "2021-10-16T03:17:28.086Z"
     },
@@ -1437,14 +1436,14 @@
       "$date": "2021-10-16T03:17:28.086Z"
     },
     "__v": 0,
-    "challengeId": "616a0bfc85d880d5b50684af"
+    "challengeId": "616a0bfc85d880d5b50684af",
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
       "$oid": "616a452785d880d5b5069aea"
     },
     "username": "DSpiricate",
-    "teamname": "Sinactive",
     "createdAt": {
       "$date": "2021-10-16T03:21:11.058Z"
     },
@@ -1452,14 +1451,14 @@
       "$date": "2021-10-16T03:21:11.058Z"
     },
     "__v": 0,
-    "challengeId": "6169e7247cb509a23c903c1f"
+    "challengeId": "6169e7247cb509a23c903c1f",
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
       "$oid": "616a47fc85d880d5b5069b7f"
     },
     "username": "jambon69",
-    "teamname": "Login Sécurité",
     "createdAt": {
       "$date": "2021-10-16T03:33:16.242Z"
     },
@@ -1467,14 +1466,14 @@
       "$date": "2021-10-16T03:33:16.242Z"
     },
     "__v": 0,
-    "challengeId": "6169c2a835b68ab2633884d6"
+    "challengeId": "6169c2a835b68ab2633884d6",
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
       "$oid": "616a4b4285d880d5b5069cb7"
     },
     "username": "grillette",
-    "teamname": "Sinactive",
     "createdAt": {
       "$date": "2021-10-16T03:47:14.035Z"
     },
@@ -1482,14 +1481,14 @@
       "$date": "2021-10-16T03:47:14.035Z"
     },
     "__v": 0,
-    "challengeId": "616a0bfc85d880d5b50684af"
+    "challengeId": "616a0bfc85d880d5b50684af",
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
       "$oid": "616a4b8885d880d5b5069ccc"
     },
     "username": "Kokote",
-    "teamname": "Mairie BDX",
     "createdAt": {
       "$date": "2021-10-16T03:48:24.474Z"
     },
@@ -1497,14 +1496,14 @@
       "$date": "2021-10-16T03:48:24.474Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a047437647607424235389c"
   },
   {
     "_id": {
       "$oid": "616a4f5285d880d5b5069e1d"
     },
     "username": "CrypT",
-    "teamname": "RootDuRhum1",
     "createdAt": {
       "$date": "2021-10-16T04:04:34.662Z"
     },
@@ -1512,14 +1511,14 @@
       "$date": "2021-10-16T04:04:34.662Z"
     },
     "__v": 0,
-    "challengeId": "6169c85735b68ab2633885e7"
+    "challengeId": "6169c85735b68ab2633885e7",
+    "teamId": "6a047437647607424235389f"
   },
   {
     "_id": {
       "$oid": "616a4fe085d880d5b5069e5f"
     },
     "username": "DSpiricate",
-    "teamname": "Sinactive",
     "createdAt": {
       "$date": "2021-10-16T04:06:56.879Z"
     },
@@ -1527,14 +1526,14 @@
       "$date": "2021-10-16T04:06:56.879Z"
     },
     "__v": 0,
-    "challengeId": "6169c3a235b68ab263388515"
+    "challengeId": "6169c3a235b68ab263388515",
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
       "$oid": "616a50e385d880d5b5069ec7"
     },
     "username": "olivier",
-    "teamname": "Mairie BDX",
     "createdAt": {
       "$date": "2021-10-16T04:11:15.352Z"
     },
@@ -1542,14 +1541,14 @@
       "$date": "2021-10-16T04:11:15.352Z"
     },
     "__v": 0,
-    "challengeId": "6169d5f735b68ab263388ee1"
+    "challengeId": "6169d5f735b68ab263388ee1",
+    "teamId": "6a047437647607424235389c"
   },
   {
     "_id": {
       "$oid": "616a51c185d880d5b5069efa"
     },
     "username": "mastho",
-    "teamname": "Synacktiv",
     "createdAt": {
       "$date": "2021-10-16T04:14:57.784Z"
     },
@@ -1557,14 +1556,14 @@
       "$date": "2021-10-16T04:14:57.784Z"
     },
     "__v": 0,
-    "challengeId": "6169c53335b68ab26338855a"
+    "challengeId": "6169c53335b68ab26338855a",
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
       "$oid": "616a52b485d880d5b5069f63"
     },
     "username": "bak__",
-    "teamname": "Synacktiv",
     "createdAt": {
       "$date": "2021-10-16T04:19:00.094Z"
     },
@@ -1572,14 +1571,14 @@
       "$date": "2021-10-16T04:19:00.094Z"
     },
     "__v": 0,
-    "challengeId": "6169ced435b68ab263388685"
+    "challengeId": "6169ced435b68ab263388685",
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
       "$oid": "616a57ac85d880d5b506a04e"
     },
     "username": "qde-1",
-    "teamname": "RootDuRhum1",
     "createdAt": {
       "$date": "2021-10-16T04:40:12.699Z"
     },
@@ -1587,14 +1586,14 @@
       "$date": "2021-10-16T04:40:12.699Z"
     },
     "__v": 0,
-    "challengeId": "6169c0f535b68ab2633883f1"
+    "challengeId": "6169c0f535b68ab2633883f1",
+    "teamId": "6a047437647607424235389f"
   },
   {
     "_id": {
       "$oid": "616a57e285d880d5b506a079"
     },
     "username": "Bdenneu",
-    "teamname": "Login Sécurité",
     "createdAt": {
       "$date": "2021-10-16T04:41:06.521Z"
     },
@@ -1602,14 +1601,14 @@
       "$date": "2021-10-16T04:41:06.521Z"
     },
     "__v": 0,
-    "challengeId": "6169c3b935b68ab26338851f"
+    "challengeId": "6169c3b935b68ab26338851f",
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
       "$oid": "616a583f85d880d5b506a0b7"
     },
     "username": "Headorteil",
-    "teamname": "Login Sécurité",
     "createdAt": {
       "$date": "2021-10-16T04:42:39.549Z"
     },
@@ -1617,14 +1616,14 @@
       "$date": "2021-10-16T04:42:39.549Z"
     },
     "__v": 0,
-    "challengeId": "6169e6bd7cb509a23c903c03"
+    "challengeId": "6169e6bd7cb509a23c903c03",
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
       "$oid": "616a587985d880d5b506a0f7"
     },
     "username": "vdehors",
-    "teamname": "Synacktiv",
     "createdAt": {
       "$date": "2021-10-16T04:43:37.771Z"
     },
@@ -1632,14 +1631,14 @@
       "$date": "2021-10-16T04:43:37.771Z"
     },
     "__v": 0,
-    "challengeId": "616a240b85d880d5b5068f0b"
+    "challengeId": "616a240b85d880d5b5068f0b",
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
       "$oid": "616a5a0a85d880d5b506a1d0"
     },
     "username": "Creupsy",
-    "teamname": "RootDuRhum2",
     "createdAt": {
       "$date": "2021-10-16T04:50:18.123Z"
     },
@@ -1647,14 +1646,14 @@
       "$date": "2021-10-16T04:50:18.123Z"
     },
     "__v": 0,
-    "challengeId": "6169c0f535b68ab2633883f1"
+    "challengeId": "6169c0f535b68ab2633883f1",
+    "teamId": "6a04743764760742423538a0"
   },
   {
     "_id": {
       "$oid": "616a5a2885d880d5b506a1ef"
     },
     "username": "DSpiricate",
-    "teamname": "Sinactive",
     "createdAt": {
       "$date": "2021-10-16T04:50:48.935Z"
     },
@@ -1662,14 +1661,14 @@
       "$date": "2021-10-16T04:50:48.935Z"
     },
     "__v": 0,
-    "challengeId": "6169d63735b68ab263388f21"
+    "challengeId": "6169d63735b68ab263388f21",
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
       "$oid": "616a5b1f85d880d5b506a21e"
     },
     "username": "bak__",
-    "teamname": "Synacktiv",
     "createdAt": {
       "$date": "2021-10-16T04:54:55.220Z"
     },
@@ -1677,14 +1676,14 @@
       "$date": "2021-10-16T04:54:55.220Z"
     },
     "__v": 0,
-    "challengeId": "6169c3a235b68ab263388515"
+    "challengeId": "6169c3a235b68ab263388515",
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
       "$oid": "616a5c0685d880d5b506a25a"
     },
     "username": "0b11stan",
-    "teamname": "MINIX",
     "createdAt": {
       "$date": "2021-10-16T04:58:46.072Z"
     },
@@ -1692,14 +1691,14 @@
       "$date": "2021-10-16T04:58:46.072Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a047437647607424235389b"
   },
   {
     "_id": {
       "$oid": "616a5c7685d880d5b506a278"
     },
     "username": "Nicolas",
-    "teamname": "RootDuRhum3",
     "createdAt": {
       "$date": "2021-10-16T05:00:38.786Z"
     },
@@ -1707,14 +1706,14 @@
       "$date": "2021-10-16T05:00:38.786Z"
     },
     "__v": 0,
-    "challengeId": "6169c0f535b68ab2633883f1"
+    "challengeId": "6169c0f535b68ab2633883f1",
+    "teamId": "6a04743764760742423538a1"
   },
   {
     "_id": {
       "$oid": "616a5e6485d880d5b506a2ca"
     },
     "username": "Eskales",
-    "teamname": "RootDuRhum1",
     "createdAt": {
       "$date": "2021-10-16T05:08:52.113Z"
     },
@@ -1722,14 +1721,14 @@
       "$date": "2021-10-16T05:08:52.113Z"
     },
     "__v": 0,
-    "challengeId": "6169d0b435b68ab263388953"
+    "challengeId": "6169d0b435b68ab263388953",
+    "teamId": "6a047437647607424235389f"
   },
   {
     "_id": {
       "$oid": "616a62e685d880d5b506a386"
     },
     "username": "qde-1",
-    "teamname": "RootDuRhum1",
     "createdAt": {
       "$date": "2021-10-16T05:28:06.162Z"
     },
@@ -1737,6 +1736,7 @@
       "$date": "2021-10-16T05:28:06.162Z"
     },
     "__v": 0,
-    "challengeId": "6169c3a235b68ab263388515"
+    "challengeId": "6169c3a235b68ab263388515",
+    "teamId": "6a047437647607424235389f"
   }
 ]

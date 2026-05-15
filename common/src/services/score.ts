@@ -9,12 +9,13 @@ import {
   TeamScore,
 } from '../models/GameScore.js'
 import { BaseReward, Reward } from '../models/Reward.js'
+import { Team } from '../models/Team.js'
 
 export function computeGameScore(
   achievements: Achievement[],
   rewards: Reward[],
   challenges: Challenge[],
-  teams: string[],
+  teams: Team[],
   config: GameConfig,
 ): GameScore {
   const challsScore = computeChallenges(challenges, achievements, config)
@@ -118,13 +119,19 @@ export function computeRewardScore(
 
 //#region team score
 function computeTeams(
-  teams: string[],
+  teams: Team[],
   challsScore: Record<string, ChallengeScore>,
   rewards: RewardScore[],
 ): TeamScore[] {
   return teams
     .map(t => computeTeam(challsScore, t, rewards))
-    .sort((a, b) => b.score - a.score)
+    .sort((a, b) =>
+      b.score - a.score !== 0
+        ? b.score - a.score
+        : b.breakthroughs.length - a.breakthroughs.length !== 0
+          ? b.breakthroughs.length - a.breakthroughs.length
+          : a.team.name.localeCompare(b.team.name),
+    )
     .map((ts, i, tss) => ({
       ...ts,
       rank: tss.findIndex(x => x.score === ts.score) + 1,
@@ -133,24 +140,24 @@ function computeTeams(
 
 function computeTeam(
   challsScore: Record<string, ChallengeScore>,
-  team: string,
+  team: Team,
   rewards: RewardScore[],
 ): TeamScore {
   const challengeResolved = Object.values(challsScore).filter(cs =>
-    cs.achievements.find(a => a.teamname === team),
+    cs.achievements.find(a => a.teamId === team._id),
   )
-  const rewardAcquired = rewards.filter(r => r.reward.teamname === team)
+  const rewardAcquired = rewards.filter(r => r.reward.teamId === team._id)
 
   return {
     rank: 0,
     team,
     score: computeTeamScore(challengeResolved, rewardAcquired),
     breakthroughs: challengeResolved
-      .map(cs => cs.achievements[0] ?? ({ teamname: '' } as Achievement))
-      .filter(a => a.teamname === team),
+      .map(cs => cs.achievements[0] ?? ({ teamId: '' } as Achievement))
+      .filter(a => a.teamId === team._id),
     solved: challengeResolved
       .flatMap(cs => cs.achievements)
-      .filter(a => a.teamname === team),
+      .filter(a => a.teamId === team._id),
     rewards: rewardAcquired,
   }
 }

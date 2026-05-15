@@ -16,13 +16,13 @@ import { RewardForm } from './RewardForm'
 
 const achievementsColumns: ColumnDefinition<Achievement>[] = [
   { header: 'Challenge', rowValue: row => row.challenge.name },
-  { header: 'Team', rowValue: row => row.teamname },
+  { header: 'Team', rowValue: row => row.team.name },
   { header: 'User', rowValue: row => row.username },
   { header: 'Date', rowValue: row => row.createdAt.toLocaleTimeString() },
 ]
 
 const rewardsColumns: ColumnDefinition<Reward>[] = [
-  { header: 'Team', rowValue: row => row.teamname },
+  { header: 'Team', rowValue: row => row.team.name },
   { header: 'Label', rowValue: row => row.label },
   { header: 'Value', rowValue: row => row.value.toString() },
   { header: 'Date', rowValue: row => row.createdAt.toLocaleTimeString() },
@@ -68,7 +68,7 @@ export function AchievementPanel() {
             flex="1 0 auto"
             data={rewards.filter(
               r =>
-                r.teamname.toLowerCase().includes(search) ||
+                r.team.name.toLowerCase().includes(search) ||
                 r.label.toLowerCase().includes(search),
             )}
             rowKey={row => row._id}
@@ -86,10 +86,10 @@ export function AchievementPanel() {
         data={achievements.filter(
           a =>
             a.challenge.name.toLowerCase().includes(search) ||
-            a.teamname.toLowerCase().includes(search) ||
+            a.team.name.toLowerCase().includes(search) ||
             a.username.toLowerCase().includes(search),
         )}
-        rowKey={row => row.challengeId + row.teamname}
+        rowKey={row => row.challengeId + row.teamId}
         columns={achievementsColumns}
         actions={AchievementActions}
         mb="2"
@@ -117,7 +117,7 @@ function AchievementActions({ row }: AchievementActionsProps) {
         if (
           confirm(
             `Are you sure to delete Achievement:\n\n${row.challenge.name}\n${
-              row.teamname
+              row.team.name
             }\n${row.username}\n${row.createdAt.toISOString()}`,
           )
         ) {
@@ -146,7 +146,7 @@ function RewardActions({ row }: RewardActionsProps) {
         if (
           confirm(
             `Are you sure to delete Reward:\n\n${row.label}\n${
-              row.teamname
+              row.team.name
             }\n${row.createdAt.toISOString()}`,
           )
         ) {

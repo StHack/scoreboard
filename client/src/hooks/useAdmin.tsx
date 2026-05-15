@@ -5,10 +5,13 @@ import {
   BaseReward,
   Challenge,
   DummyChallenge,
+  FullTeam,
+  isPlayer,
   Reward,
   ServerActivityStatistics,
   ServerError,
   Survey,
+  Team,
   TimestampedServerActivityStatistics,
   User,
   UserRole,
@@ -27,6 +30,7 @@ export type AdminContext = {
   loadingState: AdminContextLoadingState
   challenges: Challenge[]
   users: User[]
+  teams: FullTeam[]
   attempts: Attempt[]
   surveys: Survey[]
   activityStatistics: ServerActivityStatistics
@@ -46,7 +50,7 @@ export type AdminContext = {
   openRegistration: () => void
   closeRegistration: () => void
   setTeamSize: (teamSize: number) => void
-  changeTeam: (user: User, team: string) => void
+  changeTeam: (user: User, teamId: string) => void
   changePassword: (user: User, password: string) => void
   changeRoles: (user: User, roles: UserRole[]) => void
   deleteUser: (user: User) => void
@@ -70,6 +74,8 @@ export enum AdminContextLoadingState {
   activityStats = 1 << 3,
   // eslint-disable-next-line @typescript-eslint/prefer-literal-enum-member
   surveys = 1 << 4,
+  // eslint-disable-next-line @typescript-eslint/prefer-literal-enum-member
+  teams = 1 << 5,
 }
 
 const defaultStatistics: ServerActivityStatistics = {
@@ -88,6 +94,7 @@ const AdminContext = createContext<AdminContext>({
   loadingState: AdminContextLoadingState.none,
   challenges: [],
   users: [],
+  teams: [],
   attempts: [],
   surveys: [],
   activityStatistics: defaultStatistics,
@@ -131,7 +138,8 @@ function useProvideAdmin(): AdminContext {
     AdminContextLoadingState.none,
   )
   const [challenges, setChallenges] = useState<Challenge[]>([])
-  const [users, setUsers] = useState<User[]>([])
+  const [rawUsers, setRawUsers] = useState<User[]>([])
+  const [rawTeams, setRawTeams] = useState<FullTeam[]>([])
   const [rawAttempts, setRawAttempts] = useState<Attempt[]>([])
   const [rawSurveys, setRawSurveys] = useState<Survey[]>([])
   const [statistics, setActivityStatistics] =
@@ -140,10 +148,34 @@ function useProvideAdmin(): AdminContext {
     TimestampedServerActivityStatistics[]
   >([])
 
-  const attempts = rawAttempts.map(a => ({
-    ...a,
-    challenge: challenges.find(c => c._id === a.challengeId) ?? DummyChallenge,
-  }))
+  const { users, teams } = useMemo(() => {
+    const tmpTeams = new Map(
+      rawTeams.map<[string, FullTeam]>(t => [t._id, { ...t }]),
+    )
+    const users = rawUsers.map<User>(u => ({
+      ...u,
+      team: isPlayer(u) ? (tmpTeams.get(u.teamId) as FullTeam) : undefined,
+    }))
+
+    const teams: FullTeam[] = []
+    for (const team of tmpTeams.values()) {
+      team.players = users.filter(isPlayer).filter(p => p.teamId === team._id)
+      teams.push(team)
+    }
+
+    return { users, teams }
+  }, [rawTeams, rawUsers])
+
+  const attempts = useMemo<Attempt[]>(
+    () =>
+      rawAttempts.map(a => ({
+        ...a,
+        challenge:
+          challenges.find(c => c._id === a.challengeId) ?? DummyChallenge,
+        team: teams.find(t => t._id === a.teamId) as Team,
+      })),
+    [challenges, rawAttempts, teams],
+  )
 
   const surveys = useMemo<Survey[]>(
     () =>
@@ -151,8 +183,9 @@ function useProvideAdmin(): AdminContext {
         ...s,
         challenge:
           challenges.find(c => c._id === s.challengeId) ?? DummyChallenge,
+        team: teams.find(t => t._id === s.teamId) as Team,
       })),
-    [challenges, rawSurveys],
+    [challenges, rawSurveys, teams],
   )
 
   useEffect(() => {
@@ -164,8 +197,13 @@ function useProvideAdmin(): AdminContext {
     })
 
     socket.emit('users:list', (users: User[]) => {
-      setUsers([...users])
+      setRawUsers([...users])
       setLoadingState(state => state | AdminContextLoadingState.users)
+    })
+
+    socket.emit('teams:list', (teams: FullTeam[]) => {
+      setRawTeams([...teams])
+      setLoadingState(state => state | AdminContextLoadingState.teams)
     })
 
     socket.emit('attempt:list', (attempts: Attempt[]) => {
@@ -251,11 +289,12 @@ function useProvideAdmin(): AdminContext {
   }, [socket])
 
   const updateUsers = (user: User) =>
-    setUsers(users.map(u => (u.username === user.username ? user : u)))
+    setRawUsers(users.map(u => (u.username === user.username ? user : u)))
 
   return {
     loadingState,
     users,
+    teams,
     challenges,
     attempts,
     surveys,
@@ -364,10 +403,15 @@ function useProvideAdmin(): AdminContext {
 
       socket.emit('game:actions:setTeamSize', teamSize)
     },
-    changeTeam: (user, team) => {
+    changeTeam: (user, teamId) => {
       if (!socket) throw new Error('connection is not available')
 
-      socket.emit('users:actions:changeTeam', user.username, team, updateUsers)
+      socket.emit(
+        'users:actions:changeTeam',
+        user.username,
+        teamId,
+        updateUsers,
+      )
     },
     changePassword: (user, password) => {
       if (!socket) throw new Error('connection is not available')
@@ -393,7 +437,7 @@ function useProvideAdmin(): AdminContext {
       if (!socket) throw new Error('connection is not available')
 
       socket.emit('users:actions:delete', user.username, () =>
-        setUsers(users.filter(u => u.username !== user.username)),
+        setRawUsers(users.filter(u => u.username !== user.username)),
       )
     },
     logoutUser: user => {
@@ -406,7 +450,7 @@ function useProvideAdmin(): AdminContext {
 
       socket.emit(
         'achievement:actions:delete',
-        achievement.teamname,
+        achievement.teamId,
         achievement.challengeId,
       )
     },

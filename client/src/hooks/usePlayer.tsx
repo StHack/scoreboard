@@ -1,4 +1,12 @@
-import { BaseSurvey, Message, TeamScore } from '@sthack/scoreboard-common'
+import {
+  BaseSurvey,
+  DummyTeam,
+  dummyTeamScore,
+  isPlayer,
+  Message,
+  TeamScore,
+} from '@sthack/scoreboard-common'
+import { useStorage } from '@sthack/scoreboard-ui/hooks'
 import { createContext, PropsWithChildren, useContext, useState } from 'react'
 import { useAuth } from './useAuthentication'
 import { useGame } from './useGame'
@@ -17,7 +25,7 @@ export type PlayerContext = {
 const PlayerContext = createContext<PlayerContext>({
   myScore: 0,
   myTeamScore: {
-    team: '',
+    team: DummyTeam,
     rank: 0,
     score: 0,
     breakthroughs: [],
@@ -49,10 +57,14 @@ function useProvidePlayer(): PlayerContext {
   const {
     score: { teamsScore, challsScore },
   } = useGame()
-  const [readMessages, setReadMessages] = useState<string[]>(
-    () => JSON.parse(localStorage.getItem('readMessages') ?? '[]') as string[],
+
+  const player = isPlayer(user) ? user : undefined
+
+  const [readMessages, setReadMessages] = useStorage<string[]>(
+    'readMessages',
+    [],
   )
-  const ts = teamsScore.find(x => x.team === user.team)
+
   const myScore = Object.values(challsScore)
     .filter(cs => !!cs.achievements.find(a => a.username === user.username))
     .reduce((agg, a) => agg + a.score, 0)
@@ -65,15 +77,10 @@ function useProvidePlayer(): PlayerContext {
 
   return {
     myScore,
-    myTeamScore: ts ?? {
-      team: user.team,
-      rank: 0,
-      score: 0,
-      breakthroughs: [],
-      solved: [],
-      rewards: [],
-    },
-    isBeforeLastScorer: beforeLastScorer?.team === user.team,
+    myTeamScore:
+      (player && teamsScore.find(x => x.team._id === player.teamId)) ||
+      dummyTeamScore,
+    isBeforeLastScorer: beforeLastScorer?.team === player?.teamId,
     readMessages,
     attemptChall: (challengeId, flag) => {
       if (!socket) return Promise.resolve('You are not connected at the moment')

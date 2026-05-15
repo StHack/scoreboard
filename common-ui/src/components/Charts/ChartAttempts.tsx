@@ -27,8 +27,8 @@ export function ChartAttemptsPanel({ attempts }: ChartAttemptsPanelProps) {
         ...agg,
         [cur.challenge.name]: {
           ...(agg[cur.challenge.name] ?? {}),
-          [`t/${cur.teamname}`]:
-            (agg[cur.challenge.name]?.[`t/${cur.teamname}`] ?? 0) + 1,
+          [`t/${cur.team.name}`]:
+            (agg[cur.challenge.name]?.[`t/${cur.team.name}`] ?? 0) + 1,
         },
       }),
       {},
@@ -41,7 +41,7 @@ export function ChartAttemptsPanel({ attempts }: ChartAttemptsPanelProps) {
     challenge,
   }))
 
-  const teams = [...new Set(attempts.map(u => `t/${u.teamname}`))]
+  const teams = [...new Set(attempts.map(u => `t/${u.team.name}`))]
 
   const theme = useTheme()
 

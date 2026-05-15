@@ -6,7 +6,6 @@
     "username": "Nagarian",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "admin",
     "roles": ["user", "admin"],
     "__v": 0
   },
@@ -17,7 +16,6 @@
     "username": "lupin",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "admin",
     "roles": ["user", "admin"],
     "__v": 0
   },
@@ -28,7 +26,6 @@
     "username": "julesduv",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "admin",
     "roles": ["user", "admin"],
     "__v": 0
   },
@@ -39,7 +36,6 @@
     "username": "shoxx",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "admin",
     "roles": ["user", "admin"],
     "__v": 0
   },
@@ -50,7 +46,6 @@
     "username": "viiic",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "admin",
     "roles": ["user", "admin"],
     "__v": 0
   },
@@ -61,7 +56,6 @@
     "username": "Keclem",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "admin",
     "roles": ["user", "admin"],
     "__v": 0
   },
@@ -72,7 +66,6 @@
     "username": "Florian",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "admin",
     "roles": ["user", "admin"],
     "__v": 0
   },
@@ -85,7 +78,8 @@
     "salt": "",
     "team": "Tourist'hack",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a6"
   },
   {
     "_id": {
@@ -96,7 +90,8 @@
     "salt": "",
     "team": "Mairie BDX",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389c"
   },
   {
     "_id": {
@@ -107,7 +102,8 @@
     "salt": "",
     "team": "Mairie BDX",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389c"
   },
   {
     "_id": {
@@ -118,7 +114,8 @@
     "salt": "",
     "team": "Mairie BDX",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389c"
   },
   {
     "_id": {
@@ -129,7 +126,8 @@
     "salt": "",
     "team": "MINIX",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389b"
   },
   {
     "_id": {
@@ -140,7 +138,8 @@
     "salt": "",
     "team": "Synacktiv",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
@@ -151,7 +150,8 @@
     "salt": "",
     "team": "MINIX",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389b"
   },
   {
     "_id": {
@@ -162,7 +162,8 @@
     "salt": "",
     "team": "zensec",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538b0"
   },
   {
     "_id": {
@@ -173,7 +174,8 @@
     "salt": "",
     "team": "Mairie BDX",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389c"
   },
   {
     "_id": {
@@ -184,7 +186,8 @@
     "salt": "",
     "team": "Mairie BDX",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389c"
   },
   {
     "_id": {
@@ -195,7 +198,8 @@
     "salt": "",
     "team": "ZenSec",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a7"
   },
   {
     "_id": {
@@ -206,7 +210,8 @@
     "salt": "",
     "team": "RootDuRhum2",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a0"
   },
   {
     "_id": {
@@ -217,7 +222,8 @@
     "salt": "",
     "team": "Tourist'hack",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a6"
   },
   {
     "_id": {
@@ -228,7 +234,8 @@
     "salt": "",
     "team": "ZenSec",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a7"
   },
   {
     "_id": {
@@ -239,7 +246,8 @@
     "salt": "",
     "team": "RootDuRhum2",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a0"
   },
   {
     "_id": {
@@ -248,9 +256,9 @@
     "username": "benji",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "RootDuRhum2",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a0"
   },
   {
     "_id": {
@@ -259,9 +267,9 @@
     "username": "BLurR",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Login Sécurité",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
@@ -270,9 +278,9 @@
     "username": "melsius",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "RootDuRhum3",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a1"
   },
   {
     "_id": {
@@ -281,9 +289,9 @@
     "username": "Layno",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Login Sécurité",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
@@ -292,9 +300,9 @@
     "username": "Nanakix",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Sthack Frites",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a4"
   },
   {
     "_id": {
@@ -303,9 +311,9 @@
     "username": "hessman",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Les Pires Hat",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353899"
   },
   {
     "_id": {
@@ -314,9 +322,9 @@
     "username": "0b11stan",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "MINIX",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389b"
   },
   {
     "_id": {
@@ -325,9 +333,9 @@
     "username": "Grobatow",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "ez2pwn",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538ab"
   },
   {
     "_id": {
@@ -336,9 +344,9 @@
     "username": "mastho",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Synacktiv",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
@@ -347,9 +355,9 @@
     "username": "Nicolas",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "RootDuRhum3",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a1"
   },
   {
     "_id": {
@@ -358,9 +366,9 @@
     "username": "nawak",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "cyber-bougie",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a9"
   },
   {
     "_id": {
@@ -369,9 +377,9 @@
     "username": "Hackdaddy",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Les Pires Hat",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353899"
   },
   {
     "_id": {
@@ -380,9 +388,9 @@
     "username": "Bdenneu",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Login Sécurité",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
@@ -391,9 +399,9 @@
     "username": "Jixxx",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "ez2pwn",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538ab"
   },
   {
     "_id": {
@@ -402,9 +410,9 @@
     "username": "kpapy",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Mairie BDX",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389c"
   },
   {
     "_id": {
@@ -413,9 +421,9 @@
     "username": "Louisl",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "cyber-bougie",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a9"
   },
   {
     "_id": {
@@ -424,9 +432,9 @@
     "username": "NorthBlue333",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Les Pires Hat",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353899"
   },
   {
     "_id": {
@@ -435,9 +443,9 @@
     "username": "ALOOO",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "RootDuRhum2",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a0"
   },
   {
     "_id": {
@@ -446,9 +454,9 @@
     "username": "nekratal",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Tourist'hack",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a6"
   },
   {
     "_id": {
@@ -457,9 +465,9 @@
     "username": "Sheriff64",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "ADACTF",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
@@ -468,9 +476,9 @@
     "username": "Kantkant",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Euskaldunh4ck",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353896"
   },
   {
     "_id": {
@@ -479,9 +487,9 @@
     "username": "vdehors",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Synacktiv",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
@@ -490,9 +498,9 @@
     "username": "Mhd_Root",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Les Pires Hat",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353899"
   },
   {
     "_id": {
@@ -501,9 +509,9 @@
     "username": "Headorteil",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Login Sécurité",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
@@ -512,9 +520,9 @@
     "username": "Blackknigth",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "LaPiraterie",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353898"
   },
   {
     "_id": {
@@ -523,9 +531,9 @@
     "username": "Agrorec",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "cyber-bougie",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a9"
   },
   {
     "_id": {
@@ -534,9 +542,9 @@
     "username": "0xSeb",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "MINIX",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389b"
   },
   {
     "_id": {
@@ -545,9 +553,9 @@
     "username": "Thomas",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Mairie BDX",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389c"
   },
   {
     "_id": {
@@ -556,9 +564,9 @@
     "username": "Detra",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Sthack Frites",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a4"
   },
   {
     "_id": {
@@ -567,9 +575,9 @@
     "username": "jambon69",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Login Sécurité",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
@@ -578,9 +586,9 @@
     "username": "luminouw",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "ADACTF",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
@@ -589,9 +597,9 @@
     "username": "Edmet",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "ADACTF",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
@@ -600,9 +608,9 @@
     "username": "boring",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Les Pires Hat",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353899"
   },
   {
     "_id": {
@@ -611,9 +619,9 @@
     "username": "g0h4n",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "PinkyUnicorn",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389e"
   },
   {
     "_id": {
@@ -622,9 +630,9 @@
     "username": "louisl",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "cyber-bougie",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a9"
   },
   {
     "_id": {
@@ -633,9 +641,9 @@
     "username": "k4izoku",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "LaPiraterie",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353898"
   },
   {
     "_id": {
@@ -644,9 +652,9 @@
     "username": "t0mux",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "PinkyUnicorn",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389e"
   },
   {
     "_id": {
@@ -655,9 +663,9 @@
     "username": "blackknigth",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "LaPiraterie",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353898"
   },
   {
     "_id": {
@@ -666,9 +674,9 @@
     "username": "Barney",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "PinkyUnicorn",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389e"
   },
   {
     "_id": {
@@ -677,9 +685,9 @@
     "username": "bak__",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Synacktiv",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a5"
   },
   {
     "_id": {
@@ -688,9 +696,9 @@
     "username": "Karzemrok",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "ZenSec",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a7"
   },
   {
     "_id": {
@@ -699,9 +707,9 @@
     "username": "CrypT",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "RootDuRhum1",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389f"
   },
   {
     "_id": {
@@ -710,9 +718,9 @@
     "username": "pamplemousse",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Tourist'hack",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a6"
   },
   {
     "_id": {
@@ -721,9 +729,9 @@
     "username": "_dorf",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "euskaldunhack",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538aa"
   },
   {
     "_id": {
@@ -732,9 +740,9 @@
     "username": "Nariod",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "LaPiraterie",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353898"
   },
   {
     "_id": {
@@ -743,9 +751,9 @@
     "username": "qde-1",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "RootDuRhum1",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389f"
   },
   {
     "_id": {
@@ -754,9 +762,9 @@
     "username": "bbordel",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Euskaldunh4ck",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353896"
   },
   {
     "_id": {
@@ -765,9 +773,9 @@
     "username": "vulcainreo",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "LaPiraterie",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353898"
   },
   {
     "_id": {
@@ -776,9 +784,9 @@
     "username": "bobcat",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Bobcat",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353894"
   },
   {
     "_id": {
@@ -787,9 +795,9 @@
     "username": "sheogoram",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "shemouel",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538af"
   },
   {
     "_id": {
@@ -798,9 +806,9 @@
     "username": "razaina",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "shemouel",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538af"
   },
   {
     "_id": {
@@ -809,9 +817,9 @@
     "username": "peroketstory",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "shemouel",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538af"
   },
   {
     "_id": {
@@ -820,9 +828,9 @@
     "username": "AdrienIT",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Les Pires Hat",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353899"
   },
   {
     "_id": {
@@ -831,9 +839,9 @@
     "username": "wawdsa",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Euskaldunh4ck",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353896"
   },
   {
     "_id": {
@@ -842,9 +850,9 @@
     "username": "r4zaina",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "shemouel",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538af"
   },
   {
     "_id": {
@@ -853,9 +861,9 @@
     "username": "Creupsy",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "RootDuRhum2",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a0"
   },
   {
     "_id": {
@@ -864,9 +872,9 @@
     "username": "Antho",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "RootDuRhum3",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a1"
   },
   {
     "_id": {
@@ -875,9 +883,9 @@
     "username": "FoxCie",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "ADACTF",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
@@ -886,9 +894,9 @@
     "username": "Aether",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "ADACTF",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
@@ -897,9 +905,9 @@
     "username": "pasdoue",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Sthack Frites",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a4"
   },
   {
     "_id": {
@@ -908,9 +916,9 @@
     "username": "Billy",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "ADACTF",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
@@ -919,9 +927,9 @@
     "username": "pasdoue2",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Sthack Frites",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a4"
   },
   {
     "_id": {
@@ -930,9 +938,9 @@
     "username": "Ludovic",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "les gris'h0x61t",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538ad"
   },
   {
     "_id": {
@@ -941,9 +949,9 @@
     "username": "aaaaa",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Shemouel",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a2"
   },
   {
     "_id": {
@@ -952,9 +960,9 @@
     "username": "dxsk_",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "les gris'h0x61t",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538ad"
   },
   {
     "_id": {
@@ -963,9 +971,9 @@
     "username": "grillette",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Sinactive",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
@@ -974,9 +982,9 @@
     "username": "aiu__",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "les gris'h0x61t",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538ad"
   },
   {
     "_id": {
@@ -985,9 +993,9 @@
     "username": "lorenzo",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Sinactive",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
@@ -996,9 +1004,9 @@
     "username": "Walleza",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Sinactive",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
@@ -1007,9 +1015,9 @@
     "username": "DSpiricate",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Sinactive",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
@@ -1018,9 +1026,9 @@
     "username": "fenris",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "LaPiraterie",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353898"
   },
   {
     "_id": {
@@ -1029,9 +1037,9 @@
     "username": "OlalaBriveLaGaillarde",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Shemouel",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a2"
   },
   {
     "_id": {
@@ -1040,9 +1048,9 @@
     "username": "Eskales",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "RootDuRhum1",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389f"
   },
   {
     "_id": {
@@ -1051,9 +1059,9 @@
     "username": "Plouf",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "RootDuRhum1",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389f"
   },
   {
     "_id": {
@@ -1062,9 +1070,9 @@
     "username": "vodka",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "les gris'h0x61t",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538ad"
   },
   {
     "_id": {
@@ -1073,9 +1081,9 @@
     "username": "ArnC__",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Chibroscologue",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353895"
   },
   {
     "_id": {
@@ -1084,9 +1092,9 @@
     "username": "c0dejump",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Login Sécurité",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389a"
   },
   {
     "_id": {
@@ -1095,9 +1103,9 @@
     "username": "Nipica",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Sinactive",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a3"
   },
   {
     "_id": {
@@ -1106,9 +1114,9 @@
     "username": "hophouse",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Offsex",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389d"
   },
   {
     "_id": {
@@ -1117,9 +1125,9 @@
     "username": "wmamba",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Offsex",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389d"
   },
   {
     "_id": {
@@ -1128,9 +1136,9 @@
     "username": "unixcorn",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "AdaCTF",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353893"
   },
   {
     "_id": {
@@ -1139,9 +1147,9 @@
     "username": "plop1337",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "plop1337",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538ae"
   },
   {
     "_id": {
@@ -1150,9 +1158,9 @@
     "username": "phantasm",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "ADACTF",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
@@ -1161,9 +1169,9 @@
     "username": "phantasmthewhite",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "ADACTF",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353892"
   },
   {
     "_id": {
@@ -1172,9 +1180,9 @@
     "username": "StevenD33",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Les Pires Hat",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353899"
   },
   {
     "_id": {
@@ -1183,7 +1191,6 @@
     "username": "train",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "admin",
     "roles": ["user", "admin"],
     "__v": 0
   },
@@ -1194,9 +1201,9 @@
     "username": "adrienit",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Les Pires Hat",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353899"
   },
   {
     "_id": {
@@ -1205,9 +1212,9 @@
     "username": "nariod",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "LaPiraterie",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353898"
   },
   {
     "_id": {
@@ -1216,9 +1223,9 @@
     "username": "3lDiDi",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Offsex",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389d"
   },
   {
     "_id": {
@@ -1227,9 +1234,9 @@
     "username": "olivier2",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Mairie BDX",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389c"
   },
   {
     "_id": {
@@ -1238,7 +1245,6 @@
     "username": "ErwanB",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "admin",
     "roles": ["user", "player"],
     "__v": 0
   },
@@ -1249,9 +1255,9 @@
     "username": "fufufu",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Fufufu",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353897"
   },
   {
     "_id": {
@@ -1260,9 +1266,9 @@
     "username": "Sogam",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "ZenSec",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538a7"
   },
   {
     "_id": {
@@ -1271,9 +1277,9 @@
     "username": "mayfly",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "-----",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235388f"
   },
   {
     "_id": {
@@ -1282,9 +1288,9 @@
     "username": "_dorf_",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "Euskaldunh4ck",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353896"
   },
   {
     "_id": {
@@ -1293,9 +1299,9 @@
     "username": "it4it4",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "it4it4",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a04743764760742423538ac"
   },
   {
     "_id": {
@@ -1304,9 +1310,9 @@
     "username": "devnull",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "/dev/null",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353890"
   },
   {
     "_id": {
@@ -1315,9 +1321,9 @@
     "username": "ploof",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "RootDuRhum1",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a047437647607424235389f"
   },
   {
     "_id": {
@@ -1326,8 +1332,8 @@
     "username": "12345",
     "password": "faac56438e6127c0865ea998129b014dab7be7377728933ca154bf8dede975f6",
     "salt": "",
-    "team": "12345",
     "roles": ["user", "player"],
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a0474376476074242353891"
   }
 ]

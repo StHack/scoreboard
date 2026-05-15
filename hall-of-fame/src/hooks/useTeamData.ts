@@ -1,16 +1,19 @@
 import {
   computeGameScore,
   DummyChallenge,
+  DummyTeam,
+  dummyTeamScore,
   GameConfig,
   GameScore,
-  TeamScore,
+  isPlayer,
+  Player,
 } from '@sthack/scoreboard-common'
 import { getEditionConfig, NoDataError } from '@sthack/scoreboard-ui/components'
 import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { BackupDataType, useBackupData } from './useBackupData'
 
-export function useTeamData(team?: string) {
+export function useTeamData(teamname?: string) {
   const { year } = useParams()
   const yearNumber = parseInt(year || '', 10)
 
@@ -22,20 +25,32 @@ export function useTeamData(team?: string) {
   const challengesData = useBackupData(yearNumber, BackupDataType.challenges)
   const rewardsData = useBackupData(yearNumber, BackupDataType.rewards)
   const usersData = useBackupData(yearNumber, BackupDataType.users)
+  const teamsData = useBackupData(yearNumber, BackupDataType.teams)
 
   const { data: rawAch = [] } = achievementsData
   const { data: rawAtt = [] } = attemptsData
   const { data: cha = [] } = challengesData
-  const { data: rew = [] } = rewardsData
-  const { data: usr = [] } = usersData
+  const { data: rawRew = [] } = rewardsData
+  const { data: rawUsr = [] } = usersData
+  const { data: tm = [] } = teamsData
+
+  const plr = useMemo(
+    () =>
+      rawUsr.filter(isPlayer).map<Player>(p => ({
+        ...p,
+        team: tm.find(t => t._id === p.teamId) ?? DummyTeam,
+      })),
+    [rawUsr, tm],
+  )
 
   const ach = useMemo(
     () =>
       rawAch.map(a => ({
         ...a,
         challenge: cha.find(c => c._id === a.challengeId) ?? DummyChallenge,
+        team: tm.find(t => t._id === a.teamId) ?? DummyTeam,
       })),
-    [cha, rawAch],
+    [cha, rawAch, tm],
   )
 
   const att = useMemo(
@@ -43,29 +58,31 @@ export function useTeamData(team?: string) {
       rawAtt.map(a => ({
         ...a,
         challenge: cha.find(c => c._id === a.challengeId) ?? DummyChallenge,
+        team: tm.find(t => t._id === a.teamId) ?? DummyTeam,
       })),
-    [cha, rawAtt],
+    [cha, rawAtt, tm],
+  )
+
+  const rew = useMemo(
+    () =>
+      rawRew.map(a => ({
+        ...a,
+        team: tm.find(t => t._id === a.teamId) ?? DummyTeam,
+      })),
+    [rawRew, tm],
   )
 
   const gameScore = useMemo<GameScore>(() => {
-    const teams = [
-      ...new Set(
-        usr
-          .map(u => u.team)
-          .filter(t => (yearNumber > 2022 ? t !== 'admin' : true)),
-      ),
-    ]
-
     const config: GameConfig = {
       ...getEditionConfig(yearNumber),
 
       gameOpened: false,
       registrationOpened: false,
-      teamCount: teams.length,
+      teamCount: tm.length,
     }
 
-    return computeGameScore(ach, rew, cha, teams, config)
-  }, [ach, cha, rew, usr, yearNumber])
+    return computeGameScore(ach, rew, cha, tm, config)
+  }, [ach, cha, rew, tm, yearNumber])
 
   const minDate = useMemo(
     () =>
@@ -90,26 +107,26 @@ export function useTeamData(team?: string) {
   )
 
   const achievements = useMemo(
-    () => (team ? ach.filter(a => a.teamname === team) : ach),
-    [ach, team],
+    () => (teamname ? ach.filter(a => a.team.name === teamname) : ach),
+    [ach, teamname],
   )
 
   const attempts = useMemo(
-    () => (team ? att.filter(a => a.teamname === team) : att),
-    [att, team],
+    () => (teamname ? att.filter(a => a.team.name === teamname) : att),
+    [att, teamname],
   )
 
   const rewards = useMemo(
-    () => (team ? rew.filter(r => r.teamname === team) : rew),
-    [rew, team],
+    () => (teamname ? rew.filter(r => r.team.name === teamname) : rew),
+    [rew, teamname],
   )
 
-  const users = useMemo(
-    () => (team ? usr.filter(u => u.team === team) : usr),
-    [usr, team],
+  const players = useMemo(
+    () => (teamname ? plr.filter(u => u.team.name === teamname) : plr),
+    [plr, teamname],
   )
 
-  const teamScore = gameScore.teamsScore.find(ts => ts.team === team)
+  const teamScore = gameScore.teamsScore.find(ts => ts.team.name === teamname)
 
   return {
     loading:
@@ -117,35 +134,28 @@ export function useTeamData(team?: string) {
       attemptsData.loading &&
       challengesData.loading &&
       rewardsData.loading &&
-      usersData.loading,
+      usersData.loading &&
+      teamsData.loading,
     error:
       achievementsData.error ||
       attemptsData.error ||
       challengesData.error ||
       rewardsData.error ||
       usersData.error ||
-      (team && !teamScore
+      teamsData.error ||
+      (teamname && !teamScore
         ? new NoDataError(
-            `${team} seems to not have participated into edition ${year}`,
+            `${teamname} seems to not have participated into edition ${year}`,
           )
         : undefined),
     achievements,
     attempts,
     challenges: cha,
     rewards,
-    users,
+    players,
     gameScore,
-    teamScore: teamScore ?? dummyScore,
+    teamScore: teamScore ?? dummyTeamScore,
     minDate,
     maxDate,
   }
-}
-
-const dummyScore: TeamScore = {
-  team: '',
-  breakthroughs: [],
-  rank: -1,
-  rewards: [],
-  score: -1,
-  solved: [],
 }

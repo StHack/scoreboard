@@ -1,4 +1,10 @@
-import { User, UserRole } from '@sthack/scoreboard-common'
+import {
+  isPlayer,
+  Player,
+  Team,
+  User,
+  UserRole,
+} from '@sthack/scoreboard-common'
 import {
   Box,
   ExportJsonButton,
@@ -15,26 +21,35 @@ import { useAdmin } from 'hooks/useAdmin'
 import { useGame } from 'hooks/useGame'
 import { useState } from 'react'
 import { AlignSelfProps, GridAreaProps, JustifySelfProps } from 'styled-system'
-import { UserEditMode, UserForm } from './UserForm'
+import { UserPasswordForm } from './UserPasswordForm'
 import { UserRoleForm } from './UserRoleForm'
+import { UserTeamForm } from './UserTeamForm'
 
 export function UserPanel() {
   const { users } = useAdmin()
   const [search, setSearch] = useState<string>('')
 
   const teams = users
+    .filter(isPlayer)
     .filter(
       u =>
         u.username.toLowerCase().includes(search) ||
-        u.team.toLowerCase().includes(search),
+        u.team.name.toLowerCase().includes(search),
     )
     .reduce(
       (acc, cur) =>
         acc.has(cur.team)
-          ? acc.set(cur.team, [...(acc.get(cur.team) as User[]), cur])
+          ? acc.set(cur.team, [...(acc.get(cur.team) as Player[]), cur])
           : acc.set(cur.team, [cur]),
-      new Map<string, User[]>(),
+      new Map<Team, Player[]>(),
     )
+
+  const nonPlayer = users
+    .filter(u => !isPlayer(u))
+    .filter(u => u.username.toLowerCase().includes(search))
+
+  const admins = nonPlayer.filter(u => u.roles.includes(UserRole.Admin))
+  const unafiliated = nonPlayer.filter(u => !u.roles.includes(UserRole.Admin))
 
   return (
     <Box display="flex" flexDirection="column" overflowY="hidden" gap="2">
@@ -54,35 +69,44 @@ export function UserPanel() {
         overflowY="auto"
         gap="2"
       >
-        {teams.has('admin') && (
-          <TeamCard
-            team="admin"
-            members={teams.get('admin') as User[]}
+        {(admins.length > 0 || unafiliated.length > 0) && (
+          <Box
             gridArea={[null, 'auto/1/auto/3', `1/auto/${teams.size}/auto`]}
             alignSelf={[null, 'start']}
-          />
+            gap="2"
+            display="grid"
+          >
+            {admins.length > 0 && <UsersCard title="Admins" members={admins} />}
+
+            {unafiliated.length > 0 && (
+              <UsersCard title="Un-Affiliated" members={unafiliated} />
+            )}
+          </Box>
         )}
 
         {[...teams]
-          .filter(([t]) => t !== 'admin')
-          .sort(([t1], [t2]) => t1.localeCompare(t2))
+          .sort(([t1], [t2]) => t1.name.localeCompare(t2.name))
           .map(([team, users]) => (
-            <TeamCard key={team} team={team} members={users} />
+            <UsersCard
+              key={team._id}
+              title={`${team.name} (${users.length} players)`}
+              members={users}
+            />
           ))}
       </Box>
     </Box>
   )
 }
 
-type TeamCardProps = {
-  team: string
+type UsersCardProps = {
+  title: string
   members: User[]
 }
-function TeamCard({
-  team,
+function UsersCard({
+  title,
   members,
   ...props
-}: TeamCardProps & GridAreaProps & AlignSelfProps & JustifySelfProps) {
+}: UsersCardProps & GridAreaProps & AlignSelfProps & JustifySelfProps) {
   const { gameConfig } = useGame()
   return (
     <Box
@@ -103,7 +127,7 @@ function TeamCard({
         fontSize="2"
         color={members.length > gameConfig.teamSize ? 'secondary' : undefined}
       >
-        {team} ({members.length} players)
+        {title}
       </Box>
       <Box as="ul" pl="2" display="flex" flexDirection="column" gap="2" p="2">
         {members.map(u => (
@@ -118,8 +142,9 @@ type UserRowProps = {
   user: User
 }
 function UserRow({ user }: UserRowProps) {
-  const [userEditMode, setUserEditMode] = useState<UserEditMode>()
-  const [editRole, setEditRole] = useState<boolean>(false)
+  const [userEditMode, setUserEditMode] = useState<
+    'password' | 'team' | 'role'
+  >()
   const { deleteUser, logoutUser } = useAdmin()
 
   return (
@@ -156,7 +181,7 @@ function UserRow({ user }: UserRowProps) {
         roleRequired={UserRole.Moderator}
       />
       <RoleBasedButton
-        onClick={() => setEditRole(true)}
+        onClick={() => setUserEditMode('role')}
         icon={user.roles.includes(UserRole.Admin) ? IconDemote : IconPromote}
         variant="secondary"
         title="Change Roles"
@@ -164,9 +189,8 @@ function UserRow({ user }: UserRowProps) {
       />
       <RoleBasedButton
         onClick={() =>
-          confirm(
-            `Are you sure to delete User:\n\n${user.username}\n${user.team}`,
-          ) && deleteUser(user)
+          confirm(`Are you sure to delete user "${user.username}" ?`) &&
+          deleteUser(user)
         }
         variant="danger"
         icon={IconDelete}
@@ -174,16 +198,19 @@ function UserRow({ user }: UserRowProps) {
         roleRequired={UserRole.Moderator}
       />
 
-      {userEditMode && (
-        <UserForm
+      {userEditMode === 'password' && (
+        <UserPasswordForm
           user={user}
-          editMode={userEditMode}
           onClose={() => setUserEditMode(undefined)}
         />
       )}
 
-      {editRole && (
-        <UserRoleForm user={user} onClose={() => setEditRole(false)} />
+      {userEditMode === 'team' && (
+        <UserTeamForm user={user} onClose={() => setUserEditMode(undefined)} />
+      )}
+
+      {userEditMode === 'role' && (
+        <UserRoleForm user={user} onClose={() => setUserEditMode(undefined)} />
       )}
     </Box>
   )

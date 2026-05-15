@@ -6,7 +6,7 @@ const schema = new Schema<Attempt>(
   {
     challengeId: { type: String, required: true },
     username: { type: String, required: true },
-    teamname: { type: String, required: true },
+    teamId: { type: String, required: true },
     proposal: { type: String, required: true },
   },
   { timestamps: true },
@@ -44,34 +44,11 @@ export async function listAttemptAfter(date: Date): Promise<Attempt[]> {
 
 export async function getSimilarAttempts({
   challengeId,
-  teamname,
+  teamId,
 }: BaseAttempt): Promise<Attempt[]> {
-  const docs = await AttemptModel.find({ challengeId, teamname }).sort({
+  const docs = await AttemptModel.find({ challengeId, teamId }).sort({
     createdAt: -1,
   })
-  return docs.map(d =>
-    d.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
-  )
-}
-
-export async function getTeamAttempt(teamname: string): Promise<Attempt[]> {
-  const docs = await AttemptModel.find({ teamname })
-  return docs.map(d =>
-    d.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
-  )
-}
-
-export async function getChallengeAttempt(
-  challengeId: string,
-): Promise<Attempt[]> {
-  const docs = await AttemptModel.find({ challengeId })
-  return docs.map(d =>
-    d.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
-  )
-}
-
-export async function getUserAttempt(username: string): Promise<Attempt[]> {
-  const docs = await AttemptModel.find({ username })
   return docs.map(d =>
     d.toObject(removeMongoPropertiesWithOptions({ removeId: false })),
   )

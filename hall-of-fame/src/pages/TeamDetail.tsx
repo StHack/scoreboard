@@ -37,22 +37,22 @@ const playerStatsColumn: ColumnDefinition<PlayerStats>[] = [
 ]
 
 export function TeamDetail() {
-  const { team } = useParams()
+  const { teamname } = useParams()
   const {
     attempts,
-    users,
+    players,
     gameScore,
     teamScore: score,
     loading,
     error,
     minDate,
     maxDate,
-  } = useTeamData(team)
+  } = useTeamData(teamname)
 
   const playerStats = useMemo(() => {
-    const players = users.filter(u => u.team === team)
+    const currentPlayers = players.filter(u => u.team.name === teamname)
 
-    return players
+    return currentPlayers
       .map<PlayerStats>(player => {
         const solved =
           score?.solved.filter(a => a.username === player.username) ?? []
@@ -71,11 +71,11 @@ export function TeamDetail() {
         }
       })
       .sort((a, b) => b.contributedScore - a.contributedScore)
-  }, [users, team, gameScore, score])
+  }, [players, teamname, gameScore, score])
 
   return (
     <PageLoader
-      title={`Team ${team} results`}
+      title={`Team ${teamname} results`}
       icon={IconUsers}
       showLoader={loading}
       error={error}

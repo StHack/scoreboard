@@ -41,10 +41,10 @@ type AllowedQuestion = (typeof QUESTION_OPTIONS)[number]['value']
 
 function groupKey(
   groupBy: AllowedGroup,
-  { challenge, teamname, username }: Survey,
+  { challenge, team, username }: Survey,
 ): string {
   return groupBy === 'team'
-    ? `t/${teamname}`
+    ? `t/${team.name}`
     : groupBy === 'challenge'
       ? `c/${challenge.name}`
       : `u/${username}`

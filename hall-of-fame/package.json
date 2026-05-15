@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prestart": "pnpm run copy-backups",
     "start": "vite",
     "prebuild": "pnpm run copy-backups & pnpm run ts-check",
     "build": "vite build",

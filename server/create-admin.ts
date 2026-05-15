@@ -47,14 +47,10 @@ if (!user || !password) {
 }
 
 try {
-  await registerUser(
-    {
-      username: user,
-      password: password,
-      team: 'admin',
-    },
-    50,
-  )
+  await registerUser({
+    username: user,
+    password: password,
+  })
 
   console.log(
     `User created:\nusername:${c.b + c.g} ${user} ${c._}\npassword:${c.b + c.g} ${password} ${c._}`,

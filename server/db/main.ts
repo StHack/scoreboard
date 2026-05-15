@@ -32,3 +32,5 @@ export function removeMongoPropertiesWithOptions({
     },
   }
 }
+
+export class ValidationError extends Error {}

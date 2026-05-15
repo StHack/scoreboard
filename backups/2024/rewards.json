@@ -3,7 +3,6 @@
     "_id": {
       "$oid": "665105dade242e84893090b6"
     },
-    "teamname": "sthalckoolique",
     "label": "Hack4Values #1 place",
     "value": 50,
     "createdAt": {
@@ -12,13 +11,13 @@
     "updatedAt": {
       "$date": "2024-05-24T21:25:46.893Z"
     },
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a046a42a8a0b7fa201dba0c"
   },
   {
     "_id": {
       "$oid": "66510624de242e8489309247"
     },
-    "teamname": "onepoint",
     "label": "Hack4Values #2 place",
     "value": 45,
     "createdAt": {
@@ -27,13 +26,13 @@
     "updatedAt": {
       "$date": "2024-05-24T21:27:00.658Z"
     },
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a046a42a8a0b7fa201dba09"
   },
   {
     "_id": {
       "$oid": "66510648de242e848930938f"
     },
-    "teamname": "Bottom’s Up",
     "label": "Hack4Values #3 place",
     "value": 40,
     "createdAt": {
@@ -42,13 +41,13 @@
     "updatedAt": {
       "$date": "2024-05-24T21:27:36.454Z"
     },
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a046a42a8a0b7fa201db9fd"
   },
   {
     "_id": {
       "$oid": "66510664de242e84893094c3"
     },
-    "teamname": "Marly Golmons",
     "label": "Hack4Values #4 place",
     "value": 35,
     "createdAt": {
@@ -57,6 +56,7 @@
     "updatedAt": {
       "$date": "2024-05-24T21:28:04.623Z"
     },
-    "__v": 0
+    "__v": 0,
+    "teamId": "6a046a42a8a0b7fa201db9f4"
   }
 ]

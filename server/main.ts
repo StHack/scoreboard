@@ -51,7 +51,7 @@ const serverConfig = getServerConfig(serverConfigClient)
 await initMongo()
 registerCtfTime(app, serverConfig)
 registerFileEndpoint(app)
-registerAuthentification(app, io, serverConfig, sessionClient, redlock)
+registerAuthentification(app, io, serverConfig, sessionClient)
 
 const adminIo = io.of('/api/admin')
 const gameIo = io.of('/api/game')

@@ -1,4 +1,4 @@
-import { GameConfig, GameScore, TeamScore } from '@sthack/scoreboard-common'
+import { GameScore, TeamScore } from '@sthack/scoreboard-common'
 import { Box } from '@sthack/scoreboard-ui/components'
 import { ScoreCard } from './ScoreCard'
 
@@ -20,7 +20,7 @@ export function TeamsScoreBoard({
     >
       {teamsScore.map(ts => (
         <ScoreCard
-          key={ts.team}
+          key={ts.team._id}
           teamScore={ts}
           challsScore={challsScore}
           isBeforeLastScorer={ts === beforeLastScorer}

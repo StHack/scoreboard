@@ -10,14 +10,8 @@ import {
 import { useRegisterForm } from 'hooks/useRegisterForm'
 
 export function Register() {
-  const {
-    formProps,
-    passwordProps,
-    teamProps,
-    usernameProps,
-    error,
-    isLoading,
-  } = useRegisterForm()
+  const { formProps, passwordProps, usernameProps, error, isLoading } =
+    useRegisterForm()
 
   return (
     <Box
@@ -55,15 +49,6 @@ export function Register() {
               id="new-password"
               minLength={5}
               {...passwordProps}
-            />
-          </LabelInput>
-
-          <LabelInput label="Team">
-            <TextInput
-              type="text"
-              minLength={3}
-              maxLength={42}
-              {...teamProps}
             />
           </LabelInput>
 

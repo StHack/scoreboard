@@ -6,13 +6,14 @@ import {
   Message,
   Reward,
   Survey,
+  Team,
 } from '@sthack/scoreboard-common'
 import { listAchievement } from 'db/AchievementDb.js'
 import { listChallenge } from 'db/ChallengeDb.js'
 import { listMessage } from 'db/MessageDb.js'
 import { listReward } from 'db/RewardDb.js'
 import { listSurvey } from 'db/SurveyDb.js'
-import { listTeam } from 'db/UsersDb.js'
+import { listTeam } from 'db/TeamDb.js'
 import { Namespace } from 'socket.io'
 import { registerSocketConnectivityChange } from './serveractivity.js'
 import { ServerConfig } from './serverconfig.js'
@@ -61,7 +62,7 @@ export function registerGameNamespace(
       callback(messages)
     })
 
-    gameSocket.on('game:teams', async (callback: Callback<string[]>) => {
+    gameSocket.on('game:teams', async (callback: Callback<Team[]>) => {
       const teams = await listTeam()
       callback(teams)
     })
