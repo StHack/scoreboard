@@ -36,12 +36,14 @@ import {
   removeSurveyByAchievementId,
   removeSurveyById,
 } from 'db/SurveyDb.js'
-import { getTeam, listTeam } from 'db/TeamDb.js'
+import { getTeam, listFullTeam, removeTeam } from 'db/TeamDb.js'
 import { listUser, removeUser, updateUser } from 'db/UsersDb.js'
 import debug from 'debug'
 import { Request } from 'express'
+import { Redis } from 'ioredis'
 import { extname } from 'path'
 import { Namespace } from 'socket.io'
+import { destroyUserSessions } from './authentication.js'
 import { emitEventLog } from './events.js'
 import {
   registerNamespaceRequiredRoles,
@@ -56,22 +58,24 @@ import {
 import { ServerConfig } from './serverconfig.js'
 import { ServerStatisticsFetcher } from './serverStatistics.js'
 
-const requiredRoles: RequiredRole[] = [
-  { prefix: 'game:actions:', role: UserRole.GameMaster },
-  { prefix: 'achievement:actions:', role: UserRole.GameMaster },
+const rules: RequiredRole[] = [
+  { prefix: 'game:actions:', roles: [UserRole.GameMaster] },
+  { prefix: 'achievement:actions:', roles: [UserRole.GameMaster] },
 
-  { prefix: 'game:annoucement:actions:', role: UserRole.Announcer },
-  { prefix: 'challenge:actions:', role: UserRole.Author },
-  { prefix: 'reward:actions:', role: UserRole.Rewarder },
+  { prefix: 'game:annoucement:actions:', roles: [UserRole.Announcer] },
+  { prefix: 'challenge:actions:', roles: [UserRole.Author] },
+  { prefix: 'reward:actions:', roles: [UserRole.Rewarder] },
 
-  { prefix: 'users:actions:changeTeam', role: UserRole.Moderator },
-  { prefix: 'users:actions:changePassword', role: UserRole.Moderator },
-  { prefix: 'users:actions:logout', role: UserRole.Moderator },
+  { prefix: 'users:actions:changeTeam', roles: [UserRole.Moderator] },
+  { prefix: 'users:actions:changePassword', roles: [UserRole.Moderator] },
+  { prefix: 'users:actions:logout', roles: [UserRole.Moderator] },
 
-  { prefix: 'users:actions:delete', role: UserRole.RoleManager },
-  { prefix: 'users:actions:changeRoles', role: UserRole.RoleManager },
+  { prefix: 'users:actions:delete', roles: [UserRole.RoleManager] },
+  { prefix: 'users:actions:changeRoles', roles: [UserRole.RoleManager] },
 
-  { prefix: 'surveys:actions:delete', role: UserRole.Moderator },
+  { prefix: 'teams:actions:delete', roles: [UserRole.RoleManager] },
+
+  { prefix: 'surveys:actions:delete', roles: [UserRole.Moderator] },
 ]
 
 export function registerAdminNamespace(
@@ -80,6 +84,7 @@ export function registerAdminNamespace(
   playerIo: Namespace,
   serverConfig: ServerConfig,
   serverStatFetcher: ServerStatisticsFetcher,
+  sessionRedisClient: Redis,
 ) {
   const logger = debug('sthack:admin')
 
@@ -92,7 +97,7 @@ export function registerAdminNamespace(
   adminIo.on('connection', adminSocket => {
     registerSocketLogger(adminSocket, logger)
 
-    registerSocketRequiredRoles(adminSocket, logger, requiredRoles)
+    registerSocketRequiredRoles(adminSocket, logger, rules)
 
     registerSocketConnectivityChange(adminSocket, adminIo, gameIo, playerIo)
 
@@ -239,7 +244,7 @@ export function registerAdminNamespace(
       for (const [, soc] of playerIo.sockets) {
         const req = soc.request as Request
         if (req.user) {
-          logout(req.user.username)
+          await logout(req.user.username)
         }
         req.logOut(() => {
           soc.disconnect(true)
@@ -331,7 +336,9 @@ export function registerAdminNamespace(
       'users:actions:changeTeam',
       async (username: string, teamId: string, callback: Callback<User>) => {
         const user = await updateUser(username, { teamId })
+        await logout(username)
         callback(user)
+        adminIo.emit('users:updated', user)
       },
     )
 
@@ -339,6 +346,7 @@ export function registerAdminNamespace(
       'users:actions:changePassword',
       async (username: string, password: string, callback: Callback<User>) => {
         const user = await updateUser(username, { password })
+        await logout(username)
         callback(user)
       },
     )
@@ -353,9 +361,10 @@ export function registerAdminNamespace(
             })
           : await updateUser(username, { roles })
 
-        adminIo.in(user.username).disconnectSockets(true)
+        await logout(username)
 
         callback(user)
+        adminIo.emit('users:updated', user)
       },
     )
 
@@ -363,15 +372,29 @@ export function registerAdminNamespace(
       'users:actions:delete',
       async (username: string, callback: Callback<void>) => {
         await removeUser(username)
-        logout(username)
+        await logout(username)
         callback()
+        adminIo.emit('users:deleted', username)
       },
     )
 
     adminSocket.on('users:actions:logout', logout)
 
+    adminSocket.on(
+      'teams:actions:delete',
+      async (teamId: string, callback: Callback<void>) => {
+        const deleted = await removeTeam(teamId)
+        callback()
+        if (deleted) {
+          gameIo.emit('teams:deleted', deleted)
+          adminIo.emit('teams:deleted', deleted)
+          await emitGameConfigUpdate()
+        }
+      },
+    )
+
     adminSocket.on('teams:list', async (callback: Callback<FullTeam[]>) => {
-      const teams = await listTeam({ includeJoinToken: true })
+      const teams = await listFullTeam()
       callback(teams)
     })
 
@@ -445,10 +468,11 @@ export function registerAdminNamespace(
       gameIo.emit('game:config:updated', updatedConfig)
     }
 
-    function logout(username: string) {
+    async function logout(username: string) {
       playerIo.in(username).disconnectSockets(true)
       gameIo.in(username).disconnectSockets(true)
       adminSocket.in(username).disconnectSockets(true)
+      await destroyUserSessions(sessionRedisClient, username)
     }
   })
 }

@@ -44,6 +44,13 @@ export function Footer() {
         </Link>
 
         {isAuthenticated && (
+          <Link to="/account" end>
+            <IconPromote color="currentColor" size="1.5em" />
+            Account
+          </Link>
+        )}
+
+        {isAuthenticated && (
           <Link to="/game" end>
             <IconGame color="currentColor" size="1.5em" />
             Game

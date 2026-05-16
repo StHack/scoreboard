@@ -214,6 +214,10 @@ function useProvideGame(): GameContext {
       ])
     })
 
+    socket.on('teams:added', (team: Team) => {
+      setTeams(teams => [...teams, team])
+    })
+
     socket.on('achievement:deleted', (deleted: Achievement) => {
       setRawAchievements(ach => ach.filter(a => !(a._id === deleted._id)))
     })
@@ -224,6 +228,10 @@ function useProvideGame(): GameContext {
 
     socket.on('reward:deleted', (deleted: Reward) => {
       setRawRewards(rewards => rewards.filter(r => !(r._id === deleted._id)))
+    })
+
+    socket.on('teams:deleted', (deleted: Team) => {
+      setTeams(teams => teams.filter(t => !(t._id === deleted._id)))
     })
 
     socket.on('game:announcement:made', (message: Message) => {
@@ -244,9 +252,11 @@ function useProvideGame(): GameContext {
       socket.off('achievement:added')
       socket.off('surveys:added')
       socket.off('reward:added')
+      socket.off('teams:added')
       socket.off('achievement:deleted')
       socket.off('surveys:deleted')
       socket.off('reward:deleted')
+      socket.off('teams:deleted')
       socket.off('game:announcement:made')
       socket.off('game:config:updated')
     }

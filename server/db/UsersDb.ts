@@ -50,7 +50,7 @@ const removeProperties: ToObjectOptions = removeMongoPropertiesWithOptions({
 export async function registerUser({
   username,
   password,
-}: CreateUser): Promise<void> {
+}: CreateUser): Promise<User> {
   const salt = randomUUID()
   const hashed = passwordHasher(password, salt)
 
@@ -63,6 +63,7 @@ export async function registerUser({
     })
 
     await doc.save()
+    return doc.toObject(removeProperties)
   } catch (error) {
     if (error instanceof global.Error) {
       if (error.name === 'ValidationError') {

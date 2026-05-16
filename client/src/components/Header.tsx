@@ -37,6 +37,7 @@ export function Header() {
 
       <nav>
         <Box display="flex" flexDirection="row" alignItems="center" as="ul">
+          {isAuthenticated && <GameLink to="/account" label="Account" />}
           <GameLink to="/scoreboard" label="Scoreboard" />
           <GameLink to="/rules" label="Rules" />
           {roles.includes(UserRole.Admin) && (

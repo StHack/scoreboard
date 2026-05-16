@@ -191,24 +191,22 @@ async function reward({
 function solve({
   isBreakthrough,
   achievement,
-  challenge,
-  team,
 }: {
   isBreakthrough: boolean
   achievement: Achievement
-  challenge: Challenge
-  team: Team
 }): Promise<string> {
   if (!isBreakthrough) {
     return Promise.resolve('')
   }
 
-  const { username } = achievement
-  const { name } = challenge
-  const { name: teamname } = team
+  const {
+    username,
+    challenge: { name: challname },
+    team: { name: teamname },
+  } = achievement
 
   return Promise.resolve(
-    `## 💥 Breakthrough on challenge \`${name}\`!\n\`${username}\` from team \`${teamname}\` just solved it`,
+    `## 💥 Breakthrough on challenge \`${challname}\`!\n\`${username}\` from team \`${teamname}\` just solved it`,
   )
 }
 

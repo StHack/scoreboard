@@ -15,6 +15,7 @@ export function removeMongoPropertiesWithOptions({
 }: removeMongoPropertiesWithOptionsType): ToObjectOptions {
   return {
     versionKey: false,
+    flattenObjectIds: true,
     transform: function (doc, ret) {
       // @ts-expect-error manual cleaning of mongo properties, this is not a mongoose document
       delete ret.id

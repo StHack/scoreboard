@@ -1,28 +1,50 @@
 import {
   BaseSurvey,
+  CreateTeam,
   DummyTeam,
   dummyTeamScore,
+  FullTeam,
   isPlayer,
+  JoinTeam,
   Message,
+  ServerError,
   TeamScore,
 } from '@sthack/scoreboard-common'
 import { useStorage } from '@sthack/scoreboard-ui/hooks'
-import { createContext, PropsWithChildren, useContext, useState } from 'react'
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import { useAuth } from './useAuthentication'
 import { useGame } from './useGame'
 import { useSocket } from './useSocket'
 
 export type PlayerContext = {
+  loadingState: PlayerContextLoadingState
+  myTeam?: FullTeam
   myScore: number
   myTeamScore: TeamScore
   isBeforeLastScorer: boolean
   readMessages: string[]
+  isLoaded: (state: PlayerContextLoadingState) => boolean
   attemptChall: (challengeId: string, flag: string) => Promise<true | string>
   sendSurvey: (challengeId: string, survey: BaseSurvey) => Promise<void>
+  createTeam: (payload: CreateTeam) => Promise<void>
+  joinTeam: (payload: JoinTeam) => Promise<void>
   markMessageAsRead: (message: Message) => void
 }
 
+export enum PlayerContextLoadingState {
+  none = 0,
+  // eslint-disable-next-line @typescript-eslint/prefer-literal-enum-member
+  team = 1 << 0,
+}
+
 const PlayerContext = createContext<PlayerContext>({
+  loadingState: PlayerContextLoadingState.none,
   myScore: 0,
   myTeamScore: {
     team: DummyTeam,
@@ -34,8 +56,11 @@ const PlayerContext = createContext<PlayerContext>({
   },
   isBeforeLastScorer: false,
   readMessages: [],
+  isLoaded: () => false,
   attemptChall: () => Promise.resolve('Uninitialized'),
   sendSurvey: () => Promise.resolve(),
+  createTeam: () => Promise.resolve(),
+  joinTeam: () => Promise.resolve(),
   markMessageAsRead: () => {},
 })
 
@@ -50,13 +75,18 @@ export const usePlayer = () => {
 
 function useProvidePlayer(): PlayerContext {
   const { socket } = useSocket('/api/player')
-  const { user } = useAuth()
+  const { user, reload } = useAuth()
   if (!user) {
     throw new Error()
   }
   const {
     score: { teamsScore, challsScore },
   } = useGame()
+
+  const [loadingState, setLoadingState] = useState<PlayerContextLoadingState>(
+    PlayerContextLoadingState.none,
+  )
+  const [myTeam, setMyTeam] = useState<FullTeam>()
 
   const player = isPlayer(user) ? user : undefined
 
@@ -75,19 +105,47 @@ function useProvidePlayer(): PlayerContext {
   const beforeLastScorer =
     lastScorerIndex > 0 ? teamsScore[lastScorerIndex - 1] : undefined
 
+  useEffect(() => {
+    if (!socket) {
+      return
+    }
+
+    if (player) {
+      socket.emit('team:get', (fullTeam: FullTeam) => {
+        setMyTeam(fullTeam)
+        setLoadingState(state => state | PlayerContextLoadingState.team)
+      })
+    } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setLoadingState(state => state | PlayerContextLoadingState.team)
+    }
+
+    socket.on('team:updated', (fullTeam: FullTeam) => {
+      setMyTeam(fullTeam)
+    })
+
+    return () => {
+      socket.off('team:updated')
+    }
+  }, [player, socket])
+
   return {
+    loadingState,
+    myTeam,
     myScore,
     myTeamScore:
       (player && teamsScore.find(x => x.team._id === player.teamId)) ||
       dummyTeamScore,
     isBeforeLastScorer: beforeLastScorer?.team === player?.teamId,
     readMessages,
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
+    isLoaded: state => (loadingState & state) === state,
     attemptChall: (challengeId, flag) => {
       if (!socket) return Promise.resolve('You are not connected at the moment')
 
       return new Promise(resolve => {
         socket.emit(
-          'challenge:solve',
+          'challenge:actions:solve',
           challengeId,
           flag,
           ({ isValid, error }: { isValid?: boolean; error?: string }) =>
@@ -105,11 +163,53 @@ function useProvidePlayer(): PlayerContext {
 
       return new Promise((resolve, reject) => {
         socket.emit(
-          'challenge:survey',
+          'challenge:actions:survey',
           challengeId,
           survey,
           ({ error }: { error?: string } = {}) =>
             error ? reject(new Error(error)) : resolve(),
+        )
+      })
+    },
+    createTeam: (payload: CreateTeam) => {
+      if (!socket)
+        return Promise.reject(new Error('You are not connected at the moment'))
+
+      return new Promise((resolve, reject) => {
+        socket.emit(
+          'team:actions:create',
+          payload,
+          async (resp: ServerError | FullTeam) => {
+            if ('error' in resp) {
+              reject(new Error(resp.error))
+              return
+            }
+
+            setMyTeam(resp)
+            await reload()
+            resolve()
+          },
+        )
+      })
+    },
+    joinTeam: (payload: JoinTeam) => {
+      if (!socket)
+        return Promise.reject(new Error('You are not connected at the moment'))
+
+      return new Promise((resolve, reject) => {
+        socket.emit(
+          'team:actions:join',
+          payload,
+          async (resp: ServerError | FullTeam) => {
+            if ('error' in resp) {
+              reject(new Error(resp.error))
+              return
+            }
+
+            setMyTeam(resp)
+            await reload()
+            resolve()
+          },
         )
       })
     },

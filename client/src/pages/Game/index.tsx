@@ -1,3 +1,4 @@
+import { isPlayer, UserRole } from '@sthack/scoreboard-common'
 import { Box } from '@sthack/scoreboard-ui/components'
 import { Messages } from 'components/Messages'
 import { useAuth } from 'hooks/useAuthentication'
@@ -8,7 +9,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 import { UserScore } from './components/UserScore'
 
 export function GameLayout() {
-  const { isAuthenticated, hasReadRules } = useAuth()
+  const { isAuthenticated, hasReadRules, user } = useAuth()
 
   if (!isAuthenticated) {
     return <Navigate to="/auth/login" replace />
@@ -16,6 +17,10 @@ export function GameLayout() {
 
   if (!hasReadRules) {
     return <Navigate to="/rules" replace />
+  }
+
+  if (!user || (!isPlayer(user) && !user.roles.includes(UserRole.Admin))) {
+    return <Navigate to="/account/team" replace />
   }
 
   return (

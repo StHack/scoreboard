@@ -1,4 +1,5 @@
 import {
+  FullTeam,
   isPlayer,
   Player,
   Team,
@@ -26,7 +27,7 @@ import { UserRoleForm } from './UserRoleForm'
 import { UserTeamForm } from './UserTeamForm'
 
 export function UserPanel() {
-  const { users } = useAdmin()
+  const { users, teams: allTeams } = useAdmin()
   const [search, setSearch] = useState<string>('')
 
   const teams = users
@@ -51,6 +52,8 @@ export function UserPanel() {
   const admins = nonPlayer.filter(u => u.roles.includes(UserRole.Admin))
   const unafiliated = nonPlayer.filter(u => !u.roles.includes(UserRole.Admin))
 
+  const emptyTeams = allTeams.filter(t => t.players.length === 0)
+
   return (
     <Box display="flex" flexDirection="column" overflowY="hidden" gap="2">
       <Box display="flex" flexDirection="row" gap="2">
@@ -69,28 +72,40 @@ export function UserPanel() {
         overflowY="auto"
         gap="2"
       >
-        {(admins.length > 0 || unafiliated.length > 0) && (
+        {(admins.length > 0 ||
+          unafiliated.length > 0 ||
+          emptyTeams.length > 0) && (
           <Box
             gridArea={[null, 'auto/1/auto/3', `1/auto/${teams.size}/auto`]}
             alignSelf={[null, 'start']}
             gap="2"
             display="grid"
           >
-            {admins.length > 0 && <UsersCard title="Admins" members={admins} />}
+            {admins.length > 0 && <TeamCard title="Admins" members={admins} />}
 
             {unafiliated.length > 0 && (
-              <UsersCard title="Un-Affiliated" members={unafiliated} />
+              <TeamCard title="Un-Affiliated" members={unafiliated} />
             )}
+
+            {emptyTeams.map(team => (
+              <TeamCard
+                key={team._id}
+                title={`${team.name} (no players)`}
+                members={team.players}
+                team={team}
+              />
+            ))}
           </Box>
         )}
 
         {[...teams]
           .sort(([t1], [t2]) => t1.name.localeCompare(t2.name))
           .map(([team, users]) => (
-            <UsersCard
+            <TeamCard
               key={team._id}
               title={`${team.name} (${users.length} players)`}
               members={users}
+              team={allTeams.find(t => t._id === team._id)}
             />
           ))}
       </Box>
@@ -98,16 +113,19 @@ export function UserPanel() {
   )
 }
 
-type UsersCardProps = {
+type TeamCardProps = {
   title: string
+  team?: FullTeam
   members: User[]
 }
-function UsersCard({
+function TeamCard({
   title,
+  team,
   members,
   ...props
-}: UsersCardProps & GridAreaProps & AlignSelfProps & JustifySelfProps) {
+}: TeamCardProps & GridAreaProps & AlignSelfProps & JustifySelfProps) {
   const { gameConfig } = useGame()
+  const { deleteTeam } = useAdmin()
   return (
     <Box
       bg="background"
@@ -126,8 +144,26 @@ function UsersCard({
         as="h3"
         fontSize="2"
         color={members.length > gameConfig.teamSize ? 'secondary' : undefined}
+        display="flex"
+        gap="2"
+        justifyContent="space-between"
+        // alignItems="center"
       >
         {title}
+        <Box display="flex" flexDirection="row" gap="2">
+          {team && team.players.length === 0 && (
+            <RoleBasedButton
+              onClick={() =>
+                confirm(`Are you sure to delete team "${team.name}" ?`) &&
+                deleteTeam(team)
+              }
+              variant="danger"
+              icon={IconDelete}
+              title="Delete"
+              roleRequired={UserRole.RoleManager}
+            />
+          )}
+        </Box>
       </Box>
       <Box as="ul" pl="2" display="flex" flexDirection="column" gap="2" p="2">
         {members.map(u => (
@@ -195,7 +231,7 @@ function UserRow({ user }: UserRowProps) {
         variant="danger"
         icon={IconDelete}
         title="Delete"
-        roleRequired={UserRole.Moderator}
+        roleRequired={UserRole.RoleManager}
       />
 
       {userEditMode === 'password' && (

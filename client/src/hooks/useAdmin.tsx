@@ -55,6 +55,7 @@ export type AdminContext = {
   changeRoles: (user: User, roles: UserRole[]) => void
   deleteUser: (user: User) => void
   logoutUser: (user: User) => void
+  deleteTeam: (team: FullTeam) => void
   deleteAchievement: (achievement: Achievement) => void
   deleteReward: (reward: Reward) => void
   deleteSurvey: (survey: Survey) => void
@@ -116,6 +117,7 @@ const AdminContext = createContext<AdminContext>({
   changeRoles: () => {},
   deleteUser: () => {},
   logoutUser: () => {},
+  deleteTeam: () => {},
   deleteAchievement: () => {},
   deleteReward: () => {},
   deleteSurvey: () => {},
@@ -276,6 +278,28 @@ function useProvideAdmin(): AdminContext {
       setRawSurveys(sur => sur.filter(s => !(s._id === deleted._id)))
     })
 
+    socket.on('users:added', (user: User) => {
+      setRawUsers(users => [...users, user])
+    })
+
+    socket.on('users:updated', (user: User) => {
+      setRawUsers(users =>
+        users.map(u => (u.username === user.username ? user : u)),
+      )
+    })
+
+    socket.on('users:deleted', (deleted: string) => {
+      setRawUsers(users => users.filter(u => u.username !== deleted))
+    })
+
+    socket.on('teams:added', (team: FullTeam) => {
+      setRawTeams(teams => [...teams, team])
+    })
+
+    socket.on('teams:deleted', (deleted: FullTeam) => {
+      setRawTeams(teams => teams.filter(t => !(t._id === deleted._id)))
+    })
+
     return () => {
       socket.off('game:activity:updated')
       socket.off('game:activity:list:updated')
@@ -285,6 +309,11 @@ function useProvideAdmin(): AdminContext {
       socket.off('attempt:added')
       socket.off('surveys:added')
       socket.off('surveys:deleted')
+      socket.off('users:added')
+      socket.off('users:updated')
+      socket.off('users:deleted')
+      socket.off('teams:added')
+      socket.off('teams:deleted')
     }
   }, [socket])
 
@@ -438,6 +467,13 @@ function useProvideAdmin(): AdminContext {
 
       socket.emit('users:actions:delete', user.username, () =>
         setRawUsers(users.filter(u => u.username !== user.username)),
+      )
+    },
+    deleteTeam: team => {
+      if (!socket) throw new Error('connection is not available')
+
+      socket.emit('teams:actions:delete', team._id, () =>
+        setRawTeams(teams => teams.filter(t => t._id !== team._id)),
       )
     },
     logoutUser: user => {

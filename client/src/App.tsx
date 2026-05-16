@@ -5,6 +5,9 @@ import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'
 import { useAuth } from 'hooks/useAuthentication'
 import { useGame } from 'hooks/useGame'
+import { AccountLayout } from 'pages/Account'
+import { AccountGeneralPanel } from 'pages/Account/components/AccountGeneralPanel'
+import { AccountTeamPanel } from 'pages/Account/components/AccountTeamPanel'
 import { AdminLayout } from 'pages/Admin'
 import { AchievementPanel } from 'pages/Admin/components/AchievementPanel'
 import { AttemptPanel } from 'pages/Admin/components/AttemptPanel'
@@ -63,6 +66,13 @@ export default function App() {
                   <Route path="register" element={<Register />} />
                 </Route>
 
+                <Route path="/account" element={<AccountLayout />}>
+                  <Route index element={<AccountGeneralPanel />} />
+                  <Route path="team" element={<AccountTeamPanel />} />
+                  <Route path="tokens" element={<AccountGeneralPanel />} />
+                  <Route path="settings" element={<AccountGeneralPanel />} />
+                </Route>
+
                 <Route path="/game" element={<GameLayout />}>
                   <Route index element={<ChallengeListPanel />} />
                   <Route
@@ -116,7 +126,7 @@ function Home() {
   }
 
   if (!gameOpened) {
-    return <Navigate to="/scoreboard" replace />
+    return <Navigate to="/account" replace />
   }
 
   if (!isLoaded) {

@@ -1,7 +1,7 @@
-import { FullTeam, Team } from '@sthack/scoreboard-common'
-import { randomUUID } from 'crypto'
+import { CreateTeam, FullTeam, Team } from '@sthack/scoreboard-common'
 import debug from 'debug'
 import { model, Schema, ToObjectOptions } from 'mongoose'
+import { nanoid } from 'nanoid'
 import { removeMongoPropertiesWithOptions } from './main.js'
 
 const logger = debug('Db:Team')
@@ -17,27 +17,36 @@ const schema = new Schema<FullTeam>({
   joinToken: { type: String, required: true },
 })
 
+schema.index({ joinToken: 1 }, { unique: true })
+
 const TeamModel = model<FullTeam>('Team', schema)
 
-const removeProperties: ToObjectOptions = removeMongoPropertiesWithOptions({
+const toTeam: ToObjectOptions = removeMongoPropertiesWithOptions({
+  removeId: false,
+  propsToRemove: ['joinToken'],
+})
+
+const toFullTeam: ToObjectOptions = removeMongoPropertiesWithOptions({
   removeId: false,
   propsToRemove: [],
 })
 
-export async function createTeam({ name }: Team): Promise<FullTeam> {
+export async function createTeam({ name }: CreateTeam): Promise<FullTeam> {
   try {
     const doc = new TeamModel({
       name,
-      joinToken: randomUUID(),
+      joinToken: nanoid(8),
     })
 
     await doc.save()
-    return doc.toObject(removeProperties)
+    return doc.toObject(toFullTeam)
   } catch (error) {
     if (error instanceof global.Error) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
       if (error.name === 'MongoServerError' && (error as any).code === 11000) {
-        throw new Error('Team already used')
+        throw new Error(
+          'This team already exist, you need to join it with the token your mate is going to share with you',
+        )
       }
     }
 
@@ -46,26 +55,36 @@ export async function createTeam({ name }: Team): Promise<FullTeam> {
   }
 }
 
-export async function getTeam(id: string): Promise<FullTeam | undefined> {
+export async function getTeam(id: string): Promise<Team | undefined> {
   const team = await TeamModel.findById(id)
-  return team?.toObject(removeProperties)
+  return team?.toObject(toTeam)
 }
 
-export async function removeTeam(id: string): Promise<void> {
-  await TeamModel.findByIdAndDelete(id)
+export async function getFullTeam(id: string): Promise<FullTeam | undefined> {
+  const team = await TeamModel.findById(id)
+  return team?.toObject(toFullTeam)
 }
 
-type listTeamParams = {
-  includeJoinToken?: boolean
+export async function getTeamByJoinToken(
+  joinToken: string,
+): Promise<FullTeam | undefined> {
+  const team = await TeamModel.findOne({ joinToken })
+  return team?.toObject(toFullTeam)
 }
-export async function listTeam({
-  includeJoinToken,
-}: listTeamParams = {}): Promise<FullTeam[]> {
-  const teams = await TeamModel.find()
-    .select(includeJoinToken ? [] : ['-joinToken'])
-    .sort({ _id: -1 })
 
-  return teams.map(u => u.toObject(removeProperties))
+export async function removeTeam(id: string): Promise<Team | undefined> {
+  const deleted = await TeamModel.findByIdAndDelete(id)
+  return deleted?.toObject(toTeam)
+}
+
+export async function listTeam(): Promise<Team[]> {
+  const teams = await TeamModel.find().sort({ _id: -1 })
+  return teams.map(u => u.toObject(toTeam))
+}
+
+export async function listFullTeam(): Promise<FullTeam[]> {
+  const teams = await TeamModel.find().sort({ _id: -1 })
+  return teams.map(u => u.toObject(toFullTeam))
 }
 
 export async function countTeam(): Promise<number> {

@@ -22,10 +22,10 @@ export function registerSocketLogger(
 export function registerNamespaceRequiredRoles(
   ns: Namespace<DefaultEventsMap, DefaultEventsMap, DefaultEventsMap, unknown>,
   logger: Debugger,
-  requiredRole: UserRole[],
+  requiredRoles: UserRole[],
   requiredMode: 'all' | 'any',
 ) {
-  const requiredRoleSet = new Set(requiredRole)
+  const requiredRoleSet = new Set(requiredRoles)
 
   ns.use((socket, next) => {
     const user = (socket.request as Request<User>).user
@@ -46,37 +46,65 @@ export function registerNamespaceRequiredRoles(
         'Unauthorized',
         socket.nsp.name,
       )
-      next(new Error(`Unauthorized: ${requiredRole.join(',')} roles required`))
+
+      const roles = new Intl.ListFormat('en', {
+        type: requiredMode === 'all' ? 'conjunction' : 'disjunction',
+      }).format(requiredRoleSet)
+      next(new Error(`Unauthorized: ${roles} roles required`))
     }
   })
 }
 
 export type RequiredRole = {
   prefix: string
-  role: UserRole
+  roles: UserRole[]
+  /**
+   * By default, the all value will be applied
+   */
+  mode?: 'all' | 'any' | 'exact'
 }
 export function registerSocketRequiredRoles(
   socket: Socket<DefaultEventsMap, DefaultEventsMap, DefaultEventsMap, unknown>,
   logger: Debugger,
-  requiredRoles: RequiredRole[],
+  requiredRules: RequiredRole[],
 ) {
+  const rules = requiredRules.map(r => ({ ...r, roles: new Set(r.roles) }))
+
   socket.use(([ev, ...args], next) => {
     const user = (socket.request as Request<User>).user
-    const userRoles = user?.roles ?? []
+    const userRoles = new Set(user?.roles ?? [])
 
-    const requiredRole = requiredRoles.find(r => ev.startsWith(r.prefix))
-    if (requiredRole && !userRoles.includes(requiredRole.role)) {
-      logger(
-        '%s\t%s\t%s\t%s\t%o',
-        socket.conn.transport.sid,
-        user?.username,
-        'Unauthorized',
-        ev,
-        args,
-      )
-      next(new Error(`Unauthorized: ${requiredRole.role} required`))
-    } else {
+    const rule = rules.find(r => ev.startsWith(r.prefix))
+
+    if (!rule) {
       next()
+      return
     }
+
+    const isAllowed = {
+      all: () => rule.roles.intersection(userRoles).size === rule.roles.size,
+      any: () => rule.roles.intersection(userRoles).size > 0,
+      exact: () => rule.roles.difference(userRoles).size === 0,
+    }[rule.mode ?? 'all']()
+
+    if (isAllowed) {
+      next()
+      return
+    }
+
+    logger(
+      '%s\t%s\t%s\t%s\t%o',
+      socket.conn.transport.sid,
+      user?.username,
+      'Unauthorized',
+      ev,
+      args,
+    )
+
+    const roles = new Intl.ListFormat('en', {
+      type: rule.mode === 'any' ? 'disjunction' : 'conjunction',
+    }).format(rule.roles)
+
+    next(new Error(`Unauthorized: ${roles} roles required`))
   })
 }

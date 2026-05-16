@@ -48,14 +48,14 @@ const io = new Server(httpServer, {
 
 const serverConfig = getServerConfig(serverConfigClient)
 
-await initMongo()
-registerCtfTime(app, serverConfig)
-registerFileEndpoint(app)
-registerAuthentification(app, io, serverConfig, sessionClient)
-
 const adminIo = io.of('/api/admin')
 const gameIo = io.of('/api/game')
 const playerIo = io.of('/api/player')
+
+await initMongo()
+registerCtfTime(app, serverConfig)
+registerFileEndpoint(app)
+registerAuthentification(app, io, serverConfig, sessionClient, adminIo)
 
 const serverStatFetcher = registerServerStatisticsHandler(
   adminIo,
@@ -74,6 +74,7 @@ registerAdminNamespace(
   playerIo,
   serverConfig,
   serverStatFetcher,
+  sessionClient,
 )
 
 if (process.env.NODE_ENV === 'production') {

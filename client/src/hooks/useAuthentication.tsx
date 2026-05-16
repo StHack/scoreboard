@@ -3,6 +3,7 @@ import { useStorage } from '@sthack/scoreboard-ui/hooks'
 import {
   createContext,
   PropsWithChildren,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -24,6 +25,7 @@ export type AuthContext = {
     ok: boolean
     error?: string
   }>
+  reload: () => Promise<void>
 }
 
 const AuthContext = createContext<AuthContext>({
@@ -35,6 +37,7 @@ const AuthContext = createContext<AuthContext>({
   readRules: () => {},
   logOut: () => Promise.resolve(),
   logIn: () => Promise.resolve({ ok: false, error: 'oups' }),
+  reload: () => Promise.resolve(),
 })
 
 export function ProvideAuth({ children }: PropsWithChildren<object>) {
@@ -54,18 +57,21 @@ function useProvideAuth(): AuthContext {
     false,
   )
 
+  const loadUser = useCallback(async () => {
+    const { ok, user } = await me()
+    if (ok) {
+      setUser(user)
+    }
+  }, [])
+
   useEffect(() => {
     const init = async () => {
-      const { ok, user } = await me()
-      if (ok) {
-        setUser(user)
-      }
-
+      await loadUser()
       setIsLoading(false)
     }
 
     void init()
-  }, [])
+  }, [loadUser])
 
   return {
     user,
@@ -94,5 +100,6 @@ function useProvideAuth(): AuthContext {
 
       return { ok, error }
     },
+    reload: loadUser,
   }
 }

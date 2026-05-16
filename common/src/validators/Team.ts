@@ -1,8 +1,9 @@
 import { z } from 'zod'
-import { CreateUser } from '../models/User.js'
+import { CreateTeam, JoinTeam } from '../models/Team.js'
+import { bannedStartingCharacters, unauthorizedWords } from './Users.js'
 
-export const schemaCreateUser = z.object({
-  username: z
+export const schemaCreateTeam = z.object({
+  name: z
     .string()
     .min(3)
     .max(42)
@@ -19,17 +20,8 @@ export const schemaCreateUser = z.object({
         ),
       { error: 'Invalid starting characters' },
     ),
-  password: z.string().min(5),
-}) satisfies z.ZodType<CreateUser>
+}) satisfies z.ZodType<CreateTeam>
 
-export const unauthorizedWords = [
-  '__proto__',
-  'constructor',
-  'prototype',
-  '`',
-  '@everyone',
-  '@here',
-  'admin',
-]
-
-export const bannedStartingCharacters = ['@', 'u/', 'u-', 't/', 't-']
+export const schemaJoinTeam = z.object({
+  joinToken: z.nanoid({ pattern: /[A-Za-z0-9_-]*/ }).length(8),
+}) satisfies z.ZodType<JoinTeam>
