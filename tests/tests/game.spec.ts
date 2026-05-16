@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, Page, test } from '@playwright/test'
 import { BaseChallenge, FlagPattern } from '@sthack/scoreboard-common'
 import { playwrightUserTest } from './services/AccountFlow.js'
 import { AdminFlow } from './services/AdminFlow.js'
@@ -22,13 +22,20 @@ test('New challenge', async ({ browser }) => {
   const adminFlow = await AdminFlow.createNewSession(browser)
 
   const player = await PlayerFlow.createNewSession(browser, playwrightUserTest)
-  await player.goToGame()
 
-  await adminFlow.goToChallengeCreate()
-  await adminFlow.fillChallengeForm(challenge)
+  await test.step(`Player - connect to the game`, async () => {
+    await player.goToGame()
+  })
 
-  await player.openChallenge(challenge.name)
-  await player.submitFlag(flag, true)
+  await test.step(`Admin - create the challenge`, async () => {
+    await adminFlow.goToChallengeCreate()
+    await adminFlow.fillChallengeForm(challenge)
+  })
+
+  await test.step(`Player - submit the flag`, async () => {
+    await player.openChallenge(challenge.name)
+    await player.submitFlag(flag, true)
+  })
 })
 
 test(
@@ -46,16 +53,23 @@ test(
       browser,
       playwrightUserTest,
     )
-    await player.goToGame()
 
-    await adminFlow.goToChallengeCreate()
-    await adminFlow.fillChallengeForm(challenge)
+    await test.step(`Player - go to game`, async () => {
+      await player.goToGame()
+    })
 
-    await adminFlow.goToChallengeEdit(challenge.name)
-    await adminFlow.fillChallengeForm({ description: 'New description' })
+    await test.step(`Admin - create and update the challenge`, async () => {
+      await adminFlow.goToChallengeCreate()
+      await adminFlow.fillChallengeForm(challenge)
 
-    await player.openChallenge(challenge.name)
-    await player.submitFlag(flag, true)
+      await adminFlow.goToChallengeEdit(challenge.name)
+      await adminFlow.fillChallengeForm({ description: 'New description' })
+    })
+
+    await test.step(`Player - submit flag successfully`, async () => {
+      await player.openChallenge(challenge.name)
+      await player.submitFlag(flag, true)
+    })
   },
 )
 
@@ -66,24 +80,33 @@ test('Only the last flag is usable', async ({ browser }) => {
   const adminFlow = await AdminFlow.createNewSession(browser)
 
   const player = await PlayerFlow.createNewSession(browser, playwrightUserTest)
-  await player.goToGame()
 
-  await adminFlow.goToChallengeCreate()
-  await adminFlow.fillChallengeForm(challenge)
+  await test.step(`Player - go to game`, async () => {
+    await player.goToGame()
+  })
+
+  await test.step(`Admin - create the challenge`, async () => {
+    await adminFlow.goToChallengeCreate()
+    await adminFlow.fillChallengeForm(challenge)
+  })
 
   const newFlag = 'STHACK{TH1S_1S_M1_FL4G_2}'
 
-  await adminFlow.openChallengeEditFlag(challenge.name)
-  await adminFlow.editChallengeFlag(challenge.name, { flag: newFlag })
+  await test.step(`Admin - update the challenge flag`, async () => {
+    await adminFlow.openChallengeEditFlag(challenge.name)
+    await adminFlow.editChallengeFlag(challenge.name, { flag: newFlag })
+  })
 
-  await player.openChallenge(challenge.name)
-  await player.submitFlag(flag, false)
+  await test.step(`Player - submit old flag and expect failure`, async () => {
+    await player.openChallenge(challenge.name)
+    await player.submitFlag(flag, false)
 
-  await expect(player.page.getByRole('alert')).toContainText(
-    "That's not the right flag",
-  )
+    await expect(player.page.getByRole('alert')).toContainText(
+      "That's not the right flag",
+    )
 
-  await player.submitFlag(newFlag, true)
+    await player.submitFlag(newFlag, true)
+  })
 })
 
 test(
@@ -102,31 +125,41 @@ test(
       browser,
       playwrightUserTest,
     )
-    await player.goToGame()
+    await test.step(`Player - go to game`, async () => {
+      await player.goToGame()
+    })
 
-    await adminFlow.goToChallengesPage()
-    await adminFlow.goToChallengeCreate()
-    await adminFlow.fillChallengeForm(challenge)
+    await test.step(`Admin - create the challenge`, async () => {
+      await adminFlow.goToChallengesPage()
+      await adminFlow.goToChallengeCreate()
+      await adminFlow.fillChallengeForm(challenge)
+    })
 
     const invalidFlag = 'STHACK{B4D_FL4G}'
 
-    await player.openChallenge(challenge.name)
+    await test.step(`Player - submit invalid flag multiple times`, async () => {
+      await player.openChallenge(challenge.name)
 
-    for (let index = 1; index < 6; index++) {
-      await test.step(`Submit flag attempt #${index}`, async () => {
-        await player.submitFlag(invalidFlag, false)
+      for (let index = 1; index < 6; index++) {
+        await test.step(`Submit flag attempt #${index}`, async () => {
+          await player.submitFlag(invalidFlag, false)
 
-        const expectedMessage =
-          index > 5 ? 'Bruteforce is not allowed' : "That's not the right flag"
-        await expect(player.page.getByRole('alert')).toContainText(
-          expectedMessage,
-        )
-      })
-    }
+          const expectedMessage =
+            index > 5
+              ? 'Bruteforce is not allowed'
+              : "That's not the right flag"
+          await expect(player.page.getByRole('alert')).toContainText(
+            expectedMessage,
+          )
+        })
+      }
+    })
 
-    // explicitely wait for the bruteforce delay to expire
-    await player.page.waitForTimeout(5_000)
+    await test.step(`Player - submit correct flag and expect success`, async () => {
+      // explicitely wait for the bruteforce delay to expire
+      await player.page.waitForTimeout(5_000)
 
-    await player.submitFlag(flag, true)
+      await player.submitFlag(flag, true)
+    })
   },
 )

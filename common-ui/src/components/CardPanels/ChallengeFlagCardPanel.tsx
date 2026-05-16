@@ -65,6 +65,7 @@ export function ChallengeFlagCardPanel({
         {!myTeamSolved && !challenge.isBroken && difficulty !== 'special' && (
           <Box
             as="form"
+            name="flag-submit"
             display="flex"
             flexDirection="column"
             onSubmit={async e => {

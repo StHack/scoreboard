@@ -1,8 +1,8 @@
 import { isPlayer, UserRole } from '@sthack/scoreboard-common'
-import { Box } from '@sthack/scoreboard-ui/components'
+import { Box, Loader } from '@sthack/scoreboard-ui/components'
 import { Messages } from 'components/Messages'
 import { useAuth } from 'hooks/useAuthentication'
-import { useGame } from 'hooks/useGame'
+import { GameContextLoadingState, useGame } from 'hooks/useGame'
 import { ProvidePlayer } from 'hooks/usePlayer'
 import { PropsWithChildren } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
@@ -10,8 +10,19 @@ import { UserScore } from './components/UserScore'
 
 export function GameLayout() {
   const { isAuthenticated, hasReadRules, user } = useAuth()
+  const {
+    gameConfig: { gameOpened },
+    isLoaded,
+  } = useGame()
 
-  if (!isAuthenticated) {
+  if (
+    !isLoaded(GameContextLoadingState.config) ||
+    !isLoaded(GameContextLoadingState.challenges)
+  ) {
+    return <Loader size="10" placeSelf="center" />
+  }
+
+  if (!isAuthenticated || !user) {
     return <Navigate to="/auth/login" replace />
   }
 
@@ -19,8 +30,10 @@ export function GameLayout() {
     return <Navigate to="/rules" replace />
   }
 
-  if (!user || (!isPlayer(user) && !user.roles.includes(UserRole.Admin))) {
-    return <Navigate to="/account/team" replace />
+  if (!user.roles.includes(UserRole.Admin)) {
+    if (!isPlayer(user) || !gameOpened) {
+      return <Navigate to="/account/team" replace />
+    }
   }
 
   return (

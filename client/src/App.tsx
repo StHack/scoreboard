@@ -4,7 +4,7 @@ import { Loader } from '@sthack/scoreboard-ui/components'
 import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'
 import { useAuth } from 'hooks/useAuthentication'
-import { useGame } from 'hooks/useGame'
+import { GameContextLoadingState, useGame } from 'hooks/useGame'
 import { AccountLayout } from 'pages/Account'
 import { AccountGeneralPanel } from 'pages/Account/components/AccountGeneralPanel'
 import { AccountTeamPanel } from 'pages/Account/components/AccountTeamPanel'
@@ -125,12 +125,15 @@ function Home() {
     return <Navigate to="/rules" replace />
   }
 
-  if (!gameOpened) {
-    return <Navigate to="/account" replace />
+  if (
+    !isLoaded(GameContextLoadingState.config) ||
+    !isLoaded(GameContextLoadingState.challenges)
+  ) {
+    return <Loader size="10" placeSelf="center" />
   }
 
-  if (!isLoaded) {
-    return <Loader size="10" placeSelf="center" />
+  if (!gameOpened) {
+    return <Navigate to="/account" replace />
   }
 
   if (gameOpened) {

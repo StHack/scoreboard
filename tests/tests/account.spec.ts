@@ -1,6 +1,10 @@
 import { expect, test } from '@playwright/test'
-import { CreateUser } from '@sthack/scoreboard-common'
-import { AccountFlow, playwrightUserTest } from './services/AccountFlow.js'
+import { CreateTeam, CreateUser } from '@sthack/scoreboard-common'
+import {
+  AccountFlow,
+  playwrightUserTeam,
+  playwrightUserTest,
+} from './services/AccountFlow.js'
 import { AdminFlow } from './services/AdminFlow.js'
 
 test('Admin - Login', async ({ page }) => {
@@ -9,6 +13,9 @@ test('Admin - Login', async ({ page }) => {
   await accountFlow.login({ persistAuth: true })
 
   await accountFlow.readRules()
+
+  await page.goto('/')
+  await expect(page).toHaveURL('/admin')
 })
 
 test('User - new one flow', async ({ page, browser }) => {
@@ -16,7 +23,9 @@ test('User - new one flow', async ({ page, browser }) => {
   const user: CreateUser = {
     username: `User-${ts}`,
     password: `Password-${ts}`,
-    team: `Team-${ts}`,
+  }
+  const team: CreateTeam = {
+    name: `Team-${ts}`,
   }
 
   const accountFlow = new AccountFlow(page, user)
@@ -26,19 +35,18 @@ test('User - new one flow', async ({ page, browser }) => {
   const adminFlow = await AdminFlow.createNewSession(browser)
   await adminFlow.forceGameState(false)
 
-  await test.step('When game is closed, user cannot connect', async () => {
-    await accountFlow.login({ persistAuth: false, checkAuth: false })
-    await expect(page.getByText('Unauthorized')).toBeVisible()
+  await accountFlow.login({ persistAuth: false, checkAuth: false })
+  await accountFlow.readRules()
+  await accountFlow.createTeam(team)
+
+  await test.step('When game is closed, user can only go to the team page', async () => {
     await page.goto('/')
-    await expect(page.getByRole('button', { name: 'Login' })).toBeVisible()
+    await expect(page).toHaveURL('/account/team')
   })
 
   await adminFlow.forceGameState(true)
 
-  await accountFlow.login({ persistAuth: false })
-
-  await accountFlow.readRules()
-
+  await page.goto('/')
   await expect(page).toHaveURL('/game')
 })
 
@@ -53,6 +61,8 @@ test('User - Create reusable test account', async ({ page, browser }) => {
   await accountFlow.login({ checkAuth: false, persistAuth: true })
 
   await accountFlow.readRules()
+
+  await accountFlow.createTeam(playwrightUserTeam)
 })
 
 test('User - should be kicked on game ended', async ({ browser }) => {
@@ -82,7 +92,9 @@ test('User - should be kicked on game ended', async ({ browser }) => {
 
   await userFlow.login({ checkAuth: false })
 
-  await expect(userFlow.page.getByRole('alert')).toContainText('Unauthorized')
+  await userFlow.page.goto('/')
+
+  await expect(userFlow.page).toHaveURL('/account/team')
 })
 
 test('Admin - Toggle game status', async ({ browser }) => {

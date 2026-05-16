@@ -9,7 +9,6 @@ export class AdminFlow {
   static #admin: CreateUser = {
     username: 'user42',
     password: 'user42',
-    team: 'admin',
   }
 
   constructor(page: Page) {
@@ -29,7 +28,7 @@ export class AdminFlow {
   }
 
   async forceGameState(state: boolean = true) {
-    await test.step(`Force game state to ${state ? 'open' : 'closed'}`, async () => {
+    await test.step(`[${this.accountFlow.user.username}] Force game state to ${state ? 'open' : 'closed'}`, async () => {
       await this.page.goto('/admin')
 
       await expect(this.page).toHaveURL('/admin')
@@ -50,14 +49,14 @@ export class AdminFlow {
   }
 
   async goToChallengesPage() {
-    await test.step('Go to challenges page', async () => {
+    await test.step(`[${this.accountFlow.user.username}] Go to challenges page`, async () => {
       await this.page.goto('/admin/challenges')
       await expect(this.page).toHaveURL('/admin/challenges')
     })
   }
 
   async goToChallengeCreate() {
-    await test.step('Go to challenge create page', async () => {
+    await test.step(`[${this.accountFlow.user.username}] Go to challenge create page`, async () => {
       await this.page.goto('/admin/challenges/create')
 
       await expect(this.page.getByRole('heading')).toContainText(
@@ -67,7 +66,7 @@ export class AdminFlow {
   }
 
   async goToChallengeEdit(challengeName: string) {
-    await test.step(`Go to challenge ${challengeName} edition`, async () => {
+    await test.step(`[${this.accountFlow.user.username}] Go to challenge ${challengeName} edition`, async () => {
       await this.page
         .getByRole('listitem')
         .filter({ hasText: challengeName })
@@ -83,7 +82,7 @@ export class AdminFlow {
   }
 
   async openChallengeEditFlag(challengeName: string) {
-    await test.step(`Go to challenge ${challengeName} flag edition`, async () => {
+    await test.step(`[${this.accountFlow.user.username}] Go to challenge ${challengeName} flag edition`, async () => {
       await this.page
         .getByRole('listitem')
         .filter({ hasText: challengeName })
@@ -97,7 +96,7 @@ export class AdminFlow {
   }
 
   async fillChallengeForm(challenge: Partial<BaseChallenge>) {
-    await test.step('Fill challenge form', async () => {
+    await test.step(`[${this.accountFlow.user.username}] Fill challenge form`, async () => {
       const popupForm = this.page
 
       if (challenge.name) {
@@ -129,7 +128,7 @@ export class AdminFlow {
     challengeName: string,
     challenge: Partial<Pick<BaseChallenge, 'flag' | 'flagPattern'>>,
   ) {
-    await test.step(`Edit challenge ${challengeName} flag`, async () => {
+    await test.step(`[${this.accountFlow.user.username}] Edit challenge ${challengeName} flag`, async () => {
       const popupForm = this.page.getByRole('dialog')
 
       if (challenge.flag) {

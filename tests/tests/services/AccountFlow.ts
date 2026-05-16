@@ -1,5 +1,5 @@
 import { Browser, expect, type Page, test } from '@playwright/test'
-import { CreateUser } from '@sthack/scoreboard-common'
+import { CreateTeam, CreateUser } from '@sthack/scoreboard-common'
 
 export class AccountFlow {
   page: Page
@@ -41,7 +41,6 @@ export class AccountFlow {
       await test.step('Fill the form', async () => {
         await this.page.getByLabel('Username').fill(this.user.username)
         await this.page.getByLabel('Password').fill(this.user.password)
-        await this.page.getByLabel('Team').fill(this.user.team)
         await this.page.getByRole('button', { name: 'Register' }).click()
       })
 
@@ -74,9 +73,34 @@ export class AccountFlow {
     })
   }
 
+  async createTeam(team: CreateTeam) {
+    await test.step('Create team', async () => {
+      await this.page.goto('/account/team')
+
+      const title = await this.page
+        .getByRole('heading', { level: 2 })
+        .textContent()
+
+      if (title !== team.name) {
+        await this.page.getByRole('button', { name: 'Create a team' }).click()
+
+        await test.step('Fill the form', async () => {
+          await this.page.getByLabel('Team name').fill(team.name)
+          await this.page
+            .getByRole('button', { name: 'Create my team' })
+            .click()
+        })
+
+        await expect(
+          this.page.getByRole('heading', { level: 2 }),
+        ).toContainText(team.name)
+      }
+    })
+  }
+
   async checkAuth() {
     await expect(this.page.getByRole('banner')).toContainText(
-      `${this.user.username} / ${this.user.team}`,
+      this.user.username,
     )
   }
 
@@ -90,8 +114,6 @@ export class AccountFlow {
 
       await this.page.getByLabel('I confirm that I have read').click()
 
-      await expect(this.page).toHaveURL('/game')
-
       await this.page.context().storageState({ path: this.authFilePath })
     })
   }
@@ -100,7 +122,10 @@ export class AccountFlow {
 export const playwrightUserTest: CreateUser = {
   username: `playwright-test`,
   password: `playwright-test`,
-  team: `playwright-test`,
+}
+
+export const playwrightUserTeam: CreateTeam = {
+  name: 'playwright-test',
 }
 
 type AccountFLowLoginOption = {

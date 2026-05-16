@@ -20,30 +20,36 @@ export class PlayerFlow {
   }
 
   async goToGame() {
-    await this.page.goto('/game')
-
-    // if (this.page.url() !== '/') {
-    //   await this.account.login({ persistAuth: false, checkAuth: true })
-    // }
+    await test.step(`[${this.account.user.username}] Go to game page`, async () => {
+      await this.page.goto('/game')
+      // await waitForSpecificMessage(
+      //   this.page,
+      //   'ws://localhost:3000/api/socket/',
+      //   '/api/game,1',
+      // )
+      await expect(this.page).toHaveURL('/game')
+    })
   }
 
   async openChallenge(challengeName: string) {
-    await test.step(`Open challenge ${challengeName}`, async () => {
-      const challButton = this.page.getByRole('button', {
-        name: `Open challenge "${challengeName}"`,
-      })
+    await test.step(`[${this.account.user.username}] Open challenge ${challengeName}`, async () => {
+      await this.page.waitForTimeout(1000)
+      await this.page
+        .getByRole('link', {
+          name: `Open challenge "${challengeName}"`,
+        })
+        .click()
 
-      await challButton.click()
-
-      await expect(
-        this.page.getByRole('dialog').getByRole('heading'),
-      ).toContainText(challengeName)
+      await expect(this.page.getByRole('heading', { level: 1 })).toContainText(
+        challengeName,
+      )
     })
   }
 
   async submitFlag(flag: string, isSuccessful: boolean) {
-    await test.step('Submit challenge flag', async () => {
-      const form = this.page.getByRole('dialog')
+    await test.step(`[${this.account.user.username}] Submit challenge flag`, async () => {
+      await this.page.waitForTimeout(1000)
+      const form = this.page.locator('form[name="flag-submit"]')
 
       await form.getByRole('textbox').fill(flag)
       await form.getByRole('button', { name: 'Submit your flag' }).click()
