@@ -5,6 +5,9 @@ packages:
   - 'hall-of-fame'
   - 'server'
   - 'tests'
+allowBuilds:
+  esbuild: false
+  unrs-resolver: false
+blockExoticSubdeps: true
 
 minimumReleaseAge: 10080
-blockExoticSubdeps: true

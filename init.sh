@@ -136,7 +136,7 @@ if [ -n "$USERNAME" ]; then
     pnpm run create-admin --user "$USERNAME" --password "$PASSWORD"
   else
     sudo docker compose --profile "$PROFILE" exec website \
-      pnpm run create-admin --user "$USERNAME" --password "$PASSWORD"
+      npm run create-admin -- --user "$USERNAME" --password "$PASSWORD"
   fi
 fi
 
