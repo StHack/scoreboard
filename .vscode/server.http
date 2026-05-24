@@ -22,3 +22,10 @@ POST {{server}}/logout
 GET {{server}}/api/ctftime/team
 ###
 GET {{server}}/api/ctftime/capture
+###
+@challengeId = 682f16ba8a20280c8f789b31
+@adminChallengeApiKey = 519505d9-a171-4d82-8904-d4183ce5c84a
+#
+GET {{server}}/api/admin/challenges/{{challengeId}}/team-tokens
+x-api-key: {{adminChallengeApiKey}}
+###

@@ -14,7 +14,7 @@ import {
   User,
   UserRole,
 } from '@sthack/scoreboard-common'
-import { createHash } from 'crypto'
+import { createHash, randomUUID } from 'crypto'
 import {
   countChallengeAchievement,
   removeAchievement,
@@ -37,6 +37,7 @@ import {
   removeSurveyById,
 } from 'db/SurveyDb.js'
 import { getTeam, listFullTeam, removeTeam } from 'db/TeamDb.js'
+import { removeTokensByChallenge, removeTokensByTeam } from 'db/TokenDb.js'
 import { listUser, removeUser, updateUser } from 'db/UsersDb.js'
 import debug from 'debug'
 import { Request } from 'express'
@@ -45,6 +46,7 @@ import { extname } from 'path'
 import { Namespace } from 'socket.io'
 import { destroyUserSessions } from './authentication.js'
 import { emitEventLog } from './events.js'
+import { mapAsPublicChallenge } from './game.js'
 import {
   registerNamespaceRequiredRoles,
   registerSocketLogger,
@@ -57,6 +59,7 @@ import {
 } from './serveractivity.js'
 import { ServerConfig } from './serverconfig.js'
 import { ServerStatisticsFetcher } from './serverStatistics.js'
+import { createTokensForChallenge } from './tokens.js'
 
 const rules: RequiredRole[] = [
   { prefix: 'game:actions:', roles: [UserRole.GameMaster] },
@@ -117,10 +120,20 @@ export function registerAdminNamespace(
             throw new Error('flag is required')
           }
 
+          if (chall.token) {
+            chall.token.adminApiKey = randomUUID()
+          }
+
           const challenge = await createChallenge(chall)
+          if (challenge.token) {
+            const tokens = await createTokensForChallenge(challenge)
+            for (const token of tokens) {
+              playerIo.in(token.teamId).emit('team:tokens:added', token)
+              adminIo.emit('team:tokens:added', token)
+            }
+          }
           callback(challenge)
-          gameIo.emit('challenge:added', challenge)
-          adminIo.emit('challenge:added', challenge)
+          await emitChallengeUpdate('challenge:added', challenge)
           await emitEventLog(gameIo, 'challenge:created', {
             message: `A new challenge has been added, try your chance on "${challenge.name}"`,
           })
@@ -171,11 +184,36 @@ export function registerAdminNamespace(
         chall: BaseChallenge,
         callback: CallbackOrError<Challenge>,
       ) => {
+        const existing = await getChallenge(challengeId)
+        if (!existing) {
+          callback({ error: 'challenge not found' })
+          return
+        }
+
         try {
+          if (chall.token?.type !== existing.token?.type) {
+            if (chall.token) {
+              chall.token.adminApiKey = randomUUID()
+            }
+          } else {
+            chall.token = existing.token
+          }
+
           const challenge = await updateChallenge(challengeId, chall)
+          if (challenge.token?.type !== existing.token?.type) {
+            await removeTokensByChallenge(challengeId)
+            playerIo.emit('team:tokens:removed', { challengeId })
+            adminIo.emit('team:tokens:removed', { challengeId })
+            if (challenge.token) {
+              const tokens = await createTokensForChallenge(challenge)
+              for (const token of tokens) {
+                playerIo.in(token.teamId).emit('team:tokens:added', token)
+                adminIo.emit('team:tokens:added', token)
+              }
+            }
+          }
           callback(challenge)
-          gameIo.emit('challenge:updated', challenge)
-          adminIo.emit('challenge:updated', challenge)
+          await emitChallengeUpdate('challenge:updated', challenge)
           await emitEventLog(gameIo, 'challenge:updated', {
             message: `Challenge "${challenge.name}" has been updated`,
             challenge,
@@ -192,8 +230,7 @@ export function registerAdminNamespace(
 
     adminSocket.on('challenge:actions:broke', async (challengeId: string) => {
       const updated = await updateChallenge(challengeId, { isBroken: true })
-      gameIo.emit('challenge:updated', updated)
-      adminIo.emit('challenge:updated', updated)
+      await emitChallengeUpdate('challenge:updated', updated)
       await emitEventLog(gameIo, 'challenge:broken', {
         message: `Challenge "${updated.name}" is marked has broken, we are working to repair it, please try another challenge`,
         challenge: updated,
@@ -202,8 +239,7 @@ export function registerAdminNamespace(
 
     adminSocket.on('challenge:actions:repair', async (challengeId: string) => {
       const updated = await updateChallenge(challengeId, { isBroken: false })
-      gameIo.emit('challenge:updated', updated)
-      adminIo.emit('challenge:updated', updated)
+      await emitChallengeUpdate('challenge:updated', updated)
       await emitEventLog(gameIo, 'challenge:repaired', {
         message: `Challenge "${updated.name}" is fixed, you can try to solve it again`,
         challenge: updated,
@@ -227,8 +263,11 @@ export function registerAdminNamespace(
           return
         }
 
-        gameIo.emit('challenge:deleted', deleted)
-        adminIo.emit('challenge:deleted', deleted)
+        await removeTokensByChallenge(challengeId)
+        adminIo.emit('team:tokens:removed', { challengeId })
+        playerIo.emit('team:tokens:removed', { challengeId })
+
+        await emitChallengeUpdate('challenge:deleted', deleted)
         await emitEventLog(gameIo, 'challenge:deleted', {
           message: `Challenge "${deleted.name}" has been deleted`,
           challenge: deleted,
@@ -386,6 +425,9 @@ export function registerAdminNamespace(
         const deleted = await removeTeam(teamId)
         callback()
         if (deleted) {
+          await removeTokensByTeam(teamId)
+          playerIo.in(teamId).emit('team:tokens:removed', { teamId })
+          adminIo.emit('team:tokens:removed', { teamId })
           gameIo.emit('teams:deleted', deleted)
           adminIo.emit('teams:deleted', deleted)
           await emitGameConfigUpdate()
@@ -473,6 +515,15 @@ export function registerAdminNamespace(
       gameIo.in(username).disconnectSockets(true)
       adminSocket.in(username).disconnectSockets(true)
       await destroyUserSessions(sessionRedisClient, username)
+    }
+
+    async function emitChallengeUpdate(
+      eventName: string,
+      challenge: Challenge,
+    ) {
+      const gameOpened = await serverConfig.getGameOpened()
+      gameIo.emit(eventName, mapAsPublicChallenge({ gameOpened })(challenge))
+      adminIo.emit(eventName, challenge)
     }
   })
 }

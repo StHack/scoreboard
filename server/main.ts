@@ -19,6 +19,7 @@ import { registerGameNamespace } from 'services/game.js'
 import { registerPlayerNamespace } from 'services/player.js'
 import { getServerConfig } from 'services/serverconfig.js'
 import { registerServerStatisticsHandler } from 'services/serverStatistics.js'
+import { registerTokens } from 'services/tokens.js'
 import { Server } from 'socket.io'
 import { redisConnectionString } from './sthack-config.js'
 
@@ -54,6 +55,7 @@ const playerIo = io.of('/api/player')
 
 await initMongo()
 registerCtfTime(app, serverConfig)
+registerTokens(app)
 registerFileEndpoint(app)
 registerAuthentification(app, io, serverConfig, sessionClient, adminIo)
 

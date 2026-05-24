@@ -32,11 +32,7 @@ export function registerGameNamespace(
 
       const gameOpened = await serverConfig.getGameOpened()
 
-      callback(
-        gameOpened
-          ? challenges.map(c => (c.isBroken ? { ...c, description: '' } : c))
-          : challenges.map(c => ({ ...c, description: '' })),
-      )
+      callback(challenges.map(mapAsPublicChallenge({ gameOpened })))
     })
 
     gameSocket.on(
@@ -73,3 +69,24 @@ export function registerGameNamespace(
     })
   })
 }
+
+export const mapAsPublicChallenge =
+  (config: { gameOpened?: boolean } = {}) =>
+  (challenge: Challenge) => {
+    const cleanDescription = () =>
+      !config.gameOpened || challenge.isBroken ? '' : challenge.description
+
+    const cleanToken = () =>
+      challenge.token
+        ? {
+            ...challenge.token,
+            adminApiKey: '',
+          }
+        : undefined
+
+    return {
+      ...challenge,
+      description: cleanDescription(),
+      token: cleanToken(),
+    } satisfies Challenge
+  }

@@ -21,6 +21,7 @@ import { ProvidePlayer } from 'hooks/usePlayer'
 import { useState } from 'react'
 import { FlagEditForm } from './FlagEditForm'
 import { Previewer } from './Previewer'
+import { TokenPopup } from './TokenPopup'
 
 type ChallengeBlockProps = {
   chall: Challenge
@@ -102,6 +103,7 @@ export function ChallengeBlock({
           icon={IconPreview}
           title="Preview challenge"
         />
+        <TokenPopup challenge={chall} iconOnly />
         {!isBroken && (
           <RoleBasedButton
             px="2"

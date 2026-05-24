@@ -1,10 +1,17 @@
-import { Categories, Challenge, Difficulties } from '@sthack/scoreboard-common'
+import {
+  Categories,
+  Challenge,
+  Difficulties,
+  TokenType,
+  TokenTypeLabels,
+} from '@sthack/scoreboard-common'
 import {
   Box,
   BoxPanel,
   Button,
   categoryToImg,
   DropdownInput,
+  IconToken,
   LabelInput,
   Loader,
   SelectInput,
@@ -15,11 +22,11 @@ import MDEditor from '@uiw/react-md-editor'
 import { ImageInput } from 'components/ImageInput'
 import { AdminContextLoadingState, useAdmin } from 'hooks/useAdmin'
 import { useChallengeForm } from 'hooks/useChallengeForm'
-import { useGame } from 'hooks/useGame'
 import { ChangeEvent, SyntheticEvent, useCallback, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { FlagInput } from './FlagInput'
 import { Previewer } from './Previewer'
+import { TokenPopup } from './TokenPopup'
 
 export function ChallengeFormLayout() {
   const { isLoaded, challenges } = useAdmin()
@@ -48,6 +55,7 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
     imgProps,
     flagsProps,
     flagPatternProps,
+    tokenTypeProps,
     error,
     isNewChallenge,
     preview,
@@ -55,7 +63,6 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
     isDirty,
   } = useChallengeForm(chall, onClose)
   const { uploadFile } = useAdmin()
-  const { gameConfig } = useGame()
   const [showPreview, setShowPreview] = useState<boolean>(false)
   const { currentTheme } = useThemeMode()
 
@@ -126,13 +133,14 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
           "auth ${isNewChallenge ? 'flag' : 'desc'}"
           "cat  ${isNewChallenge ? 'flag' : 'desc'}"
           "dif  desc"
+          "tok  desc"
           "img  desc"
           ".    desc"
           "err  err "
           "act  act "
         `}
-        gridTemplateColumns="auto 1fr"
-        gridTemplateRows="auto auto auto auto auto 1fr auto auto"
+        gridTemplateColumns="minmax(0, 1fr) minmax(0, 3fr)"
+        gridTemplateRows="repeat(6, auto) 1fr auto auto"
         flexDirection="column"
         px="2"
         gap={['1', '3']}
@@ -164,6 +172,23 @@ export function ChallengeForm({ chall }: { chall?: Challenge }) {
           <SelectInput
             predefinedValues={Difficulties.filter(d => d !== 'special')}
             {...difficultyProps}
+          />
+        </LabelInput>
+
+        <LabelInput label="Team token type" gridArea="tok">
+          <SelectInput
+            allowEmpty
+            placeholder="No token required"
+            predefinedValues={Object.values(TokenType).map(value => ({
+              label: TokenTypeLabels[value],
+              value,
+            }))}
+            {...tokenTypeProps}
+          />
+          <TokenPopup
+            challenge={chall}
+            tokenType={tokenTypeProps.value as TokenType}
+            alwaysShowButton
           />
         </LabelInput>
 

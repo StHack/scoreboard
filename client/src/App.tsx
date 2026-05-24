@@ -8,6 +8,7 @@ import { GameContextLoadingState, useGame } from 'hooks/useGame'
 import { AccountLayout } from 'pages/Account'
 import { AccountGeneralPanel } from 'pages/Account/components/AccountGeneralPanel'
 import { AccountTeamPanel } from 'pages/Account/components/AccountTeamPanel'
+import { AccountTokenPanel } from 'pages/Account/components/AccountTokenPanel'
 import { AdminLayout } from 'pages/Admin'
 import { AchievementPanel } from 'pages/Admin/components/AchievementPanel'
 import { AttemptPanel } from 'pages/Admin/components/AttemptPanel'
@@ -69,8 +70,7 @@ export default function App() {
                 <Route path="/account" element={<AccountLayout />}>
                   <Route index element={<AccountGeneralPanel />} />
                   <Route path="team" element={<AccountTeamPanel />} />
-                  <Route path="tokens" element={<AccountGeneralPanel />} />
-                  <Route path="settings" element={<AccountGeneralPanel />} />
+                  <Route path="tokens" element={<AccountTokenPanel />} />
                 </Route>
 
                 <Route path="/game" element={<GameLayout />}>

@@ -1,5 +1,6 @@
 import { Category } from './Category.js'
 import { Difficulty } from './Difficulty.js'
+import { TokenType } from './Token.js'
 
 export type BaseChallenge = {
   name: string
@@ -10,6 +11,12 @@ export type BaseChallenge = {
   flagPattern: string
   category: Category
   difficulty: Difficulty
+  token?: ChallengeToken
+}
+
+export type ChallengeToken = {
+  type: TokenType
+  adminApiKey: string
 }
 
 export type Challenge = BaseChallenge & {

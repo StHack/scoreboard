@@ -1,6 +1,8 @@
 import {
   BaseSurvey,
+  BaseToken,
   CreateTeam,
+  DummyChallenge,
   DummyTeam,
   dummyTeamScore,
   FullTeam,
@@ -9,6 +11,7 @@ import {
   Message,
   ServerError,
   TeamScore,
+  Token,
 } from '@sthack/scoreboard-common'
 import { useStorage } from '@sthack/scoreboard-ui/hooks'
 import {
@@ -16,6 +19,7 @@ import {
   PropsWithChildren,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react'
 import { useAuth } from './useAuthentication'
@@ -25,6 +29,7 @@ import { useSocket } from './useSocket'
 export type PlayerContext = {
   loadingState: PlayerContextLoadingState
   myTeam?: FullTeam
+  myTokens: Token[]
   myScore: number
   myTeamScore: TeamScore
   isBeforeLastScorer: boolean
@@ -41,6 +46,8 @@ export enum PlayerContextLoadingState {
   none = 0,
   // eslint-disable-next-line @typescript-eslint/prefer-literal-enum-member
   team = 1 << 0,
+  // eslint-disable-next-line @typescript-eslint/prefer-literal-enum-member
+  tokens = 1 << 1,
 }
 
 const PlayerContext = createContext<PlayerContext>({
@@ -54,6 +61,7 @@ const PlayerContext = createContext<PlayerContext>({
     solved: [],
     rewards: [],
   },
+  myTokens: [],
   isBeforeLastScorer: false,
   readMessages: [],
   isLoaded: () => false,
@@ -81,12 +89,24 @@ function useProvidePlayer(): PlayerContext {
   }
   const {
     score: { teamsScore, challsScore },
+    challenges,
   } = useGame()
 
   const [loadingState, setLoadingState] = useState<PlayerContextLoadingState>(
     PlayerContextLoadingState.none,
   )
   const [myTeam, setMyTeam] = useState<FullTeam>()
+  const [rawTokens, setRawTokens] = useState<Token[]>(() => [])
+  const tokens = useMemo<Token[]>(
+    () =>
+      rawTokens.map<Token>(t => ({
+        ...t,
+        challenge:
+          challenges.find(c => c._id === t.challengeId) ?? DummyChallenge,
+        team: myTeam ?? DummyTeam,
+      })),
+    [rawTokens, challenges, myTeam],
+  )
 
   const player = isPlayer(user) ? user : undefined
 
@@ -110,28 +130,61 @@ function useProvidePlayer(): PlayerContext {
       return
     }
 
-    if (player) {
-      socket.emit('team:get', (fullTeam: FullTeam) => {
-        setMyTeam(fullTeam)
-        setLoadingState(state => state | PlayerContextLoadingState.team)
-      })
-    } else {
+    if (!player) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setLoadingState(state => state | PlayerContextLoadingState.team)
+      setLoadingState(
+        state =>
+          state |
+          PlayerContextLoadingState.team |
+          PlayerContextLoadingState.tokens,
+      )
+
+      return
     }
+
+    socket.emit('team:get', (fullTeam: FullTeam) => {
+      setMyTeam(fullTeam)
+      setLoadingState(state => state | PlayerContextLoadingState.team)
+    })
+
+    socket.emit('team:tokens:list', (tokens: Token[]) => {
+      setRawTokens(tokens)
+      setLoadingState(state => state | PlayerContextLoadingState.tokens)
+    })
 
     socket.on('team:updated', (fullTeam: FullTeam) => {
       setMyTeam(fullTeam)
     })
 
+    socket.on('team:tokens:added', (token: Token) => {
+      setRawTokens(tokens => [...tokens, token])
+    })
+    socket.on(
+      'team:tokens:removed',
+      ({ challengeId, teamId }: Partial<BaseToken>) => {
+        setRawTokens(tokens =>
+          tokens.filter(t =>
+            challengeId
+              ? t.challengeId !== challengeId
+              : teamId
+                ? t.teamId !== teamId
+                : true,
+          ),
+        )
+      },
+    )
+
     return () => {
       socket.off('team:updated')
+      socket.off('team:tokens:added')
+      socket.off('team:tokens:removed')
     }
   }, [player, socket])
 
   return {
     loadingState,
     myTeam,
+    myTokens: tokens,
     myScore,
     myTeamScore:
       (player && teamsScore.find(x => x.team._id === player.teamId)) ||

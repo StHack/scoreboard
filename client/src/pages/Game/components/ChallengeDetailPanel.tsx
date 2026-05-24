@@ -10,9 +10,11 @@ import {
   Logo,
   MotionBox,
 } from '@sthack/scoreboard-ui/components'
+import { ReactMarkdownRenderers } from '@sthack/scoreboard-ui/styles'
 import { Messages } from 'components/Messages'
 import { GameContextLoadingState, useGame } from 'hooks/useGame'
 import { usePlayer } from 'hooks/usePlayer'
+import ReactMarkdown from 'react-markdown'
 import { useNavigate, useParams } from 'react-router-dom'
 import { SurveyPanel } from './SurveyPanel'
 
@@ -119,6 +121,7 @@ function ChallengeDetailPanelContent({
         gameConfig={gameConfig}
         currentTeam={myTeamScore.team}
       >
+        <ChallengeTokenPanel challenge={challenge} />
         <ChallengeFlagCardPanel
           challenge={challenge}
           teamScore={myTeamScore}
@@ -157,5 +160,20 @@ function BackButton() {
     >
       Go back
     </Button>
+  )
+}
+
+function ChallengeTokenPanel({ challenge }: { challenge: Challenge }) {
+  const { myTokens } = usePlayer()
+  const token = myTokens.find(t => t.challengeId === challenge._id)
+
+  if (!token) {
+    return undefined
+  }
+
+  return (
+    <ReactMarkdown components={ReactMarkdownRenderers}>
+      {`> For this challenge, you should use this token to access it: \`${token.value}\``}
+    </ReactMarkdown>
   )
 }

@@ -39,6 +39,7 @@ import RepairSvg from './images/repair.svg?react'
 import SatisfactionSvg from './images/satisfaction.svg?react'
 import SurveySvg from './images/survey.svg?react'
 import TeamsSvg from './images/teams.svg?react'
+import TokenSvg from './images/token.svg?react'
 import TwitterSvg from './images/twitter.svg?react'
 import UsersSvg from './images/users.svg?react'
 import ValidateSvg from './images/validate.svg?react'
@@ -101,6 +102,7 @@ export const IconRepair: Icon = BaseSvg.withComponent(RepairSvg)
 export const IconSatisfaction: Icon = BaseSvg.withComponent(SatisfactionSvg)
 export const IconSurvey: Icon = BaseSvg.withComponent(SurveySvg)
 export const IconTeams: Icon = BaseSvg.withComponent(TeamsSvg)
+export const IconToken: Icon = BaseSvg.withComponent(TokenSvg)
 export const IconTwitter: Icon = BaseSvg.withComponent(TwitterSvg)
 export const IconUsers: Icon = BaseSvg.withComponent(UsersSvg)
 export const IconValidate: Icon = BaseSvg.withComponent(ValidateSvg)

@@ -4,6 +4,7 @@ import {
   Challenge,
   Difficulty,
   FlagPattern,
+  TokenType,
 } from '@sthack/scoreboard-common'
 import { useField } from '@sthack/scoreboard-ui/hooks'
 import { SubmitEventHandler, useState } from 'react'
@@ -30,6 +31,7 @@ export function useChallengeForm(
     isBroken,
     name,
     flagPattern,
+    token: { type: tokenType } = {},
   } = chall || {}
 
   const draftKeyPrefix = `draft-challenge-${isNewChallenge ? 'new' : _id}`
@@ -100,6 +102,13 @@ export function useChallengeForm(
     disabled: isLoading,
   })
 
+  const tokenTypeField = useField<string>({
+    draftKeyPrefix,
+    name: 'tokenType',
+    defaultValue: tokenType ?? '',
+    disabled: isLoading,
+  })
+
   const cleanDraft = () => {
     localStorage.removeItem(`${draftKeyPrefix}-name`)
     localStorage.removeItem(`${draftKeyPrefix}-author`)
@@ -110,6 +119,7 @@ export function useChallengeForm(
     localStorage.removeItem(`${draftKeyPrefix}-isBroken`)
     localStorage.removeItem(`${draftKeyPrefix}-flag`)
     localStorage.removeItem(`${draftKeyPrefix}-flagPattern`)
+    localStorage.removeItem(`${draftKeyPrefix}-tokenType`)
   }
 
   const reset = () => {
@@ -123,22 +133,31 @@ export function useChallengeForm(
     flagPatternField.reset()
     imgField.reset()
     isBrokenField.reset()
+    tokenTypeField.reset()
   }
+
+  const buildPayload = (): BaseChallenge => ({
+    name: nameField.inputProp.value,
+    author: authorField.inputProp.value,
+    category: categoryField.inputProp.value,
+    description: descriptionField.inputProp.value,
+    img: imgField.inputProp.value ?? '',
+    difficulty: difficultyField.inputProp.value,
+    flag: flagsField.inputProp.value,
+    flagPattern: flagPatternField.inputProp.value,
+    token: tokenTypeField.inputProp.value
+      ? {
+          type: tokenTypeField.inputProp.value as TokenType,
+          adminApiKey: '',
+        }
+      : undefined,
+  })
 
   const onFormSubmit: SubmitEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
 
     try {
-      const payload: BaseChallenge = {
-        name: nameField.inputProp.value,
-        author: authorField.inputProp.value,
-        category: categoryField.inputProp.value,
-        description: descriptionField.inputProp.value,
-        img: imgField.inputProp.value ?? '',
-        difficulty: difficultyField.inputProp.value,
-        flag: flagsField.inputProp.value,
-        flagPattern: flagPatternField.inputProp.value,
-      }
+      const payload = buildPayload()
 
       if (chall === undefined) {
         await createChallenge(payload)
@@ -160,16 +179,9 @@ export function useChallengeForm(
   }
 
   const preview: Challenge = {
+    ...buildPayload(),
     _id: '',
-    author: authorField.inputProp.value,
-    category: categoryField.inputProp.value,
-    description: descriptionField.inputProp.value,
-    difficulty: difficultyField.inputProp.value,
-    img: imgField.inputProp.value ?? '',
     isBroken: false,
-    name: nameField.inputProp.value,
-    flag: flagsField.inputProp.value,
-    flagPattern: flagPatternField.inputProp.value,
   }
 
   return {
@@ -185,6 +197,7 @@ export function useChallengeForm(
     imgProps: imgField.inputProp,
     flagsProps: flagsField.inputProp,
     flagPatternProps: flagPatternField.inputProp,
+    tokenTypeProps: tokenTypeField.inputProp,
 
     isBrokenProps: isNewChallenge ? undefined : isBrokenField.inputProp,
 
@@ -199,6 +212,7 @@ export function useChallengeForm(
       imgField.isDirty ||
       flagsField.isDirty ||
       flagPatternField.isDirty ||
+      tokenTypeField.isDirty ||
       isBrokenField.isDirty,
     reset,
     error,

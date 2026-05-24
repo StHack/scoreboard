@@ -1,8 +1,6 @@
 import {
   Box,
-  IconChallenge,
-  IconPassword,
-  IconPromote,
+  IconToken,
   IconUsers,
   Link,
 } from '@sthack/scoreboard-ui/components'
@@ -63,14 +61,10 @@ export function Player({ children }: PropsWithChildren) {
           <IconUsers color="currentColor" size="1.5em" />
           Team
         </Link>
-        {/* <Link to="/account/tokens">
-          <IconChallenge color="currentColor" size="1.5em" />
+        <Link to="/account/tokens">
+          <IconToken color="currentColor" size="1.5em" />
           Tokens
         </Link>
-        <Link to="/account/settings">
-          <IconPassword color="currentColor" size="1.5em" />
-          Settings
-        </Link> */}
       </Box>
 
       <Box

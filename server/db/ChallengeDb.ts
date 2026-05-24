@@ -2,6 +2,7 @@ import {
   BaseChallenge,
   Challenge,
   Difficulties,
+  TokenType,
 } from '@sthack/scoreboard-common'
 import { createHash, randomUUID } from 'crypto'
 import { model, Schema, ToObjectOptions } from 'mongoose'
@@ -23,6 +24,11 @@ const schema = new Schema<DbChallenge>({
   difficulty: { type: String, enum: Difficulties, required: true },
 
   isBroken: { type: Boolean, required: true },
+  token: {
+    type: { type: String, enum: TokenType, required: false },
+    adminApiKey: { type: String, required: true },
+    _id: false,
+  },
 })
 
 const ChallengeModel = model<DbChallenge>('Challenge', schema)
@@ -100,7 +106,7 @@ export async function removeChallenge(
 
 export async function updateChallenge(
   challengeId: string,
-  { flag, ...challenge }: Partial<Challenge>,
+  { flag, token, ...challenge }: Partial<Challenge>,
 ): Promise<Challenge> {
   if (flag) {
     const chall = await ChallengeModel.findById(challengeId)
@@ -114,9 +120,11 @@ export async function updateChallenge(
     ;(challenge as Challenge).flag = flagHasher(flag, chall.salt)
   }
 
+  const additional = !token ? { $unset: { token: '' } } : { token }
+
   const document = await ChallengeModel.findByIdAndUpdate(
     challengeId,
-    { ...challenge },
+    { ...challenge, ...additional },
     { returnDocument: 'after' },
   )
 

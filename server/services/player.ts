@@ -17,6 +17,7 @@ import {
   schemaJoinTeam,
   Survey,
   Team,
+  Token,
   UserRole,
 } from '@sthack/scoreboard-common'
 import {
@@ -28,6 +29,7 @@ import { getSimilarAttempts, registerAttempt } from 'db/AttemptDb.js'
 import { checkChallenge, getChallenge } from 'db/ChallengeDb.js'
 import { createSurvey } from 'db/SurveyDb.js'
 import { createTeam, getFullTeam, getTeamByJoinToken } from 'db/TeamDb.js'
+import { listTokensByTeam } from 'db/TokenDb.js'
 import { getTeamPlayers, updateUser } from 'db/UsersDb.js'
 import debug from 'debug'
 import { Request } from 'express'
@@ -41,6 +43,7 @@ import {
 } from './middleware.js'
 import { registerSocketConnectivityChange } from './serveractivity.js'
 import { ServerConfig } from './serverconfig.js'
+import { createTokenForTeam } from './tokens.js'
 
 const rules: RequiredRole[] = [
   {
@@ -305,6 +308,12 @@ export function registerPlayerNamespace(
           adminIo.emit('teams:added', fullTeam)
           adminIo.emit('users:updated', updated)
           await emitGameConfigUpdate()
+
+          const tokens = await createTokenForTeam(fullTeam)
+          for (const token of tokens) {
+            playerIo.in(fullTeam._id).emit('team:tokens:added', token)
+            adminIo.emit('team:tokens:added', token)
+          }
         } catch (error) {
           if (error instanceof ExecutionError) {
             callback({
@@ -431,6 +440,27 @@ export function registerPlayerNamespace(
 
       callback(fullTeam)
     })
+
+    playerSocket.on(
+      'team:tokens:list',
+      async (callback: CallbackOrError<Token[]>) => {
+        const req = playerSocket.request as Request
+        const user = req.user
+        if (!user || !isPlayer(user)) {
+          callback({ error: 'You are not player, join a team first' })
+          return
+        }
+
+        const fullTeam = await getFullTeam(user.teamId)
+        if (!fullTeam) {
+          callback({ error: 'An unexpected error occured' })
+          return
+        }
+
+        const tokens = await listTokensByTeam(fullTeam._id)
+        callback(tokens)
+      },
+    )
   })
 
   async function emitGameConfigUpdate() {
