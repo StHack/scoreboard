@@ -1,5 +1,35 @@
 # Changelog
 
+## 2026
+
+- Hall of Fame
+  - creation of the website <https://hall-of-fame.sthack.fr>
+  - all the datas of the previous editions can be viewed
+  - revive all the previous theme
+- scoreboard
+  - 2026 theme: logo, challengecard, background
+  - add isNoCompete mode
+  - replace challenge detail popup with a full page
+  - redesign challenge detail page
+  - add survey form at the solve of the challenge
+  - rework challenge board modal
+  - rework team creation workflow (create+join mechanism)
+  - add account, team and tokens pages
+  - update rules
+- admin
+  - add survey screen
+  - add token feature
+  - add api token endpoint
+- chore tech
+  - extract common-ui projet
+  - extract team collection
+  - add survey and token collections
+  - make year dynamic (no-need to update it manually now)
+  - Typescript 6 adaptations
+  - replace npm with pnpm
+  - bug fixing
+  - update dependencies
+
 ## 2025
 
 - scoreboard

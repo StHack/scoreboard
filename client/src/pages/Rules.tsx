@@ -88,17 +88,19 @@ export function Rules() {
         )}
       </Box>
 
-      <Box
-        p="4"
-        pt="1"
-        borderRadius="2"
-        boxShadow="small"
-        backgroundColor="background"
-      >
-        <ReactMarkdown components={ReactMarkdownRenderers}>
-          {creditsMarkdown(edition)}
-        </ReactMarkdown>
-      </Box>
+      {(edition.backgroundCredit || edition.popupBackgroundCredit) && (
+        <Box
+          p="4"
+          pt="1"
+          borderRadius="2"
+          boxShadow="small"
+          backgroundColor="background"
+        >
+          <ReactMarkdown components={ReactMarkdownRenderers}>
+            {creditsMarkdown(edition)}
+          </ReactMarkdown>
+        </Box>
+      )}
     </Box>
   )
 }
@@ -120,9 +122,17 @@ const rulesMarkdown = (gameConfig: GameConfig) => `
 
 ${gameConfig.isNoCompetition ? scoringNoCompetMarkdown(gameConfig) : scoringMarkdown(gameConfig)}
 
+> For the full details please check [**our official blog post about it**](https://sthack.fr/editions/2026/ctf.html)
+
 ## Difference from 2025 edition
 
 - Theme has been changed to **Funfair**
+- Rework the scoring system to add the no-competition mode
+- Replace Challenge Detail popup with a full page
+- Add a survey for the solver of the challenges to give us feedbacks and help us improve the CTF experience
+- Rework Team creation workflow
+- Add Token feature for challenges makers to ease challenge creation
+- Hall of fame of the previous editions is now available at <https://hall-of-fame.sthack.fr>
 
 For the full changelog, please refer to the [changelog](https://github.com/StHack/scoreboard/blob/main/CHANGELOG.md)
 
