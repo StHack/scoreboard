@@ -267,6 +267,7 @@ export function registerPlayerNamespace(
             error:
               'You are already afiliated to an existing team, ask the staff if you want to change',
           })
+          return
         }
 
         const validations = schemaCreateTeam.safeParse(request)
@@ -350,6 +351,7 @@ export function registerPlayerNamespace(
             error:
               'You are already afiliated to an existing team, ask the staff if you want to change',
           })
+          return
         }
 
         const validations = schemaJoinTeam.safeParse(request)
