@@ -10,6 +10,7 @@ COLLECTIONS_TO_EXPORT=(
   "rewards"
   "serveractivitystatistics"
   "surveys"
+  "teams"
   "users"
 )
 
