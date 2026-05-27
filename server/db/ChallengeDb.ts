@@ -12,6 +12,14 @@ type DbChallenge = Challenge & {
   salt: string
 }
 
+const tokenSchema = new Schema(
+  {
+    type: { type: String, enum: TokenType, required: true },
+    adminApiKey: { type: String, required: true },
+  },
+  { _id: false },
+)
+
 const schema = new Schema<DbChallenge>({
   name: { type: String, required: true },
   description: { type: String, required: true },
@@ -25,9 +33,9 @@ const schema = new Schema<DbChallenge>({
 
   isBroken: { type: Boolean, required: true },
   token: {
-    type: { type: String, enum: TokenType, required: false },
-    adminApiKey: { type: String, required: true },
-    _id: false,
+    type: tokenSchema,
+    required: false,
+    default: undefined,
   },
 })
 
