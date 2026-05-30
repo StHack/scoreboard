@@ -29,8 +29,13 @@ export function YearLayout() {
           flexDirection="row"
           justifyContent={['space-around', 'center']}
           gap={[1, 2]}
-          overflowX="auto"
           px="1"
+          overflowX="auto"
+          backgroundColor="background"
+          borderColor="secondary"
+          borderWidth="medium"
+          borderStyle="solid"
+          borderRadius="medium"
         >
           <Link to="teams" end>
             <IconUsers color="currentColor" size="1.5em" />

@@ -153,37 +153,34 @@ sudo docker compose --profile prod logs > logs.log
 sudo docker compose --profile prod logs website > logs-website.log
 ## from your computer
 git pull
-scp ubuntu@XX.XX.XX.XX:/home/ubuntu/scoreboard/backups/$(date +%Y)/attempts-uncensored.json .
-scp ubuntu@XX.XX.XX.XX:/home/ubuntu/scoreboard/backups/$(date +%Y)/surveys-uncensored.json .
-scp ubuntu@XX.XX.XX.XX:/home/ubuntu/scoreboard/logs.log backups/$(date +%Y)/
-scp ubuntu@XX.XX.XX.XX:/home/ubuntu/scoreboard/logs-website.log backups/$(date +%Y)/
+sudo scp -i ~/.ssh/sthack_id_ed25519 nagarian@XX.XX.XX.XX:/home/nagarian/scoreboard/backups/$(date +%Y)/attempts-uncensored.json .
+sudo scp -i ~/.ssh/sthack_id_ed25519 nagarian@XX.XX.XX.XX:/home/nagarian/scoreboard/backups/$(date +%Y)/surveys-uncensored.json .
+sudo scp -i ~/.ssh/sthack_id_ed25519 nagarian@XX.XX.XX.XX:/home/nagarian/scoreboard/logs.log backups/$(date +%Y)/
+sudo scp -i ~/.ssh/sthack_id_ed25519 nagarian@XX.XX.XX.XX:/home/nagarian/scoreboard/logs-website.log backups/$(date +%Y)/
 ```
 
-### 2025 server usage
+### 2026 server usage
 
 ```bash
 df -h
 # Filesystem      Size  Used Avail Use% Mounted on
-# /dev/root        58G   12G   46G  20% /
+# /dev/root        48G  8.7G   39G  19% /
 # tmpfs           7.9G     0  7.9G   0% /dev/shm
 # tmpfs           3.2G  1.3M  3.2G   1% /run
-# efivarfs         56K   24K   27K  48% /sys/firmware/efi/efivars
-# tmpfs           5.0M     0  5.0M   0% /run/lock
+# efivarfs        256K   32K  220K  13% /sys/firmware/efi/efivars
 # tmpfs           7.9G     0  7.9G   0% /tmp
-# tmpfs           1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
-# tmpfs           1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
-# /dev/sda13      989M   45M  877M   5% /boot
-# /dev/sda15      105M  6.1M   99M   6% /boot/efi
-# tmpfs           1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
-# tmpfs           1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
-# tmpfs           1.0M     0  1.0M   0% /run/credentials/serial-getty@ttyS0.service
-# tmpfs           1.6G  8.0K  1.6G   1% /run/user/1002
+# none            1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+# none            1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+# /dev/sda13      989M   54M  868M   6% /boot
+# /dev/sda15      105M  6.3M   99M   7% /boot/efi
+# none            1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
+# none            1.0M     0  1.0M   0% /run/credentials/serial-getty@ttyS0.service
+# none            1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+# tmpfs           1.6G  8.0K  1.6G   1% /run/user/1001
 df -h /var/lib/docker
 # Filesystem      Size  Used Avail Use% Mounted on
-# /dev/root        58G   12G   46G  20% /
+# /dev/root        48G  8.7G   39G  19% /
 ```
-
-As we can see, we've used only 12Go of storage, the full persisting of the logs doesn't succeed. I've made a restart around 23h in order to fix the issue with the server statistics functionnality not working
 
 ## Tests
 

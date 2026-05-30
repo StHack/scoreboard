@@ -11,6 +11,7 @@ import {
 } from '@sthack/scoreboard-ui/components'
 import { useLocation } from 'react-router-dom'
 import { SizeProps } from 'styled-system'
+import { Edition2026Logo } from '../../../common-ui/src/components/Editions/2026'
 
 export type EditionLinkProps = {
   year: number
@@ -45,6 +46,7 @@ const SLink = styled(Link)`
 export function EditionLinks(props: SizeProps) {
   return (
     <>
+      <EditionLink {...props} year={2026} logo={Edition2026Logo} />
       <EditionLink {...props} year={2025} logo={Edition2025Logo} />
       <EditionLink {...props} year={2024} logo={Edition2024Logo} />
       <EditionLink {...props} year={2023} logo={Edition2023Logo} />
