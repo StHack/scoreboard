@@ -16,6 +16,7 @@ export * from './2022'
 export * from './2023'
 export * from './2024'
 export * from './2025'
+export * from './2026'
 
 export function getEditionTheme(year: number): EditionTheme {
   switch (year) {

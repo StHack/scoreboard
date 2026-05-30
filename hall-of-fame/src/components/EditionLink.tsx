@@ -6,12 +6,12 @@ import {
   Edition2023Logo,
   Edition2024Logo,
   Edition2025Logo,
+  Edition2026Logo,
   Icon,
   Link,
 } from '@sthack/scoreboard-ui/components'
 import { useLocation } from 'react-router-dom'
 import { SizeProps } from 'styled-system'
-import { Edition2026Logo } from '../../../common-ui/src/components/Editions/2026'
 
 export type EditionLinkProps = {
   year: number
