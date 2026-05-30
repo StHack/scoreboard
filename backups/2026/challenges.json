@@ -1,0 +1,445 @@
+[{
+	"_id": {
+		"$oid": "6a174e30e9ac016045c9d74a"
+	},
+	"name": "Magnus Casino",
+	"description": "**Alors que la fête forraine bat son plain, vous profitez d'une occasion pour placer un raspberry PI dans une machine à sous Magnus Casino. Ce point d'entré vous permettra de vous connecter à distance à la machine...**\n\nIl y a un environnement par équipe, voici le lien pour vous connecter\nhttp://51.15.91.224/pitch\n\nQuand on vous demandera une authentification http-basic le code sera \n\n- login : sthack \n- passwd : 2026\n\nUne récompense particulière de 50 euros sera donné pour cette épreuve, tiré au sort parmi les meilleurs write up.\n\n🤖❤️ Cette épreuve peut être résolue avec IA ! Dans ce cas le write up devra indiquer :\n\n- Le modèle d'IA utilisé\n- Le nombre de token ou d'euros consommés\n- La liste des prompts et des réponse utilisés\n- Les éventuels blocages éthiques opposés par le LLM\n- Une timeline ou durée de résolution",
+	"img": "/api/content/0c1485871b79590bd834d1892d009e97e83fd246ed09c01b8a84f2d33aa0c0b8.webp",
+	"author": "vieux",
+	"flag": "88cbb379dd256c938022a0392cda3f43b930184700895c78fc209bdf02cffbb4",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "bf162644-163f-474a-86b3-612fcc5f0cbd",
+	"category": "Network",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a174e5fe9ac016045c9d74b"
+	},
+	"name": "Snack Overflow 1/2",
+	"description": "Il fait chaud, vous prendriez bien un petit rafraîchissement ?\n\n[https://snack-overflow.sthack.fr/](https://snack-overflow.sthack.fr/)                                                                                                                                                                    ",
+	"img": "",
+	"author": "hackdaddy",
+	"flag": "3ef65d75604c5e4d2d53600e084997d02e0ccf0e9a86c602e5e4a602b88e1878",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "a067abd8-a938-4b24-88ee-d0b0f02c1a3a",
+	"category": "misc",
+	"difficulty": "easy",
+	"isBroken": false,
+	"__v": 0,
+	"token": {
+		"type": "uuid-v4",
+		"adminApiKey": "f0c6b4c6-06fe-4d38-8ea8-68513c4a6131"
+	}
+},
+{
+	"_id": {
+		"$oid": "6a174e7ce9ac016045c9d74c"
+	},
+	"name": "Magic Claw 1/2",
+	"description": "Testez notre nouvelle machine à grappin !\n\n[http://magiclaw.sthack.fr/](http://magiclaw.sthack.fr/)",
+	"img": "",
+	"author": "hackdaddy",
+	"flag": "2942e538962a3866367088a6edf8a0d9bd55414f792dc29c444d2547f1a085fc",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "4cf61eb7-519c-4582-b46c-c9cf9d3f2fd3",
+	"category": "web",
+	"difficulty": "easy",
+	"isBroken": false,
+	"token": {
+		"type": "uuid-v4",
+		"adminApiKey": "de452e51-74f6-4508-a1c2-bdd769c80d15"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a184687e9ac016045c9d75a"
+	},
+	"name": "Poster Master",
+	"description": "**Henlo,**\n\nI made a pwn challenge for you, wanna test it ? :3\n\nYou can *(normaly)* connect here : `35.239.198.152 13337`  and you will find the flag in the file `/flag` .\n\n`/!\\ No escape is needed ! You only need the flag !`\n\nYou can also find the files here : **https://kdrive.infomaniak.com/app/share/1476083/4bab5659-e245-48a2-9936-4be99129f246**",
+	"img": "",
+	"author": "Kaddate",
+	"flag": "5b1be4910f7258e37899be9ec4b8c5d50fc943d3db7a153e5d951b145770da6f",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "e6b21206-d35e-4bb7-bf02-65bf4dffbc5e",
+	"category": "pwn",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a18b000e9ac016045c9d75c"
+	},
+	"name": "Magic Claw 2/2",
+	"description": "Marre de perdre ?\n\n[http://magiclaw.sthack.fr/](http://magiclaw.sthack.fr/)",
+	"img": "",
+	"author": "hackdaddy",
+	"flag": "a9ca07b541bae4d280f8fc5d9706aba7eaf938b9624a4bc6240a824674279137",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "c783f70a-5590-451c-8c68-59932cf872dd",
+	"category": "web",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a18b06de9ac016045c9d75e"
+	},
+	"name": "Snack Overflow 2/2",
+	"description": "Testez nos nouveaux produits exclusifs ! *(à partir de seulement 99€)*\n[https://snack-overflow.sthack.fr/](https://snack-overflow.sthack.fr/)",
+	"img": "",
+	"author": "hackdaddy",
+	"flag": "0f01425717100931cd773f7a663ce9ff0dd0572d4e41788406b850af896a5d0a",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "27abdac8-05ef-4451-bc50-2ef2640bb2be",
+	"category": "misc",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a18b084e9ac016045c9d75f"
+	},
+	"name": "Badge",
+	"description": "Il vous a été remis au début du CTF, les yeux fermés, perdu dans un sommeil paradoxal, attendant patiemment le matin pour se réveiller. Mais la nuit est longue, et pleine de rêves et de cauchemars. Pouvez-vous le réconforter ?",
+	"img": "",
+	"author": "hackdaddy",
+	"flag": "ceeac30facc09ded10d7e36a207b8cb9c6e32540d9c2e696c77100670e411c3e",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "67744d4b-fbac-423e-a8f4-e42b3c73c55b",
+	"category": "misc",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a199514e9ac016045c9d762"
+	},
+	"name": "DJ Forain",
+	"description": "Sur une scène diffusée en direct, un squelette fait du live coding musical.\n \nTon but est de prendre le contrôle de la musique, bon courage :)\n\nPour commencer : connecte-toi sur https://internetcest.fun et renseigne ton token d'équipe pour obtenir ton accès à ta machine d'attaque.\n\nTout se joue depuis là, sur ton lab. Tout ce dont tu as besoin est déjà installé. (Pense à utiliser python ;) )\n\nLe live : https://www.twitch.tv/dj_forain_sthack\n\nRègles : reste dans ton lab, pas de DoS, pas d'évasion de container.\n\nPassez en partage de connexion et non sur le WIFI EVENT pour l'épreuve\n\nLorsque vous validerez l'épreuve, le stream jouera une musique spécifique et une animation différente apparaîtra.\nJe serai informé de la réussite et je validerai votre flag. N'hésitez pas à me ping discord ou venir me voir",
+	"img": "",
+	"author": "agrorec",
+	"flag": "835e8753a332fc530dc97aada4233dc7f79dfa3be9f9dbd82eee6b3681eb2fa4",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "99805723-ec77-403a-b487-1bd5752ab4b0",
+	"category": "Network - misc",
+	"difficulty": "easy",
+	"isBroken": false,
+	"__v": 0,
+	"token": {
+		"type": "uuid-v4",
+		"adminApiKey": "6fb2503a-f181-49a4-acbd-74a2cb7addcd"
+	}
+},
+{
+	"_id": {
+		"$oid": "6a19d4a12af595c3960ac5f7"
+	},
+	"name": "Coffee time",
+	"description": "Un prestaire propose une service de management de machines a café à l'aide de leur \"nouvelle technologie\", leur solution propose un service rapide et securisé.\n\nhttps://coffe-time.sthack.fr/",
+	"img": "/api/content/3ac03c30cc953a8e97fda59b33104fa90a3a18ce4de1c31026a68edb10f7b589.webp",
+	"author": "iota",
+	"flag": "40dc00d94a8c274233f1320089ad0abe84f57300d314185ce957ecc2028c00b8",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "e19eed27-9e0d-4668-9fbb-5063f3011953",
+	"category": "web",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19d7f42af595c3960ac63f"
+	},
+	"name": "What a hell",
+	"description": "Comme d'hab un simple input. \nObjectif avoir une RCE. \n\nLa description est nulle ? ouais je trouve aussi. \n\nOui il y a vraiment un captcha, réfléchissez à ce que vous devez faire pour ne pas en solve toute la **nuit** :D\n\nLien du chalenge : https://formulaire-reclamation-photo.sthack.fr/",
+	"img": "",
+	"author": "shoxx",
+	"flag": "ed2b516349c8a1e24325f2a3e2de774dd8faa15e08837a288a1082eff324193a",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "179457d2-2006-4396-bf19-50abb2afed69",
+	"category": "web",
+	"difficulty": "hard",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19d9d72af595c3960ac658"
+	},
+	"name": "Obscura",
+	"description": "https://obscura.sthack.fr/\n\n\nLessgo ",
+	"img": "",
+	"author": "ghozt",
+	"flag": "54b929d5df3f7d91d154730b804f3ec6f07b210c60c163a9ca57b22427c22888",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "cdce5012-0389-47a5-b1fd-cb8d39a057b2",
+	"category": "web",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19da4c2af595c3960ac668"
+	},
+	"name": "Ironcoaster",
+	"description": "nc ironcoaster.sthack.fr 1337\n\n[ironcoaster](/api/content/d03b5bdb638bb84a072e27e101c7601726a80631f1e4a27ac7425c7c02ec6156)\n\nGOGOGO\n\n",
+	"img": "",
+	"author": "ghozt",
+	"flag": "b3aab8543f4d35c9d46c07e36a35ceeafa8f603fce8adef977987eef126bdd6b",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "5f8deaf1-4759-42dc-a5bf-b897772839f6",
+	"category": "reverse",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19db192af595c3960ac67e"
+	},
+	"name": "Fête Foraine Incroyable",
+	"description": "nc ffi.sthack.fr 1337\n\n[fairground](/api/content/bde06740b25e88b1d758afbab07e5f706b1e00d5633aad02861216b0d5a32400)\n\nPWN that binary :)\n\n",
+	"img": "",
+	"author": "ghozt",
+	"flag": "a59d4d8359af6b42ca1c7058bec774ae2a237446fa2c5cf735cb333599559215",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "186f9234-783d-4a26-b6c9-bced0f4aafaf",
+	"category": "pwn",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19de2f86a4f0d3d2d87015"
+	},
+	"name": "Nightfair Scanner",
+	"description": "Can you get an admin ticket ? :)\n\nhttps://drive.google.com/file/d/1NNpAKT36-6u_Cgro5ZMOR3iUS1DQK-xE/view?usp=sharing\n\n**![ticket_visitor.png](/api/content/3b9ecda28110ebcda154e97c4d222dc42ee1177df443ddb5d42a9b39b75c8448.png)**",
+	"img": "",
+	"author": "ghozt",
+	"flag": "359e6ce7500b0f0967329338d215875bd7d29c5928ef22301d6b7a4b06465dfe",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "01001c80-de50-4bd8-86da-a8a3eb6d9e91",
+	"category": "apk",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19e05b86a4f0d3d2d87027"
+	},
+	"name": "Sthack 2046 (1/4)",
+	"description": "Bienvenue sur **helloassso.com**, la billetterie officielle de la **Sthack 2046**.\n\nLes places VIP de la conf partent en quelques secondes. Pour lutter contre les scalper-bots, les orgas ont mis en place une *file d'attente virtuelle* : un lot de places est libéré **toutes les 60 secondes**, et toute réservation qui n'est pas finalisée en **moins de 5 secondes** est invalidée.\n\nLe guichet t'impose un formulaire à rallonge, un petit calcul, et un défianti-automatisation côté navigateur. Cinq secondes, montre en main, pour passer.\n\n🎟️ Guichet : https://helloassso.com/",
+	"img": "",
+	"author": "boring",
+	"flag": "6493c228cd75605b747edf31daabd1b263f91de6f6a0a5e878f8216d1c02b8b6",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "88cb4281-0f6d-4bae-9455-f6b98e7bb1f1",
+	"category": "misc",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19e0e686a4f0d3d2d8702c"
+	},
+	"name": "Sthack 2046 (2/4)",
+	"description": "Place réservée dans le panier ! Il ne te reste plus qu'à payer :D\n\n(Suite directe du (1/4), il te faut la session obtenue à l'étape précédente)\n",
+	"img": "",
+	"author": "boring",
+	"flag": "b6dd78cfcdc07304f3d8fadce94cbc9e1fc4baea01265c0f4e5688537e6dce8a",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "393f20e8-8d24-48c4-be83-5a174811ee1f",
+	"category": "web",
+	"difficulty": "hard",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19e17d86a4f0d3d2d87039"
+	},
+	"name": "Sthack 2046 (3/4)",
+	"description": "Transaction validée... mais le service anti-fraude n'est pas dupe : ton reçu de paiement porte la mention `\"status\": \"payment_anomalous\"`. Résultat, pas d'accès à la personnalisation de ton billet VIP.\n\n(Suite du (2/4), tu as besoin du JWT délivré au checkout)",
+	"img": "",
+	"author": "boring",
+	"flag": "283db99ca8ad19cd57b5e564d51976ae78845246b9894cc024b0b6b6ad97ddb2",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "dbbc15bf-d814-4981-b505-6177f561e82b",
+	"category": "web",
+	"difficulty": "hard",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19e1ff86a4f0d3d2d8703d"
+	},
+	"name": "Sthack 2046 (4/4)",
+	"description": "Te voilà vérifié !. Dernière étape : personnaliser ta carte d'embarquement VIP. Nom d'équipe, slogan, citation, couleur... le tout rendu en PDF par un service dédié.\n\n(Étape finale, il te faut l'accès VIP du (3/4))",
+	"img": "",
+	"author": "boring",
+	"flag": "5a540ec802a124bdce306e04e5e36b09e6770a18919779c4e26290188af063dd",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "eb348207-d2e2-4c0c-9f07-c1c069dde540",
+	"category": "web",
+	"difficulty": "hard",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19e46786a4f0d3d2d8704d"
+	},
+	"name": "Cave Inondée",
+	"description": "Le Palais Rohan se noie.\n\nUne cuve de Château Smuggl. s'est éventrée sur le toit. Le vin descend, cave après cave, couloir après couloir. Les œuvres, les archives, tout y passe. Le bâtiment sera englouti d'ici quelques minutes.\n\nSauvez le Palais Rohan.\n\n🌐 https://167.233.26.127:4443/",
+	"img": "",
+	"author": "boring",
+	"flag": "19be9b58875d80dca03552813c9ee85c8b775a53f7c36c5a972c9a7e9c131e9e",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "3291e0d2-cd99-44ce-ade4-89fe636b1016",
+	"category": "web",
+	"difficulty": "hard",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19e62886a4f0d3d2d8705e"
+	},
+	"name": "Le Navire des Fuites",
+	"description": " Le **S.S. France-Data** prend l'eau. Pas physiquement, ses données.\n\nQuelque part dans le flux de télémétrie maritime du navire, un malware exfiltre discrètement des données sensibles, noyées dans le bruit. À vous de trouver comment couper la fuite avant que le navire ne sombre.\n\nLe challenge est accessible sur 167.233.26.127, web sur :8080, socket TCP sur :31337",
+	"img": "",
+	"author": "boring",
+	"flag": "e3447c8a76d7032a09cd8c47c8113955e878b2098b8695e2aaebdba1f8c689fe",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "8533597b-32eb-4386-94b2-aba532e15cc4",
+	"category": "Network",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19e80286a4f0d3d2d8706d"
+	},
+	"name": "Il faut écouter les rumps !",
+	"description": "Ce serveur ne rend son flag qu'après avoir vu 10 000 IPv6 distinctes du même /64. À vous de jouer.\n \nAccès : http://[2a01:4f8:c17:e559::1]:31338/ ",
+	"img": "",
+	"author": "boring",
+	"flag": "47afc7ce637dbae719d8c68f2d21616851b25798a92ec3bd39b6f5188af74876",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "5ebc2cae-ae45-4c11-bd7f-4af7be3e316f",
+	"category": "Network",
+	"difficulty": "easy",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19e8e886a4f0d3d2d8707d"
+	},
+	"name": "Petit fail de git",
+	"description": "Quelqu'un a déployé un peu vite.\n\nQuelque part sur les serveurs de l'Université de Bordeaux, un développeur étourdi a oublié de bloquer l'accès à son dossier .git/ \n\nSes **tokens ** dorment là, exposés au grand jour, attendant que quelqu'un passe par là.\n\nCe quelqu'un, c'est vous.",
+	"img": "",
+	"author": "boring",
+	"flag": "aa06db1c2baaf918021320f23f120c381472cb64d39f5939e5d649e84a082cc1",
+	"flagPattern": "STHACK{letokenexposé}",
+	"salt": "71a64f90-712a-40ad-9ac4-af34fa7c690b",
+	"category": "osint",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19f05b86a4f0d3d2d870d9"
+	},
+	"name": "Sthack Chess Hustlers",
+	"description": "Un grand maître des échecs prétend avoir caché un secret sur son serveur.\nIl est tellement confiant en ses capacités qu'il défie quiconque de le battre aux échecs pour y accéder.\n\n```js\n#!/usr/bin/env python3\nimport sys\nimport chess\nimport chess.pgn\nimport chess.engine\nimport shutil\nimport base64\nimport os\nimport subprocess\nfrom datetime import datetime\n\nSAVE_DIR = \"/tmp/saved_games\"\n\n\ndef p(*args, **kwargs):\n    print(*args, **kwargs, flush=True)\n\n\nPIECE_UNICODE = {\n    (chess.PAWN,   chess.WHITE): \"♙\",\n    (chess.KNIGHT, chess.WHITE): \"♘\",\n    (chess.BISHOP, chess.WHITE): \"♗\",\n    (chess.ROOK,   chess.WHITE): \"♖\",\n    (chess.QUEEN,  chess.WHITE): \"♕\",\n    (chess.KING,   chess.WHITE): \"♔\",\n    (chess.PAWN,   chess.BLACK): \"♟\",\n    (chess.KNIGHT, chess.BLACK): \"♞\",\n    (chess.BISHOP, chess.BLACK): \"♝\",\n    (chess.ROOK,   chess.BLACK): \"♜\",\n    (chess.QUEEN,  chess.BLACK): \"♛\",\n    (chess.KING,   chess.BLACK): \"♚\",\n}\n\n\ndef render_board(board):\n    lines = []\n    for rank in range(7, -1, -1):\n        row = f\"{rank + 1} \"\n        for file in range(8):\n            sq = chess.square(file, rank)\n            piece = board.piece_at(sq)\n            row += (PIECE_UNICODE[(piece.piece_type, piece.color)] if piece else \".\") + \" \"\n        lines.append(row.rstrip())\n    lines.append(\"  a b c d e f g h\")\n    return \"\\n\".join(lines)\n\n\ndef save_game(game):\n    os.makedirs(SAVE_DIR, exist_ok=True)\n    ts = datetime.now().strftime(\"%Y%m%d_%H%M%S\")\n    path = f\"{SAVE_DIR}/{ts}.pgn\"\n    with open(path, \"w\") as f:\n        f.write(str(game))\n    return path\n\n\ndef load_game(path):\n    with open(path, \"rb\") as f:\n        return base64.b64encode(f.read()).decode()\n\n\ndef post_win_menu(game):\n    p()\n    try:\n        result = subprocess.run(\n            [\"locate\", \"-d\", \"/var/cache/locate/locatedb\", \".pgn\"],\n            capture_output=True, text=True, timeout=5\n        )\n        pgn_files = result.stdout.strip()\n        if pgn_files:\n            p(\"PGN files found on this system:\")\n            for f in pgn_files.splitlines():\n                p(f\"  {f}\")\n            p()\n    except Exception:\n        pass\n    p(\"What would you like to do?\")\n    p(\"  1. Save this game (PGN)\")\n    p(\"  2. Load a saved game (PGN)\")\n    p(\"  3. Exit\")\n\n    while True:\n        p(\"> \", end=\"\")\n        try:\n            choice = input().strip()\n        except EOFError:\n            return\n\n        if choice == \"1\":\n            path = save_game(game)\n            p(f\"Game saved to: {path}\")\n\n        elif choice == \"2\":\n            p(\"Enter path to PGN file: \", end=\"\")\n            try:\n                path = input().strip()\n            except EOFError:\n                return\n            try:\n                encoded = load_game(path)\n                p(\"File content (base64):\")\n                p(encoded)\n            except FileNotFoundError:\n                p(\"Error: file not found.\")\n            except PermissionError:\n                p(\"Error: permission denied.\")\n            except Exception as e:\n                p(f\"Error: {e}\")\n\n        elif choice == \"3\":\n            return\n\n        else:\n            p(\"Invalid choice.\")\n\n\ndef main():\n    p(\"=\" * 52)\n    p(\"           Chess Challenge  v1.0\")\n    p(\"    You play White. Moves in SAN notation.\")\n    p(\"    Examples: e4  Nf3  O-O  Bxe5  Qxf7#\")\n    p(\"=\" * 52)\n\n    board = chess.Board()\n    game = chess.pgn.Game()\n    game.headers[\"Event\"] = \"CTF Chess Challenge\"\n    game.headers[\"White\"] = \"Player\"\n    game.headers[\"Black\"] = \"Stockfish\"\n    game.headers[\"Date\"] = datetime.now().strftime(\"%Y.%m.%d\")\n    node = game\n\n    stockfish_bin = shutil.which(\"stockfish\") or \"/usr/games/stockfish\"\n    try:\n        engine = chess.engine.SimpleEngine.popen_uci(stockfish_bin)\n    except Exception as e:\n        p(f\"[ERROR] Could not start engine: {e}\")\n        sys.exit(1)\n\n    try:\n        while not board.is_game_over():\n            p()\n            p(render_board(board))\n            p()\n\n            if board.turn == chess.WHITE:\n                if board.is_check():\n                    p(\"  ** Check! **\")\n                p(f\"Move {board.fullmove_number}. Your move: \", end=\"\")\n                try:\n                    raw = input().strip()\n                except EOFError:\n                    break\n                if not raw:\n                    continue\n                try:\n                    move = board.parse_san(raw)\n                    node = node.add_variation(move)\n                    board.push(move)\n                except chess.InvalidMoveError as e:\n                    p(f\"  Invalid move '{raw}': {e}\")\n                    continue\n                except ValueError as e:\n                    p(f\"  Invalid move '{raw}': {e}\")\n                    continue\n            else:\n                p(\"Stockfish is thinking...\")\n                result = engine.play(board, chess.engine.Limit(time=0.1))\n                if result.move is None:\n                    break\n                san = board.san(result.move)\n                node = node.add_variation(result.move)\n                board.push(result.move)\n                p(f\"Stockfish plays: {san}\")\n    finally:\n        engine.quit()\n\n    p()\n    p(render_board(board))\n    p()\n\n    outcome = board.outcome()\n    if outcome is None:\n        p(\"Game interrupted.\")\n        return\n\n    if outcome.winner == chess.WHITE:\n        game.headers[\"Result\"] = \"1-0\"\n        p(\"╔════════════════════════════════════════════╗\")\n        p(\"║  Congratulations! You defeated Stockfish!  ║\")\n        p(\"╚════════════════════════════════════════════╝\")\n        post_win_menu(game)\n    elif outcome.winner == chess.BLACK:\n        game.headers[\"Result\"] = \"0-1\"\n        p(\"Stockfish wins. Better luck next time!\")\n    else:\n        game.headers[\"Result\"] = \"1/2-1/2\"\n        p(f\"Draw! ({outcome.termination.name})\")\n\n\nif __name__ == \"__main__\":\n    main()\n```\n\n`nc chess.sthack.fr 1337`",
+	"img": "/api/content/44ab23549fdba97f5033ab654c3033dd3beaece7fea958d14f92520563ee0ce5.webp",
+	"author": "dryy ft. cptrskv",
+	"flag": "ef67b07f9276065fa1f2077de149c95581ddd0cb67ae8076bc96a78f51b7010e",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "709f0d25-c8e3-4ef9-948b-548f92ce470b",
+	"category": "misc",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19f7d386a4f0d3d2d87111"
+	},
+	"name": "Node - jail 1",
+	"description": "**Node** jail.\n\n\n```js\nwhile (true) {\n    console.log(\">> \")\n\n    const input = require('fs').readFileSync(0, 'utf-8').trim()\n\n    // 161 * 1.5 is my solution + 50%, so you have a bit of room\n    // Try to match or even beat me!\n    if (input.match(/^[\\(\\)\\[\\]\\{\\}!+\\-*/<>=0-9]+$/g) && input.length <= (161 * 1.5)) {\n        const output = eval(input);\n        console.log(output)\n        if (output === \"i <3 stac\") {\n            console.log(process.env.FLAG || \"flag{dummy}\")\n        }\n    } else {\n        console.log(\"nope\")\n    }\n}\n```\n\n`nc -v jail1.sthack.fr 42069`",
+	"img": "/api/content/97121e41c4d7a6d85d06e14eb7ee41ccbf937c3f6e58f8f134461a63f4e8d537.webp",
+	"author": "dryy",
+	"flag": "6e103dd67406c26a668b9642f51376edff03c20b062d61bf76158079a077816a",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "421c1d57-34c9-4dc4-99a8-d4044c4eca35",
+	"category": "misc",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a1a04bb7cb3971af0e40898"
+	},
+	"name": "Telemetry Tells no Lies 1/3",
+	"description": "We developed a custom **Telemetry service** for every machines of our infra !\n\nWe wanted some **low-level metrics**, so we tried implementing **eBPF probes** to collect them.\n\nAlso, we thought that a **sexy WebUI** to show them would be nice, so we developed a little **POC that calls our eBPF programs on-demand**.\n\nAs you mayyyyyy or may not know, we care a lot about security here.  \nTherefore, we created a **custom sandbox** with only the **minimum required privileges** to make our setup work.\n\n---\n\n**Step 1/3** : Get access to the server\n\n---\n\nFor this challenge, each team will have its own environment.\nGrab your **team token** before attempting to connect.\n\nYou can then access the challenge with : \n- **`nc ttnl.sthack.fr 13337`**.\n\nPlease read the rules when first connecting, and follow instructions to access the challenge.\n\nThe host machine is modest, be kind if it's kinda slow. If it's too much, contact a steaff member, we'll make the machine BIGGER :)\nAll machines are wiped every 30 min.\n\n🐈",
+	"img": "",
+	"author": "it4",
+	"flag": "ac346d325d370e251c962e92ea0e1ab57b127b987094fca2961c1d72c9387d75",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "202f18a7-8aa3-46bf-9795-4286e48eb3be",
+	"category": "sys",
+	"difficulty": "easy",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a1a05ea7cb3971af0e408c4"
+	},
+	"name": "Telemetry Tells no Lies 2/3",
+	"description": "# Telemetry Tell No Lies 2/3\n\nWe developed a custom **Telemetry service** for every machines of our infra !\n\nWe wanted some **low-level metrics**, so we tried implementing **eBPF probes** to collect them.\n\nAlso, we thought that a **sexy WebUI** to show them would be nice, so we developed a little **POC that calls our eBPF programs on-demand**.\n\nAs you mayyyyyy or may not know, we care a lot about security here.  \nTherefore, we created a **custom sandbox** with only the **minimum required privileges** to make our setup work.\n\n---\n\n**Step 2/3** : You may have a noticed `flag2` which is encrypted. You may (SHOULD) have noticed that apart of it is decrypted by the application...\n\nSo the application seems to know everything needed to decrypt.\n\n---\n\nSame environment as 1/3 !\nAll machines are wiped every 30 min.",
+	"img": "",
+	"author": "it4",
+	"flag": "a9c57be0b69e8a6f2aeb39e249fb2bae4950854ee1484bb23ee99773de899bc9",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "1c758a02-f0b1-48d7-a2d9-45ed83f7e597",
+	"category": "sys",
+	"difficulty": "medium",
+	"isBroken": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a1a06387cb3971af0e408cc"
+	},
+	"name": "Telemetry Tells no Lies 3/3",
+	"description": "We developed a custom **Telemetry service** for every machines of our infra !\n\nWe wanted some **low-level metrics**, so we tried implementing **eBPF probes** to collect them.\n\nAlso, we thought that a **sexy WebUI** to show them would be nice, so we developed a little **POC that calls our eBPF programs on-demand**.\n\nAs you mayyyyyy or may not know, we care a lot about security here.  \nTherefore, we created a **custom sandbox** with only the **minimum required privileges** to make our setup work.\n\n---\n\n**Step 3/3** : Prove that even with these restricted privileges, we can still do much.\n\nSteal the password of the admin on the host machine.\n\n---\n\nAll machines are wiped every 30 min.\nStill same env as 1/3.\n",
+	"img": "",
+	"author": "it4",
+	"flag": "f2fb3343435ae13303e41938e3b2b64580ff9fbdd9884f8f2960a067ec3a3b46",
+	"flagPattern": "STHACK{XXXXXXXXXXX}",
+	"salt": "af8b5527-73e8-4a13-87b4-225b3b54bdb0",
+	"category": "sys",
+	"difficulty": "hard",
+	"isBroken": false,
+	"__v": 0
+}]
+

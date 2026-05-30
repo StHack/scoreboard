@@ -1,0 +1,362 @@
+[
+  {
+    "_id": {
+      "$oid": "6a19e31686a4f0d3d2d87043"
+    },
+    "achievementId": "6a19e30c86a4f0d3d2d87042",
+    "challengeId": "6a174e7ce9ac016045c9d74c",
+    "teamId": "6a19dd172af595c3960ac6b8",
+    "username": "gamverte",
+    "satisfaction": 5,
+    "perceivedDifficulty": 3,
+    "aiUsage": 1,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-29T19:03:50.466Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-29T19:03:50.466Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19e79d86a4f0d3d2d87067"
+    },
+    "achievementId": "6a19e78a86a4f0d3d2d87066",
+    "challengeId": "6a174e5fe9ac016045c9d74b",
+    "teamId": "6a19db432af595c3960ac683",
+    "username": "V3locidad",
+    "satisfaction": 5,
+    "perceivedDifficulty": 2,
+    "aiUsage": 1,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-29T19:23:09.079Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-29T19:23:09.079Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19e8e186a4f0d3d2d8707c"
+    },
+    "achievementId": "6a19e8b786a4f0d3d2d8707a",
+    "challengeId": "6a18b084e9ac016045c9d75f",
+    "teamId": "6a19dbe72af595c3960ac6a3",
+    "username": "ixod3",
+    "satisfaction": 5,
+    "perceivedDifficulty": 2,
+    "aiUsage": 1,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-29T19:28:33.525Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-29T19:28:33.525Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19f04386a4f0d3d2d870d7"
+    },
+    "achievementId": "6a19f01086a4f0d3d2d870d4",
+    "challengeId": "6a19d9d72af595c3960ac658",
+    "teamId": "6a19dd172af595c3960ac6b8",
+    "username": "llama4.6:786T xhigh @grok nordvpn",
+    "satisfaction": 5,
+    "perceivedDifficulty": 2,
+    "aiUsage": 1,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-29T20:00:03.64Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-29T20:00:03.64Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19f11086a4f0d3d2d870e2"
+    },
+    "achievementId": "6a19f08f86a4f0d3d2d870db",
+    "challengeId": "6a19e05b86a4f0d3d2d87027",
+    "teamId": "6a19dbd22af595c3960ac69e",
+    "username": "BusyBox13",
+    "satisfaction": 5,
+    "perceivedDifficulty": 2,
+    "aiUsage": 1,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-29T20:03:28.588Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-29T20:03:28.588Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19fab5c52cc426e8faac39"
+    },
+    "achievementId": "6a19faa2c52cc426e8faac37",
+    "challengeId": "6a19d4a12af595c3960ac5f7",
+    "teamId": "6a19d5d22af595c3960ac606",
+    "username": "711",
+    "satisfaction": 3,
+    "perceivedDifficulty": 4,
+    "aiUsage": 4,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-29T20:44:37.901Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-29T20:44:37.901Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a1a08dc7cb3971af0e408e4"
+    },
+    "achievementId": "6a1a06fc7cb3971af0e408d7",
+    "challengeId": "6a199514e9ac016045c9d762",
+    "teamId": "6a19d7b12af595c3960ac625",
+    "username": "Lena",
+    "satisfaction": 5,
+    "perceivedDifficulty": 3,
+    "aiUsage": 1,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-29T21:45:00.404Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-29T21:45:00.404Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a1a0d327cb3971af0e408fe"
+    },
+    "achievementId": "6a1a0d237cb3971af0e408fc",
+    "challengeId": "6a18b06de9ac016045c9d75e",
+    "teamId": "6a19db432af595c3960ac683",
+    "username": "V3locidad",
+    "satisfaction": 5,
+    "perceivedDifficulty": 4,
+    "aiUsage": 3,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-29T22:03:30.295Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-29T22:03:30.295Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a1a11c77cb3971af0e40934"
+    },
+    "achievementId": "6a1a11b67cb3971af0e40932",
+    "challengeId": "6a19e1ff86a4f0d3d2d8703d",
+    "teamId": "6a19d5c52af595c3960ac602",
+    "username": "MabitoskiJeMeSuisTrompéDeMDP",
+    "satisfaction": 3,
+    "perceivedDifficulty": 2,
+    "aiUsage": 5,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-29T22:23:03.189Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-29T22:23:03.189Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a1a15787cb3971af0e40945"
+    },
+    "achievementId": "6a1a15637cb3971af0e40944",
+    "challengeId": "6a19e0e686a4f0d3d2d8702c",
+    "teamId": "6a19d5d22af595c3960ac606",
+    "username": "maaaeeel",
+    "satisfaction": 4,
+    "perceivedDifficulty": 4,
+    "aiUsage": 3,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-29T22:38:48.129Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-29T22:38:48.129Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a1a17017cb3971af0e40953"
+    },
+    "achievementId": "6a1a165c7cb3971af0e40949",
+    "challengeId": "6a19e8e886a4f0d3d2d8707d",
+    "teamId": "6a19dbe72af595c3960ac6a3",
+    "username": "Lamisedaxeh",
+    "satisfaction": 3,
+    "perceivedDifficulty": 4,
+    "aiUsage": 1,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-29T22:45:21.761Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-29T22:45:21.761Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a1a18f57cb3971af0e40962"
+    },
+    "achievementId": "6a1a18e87cb3971af0e40961",
+    "challengeId": "6a19e62886a4f0d3d2d8705e",
+    "teamId": "6a19dbe72af595c3960ac6a3",
+    "username": "Mauricebis",
+    "satisfaction": 3,
+    "perceivedDifficulty": 2,
+    "aiUsage": 3,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-29T22:53:41.958Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-29T22:53:41.958Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a1a1a447cb3971af0e4096c"
+    },
+    "achievementId": "6a1a1a207cb3971af0e4096a",
+    "challengeId": "6a19e80286a4f0d3d2d8706d",
+    "teamId": "6a19d9e82af595c3960ac65a",
+    "username": "Spiderworm",
+    "satisfaction": 5,
+    "perceivedDifficulty": 3,
+    "aiUsage": 2,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-29T22:59:16.768Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-29T22:59:16.768Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a1a22dc2793a559f7828f7e"
+    },
+    "achievementId": "6a1a22d22793a559f7828f7d",
+    "challengeId": "6a19f7d386a4f0d3d2d87111",
+    "teamId": "6a19d8302af595c3960ac644",
+    "username": "Oblivios",
+    "satisfaction": 5,
+    "perceivedDifficulty": 4,
+    "aiUsage": 1,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-29T23:35:56.936Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-29T23:35:56.936Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a1a3a993c4b70cebb8e244e"
+    },
+    "achievementId": "6a1a3a873c4b70cebb8e244c",
+    "challengeId": "6a1a04bb7cb3971af0e40898",
+    "teamId": "6a19d4f02af595c3960ac5f9",
+    "username": "r0g",
+    "satisfaction": 5,
+    "perceivedDifficulty": 5,
+    "aiUsage": 2,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-30T01:17:13.764Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-30T01:17:13.764Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a1a408f3c4b70cebb8e2479"
+    },
+    "achievementId": "6a1a40843c4b70cebb8e2478",
+    "challengeId": "6a1a05ea7cb3971af0e408c4",
+    "teamId": "6a19d4f02af595c3960ac5f9",
+    "username": "r0g",
+    "satisfaction": 5,
+    "perceivedDifficulty": 5,
+    "aiUsage": 2,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-30T01:42:39.159Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-30T01:42:39.159Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a1a51fe3c4b70cebb8e24af"
+    },
+    "achievementId": "6a1a51eb3c4b70cebb8e24ad",
+    "challengeId": "6a174e30e9ac016045c9d74a",
+    "teamId": "6a19d8302af595c3960ac644",
+    "username": "KirishimaKen",
+    "satisfaction": 4,
+    "perceivedDifficulty": 3,
+    "aiUsage": 2,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-30T02:57:02.378Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-30T02:57:02.378Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a1a5e0d3c4b70cebb8e24ed"
+    },
+    "achievementId": "6a1a5de03c4b70cebb8e24eb",
+    "challengeId": "6a18b000e9ac016045c9d75c",
+    "teamId": "6a19d9e82af595c3960ac65a",
+    "username": "Spiderworm",
+    "satisfaction": 5,
+    "perceivedDifficulty": 4,
+    "aiUsage": 2,
+    "feedback": "",
+    "createdAt": {
+      "$date": "2026-05-30T03:48:29.706Z"
+    },
+    "updatedAt": {
+      "$date": "2026-05-30T03:48:29.706Z"
+    },
+    "__v": 0
+  }
+]

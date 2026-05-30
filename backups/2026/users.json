@@ -1,0 +1,2018 @@
+[
+  {
+    "_id": {
+      "$oid": "6a1743f7df0c3d3fbf8b8cf0"
+    },
+    "username": "nagarian",
+    "password": "",
+    "salt": "47bc1aac-e35f-4989-a2cc-668e6dbeebe4",
+    "roles": [
+      "user",
+      "admin",
+      "announcer",
+      "author",
+      "game-master",
+      "moderator",
+      "rewarder",
+      "role-manager"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a17466682112a70210c3246"
+    },
+    "username": "Kaddate",
+    "password": "",
+    "salt": "9326f677-cbd4-4539-b550-05c6b59c9de4",
+    "roles": [
+      "user",
+      "admin",
+      "author",
+      "announcer"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a17466f82112a70210c3247"
+    },
+    "username": "hackdaddy",
+    "password": "",
+    "salt": "7ccbf122-d980-44c1-9769-f564710ddac9",
+    "roles": [
+      "user",
+      "admin",
+      "author",
+      "announcer"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a17477882112a70210c3249"
+    },
+    "username": "agrorec",
+    "password": "",
+    "salt": "f9fe6ac3-da6c-4d23-9bd1-644bd57d6111",
+    "roles": [
+      "user",
+      "admin",
+      "author",
+      "announcer"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a1747a282112a70210c324a"
+    },
+    "username": "vieux",
+    "password": "",
+    "salt": "2c9bd8f1-c164-483c-a0af-95b4aa9fcad7",
+    "roles": [
+      "user",
+      "admin",
+      "author",
+      "announcer"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a17487b82112a70210c324b"
+    },
+    "username": "boring",
+    "password": "",
+    "salt": "6e8cf503-db40-4639-b1d1-89764ad4b4dd",
+    "roles": [
+      "user",
+      "admin",
+      "author",
+      "announcer"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a17618ae9ac016045c9d74d"
+    },
+    "username": "it4",
+    "password": "",
+    "salt": "c3235f04-8883-4446-b785-2f6a8a25ddc8",
+    "roles": [
+      "user",
+      "admin",
+      "author",
+      "announcer"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a18435ce9ac016045c9d759"
+    },
+    "username": "Vallsp",
+    "password": "",
+    "salt": "df608f17-a720-4628-935b-b57f0c519e1d",
+    "roles": [
+      "user",
+      "admin",
+      "author",
+      "announcer"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19516de9ac016045c9d760"
+    },
+    "username": "ghozt",
+    "password": "",
+    "salt": "8f695f77-4566-4233-9329-8a6ebe216ca6",
+    "roles": [
+      "user",
+      "admin",
+      "author",
+      "announcer"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a1953b3e9ac016045c9d761"
+    },
+    "username": "shoxx",
+    "password": "",
+    "salt": "8b135028-c363-4a9d-94ed-0f4a496d1e86",
+    "roles": [
+      "user",
+      "admin",
+      "author",
+      "announcer",
+      "rewarder"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19c493e9ac016045c9d764"
+    },
+    "username": "ajani",
+    "password": "",
+    "salt": "61cae367-39a3-4ef7-b008-0518da5ad594",
+    "roles": [
+      "user",
+      "admin",
+      "announcer"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19d15ee9ac016045c9d76a"
+    },
+    "username": "dryy",
+    "password": "",
+    "salt": "73c6a9b7-de6c-491e-8603-0c1879251048",
+    "roles": [
+      "user",
+      "admin",
+      "author",
+      "announcer",
+      "moderator"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19d16ce9ac016045c9d76b"
+    },
+    "username": "iota",
+    "password": "",
+    "salt": "cf7838de-22f0-4f27-9f66-2c04915dc47d",
+    "roles": [
+      "user",
+      "admin",
+      "author",
+      "announcer"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19d4782af595c3960ac5f5"
+    },
+    "username": "Oreo",
+    "password": "",
+    "salt": "4bb71265-9ab7-4587-9f9e-99a364ff7905",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d4f02af595c3960ac5f9"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d4d52af595c3960ac5f8"
+    },
+    "username": "Shaadi",
+    "password": "",
+    "salt": "9faa9f58-d6e8-4fe2-857b-03596d2a552f",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d5d22af595c3960ac606"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d5232af595c3960ac5fd"
+    },
+    "username": "Mabitoski",
+    "password": "",
+    "salt": "1bc19949-1d0f-4485-a919-a881d897d854",
+    "roles": [
+      "user"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19d55a2af595c3960ac5ff"
+    },
+    "username": "MabitoskiJeMeSuisTrompéDeMDP",
+    "password": "",
+    "salt": "93a9ab55-3f00-4cbb-94f9-1b272ffa1b4e",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d5c52af595c3960ac602"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d59e2af595c3960ac600"
+    },
+    "username": "Rikall",
+    "password": "",
+    "salt": "440e3291-2026-4d32-8ead-f85705462c74",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d61d2af595c3960ac60c"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d5a82af595c3960ac601"
+    },
+    "username": "tillamen",
+    "password": "",
+    "salt": "45f617d3-c6aa-44db-a1dc-93d1c2f647aa",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d8302af595c3960ac644"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d5df2af595c3960ac60a"
+    },
+    "username": "ygp4ph",
+    "password": "",
+    "salt": "627b5ae9-cd57-402d-9f76-5a45dd22bd62",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d5d22af595c3960ac606"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d6192af595c3960ac60b"
+    },
+    "username": "HashiNoName",
+    "password": "",
+    "salt": "415a6d6b-47ff-450a-8eff-009d13555be3",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d5c52af595c3960ac602"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d6292af595c3960ac610"
+    },
+    "username": "Jedus0r",
+    "password": "",
+    "salt": "fd43c0ca-a318-4223-b82d-345da19636c6",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d5c52af595c3960ac602"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d6372af595c3960ac611"
+    },
+    "username": "0xmiloude",
+    "password": "",
+    "salt": "1feaa543-222e-401d-8f4e-3869d55532bd",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d5c52af595c3960ac602"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d6402af595c3960ac612"
+    },
+    "username": "siefr3dus",
+    "password": "",
+    "salt": "57e2e48d-9e49-4cb0-ae9b-9ebd10004b95",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d4f02af595c3960ac5f9"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d6772af595c3960ac613"
+    },
+    "username": "Aube",
+    "password": "",
+    "salt": "95e5c3bf-ddf0-4ba8-bc3f-fa3d1ce89c8e",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d4f02af595c3960ac5f9"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d6e22af595c3960ac614"
+    },
+    "username": "neird4",
+    "password": "",
+    "salt": "f1f01157-57f0-47c5-bda6-b283f746dc2d",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d8302af595c3960ac644"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7172af595c3960ac615"
+    },
+    "username": "Spyhack",
+    "password": "",
+    "salt": "30cbc66e-c354-4db6-be5d-9c89b57ac06a",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d5d22af595c3960ac606"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d71f2af595c3960ac616"
+    },
+    "username": "hevzer",
+    "password": "",
+    "salt": "8d025ec1-cb69-41c5-9012-f0d52d31a74c",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d5c52af595c3960ac602"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7212af595c3960ac617"
+    },
+    "username": "rebel",
+    "password": "",
+    "salt": "d94a770a-ad24-4f8a-89ed-1b0531e56a4a",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d8302af595c3960ac644"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7222af595c3960ac618"
+    },
+    "username": "wheelroot",
+    "password": "",
+    "salt": "65fdad03-7ce7-4424-946b-70e6017c0d44",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d5d22af595c3960ac606"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7232af595c3960ac619"
+    },
+    "username": "XXXXX-X-XXXXX",
+    "password": "",
+    "salt": "77c0f7c9-4a8a-4213-b6bf-34744da77bbe",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d5d22af595c3960ac606"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d72f2af595c3960ac61a"
+    },
+    "username": "OliveBxM",
+    "password": "",
+    "salt": "47e39a8f-b936-4a7a-9b0c-9040bf22a577",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d7bf2af595c3960ac62a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7312af595c3960ac61b"
+    },
+    "username": "Psidae",
+    "password": "",
+    "salt": "b296549b-f3b1-4db3-9cba-e5037cca5666",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d7b12af595c3960ac625"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7392af595c3960ac61d"
+    },
+    "username": "Mims",
+    "password": "",
+    "salt": "e829c9ce-2645-4885-9592-e10a5f3c8956",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d7b12af595c3960ac625"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7412af595c3960ac61e"
+    },
+    "username": "Shild",
+    "password": "",
+    "salt": "7a10309c-8fad-4592-bfb4-ab1415d5d9ec",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d7b12af595c3960ac625"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d74e2af595c3960ac620"
+    },
+    "username": "Lena",
+    "password": "",
+    "salt": "282d6ac1-b231-435d-ab5e-1e347ebf7775",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d7b12af595c3960ac625"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d77a2af595c3960ac622"
+    },
+    "username": "raltheo",
+    "password": "",
+    "salt": "02f01bff-82a4-4a2a-8612-ad529e657db5",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d4f02af595c3960ac5f9"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7852af595c3960ac623"
+    },
+    "username": "Benja",
+    "password": "",
+    "salt": "79c204e3-a0a1-4501-ae7c-644852cfd584",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d7d52af595c3960ac635"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7a72af595c3960ac624"
+    },
+    "username": "archie",
+    "password": "",
+    "salt": "2c83e5c5-5d53-4c6a-9388-bd1c3994ab92",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d61d2af595c3960ac60c"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7bd2af595c3960ac629"
+    },
+    "username": "Oblivios",
+    "password": "",
+    "salt": "64e5696d-31e1-40af-a504-23488c1250ae",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d8302af595c3960ac644"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7c42af595c3960ac62e"
+    },
+    "username": "maaaeeel",
+    "password": "",
+    "salt": "088ff3c6-97f6-413a-bbf7-1b632d1a093d",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d5d22af595c3960ac606"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7c72af595c3960ac630"
+    },
+    "username": "ThaySan",
+    "password": "",
+    "salt": "f7de53b2-5a69-4f8a-b808-0553600f67f3",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d8302af595c3960ac644"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7c92af595c3960ac632"
+    },
+    "username": "KirishimaKen",
+    "password": "",
+    "salt": "f95d019f-24e8-4676-9d94-8387a2e8287d",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d8302af595c3960ac644"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7d32af595c3960ac634"
+    },
+    "username": "kneshi",
+    "password": "",
+    "salt": "3d8e8249-8f47-4699-a8eb-6a1af8ddce5b",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d87d2af595c3960ac64a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7d72af595c3960ac639"
+    },
+    "username": "k0d3K",
+    "password": "",
+    "salt": "155aa9b5-d520-428e-8de4-37a17eaf95c7",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d8a42af595c3960ac64f"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7da2af595c3960ac63a"
+    },
+    "username": "dath",
+    "password": "",
+    "salt": "a298779d-aa83-46a0-9137-e0952f59319d",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d8a42af595c3960ac64f"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7e82af595c3960ac63b"
+    },
+    "username": "Biquinho",
+    "password": "",
+    "salt": "5f9f0e59-3ff5-4e1f-a057-9fe5d824a99d",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d7bf2af595c3960ac62a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7e82af595c3960ac63c"
+    },
+    "username": "ThibBxM",
+    "password": "",
+    "salt": "8068b2c8-c913-448a-b9d6-7cba2e8762ab",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d7bf2af595c3960ac62a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7f02af595c3960ac63d"
+    },
+    "username": "titi&grosmimi",
+    "password": "",
+    "salt": "9752e841-75a5-4a99-84dc-3a838e9fc93c",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d5d22af595c3960ac606"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d7f22af595c3960ac63e"
+    },
+    "username": "rom98759",
+    "password": "",
+    "salt": "928d211d-0b0d-4fe9-a15e-98f21ae0605b",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d8a42af595c3960ac64f"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d8042af595c3960ac641"
+    },
+    "username": "sh4rk0x",
+    "password": "",
+    "salt": "c08dafe8-8889-4cc2-8494-7f81161a90f2",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d4f02af595c3960ac5f9"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d8152af595c3960ac642"
+    },
+    "username": "MathEevee",
+    "password": "",
+    "salt": "14a4bf95-1923-48c6-8f82-c783d96d5218",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d87d2af595c3960ac64a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d8182af595c3960ac643"
+    },
+    "username": "IbarraBxM",
+    "password": "",
+    "salt": "ea10a18c-55ec-45a0-9a33-a2dc1897f8d7",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d7bf2af595c3960ac62a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d84f2af595c3960ac648"
+    },
+    "username": "killerpapy",
+    "password": "",
+    "salt": "f4fae200-cf34-4e65-b535-b5d6fde3e692",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d7bf2af595c3960ac62a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d86b2af595c3960ac649"
+    },
+    "username": "LOOKY",
+    "password": "",
+    "salt": "8eed01d2-ec77-4776-9086-01a696e91e88",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d8a42af595c3960ac64f"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d88a2af595c3960ac64e"
+    },
+    "username": "dudu",
+    "password": "",
+    "salt": "a1dde4d0-a4cf-4830-a032-80b6e59408a6",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d8a42af595c3960ac64f"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d8a62af595c3960ac653"
+    },
+    "username": "animalart",
+    "password": "",
+    "salt": "f355871e-4dae-4fb1-83a1-0818a47cd9e1",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19da492af595c3960ac663"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d8d22af595c3960ac654"
+    },
+    "username": "thephantombush",
+    "password": "",
+    "salt": "e02fd7d0-aa9d-4f16-832e-6386188b4172",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d5c52af595c3960ac602"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d9a22af595c3960ac656"
+    },
+    "username": "Tonyo",
+    "password": "",
+    "salt": "3b0c97f8-081e-4c10-9244-5b4f95bb9ef7",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d9e82af595c3960ac65a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19d9c52af595c3960ac657"
+    },
+    "username": "amnesik",
+    "password": "",
+    "salt": "009267a6-f18e-4c1a-8afa-7ac747e09c72",
+    "roles": [
+      "user"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19da092af595c3960ac65e"
+    },
+    "username": "yombb",
+    "password": "",
+    "salt": "55f82772-4c63-4054-9710-2555ce765306",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dac12af595c3960ac674"
+  },
+  {
+    "_id": {
+      "$oid": "6a19da0e2af595c3960ac65f"
+    },
+    "username": "sug4r",
+    "password": "",
+    "salt": "5d5534c5-f9d6-4c2f-970a-4bd4140f8a48",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d7d52af595c3960ac635"
+  },
+  {
+    "_id": {
+      "$oid": "6a19da492af595c3960ac667"
+    },
+    "username": "sheriff64",
+    "password": "",
+    "salt": "28a2db90-85e8-4020-b8ce-9af904d9e5ed",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d9e82af595c3960ac65a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19da5e2af595c3960ac66a"
+    },
+    "username": "ybadactf",
+    "password": "",
+    "salt": "a571baae-8964-4f01-882e-94d6a61fae8d",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d9e82af595c3960ac65a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19da722af595c3960ac66b"
+    },
+    "username": "0xM4t",
+    "password": "",
+    "salt": "af0fea97-20cb-4b7e-83f3-735168a83f96",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dba42af595c3960ac692"
+  },
+  {
+    "_id": {
+      "$oid": "6a19da7a2af595c3960ac66c"
+    },
+    "username": "DaXou",
+    "password": "",
+    "salt": "d113bada-a49f-4322-9b8e-c1b2114d325f",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19db942af595c3960ac68e"
+  },
+  {
+    "_id": {
+      "$oid": "6a19da812af595c3960ac66d"
+    },
+    "username": "vic",
+    "password": "",
+    "salt": "85e3c449-d2d4-45fa-b3ae-15ec135e3846",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d9e82af595c3960ac65a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19da9c2af595c3960ac66e"
+    },
+    "username": "kohi",
+    "password": "",
+    "salt": "e1d02261-148e-425f-bb0c-9e667344388d",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dba42af595c3960ac692"
+  },
+  {
+    "_id": {
+      "$oid": "6a19da9e2af595c3960ac670"
+    },
+    "username": "abayle",
+    "password": "",
+    "salt": "0b9cd334-bd2e-430c-b370-43f3ee50f74c",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19da492af595c3960ac663"
+  },
+  {
+    "_id": {
+      "$oid": "6a19daa42af595c3960ac671"
+    },
+    "username": "kobh4x",
+    "password": "",
+    "salt": "2f59f3e4-2c2f-4234-bea8-c4f6aee028a7",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19db942af595c3960ac68e"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dabc2af595c3960ac672"
+    },
+    "username": "V3locidad",
+    "password": "",
+    "salt": "e5a8b274-1b9d-4775-b1c5-3625633b7ba0",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19db432af595c3960ac683"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dabe2af595c3960ac673"
+    },
+    "username": "Mauricebis",
+    "password": "",
+    "salt": "71cc6b36-6580-4e07-94af-fc010f33b647",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dbe72af595c3960ac6a3"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dac82af595c3960ac678"
+    },
+    "username": "Lamisedaxeh",
+    "password": "",
+    "salt": "f751fe19-45d5-4144-8603-89326ace6ea9",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dbe72af595c3960ac6a3"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dae72af595c3960ac67a"
+    },
+    "username": "ixod3",
+    "password": "",
+    "salt": "b5ad3650-5662-4d0d-8222-ea282e814aaa",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dbe72af595c3960ac6a3"
+  },
+  {
+    "_id": {
+      "$oid": "6a19daef2af595c3960ac67b"
+    },
+    "username": "r0g",
+    "password": "",
+    "salt": "b44b410e-9cf6-4d96-98a7-d1eb13beeadb",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d4f02af595c3960ac5f9"
+  },
+  {
+    "_id": {
+      "$oid": "6a19db172af595c3960ac67d"
+    },
+    "username": "OuiSouss",
+    "password": "",
+    "salt": "849d12c0-6814-4560-bc26-7bce3b95f06c",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d9e82af595c3960ac65a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19db422af595c3960ac681"
+    },
+    "username": "BusyBox13",
+    "password": "",
+    "salt": "d2154ea9-8ec3-4f46-9eed-2e971d60cab6",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dbd22af595c3960ac69e"
+  },
+  {
+    "_id": {
+      "$oid": "6a19db432af595c3960ac682"
+    },
+    "username": "pol1",
+    "password": "",
+    "salt": "30a22020-2a99-4093-a3c4-534cb5c696cb",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19da492af595c3960ac663"
+  },
+  {
+    "_id": {
+      "$oid": "6a19db5c2af595c3960ac687"
+    },
+    "username": "LeSam",
+    "password": "",
+    "salt": "763e25d8-9b9f-4b98-a415-ad6890ad1dfd",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dbc02af595c3960ac698"
+  },
+  {
+    "_id": {
+      "$oid": "6a19db6c2af595c3960ac688"
+    },
+    "username": "Kare",
+    "password": "",
+    "salt": "ec8d7da7-3d37-4466-866d-d9ca1a4bb438",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dbd22af595c3960ac69e"
+  },
+  {
+    "_id": {
+      "$oid": "6a19db762af595c3960ac689"
+    },
+    "username": "Gwuill",
+    "password": "",
+    "salt": "a72a57e0-2872-41d6-a42e-b1a0c95585e9",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dbc02af595c3960ac698"
+  },
+  {
+    "_id": {
+      "$oid": "6a19db882af595c3960ac68a"
+    },
+    "username": "ZeyKii",
+    "password": "",
+    "salt": "6832ef04-e638-4c07-bfd0-8c92fe62feeb",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dbc02af595c3960ac698"
+  },
+  {
+    "_id": {
+      "$oid": "6a19db882af595c3960ac68b"
+    },
+    "username": "dexkspe",
+    "password": "",
+    "salt": "5926efc9-75da-4d6f-bbb6-d6bb4963748d",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dcce2af595c3960ac6b3"
+  },
+  {
+    "_id": {
+      "$oid": "6a19db8b2af595c3960ac68c"
+    },
+    "username": "Waaaaat",
+    "password": "",
+    "salt": "ebf9649d-0df9-435a-877b-db15553c5102",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19deb286a4f0d3d2d87017"
+  },
+  {
+    "_id": {
+      "$oid": "6a19db8c2af595c3960ac68d"
+    },
+    "username": "0lam",
+    "password": "",
+    "salt": "3699de31-6b3d-40e8-8bbc-c03165809a39",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19db942af595c3960ac68e"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dbb52af595c3960ac696"
+    },
+    "username": "Gatux",
+    "password": "",
+    "salt": "2c3ada0f-9924-4eb2-8244-b37d9c681aba",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19da492af595c3960ac663"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dbc42af595c3960ac69c"
+    },
+    "username": "TomyThePingu",
+    "password": "",
+    "salt": "be8eba88-27b1-4593-b338-ef7a1494da1b",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19deb286a4f0d3d2d87017"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dbc92af595c3960ac69d"
+    },
+    "username": "gomonriou",
+    "password": "",
+    "salt": "4decf604-7b3c-47bc-8816-569054a2d2ee",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dbe72af595c3960ac6a3"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dbe72af595c3960ac6a2"
+    },
+    "username": "ey3",
+    "password": "",
+    "salt": "c8772a06-690c-4b6e-b3f7-0e203aa398e2",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d7d52af595c3960ac635"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dbed2af595c3960ac6a7"
+    },
+    "username": "PascalFraude",
+    "password": "",
+    "salt": "018f26a0-9d76-4e31-934b-3ec58e2ca00b",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dbc02af595c3960ac698"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dc402af595c3960ac6aa"
+    },
+    "username": "711",
+    "password": "",
+    "salt": "b3785ceb-6f9b-4001-b24b-163a1fac561f",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d5d22af595c3960ac606"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dc462af595c3960ac6ab"
+    },
+    "username": "conflict",
+    "password": "",
+    "salt": "0595dc18-3a1e-40bf-8ee3-e9a213df7620",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dd172af595c3960ac6b8"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dc5c2af595c3960ac6ac"
+    },
+    "username": "g0h4n",
+    "password": "",
+    "salt": "fd6daa48-4352-47ce-87d5-c9dfc058d0e3",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e62786a4f0d3d2d8705a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dc722af595c3960ac6ad"
+    },
+    "username": "llama4.6:786T xhigh @grok nordvpn",
+    "password": "",
+    "salt": "958ea13c-b321-4f47-b70b-48f3b8ae9542",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dd172af595c3960ac6b8"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dca02af595c3960ac6ae"
+    },
+    "username": "FoxCie",
+    "password": "",
+    "salt": "8436a9e4-63c3-476c-9ce7-6bd99b88f255",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d9e82af595c3960ac65a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dca32af595c3960ac6af"
+    },
+    "username": "yocvito",
+    "password": "",
+    "salt": "ae1b8c2b-79b0-4517-8627-46873f3a19d0",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dbd22af595c3960ac69e"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dca42af595c3960ac6b0"
+    },
+    "username": "Enoxia",
+    "password": "",
+    "salt": "649b3924-0f6c-4206-81dd-e2b5dd54d011",
+    "roles": [
+      "user"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19dcc22af595c3960ac6b2"
+    },
+    "username": "gamverte",
+    "password": "",
+    "salt": "bf50efba-12aa-4281-96b6-f21daefeb790",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dd172af595c3960ac6b8"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dcd62af595c3960ac6b7"
+    },
+    "username": "luminouw",
+    "password": "",
+    "salt": "c849813d-1606-42c9-a352-670d5d277a88",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d9e82af595c3960ac65a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dd1c2af595c3960ac6bc"
+    },
+    "username": "claudinementhos",
+    "password": "",
+    "salt": "135d44ed-a39f-4f25-9385-7330ed8d2d1a",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19deb286a4f0d3d2d87017"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dd2986a4f0d3d2d87008"
+    },
+    "username": "ketheroth",
+    "password": "",
+    "salt": "f1921ad5-aa0d-40a5-b08d-2753d4306cbb",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dbd22af595c3960ac69e"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dd3186a4f0d3d2d87009"
+    },
+    "username": "Melback",
+    "password": "",
+    "salt": "59e68eff-90ce-45f0-a054-708b3b37fe9c",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d9e82af595c3960ac65a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dd4986a4f0d3d2d8700b"
+    },
+    "username": "Enoxiia",
+    "password": "",
+    "salt": "c5feb8a0-de59-4dc4-9a15-887da1d067ee",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dd172af595c3960ac6b8"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dd7086a4f0d3d2d8700c"
+    },
+    "username": "Simfinity22",
+    "password": "",
+    "salt": "fe3a3ca5-b3ce-4dff-85b5-317e648354ac",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dcce2af595c3960ac6b3"
+  },
+  {
+    "_id": {
+      "$oid": "6a19dd7986a4f0d3d2d8700e"
+    },
+    "username": "aespider",
+    "password": "",
+    "salt": "3d2ad93e-0d73-4317-8d45-a0aed4ece140",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dbd22af595c3960ac69e"
+  },
+  {
+    "_id": {
+      "$oid": "6a19ddd386a4f0d3d2d87010"
+    },
+    "username": "PetitCoeur",
+    "password": "",
+    "salt": "41f4aadc-44a1-4983-9eb3-15359b869350",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dac12af595c3960ac674"
+  },
+  {
+    "_id": {
+      "$oid": "6a19de0a86a4f0d3d2d87011"
+    },
+    "username": "3r4k",
+    "password": "",
+    "salt": "f09c44ec-0fd9-4453-8c89-a7ebeaaeeb26",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d9e82af595c3960ac65a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19de1f86a4f0d3d2d87013"
+    },
+    "username": "Spiderworm",
+    "password": "",
+    "salt": "307a41cb-f7f8-4cf4-b391-f42ad36c74ad",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d9e82af595c3960ac65a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19df8086a4f0d3d2d8701d"
+    },
+    "username": "bob42",
+    "password": "",
+    "salt": "1a185980-4d80-40ca-b2c1-7f33b6fb1cb4",
+    "roles": [
+      "user"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19dfb686a4f0d3d2d8701e"
+    },
+    "username": "Aji",
+    "password": "",
+    "salt": "0cdea6bc-7623-46f8-8a4b-4edae29c00e7",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d7bf2af595c3960ac62a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e03786a4f0d3d2d87020"
+    },
+    "username": "ajani2",
+    "password": "",
+    "salt": "d4154b3c-e4aa-4855-a319-8a0492290b5a",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e05086a4f0d3d2d87023"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e03986a4f0d3d2d87021"
+    },
+    "username": "gc41m37735",
+    "password": "",
+    "salt": "c562c13e-a6fe-4769-8bee-a333ef79b4fc",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d7d52af595c3960ac635"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e07a86a4f0d3d2d87029"
+    },
+    "username": "crea",
+    "password": "",
+    "salt": "c67ffec4-0d3a-4eea-b9c7-4641a945bf88",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e11686a4f0d3d2d8702d"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e09286a4f0d3d2d8702a"
+    },
+    "username": "lemonaide",
+    "password": "",
+    "salt": "693c88f1-4d1b-4f56-b28e-64ccaaac3929",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e15686a4f0d3d2d87032"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e14486a4f0d3d2d87031"
+    },
+    "username": "cesaaaar",
+    "password": "",
+    "salt": "3cc3ae3c-eac1-472c-87e4-a5ef35ed3690",
+    "roles": [
+      "user"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19e16686a4f0d3d2d87037"
+    },
+    "username": "tabasseur de roblox city",
+    "password": "",
+    "salt": "ff4524b2-9f71-4240-9457-97f031650036",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e11686a4f0d3d2d8702d"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e17e86a4f0d3d2d8703a"
+    },
+    "username": "Utsu",
+    "password": "",
+    "salt": "0a5f2f06-75aa-4c21-95fb-732b434f773e",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e11686a4f0d3d2d8702d"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e18586a4f0d3d2d8703b"
+    },
+    "username": "cesaaaar2",
+    "password": "",
+    "salt": "c44a70c3-1d64-4bd6-b47c-4fe7ace3a698",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e11686a4f0d3d2d8702d"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e20e86a4f0d3d2d8703e"
+    },
+    "username": "charlti",
+    "password": "",
+    "salt": "43985185-2e71-4872-a95b-5a6bb23a8b39",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e15686a4f0d3d2d87032"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e25c86a4f0d3d2d87040"
+    },
+    "username": "darksioux ",
+    "password": "",
+    "salt": "6a35655a-6bc8-4052-9b66-a8a612ead0f7",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19d61d2af595c3960ac60c"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e32586a4f0d3d2d87044"
+    },
+    "username": "tonychg",
+    "password": "",
+    "salt": "b60123fd-266a-4d52-8238-1fbc4715d820",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e39186a4f0d3d2d87047"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e51c86a4f0d3d2d8704f"
+    },
+    "username": "Arlo",
+    "password": "",
+    "salt": "5d0b6851-f300-4519-b7c0-6b8e6c327e1c",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e58386a4f0d3d2d87052"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e53d86a4f0d3d2d87051"
+    },
+    "username": "par6moni",
+    "password": "",
+    "salt": "8c6b66d8-520b-4622-8369-06b3ff09fee7",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e58386a4f0d3d2d87052"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e58786a4f0d3d2d87056"
+    },
+    "username": "Hooit",
+    "password": "",
+    "salt": "0a77901f-db3c-4bca-851b-391d72fbfaf0",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e58386a4f0d3d2d87052"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e7a986a4f0d3d2d87068"
+    },
+    "username": "Grominouille",
+    "password": "",
+    "salt": "c5424556-b7d6-4c99-bcbf-eb7e59d0eb5e",
+    "roles": [
+      "user"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19e7d786a4f0d3d2d8706a"
+    },
+    "username": "Grominoouille",
+    "password": "",
+    "salt": "4db01569-75d7-4265-9e88-7b2ab9c9ec8b",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e62786a4f0d3d2d8705a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e81886a4f0d3d2d8706e"
+    },
+    "username": "Shy",
+    "password": "",
+    "salt": "5680c094-97d9-41f5-ad4c-80980a6f7b9c",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e58386a4f0d3d2d87052"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e83c86a4f0d3d2d87072"
+    },
+    "username": "4rchibald",
+    "password": "",
+    "salt": "e5a56c25-d190-4dc6-a546-d6d8a9dfdbe4",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e88286a4f0d3d2d87074"
+  },
+  {
+    "_id": {
+      "$oid": "6a19e89286a4f0d3d2d87078"
+    },
+    "username": "maximegirardet",
+    "password": "",
+    "salt": "0dbd58e0-4266-48be-9ced-a748a970cf15",
+    "roles": [
+      "user"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19ea0b86a4f0d3d2d87081"
+    },
+    "username": "maxdu33",
+    "password": "",
+    "salt": "36f1103c-93f9-4eca-84c7-83a787be2206",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e15686a4f0d3d2d87032"
+  },
+  {
+    "_id": {
+      "$oid": "6a19eb5e86a4f0d3d2d87095"
+    },
+    "username": "moli33xx ",
+    "password": "",
+    "salt": "77878a85-d4f3-42ca-8bd9-c78bc9c99c4a",
+    "roles": [
+      "user"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a19f1ee86a4f0d3d2d870f4"
+    },
+    "username": "ybequer",
+    "password": "",
+    "salt": "3ea46c62-c737-4192-9ba8-008d1e93d672",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dac12af595c3960ac674"
+  },
+  {
+    "_id": {
+      "$oid": "6a19f87686a4f0d3d2d87118"
+    },
+    "username": "Toto01!",
+    "password": "",
+    "salt": "7d866148-c92f-44f1-848b-e6d92f624aea",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19f8c786a4f0d3d2d87121"
+  },
+  {
+    "_id": {
+      "$oid": "6a19f90686a4f0d3d2d87126"
+    },
+    "username": "barney",
+    "password": "",
+    "salt": "42d99d32-7122-4d50-a2ef-1425d9f200b2",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19e62786a4f0d3d2d8705a"
+  },
+  {
+    "_id": {
+      "$oid": "6a19fb28c52cc426e8faac3a"
+    },
+    "username": "PvUL",
+    "password": "",
+    "salt": "3ff8f579-7cc6-4af6-9270-fdf0c6959a90",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19deb286a4f0d3d2d87017"
+  },
+  {
+    "_id": {
+      "$oid": "6a19ff0dc52cc426e8faac5b"
+    },
+    "username": "Endo42",
+    "password": "",
+    "salt": "ca058db3-4e0b-41eb-bff5-8c7f3d024c61",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19ff7ec52cc426e8faac61"
+  },
+  {
+    "_id": {
+      "$oid": "6a19ff24c52cc426e8faac5c"
+    },
+    "username": "madder",
+    "password": "",
+    "salt": "114ccce1-8147-4619-8e7d-7aa5a5cd50f0",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19ff7ec52cc426e8faac61"
+  },
+  {
+    "_id": {
+      "$oid": "6a1a03817cb3971af0e40890"
+    },
+    "username": "gzt",
+    "password": "",
+    "salt": "8d67718c-fc73-45ec-9fa1-d0236b8882fe",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a1a038b7cb3971af0e40891"
+  },
+  {
+    "_id": {
+      "$oid": "6a1a051b7cb3971af0e408bc"
+    },
+    "username": "teststhack",
+    "password": "",
+    "salt": "dbbfb416-fa33-4adc-9b31-37dc5277e2b6",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a1a05397cb3971af0e408bd"
+  },
+  {
+    "_id": {
+      "$oid": "6a1a05bf7cb3971af0e408c3"
+    },
+    "username": "T0t0r0",
+    "password": "",
+    "salt": "4280dad5-6116-4567-95f3-8ddc15275185",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a1a05ee7cb3971af0e408c5"
+  },
+  {
+    "_id": {
+      "$oid": "6a1a112d7cb3971af0e4091d"
+    },
+    "username": "Rog974",
+    "password": "",
+    "salt": "8325c648-2f2a-4d9a-8203-283df1657eb2",
+    "roles": [
+      "user"
+    ],
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6a1a12417cb3971af0e40937"
+    },
+    "username": "mathieu-misdrahi-26ans-1m87",
+    "password": "",
+    "salt": "b2dcd353-9754-4690-86e3-28e064a9e1f7",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19deb286a4f0d3d2d87017"
+  },
+  {
+    "_id": {
+      "$oid": "6a1a2ebd2793a559f7828fc7"
+    },
+    "username": "shoxdodo",
+    "password": "",
+    "salt": "a5a145b3-f39a-476b-9d52-f582df907ce0",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a1a2ed32793a559f7828fc9"
+  },
+  {
+    "_id": {
+      "$oid": "6a1a3b753c4b70cebb8e2451"
+    },
+    "username": "0b11stan",
+    "password": "",
+    "salt": "f7f258b0-676e-4caf-8b11-ab09d7d0fbf8",
+    "roles": [
+      "user",
+      "player"
+    ],
+    "__v": 0,
+    "teamId": "6a19dcce2af595c3960ac6b3"
+  }
+]

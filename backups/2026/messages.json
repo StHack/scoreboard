@@ -1,0 +1,214 @@
+[{
+	"_id": {
+		"$oid": "6a19da9e2af595c3960ac66f"
+	},
+	"content": "Je vois qu'il y a plein de personne sans équipe, pour info si vous ne rejoignez pas une équipe vous ne pourrez pas flagger.\n\nAutre point, on a laissé la limite à 10 personnes par équipe car dès qu'une personne de l'équipe à flag, les autres personnes de l'équipe ne peuvent plus flag.\n\nSi vous ne voyez pas les descriptions, ou si l'écran de chargement reste, essayez le ctrl+F5 et/ou login/logout.\n\nSi vous avez d'autre problème venant me voir au centre pingez moi sur discord @nagarian",
+	"createdAt": {
+		"$date": "2026-05-29T18:27:42.412Z"
+	},
+	"updatedAt": {
+		"$date": "2026-05-29T18:27:42.412Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19db272af595c3960ac67f"
+	},
+	"content": "Et pour ceux qui ont pas l'adresse: https://scoreboard.sthack.fr/",
+	"createdAt": {
+		"$date": "2026-05-29T18:29:59.627Z"
+	},
+	"updatedAt": {
+		"$date": "2026-05-29T18:29:59.627Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19f1ef86a4f0d3d2d870f5"
+	},
+	"content": "Commandes de cocktails et repas ouverts sur https://food.sthack.fr\nIdentifiants dispos sur votre billet HelloAsso.\nSi vous avez le même ID pour toute la team, incrémentez de 1 pour chaque membre.\nEn cas de soucis, contactez un membre staff ou @it4 (en cuisine)",
+	"createdAt": {
+		"$date": "2026-05-29T20:07:11.108Z"
+	},
+	"updatedAt": {
+		"$date": "2026-05-29T20:07:11.108Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19f80f86a4f0d3d2d87115"
+	},
+	"content": "@here pour récupérer vos burgers aller sous la tente des boissons",
+	"createdAt": {
+		"$date": "2026-05-29T20:33:19.056Z"
+	},
+	"updatedAt": {
+		"$date": "2026-05-29T20:33:19.056Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a19fd71c52cc426e8faac55"
+	},
+	"content": "Dès que votre commande est marquée comme \"en préparation\", allez dehors pour l'attendre svp :)",
+	"createdAt": {
+		"$date": "2026-05-29T20:56:17.331Z"
+	},
+	"updatedAt": {
+		"$date": "2026-05-29T20:56:17.331Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a1a067c7cb3971af0e408d4"
+	},
+	"content": "@here a partir de minuit pile, les commandes pour la nourriture seront terminés, dépêchez-vous de commander avant !!!!",
+	"createdAt": {
+		"$date": "2026-05-29T21:34:52.55Z"
+	},
+	"updatedAt": {
+		"$date": "2026-05-29T21:34:52.55Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a1a099e7cb3971af0e408e6"
+	},
+	"content": "Les barmen ont besoin d'une pause !\nLe bar revient d'ici 30 minutes :)\nQuelques shooters sont dispos sur le bar en attendant si vous voulez !",
+	"createdAt": {
+		"$date": "2026-05-29T21:48:14.131Z"
+	},
+	"updatedAt": {
+		"$date": "2026-05-29T21:48:14.131Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a1a11fa7cb3971af0e40935"
+	},
+	"content": "Le chall \"Telemetry Tells no Lies\" a changé de port pour être joignable depuis le WiFi local.",
+	"challengeId": {
+		"$oid": "6a1a04bb7cb3971af0e40898"
+	},
+	"createdAt": {
+		"$date": "2026-05-29T22:23:55Z"
+	},
+	"updatedAt": {
+		"$date": "2026-05-29T22:23:55Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a1a12f37cb3971af0e40939"
+	},
+	"content": "L'interface Web de \"Telemetry Tells no Lies\" n'est dispo qu'en 4G/5G (ports exotiques bloqués en sortie depuis la mairie, obligé de vous incrémenter un port par team)",
+	"challengeId": {
+		"$oid": "6a1a04bb7cb3971af0e40898"
+	},
+	"createdAt": {
+		"$date": "2026-05-29T22:28:03.869Z"
+	},
+	"updatedAt": {
+		"$date": "2026-05-29T22:28:03.869Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a1a1c277cb3971af0e40975"
+	},
+	"content": "@here pour ceux qui veulent du rab de burger venez en cuisine now",
+	"createdAt": {
+		"$date": "2026-05-29T23:07:19.752Z"
+	},
+	"updatedAt": {
+		"$date": "2026-05-29T23:07:19.752Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a1a25ce2793a559f7828f88"
+	},
+	"content": "Petit hint pour ne pas se noyer : CVE-2026-33555 ",
+	"challengeId": {
+		"$oid": "6a19e46786a4f0d3d2d8704d"
+	},
+	"createdAt": {
+		"$date": "2026-05-29T23:48:30.417Z"
+	},
+	"updatedAt": {
+		"$date": "2026-05-29T23:48:30.417Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a1a26cb2793a559f7828f91"
+	},
+	"content": "Hint : https://portswigger.net/research/the-single-packet-attack-making-remote-race-conditions-local",
+	"challengeId": {
+		"$oid": "6a19e0e686a4f0d3d2d8702c"
+	},
+	"createdAt": {
+		"$date": "2026-05-29T23:52:43.082Z"
+	},
+	"updatedAt": {
+		"$date": "2026-05-29T23:52:43.082Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a1a294a2793a559f7828fa7"
+	},
+	"content": "Back on port 13337/tcp\nVMs are now wiped every 15 min so you can easily work on it (most work is done offline for step 2 and 3)",
+	"challengeId": {
+		"$oid": "6a1a04bb7cb3971af0e40898"
+	},
+	"createdAt": {
+		"$date": "2026-05-30T00:03:22.869Z"
+	},
+	"updatedAt": {
+		"$date": "2026-05-30T00:03:22.869Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a1a4d713c4b70cebb8e24a3"
+	},
+	"content": "A second instance is up because the first one is dying :(\nnc ttnl2.sthack.fr 13337",
+	"challengeId": {
+		"$oid": "6a1a04bb7cb3971af0e40898"
+	},
+	"createdAt": {
+		"$date": "2026-05-30T02:37:37.334Z"
+	},
+	"updatedAt": {
+		"$date": "2026-05-30T02:37:37.334Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6a1a56df3c4b70cebb8e24bf"
+	},
+	"content": "Pour ceux qui n'ont pas vu, lorsque vous solvez un chall, on vous propose un questionnaire pour savoir ce que vous avez penser de celui-ci, n’hesitez pas à répondre,  ça nous aidera à nous ajuster pour l'année prochaine et surtout evaluer ce que vous pensez de notre mode no-compet",
+	"createdAt": {
+		"$date": "2026-05-30T03:17:51.504Z"
+	},
+	"updatedAt": {
+		"$date": "2026-05-30T03:17:51.504Z"
+	},
+	"__v": 0
+}]
+
