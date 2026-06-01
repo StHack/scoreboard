@@ -20,7 +20,7 @@ const schema = new Schema<Survey>(
 )
 
 schema.index({ achievementId: 1 }, { unique: true })
-schema.index({ challengeId: 1, teamname: 1 }, { unique: true })
+schema.index({ challengeId: 1, teamId: 1 }, { unique: true })
 
 const SurveyModel = model<Survey>('Survey', schema)
 
