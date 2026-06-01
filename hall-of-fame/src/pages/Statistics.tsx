@@ -5,16 +5,26 @@ import {
   ChartActivityStats,
   ChartAttemptsOverTime,
   ChartAttemptsPanel,
+  ChartSurveys,
   IconAchievement,
   IconAttempt,
   IconGame,
+  IconSurvey,
 } from '@sthack/scoreboard-ui/components'
 import { PageLoader } from 'components/PageLoader'
 import { useStatisticsData } from 'hooks/useStatisticsData'
 
 export function Statistics() {
-  const { stats, achievements, attempts, loading, error, minDate, maxDate } =
-    useStatisticsData()
+  const {
+    stats,
+    achievements,
+    attempts,
+    surveys,
+    loading,
+    error,
+    minDate,
+    maxDate,
+  } = useStatisticsData()
 
   return (
     <PageLoader
@@ -36,6 +46,12 @@ export function Statistics() {
           <Box as="p">No data are available for this year</Box>
         )}
       </BoxPanel>
+
+      {surveys.length > 0 && (
+        <BoxPanel title="Surveys" titleIcon={IconSurvey}>
+          <ChartSurveys surveys={surveys} />
+        </BoxPanel>
+      )}
 
       {achievements.length > 0 && (
         <BoxPanel title="Achievements Over time" titleIcon={IconAchievement}>

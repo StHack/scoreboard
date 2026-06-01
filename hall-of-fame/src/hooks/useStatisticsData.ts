@@ -1,4 +1,8 @@
-import { DummyChallenge, DummyTeam } from '@sthack/scoreboard-common'
+import {
+  DummyAchievement,
+  DummyChallenge,
+  DummyTeam,
+} from '@sthack/scoreboard-common'
 import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { BackupDataType, useBackupData } from './useBackupData'
@@ -19,11 +23,13 @@ export function useStatisticsData() {
   const attemptsData = useBackupData(yearNumber, BackupDataType.attempts)
   const challengesData = useBackupData(yearNumber, BackupDataType.challenges)
   const teamsData = useBackupData(yearNumber, BackupDataType.teams)
+  const surveysData = useBackupData(yearNumber, BackupDataType.surveys)
 
   const { data: stats = [] } = statsData
   const { data: rawAch = [] } = achievementsData
   const { data: rawAtt = [] } = attemptsData
   const { data: cha = [] } = challengesData
+  const { data: rawSur = [] } = surveysData
   const { data: tm = [] } = teamsData
 
   const ach = useMemo(
@@ -34,6 +40,18 @@ export function useStatisticsData() {
         team: tm.find(t => t._id === a.teamId) ?? DummyTeam,
       })),
     [cha, rawAch, tm],
+  )
+
+  const sur = useMemo(
+    () =>
+      rawSur.map(s => ({
+        ...s,
+        achievement:
+          ach.find(a => a._id === s.achievementId) ?? DummyAchievement,
+        challenge: cha.find(c => c._id === s.challengeId) ?? DummyChallenge,
+        team: tm.find(t => t._id === s.teamId) ?? DummyTeam,
+      })),
+    [ach, cha, rawSur, tm],
   )
 
   const att = useMemo(
@@ -76,15 +94,18 @@ export function useStatisticsData() {
       achievementsData.loading &&
       attemptsData.loading &&
       challengesData.loading &&
+      surveysData.loading &&
       teamsData.loading,
     error:
       statsData.error ||
       achievementsData.error ||
       attemptsData.error ||
       challengesData.error ||
+      surveysData.error ||
       teamsData.error,
     achievements: ach,
     attempts: att,
+    surveys: sur,
     minDate,
     maxDate,
     stats,
