@@ -83,8 +83,13 @@ export function registerPlayerNamespace(
       ) => {
         const player = (playerSocket.request as Request).user
 
-        if (!player || !isPlayer(player)) {
-          callback({ error: 'You need to join a team to be allowed to play' })
+        if (!player) {
+          callback({ error: 'Invalid user' })
+          return
+        }
+
+        if (typeof challengeId !== 'string' || typeof flag !== 'string') {
+          callback({ error: 'Invalid parameters' })
           return
         }
 
@@ -105,6 +110,11 @@ export function registerPlayerNamespace(
             }
           }
 
+          return
+        }
+
+        if (!isPlayer(player)) {
+          callback({ error: 'You need to join a team to be allowed to play' })
           return
         }
 
