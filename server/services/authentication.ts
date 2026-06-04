@@ -169,15 +169,33 @@ export function registerAuthentification(
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   app.post('/api/login', passport.authenticate('local'), meHandler)
 
-  app.post('/api/logout', (req, res) => {
+  app.post('/api/logout', async (req, res) => {
     const user = req.user
 
     if (user) {
-      io.in(user.username).disconnectSockets(true)
+      try {
+        io.in(user.username).disconnectSockets(true)
+        adminIo.in(user.username).disconnectSockets(true)
+        await destroyUserSessions(sessionRedisClient, user.username)
+      } catch (error) {
+        logger(
+          'failed to destroy all sessions for %s: %o',
+          user.username,
+          error,
+        )
+        res.status(500).send('An error happened')
+        return
+      }
     }
 
-    req.logout(() => {
-      res.cookie('connect.sid', '', { expires: new Date() })
+    req.logout(error => {
+      if (error) {
+        logger('failed to logout user: %o', error)
+        res.status(500).send('An error happened')
+        return
+      }
+
+      res.clearCookie('connect.sid')
       res.send('Logged out succesfully')
     })
   })
