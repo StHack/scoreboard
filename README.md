@@ -51,8 +51,6 @@ NB: you can also specify arguments `-u your_username` (and optionaly `-p your_pa
 
 There is many sample data folders that you can use to facilitate the development. They come from from the running of the sthack events however we have removed sensitive data (users passsword & their proposal).
 
-NB: the sample data (2021 dataset) users has their password set to `azerty123` for all users
-
 ### Node NPM
 
 The expected current node version is 24 (nvm is recommended), and we have used the [npm workspace feature](https://docs.npmjs.com/cli/v10/using-npm/workspaces) so basically you can run both server and client from the root folder.
