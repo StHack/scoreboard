@@ -7,7 +7,10 @@ export const schemaCreateUser = z.object({
     .min(3)
     .max(42)
     .refine(
-      val => !unauthorizedWords.find(w => val.toLocaleLowerCase().includes(w)),
+      val =>
+        !unauthorizedWords.find(w =>
+          val.normalize('NFKC').toLocaleLowerCase().includes(w),
+        ),
       {
         error: 'Unauthorized words',
       },
@@ -15,7 +18,7 @@ export const schemaCreateUser = z.object({
     .refine(
       val =>
         !bannedStartingCharacters.find(c =>
-          val.toLocaleLowerCase().startsWith(c),
+          val.normalize('NFKC').toLocaleLowerCase().startsWith(c),
         ),
       { error: 'Invalid starting characters' },
     ),
