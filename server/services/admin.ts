@@ -392,7 +392,19 @@ export function registerAdminNamespace(
 
     adminSocket.on(
       'users:actions:changeRoles',
-      async (username: string, roles: UserRole[], callback: Callback<User>) => {
+      async (
+        username: string,
+        roles: UserRole[],
+        callback: CallbackOrError<User>,
+      ) => {
+        const currentUser = (adminSocket.request as Request).user
+        if (currentUser?.username === username) {
+          callback({
+            error: 'You cannot change your own roles',
+          })
+          return
+        }
+
         const user = roles.includes(UserRole.Admin)
           ? await updateUser(username, {
               roles: roles.filter(r => r !== UserRole.Player),
