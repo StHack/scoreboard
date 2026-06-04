@@ -47,6 +47,11 @@ export function registerAuthentification(
 
   passport.use(
     new LocalStrategy(async (username, password, done) => {
+      if (typeof username !== 'string' || typeof password !== 'string') {
+        done(null, false)
+        return
+      }
+
       try {
         const user = await login(username, password)
 
