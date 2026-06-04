@@ -1,7 +1,8 @@
-import { CreateUser, Player, User, UserRole } from '@sthack/scoreboard-common'
-import { createHash, randomUUID } from 'crypto'
+import { CreateUser, User, UserRole } from '@sthack/scoreboard-common'
+import { randomUUID } from 'crypto'
 import debug from 'debug'
 import { model, Schema, ToObjectOptions } from 'mongoose'
+import { hashPassword, verifyPassword } from 'services/hash.js'
 import { removeMongoPropertiesWithOptions, ValidationError } from './main.js'
 
 const logger = debug('Db:User')
@@ -35,13 +36,6 @@ const schema = new Schema<DbUser>({
 
 const UserModel = model<DbUser>('User', schema)
 
-const passwordHasher = (password: string | undefined, salt: string) =>
-  password
-    ? createHash('sha256')
-        .update(password + salt)
-        .digest('hex')
-    : undefined
-
 const removeProperties: ToObjectOptions = removeMongoPropertiesWithOptions({
   removeId: true,
   propsToRemove: ['password', 'salt'],
@@ -52,7 +46,7 @@ export async function registerUser({
   password,
 }: CreateUser): Promise<User> {
   const salt = randomUUID()
-  const hashed = passwordHasher(password, salt)
+  const hashed = await hashPassword({ password, salt })
 
   try {
     const doc = new UserModel({
@@ -92,9 +86,13 @@ export async function login(
     return undefined
   }
 
-  const hash = passwordHasher(password, user.salt)
+  const isLegit = await verifyPassword({
+    password,
+    hash: user.password,
+    salt: user.salt,
+  })
 
-  if (user.password !== hash) {
+  if (!isLegit) {
     return undefined
   }
 
@@ -136,7 +134,10 @@ export async function updateUser(
       )
     }
 
-    password = passwordHasher(password, user.salt)
+    password = await hashPassword({
+      password,
+      salt: user.salt,
+    })
   }
 
   const additional = teamId === '' ? { $unset: { teamId } } : { teamId }

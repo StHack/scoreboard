@@ -4,8 +4,9 @@ import {
   Difficulties,
   TokenType,
 } from '@sthack/scoreboard-common'
-import { createHash, randomUUID } from 'crypto'
+import { randomUUID } from 'crypto'
 import { model, Schema, ToObjectOptions } from 'mongoose'
+import { hashPassword, verifyPassword } from 'services/hash.js'
 import { removeMongoPropertiesWithOptions } from './main.js'
 
 type DbChallenge = Challenge & {
@@ -41,14 +42,12 @@ const schema = new Schema<DbChallenge>({
 
 const ChallengeModel = model<DbChallenge>('Challenge', schema)
 
-const flagHasher = (password: string | undefined, salt: string) => {
+const flagHasher = async (password: string | undefined, salt: string) => {
   if (!password || password.trim() === '') {
     throw new Error('Proposal cannot be null or empty')
   }
 
-  return createHash('sha256')
-    .update(password + salt)
-    .digest('hex')
+  return await hashPassword({ password, salt })
 }
 
 const removeProperties: ToObjectOptions = removeMongoPropertiesWithOptions({
@@ -60,7 +59,7 @@ export async function createChallenge(
   chall: BaseChallenge,
 ): Promise<Challenge> {
   const salt = randomUUID()
-  const flag = flagHasher(chall.flag, salt)
+  const flag = await flagHasher(chall.flag, salt)
 
   const doc = new ChallengeModel({
     ...chall,
@@ -100,7 +99,15 @@ export async function checkChallenge(
     throw new Error('Chall is broken')
   }
 
-  return flagHasher(flag, chall.salt) === chall.flag
+  if (!flag || flag.trim() === '') {
+    throw new Error('Flag cannot be null or empty')
+  }
+
+  return await verifyPassword({
+    password: flag,
+    hash: chall.flag ?? '',
+    salt: chall.salt,
+  })
 }
 
 export async function removeChallenge(
@@ -125,7 +132,7 @@ export async function updateChallenge(
       )
     }
 
-    ;(challenge as Challenge).flag = flagHasher(flag, chall.salt)
+    ;(challenge as Challenge).flag = await flagHasher(flag, chall.salt)
   }
 
   const additional = !token ? { $unset: { token: '' } } : { token }
